@@ -1,32 +1,35 @@
 NAME = pic16test
 
 target = pic14
+chip = 16f876a
+serialport = /dev/ttyS0
 
 prefix ?= /usr
 libdir = ${prefix}/lib
 datadir = ${prefix}/share
 
-
-sdcclibdir = $(datadir)/sdcc/lib
-nonfreelibdir = $(datadir)/sdcc/non-free/lib
-#targetlibdir = $(sdcclibdir)/${target}
+ifeq ($(prefix),/usr)
+ sdcclibdir = $(datadir)/sdcc/lib/pic
+ targetlibdir = $(datadir)/sdcc/lib/pic
+else
+ sdcclibdir = $(datadir)/sdcc/lib/$(target)
+ targetlibdir = $(datadir)/sdcc/non-free/lib/$(target)
+endif
 
 CC = ${prefix}/bin/sdcc
 AS = gpasm
-
-CHIP = 16f876a
-CFLAGS =  -S -V -m${target} -pp$(CHIP) -D__$(CHIP) --use-non-free 
-LIBS = \
-  $(nonfreelibdir)/$(target)/pic$(CHIP).lib \
-  $(sdcclibdir)/$(target)/libsdcc.lib
-
 LD = gplink
-LDFLAGS = -m -s ${prefix}/share/gputils/lkr/$(CHIP).lkr
+PICPROG = picprog
+CFLAGS =  -S -V -m${target} -pp$(chip) -D__$(chip) --use-non-free 
+LDFLAGS = -m -s ${prefix}/share/gputils/lkr/$(chip).lkr
+LIBS = \
+  $(targetlibdir)/pic$(chip).lib \
+  $(sdcclibdir)/libsdcc.lib
 
 all: $(NAME).hex
 program:
-	picprog --device=pic$(CHIP) --erase --burn \
-	--pic-serial-port=/dev/ttyS0 --input-hexfile=$(NAME).hex
+	$(PICPROG) --device="pic$(chip)" --erase --burn \
+	--pic-serial-port="$(serialport)" --input-hexfile="$(NAME).hex"
 
 %.o: %.asm
 	$(AS) -c $<
