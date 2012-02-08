@@ -31,7 +31,9 @@ CHIP = 18F252
 
 all: pictest.hex
 program: pictest.hex
-	$(PM3CMD) -5 -P"$(CHIP)" -F"$<" -M	
+#	$(PM3CMD) -5 -P"$(CHIP)" -F"$<" -M	
+	#$(PICPROG) --device="pic$(chip)" --erase --burn --pic-serial-port="$(serialport)" --input-hexfile="$<"	
+	picpgm -p PIC$(CHIP) -e -p "$<"
 
 
 dist:

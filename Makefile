@@ -1,1 +1,1 @@
-Makefile.htc
+Makefile.sdcc

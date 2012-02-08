@@ -10,17 +10,18 @@ datadir = ${prefix}/share
 
 chipu := `echo "${chip}" | tr "[:lower:]" "[:upper]"`
 
-CC = /usr/bin/sdcc
+#CC = /usr/bin/sdcc
+CC = sdcc
 AS = gpasm
 LD = gplink
 PICPROG = picprog
-CFLAGS =  -S -V -m${target} -pp$(chip) -D__$(chip) 
-LDFLAGS = -m -s ${prefix}/share/gputils/lkr/$(chip).lkr
-LIBS = \
-  $(targetlibdir)/pic$(chip).lib \
-  $(sdcclibdir)/libsdcc.lib
+#CFLAGS =  -S -V -m${target} -pp$(chip) -D__$(chip) 
+CFLAGS =  -m${target} -pp$(chip) -D__$(chip) 
+#LDFLAGS = -m -s ${prefix}/share/gputils/lkr/$(chip).lkr
+#LIBS = $(targetlibdir)/pic$(chip).lib 
+#LIBS = $(targetlibdir)/pic$(chip).lib $(sdcclibdir)/libsdcc.lib
 
-ifeq ($(prefix),/usr)
+ifeq ($(CC),/usr/bin/sdcc)
  sdcclibdir = $(datadir)/sdcc/lib/pic
  targetlibdir = $(datadir)/sdcc/lib/pic
 else
@@ -39,28 +40,20 @@ report:
 	picpgm -p PIC$(chipu)  -blank -r 
 
 .c.o: ;
-%.o: %.c
-
+#%.o: %.c
 %.o: %.asm
 	$(AS) -c $<
 
-%.hex: %.o
-	$(LD) $(LDFLAGS) -o $@ $^ 
+#%.hex: %.o
+#	$(LD) $(LDFLAGS) -o $@ $^ $(LIBS)
 
 
-$(NAME).hex: $(LIBS) $(NAME).o display.o
-
-%.asm: %.c
+%.hex: %.c
 	$(CC) $(CFLAGS) -c $<
 
 clean:
 	$(RM) $(NAME).asm $(NAME).c.orig $(NAME).cod $(NAME).hex $(NAME).lst $(NAME).map $(NAME).o
 
 
-pictest.asm: pictest.c
-pictest.o: pictest.asm
-pictest.hex: pictest.o $(LIBS)
+$(NAME).hex: $(NAME).c
 
-blink3.asm: blink3.c
-blink3.o: blink3.asm
-blink3.hex: blink3.o $(LIBS)

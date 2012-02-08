@@ -1,7 +1,11 @@
 #ifndef PICTEST_H
 #define PICTEST_H 1
 
+#ifdef HI_TECH_C
+#include <htc.h>
+#else
 #include <pic16f876a.h>
+#endif
 
 #include <stdbool.h>
 #include <stdint.h>
