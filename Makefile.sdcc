@@ -39,21 +39,24 @@ report:
 	#$(PICPROG) --device="pic$(chip)" --erase --burn --pic-serial-port="$(serialport)" --input-hexfile="$<"
 	picpgm -p PIC$(chipu)  -blank -r 
 
-.c.o: ;
+#.c.o: ;
 #%.o: %.c
-%.o: %.asm
-	$(AS) -c $<
+#%.o: %.asm
+#	$(AS) -c $<
 
-#%.hex: %.o
-#	$(LD) $(LDFLAGS) -o $@ $^ $(LIBS)
+#%.hex: %.o: pictest.o
+#.o.hex: 
+#	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
 
+pictest.hex: pictest.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
 
-%.hex: %.c
-	$(CC) $(CFLAGS) -c $<
+pictest.o: pictest.c
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
 	$(RM) $(NAME).asm $(NAME).c.orig $(NAME).cod $(NAME).hex $(NAME).lst $(NAME).map $(NAME).o
 
 
-$(NAME).hex: $(NAME).c
+#$(NAME).hex: $(NAME).c
 
