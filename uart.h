@@ -24,7 +24,9 @@
 #ifndef UART_H_
 #define UART_H_
 
+#ifndef HI_TECH_C
 #include <stdint.h>
+#endif
 
 #define BAUD 9600    /** Baudrate */
 #define FOSC 2160900  /** CPU clock */
@@ -41,7 +43,7 @@ void uart_init(void);
  *
  * @return 1 if there was UART receive interrupt, 0 otherwise
  */
-uint_fast8_t uart_isr(void);
+unsigned char uart_isr(void);
 
 /**
  * Enable UART (used for power managed mode)

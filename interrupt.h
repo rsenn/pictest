@@ -2,11 +2,9 @@
 #define INTERRUPT_H 1
 
 #ifdef HI_TECH_C
-# define INTERRUPT_HI_PRIO interrupt
-# define INTERRUPT_LO_PRIO interrupt low_priority
+# define INTERRUPT interrupt
 #else // defined(HI_TECH_C)
-# define INTERRUPT_HI_PRIO
-# define INTERRUPT_LO_PRIO
+# define INTERRUPT __interrupt 0
 #endif // !defined(HI_TECH_C)
 
 #ifdef SDCC

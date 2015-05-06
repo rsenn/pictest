@@ -23,9 +23,12 @@
 #ifndef ADC_H_
 #define ADC_H_
 
+#ifndef HI_TECH_C
 #include <stdint.h>
+#endif
 
-#define ADRES (((uint16_t)ADRESH << 8)|ADRESL)
+
+#define ADRES (((unsigned short)ADRESH << 8)|ADRESL)
 
 /**
  * Enable ADC, start conversion and return data. Then disable ADC
@@ -40,6 +43,6 @@ void adc_disable(void);
 /**
  * ISR for ADC
  */
-uint_fast8_t adc_isr(void);
+unsigned char adc_isr(void);
 
 #endif /* ADC_H_ */

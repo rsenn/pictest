@@ -1,6 +1,7 @@
 #include "pictest.h"
 #include "uart.h"
 #include "adc.h"
+#include "interrupt.h"
 
 #ifdef SDCC
 
@@ -11,24 +12,24 @@ static unsigned int __at(0x2007) CONFIG = CONFIG_WORD;
 #elif defined(HI_TECH_C)
 
 #define _XTAL_FREQ 4000000
-__CONFIG(FOSC_XT & DEBUG_OFF & CP_ON & WRT_OFF & CP_OFF & LVP_OFF & BODEN_OFF & PWRTE_OFF & WDTE_OFF);
+__CONFIG(FOSC_HS & DEBUG_OFF & CP_ON & WRT_OFF & CP_OFF & LVP_OFF & BODEN_OFF & PWRTE_OFF & WDTE_OFF);
 
 #endif
 
 unsigned char b;
-volatile uint16_t tmr_overflows = 0;
-volatile uint16_t adc_result = 0;
-volatile uint8_t serial_in = 0;
+volatile unsigned short tmr_overflows = 0;
+volatile unsigned short adc_result = 0;
+volatile unsigned char serial_in = 0;
 
 void my_delay(unsigned short iterations) {
   short i;
 
   for(i = 0; i < iterations; i++) {
-    __asm nop __endasm;
+    ;
   }
 }
 
-void isr() __interrupt 0 {
+void isr() INTERRUPT {
   if(INTCONbits.T0IF) {
     tmr_overflows++;
 

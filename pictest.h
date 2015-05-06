@@ -5,10 +5,10 @@
 #include <htc.h>
 #else
 #include <pic16f876a.h>
-#endif
-
 #include <stdbool.h>
 #include <stdint.h>
+#endif
+
 
 //----------------------------------------------------------------------------
 // Preprocessor macros
