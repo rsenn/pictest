@@ -16,13 +16,13 @@ __CONFIG(FOSC_HS & DEBUG_OFF & CP_ON & WRT_OFF & CP_OFF & LVP_OFF & BODEN_OFF & 
 
 #endif
 
-uint8_t b;
-volatile uint16_t tmr_overflows = 0;
-volatile uint16_t adc_result = 0;
-volatile uint8_t serial_in = 0;
+uint8 b;
+volatile uint16 tmr_overflows = 0;
+volatile uint16 adc_result = 0;
+volatile uint8 serial_in = 0;
 
-void my_delay(uint16_t iterations) {
-  int16_t i;
+void my_delay(uint16 iterations) {
+  int16 i;
 
   for(i = 0; i < iterations; i++) {
     ;

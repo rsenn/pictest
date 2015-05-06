@@ -41,7 +41,7 @@ void adc_start(void)
   PIE1bits.ADIE = 1;
 }
 
-uint8_t adc_isr(void)
+uint8 adc_isr(void)
 {
   if(PIR1bits.ADIF)
   {

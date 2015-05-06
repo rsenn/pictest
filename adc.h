@@ -23,9 +23,7 @@
 #ifndef ADC_H_
 #define ADC_H_
 
-#ifdef SDCC
-#include <stdint.h>
-#endif
+#include "types.h"
 
 #define ADRES (((unsigned short)ADRESH << 8)|ADRESL)
 
@@ -42,6 +40,6 @@ void adc_disable(void);
 /**
  * ISR for ADC
  */
-unsigned char adc_isr(void);
+uint8 adc_isr(void);
 
 #endif /* ADC_H_ */
