@@ -144,7 +144,9 @@ static void DISPLAY_SET(uint8 a, uint8 b, uint8 c, uint8 d, boolean_t upd)
 #define DISPLAY_LETTER_H 0x7c       // 0b01111100
 #define DISPLAY_LETTER_I 0x14       // 0b00010100
 #define DISPLAY_LETTER_J 0x36       // 0b00110110
+#define DISPLAY_LETTER_K 0x00
 #define DISPLAY_LETTER_L 0x62       // 0b01100010
+#define DISPLAY_LETTER_M 0x00
 #define DISPLAY_LETTER_N 0x2c       // 0b00101100
 #define DISPLAY_LETTER_O 0xf6       // 0b11110110
 #define DISPLAY_LETTER_P 0xf8       // 0b11111000
@@ -154,8 +156,11 @@ static void DISPLAY_SET(uint8 a, uint8 b, uint8 c, uint8 d, boolean_t upd)
 #define DISPLAY_LETTER_T 0x6a       // 0b01101010
 #define DISPLAY_LETTER_U 0x76       // 0b01110110
 #define DISPLAY_LETTER_V 0x26       // 0b00100110
+#define DISPLAY_LETTER_W 0x00       
+#define DISPLAY_LETTER_X 0x00      
 #define DISPLAY_LETTER_Y 0x5c       // 0b01011100
 #define DISPLAY_LETTER_Z 0xba       // 0b10111010
+
 #define DISPLAY_DEGREE   0xd8       // 0b11011000
 
 #define DISPLAY_EXCLAM   0x11
