@@ -7,11 +7,7 @@
 #include <pic16f876a.h>
 #endif
 
-#ifdef SDCC
-#include <stdbool.h>
-#include <stdint.h>
-#endif
-
+#include "types.h"
 
 //----------------------------------------------------------------------------
 // Preprocessor macros

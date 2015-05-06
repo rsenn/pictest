@@ -1,6 +1,12 @@
 #ifndef TYPES_H
 #define TYPES_H 1
 
+#ifdef SDCC
+#include <stdbool.h>
+#include <stdint.h>
+#endif
+
+
 #if defined(MCC18) || defined(HI_TECH_C) || defined(SDCC) || defined(__IAR_SYSTEMS_ICC__)
 typedef signed char int8;
 typedef signed short int16;
