@@ -32,7 +32,7 @@
 /**
  * Re-target POSIX function putch
  */
-void putch(unsigned char byte)
+void putch(uint8_t byte)
 {
   /* output one byte */
   while(!PIR1bits.TXIF)
@@ -47,7 +47,7 @@ void putch(unsigned char byte)
  *
  * @return received character or 0 if it's not UART interrupt
  */
-unsigned char uart_isr(void)
+uint8_t uart_isr(void)
 {
   if(PIR1bits.RCIF)
   {
