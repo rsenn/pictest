@@ -1,5 +1,5 @@
 /**
- * @file 	adc.h
+ * @file   adc.h
  * @author  Oleg Antonyan <oleg.b.antonyan@gmail.com>
  * @version 1.0
  *

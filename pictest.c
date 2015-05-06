@@ -29,20 +29,20 @@ void my_delay(unsigned short iterations) {
 }
 
 void isr() __interrupt 0 {
-  if(T0IF) {
+  if(INTCONbits.T0IF) {
     tmr_overflows++;
 
     // Clear timer interrupt bit
     INTCONbits.T0IF = 0;
   }
 
-  if(RCIF) {
+  if(PIR1bits.RCIF) {
     serial_in = RCREG;
 
     PIR1bits.RCIF = 0;
   }
 
-  if(ADIF) {
+  if(PIR1bits.ADIF) {
     PIR1bits.ADIF = 0;
 
     adc_result = ADRES;

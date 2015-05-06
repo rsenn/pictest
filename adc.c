@@ -1,5 +1,5 @@
 /**
- * @file 	adc.c
+ * @file   adc.c
  * @author  Oleg Antonyan <oleg.b.antonyan@gmail.com>
  * @version 1.0
  *
@@ -31,32 +31,32 @@
 
 void adc_start(void)
 {
-	/* Enable ADC, select RA0/AN0 channel, Fosc/32 clock */
-	ADCON0bits.ADCS = 0b10;
-	ADCON0bits.CHS = 0b000;
-	ADCON1bits.PCFG = 0b0100;
+  /* Enable ADC, select RA0/AN0 channel, Fosc/32 clock */
+  ADCON0bits.ADCS = 0b10;
+  ADCON0bits.CHS = 0b000;
+  ADCON1bits.PCFG = 0b0100;
 
-	ADCON0bits.ADON = 1;
-	ADCON0bits.GO_DONE = 1;
-	PIE1bits.ADIE = 1;
+  ADCON0bits.ADON = 1;
+  ADCON0bits.GO_DONE = 1;
+  PIE1bits.ADIE = 1;
 }
 
 uint_fast8_t adc_isr(void)
 {
-	if(ADIF)
-	{
-		ADIF = 0;
-		if(ADRES < 45u)
-		{	/* Threshold reached */
-			return 1;
-		}
-		adc_start();
-	}
-	return 0;
+  if(PIR1bits.ADIF)
+  {
+    PIR1bits.ADIF = 0;
+    if(ADRES < 45u)
+    {  /* Threshold reached */
+      return 1;
+    }
+    adc_start();
+  }
+  return 0;
 }
 
 void adc_disable(void)
 {
-	ADON = 0;
-	ADIE = 0;
+  ADCON0bits.ADON = 0;
+  PIE1bits.ADIE = 0;
 }

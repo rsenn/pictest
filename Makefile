@@ -48,12 +48,15 @@ report:
 #	$(LD) $(LDFLAGS) -o $@ $^ $(LIBS)
 
 
-%.hex: %.c
-	$(CC) $(CFLAGS) $<
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
+
+pictest.hex: pictest.o adc.o uart.o
+	$(CC) $(CFLAGS) $^
 
 clean:
-	$(RM) $(NAME).asm $(NAME).c.orig $(NAME).cod $(NAME).hex $(NAME).lst $(NAME).map $(NAME).o
+	$(RM) $(NAME).asm $(NAME).cod $(NAME).hex $(NAME).map *.o *.lst *.asm
 
 
-$(NAME).hex: $(NAME).c adc.c uart.c
+#$(NAME).hex: $(NAME).c adc.c uart.c
 

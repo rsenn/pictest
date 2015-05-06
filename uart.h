@@ -1,5 +1,5 @@
 /**
- * @file 	uart.h
+ * @file   uart.h
  * @author  Oleg Antonyan <oleg.b.antonyan@gmail.com>
  * @version 1.0
  *
@@ -26,10 +26,10 @@
 
 #include <stdint.h>
 
-#define BAUD 9600		/** Baudrate */
-#define FOSC 2160900	/** CPU clock */
-#define NINE 0     			/** Use 9bit communication? 0=8bit */
-#define HIGH_SPEED 1		/** Set for high speed communicatin (see BRGH bit) */
+#define BAUD 9600    /** Baudrate */
+#define FOSC 2160900  /** CPU clock */
+#define NINE 0           /** Use 9bit communication? 0=8bit */
+#define HIGH_SPEED 1    /** Set for high speed communicatin (see BRGH bit) */
 
 /**
  * Initialize UART module

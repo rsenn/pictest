@@ -1,5 +1,5 @@
 /**
- * @file 	uart.c
+ * @file   uart.c
  * @author  Oleg Antonyan <oleg.b.antonyan@gmail.com>
  * @version 1.0
  *
@@ -34,12 +34,12 @@
  */
 void putch(uint8_t byte)
 {
-	/* output one byte */
-	while(!TXIF)
-	{	/* set when register is empty */
-		continue;
-	}
-	TXREG = byte;
+  /* output one byte */
+  while(!PIR1bits.TXIF)
+  {  /* set when register is empty */
+    continue;
+  }
+  TXREG = byte;
 }
 
 /**
@@ -49,56 +49,56 @@ void putch(uint8_t byte)
  */
 uint8_t uart_isr(void)
 {
-	if(RCIF)
-	{
-		RCIF = 0;
-		return RCREG;
-	}
-	return 0;
+  if(PIR1bits.RCIF)
+  {
+    PIR1bits.RCIF = 0;
+    return RCREG;
+  }
+  return 0;
 }
 
 void uart_enable(void)
 {
-	TXEN = 1;
-	SPEN = 1;
-	RCIE = 1;
-/*	TRISC7 = 1;
-	TRISC6 = 1;*/
+  TXSTAbits.TXEN = 1;
+  RCSTAbits.SPEN = 1;
+  PIE1bits.RCIE = 1;
+/*  TRISCbits.TRISC7 = 1;
+  TRISCbits.TRISC6 = 1;*/
 }
 
 void uart_disable(void)
 {
-	TXEN = 0;
-	SPEN = 0;
-	RCIE = 0;
-/*	TRISC7 = 0;
-	TRISC6 = 0;
-	RC6 = 0;
-	RC7 = 0; */
+  TXSTAbits.TXEN = 0;
+  RCSTAbits.SPEN = 0;
+  PIE1bits.RCIE = 0;
+/*  TRISCbits.TRISC7 = 0;
+  TRISCbits.TRISC6 = 0;
+  RC6 = 0;
+  RC7 = 0; */
 }
 
 void uart_init(void)
 {
-	/* Initilize baudrate generator and pins */
+  /* Initilize baudrate generator and pins */
 #define DIVIDER ((unsigned int)(FOSC / ( 16ul * BAUD) - 1ul))
 #if NINE == 1
-	#define NINE_BITS _TX9
+  #define NINE_BITS _TX9
 #else
-	#define NINE_BITS 0
+  #define NINE_BITS 0
 #endif
 #if HIGH_SPEED == 1
-	#define SPEED _BRGH
+  #define SPEED _BRGH
 #else
-	#define SPEED 0
+  #define SPEED 0
 #endif
-	TRISC7 = 1;
-	TRISC6 = 1;
-	SPBRG = DIVIDER;
+  TRISCbits.TRISC7 = 1;
+  TRISCbits.TRISC6 = 1;
+  SPBRG = DIVIDER;
 
-	RCSTA = (NINE_BITS | _SPEN | _CREN);
-	TXSTA = (SPEED | NINE_BITS | _TXEN);
-	/* Receive interrupt enabled */
-	RCIE = 1;
+  RCSTA = (NINE_BITS | _SPEN | _CREN);
+  TXSTA = (SPEED | NINE_BITS | _TXEN);
+  /* Receive interrupt enabled */
+  PIE1bits.RCIE = 1;
 
-	uart_enable();
+  uart_enable();
 }
