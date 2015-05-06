@@ -16,7 +16,9 @@ AS = gpasm
 LD = gplink
 PICPROG = picprog
 #CFLAGS =  -S -V -m${target} -pp$(chip) -D__$(chip) 
-CFLAGS =  -m${target} -pp$(chip) -D__$(chip) -DNO_BIT_DEFINES
+CFLAGS =  -m${target} -pp$(chip) -D__$(chip) 
+#CFLAGS += -DNO_BIT_DEFINES
+
 #LDFLAGS = -m -s ${prefix}/share/gputils/lkr/$(chip).lkr
 #LIBS = $(targetlibdir)/pic$(chip).lib 
 #LIBS = $(targetlibdir)/pic$(chip).lib $(sdcclibdir)/libsdcc.lib
@@ -45,7 +47,7 @@ report:
 
 .c.o: ;
 #%.o: %.c
-%.o: %.asm
+%.o: %.as
 	$(AS) -c $<
 
 #%.hex: %.o
@@ -54,12 +56,14 @@ report:
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $<
+%.as: %.c
+	$(CC) $(CFLAGS) -S $<
 
 pictest.hex: pictest.o adc.o uart.o
 	$(CC) $(CFLAGS) $^
 
 clean:
-	$(RM) $(NAME).asm $(NAME).cod $(NAME).hex $(NAME).map *.o *.lst *.asm
+	$(RM) $(NAME).as $(NAME).cod $(NAME).hex $(NAME).map *.o *.lst *.as
 
 
 #$(NAME).hex: $(NAME).c adc.c uart.c

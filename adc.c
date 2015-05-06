@@ -32,20 +32,20 @@
 void adc_start(void)
 {
   /* Enable ADC, select RA0/AN0 channel, Fosc/32 clock */
-    ADCON0bits.ADCS = 0b10;
-  ADCON0bits.CHS = 0b000;
-  ADCON1bits.PCFG = 0b0100;
+  /*ADCON0bits/*/ADCS1 = 1;
+  /*ADCON0bits.*/CHS0 = CHS1 = CHS2 = 0;
+  /*ADCON1bits.*/PCFG2 = 1; PCFG1 = PCFG0 = 0;
 
-  ADCON0bits.ADON = 1;
-  ADCON0bits.GO_DONE = 1;
-  PIE1bits.ADIE = 1;
+  /*ADCON0bits.*/ADON = 1;
+  /*ADCON0bits.*/GO_DONE = 1;
+  /*PIE1bits.*/ADIE = 1;
 }
 
 uint8 adc_isr(void)
 {
-  if(PIR1bits.ADIF)
+  if(/*PIR1bits.*/ADIF)
   {
-    PIR1bits.ADIF = 0;
+    /*PIR1bits.*/ADIF = 0;
     if(ADRES < 45u)
     {  /* Threshold reached */
       return 1;
@@ -57,6 +57,6 @@ uint8 adc_isr(void)
 
 void adc_disable(void)
 {
-  ADCON0bits.ADON = 0;
-  PIE1bits.ADIE = 0;
+  /*ADCON0bits.*/ADON = 0;
+  /*PIE1bits.*/ADIE = 0;
 }

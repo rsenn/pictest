@@ -35,7 +35,7 @@
 void putch(uint8 byte)
 {
   /* output one byte */
-  while(!PIR1bits.TXIF)
+  while(!/*PIR1bits.*/TXIF)
   {  /* set when register is empty */
     continue;
   }
@@ -49,9 +49,9 @@ void putch(uint8 byte)
  */
 uint8 uart_isr(void)
 {
-  if(PIR1bits.RCIF)
+  if(/*PIR1bits.*/RCIF)
   {
-    PIR1bits.RCIF = 0;
+    /*PIR1bits.*/RCIF = 0;
     return RCREG;
   }
   return 0;
@@ -59,22 +59,22 @@ uint8 uart_isr(void)
 
 void uart_enable(void)
 {
-  TXSTAbits.TXEN = 1;
-  RCSTAbits.SPEN = 1;
-  PIE1bits.RCIE = 1;
-/*  TRISCbits.TRISC7 = 1;
-  TRISCbits.TRISC6 = 1;*/
+  /*TXSTAbits.*/TXEN = 1;
+  /*RCSTAbits.*/SPEN = 1;
+  /*PIE1bits.*/RCIE = 1;
+  /*TRISCbits.*/TRISC7 = 1;
+  /*TRISCbits.*/TRISC6 = 1;
 }
 
 void uart_disable(void)
 {
-  TXSTAbits.TXEN = 0;
-  RCSTAbits.SPEN = 0;
-  PIE1bits.RCIE = 0;
-/*  TRISCbits.TRISC7 = 0;
-  TRISCbits.TRISC6 = 0;
+  /*TXSTAbits.*/TXEN = 0;
+  /*RCSTAbits.*/SPEN = 0;
+  /*PIE1bits.*/RCIE = 0;
+  /*TRISCbits.*/TRISC7 = 0;
+  /*TRISCbits.*/TRISC6 = 0;
   RC6 = 0;
-  RC7 = 0; */
+  RC7 = 0; 
 }
 
 void uart_init(void)
@@ -91,21 +91,21 @@ void uart_init(void)
 #else
   #define SPEED 0
 #endif
-  TRISCbits.TRISC7 = 1;
-  TRISCbits.TRISC6 = 1;
+  /*TRISCbits.*/TRISC7 = 1;
+  /*TRISCbits.*/TRISC6 = 1;
   SPBRG = DIVIDER;
   
-  RCSTAbits.SPEN = 1;
-  RCSTAbits.CREN = 1;
-  RCSTAbits.RX9D = (NINE == 1);
+  /*RCSTAbits.*/SPEN = 1;
+  /*RCSTAbits.*/CREN = 1;
+  /*RCSTAbits.*/RX9D = (NINE == 1);
 
 
-  TXSTAbits.BRGH = (HIGH_SPEED == 1);
-  TXSTAbits.TX9 = (NINE == 1);
-  TXSTAbits.TXEN = (NINE == 1);
+  /*TXSTAbits.*/BRGH = (HIGH_SPEED == 1);
+  /*TXSTAbits.*/TX9 = (NINE == 1);
+  /*TXSTAbits.*/TXEN = (NINE == 1);
 
   /* Receive interrupt enabled */
-  PIE1bits.RCIE = 1;
+  /*PIE1bits.*/RCIE = 1;
 
   uart_enable();
 }
