@@ -61,7 +61,7 @@ int main() {
     PR2 = 0xff;       // Set PWM period
     CCPR1L = 0x00;    // Set PWM duty cycle
     CCP1CON = 0x0c;      // Set PWM mode
-    //CCP1X = 1;        // Set one of the LSB /*bits.*/
+    //CCP1X = 1;        // Set one of the LSB bits.
 
     CCPR2L = 0;
     CCP2CON = 0x0c;
@@ -73,9 +73,10 @@ int main() {
 
     T1CON = 0x00;
     T2CKPS0 = 0;      // Set timer 2 prescaler to 1:1.
-    T2CKPS1 = 0;      // These /*bits */are in T2CON.
+    T2CKPS1 = 0;      // These bits are in T2CON.
     TMR2ON = 1;       // Enable timer 2.
-
+  */
+  
   
   // Set up timer0 interrupt
   /*OPTION_REGbits.*/T0CS = 0; // Internal clock source

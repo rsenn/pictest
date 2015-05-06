@@ -3,8 +3,9 @@
 
 #ifdef HI_TECH_C
 #include <htc.h>
-#endif
+#else
 #include <pic16f876a.h>
+#endif
 
 #include "types.h"
 

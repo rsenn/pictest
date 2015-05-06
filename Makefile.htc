@@ -4,13 +4,17 @@ VERSION_MINOR = 9
 VERSION_PATCH = 1
 
 
-
 VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
-
 CCVER = 9.83
-CCDIR = "$$PROGRAMFILES"/HI-TECH\ Software/PICC/$(CCVER)
-CC = $(CCDIR)/bin/picc.exe
+CCDIR = ${PROGRAMFILES}/HI-TECH Software/PICC/$(CCVER)
+#CC = $(CCDIR)/bin/picc.exe
+CC = picc
+
+
+#CC = echo $$PATH; picc
+
+PATH := "$(CCDIR)/bin":$(PATH)
 
 LD = $(CC)
 #RM = del /f  
@@ -20,18 +24,28 @@ SOURCES = pictest.c adc.c uart.c
 P1OBJS = $(SOURCES:%.c=%.p1)
 ASSRCS = $(SOURCES:%.c=%.as)
 
-COMMON_FLAGS = \
-	-g -N127 -DPIC$(CHIP)=1 \
-	--runtime="default,+clear,+init,-keep,-download,+clib" \
-	--opt="default,+asm,-speed,+space,9" \
-	--warn="-2" \
-	--double=32 \
-	--asmlist \
+COMMON_FLAGS = -v \
+	-g -N127
+	
+_COMMON_FLAGS += \
+	--runtime=default,+clear,+init,-keep,-download,+clib \
+	--opt=default,+asm,-speed,+space,9 \
+	--double=32
+	
+COMMON_FLAGS += --warn=-2 \
+	--asmlist
+	
+	
+_COMMON_FLAGS += \
 	--errformat="Error   [%n] %f; %l.%c %s" \
 	--msgformat="Advisory[%n] %s" \
 	--warnformat="Warning [%n] %f; %l.%c %s"
 
-CPPFLAGS = -D__HSPLL=1 -DPIC$(CHIP)=1 -I$(CCDIR)/include \
+CPPFLAGS = -D__HSPLL=1 -DPIC$(CHIP)=1
+CPPFLAGS += -I"$(CCDIR)/include"
+#CPPFLAGS += -Deeprom
+
+_CPPFLAGS += \
 	-DVERSION_MAJOR=$(VERSION_MAJOR) \
 	-DVERSION_MINOR=$(VERSION_MINOR) \
 	-DVERSION_PATCH=$(VERSION_PATCH)
@@ -40,39 +54,39 @@ CFLAGS = -q --chip=$(CHIP) $(CPPFLAGS) $(COMMON_FLAGS)
 LDFLAGS = \
 	--summary=default,-psect,-class,+mem,-hex \
 	--output=default,-inhx032 \
-	--chip="$(CHIP)" \
+	--chip=$(CHIP) \
 	$(CPPFLAGS) $(COMMON_FLAGS)
 
-PM3CMD = 'C:/Program Files/Microchip/MPLAB IDE/Programmer Utilities/PM3Cmd/PM3Cmd.exe'
+PM3CMD = "$$PROGRAMFILES"/Microchip/MPLAB\ IDE/Programmer\ Utilities/PM3Cmd/PM3Cmd.exe
 CHIP = 16F876A
 
 all: pictest.hex
 
 program: pictest.hex
-#	$(PM3CMD) -5 -P"$(CHIP)" -F"$<" -M	
+#	$(PM3CMD) -5 -P$(CHIP) -F$< -M	
 	#$(PICPROG) \
-      --device="pic$(chip)" \
+      --device=pic$(chip) \
       --erase \
       --burn \
-      --pic-serial-port="$(serialport)" \
-      --input-hexfile="$<"
-	picpgm -p PIC$(CHIP) -e -p "$<"
+      --pic-serial-port=$(serialport) \
+      --input-hexfile=$<
+	picpgm -p PIC$(CHIP) -e -p $<
 
 
 dist:
-	mkdir -p "$(PACKAGE)-$(VERSION)"
-	cp -rvf $(DISTFILES) "$(PACKAGE)-$(VERSION)"
-	tar -cvzf "$(PACKAGE)-$(VERSION).tar.gz" "$(PACKAGE)-$(VERSION)"
+	mkdir -p $(PACKAGE)-$(VERSION)
+	cp -rvf $(DISTFILES) $(PACKAGE)-$(VERSION)
+	tar -cvzf $(PACKAGE)-$(VERSION).tar.gz $(PACKAGE)-$(VERSION)
 
 
 pictest.hex: $(SOURCES:%.c=%.p1)
 
-	$(LD) $(LDFLAGS) -m"pictest.map" -o"$@" $^ || { $(RM) pictest.hex; exit 1; }
+	$(LD) $(LDFLAGS) -mpictest.map -o$@ $^ || { $(RM) pictest.hex; exit 1; }
 
 $(P1OBJS): %.p1: %.c
 	$(CC) --pass1 $(CFLAGS) $< || { $(RM) $@; exit 1; }
 $(ASSRCS): %.as: %.c
-	$(CC) -S $(CFLAGS) -o"$@" $< || { $(RM) $@; exit 1; }
+	$(CC) -S $(CFLAGS) -o$@ $< || { $(RM) $@; exit 1; }
 
 
 clean:  

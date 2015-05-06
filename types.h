@@ -39,7 +39,7 @@ typedef int1 bool;
 typedef char bool;
 #endif
 
-#if defined(HI_TECH_C) || defined(SDCC) || defined(__IAR_SYSTEMS_ICC__) || defined(__PCH__)
+#if 0 //defined(HI_TECH_C) || defined(SDCC) || defined(__IAR_SYSTEMS_ICC__) || defined(__PCH__)
 # undef rom
 # define rom
 /*# ifdef __PCH__
