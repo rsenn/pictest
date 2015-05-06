@@ -94,9 +94,16 @@ void uart_init(void)
   TRISCbits.TRISC7 = 1;
   TRISCbits.TRISC6 = 1;
   SPBRG = DIVIDER;
+  
+  RCSTAbits.SPEN = 1;
+  RCSTAbits.CREN = 1;
+  RCSTAbits.RX9D = (NINE == 1);
 
-  RCSTA = (NINE_BITS | _SPEN | _CREN);
-  TXSTA = (SPEED | NINE_BITS | _TXEN);
+
+  TXSTAbits.BRGH = (HIGH_SPEED == 1);
+  TXSTAbits.TX9 = (NINE == 1);
+  TXSTAbits.TXEN = (NINE == 1);
+
   /* Receive interrupt enabled */
   PIE1bits.RCIE = 1;
 

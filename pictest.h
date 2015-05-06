@@ -5,6 +5,9 @@
 #include <htc.h>
 #else
 #include <pic16f876a.h>
+#endif
+
+#ifdef SDCC
 #include <stdbool.h>
 #include <stdint.h>
 #endif

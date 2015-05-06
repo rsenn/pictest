@@ -32,7 +32,7 @@
 void adc_start(void)
 {
   /* Enable ADC, select RA0/AN0 channel, Fosc/32 clock */
-  ADCON0bits.ADCS = 0b10;
+    ADCON0bits.ADCS = 0b10;
   ADCON0bits.CHS = 0b000;
   ADCON1bits.PCFG = 0b0100;
 

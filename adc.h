@@ -23,10 +23,9 @@
 #ifndef ADC_H_
 #define ADC_H_
 
-#ifndef HI_TECH_C
+#ifdef SDCC
 #include <stdint.h>
 #endif
-
 
 #define ADRES (((unsigned short)ADRESH << 8)|ADRESL)
 

@@ -29,7 +29,7 @@ void my_delay(unsigned short iterations) {
   }
 }
 
-void isr() INTERRUPT {
+INTERRUPT(void isr)  {
   if(INTCONbits.T0IF) {
     tmr_overflows++;
 

@@ -24,7 +24,7 @@
 #ifndef UART_H_
 #define UART_H_
 
-#ifndef HI_TECH_C
+#ifdef SDCC
 #include <stdint.h>
 #endif
 
