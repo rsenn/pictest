@@ -21,6 +21,10 @@ CFLAGS =  -m${target} -pp$(chip) -D__$(chip) -DNO_BIT_DEFINES
 #LIBS = $(targetlibdir)/pic$(chip).lib 
 #LIBS = $(targetlibdir)/pic$(chip).lib $(sdcclibdir)/libsdcc.lib
 
+
+CFLAGS += --opt-code-speed --stack-auto
+
+
 ifeq ($(CC),/usr/bin/sdcc)
  sdcclibdir = $(datadir)/sdcc/lib/pic
  targetlibdir = $(datadir)/sdcc/lib/pic
