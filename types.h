@@ -30,13 +30,13 @@ typedef unsigned int32 uint32;
 #endif
 
 #if defined(MCC18) || defined(HI_TECH_C) || defined(SDCC)
-typedef enum { FALSE = 0, TRUE = 1 } boolean_t;
+typedef enum { FALSE = 0, TRUE = 1 } bool;
 #elif defined(__PCH__)
-typedef int1 boolean_t;
+typedef int1 bool;
 #else
 #define TRUE 1
 #define FALSE 0
-typedef char boolean_t;
+typedef char bool;
 #endif
 
 #if defined(HI_TECH_C) || defined(SDCC) || defined(__IAR_SYSTEMS_ICC__) || defined(__PCH__)

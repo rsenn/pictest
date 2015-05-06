@@ -10,10 +10,10 @@
 //----------------------------------------------------------------------------
 // Display state variables
 //----------------------------------------------------------------------------
-//extern volatile boolean_t blink_enable;
+//extern volatile bool blink_enable;
 //extern volatile uint32 blink_lasttime;
 extern volatile uint8 display_update;
-//extern volatile boolean_t display_enable;
+//extern volatile bool display_enable;
 //extern uint8 display_latch[4];
 extern volatile uint8 display_buffer[4];
 
@@ -50,7 +50,7 @@ extern volatile uint8 display_buffer[4];
 } while(0);
 #else
 #pragma inline
-static void DISPLAY_SET(uint8 a, uint8 b, uint8 c, uint8 d, boolean_t upd)
+static void DISPLAY_SET(uint8 a, uint8 b, uint8 c, uint8 d, bool upd)
 {
   display_buffer[0] = a;
   display_buffer[1] = b;

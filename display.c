@@ -8,10 +8,10 @@
 uint8 display_latch[4];
 volatile uint8 display_buffer[4];
 volatile uint8 display_update = 0;
-volatile boolean_t display_enable = TRUE;
+volatile bool display_enable = TRUE;
 
 // blinking
-volatile boolean_t blink_enable = 0;
+volatile bool blink_enable = 0;
 volatile int8 blink_count = 1;
 volatile uint32 blink_lasttime;
 
@@ -71,7 +71,7 @@ void display_string(const char *str)
 //#ifdef __DEBUG
 void display_float(float f)
 {
-  boolean_t neg = FALSE;
+  bool neg = FALSE;
   uint16 mult;
 
   if(f < 0)
