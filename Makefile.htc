@@ -8,31 +8,54 @@ VERSION_PATCH = 1
 VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
 
-CCVER = 9.80
-CCDIR = c:/Program Files (x86)/HI-TECH Software/PICC/$(CCVER)
-CC = "$(CCDIR)/bin/picc.exe"
+CCVER = 9.83
+CCDIR = "$$PROGRAMFILES"/HI-TECH\ Software/PICC/$(CCVER)
+CC = $(CCDIR)/bin/picc.exe
 
 LD = $(CC)
 #RM = del /f  
 DISTFILES = Makefile Makefile.ccs Makefile.gnu Makefile.htc Makefile.mcc NMakefile coeff.sh pictest-adc.h pictest-array.h pictest-button.h pictest-ccs252.mcp pictest-ccs252.mcs pictest-ccs252.mcw pictest-compiler.h pictest-display.h pictest-eeprom.h pictest-htc252.mcp pictest-htc252.mcs pictest-htc252.mcw pictest-interrupt.h pictest-mcc252.mcp pictest-mcc252.mcs pictest-mcc252.mcw pictest-pch.h pictest-tables.h pictest-types.h pictest.c pictest.h pictest.pnproj eedump.c extract-coeff.sh list-distfiles.sh make-pictest-delay.sh make-temp-table.sh make.sed mk-pictest-template.sh paths.sh thermistor translate_asm_comments.rb
 
-CSC_NG_SOURCES = pictest.c
-COMMON_FLAGS = --runtime=default,+clear,+init,-keep,-download,+clib --opt=default,+asm,-speed,+space,9 -v --warn=-2 -N127 --double=32 -DPIC16F876A=1 -UDEBUG -g --asmlist "--errformat=Error   [%n] %f; %l.%c %s" "--msgformat=Advisory[%n] %s" "--warnformat=Warning [%n] %f; %l.%c %s"
-CPPFLAGS = -D__HSPLL=1 -DPIC16F876A=1 -I"$(CCDIR)/include" \
+SOURCES = pictest.c adc.c uart.c
+P1OBJS = $(SOURCES:%.c=%.p1)
+ASSRCS = $(SOURCES:%.c=%.as)
+
+COMMON_FLAGS = \
+	-g -N127 -DPIC$(CHIP)=1 \
+	--runtime="default,+clear,+init,-keep,-download,+clib" \
+	--opt="default,+asm,-speed,+space,9" \
+	--warn="-2" \
+	--double=32 \
+	--asmlist \
+	--errformat="Error   [%n] %f; %l.%c %s" \
+	--msgformat="Advisory[%n] %s" \
+	--warnformat="Warning [%n] %f; %l.%c %s"
+
+CPPFLAGS = -D__HSPLL=1 -DPIC$(CHIP)=1 -I$(CCDIR)/include \
 	-DVERSION_MAJOR=$(VERSION_MAJOR) \
 	-DVERSION_MINOR=$(VERSION_MINOR) \
 	-DVERSION_PATCH=$(VERSION_PATCH)
 
 CFLAGS = -q --chip=$(CHIP) $(CPPFLAGS) $(COMMON_FLAGS)
-LDFLAGS = --summary=default,-psect,-class,+mem,-hex --output=default,-inhx032 --callgraph="full" --chip="$(CHIP)" $(CPPFLAGS) $(COMMON_FLAGS)
+LDFLAGS = \
+	--summary=default,-psect,-class,+mem,-hex \
+	--output=default,-inhx032 \
+	--chip="$(CHIP)" \
+	$(CPPFLAGS) $(COMMON_FLAGS)
 
 PM3CMD = 'C:/Program Files/Microchip/MPLAB IDE/Programmer Utilities/PM3Cmd/PM3Cmd.exe'
 CHIP = 16F876A
 
 all: pictest.hex
+
 program: pictest.hex
 #	$(PM3CMD) -5 -P"$(CHIP)" -F"$<" -M	
-	#$(PICPROG) --device="pic$(chip)" --erase --burn --pic-serial-port="$(serialport)" --input-hexfile="$<"	
+	#$(PICPROG) \
+      --device="pic$(chip)" \
+      --erase \
+      --burn \
+      --pic-serial-port="$(serialport)" \
+      --input-hexfile="$<"
 	picpgm -p PIC$(CHIP) -e -p "$<"
 
 
@@ -42,14 +65,14 @@ dist:
 	tar -cvzf "$(PACKAGE)-$(VERSION).tar.gz" "$(PACKAGE)-$(VERSION)"
 
 
-pictest.hex: pictest.p1
+pictest.hex: $(SOURCES:%.c=%.p1)
 
-	$(LD) $(LDFLAGS) -m"pictest.map" -o"$@" pictest.p1 || { $(RM) pictest.hex; exit 1; }
+	$(LD) $(LDFLAGS) -m"pictest.map" -o"$@" $^ || { $(RM) pictest.hex; exit 1; }
 
-pictest.p1: $(CSC_NG_SOURCES)
-	$(CC) --pass1 $(CFLAGS) $(CSC_NG_SOURCES) || { $(RM) pictest.p1; exit 1; }
-pictest.as: $(CSC_NG_SOURCES)
-	$(CC) -S $(CFLAGS) -o"$@" $(CSC_NG_SOURCES) || { $(RM) pictest.p1; exit 1; }
+$(P1OBJS): %.p1: %.c
+	$(CC) --pass1 $(CFLAGS) $< || { $(RM) $@; exit 1; }
+$(ASSRCS): %.as: %.c
+	$(CC) -S $(CFLAGS) -o"$@" $< || { $(RM) $@; exit 1; }
 
 
 clean:  
