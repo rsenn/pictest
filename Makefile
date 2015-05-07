@@ -8,7 +8,7 @@ prefix ?= /usr
 libdir = ${prefix}/lib
 datadir = ${prefix}/share
 
-chipu := `echo "${chip}" | tr "[:lower:]" "[:upper]"`
+chipu := $(shell echo "${chip}" | tr [[:lower:]] [[:upper:]])
 
 #CC = /usr/bin/sdcc
 CC = sdcc
@@ -40,10 +40,10 @@ all: $(NAME).hex
 
 program: $(NAME).hex
 	#$(PICPROG) --device="pic$(chip)" --erase --burn --pic-serial-port="$(serialport)" --input-hexfile="$<"
-	picpgm -p PIC$(chipu) -e -p "$<"
+	picpgm -if JDM -p PIC$(chipu) -e -p "$<"
 report: 
 	#$(PICPROG) --device="pic$(chip)" --erase --burn --pic-serial-port="$(serialport)" --input-hexfile="$<"
-	picpgm -p PIC$(chipu)  -blank -r 
+	picpgm -if JDM -p PIC$(chipu) -blank -r 
 
 .c.o: ;
 #%.o: %.c

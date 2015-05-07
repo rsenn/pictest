@@ -4,16 +4,14 @@
 #include "interrupt.h"
 
 #ifdef SDCC
-
-#define CONFIG_WORD (_HS_OSC & _DEBUG_OFF & _CP_OFF & _WRT_OFF & _CPD_OFF & _LVP_OFF & _BODEN_ON & _PWRTE_OFF & _WDT_OFF)
-
-static unsigned int __at(0x2007) CONFIG = CONFIG_WORD;
-
-#elif defined(HI_TECH_C)
-
-#define _XTAL_FREQ 4000000
+__code uint16_t __at (_CONFIG) __configword = _FOSC_HS & _PWRTE_ON & _WDT_OFF & _BODEN_OFF & _LVP_OFF & _CPD_OFF & _WRT_OFF & _DEBUG_OFF & _CP_OFF;
+#else 
+# ifdef HI_TECH_C
+#  define _XTAL_FREQ 4000000
 __CONFIG(FOSC_HS & DEBUG_OFF & CP_ON & WRT_OFF & CP_OFF & LVP_OFF & BOREN_OFF & PWRTE_OFF & WDTE_OFF);
-
+# else
+#  error Unknown compiler
+# endif
 #endif
 
 uint8 b;
