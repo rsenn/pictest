@@ -4,6 +4,7 @@
 #include "interrupt.h"
 
 #ifdef SDCC
+//#pragma config FOSC=HS,PWRTE=ON,WDT=OFF
 __code uint16_t __at (_CONFIG) __configword = _FOSC_HS & _PWRTE_ON & _WDT_OFF & _BODEN_OFF & _LVP_OFF & _CPD_OFF & _WRT_OFF & _DEBUG_OFF & _CP_OFF;
 #else 
 # ifdef HI_TECH_C
