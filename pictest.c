@@ -94,9 +94,13 @@ int main() {
 
   b = 0;
 
+	TRISA4 = 0;
+
   for(;;) {
     PORTB = ~b;
     PORTC = b;
+
+		RA4 = (b >> 3) & 0x01;
 
     b++;
     my_delay(512);
