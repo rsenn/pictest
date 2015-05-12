@@ -9,8 +9,13 @@ VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
 
 CCVER = 9.83
+
+ifeq ($(shell uname -o),GNU/Linux)
+CCDIR = /opt/microchip/xc8/v1.34
+else
 CCDIR = "$$PROGRAMFILES"/HI-TECH\ Software/PICC/$(CCVER)
-CC = $(CCDIR)/bin/picc.exe
+endif
+CC = $(CCDIR)/bin/picc
 
 LD = $(CC)
 #RM = del /f  
@@ -49,7 +54,7 @@ LDFLAGS = \
 	--chip=$(CHIP) \
 	$(CPPFLAGS) $(COMMON_FLAGS)
 
-PM3CMD = "$$PROGRAMFILES"/Microchip/MPLAB\ IDE/Programmer\ Utilities/PM3Cmd/PM3Cmd.exe
+PM3CMD = "$$PROGRAMFILES"/Microchip/MPLAB\ IDE/Programmer\ Utilities/PM3Cmd/PM3Cmd
 CHIP = 16F876A
 
 all: pictest.hex
