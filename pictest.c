@@ -106,6 +106,7 @@ int main() {
   
   ADON = 1;
   ADCON0bits.ADCS = 0b001;
+  
   /*
   PR2 = 0xff;       // Set PWM period
   CCPR1L = 0x00;    // Set PWM duty cycle
@@ -131,7 +132,9 @@ int main() {
   TMR0 = ~speed;
   T0IF = 0;
   T0IE = 1;
+  
   tmr_overflows = 0;
+  
   T1CKPS0 = 1; T1CKPS1 = 0; // 1:2 prescale
   T1OSCEN = 1;
   T1SYNC = 1; 
@@ -140,15 +143,19 @@ int main() {
   TMR1 = 0;
   TMR1IE = 1;
   TMR1IF = 0;
+  
   TRISB = 0b11111111;
-  TRISC = 0;
   NOT_RBPU = 0; // pull-ups
   INTEDG = 0; // falling edge
   RBIE = 1;
   RBIF = 0;
+  
   PEIE = 1;
   GIE = 1;
+  
   b = 0;
+  
+  TRISC = 0;
   TRISA4 = 0;
 
   for(;;) {
