@@ -22,10 +22,8 @@ __CONFIG(FOSC_HS & DEBUG_OFF & CP_ON & WRT_OFF & CP_OFF & LVP_OFF & BOREN_OFF & 
 
 uint8 b;
 volatile uint8 button_state = 0;
-uint32 button_lasttime = 0;
 volatile int8 run = 1;
 volatile uint8 speed = 0xa0, scale = 7;
-//volatile uint8 tmr_init = 0x60;
 volatile uint32 tmr_overflows = 0;
 volatile uint32 tmr1_count = 0;
 volatile uint16 adc_result = 0;
@@ -89,17 +87,11 @@ uint16 increment_tmrspeed(int8 s) {
   return speed << scale;
 }
 
-uint8 button_pressed(uint8 b) {
+static uint8 button_pressed(uint8 b) {
   uint8 st;
-  /*if(tmr1_count < button_lasttime + 10) {
-    //button_state = 0;
-    return 0;
-  }*/
-  //button_state = ~PORTB;
   st = (button_state & b);
   if(st) {
     button_state &= ~b;
-    button_lasttime = tmr1_count;
   }
   return st;
 }
@@ -111,21 +103,21 @@ int main() {
   /*ADCON0bits.*/ADON = 1;
   ADCON0bits.ADCS = 0b001;
   /*
-    PR2 = 0xff;       // Set PWM period
-    CCPR1L = 0x00;    // Set PWM duty cycle
-    CCP1CON = 0x0c;      // Set PWM mode
-    //CCP1X = 1;        // Set one of the LSB bits.
-    CCPR2L = 0;
-    CCP2CON = 0x0c;
-    // It took me a while to realize the point of
-    // these since they're so inconvenient to use.
-    // Set one but only one of these, and your PWM
-    // output will never be able to stall -- values
-    // of 0 won't disable it, values of 255 won't pin it.
-    T1CON = 0x00;
-    T2CKPS0 = 0;      // Set timer 2 prescaler to 1:1.
-    T2CKPS1 = 0;      // These bits are in T2CON.
-    TMR2ON = 1;       // Enable timer 2.
+  PR2 = 0xff;       // Set PWM period
+  CCPR1L = 0x00;    // Set PWM duty cycle
+  CCP1CON = 0x0c;      // Set PWM mode
+  //CCP1X = 1;        // Set one of the LSB bits.
+  CCPR2L = 0;
+  CCP2CON = 0x0c;
+  // It took me a while to realize the point of
+  // these since they're so inconvenient to use.
+  // Set one but only one of these, and your PWM
+  // output will never be able to stall -- values
+  // of 0 won't disable it, values of 255 won't pin it.
+  T1CON = 0x00;
+  T2CKPS0 = 0;      // Set timer 2 prescaler to 1:1.
+  T2CKPS1 = 0;      // These bits are in T2CON.
+  TMR2ON = 1;       // Enable timer 2.
   */
   // Set up timer0 interrupt
   /*OPTION_REGbits.*/T0CS = 0; // Internal clock source
