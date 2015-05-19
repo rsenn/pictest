@@ -59,7 +59,7 @@ pictest.hex: pictest.o adc.o uart.o
 	$(CC) $(CFLAGS) $^
 
 clean:
-	$(RM) $(NAME).asm $(NAME).cod $(NAME).hex $(NAME).map *.o *.lst *.asm
+	$(RM) $(NAME).asm $(NAME).cod $(NAME).hex $(NAME).map *.o *.lst *.asm *.as *.obj *.rlf *.dep *.p1 *.pre
 
 
 #$(NAME).hex: $(NAME).c adc.c uart.c
