@@ -45,14 +45,10 @@ report:
 	#$(PICPROG) --device="pic$(chip)" --erase --burn --pic-serial-port="$(serialport)" --input-hexfile="$<"
 	picpgm -if JDM -p PIC$(chipu) -blank -r 
 
-.c.o: ;
-#%.o: %.c
-%.o: %.asm
-	$(AS) -c $<
-
-#%.hex: %.o
-#	$(LD) $(LDFLAGS) -o $@ $^ $(LIBS)
-
+#%.o: %.asm
+#	$(AS) -c $<
+#
+#
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $<

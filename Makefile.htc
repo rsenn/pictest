@@ -10,10 +10,13 @@ VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
 CCVER = 9.83
 
+PROGRAMFILES = C:/Program Files (x86)
+
+
 ifeq ($(shell uname -o),GNU/Linux)
 CCDIR = /opt/microchip/xc8/v1.34
 else
-CCDIR = "$$PROGRAMFILES"/HI-TECH\ Software/PICC/$(CCVER)
+CCDIR = "$(PROGRAMFILES)"/HI-TECH\ Software/PICC/$(CCVER)
 endif
 CC = $(CCDIR)/bin/picc
 
