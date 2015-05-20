@@ -12,11 +12,11 @@ dir_inc=
 dir_lib=
 dir_lkr=
 [CAT_FILTERS]
-filter_src=*.c
-filter_inc=*.h
-filter_obj=*.o
-filter_lib=*.lib
-filter_lkr=*.lkr
+filter_src=*.C
+filter_inc=*.H
+filter_obj=*.O
+filter_lib=*.LIB
+filter_lkr=*.LKR
 [CAT_SUBFOLDERS]
 subfolder_src=
 subfolder_inc=
@@ -41,7 +41,7 @@ suite_state=
 [TOOL_SETTINGS]
 TS{43F7CD89-1294-495E-9525-F268225EB77A}=-o;-I;-I
 TS{77C92193-72F0-4E01-91E4-B5C45AEA9417}=-p;-I
-TS{537D934C-1213-4795-881A-62A24D46998A}=-c -mpic14 -p;-l;--opt-code-speed;-I;;-D__16f876a --use-non-free --stack-auto
+TS{537D934C-1213-4795-881A-62A24D46998A}=--use-non-free --opt-code-speed --stack-auto -c -mpic14 -p;-l;-I
 [INSTRUMENTED_TRACE]
 enable=0
 transport=0

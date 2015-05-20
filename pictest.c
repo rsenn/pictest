@@ -6,7 +6,7 @@
 #ifdef SDCC
 //#pragma config FOSC=HS,PWRTE=ON,WDT=OFF
 __code uint16_t __at (_CONFIG) __configword = _FOSC_HS & _PWRTE_ON & _WDT_OFF & _BODEN_OFF & _LVP_OFF & _CPD_OFF & _WRT_OFF & _DEBUG_OFF & _CP_OFF;
-#else 
+#else
 # ifdef HI_TECH_C
 #  define _XTAL_FREQ 4000000
 __CONFIG(FOSC_HS & DEBUG_OFF & CP_ON & WRT_OFF & CP_OFF & LVP_OFF & BOREN_OFF & PWRTE_OFF & WDTE_OFF);
@@ -22,13 +22,10 @@ __CONFIG(FOSC_HS & DEBUG_OFF & CP_ON & WRT_OFF & CP_OFF & LVP_OFF & BOREN_OFF & 
 #define BUTTON_D 0b00010000
 
 uint8 b;
-volatile uint8 button_state = 0;
-volatile int8 run = 1;
-volatile uint8 speed = 0xa0, scale = 7;
-volatile uint32 tmr_overflows = 0;
-volatile uint32 tmr1_count = 0;
-volatile uint16 adc_result = 0;
-volatile uint8 serial_in = 0;
+volatile int8 run;
+volatile uint8 button_state, speed, scale, serial_in;
+volatile uint32 tmr_overflows, tmr1_count;
+volatile uint16 adc_result;
 
 void
 my_delay(uint16 iterations) {
@@ -46,28 +43,28 @@ INTERRUPT(void isr)  {
     // Clear timer interrupt bit
     T0IF = 0;
   }
-  if(TMR1IF) {
-    tmr1_count++;
-    TMR1IF = 0;
-  }
+  //if(TMR1IF) {
+  //  tmr1_count++;
+  //  TMR1IF = 0;
+  //}
   if(RBIF) {
     button_state |= ~PORTB;
     RBIF = 0;
   }
-  if(RCIF) {
-    serial_in = RCREG;
-    RCIF = 0;
-  }
-  if(ADIF) {
-    ADIF = 0;
-    adc_result = ADRES;
-  }
+  //if(RCIF) {
+  //  serial_in = RCREG;
+  //  RCIF = 0;
+  //}
+  //if(ADIF) {
+  //  ADIF = 0;
+  //  adc_result = ADRES;
+  //}
 }
 
-uint16
+static uint16
 increment_tmrspeed(int8 s) {
   if(s > 0) {
-  if(speed <= 0x20) {
+    if(speed <= 0x20) {
       if(scale > 0) {
         scale--;
         speed <<= 1;
@@ -103,10 +100,12 @@ button_pressed(uint8 b) {
 int main() {
   uint8 cd;
   uart_init();
-  
+
+  button_state = tmr_overflows = tmr1_count = adc_result = serial_in = tmr_overflows = b = 0;
+
   ADON = 1;
   ADCON0bits.ADCS = 0b001;
-  
+
   /*
   PR2 = 0xff;       // Set PWM period
   CCPR1L = 0x00;    // Set PWM duty cycle
@@ -132,56 +131,68 @@ int main() {
   TMR0 = ~speed;
   T0IF = 0;
   T0IE = 1;
-  
+
   tmr_overflows = 0;
-  
-  T1CKPS0 = 1; T1CKPS1 = 0; // 1:2 prescale
+
+  T1CKPS0 = 1;
+  T1CKPS1 = 0; // 1:2 prescale
   T1OSCEN = 1;
-  T1SYNC = 1; 
+  T1SYNC = 1;
   TMR1CS = 0;
   TMR1ON = 1;
   TMR1 = 0;
   TMR1IE = 1;
   TMR1IF = 0;
-  
+
   TRISB = 0b11111111;
   NOT_RBPU = 0; // pull-ups
   INTEDG = 0; // falling edge
   RBIE = 1;
   RBIF = 0;
-  
+
   PEIE = 1;
   GIE = 1;
-  
+
   b = 0;
-  
+
   TRISC = 0;
   TRISA4 = 0;
+  TRISA5 = 0;
+  
+  run = 1;
+  speed = 0xa0; scale = 7;
+  
+
+  putch('X');
 
   for(;;) {
     b = tmr_overflows & 0xff;
     PORTC = b;
-    
+
     if(button_pressed(BUTTON_A))
       run = !run;
+
+RA5 = run;
 
     if(button_pressed(BUTTON_B)) {
       speed = 0xa0;
       scale = 7;
       run = 1;
     }
-/*    if(button_state & (BUTTON_A|BUTTON_B))
-    RA4 = !!(button_state & BUTTON_A);
-      else
-*/
+    /*    if(button_state & (BUTTON_A|BUTTON_B))
+        RA4 = !!(button_state & BUTTON_A);
+          else
+    */
     RA4 = (b >> scale)  & 0x01;
-    
+
     if((cd = button_pressed(BUTTON_C|BUTTON_D))) {
+      putch(cd == BUTTON_C ? 'C' : 'D');
       increment_tmrspeed(cd == BUTTON_C ? 1 : (cd == BUTTON_D) ? -1 : 0);
     }
-    
+
     //b++;
     my_delay(1000);
 //__delay_ms(10);
   }
 }
+

@@ -32,11 +32,11 @@
 /**
  * Re-target POSIX function putch
  */
-void putch(uint8 byte)
-{
+void
+putch(uint8 byte) {
   /* output one byte */
-  while(!/*PIR1bits.*/TXIF)
-  {  /* set when register is empty */
+  while(!TXIF) {
+    /* set when register is empty */
     continue;
   }
   TXREG = byte;
@@ -47,65 +47,60 @@ void putch(uint8 byte)
  *
  * @return received character or 0 if it's not UART interrupt
  */
-uint8 uart_isr(void)
-{
-  if(/*PIR1bits.*/RCIF)
-  {
-    /*PIR1bits.*/RCIF = 0;
+uint8 
+uart_isr(void) {
+  if(RCIF) {
+    RCIF = 0;
     return RCREG;
   }
   return 0;
 }
 
-void uart_enable(void)
-{
-  /*TXSTAbits.*/TXEN = 1;
-  /*RCSTAbits.*/SPEN = 1;
-  /*PIE1bits.*/RCIE = 1;
-  /*TRISCbits.*/TRISC7 = 1;
-  /*TRISCbits.*/TRISC6 = 1;
+void 
+uart_enable(void) {
+  TXEN = 1;
+  SPEN = 1;
+  RCIE = 1;
+  TRISC7 = 1;
+  TRISC6 = 1;
 }
 
-void uart_disable(void)
-{
-  /*TXSTAbits.*/TXEN = 0;
-  /*RCSTAbits.*/SPEN = 0;
-  /*PIE1bits.*/RCIE = 0;
-  /*TRISCbits.*/TRISC7 = 0;
-  /*TRISCbits.*/TRISC6 = 0;
+void 
+uart_disable(void) {
+  TXEN = 0;
+  SPEN = 0;
+  RCIE = 0;
+  TRISC7 = 0;
+  TRISC6 = 0;
   RC6 = 0;
-  RC7 = 0; 
+  RC7 = 0;
 }
 
-void uart_init(void)
-{
+void 
+uart_init(void) {
   /* Initilize baudrate generator and pins */
-#define DIVIDER ((unsigned int)(FOSC / ( 16ul * BAUD) - 1ul))
+  
 #if NINE == 1
-  #define NINE_BITS _TX9
+#define NINE_BITS _TX9
 #else
-  #define NINE_BITS 0
+#define NINE_BITS 0
 #endif
 #if HIGH_SPEED == 1
-  #define SPEED _BRGH
+#define DIVIDER ((uint8)((OSC4 / 4 / BAUD) - 1))
+#define SPEED _BRGH
 #else
-  #define SPEED 0
+#define DIVIDER ((uint8)((OSC4 / 16 / BAUD) - 1))
+#define SPEED 0
 #endif
-  /*TRISCbits.*/TRISC7 = 1;
-  /*TRISCbits.*/TRISC6 = 1;
+  TRISC7 = 1;
+  TRISC6 = 1;
   SPBRG = DIVIDER;
-  
-  /*RCSTAbits.*/SPEN = 1;
-  /*RCSTAbits.*/CREN = 1;
-  /*RCSTAbits.*/RX9D = (NINE == 1);
 
+  CREN = 1;
+  RX9D = (NINE == 1);
 
-  /*TXSTAbits.*/BRGH = (HIGH_SPEED == 1);
-  /*TXSTAbits.*/TX9 = (NINE == 1);
-  /*TXSTAbits.*/TXEN = (NINE == 1);
-
-  /* Receive interrupt enabled */
-  /*PIE1bits.*/RCIE = 1;
+  BRGH = (HIGH_SPEED == 1);
+  TX9 = (NINE == 1);
 
   uart_enable();
 }

@@ -27,9 +27,12 @@
 #include "types.h"
 
 #define BAUD 9600    /** Baudrate */
-#define FOSC 2160900  /** CPU clock */
+#define FOSC 20*1000*1000  /** CPU clock */
+#define OSC4 5000000
 #define NINE 0           /** Use 9bit communication? 0=8bit */
 #define HIGH_SPEED 1    /** Set for high speed communicatin (see BRGH bit) */
+
+void putch(uint8 byte);
 
 /**
  * Initialize UART module

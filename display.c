@@ -16,8 +16,7 @@ volatile int8 blink_count = 1;
 volatile uint32 blink_lasttime;
 
 //----------------------------------------------------------------------------
-uint8 display_char(char c)
-{
+uint8 display_char(char c) {
   uint8 n;
 
   if((c >= '0' && c <= '9'))
@@ -35,8 +34,7 @@ uint8 display_char(char c)
 }
 
 //----------------------------------------------------------------------------
-void display_string(const char *str)
-{
+void display_string(const char *str) {
   uint8 v[4];
 
   v[0] = display_char(*str);
@@ -69,38 +67,41 @@ void display_string(const char *str)
 
 //----------------------------------------------------------------------------
 //#ifdef __DEBUG
-void display_float(float f)
-{
+void display_float(float f) {
   bool neg = FALSE;
   uint16 mult;
 
-  if(f < 0)
-  {
+  if(f < 0) {
     neg = TRUE;
     f = -f;
   }
 
-  if(f < 10) { if(neg) mult = 100; else mult = 1000; }
-  else if(f < 100) { if(neg) mult = 10; else mult = 100; }
-  else if(f < 1000) { if(neg) mult = 1; else mult = 10; }
-  else mult = 1;
+  if(f < 10) {
+    if(neg) mult = 100;
+    else mult = 1000;
+  } else if(f < 100) {
+    if(neg) mult = 10;
+    else mult = 100;
+  } else if(f < 1000) {
+    if(neg) mult = 1;
+    else mult = 10;
+  } else mult = 1;
 
   display_decimal((uint16)((f * (float)mult)+0.5));
 
   if(neg)
     display_buffer[0] = 0x08;
 
-  switch(mult)
-  {
-    case 1000:
-        display_buffer[0] |= 1;
-      break;
-    case 100:
-        display_buffer[1] |= 1;
-      break;
-    case 10:
-        display_buffer[2] |= 1;
-      break;
+  switch(mult) {
+  case 1000:
+    display_buffer[0] |= 1;
+    break;
+  case 100:
+    display_buffer[1] |= 1;
+    break;
+  case 10:
+    display_buffer[2] |= 1;
+    break;
   }
 
 }
@@ -108,8 +109,7 @@ void display_float(float f)
 
 //----------------------------------------------------------------------------
 #ifdef __DEBUG
-void display_hexadecimal(uint16 n)
-{
+void display_hexadecimal(uint16 n) {
   uint8 v[4];
 
   v[3] = display_digits[n & 0x0f];
@@ -125,8 +125,7 @@ void display_hexadecimal(uint16 n)
 #endif // defined(__DEBUG)
 
 //----------------------------------------------------------------------------
-void display_decimal(uint16 n)
-{
+void display_decimal(uint16 n) {
   uint8 v[4];
 
   v[3] = display_digits[n % 10];
