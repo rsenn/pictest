@@ -169,8 +169,7 @@ int main() {
     b = tmr_overflows & 0xff;
     PORTC = b;
 
-    if(button_pressed(BUTTON_A))
-      run = !run;
+    //if(button_pressed(BUTTON_A))     run = !run;
 
 RA5 = run;
 
