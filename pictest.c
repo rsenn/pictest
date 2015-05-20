@@ -31,7 +31,7 @@ void
 my_delay(uint16 iterations) {
   int16 i;
   for(i = 0; i < iterations; i++) {
-    ;
+    __asm__ (”"nop");
   }
 }
 
@@ -157,13 +157,12 @@ int main() {
 
   TRISC = 0;
   TRISA4 = 0;
-  TRISA5 = 0;
+  TRISA0 = 0;
   
   run = 1;
   speed = 0xa0; scale = 7;
   
-
-  putch('X');
+    putch('0'+!!run);
 
   for(;;) {
     b = tmr_overflows & 0xff;
@@ -171,7 +170,7 @@ int main() {
 
     //if(button_pressed(BUTTON_A))     run = !run;
 
-RA5 = run;
+RA0 = !run;
 
     if(button_pressed(BUTTON_B)) {
       speed = 0xa0;
@@ -190,7 +189,9 @@ RA5 = run;
     }
 
     //b++;
-    my_delay(1000);
+    my_delay(100);
+  
+
 //__delay_ms(10);
   }
 }
