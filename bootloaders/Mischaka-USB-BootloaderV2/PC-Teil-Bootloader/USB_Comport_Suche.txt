@@ -1,0 +1,2 @@
+Zeigt ob virtuelle Schnittstelle eingerichtet ist und unter welchem COM-Portnummer.
+Das Programm guckt jede Sekunde im Regestry nach.

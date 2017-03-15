@@ -1,0 +1,3 @@
+Nach dem Bootloader HEX-Datei Bootloader_USB_v2.hex in PIC gebrannt wurde muss der passende Treiber installiert werden.
+Schlissen Sie den PIC an USB. Der PC meldet neue Hardware "Mischaka Boot" und fragt nach dem Treiber. Bitte installieren Sie den Treiber "Mischaka_cdc.inf".
+Jetzt können Sie den Mischaka-USB-Bootloader verwenden.

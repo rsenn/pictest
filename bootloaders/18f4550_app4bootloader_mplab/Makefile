@@ -1,0 +1,19 @@
+# MPLAB IDE generated this makefile for use with GNU make.
+# Project: demo.mcp
+# Date: Wed Aug 18 21:00:03 2010
+
+AS = MPASMWIN.exe
+CC = mcc18.exe
+LD = mplink.exe
+AR = mplib.exe
+RM = rm
+
+demo.cof : main.o
+	$(LD) /l"D:\electronic\MCC18\lib" "rm18f4550.lkr" "main.o" /u_CRUNTIME /u_DEBUG /z__MPLAB_BUILD=1 /z__MPLAB_DEBUG=1 /o"demo.cof" /M"demo.map" /W
+
+main.o : main.c D:/electronic/MCC18/h/p18cxxx.h D:/electronic/MCC18/h/p18f4550.h
+	$(CC) -p=18F4550 /i"D:\electronic\MCC18\h" "main.c" -fo="main.o" -D__DEBUG -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+
+clean : 
+	$(RM) "main.o" "demo.cof" "demo.hex"
+

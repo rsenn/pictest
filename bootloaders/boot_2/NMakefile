@@ -1,0 +1,37 @@
+# MPLAB IDE generated this makefile for use with Microsoft `nmake'.
+# Project: bootloader_2.mcp
+# Date: Sun Feb 05 01:56:01 2017
+
+AS = MPASMWIN.exe
+CC = mcc18.exe
+LD = mplink.exe
+AR = mplib.exe
+RM = del
+
+".\_output\bootloader_2.cof" : "_output\main.o" "_output\usbmmap.o" "_output\usbdrv.o" "_output\usb9.o" "_output\usbdsc.o" "_output\usbctrltrf.o" "_output\boot.o"
+	$(LD) /p18f2550 /l"C:\sprut\Program Files\Microchip\MCC18\lib" /l"c:\mcc18\lib" /k"C:\mcc18\lkr" "18f2550.lkr" "_output\main.o" "_output\usbmmap.o" "_output\usbdrv.o" "_output\usb9.o" "_output\usbdsc.o" "_output\usbctrltrf.o" "_output\boot.o" /u_CRUNTIME /z__MPLAB_BUILD=1 /m".\_output\bootloader_2.map" /w /o".\_output\bootloader_2.cof"
+
+"_output\main.o" : "main.c" "..\..\..\..\..\mcc18\h\p18cxxx.h" "..\..\..\..\..\mcc18\h\p18f2550.h" "system\typedefs.h" "system\usb\usb.h" "autofiles\usbcfg.h" "system\usb\usbdefs\usbdefs_std_dsc.h" "autofiles\usbdsc.h" "system\usb\class\boot\boot.h" "system\usb\usbdefs\usbdefs_ep0_buff.h" "system\usb\usbmmap.h" "system\usb\usbdrv\usbdrv.h" "system\usb\usbctrltrf\usbctrltrf.h" "system\usb\usb9\usb9.h" "io_cfg.h" "system\usb\usb_compile_time_validation.h"
+	$(CC) -p=18f2550 /i"." "main.c" -fo=".\_output\main.o" -scs
+
+"_output\usbmmap.o" : "system\usb\usbmmap.c" "system\typedefs.h" "system\usb\usb.h" "autofiles\usbcfg.h" "system\usb\usbdefs\usbdefs_std_dsc.h" "autofiles\usbdsc.h" "system\usb\class\boot\boot.h" "system\usb\usbdefs\usbdefs_ep0_buff.h" "system\usb\usbmmap.h" "system\usb\usbdrv\usbdrv.h" "system\usb\usbctrltrf\usbctrltrf.h" "system\usb\usb9\usb9.h"
+	$(CC) -p=18f2550 /i"." "system\usb\usbmmap.c" -fo=".\_output\usbmmap.o" -scs
+
+"_output\usbdrv.o" : "system\usb\usbdrv\usbdrv.c" "..\..\..\..\..\mcc18\h\p18cxxx.h" "..\..\..\..\..\mcc18\h\p18f2550.h" "system\typedefs.h" "system\usb\usb.h" "autofiles\usbcfg.h" "system\usb\usbdefs\usbdefs_std_dsc.h" "autofiles\usbdsc.h" "system\usb\class\boot\boot.h" "system\usb\usbdefs\usbdefs_ep0_buff.h" "system\usb\usbmmap.h" "system\usb\usbdrv\usbdrv.h" "system\usb\usbctrltrf\usbctrltrf.h" "system\usb\usb9\usb9.h" "io_cfg.h"
+	$(CC) -p=18f2550 /i"." "system\usb\usbdrv\usbdrv.c" -fo=".\_output\usbdrv.o" -scs
+
+"_output\usb9.o" : "system\usb\usb9\usb9.c" "..\..\..\..\..\mcc18\h\p18cxxx.h" "..\..\..\..\..\mcc18\h\p18f2550.h" "system\typedefs.h" "system\usb\usb.h" "autofiles\usbcfg.h" "system\usb\usbdefs\usbdefs_std_dsc.h" "autofiles\usbdsc.h" "system\usb\class\boot\boot.h" "system\usb\usbdefs\usbdefs_ep0_buff.h" "system\usb\usbmmap.h" "system\usb\usbdrv\usbdrv.h" "system\usb\usbctrltrf\usbctrltrf.h" "system\usb\usb9\usb9.h" "io_cfg.h"
+	$(CC) -p=18f2550 /i"." "system\usb\usb9\usb9.c" -fo=".\_output\usb9.o" -scs
+
+"_output\usbdsc.o" : "autofiles\usbdsc.c" "system\typedefs.h" "system\usb\usb.h" "autofiles\usbcfg.h" "system\usb\usbdefs\usbdefs_std_dsc.h" "autofiles\usbdsc.h" "system\usb\class\boot\boot.h" "system\usb\usbdefs\usbdefs_ep0_buff.h" "system\usb\usbmmap.h" "system\usb\usbdrv\usbdrv.h" "system\usb\usbctrltrf\usbctrltrf.h" "system\usb\usb9\usb9.h"
+	$(CC) -p=18f2550 /i"." "autofiles\usbdsc.c" -fo=".\_output\usbdsc.o" -scs
+
+"_output\usbctrltrf.o" : "system\usb\usbctrltrf\usbctrltrf.c" "..\..\..\..\..\mcc18\h\p18cxxx.h" "..\..\..\..\..\mcc18\h\p18f2550.h" "system\typedefs.h" "system\usb\usb.h" "autofiles\usbcfg.h" "system\usb\usbdefs\usbdefs_std_dsc.h" "autofiles\usbdsc.h" "system\usb\class\boot\boot.h" "system\usb\usbdefs\usbdefs_ep0_buff.h" "system\usb\usbmmap.h" "system\usb\usbdrv\usbdrv.h" "system\usb\usbctrltrf\usbctrltrf.h" "system\usb\usb9\usb9.h"
+	$(CC) -p=18f2550 /i"." "system\usb\usbctrltrf\usbctrltrf.c" -fo=".\_output\usbctrltrf.o" -scs
+
+"_output\boot.o" : "system\usb\class\boot\boot.c" "..\..\..\..\..\mcc18\h\p18cxxx.h" "..\..\..\..\..\mcc18\h\p18f2550.h" "system\typedefs.h" "system\usb\usb.h" "autofiles\usbcfg.h" "system\usb\usbdefs\usbdefs_std_dsc.h" "autofiles\usbdsc.h" "system\usb\class\boot\boot.h" "system\usb\usbdefs\usbdefs_ep0_buff.h" "system\usb\usbmmap.h" "system\usb\usbdrv\usbdrv.h" "system\usb\usbctrltrf\usbctrltrf.h" "system\usb\usb9\usb9.h" "io_cfg.h"
+	$(CC) -p=18f2550 /i"." "system\usb\class\boot\boot.c" -fo=".\_output\boot.o" -scs
+
+"clean" : 
+	$(RM) "_output\main.o" "_output\usbmmap.o" "_output\usbdrv.o" "_output\usb9.o" "_output\usbdsc.o" "_output\usbctrltrf.o" "_output\boot.o" ".\_output\bootloader_2.cof" ".\_output\bootloader_2.hex" ".\_output\bootloader_2.map"
+

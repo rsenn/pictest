@@ -1,0 +1,7 @@
+_uart_enable: CODE, 250 0 8
+_start_timer1: CODE, 207 0 31
+_main: CODE, 15 0 123
+_uart_init: CODE, 238 0 12
+_isr: CODE, 138 0 66
+_uart_putch: CODE, 273 0 6
+Total: 246

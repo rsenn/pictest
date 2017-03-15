@@ -1,0 +1,158 @@
+INSIDER's Command Protocol.
+
+Every transfer is initiated by the TARGET to the INSIDER... This way the tool
+will sync with the target on behalf of the width of the first low start pulse. 
+
+The first sync low pulse MUST be: low_512cyc.
+The following High/Low 4x pairs corresponds to D0/D1, D2/D3, D4/D5 and D6/D7
+Ending with a high level edge.
+
+If Dn = '1', its pulse width is 512cyc
+If Dn = '0', its pulse width is 256cyc
+
+This way, the INSIDER can filter any user-I/O-activity and sync a real 1Bit tranfer
+from the Target and decode it at any TARGETs Freq from 20KHz to 64MHz.
+
+Target -> INSIDER: must has one-sync low pulse and 4x High/low Data-bit pairs
+
+   START|    '1'<---->512cyc      '0'<-->256cyc
+   |    |
+ __ 512  __ D1   ____ D3 ____ D5 ____ D7 ______
+   |____|D0|____|D2  |__|D4  |__|D6  |__|
+
+
+INSIDER -> TARGET: must has one-sync low pulse and 4x High/low Data-bit pairs
+Replicating the 512/256 pulse width received from the target.
+
+   START|    '1'<---->512cyc      '0'<-->256cyc
+___ 512  __ D1   ____ D3 ____ D5 ____ D7 ______
+   |____|D0|____|D2  |__|D4  |__|D6  |__|
+
+
+All "cyc" refers to Target-cycles(Fosc/4) exactly divided by DBN value.
+The DBN value is used as a way to increase transfer speed by 1x, 2x, 4x, 8x, 16x.
+DBN max-value depends on the target Fosc: DBNxFosc <= 64MHz. 
+On a 18F2550 running at 32Mhz int-osc, DBN max=2, because 4x32 =128 > 64MHz.
+On a 16F628  running at  4MHz int-osc, DBN max=16. And so on.
+On a 12F675  running at 32KHz ext-osc, DBN=16 allows faster transfer on that low freq.
+
+When the TARGET code reaches a breakpoint, it executes a call to the DBUG bootstrap routine
+that sends the break number byte to the INSIDER... Then the tool enters its ON-BRK mode
+and responds one of three possibilities:
+
+1.- Read_cmd + addressH + addressL
+2.- Write_cmd+ addressH + addressL + data
+3.- Quit_cmd (break_ret or G/C nnnnnn)
+
+Command Structure:
+
+Cmd-Byte1  Byte2   Byte3
+7654 3210  7---0   7---0
+111addrUU  adrHH   adrLL   ---> QUIT_cmd SET PC G nnnnnn
+101addrUU  adrHH   adrLL   ---> QUIT_cmd SET PC C nnnnnn
+1001 xxxx  -------------------> SEND DBN SPEED
+1000 xxxx  -------------------> QUIT_cmd BRK RET
+0100 adrH  adrLL   data    ---> WR_CMD DATA RAM
+0000 adrH  adrLL  ------------> RD_CMD DATA RAM
+0101 xxxx  data   ------------> WR_CMD W_TMP
+0001 xxxx  -------------------> RD_CMD W_TMP
+0110 xxxx  data   ------------> WR_CMD STATUS_TMP
+0010 xxxx  -------------------> RD_CMD STATUS_TMP
+0x11 adrH  adrLL  ------------> RD_EEPROM_CMD
+
+Debug Sequence:
+
+.....	Init ON-SCAN mode executing INSIDER G cmd
+.....	Power up TARGET to start code run
+
+TARGET  sends:  bkn (hex byte)		- First BreakPoint query initiated by the Target
+INSIDER sends:  SEND DBN SPEED cmd	- Only on First Break Query
+TARGET  sends:  DBN value (hex byte)	- Only on First Break Query
+INSIDER sends:  RD_CMD W_TMP
+TARGET  sends:  W_TMP (hex byte)
+INSIDER sends:  RD_CMD STATUS_TMP
+TARGET  sends:  STATUS_TMP (hexbyte)	- INSIDER will show: BRKnn W/STATUS and PIC Freq.
+					  and enters ON-BREAK mode - Led Red ON
+INSIDER sends:  RD_CMD DATA RAM
+TARGET  sends:  data (hex byte)
+.....
+INSIDER sends:  RD_EEPROM_CMD
+TARGET  sends:  data (hex byte)
+.....
+INSIDER sends:  WR_CMD DATA RAM
+TARGET  sends:  nothing
+.....
+.....	and so on until:
+
+INSIDER sends:  QUIT_cmd BRK RET	- INSIDER enters ON-SCAN mode - Led Green ON
+TARGET  sends:  nothing			- Target will run the user-code from BRKn
+
+.....	or
+
+INSIDER sends:  QUIT_CMD SET PC		- INSIDER enters ON-SCAN mode
+TARGET  sends:  nothing			- Target will run the user-code from nnnnnn
+
+.....	then TARGET rerun its CODE and INSIDER enters its ON-SCAN mode
+	waiting for the next breakpoint query from the TARGET.
+
+All the INSIDER's commands available during its ON-BRK mode, are nothing more than
+long sequences of read/write commands byte by byte between the INSIDER and TARGET.
+
+
+*******************************************************************************
+
+IDE commands:	PC <-> INS (INSIDER)
+(STX)= 02H
+
+
+PC:	(STX)Wnnndd	Write DATA dd to ADR nnn
+INS:	>
+
+PC:	(STX)Rnnn	Read  DATA from  ADR nnn
+INS:	dd
+
+PC:	(STX)Ennn	Read EDATA from  ADR nnn
+INS:	dd
+
+PC:	(STX)Jdd	Write dd to WREG
+INS:	>
+
+PC:	(STX)Kdd	Write dd to STATUS
+INS:	>
+
+PC:	(STX)P		Read WREG
+INS:	dd
+
+PC:	(STX)S		Read STATUS
+INS:	dd
+
+PC:	(STX)I		Send '0' pulse to target
+
+PC:	(STX)Q		BRK RET
+
+PC:	(STX)Gnnnnnn	Goto ADR nnnnnn
+
+PC:	(STX)Cnnnnnn	Call ADR nnnnnn
+
+PC:	(STX)Vn		Enable  BRK grp n0
+INS:	>
+
+PC:	(STX)Xn		Disable BRK grp n0
+INS:	>
+
+PC:	(STX)Tn		Trace   BRK grp n0
+INS:	>
+
+PC:	(STX)F		Send Freq
+INS:	nn..nn>		nn..nn=freq KHz	
+
+PC:	(STX)H		Send BRK History
+INS:	nnnn..nn>	32xnn BRK history
+
+;ON_BREAK-Point (if STX was received)
+
+INS:	vnn		Enable  BRK nn (stop)
+
+INS:	tnn		Trace   BRK nn (non stop)
+
+INS:	xnn		Disable BRK nn (non stop)

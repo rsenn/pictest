@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="88">
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <platform>2</platform>
+      </toolsSet>
+      <dbx_gdbdebugger version="1">
+        <gdb_pathmaps>
+        </gdb_pathmaps>
+        <gdb_interceptlist>
+          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
+        </gdb_interceptlist>
+        <gdb_options>
+          <DebugOptions>
+          </DebugOptions>
+        </gdb_options>
+        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
+      </dbx_gdbdebugger>
+      <nativedebugger version="1">
+        <engine>gdb</engine>
+      </nativedebugger>
+      <runprofile version="9">
+        <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" --c99 -DCONTIKI=1 -DCONTIKI_TARGET_PIC18F97J60_FAMILY=1 -S../../../cpu/microchip-mplabx/MAPLv2013-02-15/Include -I../../../cpu/microchip-mplabx  -I. -I../../../platform/pic18f97j60-family/. -I../../../platform/pic18f97j60-family/dev -I../../../cpu/microchip-mplabx/xc8/. -I../../../core/dev -I../../../core/lib -I../../../core/net -I../../../core/net/mac -I../../../core/net/rime -I../../../core/net/rpl -I../../../core/sys -I../../../core/cfs -I../../../core/ctk -I../../../core/lib/ctk -I../../../core/loader -I../../../core/. -I../../../platform/pic18f97j60-family/ -DCONTIKI_VERSION_STRING=\"Contiki-2.6-495-g049e33f\"  -obuild/pic18f97j60/production/obj_pic18f97j60-family/rimeaddr.p1.i ../../../core/net/rime/rimeaddr.c</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" --c99 -DCONTIKI=1 -DCONTIKI_TARGET_PIC18F97J60_FAMILY=1 -I../../../cpu/microchip-mplabx/MAPLv2013-02-15/Include -I../../../cpu/microchip-mplabx  -I. -I../../../platform/pic18f97j60-family/. -I../../../platform/pic18f97j60-family/dev -I../../../cpu/microchip-mplabx/xc8/. -I../../../core/dev -I../../../core/lib -I../../../core/net -I../../../core/net/mac -I../../../core/net/rime -I../../../core/net/rpl -I../../../core/sys -I../../../core/cfs -I../../../core/ctk -I../../../core/lib/ctk -I../../../core/loader -I../../../core/. -I../../../platform/pic18f97j60-family/ -DCONTIKI_VERSION_STRING=\"Contiki-2.6-495-g049e33f\"  -obuild/pic18f97j60/production/obj_pic18f97j60-family/rimeaddr.p1.i ../../../core/net/rime/rimeaddr.c</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" --c99 -DCONTIKI=1 -DCONTIKI_TARGET_PIC18F97J60_FAMILY=1 -I- -I.  -I../../../cpu/microchip-mplabx/MAPLv2013-02-15/Include -I../../../cpu/microchip-mplabx   -I../../../platform/pic18f97j60-family/. -I../../../platform/pic18f97j60-family/dev -I../../../cpu/microchip-mplabx/xc8/. -I../../../core/dev -I../../../core/lib -I../../../core/net -I../../../core/net/mac -I../../../core/net/rime -I../../../core/net/rpl -I../../../core/sys -I../../../core/cfs -I../../../core/ctk -I../../../core/lib/ctk -I../../../core/loader -I../../../core/. -I../../../platform/pic18f97j60-family/ -DCONTIKI_VERSION_STRING=\"Contiki-2.6-495-g049e33f\"  -obuild/pic18f97j60/production/obj_pic18f97j60-family/rimeaddr.p1.i ../../../core/net/rime/rimeaddr.c</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" --c99 -DCONTIKI=1 -DCONTIKI_TARGET_PIC18F97J60_FAMILY=1 -I. -I- -I../../../cpu/microchip-mplabx/MAPLv2013-02-15/Include -I../../../cpu/microchip-mplabx   -I../../../platform/pic18f97j60-family/. -I../../../platform/pic18f97j60-family/dev -I../../../cpu/microchip-mplabx/xc8/. -I../../../core/dev -I../../../core/lib -I../../../core/net -I../../../core/net/mac -I../../../core/net/rime -I../../../core/net/rpl -I../../../core/sys -I../../../core/cfs -I../../../core/ctk -I../../../core/lib/ctk -I../../../core/loader -I../../../core/. -I../../../platform/pic18f97j60-family/ -DCONTIKI_VERSION_STRING=\"Contiki-2.6-495-g049e33f\"  -obuild/pic18f97j60/production/obj_pic18f97j60-family/rimeaddr.p1.i ../../../core/net/rime/rimeaddr.c</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" --c99 -DCONTIKI=1 -DCONTIKI_TARGET_PIC18F97J60_FAMILY=1 -I.  -I../../../cpu/microchip-mplabx/MAPLv2013-02-15/Include -I../../../cpu/microchip-mplabx   -I../../../platform/pic18f97j60-family/. -I../../../platform/pic18f97j60-family/dev -I../../../cpu/microchip-mplabx/xc8/. -I../../../core/dev -I../../../core/lib -I../../../core/net -I../../../core/net/mac -I../../../core/net/rime -I../../../core/net/rpl -I../../../core/sys -I../../../core/cfs -I../../../core/ctk -I../../../core/lib/ctk -I../../../core/loader -I../../../core/. -I../../../platform/pic18f97j60-family/ -DCONTIKI_VERSION_STRING=\"Contiki-2.6-495-g049e33f\"  -obuild/pic18f97j60/production/obj_pic18f97j60-family/rimeaddr.p1.i ../../../core/net/rime/rimeaddr.c</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" --c99 -DCONTIKI=1 -DCONTIKI_TARGET_PIC18F97J60_FAMILY=1 -I.  -S../../../cpu/microchip-mplabx/MAPLv2013-02-15/Include -I../../../cpu/microchip-mplabx   -I../../../platform/pic18f97j60-family/. -I../../../platform/pic18f97j60-family/dev -S../../../cpu/microchip-mplabx -I../../../core/dev -I../../../core/lib -I../../../core/net -I../../../core/net/mac -I../../../core/net/rime -I../../../core/net/rpl -I../../../core/sys -I../../../core/cfs -I../../../core/ctk -I../../../core/lib/ctk -I../../../core/loader -I../../../core/. -I../../../platform/pic18f97j60-family/ -DCONTIKI_VERSION_STRING=\"Contiki-2.6-495-g049e33f\"  -obuild/pic18f97j60/production/obj_pic18f97j60-family/rimeaddr.p1.i ../../../core/net/rime/rimeaddr.c</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" --c99 -DCONTIKI=1  -DCONTIKI_TARGET_PIC18F97J60_FAMILY=1 -I.  -S../../../cpu/microchip-mplabx/MAPLv2013-02-15/Include -I../../../cpu/microchip-mplabx   -I../../../platform/pic18f97j60-family/. -I../../../platform/pic18f97j60-family/dev -S../../../cpu/microchip-mplabx -I../../../core/dev -I../../../core/lib -I../../../core/net -I../../../core/net/mac -I../../../core/net/rime -I../../../core/net/rpl -I../../../core/sys -I../../../core/cfs -I../../../core/ctk -I../../../core/lib/ctk -I../../../core/loader -I../../../core/. -I../../../platform/pic18f97j60-family/ -DCONTIKI_VERSION_STRING=\"Contiki-2.6-495-g049e33f\"  -obuild/pic18f97j60/production/obj_pic18f97j60-family/rimeaddr.p1.i ../../../core/net/rime/rimeaddr.c</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" --c99 --preserve-comments -DCONTIKI=1  -DCONTIKI_TARGET_PIC18F97J60_FAMILY=1 -I.  -S../../../cpu/microchip-mplabx/MAPLv2013-02-15/Include -I../../../cpu/microchip-mplabx   -I../../../platform/pic18f97j60-family/. -I../../../platform/pic18f97j60-family/dev -S../../../cpu/microchip-mplabx -I../../../core/dev -I../../../core/lib -I../../../core/net -I../../../core/net/mac -I../../../core/net/rime -I../../../core/net/rpl -I../../../core/sys -I../../../core/cfs -I../../../core/ctk -I../../../core/lib/ctk -I../../../core/loader -I../../../core/. -I../../../platform/pic18f97j60-family/ -DCONTIKI_VERSION_STRING=\"Contiki-2.6-495-g049e33f\"  -obuild/pic18f97j60/production/obj_pic18f97j60-family/rimeaddr.p1.i ../../../core/net/rime/rimeaddr.c</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" --c99 --preserve 2  -DCONTIKI=1  -DCONTIKI_TARGET_PIC18F97J60_FAMILY=1 -I.  -S../../../cpu/microchip-mplabx/MAPLv2013-02-15/Include -I../../../cpu/microchip-mplabx   -I../../../platform/pic18f97j60-family/. -I../../../platform/pic18f97j60-family/dev -S../../../cpu/microchip-mplabx -I../../../core/dev -I../../../core/lib -I../../../core/net -I../../../core/net/mac -I../../../core/net/rime -I../../../core/net/rpl -I../../../core/sys -I../../../core/cfs -I../../../core/ctk -I../../../core/lib/ctk -I../../../core/loader -I../../../core/. -I../../../platform/pic18f97j60-family/ -DCONTIKI_VERSION_STRING=\"Contiki-2.6-495-g049e33f\"  -obuild/pic18f97j60/production/obj_pic18f97j60-family/rimeaddr.p1.i ../../../core/net/rime/rimeaddr.c</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" --c99 --preserve 1  -DCONTIKI=1  -DCONTIKI_TARGET_PIC18F97J60_FAMILY=1 -I.  -S../../../cpu/microchip-mplabx/MAPLv2013-02-15/Include -I../../../cpu/microchip-mplabx   -I../../../platform/pic18f97j60-family/. -I../../../platform/pic18f97j60-family/dev -S../../../cpu/microchip-mplabx -I../../../core/dev -I../../../core/lib -I../../../core/net -I../../../core/net/mac -I../../../core/net/rime -I../../../core/net/rpl -I../../../core/sys -I../../../core/cfs -I../../../core/ctk -I../../../core/lib/ctk -I../../../core/loader -I../../../core/. -I../../../platform/pic18f97j60-family/ -DCONTIKI_VERSION_STRING=\"Contiki-2.6-495-g049e33f\"  -obuild/pic18f97j60/production/obj_pic18f97j60-family/rimeaddr.p1.i ../../../core/net/rime/rimeaddr.c</runcommandpicklistitem>
+        </runcommandpicklist>
+        <runcommand>"${OUTPUT_PATH}" --c99 --preserve 1  -DCONTIKI=1  -DCONTIKI_TARGET_PIC18F97J60_FAMILY=1 -I.  -S../../../cpu/microchip-mplabx/MAPLv2013-02-15/Include -I../../../cpu/microchip-mplabx   -I../../../platform/pic18f97j60-family/. -I../../../platform/pic18f97j60-family/dev -S../../../cpu/microchip-mplabx -I../../../core/dev -I../../../core/lib -I../../../core/net -I../../../core/net/mac -I../../../core/net/rime -I../../../core/net/rpl -I../../../core/sys -I../../../core/cfs -I../../../core/ctk -I../../../core/lib/ctk -I../../../core/loader -I../../../core/. -I../../../platform/pic18f97j60-family/ -DCONTIKI_VERSION_STRING=\"Contiki-2.6-495-g049e33f\"  -obuild/pic18f97j60/production/obj_pic18f97j60-family/rimeaddr.p1.i ../../../core/net/rime/rimeaddr.c</runcommand>
+        <rundir>/media/truecrypt1/contiki/examples/microchip-mplabx/pic18.X</rundir>
+        <buildfirst>true</buildfirst>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+        </environment>
+      </runprofile>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <platform>2</platform>
+      </toolsSet>
+      <dbx_gdbdebugger version="1">
+        <gdb_pathmaps>
+        </gdb_pathmaps>
+        <gdb_interceptlist>
+          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
+        </gdb_interceptlist>
+        <gdb_options>
+          <DebugOptions>
+          </DebugOptions>
+        </gdb_options>
+        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
+      </dbx_gdbdebugger>
+      <nativedebugger version="1">
+        <engine>gdb</engine>
+      </nativedebugger>
+      <runprofile version="9">
+        <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+        </runcommandpicklist>
+        <runcommand>"${OUTPUT_PATH}"</runcommand>
+        <rundir></rundir>
+        <buildfirst>true</buildfirst>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+        </environment>
+      </runprofile>
+    </conf>
+  </confs>
+</configurationDescriptor>

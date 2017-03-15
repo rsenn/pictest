@@ -1,0 +1,763 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+ADDRESS_STATE::5	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	62;"	d	line:62
+ADR	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	123;"	m	line:123	struct:_BDT::<anonymous>
+ADRH	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	117;"	m	line:117	struct:_BDT::<anonymous>
+ADRL	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	116;"	m	line:116	struct:_BDT::<anonymous>
+ADR_PENDING_STATE::4	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	61;"	d	line:61
+ATTACHED_STATE::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	58;"	d	line:58
+Address	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	183;"	m	line:183	file:
+Address1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	195;"	m	line:195	file:
+Address2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	198;"	m	line:198	file:
+Address3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	201;"	m	line:201	file:
+Address4	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	204;"	m	line:204	file:
+Address5	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	207;"	m	line:207	file:
+Address6	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	210;"	m	line:210	file:
+BC8	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	84;"	m	line:84	struct:_BD_STAT::<anonymous>
+BC8	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	94;"	m	line:94	struct:_BD_STAT::<anonymous>
+BC9	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	85;"	m	line:85	struct:_BD_STAT::<anonymous>
+BC9	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	95;"	m	line:95	struct:_BD_STAT::<anonymous>
+BDT	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	125;"	t	line:125
+BD_STAT	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	108;"	t	line:108
+BOOL	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	150;"	t	line:150
+BOOTPIC18NONJ_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.h	41;"	d	line:41
+BOOT_INTF_SUBCLASS::0x01	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	66;"	d	line:66
+BOOT_PROTOCOL::0x00	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	58;"	d	line:58
+BSTALL	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	86;"	m	line:86	struct:_BD_STAT::<anonymous>
+BYTE	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	58;"	t	line:58
+BlinkUSBStatus	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	237;"	p	line:237	file:	signature:(void)
+BlinkUSBStatus	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\main.c	186;"	p	line:186	file:	signature:(void)
+BlinkUSBStatus	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\main.c	362;"	f	line:362	signature:(void)
+BlinkUSBStatus::	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\main.c	188;"	d	line:188	file:
+BootState	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	225;"	v	line:225
+BufferSize::0x40	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	167;"	d	line:167	file:
+BufferedDataIndex	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	227;"	v	line:227
+Byte0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	103;"	m	line:103	struct:_DWORD::<anonymous>
+Byte0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	70;"	m	line:70	struct:_WORD::<anonymous>
+Byte1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	104;"	m	line:104	struct:_DWORD::<anonymous>
+Byte1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	71;"	m	line:71	struct:_WORD::<anonymous>
+Byte2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	105;"	m	line:105	struct:_DWORD::<anonymous>
+Byte3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	106;"	m	line:106	struct:_DWORD::<anonymous>
+BytesPerAddress	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	193;"	m	line:193	file:
+BytesPerAddressPIC18::0x01	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	161;"	d	line:161	file:
+BytesTakenFromBuffer	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	496;"	l	line:496	file:
+CFG01::romstruct	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.h	59;"	d	line:59
+CLASS::0x01	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	79;"	d	line:79
+CLR_FEATURE::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	49;"	d	line:49
+CONFIGURED_STATE::6	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	63;"	d	line:63
+CTRL_TRF_DATA	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	207;"	t	line:207
+CTRL_TRF_RX::2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	48;"	d	line:48
+CTRL_TRF_SETUP	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	166;"	t	line:166
+CTRL_TRF_TX::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	47;"	d	line:47
+ClassReqHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	283;"	v	line:283
+ClearArray	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	716;"	f	line:716	signature:(byte* startAdr,byte count)
+ClearArray	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	211;"	p	line:211	signature:(byte* startAdr,byte count)
+Cnt	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	115;"	m	line:115	struct:_BDT::<anonymous>
+Command	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	182;"	m	line:182	file:
+Command	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	191;"	m	line:191	file:
+Command	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	216;"	m	line:216	file:
+ConfigWordsSectionLength::14	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	101;"	d	line:101	file:
+ConfigWordsSectionLength::14	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	111;"	d	line:111	file:
+ConfigWordsSectionLength::14	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	123;"	d	line:123	file:
+ConfigWordsSectionLength::14	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	52;"	d	line:52	file:
+ConfigWordsSectionLength::14	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	64;"	d	line:64	file:
+ConfigWordsSectionLength::14	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	76;"	d	line:76	file:
+ConfigWordsSectionLength::14	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	88;"	d	line:88	file:
+ConfigWordsStartAddress::0x300000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	100;"	d	line:100	file:
+ConfigWordsStartAddress::0x300000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	110;"	d	line:110	file:
+ConfigWordsStartAddress::0x300000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	122;"	d	line:122	file:
+ConfigWordsStartAddress::0x300000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	51;"	d	line:51	file:
+ConfigWordsStartAddress::0x300000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	63;"	d	line:63	file:
+ConfigWordsStartAddress::0x300000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	75;"	d	line:75	file:
+ConfigWordsStartAddress::0x300000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	87;"	d	line:87	file:
+ConfigsLockValue	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	229;"	v	line:229
+Contents	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	178;"	m	line:178	file:
+CorrectionFactor	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	497;"	l	line:497	file:
+CtrlTrfData	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	273;"	v	line:273
+DEFAULT_STATE::3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	60;"	d	line:60
+DETACHED_STATE::0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	57;"	d	line:57
+DEVICE_REMOTE_WAKEUP::0x01	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	61;"	d	line:61
+DEVICE_WITH_EEPROM	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	114;"	d	line:114	file:
+DEVICE_WITH_EEPROM	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	126;"	d	line:126	file:
+DEVICE_WITH_EEPROM	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	55;"	d	line:55	file:
+DEVICE_WITH_EEPROM	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	67;"	d	line:67	file:
+DEVICE_WITH_EEPROM	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	79;"	d	line:79	file:
+DEVICE_WITH_EEPROM	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	91;"	d	line:91	file:
+DEV_TO_HOST::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	76;"	d	line:76
+DSC_CFG::0x02	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	50;"	d	line:50
+DSC_DEV::0x01	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	49;"	d	line:49
+DSC_EP::0x05	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	53;"	d	line:53
+DSC_HID::0x21	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	53;"	d	line:53
+DSC_INTF::0x04	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	52;"	d	line:52
+DSC_PHY::0x23	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	55;"	d	line:55
+DSC_RPT::0x22	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	54;"	d	line:54
+DSC_STR::0x03	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	51;"	d	line:51
+DTS	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	90;"	m	line:90	struct:_BD_STAT::<anonymous>
+DTSEN	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	87;"	m	line:87	struct:_BD_STAT::<anonymous>
+DWORD	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	117;"	t	line:117
+Data	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	186;"	m	line:186	file:
+DataDir	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	88;"	m	line:88	struct:_CTRL_TRF_SETUP::<anonymous>
+EEPROMEffectiveAddress::0xF00000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	116;"	d	line:116	file:
+EEPROMEffectiveAddress::0xF00000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	128;"	d	line:128	file:
+EEPROMEffectiveAddress::0xF00000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	57;"	d	line:57	file:
+EEPROMEffectiveAddress::0xF00000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	69;"	d	line:69	file:
+EEPROMEffectiveAddress::0xF00000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	81;"	d	line:81	file:
+EEPROMEffectiveAddress::0xF00000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	93;"	d	line:93	file:
+EEPROMSize::0x100	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	115;"	d	line:115	file:
+EEPROMSize::0x100	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	127;"	d	line:127	file:
+EEPROMSize::0x100	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	56;"	d	line:56	file:
+EEPROMSize::0x100	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	68;"	d	line:68	file:
+EEPROMSize::0x100	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	80;"	d	line:80	file:
+EEPROMSize::0x100	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	92;"	d	line:92	file:
+ENDPOINT_HALT::0x00	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	62;"	d	line:62
+EP00_IN::((0x00<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	83;"	d	line:83
+EP00_OUT::((0x00<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	82;"	d	line:82
+EP01_IN::((0x01<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	85;"	d	line:85
+EP01_OUT::((0x01<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	84;"	d	line:84
+EP02_IN::((0x02<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	87;"	d	line:87
+EP02_OUT::((0x02<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	86;"	d	line:86
+EP03_IN::((0x03<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	89;"	d	line:89
+EP03_OUT::((0x03<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	88;"	d	line:88
+EP04_IN::((0x04<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	91;"	d	line:91
+EP04_OUT::((0x04<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	90;"	d	line:90
+EP05_IN::((0x05<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	93;"	d	line:93
+EP05_OUT::((0x05<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	92;"	d	line:92
+EP06_IN::((0x06<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	95;"	d	line:95
+EP06_OUT::((0x06<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	94;"	d	line:94
+EP07_IN::((0x07<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	97;"	d	line:97
+EP07_OUT::((0x07<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	96;"	d	line:96
+EP08_IN::((0x08<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	99;"	d	line:99
+EP08_OUT::((0x08<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	98;"	d	line:98
+EP09_IN::((0x09<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	101;"	d	line:101
+EP09_OUT::((0x09<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	100;"	d	line:100
+EP0_BUFF_SIZE::8	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	39;"	d	line:39
+EP10_IN::((0x0A<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	103;"	d	line:103
+EP10_OUT::((0x0A<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	102;"	d	line:102
+EP11_IN::((0x0B<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	105;"	d	line:105
+EP11_OUT::((0x0B<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	104;"	d	line:104
+EP12_IN::((0x0C<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	107;"	d	line:107
+EP12_OUT::((0x0C<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	106;"	d	line:106
+EP13_IN::((0x0D<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	109;"	d	line:109
+EP13_OUT::((0x0D<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	108;"	d	line:108
+EP14_IN::((0x0E<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	111;"	d	line:111
+EP14_OUT::((0x0E<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	110;"	d	line:110
+EP15_IN::((0x0F<<3)|(IN<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	113;"	d	line:113
+EP15_OUT::((0x0F<<3)|(OUT<<2))	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	112;"	d	line:112
+EPDir	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	159;"	m	line:159	struct:_CTRL_TRF_SETUP::<anonymous>
+EPNum	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	157;"	m	line:157	struct:_CTRL_TRF_SETUP::<anonymous>
+EP_CTRL::0x06	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	60;"	d	line:60
+EP_IN::0x0A	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	62;"	d	line:62
+EP_OUT::0x0C	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	61;"	d	line:61
+EP_OUT_IN::0x0E	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	63;"	d	line:63
+ERASE_DEVICE::0x04	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	136;"	d	line:136	file:
+ErasePageTracker	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	226;"	v	line:226
+ExtraPadBytes	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	212;"	m	line:212	file:
+FAIL::FALSE	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	153;"	d	line:153
+FALSE	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	150;"	e	line:150	enum:_BOOL
+GET_CFG::8	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	54;"	d	line:54
+GET_DATA::0x07	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	139;"	d	line:139	file:
+GET_DSC::6	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	52;"	d	line:52
+GET_IDLE::0x02	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	46;"	d	line:46
+GET_INTF::10	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	56;"	d	line:56
+GET_PROTOCOL::0x03	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	47;"	d	line:47
+GET_REPORT::0x01	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	45;"	d	line:45
+GET_STATUS::0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	48;"	d	line:48
+HIDGetReportHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.c	138;"	f	line:138	signature:(void)
+HIDGetReportHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.c	51;"	p	line:51	file:	signature:(void)
+HIDInitEP	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.c	170;"	f	line:170	signature:(void)
+HIDInitEP	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	151;"	p	line:151	signature:(void)
+HIDRxReport	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.c	281;"	f	line:281	signature:(char *buffer, byte len)
+HIDRxReport	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	154;"	p	line:154	signature:(char *buffer, byte len)
+HIDSetReportHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.c	143;"	f	line:143	signature:(void)
+HIDSetReportHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.c	52;"	p	line:52	file:	signature:(void)
+HIDTxReport	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.c	226;"	f	line:226	signature:(char *buffer, byte len)
+HIDTxReport	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	153;"	p	line:153	signature:(char *buffer, byte len)
+HID_BD_IN::ep1Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	101;"	d	line:101
+HID_BD_OUT::ep1Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	99;"	d	line:99
+HID_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	37;"	d	line:37
+HID_INTF::0x03	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	63;"	d	line:63
+HID_INTF_ID::0x00	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	97;"	d	line:97
+HID_INT_IN_EP_SIZE::64	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	102;"	d	line:102
+HID_INT_OUT_EP_SIZE::64	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	100;"	d	line:100
+HID_NUM_OF_DSC::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	103;"	d	line:103
+HID_PROTOCOL_KEYBOAD::0x01	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	70;"	d	line:70
+HID_PROTOCOL_MOUSE::0x02	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	71;"	d	line:71
+HID_PROTOCOL_NONE::0x00	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	69;"	d	line:69
+HID_RPT01_SIZE::29	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	104;"	d	line:104
+HID_UEP::UEP1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	98;"	d	line:98
+HOST_TO_DEV::0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	75;"	d	line:75
+HSHK_EN::0x10	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	64;"	d	line:64
+HighB	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	76;"	m	line:76	struct:_WORD::<anonymous>
+IN::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	77;"	d	line:77
+INCDIS	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	88;"	m	line:88	struct:_BD_STAT::<anonymous>
+INPUT_PIN::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	47;"	d	line:47
+IN_TOKEN::0b00001001	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	72;"	d	line:72
+IO_CFG_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	41;"	d	line:41
+Idle::0x00	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	154;"	d	line:154	file:
+InitializeSystem	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\main.c	183;"	p	line:183	file:	signature:(void)
+InitializeSystem	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\main.c	272;"	f	line:272	file:	signature:(void)
+InvalidAddress::0xFFFFFFFF	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	158;"	d	line:158	file:
+KEN	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	89;"	m	line:89	struct:_BD_STAT::<anonymous>
+LOCKCONFIG::0x01	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	144;"	d	line:144	file:
+LOWER_LSB::(a)((a).v[0])	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	118;"	d	line:118
+LOWER_MSB::(a)((a).v[1])	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	119;"	d	line:119
+LOW_PIN_COUNT_USB_DEVELOPMENT_KIT	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	53;"	d	line:53
+LSB::(a)((a).v[0])	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	83;"	d	line:83
+Length1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	196;"	m	line:196	file:
+Length2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	199;"	m	line:199	file:
+Length3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	202;"	m	line:202	file:
+Length4	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	205;"	m	line:205	file:
+Length5	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	208;"	m	line:208	file:
+Length6	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	211;"	m	line:211	file:
+LockValue	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	217;"	m	line:217	file:
+LowB	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	75;"	m	line:75	struct:_WORD::<anonymous>
+MAX_EP_NUMBER::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	125;"	d	line:125
+MAX_NUM_INT::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	38;"	d	line:38
+MODE_PP::_PPBM0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	44;"	d	line:44
+MSB::(a)((a).v[1])	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	84;"	d	line:84
+MUID_CDC::3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	89;"	d	line:89
+MUID_HID::2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	88;"	d	line:88
+MUID_NULL::0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	86;"	d	line:86
+MUID_USB9::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	87;"	d	line:87
+MaxPageToErase::127	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	120;"	d	line:120	file:
+MaxPageToErase::255	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	108;"	d	line:108	file:
+MaxPageToErase::255	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	98;"	d	line:98	file:
+MaxPageToErase::383	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	73;"	d	line:73	file:
+MaxPageToErase::383	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	85;"	d	line:85	file:
+MaxPageToErase::511	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	49;"	d	line:49	file:
+MaxPageToErase::511	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	61;"	d	line:61	file:
+NotIdle::0x01	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	155;"	d	line:155	file:
+OK::TRUE	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	152;"	d	line:152
+OUT::0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	76;"	d	line:76
+OUTPUT_PIN::0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	48;"	d	line:48
+OUT_TOKEN::0b00000001	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	71;"	d	line:71
+PIC18F4550_PICDEM_FS_USB	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	50;"	d	line:50
+PIC_EP_DIR_MASK::0b00000100	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	80;"	d	line:80
+PIC_EP_NUM_MASK::0b01111000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	79;"	d	line:79
+PID	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	105;"	m	line:105	struct:_BD_STAT::<anonymous>
+PID0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	96;"	m	line:96	struct:_BD_STAT::<anonymous>
+PID1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	97;"	m	line:97	struct:_BD_STAT::<anonymous>
+PID2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	98;"	m	line:98	struct:_BD_STAT::<anonymous>
+PID3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	99;"	m	line:99	struct:_BD_STAT::<anonymous>
+POINTER	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	148;"	t	line:148
+POWERED_STATE::2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	59;"	d	line:59
+PROGRAM_COMPLETE::0x06	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	138;"	d	line:138	file:
+PROGRAM_DEVICE::0x05	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	137;"	d	line:137	file:
+PacketDataFieldSize	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	192;"	m	line:192	file:
+PacketFromPC	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	233;"	v	line:233
+PacketToFromPC	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	219;"	t	line:219	file:
+PacketToPC	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	234;"	v	line:234
+ProcessIO	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	276;"	f	line:276	signature:(void)
+ProcessIO	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.h	45;"	p	line:45	signature:(void)
+ProgramBlockSize::0x10	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	104;"	d	line:104	file:
+ProgramBlockSize::0x10	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	117;"	d	line:117	file:
+ProgramBlockSize::0x20	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	58;"	d	line:58	file:
+ProgramBlockSize::0x20	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	70;"	d	line:70	file:
+ProgramBlockSize::0x20	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	82;"	d	line:82	file:
+ProgramBlockSize::0x20	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	94;"	d	line:94	file:
+ProgramBlockSize::0x8	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	129;"	d	line:129	file:
+ProgramMemStart::0x001100	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	45;"	d	line:45	file:
+ProgramMemStop::0x002000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	121;"	d	line:121	file:
+ProgramMemStop::0x004000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	109;"	d	line:109	file:
+ProgramMemStop::0x004000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	99;"	d	line:99	file:
+ProgramMemStop::0x006000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	74;"	d	line:74	file:
+ProgramMemStop::0x006000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	86;"	d	line:86	file:
+ProgramMemStop::0x008000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	50;"	d	line:50	file:
+ProgramMemStop::0x008000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	62;"	d	line:62	file:
+ProgramMemStopAddress	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	224;"	v	line:224
+ProgrammedPointer	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	228;"	v	line:228
+ProgrammingBuffer	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	230;"	v	line:230
+QUERY_DEVICE::0x02	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	134;"	d	line:134	file:
+RCPT_DEV::0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	82;"	d	line:82
+RCPT_EP::2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	84;"	d	line:84
+RCPT_INTF::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	83;"	d	line:83
+RCPT_OTH::3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	85;"	d	line:85
+RESET_DEVICE::0x08	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	140;"	d	line:140	file:
+RPT_PROTOCOL::0x01	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	59;"	d	line:59
+Recipient	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	86;"	m	line:86	struct:_CTRL_TRF_SETUP::<anonymous>
+RemoteWakeup	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	75;"	m	line:75	struct:_USB_DEVICE_STATUS::<anonymous>
+RequestDataBlockSize::0x3A	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	165;"	d	line:165	file:
+RequestType	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	87;"	m	line:87	struct:_CTRL_TRF_SETUP::<anonymous>
+SETUP_TOKEN::0b00001101	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	70;"	d	line:70
+SET_ADR::5	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	51;"	d	line:51
+SET_CFG::9	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	55;"	d	line:55
+SET_DSC::7	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	53;"	d	line:53
+SET_FEATURE::3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	50;"	d	line:50
+SET_IDLE::0x0A	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	49;"	d	line:49
+SET_INTF::11	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	57;"	d	line:57
+SET_PROTOCOL::0x0B	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	50;"	d	line:50
+SET_REPORT::0x09	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	48;"	d	line:48
+SHORT_PKT_NOT_USED::0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	65;"	d	line:65
+SHORT_PKT_PENDING::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	66;"	d	line:66
+SHORT_PKT_SENT::2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	67;"	d	line:67
+STANDARD::0x00	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	78;"	d	line:78
+SYNCH_FRAME::12	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	58;"	d	line:58
+SetupPkt	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	272;"	v	line:272
+Size	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	184;"	m	line:184	file:
+StartPageToErase::68	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	107;"	d	line:107	file:
+StartPageToErase::68	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	119;"	d	line:119	file:
+StartPageToErase::68	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	48;"	d	line:48	file:
+StartPageToErase::68	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	60;"	d	line:60	file:
+StartPageToErase::68	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	72;"	d	line:72	file:
+StartPageToErase::68	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	84;"	d	line:84	file:
+StartPageToErase::68	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	97;"	d	line:97	file:
+Stat	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	114;"	m	line:114	struct:_BDT::<anonymous>
+TRUE	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	150;"	e	line:150	enum:_BOOL
+TYPEDEFS_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	38;"	d	line:38
+TotalPacketSize::0x40	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	163;"	d	line:163	file:
+Type1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	194;"	m	line:194	file:
+Type2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	197;"	m	line:197	file:
+Type3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	200;"	m	line:200	file:
+Type4	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	203;"	m	line:203	file:
+Type5	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	206;"	m	line:206	file:
+Type6	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	209;"	m	line:209	file:
+TypeConfigWords::0x03	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	149;"	d	line:149	file:
+TypeEEPROM::0x02	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	148;"	d	line:148	file:
+TypeEndOfTypeList::0xFF	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	150;"	d	line:150	file:
+TypeProgramMemory::0x01	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	147;"	d	line:147	file:
+UCFG_VAL::_PUEN|_TRINT|_FS|MODE_PP	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	45;"	d	line:45
+UNLOCKCONFIG::0x00	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	143;"	d	line:143	file:
+UNLOCK_CONFIG::0x03	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	135;"	d	line:135	file:
+UOWN	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	101;"	m	line:101	struct:_BD_STAT::<anonymous>
+UOWN	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	91;"	m	line:91	struct:_BD_STAT::<anonymous>
+UPPER_LSB::(a)((a).v[2])	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	120;"	d	line:120
+UPPER_MSB::(a)((a).v[3])	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	121;"	d	line:121
+USB9_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	37;"	d	line:37
+USBCFG_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	35;"	d	line:35
+USBCTRLTRF_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	38;"	d	line:38
+USBCheckBusStatus	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	82;"	f	line:82	signature:(void)
+USBCheckBusStatus	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	206;"	p	line:206	signature:(void)
+USBCheckHIDRequest	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.c	74;"	f	line:74	signature:(void)
+USBCheckHIDRequest	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	152;"	p	line:152	signature:(void)
+USBCheckStdRequest	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.c	71;"	f	line:71	signature:(void)
+USBCheckStdRequest	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	92;"	p	line:92	signature:(void)
+USBCtrlEPService	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	98;"	f	line:98	signature:(void)
+USBCtrlEPService	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	95;"	p	line:95	signature:(void)
+USBCtrlEPServiceComplete	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	482;"	f	line:482	signature:(void)
+USBCtrlEPServiceComplete	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	98;"	p	line:98	signature:(void)
+USBCtrlTrfInHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	272;"	f	line:272	signature:(void)
+USBCtrlTrfInHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	71;"	p	line:71	file:	signature:(void)
+USBCtrlTrfOutHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	227;"	f	line:227	signature:(void)
+USBCtrlTrfOutHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	70;"	p	line:70	file:	signature:(void)
+USBCtrlTrfRxService	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	430;"	f	line:430	signature:(void)
+USBCtrlTrfRxService	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	97;"	p	line:97	signature:(void)
+USBCtrlTrfSetupHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	162;"	f	line:162	signature:(void)
+USBCtrlTrfSetupHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	69;"	p	line:69	file:	signature:(void)
+USBCtrlTrfTxService	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	335;"	f	line:335	signature:(void)
+USBCtrlTrfTxService	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	96;"	p	line:96	signature:(void)
+USBDEFS_EP0_BUFF_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	41;"	d	line:41
+USBDEFS_STD_DSC_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	41;"	d	line:41
+USBDRV_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	39;"	d	line:39
+USBDSC_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.h	40;"	d	line:40
+USBDriverService	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	225;"	f	line:225	signature:(void)
+USBDriverService	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	207;"	p	line:207	signature:(void)
+USBErrorHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	62;"	p	line:62	file:	signature:(void)
+USBMMAP_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	38;"	d	line:38
+USBModuleDisable	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	54;"	p	line:54	file:	signature:(void)
+USBModuleEnable	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	145;"	f	line:145	signature:(void)
+USBModuleEnable	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	53;"	p	line:53	file:	signature:(void)
+USBPrepareForNextSetupTrf	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	597;"	f	line:597	signature:(void)
+USBPrepareForNextSetupTrf	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	99;"	p	line:99	signature:(void)
+USBProtocolResetHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	59;"	p	line:59	file:	signature:(void)
+USBProtocolResetHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	675;"	f	line:675	signature:(void)
+USBRemoteWakeup	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	208;"	p	line:208	signature:(void)
+USBSoftDetach	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	209;"	p	line:209	signature:(void)
+USBStallHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	565;"	f	line:565	signature:(void)
+USBStallHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	61;"	p	line:61	file:	signature:(void)
+USBStdFeatureReqHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.c	284;"	f	line:284	signature:(void)
+USBStdFeatureReqHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.c	51;"	p	line:51	file:	signature:(void)
+USBStdGetDscHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.c	137;"	f	line:137	signature:(void)
+USBStdGetDscHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.c	48;"	p	line:48	file:	signature:(void)
+USBStdGetStatusHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.c	219;"	f	line:219	signature:(void)
+USBStdGetStatusHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.c	50;"	p	line:50	file:	signature:(void)
+USBStdSetCfgHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.c	181;"	f	line:181	signature:(void)
+USBStdSetCfgHandler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.c	49;"	p	line:49	file:	signature:(void)
+USBSuspend	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	332;"	f	line:332	signature:(void)
+USBSuspend	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	56;"	p	line:56	file:	signature:(void)
+USBTasks	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\main.c	184;"	p	line:184	file:	signature:(void)
+USBTasks	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\main.c	332;"	f	line:332	signature:(void)
+USBWakeFromSuspend	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	398;"	f	line:398	signature:(void)
+USBWakeFromSuspend	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	57;"	p	line:57	file:	signature:(void)
+USB_BUS_ATTACHED::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	88;"	d	line:88	file:
+USB_BUS_DETACHED::0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	89;"	d	line:89	file:
+USB_CD_Ptr	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	271;"	v	line:271
+USB_CFG_DSC	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	139;"	t	line:139
+USB_DEVICE_STATUS	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	78;"	t	line:78
+USB_DEV_DSC	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	129;"	t	line:129
+USB_EP_DSC	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	158;"	t	line:158
+USB_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb.h	37;"	d	line:37
+USB_HID_DSC	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	145;"	t	line:145
+USB_HID_DSC_HEADER	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	135;"	t	line:135
+USB_INTF_DSC	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	149;"	t	line:149
+USB_SD_Ptr	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	276;"	v	line:276
+USB_SOF_Handler	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	60;"	p	line:60	file:	signature:(void)
+USB_USE_HID	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	79;"	d	line:79
+UnlockAndActivate	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	242;"	p	line:242	file:	signature:(void)
+UnlockAndActivate	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	607;"	f	line:607	signature:(void)
+UserIDAddress::0x200000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	102;"	d	line:102	file:
+UserIDAddress::0x200000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	112;"	d	line:112	file:
+UserIDAddress::0x200000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	124;"	d	line:124	file:
+UserIDAddress::0x200000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	53;"	d	line:53	file:
+UserIDAddress::0x200000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	65;"	d	line:65	file:
+UserIDAddress::0x200000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	77;"	d	line:77	file:
+UserIDAddress::0x200000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	89;"	d	line:89	file:
+UserIDSize::8	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	103;"	d	line:103	file:
+UserIDSize::8	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	113;"	d	line:113	file:
+UserIDSize::8	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	125;"	d	line:125	file:
+UserIDSize::8	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	54;"	d	line:54	file:
+UserIDSize::8	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	66;"	d	line:66	file:
+UserIDSize::8	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	78;"	d	line:78	file:
+UserIDSize::8	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	90;"	d	line:90	file:
+UserInit	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	238;"	p	line:238	file:	signature:(void)
+UserInit	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	248;"	f	line:248	signature:(void)
+UserInit	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.h	44;"	p	line:44	signature:(void)
+VENDOR::0x02	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	80;"	d	line:80
+WAIT_SETUP::0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.h	46;"	d	line:46
+WORD	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	82;"	t	line:82
+WORDSIZE::0x02	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	164;"	d	line:164	file:
+W_Index	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	81;"	m	line:81	struct:_CTRL_TRF_SETUP::<anonymous>
+W_Length	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	82;"	m	line:82	struct:_CTRL_TRF_SETUP::<anonymous>
+W_Value	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	80;"	m	line:80	struct:_CTRL_TRF_SETUP::<anonymous>
+Word0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	110;"	m	line:110	struct:_DWORD::<anonymous>
+Word1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	111;"	m	line:111	struct:_DWORD::<anonymous>
+WriteConfigBits	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	240;"	p	line:240	file:	signature:(void)
+WriteConfigBits	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	568;"	f	line:568	signature:(void)
+WriteEEPROM	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	241;"	p	line:241	file:	signature:(void)
+WriteEEPROM	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	591;"	f	line:591	signature:(void)
+WriteFlashBlock	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	239;"	p	line:239	file:	signature:(void)
+WriteFlashBlock	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	493;"	f	line:493	signature:(void)
+_AD::0x02<<2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	108;"	d	line:108
+_AS::0x01<<2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	107;"	d	line:107
+_BDT	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	110;"	u	line:110
+_BD_STAT	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	80;"	u	line:80
+_BOOL	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	150;"	g	line:150
+_BSTALL::0x04	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	46;"	d	line:46
+_BULK::0x02	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	102;"	d	line:102
+_BYTE	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	44;"	u	line:44
+_CTRL::0x00	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	100;"	d	line:100
+_CTRL_TRF_DATA	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	179;"	u	line:179
+_CTRL_TRF_SETUP	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	59;"	u	line:59
+_DAT0::0x00	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	50;"	d	line:50
+_DAT1::0x40	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	51;"	d	line:51
+_DE::0x00<<4	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	112;"	d	line:112
+_DEFAULT::0x01<<7	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	95;"	d	line:95
+_DTSEN::0x08	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	47;"	d	line:47
+_DTSMASK::0x40	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	52;"	d	line:52
+_DWORD	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	86;"	u	line:86
+_EP01_IN::0x81	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	64;"	d	line:64
+_EP01_OUT::0x01	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	63;"	d	line:63
+_EP02_IN::0x82	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	66;"	d	line:66
+_EP02_OUT::0x02	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	65;"	d	line:65
+_EP03_IN::0x83	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	68;"	d	line:68
+_EP03_OUT::0x03	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	67;"	d	line:67
+_EP04_IN::0x84	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	70;"	d	line:70
+_EP04_OUT::0x04	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	69;"	d	line:69
+_EP05_IN::0x85	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	72;"	d	line:72
+_EP05_OUT::0x05	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	71;"	d	line:71
+_EP06_IN::0x86	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	74;"	d	line:74
+_EP06_OUT::0x06	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	73;"	d	line:73
+_EP07_IN::0x87	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	76;"	d	line:76
+_EP07_OUT::0x07	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	75;"	d	line:75
+_EP08_IN::0x88	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	78;"	d	line:78
+_EP08_OUT::0x08	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	77;"	d	line:77
+_EP09_IN::0x89	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	80;"	d	line:80
+_EP09_OUT::0x09	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	79;"	d	line:79
+_EP10_IN::0x8A	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	82;"	d	line:82
+_EP10_OUT::0x0A	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	81;"	d	line:81
+_EP11_IN::0x8B	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	84;"	d	line:84
+_EP11_OUT::0x0B	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	83;"	d	line:83
+_EP12_IN::0x8C	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	86;"	d	line:86
+_EP12_OUT::0x0C	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	85;"	d	line:85
+_EP13_IN::0x8D	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	88;"	d	line:88
+_EP13_OUT::0x0D	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	87;"	d	line:87
+_EP14_IN::0x8E	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	90;"	d	line:90
+_EP14_OUT::0x0E	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	89;"	d	line:89
+_EP15_IN::0x8F	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	92;"	d	line:92
+_EP15_OUT::0x0F	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	91;"	d	line:91
+_FE::0x01<<4	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	113;"	d	line:113
+_FS::0x04	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	52;"	d	line:52
+_IE::0x02<<4	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	114;"	d	line:114
+_INCDIS::0x10	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	48;"	d	line:48
+_INT::0x03	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	103;"	d	line:103
+_ISO::0x01	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	101;"	d	line:101
+_KEN::0x20	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	49;"	d	line:49
+_LS::0x00	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	51;"	d	line:51
+_NS::0x00<<2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	106;"	d	line:106
+_OEMON::0x40	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	56;"	d	line:56
+_POINTER	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	125;"	u	line:125
+_PPBM0::0x00	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	48;"	d	line:48
+_PPBM1::0x01	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	49;"	d	line:49
+_PPBM2::0x02	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	50;"	d	line:50
+_PUEN::0x10	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	55;"	d	line:55
+_RAM::0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	66;"	d	line:66
+_ROM::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	67;"	d	line:67
+_RWU::0x01<<5	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	97;"	d	line:97
+_SELF::0x01<<6	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	96;"	d	line:96
+_SY::0x03<<2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	109;"	d	line:109
+_TREXT::0x08	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	54;"	d	line:54
+_TRINT::0x00	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	53;"	d	line:53
+_UCPU::0x00	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	54;"	d	line:54
+_USB_CFG_DSC	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	134;"	s	line:134
+_USB_DEVICE_STATUS	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	70;"	u	line:70
+_USB_DEV_DSC	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	122;"	s	line:122
+_USB_EP_DSC	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	154;"	s	line:154
+_USB_HID_DSC	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	137;"	s	line:137
+_USB_HID_DSC_HEADER	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	131;"	s	line:131
+_USB_INTF_DSC	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	144;"	s	line:144
+_USIE::0x80	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	53;"	d	line:53
+_UTEYE::0x80	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	57;"	d	line:57
+_WORD	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	60;"	u	line:60
+_byte	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	46;"	m	line:46	union:_BYTE
+_byte	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	184;"	m	line:184	struct:_CTRL_TRF_DATA::<anonymous>
+_byte	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	64;"	m	line:64	struct:_CTRL_TRF_SETUP::<anonymous>
+_byte	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	72;"	m	line:72	union:_USB_DEVICE_STATUS
+_byte	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	82;"	m	line:82	union:_BD_STAT
+_byte0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	190;"	m	line:190	struct:_CTRL_TRF_DATA::<anonymous>
+_byte1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	191;"	m	line:191	struct:_CTRL_TRF_DATA::<anonymous>
+_byte2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	192;"	m	line:192	struct:_CTRL_TRF_DATA::<anonymous>
+_byte3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	193;"	m	line:193	struct:_CTRL_TRF_DATA::<anonymous>
+_byte4	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	194;"	m	line:194	struct:_CTRL_TRF_DATA::<anonymous>
+_byte5	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	195;"	m	line:195	struct:_CTRL_TRF_DATA::<anonymous>
+_byte6	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	196;"	m	line:196	struct:_CTRL_TRF_DATA::<anonymous>
+_byte7	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	197;"	m	line:197	struct:_CTRL_TRF_DATA::<anonymous>
+_dword	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	88;"	m	line:88	union:_DWORD
+_word	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	133;"	m	line:133	union:_POINTER
+_word	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	62;"	m	line:62	union:_WORD
+_word0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	201;"	m	line:201	struct:_CTRL_TRF_DATA::<anonymous>
+_word1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	202;"	m	line:202	struct:_CTRL_TRF_DATA::<anonymous>
+_word2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	203;"	m	line:203	struct:_CTRL_TRF_DATA::<anonymous>
+_word3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	204;"	m	line:204	struct:_CTRL_TRF_DATA::<anonymous>
+active_protocol	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.c	47;"	v	line:47
+b0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	49;"	m	line:49	struct:_BYTE::<anonymous>
+b1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	50;"	m	line:50	struct:_BYTE::<anonymous>
+b2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	51;"	m	line:51	struct:_BYTE::<anonymous>
+b3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	52;"	m	line:52	struct:_BYTE::<anonymous>
+b4	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	53;"	m	line:53	struct:_BYTE::<anonymous>
+b5	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	54;"	m	line:54	struct:_BYTE::<anonymous>
+b6	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	55;"	m	line:55	struct:_BYTE::<anonymous>
+b7	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	56;"	m	line:56	struct:_BYTE::<anonymous>
+bAltID	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	133;"	m	line:133	struct:_CTRL_TRF_SETUP::<anonymous>
+bAltID_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	134;"	m	line:134	struct:_CTRL_TRF_SETUP::<anonymous>
+bAltSetting	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	147;"	m	line:147	struct:_USB_INTF_DSC
+bCfgRSD	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	123;"	m	line:123	struct:_CTRL_TRF_SETUP::<anonymous>
+bCfgValue	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	122;"	m	line:122	struct:_CTRL_TRF_SETUP::<anonymous>
+bCfgValue	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	137;"	m	line:137	struct:_USB_CFG_DSC
+bCountryCode	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	140;"	m	line:140	struct:_USB_HID_DSC
+bDevADR	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	111;"	m	line:111	struct:_CTRL_TRF_SETUP::<anonymous>
+bDevADRH	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	112;"	m	line:112	struct:_CTRL_TRF_SETUP::<anonymous>
+bDevCls	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	125;"	m	line:125	struct:_USB_DEV_DSC
+bDevProtocol	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	125;"	m	line:125	struct:_USB_DEV_DSC
+bDevSubCls	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	125;"	m	line:125	struct:_USB_DEV_DSC
+bDscIndex	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	101;"	m	line:101	struct:_CTRL_TRF_SETUP::<anonymous>
+bDscType	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	133;"	m	line:133	struct:_USB_HID_DSC_HEADER
+bDscType	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	139;"	m	line:139	struct:_USB_HID_DSC
+bDscType	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	102;"	m	line:102	struct:_CTRL_TRF_SETUP::<anonymous>
+bDscType	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	124;"	m	line:124	struct:_USB_DEV_DSC
+bDscType	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	136;"	m	line:136	struct:_USB_CFG_DSC
+bDscType	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	146;"	m	line:146	struct:_USB_INTF_DSC
+bDscType	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	156;"	m	line:156	struct:_USB_EP_DSC
+bDscType	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	235;"	m	line:235	file:
+bDscType	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	238;"	m	line:238	file:
+bDscType	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	243;"	m	line:243	file:
+bEPAdr	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	156;"	m	line:156	struct:_USB_EP_DSC
+bEPID	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	146;"	m	line:146	struct:_CTRL_TRF_SETUP::<anonymous>
+bEPID_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	147;"	m	line:147	struct:_CTRL_TRF_SETUP::<anonymous>
+bFeature	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	90;"	m	line:90	struct:_CTRL_TRF_SETUP::<anonymous>
+bHigh	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	130;"	m	line:130	struct:_POINTER::<anonymous>
+bInterval	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	157;"	m	line:157	struct:_USB_EP_DSC
+bIntfCls	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	147;"	m	line:147	struct:_USB_INTF_DSC
+bIntfID	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	135;"	m	line:135	struct:_CTRL_TRF_SETUP::<anonymous>
+bIntfID_H	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	136;"	m	line:136	struct:_CTRL_TRF_SETUP::<anonymous>
+bIntfNum	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	146;"	m	line:146	struct:_USB_INTF_DSC
+bIntfProtocol	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	148;"	m	line:148	struct:_USB_INTF_DSC
+bIntfSubCls	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	148;"	m	line:148	struct:_USB_INTF_DSC
+bLength	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	139;"	m	line:139	struct:_USB_HID_DSC
+bLength	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	124;"	m	line:124	struct:_USB_DEV_DSC
+bLength	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	136;"	m	line:136	struct:_USB_CFG_DSC
+bLength	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	146;"	m	line:146	struct:_USB_INTF_DSC
+bLength	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	156;"	m	line:156	struct:_USB_EP_DSC
+bLength	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	235;"	m	line:235	file:
+bLength	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	238;"	m	line:238	file:
+bLength	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	243;"	m	line:243	file:
+bLow	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	129;"	m	line:129	struct:_POINTER::<anonymous>
+bMaxPktSize0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	126;"	m	line:126	struct:_USB_DEV_DSC
+bMaxPower	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	138;"	m	line:138	struct:_USB_CFG_DSC
+bNumCfg	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	128;"	m	line:128	struct:_USB_DEV_DSC
+bNumDsc	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	140;"	m	line:140	struct:_USB_HID_DSC
+bNumEPs	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	147;"	m	line:147	struct:_USB_INTF_DSC
+bNumIntf	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	137;"	m	line:137	struct:_USB_CFG_DSC
+bRam	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	137;"	m	line:137	union:_POINTER
+bRequest	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	71;"	m	line:71	struct:_CTRL_TRF_SETUP::<anonymous>
+bRom	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	142;"	m	line:142	union:_POINTER
+bTRNIFCount	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c	50;"	v	line:50
+bcdDevice	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	127;"	m	line:127	struct:_USB_DEV_DSC
+bcdHID	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	139;"	m	line:139	struct:_USB_HID_DSC
+bcdUSB	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	124;"	m	line:124	struct:_USB_DEV_DSC
+bmAttributes	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	138;"	m	line:138	struct:_USB_CFG_DSC
+bmAttributes	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	157;"	m	line:157	struct:_USB_EP_DSC
+bmRequestType	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	70;"	m	line:70	struct:_CTRL_TRF_SETUP::<anonymous>
+byte	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	40;"	t	line:40
+byte0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	65;"	m	line:65	struct:_WORD::<anonymous>
+byte0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	91;"	m	line:91	struct:_DWORD::<anonymous>
+byte1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	66;"	m	line:66	struct:_WORD::<anonymous>
+byte1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	92;"	m	line:92	struct:_DWORD::<anonymous>
+byte2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	93;"	m	line:93	struct:_DWORD::<anonymous>
+byte3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	94;"	m	line:94	struct:_DWORD::<anonymous>
+byte_to_read	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	432;"	l	line:432
+byte_to_send	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	337;"	l	line:337
+ctrl_trf_mem	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.h	76;"	m	line:76	struct:_USB_DEVICE_STATUS::<anonymous>
+ctrl_trf_session_owner	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	46;"	v	line:46
+ctrl_trf_state	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	45;"	v	line:45
+device_dsc	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	180;"	v	line:180
+dword	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	42;"	t	line:42
+ep0Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	179;"	v	line:179
+ep0Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	178;"	v	line:178
+ep10Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	229;"	v	line:229
+ep10Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	228;"	v	line:228
+ep11Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	234;"	v	line:234
+ep11Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	233;"	v	line:233
+ep12Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	239;"	v	line:239
+ep12Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	238;"	v	line:238
+ep13Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	244;"	v	line:244
+ep13Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	243;"	v	line:243
+ep14Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	249;"	v	line:249
+ep14Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	248;"	v	line:248
+ep15Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	254;"	v	line:254
+ep15Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	253;"	v	line:253
+ep1Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	184;"	v	line:184
+ep1Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	183;"	v	line:183
+ep2Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	189;"	v	line:189
+ep2Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	188;"	v	line:188
+ep3Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	194;"	v	line:194
+ep3Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	193;"	v	line:193
+ep4Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	199;"	v	line:199
+ep4Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	198;"	v	line:198
+ep5Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	204;"	v	line:204
+ep5Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	203;"	v	line:203
+ep6Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	209;"	v	line:209
+ep6Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	208;"	v	line:208
+ep7Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	214;"	v	line:214
+ep7Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	213;"	v	line:213
+ep8Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	219;"	v	line:219
+ep8Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	218;"	v	line:218
+ep9Bi	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	224;"	v	line:224
+ep9Bo	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	223;"	v	line:223
+hid_dsc_header	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	141;"	m	line:141	struct:_USB_HID_DSC
+hid_report_in	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	282;"	v	line:282
+hid_report_out	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	281;"	v	line:281
+hid_rpt01	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	248;"	v	line:248
+hid_rpt_rx_len	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.c	48;"	v	line:48
+i	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	278;"	l	line:278
+i	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	495;"	l	line:495	file:
+i	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	570;"	l	line:570	file:
+i	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\BootPIC18NonJ.c	593;"	l	line:593	file:
+i	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.c	228;"	l	line:228
+i	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	164;"	l	line:164
+iCfg	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	137;"	m	line:137	struct:_USB_CFG_DSC
+iIntf	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	148;"	m	line:148	struct:_USB_INTF_DSC
+iMFR	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	127;"	m	line:127	struct:_USB_DEV_DSC
+iProduct	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	127;"	m	line:127	struct:_USB_DEV_DSC
+iSerialNum	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	128;"	m	line:128	struct:_USB_DEV_DSC
+idProduct	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	126;"	m	line:126	struct:_USB_DEV_DSC
+idVendor	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	126;"	m	line:126	struct:_USB_DEV_DSC
+idle_rate	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.c	46;"	v	line:46
+interrupt_at_high_vector	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\main.c	193;"	f	line:193	signature:(void)
+interrupt_at_low_vector	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\main.c	198;"	f	line:198	signature:(void)
+led_count	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\main.c	364;"	l	line:364	file:
+mDisableEP1to15::ClearArray((byte*)&UEP1,15);	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	161;"	d	line:161
+mDisableEP1to15::ClearArray((byte*)&UEP1,7);	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	159;"	d	line:159
+mHIDGetRptRxLength::hid_rpt_rx_len	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	128;"	d	line:128
+mHIDRxIsBusy::HID_BD_OUT.Stat.UOWN	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	90;"	d	line:90
+mHIDTxIsBusy::HID_BD_IN.Stat.UOWN	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	109;"	d	line:109
+mInitAllLEDs::LATC&=0xF0;TRISC&=0xF0;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	108;"	d	line:108
+mInitAllLEDs::LATD&=0xF0;TRISD&=0xF0;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	57;"	d	line:57
+mInitAllSwitches::TRISBbits.TRISB4=1;TRISBbits.T	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	72;"	d	line:72
+mInitAllSwitches::mInitSwitch2;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	136;"	d	line:136
+mInitPOT::{TRISBbits.TRISB4=1;ADCON0=0x2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	139;"	d	line:139
+mInitSwitch2::	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	131;"	d	line:131
+mInitSwitch2::TRISBbits.TRISB4=1;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	73;"	d	line:73
+mInitSwitch3::	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	133;"	d	line:133
+mInitializeUSBDriver::{UCFG=UCFG_VAL;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	139;"	d	line:139
+mLED_1::LATCbits.LATC0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	110;"	d	line:110
+mLED_1::LATDbits.LATD0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	59;"	d	line:59
+mLED_1_Off::mLED_1=0;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	120;"	d	line:120
+mLED_1_Off::mLED_1=0;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	65;"	d	line:65
+mLED_1_On::mLED_1=1;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	115;"	d	line:115
+mLED_1_On::mLED_1=1;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	62;"	d	line:62
+mLED_1_Toggle::mLED_1=!mLED_1;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	125;"	d	line:125
+mLED_1_Toggle::mLED_1=!mLED_1;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	68;"	d	line:68
+mLED_2::LATCbits.LATC1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	111;"	d	line:111
+mLED_2::LATDbits.LATD1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	60;"	d	line:60
+mLED_2_Off::mLED_2=0;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	121;"	d	line:121
+mLED_2_Off::mLED_2=0;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	66;"	d	line:66
+mLED_2_On::mLED_2=1;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	116;"	d	line:116
+mLED_2_On::mLED_2=1;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	63;"	d	line:63
+mLED_2_Toggle::mLED_2=!mLED_2;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	126;"	d	line:126
+mLED_2_Toggle::mLED_2=!mLED_2;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	69;"	d	line:69
+mLED_3::LATCbits.LATC2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	112;"	d	line:112
+mLED_3_Off::mLED_3=0;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	122;"	d	line:122
+mLED_3_On::mLED_3=1;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	117;"	d	line:117
+mLED_3_Toggle::mLED_3=!mLED_3;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	127;"	d	line:127
+mLED_4::LATCbits.LATC3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	113;"	d	line:113
+mLED_4_Off::mLED_4=0;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	123;"	d	line:123
+mLED_4_On::mLED_4=1;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	118;"	d	line:118
+mLED_4_Toggle::mLED_4=!mLED_4;	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	128;"	d	line:128
+mLED_Both_Off::{mLED_1_Off;mLED_2_Off;}	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\main.c	369;"	d	line:369	file:
+mLED_Both_On::{mLED_1_On;mLED_2_On;}	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\main.c	370;"	d	line:370	file:
+mLED_Only_1_On::{mLED_1_On;mLED_2_Off;}	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\main.c	371;"	d	line:371	file:
+mLED_Only_2_On::{mLED_1_Off;mLED_2_On;}	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\main.c	372;"	d	line:372	file:
+mUSBBufferReady::(buffer_dsc)	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.h	199;"	d	line:199
+mUSBCheckAdrPendingState::if(usb_device_state==ADR_PENDI	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usb9.h	87;"	d	line:87
+mUSBGetHIDDscAdr::(ptr)	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	111;"	d	line:111
+mUSBGetHIDRptDscAdr::(ptr)	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	117;"	d	line:117
+mUSBGetHIDRptDscSize::(count)	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbcfg.h	123;"	d	line:123
+main	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\main.c	222;"	f	line:222	signature:(void)
+pDst	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	49;"	v	line:49
+pFunc	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	123;"	t	line:123
+pSrc	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	48;"	v	line:48
+report	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	248;"	m	line:248	file:
+report	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.h	67;"	m	line:67
+sd000	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	235;"	v	line:235
+sd001	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	238;"	v	line:238
+sd002	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	243;"	v	line:243
+self_power::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	103;"	d	line:103
+self_power::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	53;"	d	line:53
+self_power::PORTAbits.RA2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	101;"	d	line:101
+setup_cnt	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	628;"	l	line:628
+short_pkt_status	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	66;"	v	line:66
+string	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	235;"	m	line:235	file:
+string	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	238;"	m	line:238	file:
+string	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdsc.c	243;"	m	line:243	file:
+sw2::PORTAbits.RA3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	134;"	d	line:134
+sw2::PORTBbits.RB4	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	74;"	d	line:74
+sw3::PORTAbits.RA3	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	135;"	d	line:135
+tris_self_power::TRISAbits.TRISA2	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	98;"	d	line:98
+tris_usb_bus_sense::TRISAbits.TRISA1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	89;"	d	line:89
+usb_active_cfg	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	159;"	v	line:159
+usb_alt_intf	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	160;"	v	line:160
+usb_bus_sense::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	52;"	d	line:52
+usb_bus_sense::1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	95;"	d	line:95
+usb_bus_sense::PORTAbits.RA1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\io_cfg.h	93;"	d	line:93
+usb_device_state	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	157;"	v	line:157
+usb_stat	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbmmap.c	158;"	v	line:158
+v	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	115;"	m	line:115	struct:_DWORD::<anonymous>
+v	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	80;"	m	line:80	struct:_WORD::<anonymous>
+wCount	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbctrltrf.c	50;"	v	line:50
+wDscLength	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\hid.h	134;"	m	line:134	struct:_USB_HID_DSC_HEADER
+wIndex	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	73;"	m	line:73	struct:_CTRL_TRF_SETUP::<anonymous>
+wLangID	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	103;"	m	line:103	struct:_CTRL_TRF_SETUP::<anonymous>
+wLength	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	74;"	m	line:74	struct:_CTRL_TRF_SETUP::<anonymous>
+wMaxPktSize	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	157;"	m	line:157	struct:_USB_EP_DSC
+wRam	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	139;"	m	line:139	union:_POINTER
+wRom	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	143;"	m	line:143	union:_POINTER
+wTotalLength	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_std_dsc.h	136;"	m	line:136	struct:_USB_CFG_DSC
+wValue	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdefs_ep0_buff.h	72;"	m	line:72	struct:_CTRL_TRF_SETUP::<anonymous>
+word	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	41;"	t	line:41
+word0	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	98;"	m	line:98	struct:_DWORD::<anonymous>
+word1	C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\typedefs.h	99;"	m	line:99	struct:_DWORD::<anonymous>

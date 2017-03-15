@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".",
+            "folder_exclude_patterns": [  "obj", "unused" ],
+            "follow_symlinks": true,
+            "file_exclude_patterns": [ "*.stackdump", "*.sed", "*.log", "*~",  "*.orig", "*.rej", ".*", "*.5", "*.swp" ]
+		}
+	],
+    "settings":
+    {
+        "tab_size": 4
+    }
+}

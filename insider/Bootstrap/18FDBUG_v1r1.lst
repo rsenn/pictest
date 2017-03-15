@@ -1,0 +1,193 @@
+MPASM 5.70                  18FDBUG_V1R1.ASM   2-5-2017  0:32:28         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ;*******************************************************
+                      00002 ; 18FDBUG: --- DEBUG INSIDER -- TARGET ROUTINE VR 1.1
+                      00003 ; ATANASIOS MELIMOPOULOS (pic.insider@gmail.com)
+                      00004 
+                      00005 ;************** PLACE DEBUG ON/OFF MACRO AT USER-PROG-START
+                      00006 
+  00000001            00007 DBRK    EQU     1       ;SET BREAKPOINTS-DEBUG ON/OFF 1/0
+                      00008  noexpand
+                      00009 
+                      00010 BREAK   MACRO   bkn     ;BREAKPOINT MACRO DEF
+                      00011  IF DBRK==1
+                      00012         MOVFF   WREG,DB0
+                      00013         MOVLW   bkn
+                      00014         CALL    DBUG
+                      00015  ENDIF
+                      00016         ENDM
+                      00017 
+                      00018 
+                      00019 ;************** PLACE AT BREAKPOINT ADR:
+                      00020 
+                      00021         BREAK   nn      ;BREAKPOINT NUMBER: 00H-0FFH
+Error[113]  : Symbol not previously defined (WREG)
+Error[152]  : Executable code and data must be defined in an appropriate section
+Error[152]  : Executable code and data must be defined in an appropriate section
+Error[113]  : Symbol not previously defined (nn)
+Error[152]  : Executable code and data must be defined in an appropriate section
+Error[151]  : Operand contains unresolvable labels or is too complex
+Error[152]  : Executable code and data must be defined in an appropriate section
+Error[152]  : Executable code and data must be defined in an appropriate section
+                      00022 
+                      00023 
+                      00024 ;************** REPLACE DBUG LABEL/VAR NAMES IF USED BY THE USER-PROG
+                      00025 ;************** PLACE DBUG-DATA-ADR-GROUP AT ANY SPARE ADR-BANK
+                      00026 ;************** PLACE THE FOLLOWING CODE AT THE END OF THE USER-PROG
+                      00027 
+                      00028  IF DBRK==1     ;18FDBUG: -- DEBUG INSIDER -- TARGET ROUTINE VR 1.1
+Error[113]  : Symbol not previously defined (INTCON)
+Error[113]  : Symbol not previously defined (GIE)
+Error[113]  : Symbol not previously defined (INTCON)
+Error[113]  : Symbol not previously defined (STATUS)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (FSR0H)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (PORTD)
+Error[113]  : Symbol not previously defined (TRISD)
+Error[113]  : Symbol not previously defined (FSR0H)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (C)
+Error[113]  : Symbol not previously defined (STATUS)
+Error[113]  : Symbol not previously defined (PORTD)
+Error[113]  : Symbol not previously defined (FSR0H)
+Error[113]  : Symbol not previously defined (TRISD)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (WREG)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (STKPTR)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (TOSU)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (TOSH)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (TOSL)
+Error[113]  : Symbol not previously defined (WREG)
+Error[113]  : Symbol not previously defined (FSR0H)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (STATUS)
+Error[113]  : Symbol not previously defined (INTCON)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (EEADR)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (EEADR)
+Error[113]  : Symbol not previously defined (EEDATA)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (EECON1)
+Error[113]  : Symbol not previously defined (EECON1)
+Error[113]  : Symbol not previously defined (EECON1)
+Error[113]  : Symbol not previously defined (EECON1)
+Error[113]  : Symbol not previously defined (EECON1)
+Error[113]  : Symbol not previously defined (EEADR)
+Error[113]  : Symbol not previously defined (EEDATA)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (EEDATA)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (WREG)
+Error[113]  : Symbol not previously defined (WREG)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (WREG)
+Error[113]  : Symbol not previously defined (STATUS)
+Error[113]  : Symbol not previously defined (WREG)
+Error[113]  : Symbol not previously defined (INTCON)
+Error[113]  : Symbol not previously defined (STATUS)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (INTCON)
+Error[113]  : Symbol not previously defined (FSR0H)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (WREG)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (WREG)
+Error[113]  : Symbol not previously defined (WREG)
+Error[113]  : Symbol not previously defined (FSR0H)
+Error[113]  : Symbol not previously defined (WREG)
+Error[113]  : Symbol not previously defined (WREG)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (INDF0)
+Error[113]  : Symbol not previously defined (INDF0)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (PORTD)
+Error[113]  : Symbol not previously defined (WREG)
+Error[113]  : Symbol not previously defined (PORTD)
+Error[113]  : Symbol not previously defined (FSR0L)
+Error[113]  : Symbol not previously defined (WREG)
+Error[113]  : Symbol not previously defined (PORTD)
+Error[113]  : Symbol not previously defined (FSR0L)
+MPASM 5.70                  18FDBUG_V1R1.ASM   2-5-2017  0:32:28         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00220  LIST
+                      00221  ENDIF
+Error[129]  : Expected (END)
+MPASM 5.70                  18FDBUG_V1R1.ASM   2-5-2017  0:32:28         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BREAK                             
+DB0                               00000F7F
+DB1                               00000F7E
+DB2                               00000F7D
+DB3                               00000F7C
+DB4                               00000F7B
+DB5                               00000F7A
+DBN                               00000001
+DBRK                              00000001
+DBUG                              0000FE86
+DG001                             0000FE98
+DG002                             0000FEA8
+DG003                             0000FEAE
+DG004                             0000FEB8
+DG005                             0000FEBA
+DG006                             0000FEC2
+DG007                             0000FEDC
+DG008                             0000FEE4
+DG009                             0000FEE6
+DG010                             0000FEF8
+DG011                             0000FF0E
+DG012                             0000FF48
+DG013                             0000FF62
+DG014                             0000FF66
+DG015                             0000FF6A
+DG016                             0000FF6E
+DG017                             0000FF76
+DG018                             0000FF7E
+DG019                             0000FF86
+DG020                             0000FFA6
+DG021                             0000FFA8
+DG022                             0000FFB6
+DG023                             0000FFD2
+DG024                             0000FFD6
+DG025                             0000FFE0
+DG026                             0000FFEE
+T                                 TRISD,2
+X                                 PORTD,2
+_.org_0_FEB4                      0000FEB4
+_.org_0_FFDC                      0000FFDC
+_.org_0_FFE8                      0000FFE8
+_.org_0_FFF6                      0000FFF6
+__18F2550                         00000001
+
+Errors   :    96
+Warnings :     0 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

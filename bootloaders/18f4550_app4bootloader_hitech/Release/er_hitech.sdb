@@ -1,0 +1,51 @@
+[p LITE_MODE AUTOSTATIC LFSROK ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[s S21 . 1 `Vuc 1 EPSTALL 1 0 :1:0 
+`uc 1 EPINEN 1 0 :1:1 
+`uc 1 EPOUTEN 1 0 :1:2 
+`uc 1 EPCONDIS 1 0 :1:3 
+`uc 1 EPHSHK 1 0 :1:4 
+]
+"34 D:\electronic\HI-TECH Software\PICC-18\PRO\9.63\include\usbregs18.h
+[s S28 . 1 `Vuc 1 BC89 1 0 :2:0 
+`uc 1 BSTALL 1 0 :1:2 
+`uc 1 DTSEN 1 0 :1:3 
+`uc 1 . 1 0 :2:4 
+`uc 1 DTS 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+[s S35 . 1 `Vuc 1 BC89 1 0 :2:0 
+`Vuc 1 PID 1 0 :4:2 
+`uc 1 . 1 0 :1:6 
+`uc 1 UOWN 1 0 :1:7 
+]
+[u S40 . 1 `S28 1 CPU 1 0 `S35 1 SIE 1 0 ]
+[s S43 . 4 `S40 1 BDSTAT 1 0 `Vuc 1 BDCNT 1 1 `Vui 1 BDADR 2 2 ]
+"9 ..\main.c
+[v _Delay `(v  1 e 0 0 ]
+"19
+[v _main `(v  1 e 0 0 ]
+"138 D:\electronic\HI-TECH Software\PICC-18\PRO\9.63\include\pic18f4550.h
+[v _TRISE `VNuc  1 e 1 @3990 ]
+"151
+[v _PORTE `VNuc  1 e 1 @3972 ]
+"34 D:\electronic\HI-TECH Software\PICC-18\PRO\9.63\include\usbregs18.h
+[v __USB_ENDPOINT `V[15]S21  1 e 15 @3952 ]
+"37
+[v __USB_DESCRIPTOR `V[64]S43  1 e 256 @1024 ]
+"19 ..\main.c
+[v _main `(v  1 e 0 0 ]
+{
+"33
+} 0
+"9
+[v _Delay `(v  1 e 0 0 ]
+{
+"10
+[v _i `i  1 a 2 0 ]
+"11
+[v _j `i  1 a 2 2 ]
+"15
+} 4

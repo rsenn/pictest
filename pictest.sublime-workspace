@@ -1,0 +1,709 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"USE_",
+				"USE_HD44780_LCD"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "bootloaders/18f2550-usb-hid-xc8/FIRMWARE/PIC18F2550/src/main_hid.c",
+			"settings":
+			{
+				"buffer_size": 6688,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/pictest.h",
+			"settings":
+			{
+				"buffer_size": 2162,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 129.0,
+		"last_filter": "adva",
+		"selected_items":
+		[
+			[
+				"adva",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"List",
+				"Package Control: List Packages"
+			],
+			[
+				"Schemr",
+				"Schemr: Add current scheme to favorites"
+			],
+			[
+				"Sch",
+				"Schemr: Add current scheme to favorites"
+			],
+			[
+				"Sche",
+				"Schemr: Add current scheme to favorites"
+			],
+			[
+				"schem",
+				"Schemr: Add current scheme to favorites"
+			],
+			[
+				"schemr",
+				"Schemr: Add current scheme to favorites"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"git",
+				"Git: Gitk"
+			],
+			[
+				"insta",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Add Repository"
+			],
+			[
+				"install",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"make",
+				"Makefile (dirlist): make all"
+			],
+			[
+				"build",
+				"Build: New Build System"
+			],
+			[
+				"package",
+				"Preferences: Package Control Settings – Default"
+			],
+			[
+				"",
+				"About"
+			]
+		],
+		"width": 441.0
+	},
+	"console":
+	{
+		"height": 250.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/roman/Documents/pictest",
+		"/C/Users/roman/Documents/pictest/src"
+	],
+	"file_history":
+	[
+		"/C/Users/roman/Documents/pictest/src/blinktest.c",
+		"/I/PortableApps/SublimeTextPortable/App/64-bit/Data/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/roman/Documents/pictest/src/pictest.h",
+		"/C/Users/roman/Documents/pictest/src/serialtest.c",
+		"/C/Users/roman/Documents/pictest/bootloaders/18f2550-usb-hid-xc8/FIRMWARE/PIC18F2550/for 2550 rename 18F2550 to 18F4550 & use an 18F4550 project",
+		"/C/Users/roman/Documents/pictest/bootloaders/18f2550-usb-hid-xc8/FIRMWARE/18F2550-HID.pdsprj",
+		"/I/PortableApps/SublimeTextPortable/App/64-bit/Data/Packages/Schemr/Default (Windows).sublime-keymap",
+		"/I/PortableApps/SublimeTextPortable/App/64-bit/Data/Packages/Schemr/SchemrFavorites.sublime-settings",
+		"/I/PortableApps/SublimeTextPortable/App/64-bit/Data/Packages/User/SchemrFavorites.sublime-settings",
+		"/C/Users/roman/Documents/pictest/lib/interrupt.h",
+		"/C/Users/roman/Documents/pictest/lib/timer.h",
+		"/C/Users/roman/Documents/pictest/lib.old/interrupt.h",
+		"/D/PortableApps/SublimeTextPortable/App/64-bit/Data/Packages/User/SchemrFavorites.sublime-settings",
+		"/D/PortableApps/SublimeTextPortable/App/64-bit/Data/Packages/Schemr/SchemrFavorites.sublime-settings",
+		"/C/Users/roman/Documents/pictest/src/pictest.c",
+		"/C/Users/roman/Documents/pictest/scripts/eagle-print.sh",
+		"/D/PortableApps/SublimeTextPortable/App/64-bit/Data/Packages/Makefile Improved/README.rst",
+		"/D/PortableApps/SublimeTextPortable/App/64-bit/Data/Packages/Schemr/Default (Windows).sublime-keymap",
+		"/C/Users/roman/Documents/lc-meter/lib/lcd3310.c",
+		"/C/Users/roman/Documents/lc-meter/funclist",
+		"/C/Users/roman/Documents/pictest/lib/timer.c",
+		"/C/Users/roman/Documents/pictest/lib/random.h",
+		"/C/Users/roman/Documents/pictest/src/config-16f876a.h",
+		"/C/Users/roman/Documents/pictest/build/vars.mk",
+		"/C/Users/roman/Documents/pictest/lib/uart.c",
+		"/C/Users/roman/Documents/pictest/src/device.h",
+		"/C/Users/roman/Documents/pictest/lib/softser.c",
+		"/C/Users/roman/Documents/pictest/lib/softser.h",
+		"/C/Users/roman/Documents/pictest/lib/comparator.c",
+		"/C/Users/roman/Documents/pictest/lib/comparator.h",
+		"/C/Users/roman/Documents/pictest/build/xc8.mk",
+		"/C/Users/roman/Documents/pictest/build/htc.mk",
+		"/C/Users/roman/Documents/pictest/build/sdcc.mk",
+		"/C/Users/roman/Documents/pictest/pictest.sublime-project",
+		"/C/Users/roman/Documents/pictest/lib/uart.h",
+		"/C/Users/roman/Documents/pictest/src/config-bits.h",
+		"/C/Users/roman/Documents/pictest/lib/softpwm.h",
+		"/C/Users/roman/Documents/pictest/lib/ser.h",
+		"/C/Users/roman/Documents/pictest/lib/ser.c",
+		"/C/Users/roman/Documents/pictest/lib/softpwm.c",
+		"/C/Users/roman/Documents/pictest/lib/const.h",
+		"/home/roman/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/roman/Documents/dirlist/dirlist.sublime-project",
+		"/C/Users/roman/Documents/dirlist/mediathek-parser.c",
+		"/C/Users/roman/Documents/dirlist/Makefile",
+		"/C/Users/roman/Documents/dirlist/lib/stralloc.h",
+		"/C/Users/roman/Documents/dirlist/lib/stralloc_cats.c",
+		"/C/Users/roman/Documents/dirlist/lib/stralloc_append_sa.c",
+		"/C/Users/roman/Documents/dirlist/mediathek-parser.cpp",
+		"/C/Users/roman/Documents/dirlist/lib/array_cat0.c",
+		"/C/Users/roman/Documents/dirlist/lib/array_cats.c",
+		"/C/Users/roman/Documents/dirlist/lib/array_start.c",
+		"/C/Users/roman/Documents/dirlist/dirlist.sublime-build",
+		"/C/Users/roman/Documents/dirlist/lib/array_reset.c",
+		"/C/Users/roman/Documents/dirlist/lib/strlist_dump.c",
+		"/C/Users/roman/Documents/dirlist/lib/strlist_pushb.c",
+		"/C/Users/roman/Documents/dirlist/lib/strlist_at.c",
+		"/C/Users/roman/Documents/dirlist/lib/strlist.h",
+		"/C/Users/roman/Documents/dirlist/lib/stralloc_init.c",
+		"/C/Users/roman/Documents/dirlist/lib/strlist_push_sa.c",
+		"/C/Users/roman/Documents/dirlist/lib/strlist_push.c",
+		"/C/Users/roman/Documents/dirlist/lib/strlist_pushsa.c",
+		"/C/Users/roman/Documents/dirlist/lib/strlist_index_of.c",
+		"/C/Users/roman/Documents/dirlist/lib/strlist_count.c",
+		"/C/Users/roman/Documents/dirlist/lib/strlist_append.c",
+		"/C/Users/roman/Documents/dirlist/lib/buffer_dump.c",
+		"/C/Users/roman/Documents/dirlist/lib/buffer_mmapread.c",
+		"/C/Users/roman/Documents/dirlist/lib/buffer_mmapread_fd.c",
+		"/C/Users/roman/Documents/dirlist/lib/strlist_append_sa.c",
+		"/C/Users/roman/Documents/dirlist/lib/buffer_get_token_sa.c",
+		"/C/Users/roman/Documents/dirlist/lib/buffer_skip_until.c",
+		"/C/Users/roman/Documents/dirlist/lib/buffer.h",
+		"/C/Users/roman/Documents/dirlist/lib/buffer_prefetch.c",
+		"/C/Users/roman/Documents/dirlist/lib/stralloc_zero.c",
+		"/C/Users/roman/Documents/dirlist/lib/buffer_getc.c",
+		"/C/Users/roman/Documents/dirlist/lib/buffer_get_token_sa_pred.c",
+		"/C/Users/roman/Documents/dirlist/lib/buffer_get_token_pred.c",
+		"/C/Users/roman/Documents/dirlist/lib/buffer_get.c",
+		"/C/Users/roman/Documents/dirlist/lib/buffer_feed.c",
+		"/C/Users/roman/Documents/dirlist/lib/buffer_get_token.c",
+		"/C/Users/roman/Documents/dirlist/byte.h",
+		"/C/Users/roman/Documents/dirlist/buffer_1.c",
+		"/D/Programs/Sublime Text 3/Data/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/roman/Documents/pictest/lib/tsmdelay.h",
+		"/F/Sources/PIC/Pyralis/t45/softpwm.c",
+		"/F/Sources/PIC/Pyralis/t84/softpwm.c",
+		"/F/Sources/PIC/picworks/soft_pwm_simple.X/soft_pwm_simple_main.c",
+		"/E/Sources/wiringOli/wiringOli/softPwm.c",
+		"/I/Programs/CooCox/CoIDE/repo/Examples/828_Soft Pwm/src/main.c",
+		"/F/Sources/rpi_SoftPwm/pwm.c",
+		"/F/Sources/lighthouse-attiny-softpwm/main.c",
+		"/E/Sources/wiringOli/wiringOli/softPwm.h",
+		"/C/Users/roman/Documents/lc-meter/src/display.c",
+		"/C/Users/roman/Documents/lc-meter/src/LC-meter.c",
+		"/C/Program Files (x86)/Sublime Text 3/Data/Packages/GitMode/GitMode.sublime-settings",
+		"/C/Program Files (x86)/Sublime Text 3/Data/Packages/User/GitMode.sublime-settings",
+		"/C/Program Files (x86)/Sublime Text 3/Data/Packages/BeautifyRuby/BeautifyRuby.sublime-settings",
+		"/C/Program Files (x86)/Sublime Text 3/Data/Packages/Ruby Debugger/Ruby Debugger.sublime-settings",
+		"/C/Users/roman/Documents/lc-meter/scripts/baud.sh",
+		"/C/Users/roman/Documents/lc-meter/scripts/calc-lc-tank.c",
+		"/C/Users/roman/Documents/pictest/src/config-12f1840.h",
+		"/C/Users/roman/Documents/pictest/src/config-18f252.h",
+		"/C/Users/roman/Documents/pictest/src/config-18f2550.h",
+		"/C/Users/roman/Documents/pictest/src/config-18f25k50.h",
+		"/E/Sources/pictest/src/pictest.c",
+		"/E/Sources/pictest/build/vars.mk",
+		"/E/Sources/pictest/config-18f25k22.h",
+		"/E/Sources/pictest/config-16f876a.h",
+		"/E/Sources/pictest/pictest.c",
+		"/E/Sources/pictest/CMakeLists.txt",
+		"/E/Sources/pictest/config-18f2550.h",
+		"/E/Sources/pictest/scripts/baud.sh",
+		"/E/Sources/pictest/scripts/init-brd.rb",
+		"/E/Sources/pictest/cmdline.txt",
+		"/E/Sources/pictest/config-18f252.h",
+		"/E/Sources/pictest/config-16f628a.h",
+		"/E/Sources/pictest/files.list",
+		"/E/Sources/pictest/Makefile.vars",
+		"/E/Sources/pictest/Makefile.common",
+		"/E/Sources/pictest/Makefile.htc",
+		"/E/Sources/pictest/Makefile.mcc18",
+		"/E/Sources/pictest/Makefile.xc8",
+		"/E/Sources/pictest/lib/ds18b20.h",
+		"/E/Sources/pictest/baud.sh",
+		"/E/Sources/pictest/device.h",
+		"/E/Sources/pictest/timer.c",
+		"/E/Sources/pictest/knapsack.rb",
+		"/E/Sources/pictest/adc.c"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"timer",
+			"<<<<",
+			"MIDI",
+			"<<<<",
+			"MIDI",
+			"FERR",
+			"cd",
+			"cd=",
+			"got_cmd",
+			"tmp_hsecs",
+			"B_ISSET(",
+			"ISSET",
+			"prev_seconds",
+			"dsecs",
+			"timer2_setup",
+			"RB",
+			"put_str",
+			"put_char",
+			"ser_putch",
+			"putchar",
+			"WARNINGS",
+			"-W",
+			"byte_",
+			"thema",
+			"\\",
+			"pushsa",
+			"md ",
+			"mkdir",
+			"cannot",
+			"free",
+			"zero",
+			"mediat",
+			"media",
+			"mediathe",
+			"get_until",
+			"mediathe",
+			"string_predicate",
+			"mediathe",
+			"std::string",
+			"seconds",
+			"64",
+			"SOFTPWM",
+			"number",
+			"USE_HD44780_LCD",
+			"TRISA",
+			"RA",
+			"def",
+			"chipl",
+			":65",
+			"BUILDDIR",
+			"-I",
+			"CPPFLAGS",
+			"-I",
+			"to_amount",
+			"led_enabled",
+			"LED_PIN",
+			"LED_",
+			"UART_",
+			"uart_",
+			"#warning",
+			"uart_",
+			"uart_ini",
+			"OF_BIT",
+			"PRESC",
+			"TMR1",
+			"TMR0",
+			"IVAL",
+			" PRESCALE",
+			"uint8 ",
+			"__delay_ms",
+			"echo_mode"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"tmp_msecs",
+			"b & ",
+			"hsecs",
+			"RA",
+			"putc",
+			"putchar",
+			"t",
+			"/",
+			"init",
+			"string",
+			"dsecs",
+			"SoftPWM",
+			"USE_LCD",
+			"TRISGP",
+			"GP",
+			"OBJDIR",
+			"SER_",
+			"ser_",
+			"#advisory",
+			"POSTSC",
+			"TMR2",
+			"TMR1",
+			"INTERVAL",
+			" SCALE",
+			"volatile uint8 ",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "bootloaders/18f2550-usb-hid-xc8/FIRMWARE/PIC18F2550/src/main_hid.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6688,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"incomplete_sync": null,
+							"is_init_dirty_state": false,
+							"origin_encoding": "ASCII",
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C99/C99.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1530.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/pictest.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2162,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1094,
+								1094
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"incomplete_sync": null,
+							"is_init_dirty_state": false,
+							"origin_encoding": "ASCII",
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C99/C99.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 720.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Makefile Improved/Make.sublime-build",
+	"project": "pictest.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 248.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

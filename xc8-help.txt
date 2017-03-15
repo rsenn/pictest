@@ -1,0 +1,82 @@
+Microchip MPLAB XC8 C Compiler V1.34
+Build date: Feb 16 2015
+Part Support Version: 1.34
+Copyright (C) 2015 Microchip Technology Inc.
+License type: Node Configuration
+
+
+
+Compiler Options:
+
+
+      -C                             Compile to object file
+      -Dargument                     Define preprocessor symbol
+      -Eargument                     Redirect compile errors
+      -Iargument                     Specify include path
+      -L<argument>                   Set linker option
+      -M<argument>                   Generate map file
+      -Nnumber                       Identifier length
+      -Oargument                     Output file
+      -P                             Preprocess assembler
+      -Q                             Quiet mode
+      -S                             Compile to assembler
+      -Uargument                     Undefine preprocessor symbol
+      -V                             Verbose mode
+      --addrqual<=argument>          Specify address space qualifier handling
+      --asmlist                      Generate assembler listing
+      --char<=argument>              Default character type (defunct)
+      --checksum=argument            Calculate a checksum and store the result in program memory
+      --chip=argument                Select processor
+ !    --chipinfo                     Chip information
+      --clist                        Generate C listing
+      --codeoffset=value             Specify ROM address
+      --cp<=argument>                Specify pointer size
+      --debugger<=argument>          Set debugger environment
+      --double<=argument>            Size of double type
+      --echo                         Echo command line
+      --emi<=argument>               External memory interface mode
+      --errata<=argument>            Specify errata work-arounds
+      --errformat<=argument>         Error format
+      --errors=number                Maximum number of errors
+      --fill=argument                Specify a ROM-fill value for unused memory
+      --float<=argument>             Size of float type
+      --getoption=argument           Get advanced options
+ !    --help<=argument>              Help
+      --html<=argument>              Generate HTML resource files
+      --lang<=argument>              Specify Language
+      --lkrmac=argument              Define a linker script macro
+      --maxipic                      Maximize device
+ !    --memmap=argument              Display memory map
+      --mode<=argument>              Choose operating mode
+      --msgdisable<=argument>        Disable warning messages
+      --msgformat<=argument>         Message format
+      --nodel                        Do not remove temporary files
+      --nofallback                   Prevent falling back to lesser license modes
+      --objdir=argument              Object files directory
+      --opt<=argument>               Optimization options
+      --outdir=argument              Output directory
+      --output<=argument>            Output formats
+      --parser<=argument>            Specify parser options
+      --pass1                        Produce Microchip intermediate P-code
+      --pre                          Preprocess only
+      --proto                        Generate function prototypes
+      --ram=argument                 Specify RAM ranges
+      --rom=argument                 Specify ROM ranges
+      --runtime<=argument>           Run-time options
+      --scandep                      Scan for dependencies
+      --serial=argument              Insert a hexadecimal code or serial number
+      --setoption=argument           Set advanced options
+ !    --setup<=argument>             Setup the product
+      --shroud                       Shroud (obfuscate) generated p1 files
+      --stack<=argument>             Specify default stack model and size
+      --strict                       Strict ANSI keywords
+      --summary<=argument>           Summary options
+      --time                         Report compilation times
+ !    --ver                          Version information
+      --warn<=argument>              Warning level
+      --warnformat<=argument>        Warning format
+
+ ! Compilation stops after processing this option
+
+Help for a specific option can be obtained by specifying an argument to --help.
+

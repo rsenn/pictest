@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="cdt.managedbuild.toolchain.gnu.cross.base.1698284460">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.toolchain.gnu.cross.base.1698284460" moduleId="org.eclipse.cdt.core.settings" name="everything">
+				<macros>
+					<stringMacro name="PATH" type="VALUE_TEXT" value="${MSYS_HOME}/bin;${PATH}"/>
+					<stringMacro name="PICC18_HOME" type="VALUE_PATH_DIR" value="c:/Program Files (x86)/HI-TECH Software/PICC-18/PRO/9.66"/>
+					<stringListMacro name="COMPILERS" type="VALUE_TEXT_LIST">
+						<value name="htc"/>
+						<value name="xc8"/>
+						<value name="sdcc"/>
+					</stringListMacro>
+					<stringMacro name="XC8_HOME" type="VALUE_PATH_DIR" value="c:/Program Files (x86)/Microchip/xc8/v1.34"/>
+					<stringListMacro name="BUILD_TYPES" type="VALUE_TEXT_LIST">
+						<value name="debug"/>
+						<value name="release"/>
+					</stringListMacro>
+					<stringMacro name="PICC_HOME" type="VALUE_PATH_DIR" value="c:/Program Files (x86)/HI-TECH Software/PICC/9.83"/>
+					<stringListMacro name="XTAL_FREQS" type="VALUE_TEXT_LIST">
+						<value name="4000000"/>
+						<value name="4194304"/>
+						<value name="16000000"/>
+						<value name="20000000"/>
+						<value name="24000000"/>
+					</stringListMacro>
+					<stringListMacro name="PROGRAMS" type="VALUE_TEXT_LIST">
+						<value name="blinktest"/>
+						<value name="serialtest"/>
+						<value name="pictest"/>
+					</stringListMacro>
+					<stringListMacro name="CHIPS" type="VALUE_TEXT_LIST">
+						<value name="16f876a"/>
+						<value name="18f252"/>
+						<value name="18f2550"/>
+						<value name="18f25k22"/>
+					</stringListMacro>
+					<stringListMacro name="BAUD_RATES" type="VALUE_TEXT_LIST">
+						<value name="9600"/>
+						<value name="19200"/>
+						<value name="38400"/>
+						<value name="57600"/>
+						<value name="115200"/>
+					</stringListMacro>
+					<stringMacro name="MSYS_HOME" type="VALUE_TEXT" value="C:/git-sdk-64/usr"/>
+					<stringMacro name="SDCC_HOME" type="VALUE_PATH_DIR" value="c:/Program Files (x86)/SDCC"/>
+				</macros>
+				<externalSettings>
+					<externalSetting>
+						<entry flags="RESOLVED" kind="includePath" name="C:\git-sdk-64\usr\include"/>
+						<entry flags="RESOLVED" kind="includePath" name="C:\Program Files\SDCC"/>
+						<entry flags="RESOLVED" kind="includePath" name="C:\Program Files (x86)\SDCC"/>
+						<entry flags="RESOLVED" kind="includePath" name="c:/Program Files/HI-TECH Software/PICC-18/PRO/9.66/include"/>
+						<entry flags="RESOLVED" kind="includePath" name="c:/Program Files/HI-TECH Software/PICC-18/9.80/include"/>
+						<entry flags="RESOLVED" kind="includePath" name="c:/Program Files/HI-TECH Software/PICC/9.83/include"/>
+						<entry flags="RESOLVED" kind="includePath" name="c:/Program Files/HI-TECH Software/PICC/9.82/include"/>
+						<entry flags="RESOLVED" kind="includePath" name="c:/Program Files/HI-TECH Software/PICC/9.80/include"/>
+						<entry flags="RESOLVED" kind="includePath" name="c:/Program Files/Microchip/xc8/v1.37/include"/>
+						<entry flags="RESOLVED" kind="includePath" name="c:/Program Files/Microchip/xc8/v1.36/include"/>
+						<entry flags="RESOLVED" kind="includePath" name="c:/Program Files/Microchip/xc8/v1.34/include"/>
+						<entry flags="RESOLVED" kind="includePath" name="c:/Program Files (x86)/HI-TECH Software/PICC-18/9.80/include"/>
+						<entry flags="RESOLVED" kind="includePath" name="c:/Program Files (x86)/HI-TECH Software/PICC-18/PRO/9.66/include"/>
+						<entry flags="RESOLVED" kind="includePath" name="c:/Program Files (x86)/HI-TECH Software/PICC/9.83/include"/>
+						<entry flags="RESOLVED" kind="includePath" name="c:/Program Files (x86)/HI-TECH Software/PICC/9.82/include"/>
+						<entry flags="RESOLVED" kind="includePath" name="c:/Program Files (x86)/HI-TECH Software/PICC/9.80/include"/>
+						<entry flags="RESOLVED" kind="includePath" name="c:/Program Files (x86)/Microchip/xc8/v1.37/include"/>
+						<entry flags="RESOLVED" kind="includePath" name="c:/Program Files (x86)/Microchip/xc8/v1.36/include"/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="cdt.managedbuild.toolchain.gnu.cross.base.1698284460" name="everything" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="cdt.managedbuild.toolchain.gnu.cross.base.1698284460.619707715" name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.cross.base.1752406589" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
+							<option id="cdt.managedbuild.option.gnu.cross.prefix.369612250" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix"/>
+							<option id="cdt.managedbuild.option.gnu.cross.path.151306643" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.6093222" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
+							<builder arguments="BAUD_RATES=&quot;${BAUD_RATES}&quot; BUILD_TYPES=&quot;${BUILD_TYPES}&quot; CHIPS=&quot;${CHIPS}&quot; COMPILERS=&quot;${COMPILERS}&quot; PROGRAMS=&quot;${PROGRAMS}&quot; XTAL_FREQS=&quot;${XTAL_FREQS}&quot;" cleanBuildTarget="clean-all" command="make" id="cdt.managedbuild.builder.gnu.cross.1085420082" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross">
+								<outputEntries>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name=""/>
+								</outputEntries>
+							</builder>
+							<tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.355053574" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
+								<option id="gnu.c.compiler.option.include.paths.1227897480" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\Microchip\xc8\v1.34\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/Microchip/xc8/v1.37/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.82/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.83/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC-18/PRO/9.66/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC-18/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.34/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.36/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.37/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.82/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.83/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC-18/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC-18/PRO/9.66/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\SDCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files\SDCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\git-sdk-64\usr\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pictest/lib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pictest/src}&quot;"/>
+								</option>
+								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1496440254" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__XC__=1"/>
+									<listOptionValue builtIn="false" value="__XC8__=1"/>
+									<listOptionValue builtIn="false" value="HI_TECH_C=1"/>
+									<listOptionValue builtIn="false" value="__PICC__=1"/>
+									<listOptionValue builtIn="false" value="__16f876a=1"/>
+									<listOptionValue builtIn="false" value="__XC8=1"/>
+									<listOptionValue builtIn="false" value="_16F876A=1"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.365470284" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.926977417" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
+								<option id="gnu.cpp.compiler.option.include.paths.1419966264" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\Microchip\xc8\v1.34\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/Microchip/xc8/v1.37/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.82/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.83/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC-18/PRO/9.66/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC-18/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.34/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.36/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.37/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.82/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.83/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC-18/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC-18/PRO/9.66/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\SDCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files\SDCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\git-sdk-64\usr\include&quot;"/>
+								</option>
+								<option id="gnu.cpp.compiler.option.preprocessor.def.1149374502" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__XC__=1"/>
+									<listOptionValue builtIn="false" value="__XC8__=1"/>
+									<listOptionValue builtIn="false" value="HI_TECH_C=1"/>
+									<listOptionValue builtIn="false" value="__PICC__=1"/>
+									<listOptionValue builtIn="false" value="__XC8=1"/>
+									<listOptionValue builtIn="false" value="__16f876a=1"/>
+									<listOptionValue builtIn="false" value="_16F876A=1"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.374445544" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cross.c.linker.1190190847" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
+							<tool id="cdt.managedbuild.tool.gnu.cross.cpp.linker.883394268" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
+								<option id="gnu.cpp.link.option.paths.1385984785" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\Microchip\xc8\v1.34\lib&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1435480620" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cross.archiver.1184738128" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
+							<tool id="cdt.managedbuild.tool.gnu.cross.assembler.100477791" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
+								<option id="gnu.both.asm.option.include.paths.1278266675" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/Microchip/xc8/v1.34/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/Microchip/xc8/v1.36/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/Microchip/xc8/v1.37/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.82/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.83/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC-18/PRO/9.66/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC-18/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.34/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.36/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.37/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.82/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.83/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC-18/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC-18/PRO/9.66/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\SDCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files\SDCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\git-sdk-64\usr\include&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.233275795" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="cdt.managedbuild.toolchain.gnu.cross.base.1698284460.736921000" name="make-hue-table.c" rcbsApplicability="disable" resourcePath="tools/make-hue-table.c" toolsToInvoke="cdt.managedbuild.tool.gnu.cross.c.compiler.355053574.460607475">
+						<tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.355053574.460607475" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler.355053574">
+							<option id="gnu.c.compiler.option.include.paths.109380105" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+								<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\Microchip\xc8\v1.34\include&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\SDCC&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;C:\Program Files\SDCC&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${MSYS_HOME}\include&quot;"/>
+							</option>
+							<option id="gnu.c.compiler.option.preprocessor.def.symbols.1322078735" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
+								<listOptionValue builtIn="false" value="__XC__=1"/>
+								<listOptionValue builtIn="false" value="__XC8__=1"/>
+								<listOptionValue builtIn="false" value="__PICC__=1"/>
+								<listOptionValue builtIn="false" value="__16f876a=1"/>
+								<listOptionValue builtIn="false" value="__XC8=1"/>
+								<listOptionValue builtIn="false" value="_16F876A=1"/>
+							</option>
+							<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1041668291" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+						</tool>
+					</fileInfo>
+					<sourceEntries>
+						<entry excluding="tools/make-hue-table.c|wave-cpp-xc8|src/timer0.c|src/ps2test.c|src/ctmu.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="de.marw.cdt.cmake.core.settings">
+				<options/>
+				<linux command="cmake" generator="UnixMakefiles" use-default="true">
+					<defs/>
+					<undefs/>
+				</linux>
+			</storageModule>
+			<storageModule moduleId="ilg.gnuarmeclipse.managedbuild.packs"/>
+		</cconfiguration>
+		<cconfiguration id="cdt.managedbuild.toolchain.gnu.cross.base.1698284460.2043347283">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.toolchain.gnu.cross.base.1698284460.2043347283" moduleId="org.eclipse.cdt.core.settings" name="htc-xc8-20mhz-38.4kbps">
+				<macros>
+					<stringMacro name="PATH" type="VALUE_TEXT" value="${MSYS_HOME}/bin;${PATH}"/>
+					<stringMacro name="PICC18_HOME" type="VALUE_PATH_DIR" value="c:/Program Files (x86)/HI-TECH Software/PICC-18/PRO/9.66"/>
+					<stringListMacro name="COMPILERS" type="VALUE_TEXT_LIST">
+						<value name="htc"/>
+						<value name="xc8"/>
+					</stringListMacro>
+					<stringMacro name="XC8_HOME" type="VALUE_PATH_DIR" value="c:/Program Files (x86)/Microchip/xc8/v1.34"/>
+					<stringListMacro name="BUILD_TYPES" type="VALUE_TEXT_LIST">
+						<value name="debug"/>
+						<value name="release"/>
+					</stringListMacro>
+					<stringMacro name="PICC_HOME" type="VALUE_PATH_DIR" value="c:/Program Files (x86)/HI-TECH Software/PICC/9.83"/>
+					<stringListMacro name="XTAL_FREQS" type="VALUE_TEXT_LIST">
+						<value name="20000000"/>
+					</stringListMacro>
+					<stringListMacro name="PROGRAMS" type="VALUE_TEXT_LIST">
+						<value name="blinktest"/>
+						<value name="serialtest"/>
+						<value name="pictest"/>
+					</stringListMacro>
+					<stringListMacro name="CHIPS" type="VALUE_TEXT_LIST">
+						<value name="16f876a"/>
+						<value name="18f252"/>
+						<value name="18f2550"/>
+						<value name="18f25k22"/>
+					</stringListMacro>
+					<stringListMacro name="BAUD_RATES" type="VALUE_TEXT_LIST">
+						<value name="38400"/>
+					</stringListMacro>
+					<stringMacro name="MSYS_HOME" type="VALUE_TEXT" value="C:/git-sdk-64/usr"/>
+					<stringMacro name="SDCC_HOME" type="VALUE_PATH_DIR" value="c:/Program Files (x86)/SDCC"/>
+				</macros>
+				<externalSettings>
+					<externalSetting/>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildProperties="" description="htc/xc8/20mhz/38.4kbps" errorParsers="org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.CWDLocator;org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.toolchain.gnu.cross.base.1698284460.2043347283" name="htc-xc8-20mhz-38.4kbps" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="cdt.managedbuild.toolchain.gnu.cross.base.1698284460.2043347283." name="/" resourcePath="">
+						<toolChain errorParsers="" id="cdt.managedbuild.toolchain.gnu.cross.base.1798891529" name="Cross GCC" superClass="cdt.managedbuild.toolchain.gnu.cross.base">
+							<option id="cdt.managedbuild.option.gnu.cross.prefix.1387328385" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix"/>
+							<option id="cdt.managedbuild.option.gnu.cross.path.633895878" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.1392170727" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
+							<builder arguments="BAUD_RATES=&quot;${BAUD_RATES}&quot; BUILD_TYPES=&quot;${BUILD_TYPES}&quot; CHIPS=&quot;${CHIPS}&quot; COMPILERS=&quot;${COMPILERS}&quot; PROGRAMS=&quot;${PROGRAMS}&quot; XTAL_FREQS=&quot;${XTAL_FREQS}&quot;" cleanBuildTarget="clean-all" command="make" errorParsers="org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.CWDLocator" id="cdt.managedbuild.builder.gnu.cross.633223720" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross">
+								<outputEntries>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name=""/>
+								</outputEntries>
+							</builder>
+							<tool errorParsers="org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.tool.gnu.cross.c.compiler.1800291176" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
+								<option id="gnu.c.compiler.option.include.paths.287017193" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\Microchip\xc8\v1.34\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/Microchip/xc8/v1.37/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.82/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.83/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC-18/PRO/9.66/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC-18/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.34/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.36/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.37/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.82/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.83/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC-18/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC-18/PRO/9.66/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\SDCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files\SDCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\git-sdk-64\usr\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pictest/lib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pictest/src}&quot;"/>
+								</option>
+								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1477847299" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__XC__=1"/>
+									<listOptionValue builtIn="false" value="__XC8__=1"/>
+									<listOptionValue builtIn="false" value="__PICC__=1"/>
+									<listOptionValue builtIn="false" value="__XC8=1"/>
+									<listOptionValue builtIn="false" value="__16f876a=1"/>
+									<listOptionValue builtIn="false" value="_16F876A=1"/>
+									<listOptionValue builtIn="false" value="HI_TECH_C=1"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.294248837" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool errorParsers="org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.770736598" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
+								<option id="gnu.cpp.compiler.option.include.paths.2098055979" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\Microchip\xc8\v1.34\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\SDCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files\SDCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\git-sdk-64\usr\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/Microchip/xc8/v1.37/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.82/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.83/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC-18/PRO/9.66/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC-18/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.34/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.36/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.37/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.82/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.83/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC-18/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC-18/PRO/9.66/include&quot;"/>
+								</option>
+								<option id="gnu.cpp.compiler.option.preprocessor.def.671640150" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__XC__=1"/>
+									<listOptionValue builtIn="false" value="__XC8__=1"/>
+									<listOptionValue builtIn="false" value="__PICC__=1"/>
+									<listOptionValue builtIn="false" value="__XC8=1"/>
+									<listOptionValue builtIn="false" value="__16f876a=1"/>
+									<listOptionValue builtIn="false" value="_16F876A=1"/>
+									<listOptionValue builtIn="false" value="HI_TECH_C=1"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1361425206" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cross.c.linker.826309634" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
+							<tool errorParsers="org.eclipse.cdt.core.GLDErrorParser" id="cdt.managedbuild.tool.gnu.cross.cpp.linker.817806599" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
+								<option id="gnu.cpp.link.option.paths.561885484" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\Microchip\xc8\v1.34\lib&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.879967360" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cross.archiver.865697390" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
+							<tool errorParsers="org.eclipse.cdt.core.GASErrorParser" id="cdt.managedbuild.tool.gnu.cross.assembler.1276061517" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
+								<option id="gnu.both.asm.option.include.paths.1368332060" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\Microchip\xc8\v1.34\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\SDCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files\SDCC&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\git-sdk-64\usr\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/Microchip/xc8/v1.36/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/Microchip/xc8/v1.37/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.82/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC/9.83/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC-18/PRO/9.66/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files (x86)/HI-TECH Software/PICC-18/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.34/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.36/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/Microchip/xc8/v1.37/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.82/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC/9.83/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC-18/9.80/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;c:/Program Files/HI-TECH Software/PICC-18/PRO/9.66/include&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1249818179" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="cdt.managedbuild.toolchain.gnu.cross.base.1698284460.2043347283.856383868" name="make-hue-table.c" rcbsApplicability="disable" resourcePath="tools/make-hue-table.c" toolsToInvoke="cdt.managedbuild.tool.gnu.cross.c.compiler.1800291176.442314995">
+						<tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.1800291176.442314995" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler.1800291176">
+							<option id="gnu.c.compiler.option.include.paths.1561545726" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+								<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\Microchip\xc8\v1.34\include&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\SDCC&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;C:\Program Files\SDCC&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${MSYS_HOME}\include&quot;"/>
+							</option>
+							<option id="gnu.c.compiler.option.preprocessor.def.symbols.1956637506" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
+								<listOptionValue builtIn="false" value="__XC__=1"/>
+								<listOptionValue builtIn="false" value="__XC8__=1"/>
+								<listOptionValue builtIn="false" value="__PICC__=1"/>
+								<listOptionValue builtIn="false" value="__16f876a=1"/>
+								<listOptionValue builtIn="false" value="__XC8=1"/>
+								<listOptionValue builtIn="false" value="_16F876A=1"/>
+							</option>
+							<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1740581901" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+						</tool>
+					</fileInfo>
+					<sourceEntries>
+						<entry excluding="tools/make-hue-table.c|wave-cpp-xc8|src/timer0.c|src/ps2test.c|src/ctmu.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="de.marw.cdt.cmake.core.settings">
+				<options/>
+				<linux command="cmake" generator="UnixMakefiles" use-default="true">
+					<defs/>
+					<undefs/>
+				</linux>
+				<defs/>
+				<undefs/>
+			</storageModule>
+			<storageModule moduleId="ilg.gnuarmeclipse.managedbuild.packs"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="pictest.null.2045512353" name="pictest"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="htc-xc8-20mhz-38.4kbps">
+			<resource resourceType="PROJECT" workspacePath="/pictest"/>
+		</configuration>
+		<configuration configurationName="Multiple configurations">
+			<resource resourceType="PROJECT" workspacePath="/pictest"/>
+		</configuration>
+		<configuration configurationName="everything"/>
+		<configuration configurationName="Default">
+			<resource resourceType="PROJECT" workspacePath="/pictest"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings">
+		<doc-comment-owner id="org.eclipse.cdt.internal.ui.text.doctools.NullDocCommentOwner">
+			<path value=""/>
+		</doc-comment-owner>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.cross.base.1698284460.2043347283;cdt.managedbuild.toolchain.gnu.cross.base.1698284460.2043347283.;cdt.managedbuild.tool.gnu.cross.c.compiler.1800291176;cdt.managedbuild.tool.gnu.c.compiler.input.294248837">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="0.610958130">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.cross.base.1698284460;cdt.managedbuild.toolchain.gnu.cross.base.1698284460.619707715;cdt.managedbuild.tool.gnu.cross.cpp.compiler.926977417;cdt.managedbuild.tool.gnu.cpp.compiler.input.374445544">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.cross.base.1698284460;cdt.managedbuild.toolchain.gnu.cross.base.1698284460.619707715;cdt.managedbuild.tool.gnu.cross.c.compiler.355053574;cdt.managedbuild.tool.gnu.c.compiler.input.365470284">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.cross.base.1698284460.2043347283;cdt.managedbuild.toolchain.gnu.cross.base.1698284460.2043347283.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.770736598;cdt.managedbuild.tool.gnu.cpp.compiler.input.1361425206">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+</cproject>

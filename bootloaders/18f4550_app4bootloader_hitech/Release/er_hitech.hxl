@@ -1,0 +1,33 @@
+### HEXMate logfile and output summary ###
+### Memory Usage ###
+ Unused memory ranges:
+  0h - 7FFh
+  82Ah - 7F51h
+  8000h - 2FFFFFh
+  300004h - 300005h
+  300008h - 30003Fh
+  
+ er_hitech.hex ranges:
+  800h - 829h
+  7F52h - 7FFFh
+  300000h - 300003h
+  300006h - 300007h
+  
+### Hex Memory Map ###
+ Legend:
+  - = Unused memory
+  F = Filled ROM
+  S = Stored serial code
+  A = Stored ASCII string
+  R = Reserved for checksum
+  C = Stored checksum result
+  T = Trailing code
+  & = Find & replace opcode
+  X = Find & delete opcode
+  1 = er_hitech.hex
+00000000: ----------------------------------------------------------------
+00000800: 111111111111111111111111111111111111111111----------------------
+00007F40: ------------------1111111111111111111111111111111111111111111111
+00007F80: 1111111111111111111111111111111111111111111111111111111111111111
+00007FC0: 1111111111111111111111111111111111111111111111111111111111111111
+00300000: 1111--11--------------------------------------------------------

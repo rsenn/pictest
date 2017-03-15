@@ -1,0 +1,70 @@
+MPASM 5.70                  18FDBUG_V1R1.ASM   2-5-2017  0:32:28         PAGE  1
+
+                          MPASM Cross Reference File
+
+LABEL                            TYPE FILE NAME                  SOURCE FILE REFERENCES
+-----                            ---- ---------                  ----------------------
+
+BREAK                             M   18FDBUG_V1R1.ASM                    10*   21.
+DB0                               C   18FDBUG_V1R1.ASM                    12.   30*   81.   98.  148.  167.  171.  173.
+DB1                               C   18FDBUG_V1R1.ASM                    31*   46.  102.  156.  173.  175.
+DB2                               C   18FDBUG_V1R1.ASM                    32*   48.  101.  152.  175.  177.
+DB3                               C   18FDBUG_V1R1.ASM                    33*   49.  100.  160.  177.  179.
+DB4                               C   18FDBUG_V1R1.ASM                    34*   50.   99.  164.  179.
+DB5                               C   18FDBUG_V1R1.ASM                    35*  104.  118.  132.  141.  166.  181.  183.  185.  186.
+                                                                         187.  188.  191.  194.
+DBN                               C   18FDBUG_V1R1.ASM                    40*   60.   62.   86.  209.  216.
+DBRK                              C   18FDBUG_V1R1.ASM                     7*   11.   28.
+DBUG                              A   18FDBUG_V1R1.ASM                    14.   46*   83.
+DG001                             A   18FDBUG_V1R1.ASM                    51*   87.  135.  198.
+DG002                             A   18FDBUG_V1R1.ASM                    59*   67.
+DG003                             A   18FDBUG_V1R1.ASM                    56.   62*
+DG004                             A   18FDBUG_V1R1.ASM                    67*   71.
+DG005                             A   18FDBUG_V1R1.ASM                    58.   68*
+DG006                             A   18FDBUG_V1R1.ASM                    72*  196.
+DG007                             A   18FDBUG_V1R1.ASM                    79.   84*
+DG008                             A   18FDBUG_V1R1.ASM                    80.   88*
+DG009                             A   18FDBUG_V1R1.ASM                    77.   89*
+DG010                             A   18FDBUG_V1R1.ASM                    85.   98*
+DG011                             A   18FDBUG_V1R1.ASM                    75.  104*
+DG012                             A   18FDBUG_V1R1.ASM                   107.  136*
+DG013                             A   18FDBUG_V1R1.ASM                   137.  148*
+DG014                             A   18FDBUG_V1R1.ASM                   147.  150*
+DG015                             A   18FDBUG_V1R1.ASM                   139.  152*
+DG016                             A   18FDBUG_V1R1.ASM                   151.  154*
+DG017                             A   18FDBUG_V1R1.ASM                   155.  158*
+DG018                             A   18FDBUG_V1R1.ASM                   159.  162*
+DG019                             A   18FDBUG_V1R1.ASM                   144.  163.  166*
+DG020                             A   18FDBUG_V1R1.ASM                   172.  174.  176.  178.  181*
+DG021                             A   18FDBUG_V1R1.ASM                   149.  153.  157.  161.  165.  182*
+DG022                             A   18FDBUG_V1R1.ASM                   169.  180.  187*
+DG023                             A   18FDBUG_V1R1.ASM                   190.  197*
+DG024                             A   18FDBUG_V1R1.ASM                    73.   91.   94.  108.  140.  192.  199*
+DG025                             A   18FDBUG_V1R1.ASM                   204*  218.
+DG026                             A   18FDBUG_V1R1.ASM                   203.  211*
+T                                 M   18FDBUG_V1R1.ASM                    39*   53.   72.
+X                                 M   18FDBUG_V1R1.ASM                    38*   52.   68.  201.  207.  214.
+_.org_0_FEB4                      A   18FDBUG_V1R1.ASM                    65*
+_.org_0_FFDC                      A   18FDBUG_V1R1.ASM                   202*
+_.org_0_FFE8                      A   18FDBUG_V1R1.ASM                   208*
+_.org_0_FFF6                      A   18FDBUG_V1R1.ASM                   215*
+__18F2550                         V   18FDBUG_V1R1.ASM                     0*
+MPASM 5.70                  18FDBUG_V1R1.ASM   2-5-2017  0:32:28         PAGE  2
+
+                          MPASM Cross Reference File
+
+LABEL                            TYPE FILE NAME                  SOURCE FILE REFERENCES
+-----                            ---- ---------                  ----------------------
+
+
+
+LABEL TYPES
+-----------
+A  Address 
+C  Constant
+E  External
+M  Macro   
+S  Segment 
+U  Unknown 
+V  Variable
+X  Other   

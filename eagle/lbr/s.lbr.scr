@@ -1,0 +1,171 @@
+# Library script
+# 
+# Exported from C:/Users/roman/Documents/pictest/eagle/lbr/s.lbr at 11.02.2017 03:01
+# 
+# EAGLE Version 7.7.0 Copyright (c) 1988-2016 CadSoft
+# 
+Set Wire_Bend 2;
+# Grid changed to 'mm' to avoid loss of precision!
+Grid mm;
+Layer   1 Top;
+Layer   2 Route2;
+Layer   3 Route3;
+Layer   4 Route4;
+Layer   5 Route5;
+Layer   6 Route6;
+Layer   7 Route7;
+Layer   8 Route8;
+Layer   9 Route9;
+Layer  10 Route10;
+Layer  11 Route11;
+Layer  12 Route12;
+Layer  13 Route13;
+Layer  14 Route14;
+Layer  15 Route15;
+Layer  16 Bottom;
+Layer  17 Pads;
+Layer  18 Vias;
+Layer  19 Unrouted;
+Layer  20 Dimension;
+Layer  21 tPlace;
+Layer  22 bPlace;
+Layer  23 tOrigins;
+Layer  24 bOrigins;
+Layer  25 tNames;
+Layer  26 bNames;
+Layer  27 tValues;
+Layer  28 bValues;
+Layer  29 tStop;
+Layer  30 bStop;
+Layer  31 tCream;
+Layer  32 bCream;
+Layer  33 tFinish;
+Layer  34 bFinish;
+Layer  35 tGlue;
+Layer  36 bGlue;
+Layer  37 tTest;
+Layer  38 bTest;
+Layer  39 tKeepout;
+Layer  40 bKeepout;
+Layer  41 tRestrict;
+Layer  42 bRestrict;
+Layer  43 vRestrict;
+Layer  44 Drills;
+Layer  45 Holes;
+Layer  46 Milling;
+Layer  47 Measures;
+Layer  48 Document;
+Layer  49 Reference;
+Layer  51 tDocu;
+Layer  52 bDocu;
+Layer  90 Modules;
+Layer  91 Nets;
+Layer  92 Busses;
+Layer  93 Pins;
+Layer  94 Symbols;
+Layer  95 Names;
+Layer  96 Values;
+Layer  97 Info;
+Layer  98 Guide;
+Description '';
+
+Edit '+5V.sym';
+Layer 94;
+Change Style continuous;
+Wire  0.254 (1.27 0.635) (0 2.54) (-1.27 0.635);
+Layer 96;
+Change Size 1.778;
+Change Ratio 8;
+Change Align bottom center;
+Change Font proportional;
+Text '>VALUE' R0 (0 3.81);
+Pin '+5V' sup none short R90 off 0 (0 0);
+
+Edit 'GND.sym';
+Layer 94;
+Wire  0.254 (-1.905 -2.54) (1.905 -2.54);
+Layer 96;
+Change Size 1.778;
+Change Align top center;
+Text '>VALUE' R0 (0 -3.81);
+Pin 'GND' sup none short R270 off 0 (0 0);
+
+Edit 'VSS.sym';
+Layer 94;
+Wire  0.254 (-1.905 -2.54) (1.905 -2.54);
+Layer 96;
+Change Size 1.778;
+Change Align top center;
+Text '>VALUE' R0 (0 -3.81);
+Pin 'VSS' sup none short R270 off 0 (0 0);
+
+Edit 'VCC.sym';
+Layer 94;
+Wire  0.254 (1.27 0.635) (0 2.54) (-1.27 0.635);
+Layer 96;
+Change Size 1.778;
+Change Align bottom center;
+Text '>VALUE' R0 (0 3.81);
+Pin 'VCC' sup none short R90 off 0 (0 0);
+
+Edit 'VDD.sym';
+Layer 94;
+Wire  0.254 (1.27 0.635) (0 2.54) (-1.27 0.635);
+Layer 96;
+Change Size 1.778;
+Change Align bottom center;
+Text '>VALUE' R0 (0 3.81);
+Pin 'VDD' sup none short R90 off 0 (0 0);
+
+Edit '0V.sym';
+Layer 94;
+Wire  0.254 (-1.905 -2.54) (1.905 -2.54);
+Layer 96;
+Change Size 1.778;
+Change Align top center;
+Text '>VALUE' R0 (0 -3.81);
+Pin '0V' sup none short R270 off 0 (0 0);
+
+Edit '+5V.dev';
+Prefix '';
+Description '';
+Value off;
+Add +5V 'G$1' next 0 (0 0);
+Technology '';
+
+Edit 'GND.dev';
+Prefix '';
+Description '';
+Value off;
+Add GND 'G$1' next 0 (0 0);
+Technology '';
+
+Edit 'VSS.dev';
+Prefix '';
+Description '';
+Value off;
+Add VSS 'G$1' next 0 (0 0);
+Technology '';
+
+Edit 'VDD.dev';
+Prefix '';
+Description '';
+Value off;
+Add VDD 'G$1' next 0 (0 0);
+Technology '';
+
+Edit 'VCC.dev';
+Prefix '';
+Description '';
+Value off;
+Add VCC 'G$1' next 0 (0 0);
+Technology '';
+
+Edit '0V.dev';
+Prefix '';
+Description '';
+Value off;
+Add 0V 'G$1' next 0 (0 0);
+Technology '';
+Grid inch;
+Edit ;

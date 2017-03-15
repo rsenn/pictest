@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="1">
+    <root name="C:/Users/roman/Documents/pictest"/>
+    <includedir>
+        <dir name="lib/"/>
+        <dir name="src/"/>
+        <dir name="C:/Program Files (x86)/HI-TECH Software/PICC/9.83/include/"/>
+    </includedir>
+    <paths>
+        <dir name="C:/Users/roman/Documents/pictest/lib"/>
+        <dir name="C:/Users/roman/Documents/pictest/src"/>
+    </paths>
+</project>

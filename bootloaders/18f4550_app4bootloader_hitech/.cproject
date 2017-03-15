@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?>
+
+<cproject>
+<storageModule moduleId="org.eclipse.cdt.core.settings">
+<cconfiguration id="com.htsoft.picc18.pro.config.release.hex_1.0.1.344064262">
+<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.htsoft.picc18.pro.config.release.hex_1.0.1.344064262" moduleId="org.eclipse.cdt.core.settings" name="Release">
+<externalSettings/>
+<extensions>
+<extension id="com.htsoft.picc18.PICC18IntelHEXParser" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="com.htsoft.compiler.HTErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+</extensions>
+</storageModule>
+<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+<configuration artifactExtension="hex" artifactName="18f4550_app4bootloader_hitech" buildProperties="" cleanCommand="rm -rf" description="" id="com.htsoft.picc18.pro.config.release.hex_1.0.1.344064262" name="Release" parent="com.htsoft.picc18.pro.config.release.hex_1.0.1">
+<folderInfo id="com.htsoft.picc18.pro.config.release.hex._1.0.1.344064262" name="/" resourcePath="">
+<toolChain id="com.htsoft.picc18.pro.toolChain.release.hex.654968433_1.0.1" name="Release Tool Chain" superClass="com.htsoft.picc18.pro.toolChain.release.hex_1.0.1">
+<targetPlatform archList="all" binaryParser="com.htsoft.picc18.PICC18IntelHEXParser" id="com.htsoft.picc18.targetPlatform.1435209553" isAbstract="true" name="PIC18 Target" osList="all" superClass="com.htsoft.picc18.targetPlatform"/>
+<builder buildPath="${workspace_loc:/18f4550_app4bootloader_hitech/Release}" id="com.htsoft.picc18.builder.344064262" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="com.htsoft.picc18.builder"/>
+<tool id="com.htsoft.picc18.pro.tool.assembler.664227170_1.0.1" name="Assembler" superClass="com.htsoft.picc18.pro.tool.assembler_1.0.1"/>
+<tool id="com.htsoft.picc18.pro.tool.p1.1759038364_1.0.1" name="Pre-processor/Parser" superClass="com.htsoft.picc18.pro.tool.p1_1.0.1">
+<option id="com.htsoft.picc18.option.p1.include.283351636" name="Include Paths" superClass="com.htsoft.picc18.option.p1.include"/>
+<option id="com.htsoft.picc18.option.p1.command.576441173" name="Command Line Options" superClass="com.htsoft.picc18.option.p1.command"/>
+<inputType id="com.htsoft.picc18.tool.p1.input.740907049" superClass="com.htsoft.picc18.tool.p1.input"/>
+</tool>
+<tool id="com.htsoft.picc18.pro.tool.p2.990818013_1.0.1" name="Compiler/Linker" superClass="com.htsoft.picc18.pro.tool.p2_1.0.1">
+<option id="com.htsoft.picc18.option.objs.1451148570" name="Additional Object Files" superClass="com.htsoft.picc18.option.objs"/>
+<option id="com.htsoft.picc18.option.libs.1529007809" name="User Libraries" superClass="com.htsoft.picc18.option.libs"/>
+<option id="com.htsoft.picc18.option.summary.psect.392287099" name="&amp;Psect Usage Summary" superClass="com.htsoft.picc18.option.summary.psect"/>
+<option id="com.htsoft.picc18.option.summary.hex.1628486776" name="&amp;HEX Usage Summary" superClass="com.htsoft.picc18.option.summary.hex"/>
+<option id="com.htsoft.picc18.option.output.intel.471018653" name="&amp;Intel HEX" superClass="com.htsoft.picc18.option.output.intel"/>
+<option id="com.htsoft.picc18.option.output.mcof.543701910" name="&amp;Microchip COFF" superClass="com.htsoft.picc18.option.output.mcof"/>
+<option id="com.htsoft.picc18.option.output.elf.835209968" name="&amp;ELF" superClass="com.htsoft.picc18.option.output.elf"/>
+<option id="com.htsoft.picc18.option.output.bin.1260075491" name="Bi&amp;nary" superClass="com.htsoft.picc18.option.output.bin"/>
+<option id="com.htsoft.picc18.option.output.tek.1096148241" name="&amp;Tektronic HEX" superClass="com.htsoft.picc18.option.output.tek"/>
+<option id="com.htsoft.picc18.option.output.aahex.1746664130" name="Am&amp;erican Automation HEX" superClass="com.htsoft.picc18.option.output.aahex"/>
+<option id="com.htsoft.picc18.option.output.mot.1175955773" name="M&amp;otorola S19 HEX" superClass="com.htsoft.picc18.option.output.mot"/>
+<option id="com.htsoft.picc18.option.output.ubrof.1845236670" name="&amp;UBROF" superClass="com.htsoft.picc18.option.output.ubrof"/>
+<option id="com.htsoft.picc18.option.output.lib.1059766240" name="&amp;Library" superClass="com.htsoft.picc18.option.output.lib"/>
+<option id="com.htsoft.picc18.option.output.init.1859992099" name="&amp;Initialize Data Psects" superClass="com.htsoft.picc18.option.output.init"/>
+<option id="com.htsoft.picc18.option.output.clear.1532975016" name="&amp;Clear Bss Psects" superClass="com.htsoft.picc18.option.output.clear"/>
+<option id="com.htsoft.picc18.option.output.clib.45508789" name="&amp;Link C Libraries" superClass="com.htsoft.picc18.option.output.clib"/>
+<option id="com.htsoft.picc18.option.output.keep.164814233" name="&amp;Keep Generated Startup Source" superClass="com.htsoft.picc18.option.output.keep"/>
+<option id="com.htsoft.picc18.option.hlink.824294177" name="Command Line Options" superClass="com.htsoft.picc18.option.hlink" value="--CODEOFFSET=0x800" valueType="string"/>
+<option id="com.htsoft.picc18.option.p2.globalopt.1651468258" name="&amp;Global Optimization Levels" superClass="com.htsoft.picc18.option.p2.globalopt"/>
+<option id="com.htsoft.picc18.option.p2.assembleropt.1888154032" name="&amp;Assembler Optimization" superClass="com.htsoft.picc18.option.p2.assembleropt"/>
+<option id="com.htsoft.picc18.option.serial.pro.932246335" name="Insert Hex Code in ROM (e.g f3@200): 0x" superClass="com.htsoft.picc18.option.serial.pro"/>
+<option id="com.htsoft.picc18.option.checksum.pro.1761617220" name="Checksum (e.g 0-1FFF@2FFE)" superClass="com.htsoft.picc18.option.checksum.pro"/>
+</tool>
+</toolChain>
+</folderInfo>
+</configuration>
+</storageModule>
+<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+<storageModule moduleId="scannerConfiguration">
+<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile"/>
+<profile id="com.htsoft.compiler.ScannerConfigProfile">
+<buildOutputProvider>
+<openAction enabled="false" filePath=""/>
+<parser enabled="false"/>
+</buildOutputProvider>
+</profile>
+<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="makefileGenerator">
+<runAction arguments="-f ${project_name}_scd.mk" command="make" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.cpp" command="g++" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileCPP">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.cpp" command="g++" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileC">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<scannerConfigBuildInfo instanceId="com.htsoft.picc18.pro.config.release.hex_1.0.1.344064262;com.htsoft.picc18.pro.config.release.hex._1.0.1.344064262">
+<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.htsoft.compiler.ScannerConfigProfile"/>
+<profile id="com.htsoft.compiler.ScannerConfigProfile">
+<buildOutputProvider>
+<openAction enabled="false" filePath=""/>
+<parser enabled="false"/>
+</buildOutputProvider>
+</profile>
+<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="makefileGenerator">
+<runAction arguments="-f ${project_name}_scd.mk" command="make" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.cpp" command="g++" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileCPP">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.cpp" command="g++" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileC">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+</scannerConfigBuildInfo>
+</storageModule>
+</cconfiguration>
+<cconfiguration id="com.htsoft.picc18.pro.config.debug.hex_1.0.1.945412560">
+<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.htsoft.picc18.pro.config.debug.hex_1.0.1.945412560" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+<externalSettings/>
+<extensions>
+<extension id="com.htsoft.picc18.PICC18IntelHEXParser" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="com.htsoft.compiler.HTErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+</extensions>
+</storageModule>
+<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+<configuration artifactExtension="hex" artifactName="18f4550_app4bootloader_hitech" buildProperties="" cleanCommand="rm -rf" description="" id="com.htsoft.picc18.pro.config.debug.hex_1.0.1.945412560" name="Debug" parent="com.htsoft.picc18.pro.config.debug.hex_1.0.1">
+<folderInfo id="com.htsoft.picc18.pro.config.debug.hex._1.0.1.945412560" name="/" resourcePath="">
+<toolChain id="com.htsoft.picc18.pro.toolChain.debug.hex.1728437382_1.0.1" name="Debug Tool Chain" superClass="com.htsoft.picc18.pro.toolChain.debug.hex_1.0.1">
+<targetPlatform archList="all" binaryParser="com.htsoft.picc18.PICC18IntelHEXParser" id="com.htsoft.picc18.targetPlatform.1868737998" isAbstract="true" name="PIC18 Target" osList="all" superClass="com.htsoft.picc18.targetPlatform"/>
+<builder buildPath="${workspace_loc:/18f4550_app4bootloader_hitech/Debug}" id="com.htsoft.picc18.builder.945412560" name="CDT Internal Builder" superClass="com.htsoft.picc18.builder"/>
+<tool id="com.htsoft.picc18.pro.tool.assembler.771912803_1.0.1" name="Assembler" superClass="com.htsoft.picc18.pro.tool.assembler_1.0.1"/>
+<tool id="com.htsoft.picc18.pro.tool.p1.1621120175_1.0.1" name="Pre-processor/Parser" superClass="com.htsoft.picc18.pro.tool.p1_1.0.1">
+<inputType id="com.htsoft.picc18.tool.p1.input.415658545" superClass="com.htsoft.picc18.tool.p1.input"/>
+</tool>
+<tool id="com.htsoft.picc18.pro.tool.p2.debug.hex.1550117149_1.0.1" name="Compiler/Linker" superClass="com.htsoft.picc18.pro.tool.p2.debug.hex_1.0.1"/>
+</toolChain>
+</folderInfo>
+</configuration>
+</storageModule>
+<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+<storageModule moduleId="scannerConfiguration">
+<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile"/>
+<profile id="com.htsoft.compiler.ScannerConfigProfile">
+<buildOutputProvider>
+<openAction enabled="false" filePath=""/>
+<parser enabled="false"/>
+</buildOutputProvider>
+</profile>
+<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="makefileGenerator">
+<runAction arguments="-f ${project_name}_scd.mk" command="make" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.cpp" command="g++" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileCPP">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.cpp" command="g++" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileC">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<scannerConfigBuildInfo instanceId="com.htsoft.picc18.pro.config.release.hex_1.0.1.344064262;com.htsoft.picc18.pro.config.release.hex._1.0.1.344064262">
+<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.htsoft.compiler.ScannerConfigProfile"/>
+<profile id="com.htsoft.compiler.ScannerConfigProfile">
+<buildOutputProvider>
+<openAction enabled="false" filePath=""/>
+<parser enabled="false"/>
+</buildOutputProvider>
+</profile>
+<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="makefileGenerator">
+<runAction arguments="-f ${project_name}_scd.mk" command="make" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.cpp" command="g++" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfile">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/${specs_file}" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileCPP">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.cpp" command="g++" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+<profile id="org.eclipse.cdt.managedbuilder.core.GCCWinManagedMakePerProjectProfileC">
+<buildOutputProvider>
+<openAction enabled="true" filePath=""/>
+<parser enabled="true"/>
+</buildOutputProvider>
+<scannerInfoProvider id="specsFile">
+<runAction arguments="-E -P -v -dD ${plugin_state_location}/specs.c" command="gcc" useDefault="true"/>
+<parser enabled="true"/>
+</scannerInfoProvider>
+</profile>
+</scannerConfigBuildInfo>
+</storageModule>
+</cconfiguration>
+</storageModule>
+<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+<project id="18f4550_app4bootloader_hitech.com.htsoft.picc18.pro.projectType.hex_1.0.1.1666790604" name="Hex Project Type" projectType="com.htsoft.picc18.pro.projectType.hex_1.0.1"/>
+</storageModule>
+</cproject>

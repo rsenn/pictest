@@ -1,0 +1,22 @@
+_put_str: CODE, 1260 0 27
+_softser_init: CODE, 1340 0 8
+_uart_enable: CODE, 1329 0 11
+_put_number: CODE, 912 0 97
+_softser_putch: CODE, 1227 0 33
+_softpwm_set: CODE, 1397 0 7
+_main: CODE, 268 0 644
+_softpwm_init: CODE, 1177 0 31
+_setup_timer0: CODE, 1287 0 27
+_setup_timer1: CODE, 1211 0 16
+_setup_timer2: CODE, 1348 0 18
+_uart_disable: CODE, 1387 0 10
+_uart_init: CODE, 1314 0 15
+___lwdiv: CODE, 1009 0 42
+_softpwm_enable: CODE, 1208 0 3
+_isr: CODE, 1087 0 90
+_uart_putch: CODE, 1404 0 5
+_random_init: CODE, 1366 0 21
+___lwmod: CODE, 1051 0 36
+_softpwm_disable: CODE, 1417 0 3
+_comparator_disable: CODE, 1413 0 4
+Total: 1148

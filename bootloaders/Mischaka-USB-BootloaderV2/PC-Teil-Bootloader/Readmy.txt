@@ -1,0 +1,38 @@
+Anleitung zum Laden des Programms mit Mischaka-USB-Bootloader.exe
+
+Wählen Sie die Datei zum laden. 
+Betätigen Sie die "Flash" Schaltfläche.
+Schalten Sie den Mikrokontroller ein. 
+Wichtig ist das während Sie "Flash" betätigen der Mikrokontroller ausgeschaltet oder resetet bleibt.
+
+Der Bootloader Beachtet den Code vor der Adresse 1140h nicht. Das ermöglicht Benutzung der Bootloader Sende-/Empfangsfunktionen über Dummy Funktionen im Anwenderprogramm.
+
+
+Mischaka-USB-Bootloader.exe kann auch aus der Kommandozeile aufgerufen werden.
+
+Mischaka-USB-Bootloader.exe /C:\Projects\USB2\Test.hex
+
+(Trennzeichen '/' nicht vergessen!)
+
+In dem Fall schlisst sich das Programm nach erfolgreichem Laden.
+
+
+
+
+Falls Sie das Update des Anwenderprogramms ohne Resettaste realisieren wollen. 
+
+Mischaka-USB-Bootloader.exe sendet Zeichen 80h an Anwenderprogramm. Wenn Sie nach empfang dieses Zeichens zum Bootloader springen passiert Update des Anwenderprogramms. Code für CCS
+while(1)
+    {
+        a=USB_Char_empf(); //Empfange ein Zeichen über USB
+
+        if (a==0x80)       //Wenn sich der Bootloader meldet
+        {
+            #asm
+            rcall 0x1000    //Bootloader starten
+            #endasm
+        }
+
+Mischaka-USB-Bootloader.exe schaut im Regestry unter welchem COM-Port sich Mischaka Port sich angerichtet hat und spricht diese COM-Port an.
+
+Ich vermute das es im Win2000 oder Vista nicht funzt. Deswegen habe ich eine Version mit manueller Einstellung des COM-Ports gemacht: Mischaka-USB-Bootloader_Manuell.exe 

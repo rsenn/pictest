@@ -1,0 +1,18 @@
+Hallo,
+
+das ist der gleiche Bootloader, den ich auch im Brenner8 einsetze. Die Konfiguration ist für einen 20MHz Quarz/Resonator an OSC1/OSC2 ausgelegt.
+
+Beachte bitte folgendes:
+
+Der Bootloader startet, wenn etweder:
+
+- Pin 1 auf low liegt, oder
+- die EEPROM-Zelle 0xFE den Wert 0xFF hat
+
+Das Delphi-Programm zum Laden eines HEX-Files löscht die EEPROM-Zelle dann wieder automatisch.
+
+Wenn der Bootloader startet, dann schaltet er die Pins RB0 und RC1 auf output, und gibt high aus.
+Wenn das stört, dann kann ich das natürlich ändern.
+
+
+Jörg
