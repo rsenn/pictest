@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -9787,7 +9787,7 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="R1" library="r" deviceset="R" device="0202/7" value="680"/>
 <part name="C1" library="rcl" deviceset="CPOL-EU" device="E2.5-5" value="47u"/>
 <part name="D1" library="d" deviceset="1N4148" device="34-7V" value="1N914"/>
-<part name="IC1" library="opto-c" deviceset="ACPL-827" device=""/>
+<part name="IC1" library="opto-c" deviceset="ACPL-827" device="" value="PC827"/>
 <part name="R3" library="r" deviceset="R" device="0202/10-V" value="470"/>
 <part name="P+1" library="supply1" deviceset="+5V" device=""/>
 <part name="R4" library="r" deviceset="R" device="0202/7-V" value="1k"/>
