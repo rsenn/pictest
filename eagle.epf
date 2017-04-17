@@ -19,9 +19,6 @@ UsedLibrary="eagle/lbr/q.lbr"
 UsedLibrary="eagle/lbr/s.lbr"
 UsedLibrary="eagle/lbr/sw.lbr"
 UsedLibrary="eagle/lbr/usb.lbr"
-UsedLibrary="C:/Users/roman/Documents/fmbug/eagle/lbr/t.lbr"
-UsedLibrary="C:/Users/roman/Documents/fmbug/eagle/lbr/r.lbr"
-UsedLibrary="C:/Users/roman/Documents/fmbug/eagle/lbr/l.lbr"
 
 [Win_1]
 Type="Library Editor"
@@ -68,15 +65,14 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=94
-Device="L"
 
 [Win_2]
 Type="Schematic Editor"
 Loc="2 36 1279 819"
 State=2
 Number=2
-File="C:/Users/roman/Documents/eagle/fmbug/eagle/Simple-Bug-2SC9014.sch"
-View="39.5835 -15.4095 112.707 70.2224"
+File="eagle/7seg-2.54.sch"
+View="2.24536 -64.8423 129.835 39.2984"
 WireWidths=" 0 0.3048 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064 0.1524"
 PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
 PadDrills=" 0.5 0.6 0.7 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.8"
@@ -122,8 +118,8 @@ Type="Board Editor"
 Loc="273 62 1173 801"
 State=2
 Number=1
-File="C:/Users/roman/Documents/eagle/fmbug/eagle/Simple-Bug-2SC9014.brd"
-View="-6.9121 -3.9376 34.9308 26.4936"
+File="eagle/7seg-2.54.brd"
+View="-0.8636 -0.729484 44.0436 33.6818"
 WireWidths=" 0 0.254 0.3048 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064 0.6096"
 PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
 PadDrills=" 0.5 0.6 0.7 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.8"
@@ -165,12 +161,12 @@ Layer=16
 
 [Win_4]
 Type="Control Panel"
-Loc="0 163 1279 733"
+Loc="1166 293 2293 878"
 State=2
 Number=0
 
 [Desktop]
-Screen="3200 1080"
+Screen="1920 1080"
 Window="Win_1"
 Window="Win_2"
 Window="Win_3"
