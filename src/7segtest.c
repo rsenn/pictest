@@ -36,14 +36,14 @@
 #define B_MINUS 0b0100
 #define B_RIGHT 0b1000
 
-#define SEGMENT_e 0b10000000
-#define SEGMENT_d 0b01000000
-#define SEGMENT_g 0b00100000
-#define SEGMENT_f 0b00010000
-#define SEGMENT_b 0b00001000
-#define SEGMENT_a 0b00000100
-#define SEGMENT_c 0b00000010
-#define SEGMENT_dp 0b00000001
+#define SEGMENT_b 0b10000000
+#define SEGMENT_a 0b01000000
+#define SEGMENT_c 0b00100000
+#define SEGMENT_dp 0b00010000
+#define SEGMENT_e 0b00001000
+#define SEGMENT_d 0b00000100
+#define SEGMENT_g 0b00000010
+#define SEGMENT_f 0b00000001
 
 
 const uint8_t digits[] = {
@@ -143,7 +143,7 @@ int main()
   static BOOL led_state = 0;
   // static uint8_t prev_index = 0, prev_seconds = 0;
   char input;
-  uint32_t interval = 100;
+  uint32_t interval = 25;
 
   msec_count = msecs = 0;
   hsecs = 0;
@@ -227,7 +227,7 @@ int main()
       if (tmp_msecs >= prev_hsecs + interval) {
 
       PORTB = display_bits[display_index];
-      PORTC = ~(1 << display_index);
+      PORTC = ~(0b1000 >> display_index);
 
 
       ++display_index;
