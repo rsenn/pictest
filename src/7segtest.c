@@ -100,6 +100,17 @@ volatile uint8_t msec_count = 0;
 volatile uint16_t bres;
 volatile uint32_t msecs, hsecs;
 
+void
+set_number(uint16_t n) {
+  GIE = 0;
+  display_index = 0;
+   display_bits[3] = digits[n % 10]; n  /= 10;
+   display_bits[2] = digits[n % 10]; n  /= 10;
+   display_bits[1] = digits[n % 10]; n  /= 10;
+   display_bits[0] = digits[n % 10]; 
+   GIE = 1;
+}
+
 //-----------------------------------------------------------------------------
 // Interrupt handling routine
 //-----------------------------------------------------------------------------
@@ -123,6 +134,12 @@ INTERRUPT_HANDLER()
       bres -= 5000;
       msecs++;
       msec_count++;
+
+      PORTC |= 0b1111;
+      PORTB = display_bits[display_index];
+      PORTC = ~(0b1000 >> display_index);
+      ++display_index;
+      display_index &= 3;
     }
     if (msec_count >= 10) { // if reached 1 decisecond!
       hsecs++;  // update clock, etc
@@ -143,7 +160,8 @@ int main()
   static BOOL led_state = 0;
   // static uint8_t prev_index = 0, prev_seconds = 0;
   char input;
-  uint32_t interval = 25;
+  uint32_t interval = 100;
+  uint16_t number = 0;
 
   msec_count = msecs = 0;
   hsecs = 0;
@@ -226,13 +244,10 @@ int main()
 
       if (tmp_msecs >= prev_hsecs + interval) {
 
-      PORTB = display_bits[display_index];
-      PORTC = ~(0b1000 >> display_index);
 
-
-      ++display_index;
-      display_index &= 3;
-
+set_number(number);
+number++;
+if(number >= 10000) number = 0;
 
         led_state = !led_state;
         LED_PIN = !led_state;
