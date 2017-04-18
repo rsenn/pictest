@@ -130,8 +130,7 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/roman/Documents/pictest",
-		"/C/Users/roman/Documents/pictest/src"
+		"/C/Users/roman.gatling/Documents.orig/pictest"
 	],
 	"file_history":
 	[
@@ -266,7 +265,7 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -500,7 +499,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1530.0,
+						"translation.y": 1344.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -519,8 +518,8 @@
 						"selection":
 						[
 							[
-								1094,
-								1094
+								1375,
+								1375
 							]
 						],
 						"settings":
@@ -607,7 +606,7 @@
 							"syntax": "Packages/C99/C99.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 720.0,
+						"translation.y": 559.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
