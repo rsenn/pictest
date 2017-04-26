@@ -12,48 +12,26 @@
 	"buffers":
 	[
 		{
-			"file": "/home/roman/.config/sublime-text-3/Packages/User/SchemrFavorites.sublime-settings",
+			"file": "bootloaders/18f2550-usb-hid-xc8/FIRMWARE/PIC18F2550/src/main_hid.c",
 			"settings":
 			{
-				"buffer_size": 2453,
+				"buffer_size": 6688,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/roman/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+			"file": "src/7segtest.c",
 			"settings":
 			{
-				"buffer_size": 827,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"buffer_size": 5385,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "[\n\t{ \"keys\": [\"alt+f5\"], \"command\": \"schemr_list_schemes\" },\n\t{ \"keys\": [\"alt+f7\"], \"command\": \"schemr_cycle_schemes\", \"args\": {\"direction\": \"prev\"}},\n\t{ \"keys\": [\"alt+f8\"], \"command\": \"schemr_cycle_schemes\", \"args\": {\"direction\": \"next\"}},\n\t{ \"keys\": [\"alt+f10\"], \"command\": \"schemr_cycle_schemes\", \"args\": {\"direction\": \"rand\"}},\n\n\t{ \"keys\": [\"shift+alt+f5\"], \"command\": \"schemr_list_favorite_schemes\" },\n\t{ \"keys\": [\"shift+alt+f7\"], \"command\": \"schemr_cycle_favorite_schemes\", \"args\": {\"direction\": \"prev\"}},\n\t{ \"keys\": [\"shift+alt+f8\"], \"command\": \"schemr_cycle_favorite_schemes\", \"args\": {\"direction\": \"next\"}},\n\t{ \"keys\": [\"shift+alt+f10\"], \"command\": \"schemr_cycle_favorite_schemes\", \"args\": {\"direction\": \"rand\"}}\n]\n",
-			"file": "/home/roman/.config/sublime-text-3/Packages/Schemr/Default (Linux).sublime-keymap",
-			"file_size": -1,
-			"file_write_time": -1,
+			"file": "lib/adc.c",
 			"settings":
 			{
-				"buffer_size": 724,
-				"line_ending": "Unix",
-				"read_only": true,
-				"scratch": true
-			}
-		},
-		{
-			"file": "src/config-18f252.h",
-			"settings":
-			{
-				"buffer_size": 798,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/config-18f25k50.h",
-			"settings":
-			{
-				"buffer_size": 734,
+				"buffer_size": 1257,
 				"line_ending": "Unix"
 			}
 		}
@@ -65,7 +43,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 32.0,
+		"height": 392.0,
 		"last_filter": "Package Control: ",
 		"selected_items":
 		[
@@ -138,15 +116,13 @@
 				"About"
 			]
 		],
-		"width": 449.0
+		"width": 528.0
 	},
 	"console":
 	{
 		"height": 250.0,
 		"history":
 		[
-			" import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
-			" import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
 			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
 			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
 		]
@@ -162,16 +138,13 @@
 	},
 	"expanded_folders":
 	[
-		"/mnt/win7/Users/roman/Documents/pictest",
-		"/mnt/win7/Users/roman/Documents/pictest/src"
+		"/C/Users/roman.gatling/Documents.orig/pictest",
+		"/C/Users/roman.gatling/Documents.orig/pictest/build",
+		"/C/Users/roman.gatling/Documents.orig/pictest/lib",
+		"/C/Users/roman.gatling/Documents.orig/pictest/src"
 	],
 	"file_history":
 	[
-		"/home/roman/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
-		"/mnt/win7/Users/roman/Documents/pictest/bootloaders/18f2550-usb-hid-xc8/FIRMWARE/PIC18F2550/src/main_hid.c",
-		"/mnt/win7/Users/roman/Documents/pictest/src/7segtest.c",
-		"/home/roman/.config/sublime-text-3/Packages/Schemr/SchemrFavorites.sublime-settings",
-		"/home/roman/.config/sublime-text-3/Packages/Schemr/Default (Linux).sublime-keymap",
 		"/C/Users/roman.gatling/Documents.orig/pictest/src/pictest.h",
 		"/C/Users/roman.gatling/Documents.orig/pictest/src/blinktest.c",
 		"/C/Users/roman.gatling/Documents.orig/pictest/src/7segtest.c",
@@ -294,11 +267,16 @@
 		"/E/Sources/pictest/cmdline.txt",
 		"/E/Sources/pictest/config-18f252.h",
 		"/E/Sources/pictest/config-16f628a.h",
-		"/E/Sources/pictest/files.list"
+		"/E/Sources/pictest/files.list",
+		"/E/Sources/pictest/Makefile.vars",
+		"/E/Sources/pictest/Makefile.common",
+		"/E/Sources/pictest/Makefile.htc",
+		"/E/Sources/pictest/Makefile.mcc18",
+		"/E/Sources/pictest/Makefile.xc8"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 42.0
 	},
 	"find_in_files":
 	{
@@ -430,148 +408,176 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/home/roman/.config/sublime-text-3/Packages/User/SchemrFavorites.sublime-settings",
+					"file": "bootloaders/18f2550-usb-hid-xc8/FIRMWARE/PIC18F2550/src/main_hid.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2453,
+						"buffer_size": 6688,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								579,
-								579
+								848,
+								848
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/home/roman/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 827,
-						"regions":
-						{
-						},
-						"selection":
-						[
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
 							[
-								708,
-								708
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"incomplete_sync": null,
+							"is_init_dirty_state": false,
+							"origin_encoding": "ASCII",
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C99/C99.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/home/roman/.config/sublime-text-3/Packages/Schemr/Default (Linux).sublime-keymap",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 724,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1,
-								1
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2097.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "src/config-18f252.h",
+					"buffer": 1,
+					"file": "src/7segtest.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 798,
+						"buffer_size": 5385,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								632,
-								632
+								4141,
+								4141
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C99/C99.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 405.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/config-18f25k50.h",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 734,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								25,
-								25
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C99/C99.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2325.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "lib/adc.c",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1257,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1152,
+								1163
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C99/C99.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 630.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
