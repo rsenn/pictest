@@ -101,14 +101,15 @@ volatile uint16_t bres;
 volatile uint32_t msecs, hsecs;
 
 void
-set_number(uint16_t n) {
+set_number(uint16_t n)
+{
   GIE = 0;
   display_index = 0;
-   display_bits[3] = digits[n % 10]; n  /= 10;
-   display_bits[2] = digits[n % 10]; n  /= 10;
-   display_bits[1] = digits[n % 10]; n  /= 10;
-   display_bits[0] = digits[n % 10]; 
-   GIE = 1;
+  display_bits[3] = digits[n % 10]; n  /= 10;
+  display_bits[2] = digits[n % 10]; n  /= 10;
+  display_bits[1] = digits[n % 10]; n  /= 10;
+  display_bits[0] = digits[n % 10];
+  GIE = 1;
 }
 
 //-----------------------------------------------------------------------------
@@ -169,8 +170,8 @@ int main()
   run = 1;
 
 
-TRISA = 0b11111111;
-ADON = 0;
+  TRISA = 0b11111111;
+  ADON = 0;
 
 #if defined(__16f876a) || defined(__18f252)
   TRISC4 = TRISC5 = INPUT;
@@ -208,10 +209,10 @@ ADON = 0;
 
   //  put_str(put_char, "blinktest\r\n");
 
-    display_bits[0] = digits[1];
-    display_bits[1] = digits[2];
-    display_bits[2] = digits[3];
-    display_bits[3] = digits[4];
+  display_bits[0] = digits[1];
+  display_bits[1] = digits[2];
+  display_bits[2] = digits[3];
+  display_bits[3] = digits[4];
   for (;;) {
 
     /*static float hue = 0;
@@ -248,9 +249,9 @@ ADON = 0;
       if (tmp_msecs >= prev_hsecs + interval) {
 
 
-set_number(number);
-number++;
-if(number >= 10000) number = 0;
+        set_number(number);
+        number++;
+        if (number >= 10000) number = 0;
 
         led_state = !led_state;
         LED_PIN = !led_state;
@@ -259,18 +260,18 @@ if(number >= 10000) number = 0;
         prev_hsecs = tmp_msecs;
       }
     }
-/*
-    GIE = 0;
-    tmp_msecs = msecs + 1000;
-    GIE = 1;
+    /*
+        GIE = 0;
+        tmp_msecs = msecs + 1000;
+        GIE = 1;
 
-    for (;;) {
-      BOOL wait;
-      GIE = 0;
-      wait = msecs < tmp_msecs;
-      GIE = 1;
+        for (;;) {
+          BOOL wait;
+          GIE = 0;
+          wait = msecs < tmp_msecs;
+          GIE = 1;
 
-      if (!wait) break;
-    }*/
+          if (!wait) break;
+        }*/
   }
 }
