@@ -169,6 +169,9 @@ int main()
   run = 1;
 
 
+TRISA = 0b11111111;
+ADON = 0;
+
 #if defined(__16f876a) || defined(__18f252)
   TRISC4 = TRISC5 = INPUT;
 #endif

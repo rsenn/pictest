@@ -127,7 +127,12 @@ blinktest_DEFS += -DUSE_UART=1
 
 seg7test_SOURCES = 7segtest.c  timer.c random.c ser.c uart.c
 seg7test_DEFS += -DUSE_TIMER0=1
+ifeq ($(CHIP),$(subst 18f,,$(CHIP)))
+
+seg7test_CCVER = 9.83
+else
 seg7test_CCVER = 9.80
+endif
 #seg7test_DEFS += -DUSE_TIMER2=1 #-DUSE_TIMER1=1
 #seg7test_DEFS += -DUSE_SER=1
 #seg7test_DEFS += -DUSE_UART=1
