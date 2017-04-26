@@ -11,7 +11,7 @@ ifeq ($(PROGRAM),)
 PROGRAM := pictest
 endif
 
-define nl = 
+define nl =
 $(empty)
 $(empty)
 endef

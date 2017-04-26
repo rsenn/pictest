@@ -4,7 +4,7 @@
 # include "device.h"
 
 # if defined(SDCC) || defined(HI_TECH_C) || defined(__XC) || defined(__XC8)
-#if (_HTC_VER_MINOR_ >= 80)
+#if (_HTC_VER_MINOR_ > 80)
 #  include <stdbool.h>
 #  include <stdint.h>
 #else

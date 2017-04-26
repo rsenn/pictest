@@ -33,8 +33,15 @@ COMPILER_NAME = picc
 COMPILER_DIR = PICC
 #CCVER = PRO/9.60
 CCVER = 9.83
+
 #CCVER := 9.71a
 endif
+
+
+ifneq ($($(PROGRAM)_CCVER),)
+CCVER := $($(PROGRAM)_CCVER)
+endif
+
 
 ifneq ($($(subst -,_,$(PROGRAM))_CCVER),)
 CCVER := $($(subst -,_,$(PROGRAM))_CCVER)
@@ -130,7 +137,7 @@ else
 COMMON_FLAGS += --opt="default,+asm$(OPT_SPEED)"
 endif
 
-COMMON_FLAGS += --double=32 
+COMMON_FLAGS += --double=32
 #COMMON_FLAGS += --float=32
 
 COMMON_FLAGS += --warn=3

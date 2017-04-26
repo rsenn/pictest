@@ -110,7 +110,7 @@ pictest_SOURCES = pictest.c delay.c lcd44780.c ser.c softser.c  uart.c adc.c led
 pictest_DEFS +=  -DUSE_TIMER0=1 -DUSE_UART=1
 
 ifneq ($(chipl),12f1840)
-pictest_DEFS += -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400 
+pictest_DEFS += -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
 endif
 
 pictest2_SOURCES = pictest2.c adc.c delay.c lcd44780.c ser.c pwm.c onewire.c ds18b20.c ledsense.c  timer.c
@@ -119,14 +119,15 @@ pictest2_DEFS += -DUSE_TIMER0=1
 ps2test_SOURCES = ps2test.c uart.c timer.c
 ps2test_DEFS += -DUSE_TIMER0=1
 
-blinktest_SOURCES = blinktest.c  timer.c softpwm.c random.c ser.c uart.c softser.c 
+blinktest_SOURCES = blinktest.c  timer.c softpwm.c random.c ser.c uart.c softser.c
 blinktest_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_SOFTPWM=1
 blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1
-#blinktest_DEFS += -DUSE_SER=1 
-blinktest_DEFS += -DUSE_UART=1 
+#blinktest_DEFS += -DUSE_SER=1
+blinktest_DEFS += -DUSE_UART=1
 
-seg7test_SOURCES = 7segtest.c  timer.c random.c ser.c uart.c 
+seg7test_SOURCES = 7segtest.c  timer.c random.c ser.c uart.c
 seg7test_DEFS += -DUSE_TIMER0=1
+seg7test_CCVER = 9.80
 #seg7test_DEFS += -DUSE_TIMER2=1 #-DUSE_TIMER1=1
 #seg7test_DEFS += -DUSE_SER=1
 #seg7test_DEFS += -DUSE_UART=1
