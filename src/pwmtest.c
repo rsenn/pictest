@@ -19,19 +19,10 @@
 #include "delay.h"
 #include "lcd44780.h"
 
-#ifdef MCHP_XC8
-#else
-  #ifdef SDCC
-  __code uint16_t __at (_CONFIG) __configword = CONFIG_WORD;
-  #else
-  # ifdef HI_TECH_C
-  __CONFIG(CONFIG_WORD);
-  # define NOT_RBPU nRBPU
-  # else
-  #  error Unknown compiler
-  # endif
-  #endif
-#endif
+#include "config-bits.h"
+
+#include "ding-dong.h"
+
 
 #define LED_PIN RA4
 #define LED_TRIS TRISA4
@@ -53,7 +44,7 @@ volatile static uint8_t index;
 volatile static uint8_t ticks;
 volatile static uint16_t poti;
 
-INTERRUPT_HANDLER(void isr) {
+INTERRUPT_HANDLER() {
   if(T0IF) {  // Did we get a timer0 interrupt?
 
     PWM_setduty(1, sine_table[index % ARRAY_SIZE(sine_table)]);
@@ -77,8 +68,10 @@ void main(void) {
 
   adc_init();
 
+#if USE_HD44780_LCD
   lcd_init(1);
   lcd_begin(2, 1);
+#endif
 
   pwm_init(0b00);
 
@@ -120,15 +113,20 @@ void main(void) {
   TRISC0 = 0;
   RC0 = 0;
 
+#if USE_HD44780_LCD
   lcd_clear();
   lcd_print("pictest3");
+#endif 
+
 
   for(;;) { // Loop forever
     poti = adc_read(0);
 
+#if USE_HD44780_LCD
     lcd_gotoxy(10, 0);
     lcd_print_number(((double)poti * 5000 / 1024), 10, 4);
     lcd_print("mV");
+#endif
 
     GIE = 0;
 //    OPTION_REGbits.PS = 0b100 | (poti >> 8);

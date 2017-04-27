@@ -18,7 +18,7 @@ void
 adc_init(void);
 
 /* Enable ADC, start conversion and return data. Then disable ADC */
-unsigned short
+uint16_t 
 adc_read(char ch);
 
 /* Disable ADC for sleep */

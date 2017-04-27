@@ -12,7 +12,7 @@ adc_init(void) {
   /*ADCON1bits.*/ADCS2 = 0;
 
   ADCON0bits.CHS = 0;
-  ADCON1bits.PCFG = 0b1110;
+/*  ADCON1bits.*/PCFG = 0b1110;
   TRISA |= 0b1011;
 
   ADIE = 0;

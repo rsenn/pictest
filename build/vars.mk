@@ -145,6 +145,9 @@ ifeq ($(filter 10f% 12f%,$(chipl)),)
 serialtest_DEFS +=  -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
 endif
 
+pwmtest_SOURCES = pwmtest.c timer.c adc.c pwm.c
+pwmtest_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_ADCONVERTER=1 -DUSE_PWM=1
+
 ctmutest_SOURCES = ctmutest.c timer.c
 ctmutest_DEFS += -DUSE_TIMER0=1
 
