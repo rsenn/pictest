@@ -31,7 +31,7 @@
 			"file": "tools/wav2h.c",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 8589,
 				"encoding": "Western (Windows 1252)",
 				"line_ending": "Unix"
 			}
@@ -50,7 +50,7 @@
 		[
 			[
 				"Package Control: ",
-				"Package Control: Advanced Install Package"
+				"Package Control: Remove Package"
 			],
 			[
 				"adva",
@@ -140,7 +140,6 @@
 	"expanded_folders":
 	[
 		"/C/Users/roman.gatling/Documents.orig/pictest",
-		"/C/Users/roman.gatling/Documents.orig/pictest/build",
 		"/C/Users/roman.gatling/Documents.orig/pictest/tools",
 		"/C/Users/roman.gatling/Documents.orig/pictest/wave-cpp-xc8"
 	],
@@ -558,15 +557,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 8589,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								135,
+								137
 							]
 						],
 						"settings":
