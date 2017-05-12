@@ -154,6 +154,6 @@ ctmutest_DEFS += -DUSE_TIMER0=1
 ctmutest2_SOURCES = ctmutest2.c timer.c
 ctmutest2_DEFS += -DUSE_TIMER0=1
 
-ringtone_SOURCES = ringtone.c timer.c
+ringtone_SOURCES = ringtone.c timer.c random.c
 ringtone_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1  -DAxelF=1
 
