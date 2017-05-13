@@ -61,9 +61,10 @@ exec_cmd() {
 }
 
 eagle_print_to_pdf() {
+
   INPUT=$1
   OUTPUT=${2:-${1%.*}.pdf}
-  ${RM} -f "$OUTPUT"
+  ${RM:-rm} -f -- "$OUTPUT"
   OPTIONS=$3
   : ${SCALE:=1.0}
   : ${PAPER:="a4"}
