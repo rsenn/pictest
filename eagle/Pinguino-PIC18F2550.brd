@@ -130,6 +130,50 @@
 <wire x1="43.18" y1="0" x2="43.18" y2="68.58" width="0" layer="20"/>
 <wire x1="43.18" y1="68.58" x2="0" y2="68.58" width="0" layer="20"/>
 <wire x1="0" y1="68.58" x2="0" y2="0" width="0" layer="20"/>
+<text x="-1.27" y="2.54" size="0.8128" layer="20" align="center-right">1</text>
+<text x="-1.27" y="5.08" size="0.8128" layer="20" align="center-right">2</text>
+<text x="-1.27" y="7.62" size="0.8128" layer="20" align="center-right">3</text>
+<text x="-1.27" y="10.16" size="0.8128" layer="20" align="center-right">4</text>
+<text x="-1.27" y="12.7" size="0.8128" layer="20" align="center-right">5</text>
+<text x="-1.27" y="15.24" size="0.8128" layer="20" align="center-right">6</text>
+<text x="-1.27" y="17.78" size="0.8128" layer="20" align="center-right">7</text>
+<text x="-1.27" y="20.32" size="0.8128" layer="20" align="center-right">8</text>
+<text x="-1.27" y="22.86" size="0.8128" layer="20" align="center-right">9</text>
+<text x="-1.27" y="25.4" size="0.8128" layer="20" align="center-right">10</text>
+<text x="-1.27" y="27.94" size="0.8128" layer="20" align="center-right">11</text>
+<text x="-1.27" y="30.48" size="0.8128" layer="20" align="center-right">12</text>
+<text x="-1.27" y="33.02" size="0.8128" layer="20" align="center-right">13</text>
+<text x="-1.27" y="35.56" size="0.8128" layer="20" align="center-right">14</text>
+<text x="-1.27" y="38.1" size="0.8128" layer="20" align="center-right">15</text>
+<text x="-1.27" y="40.64" size="0.8128" layer="20" align="center-right">16</text>
+<text x="-1.27" y="43.18" size="0.8128" layer="20" align="center-right">17</text>
+<text x="-1.27" y="45.72" size="0.8128" layer="20" align="center-right">18</text>
+<text x="-1.27" y="48.26" size="0.8128" layer="20" align="center-right">19</text>
+<text x="-1.27" y="50.8" size="0.8128" layer="20" align="center-right">20</text>
+<text x="-1.27" y="53.34" size="0.8128" layer="20" align="center-right">21</text>
+<text x="-1.27" y="55.88" size="0.8128" layer="20" align="center-right">22</text>
+<text x="-1.27" y="58.42" size="0.8128" layer="20" align="center-right">23</text>
+<text x="-1.27" y="60.96" size="0.8128" layer="20" align="center-right">24</text>
+<text x="-1.27" y="63.5" size="0.8128" layer="20" align="center-right">25</text>
+<text x="-1.27" y="66.04" size="0.8128" layer="20" align="center-right">26</text>
+<text x="2.54" y="-1.27" size="0.8128" layer="20" align="top-center">1</text>
+<text x="5.08" y="-1.27" size="0.8128" layer="20" align="top-center">2</text>
+<text x="7.62" y="-1.27" size="0.8128" layer="20" align="top-center">3</text>
+<text x="10.16" y="-1.27" size="0.8128" layer="20" align="top-center">4</text>
+<text x="12.7" y="-1.27" size="0.8128" layer="20" align="top-center">5</text>
+<text x="15.24" y="-1.27" size="0.8128" layer="20" align="top-center">6</text>
+<text x="17.78" y="-1.27" size="0.8128" layer="20" align="top-center">7</text>
+<text x="20.32" y="-1.27" size="0.8128" layer="20" align="top-center">8</text>
+<text x="22.86" y="-1.27" size="0.8128" layer="20" align="top-center">9</text>
+<text x="25.4" y="-1.27" size="0.8128" layer="20" align="top-center">10</text>
+<text x="27.94" y="-1.27" size="0.8128" layer="20" align="top-center">11</text>
+<text x="30.48" y="-1.27" size="0.8128" layer="20" align="top-center">12</text>
+<text x="33.02" y="-1.27" size="0.8128" layer="20" align="top-center">13</text>
+<text x="35.56" y="-1.27" size="0.8128" layer="20" align="top-center">14</text>
+<text x="38.1" y="-1.27" size="0.8128" layer="20" align="top-center">15</text>
+<text x="40.64" y="-1.27" size="0.8128" layer="20" align="top-center">16</text>
+<dimension x1="45.72" y1="68.58" x2="45.72" y2="0" x3="48.26" y3="34.29" textsize="1.778" layer="20" visible="yes"/>
+<dimension x1="0" y1="71.12" x2="43.18" y2="71.12" x3="21.59" y3="72.39" textsize="1.778" layer="20" visible="yes"/>
 </plain>
 <libraries>
 <library name="c">
@@ -271,6 +315,10 @@
 <pad name="VBUS" x="5.08" y="-2.54" drill="0.9144" diameter="1.778" rot="R90"/>
 <text x="-5.08" y="-1.27" size="1.27" layer="25" rot="R90" align="top-center">&gt;NAME</text>
 <text x="-2.54" y="-1.27" size="1.27" layer="27" rot="R90" align="top-center">&gt;VALUE</text>
+<text x="2.54" y="1.27" size="0.6096" layer="48" font="vector" rot="R90" align="center-left">D+</text>
+<text x="5.08" y="1.27" size="0.6096" layer="48" font="vector" rot="R90" align="center-left">D-</text>
+<text x="2.54" y="-3.81" size="0.6096" layer="48" font="vector" rot="R90" align="center-right">GND</text>
+<text x="5.08" y="-3.81" size="0.6096" layer="48" font="vector" rot="R90" align="center-right">VCC</text>
 </package>
 </packages>
 </library>

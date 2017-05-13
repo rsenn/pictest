@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.025" unitdist="inch" unit="inch" style="lines" multiple="4" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="dots" multiple="2" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -352,6 +352,10 @@
 <pad name="VBUS" x="5.08" y="-2.54" drill="0.9144" diameter="1.778" rot="R90"/>
 <text x="-5.08" y="-1.27" size="1.27" layer="25" rot="R90" align="top-center">&gt;NAME</text>
 <text x="-2.54" y="-1.27" size="1.27" layer="27" rot="R90" align="top-center">&gt;VALUE</text>
+<text x="2.54" y="1.27" size="0.6096" layer="48" font="vector" rot="R90" align="center-left">D+</text>
+<text x="5.08" y="1.27" size="0.6096" layer="48" font="vector" rot="R90" align="center-left">D-</text>
+<text x="2.54" y="-3.81" size="0.6096" layer="48" font="vector" rot="R90" align="center-right">GND</text>
+<text x="5.08" y="-3.81" size="0.6096" layer="48" font="vector" rot="R90" align="center-right">VCC</text>
 </package>
 </packages>
 </library>
