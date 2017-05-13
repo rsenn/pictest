@@ -31,7 +31,7 @@ find_program() {
 
 get_pdf_info() {
  (TMP=$(mktemp  pdftkXXXXXX.txt)
-  trap '${RM} -f "$TMP"' EXIT
+  trap '${RMTEMP} -f "$TMP"' EXIT
   "$PDFTK" "$1" dump_data output "$TMP"
   cat "$TMP")
 }
@@ -64,7 +64,7 @@ eagle_print_to_pdf() {
 
   INPUT=$1
   OUTPUT=${2:-${1%.*}.pdf}
-  ${RM:-rm} -f -- "$OUTPUT"
+  rm -f -- "$OUTPUT"
   OPTIONS=$3
   : ${SCALE:=1.0}
   : ${PAPER:="a4"}
@@ -101,7 +101,7 @@ EOF
    exec_cmd PDFTK "$OUTPUT" update_info "$TMP" output  "$OUTPUT.$$")
 
  (#exec_cmd GHOSTSCRIPT -dNOCACHE -dNOPAUSE -dBATCH -dSAFER -sDEVICE=eps2write -dLanguageLevel=2 -sOutputFile="${OUTPUT%.pdf}.eps" -f "$OUTPUT"
-  exec_cmd PDFTOPS -eps "$OUTPUT" "${OUTPUT%.pdf}.eps" && ${RM} -vf "$OUTPUT"
+  exec_cmd PDFTOPS -eps "$OUTPUT" "${OUTPUT%.pdf}.eps" && ${RMTEMP} -vf -- "$OUTPUT"
 )
 
 echo 1>&2
@@ -109,7 +109,7 @@ echo 1>&2
 
 eagle_print() {
 
-  : ${RM:=rm}
+  : ${RMTEMP:=rm}
 
   export HOME="$(cygpath -a "$USERPROFILE")"
 
@@ -125,7 +125,7 @@ eagle_print() {
    (SCH=${ARG%.*}.sch
   BRD=${ARG%.*}.brd
   OUT=doc/pdf/$(basename "${BRD%.*}").pdf
-   trap '${RM} -f "${BRD%.*}"-{schematic,board,board-mirrored}.{pdf,eps}' EXIT
+   trap '${RMTEMP} -f "${BRD%.*}"-{schematic,board,board-mirrored}.{pdf,eps}' EXIT
 
 #  ORIENTATION="portrait" PAPER="a4" SCALE=1.0 eagle_print_to_pdf "$SCH" "${SCH%.*}-schematic.pdf"
   ORIENTATION="landscape" PAPER="a4" SCALE="0.8 -1" eagle_print_to_pdf "$SCH" "${SCH%.*}-schematic.pdf"

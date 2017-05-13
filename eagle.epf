@@ -71,7 +71,7 @@ Sheet="1"
 [Win_2]
 Type="Board Editor"
 Loc="460 4 1890 743"
-State=2
+State=0
 Number=2
 File="eagle/Pinguino-PIC18F2550.brd"
 View="-18.9445 -7.5338 19.4064 48.5748"
