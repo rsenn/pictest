@@ -1,6 +1,6 @@
 [Eagle]
 Version="07 06 00"
-Platform="Windows"
+Platform="Linux"
 Serial="62191E841E-LSR-WLM-1EL"
 Globals="Globals"
 Desktop="Desktop"
@@ -116,12 +116,12 @@ Layer=20
 
 [Win_3]
 Type="Control Panel"
-Loc="201 59 1461 632"
+Loc="296 40 1827 831"
 State=2
 Number=0
 
 [Desktop]
-Screen="3280 1080"
+Screen="1920 1080"
 Window="Win_1"
 Window="Win_2"
 Window="Win_3"
