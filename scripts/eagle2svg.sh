@@ -144,8 +144,12 @@ eagle_print() {
 
 EAGLE=${EAGLE//eagle.exe/eaglecon.exe}
 
+I=0
+N=$#
+   
   for ARG; do
-
+   I=$((I+1))
+   echo "Processing '$ARG' ($((I))/$((N)))" 1>&2
    (SCH=${ARG%.*}.sch
     if [ ! -e "${SCH}.sch" ]; then
       SCH=${SCH%-[[:lower:]]*}.sch
@@ -168,6 +172,7 @@ EAGLE=${EAGLE//eagle.exe/eaglecon.exe}
     eagle_to_svg "$BRD" "${BRD%.*}-board-mirrored.pdf" MIRROR
 
     echo "Blah" 1>&2
+    
 
    (for OUTPUT in "${SCH%.*}"-schematic.pdf \
   "${BRD%.*}"-{board,board-mirrored}.pdf \
