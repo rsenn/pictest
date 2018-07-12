@@ -1,8 +1,8 @@
 # Library script
 # 
-# Exported from G:/Users/roman/Documents/pictest/eagle/lbr/t.lbr at 17.04.2017 04:11
+# Exported from C:/Users/roman/Documents/Sources/pictest/eagle/lbr/t.lbr at 12.07.2018 09:16
 # 
-# EAGLE Version 7.6.0 Copyright (c) 1988-2016 CadSoft
+# EAGLE Version 7.7.0 Copyright (c) 1988-2016 CadSoft
 # 
 Set Wire_Bend 2;
 # Grid changed to 'mm' to avoid loss of precision!

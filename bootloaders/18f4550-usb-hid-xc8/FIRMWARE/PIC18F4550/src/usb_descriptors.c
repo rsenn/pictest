@@ -252,7 +252,7 @@ sizeof(sd002),USB_DESCRIPTOR_STRING,
 #elif defined(__18F27J53)
     '1','8','F','2','7','J','5','3',')'
 #else
-    #warning "PIC ???"
+    #pragma warning "PIC ???"
 #endif
 }};
 

@@ -712,7 +712,7 @@ void USBDeviceTasks(void)
         #if defined(USB_ENABLE_STATUS_STAGE_TIMEOUTS)
             //Supporting this feature requires a 1ms timebase for keeping track of the timeout interval.
             #if(USB_SPEED_OPTION == USB_LOW_SPEED)
-                #warning "Double click this message.  See inline code comments."
+                #pragma warning "Double click this message.  See inline code comments."
                 //The "USB_ENABLE_STATUS_STAGE_TIMEOUTS" feature is optional and is
                 //not strictly needed in all applications (ex: those that never call 
                 //USBDeferStatusStage() and don't use host to device (OUT) control

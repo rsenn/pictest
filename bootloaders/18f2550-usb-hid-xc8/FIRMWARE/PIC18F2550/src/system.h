@@ -34,7 +34,7 @@
     #include <xc.h>
 
 #else
-    #warning "compiler ???"
+    #pragma warning "compiler ???"
 #endif
 
 //#include <stdbool.h>  --VSK wth is ist needed for ?
@@ -50,7 +50,7 @@
     #include "../config_18F4550.h"
 
 #else
-    #warning "which PIC ???"
+    #pragma warning "which PIC ???"
 #endif
 #define MAIN_RETURN void
 

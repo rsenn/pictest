@@ -381,7 +381,7 @@ typedef union
 #if defined USB_DISABLE_SUSPEND_HANDLER
     #define USB_SUSPEND_HANDLER(event,pointer,size) 
     
-    #warning "Disabling the suspend handler is not recommended.  Proper suspend handling is required to create a compliant USB device."                
+    #pragma warning "Disabling the suspend handler is not recommended.  Proper suspend handling is required to create a compliant USB device."                
 #else
     #define USB_SUSPEND_HANDLER(event,pointer,size)             USER_USB_CALLBACK_EVENT_HANDLER(event,pointer,size)
 #endif
@@ -389,7 +389,7 @@ typedef union
 #if defined USB_DISABLE_WAKEUP_FROM_SUSPEND_HANDLER
     #define USB_WAKEUP_FROM_SUSPEND_HANDLER(event,pointer,size) 
 
-    #warning "Disabling the wake from suspend handler is not recommended.  Proper suspend handling is required to create a compliant USB device."                
+    #pragma warning "Disabling the wake from suspend handler is not recommended.  Proper suspend handling is required to create a compliant USB device."                
 #else
     #define USB_WAKEUP_FROM_SUSPEND_HANDLER(event,pointer,size) USER_USB_CALLBACK_EVENT_HANDLER(event,pointer,size)   
 #endif

@@ -83,11 +83,11 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 #if defined (USB_SUPPORT_HOST)
     #if defined (USB_SUPPORT_OTG)
         #if (USB_INITIAL_VBUS_CURRENT < 8/2) || (USB_INITIAL_VBUS_CURRENT > 100/2)
-            #warning USB_INITIAL_VBUS_CURRENT is in violation of the USB specification.
+            #pragma warning USB_INITIAL_VBUS_CURRENT is in violation of the USB specification.
         #endif
     #else
         #if (USB_INITIAL_VBUS_CURRENT != 100/2)
-            #warning USB_INITIAL_VBUS_CURRENT is in violation of the USB specification.
+            #pragma warning USB_INITIAL_VBUS_CURRENT is in violation of the USB specification.
         #endif
     #endif
 #endif

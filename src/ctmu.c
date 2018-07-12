@@ -33,7 +33,7 @@
     !defined(__18f26j53) && !defined(__18f46j53) && \
     !defined(__18f27j53) && !defined(__18f47j53)
 
-    #warning "Your proc. has no built-in CTMU module"
+    #pragma warning "Your proc. has no built-in CTMU module"
 
 #endif
 
