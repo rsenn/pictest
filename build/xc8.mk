@@ -23,7 +23,7 @@ VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
 CCVER = v1.34
 
-PROGRAMFILES = C:/Program Files (x86)
+PROGRAMFILES ?= C:/Program Files (x86)
 
 OS = $(shell uname -o)
 
