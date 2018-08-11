@@ -1,5 +1,5 @@
 [Eagle]
-Version="07 06 00"
+Version="07 02 00"
 Platform="Linux"
 Serial="62191E841E-LSR-WLM-1EL"
 Globals="Globals"
@@ -7,13 +7,15 @@ Desktop="Desktop"
 
 [Globals]
 AutoSaveProject=1
+UsedLibrary="/home/roman/eagle/an-tronics/eagle/lbr/pad.lbr"
+UsedLibrary="/home/roman/eagle/an-tronics/eagle/lbr/r.lbr"
+UsedLibrary="/home/roman/eagle/an-tronics/eagle/lbr/t.lbr"
 UsedLibrary="eagle/lbr/boards.lbr"
 UsedLibrary="eagle/lbr/c.lbr"
 UsedLibrary="eagle/lbr/d.lbr"
 UsedLibrary="eagle/lbr/lcd.lbr"
 UsedLibrary="eagle/lbr/mcu.lbr"
 UsedLibrary="eagle/lbr/o.lbr"
-UsedLibrary="eagle/lbr/pad.lbr"
 UsedLibrary="eagle/lbr/pinconn.lbr"
 UsedLibrary="eagle/lbr/q.lbr"
 UsedLibrary="eagle/lbr/s.lbr"
@@ -21,56 +23,8 @@ UsedLibrary="eagle/lbr/sw.lbr"
 UsedLibrary="eagle/lbr/usb.lbr"
 
 [Win_1]
-Type="Schematic Editor"
-Loc="677 189 1760 870"
-State=0
-Number=1
-File="eagle/Pinguino-PIC18F2550.sch"
-View="-23.5351 -13.2769 158.569 100.375"
-WireWidths=" 0 0.3048 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064 0.1524"
-PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
-PadDrills=" 0.5 0.6 0.7 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.8"
-ViaDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
-ViaDrills=" 0.5 0.7 0.8 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.6"
-HoleDrills=" 0.5 0.7 0.8 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.6"
-TextSizes=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.9304 2.1844 2.54 3.81 5.08 6.4516 1.778"
-PolygonSpacings=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 5.08 6.4516 1.27"
-PolygonIsolates=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
-MiterRadiuss=" 0.254 0.3175 0.635 1.27 2.54 1 2 2.5 5 7.5 10 0"
-DimensionWidths=" 0 0.127 0.254 0.1 0.26 0.13"
-DimensionExtWidths=" 0.127 0.254 0.1 0.13 0.26 0"
-DimensionExtLengths=" 1.27 2.54 1 2 3 0"
-DimensionExtOffsets=" 1.27 2.54 1 2 3 0"
-SmdSizes=" 0.3048 0.1524 0.4064 0.2032 0.6096 0.3048 0.8128 0.4064 1.016 0.508 1.27 0.6604 1.4224 0.7112 1.6764 0.8128 1.778 0.9144 1.9304 0.9652 2.1844 1.0668 2.54 1.27 3.81 1.9304 5.08 2.54 6.4516 3.2512 1.27 0.635"
-WireBend=0
-WireBendSet=31
-WireCap=1
-MiterStyle=0
-PadShape=0
-ViaShape=0
-PolygonPour=0
-PolygonRank=0
-PolygonThermals=1
-PolygonOrphans=0
-TextRatio=8
-DimensionUnit=1
-DimensionPrecision=2
-DimensionShowUnit=0
-PinDirection=3
-PinFunction=0
-PinLength=2
-PinVisible=3
-SwapLevel=0
-ArcDirection=0
-AddLevel=2
-PadsSameType=0
-Layer=91
-Views=" 1: -23.5351 -13.2769 158.569 100.375"
-Sheet="1"
-
-[Win_2]
 Type="Board Editor"
-Loc="460 4 1890 743"
+Loc="169 4 1599 743"
 State=0
 Number=2
 File="eagle/Pinguino-PIC18F2550.brd"
@@ -114,14 +68,62 @@ AddLevel=2
 PadsSameType=0
 Layer=20
 
+[Win_2]
+Type="Schematic Editor"
+Loc="286 32 1593 866"
+State=2
+Number=1
+File="eagle/RaspberryPi-PICPgm.sch"
+View="-44.5479 26.9566 66.0673 106.141"
+WireWidths=" 0 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064 0.1524 0.254"
+PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
+PadDrills=" 0.5 0.6 0.7 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.8"
+ViaDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
+ViaDrills=" 0.5 0.7 0.8 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.6"
+HoleDrills=" 0.5 0.7 0.8 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.6"
+TextSizes=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.9304 2.1844 2.54 3.81 5.08 6.4516 1.778"
+PolygonSpacings=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 5.08 6.4516 1.27"
+PolygonIsolates=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
+MiterRadiuss=" 0.254 0.3175 0.635 1.27 2.54 1 2 2.5 5 7.5 10 0"
+DimensionWidths=" 0 0.127 0.254 0.1 0.26 0.13"
+DimensionExtWidths=" 0.127 0.254 0.1 0.13 0.26 0"
+DimensionExtLengths=" 1.27 2.54 1 2 3 0"
+DimensionExtOffsets=" 1.27 2.54 1 2 3 0"
+SmdSizes=" 0.3048 0.1524 0.4064 0.2032 0.6096 0.3048 0.8128 0.4064 1.016 0.508 1.27 0.6604 1.4224 0.7112 1.6764 0.8128 1.778 0.9144 1.9304 0.9652 2.1844 1.0668 2.54 1.27 3.81 1.9304 5.08 2.54 6.4516 3.2512 1.27 0.635"
+WireBend=0
+WireBendSet=31
+WireCap=1
+MiterStyle=0
+PadShape=0
+ViaShape=0
+PolygonPour=0
+PolygonRank=0
+PolygonThermals=1
+PolygonOrphans=0
+TextRatio=8
+DimensionUnit=3
+DimensionPrecision=2
+DimensionShowUnit=0
+PinDirection=3
+PinFunction=0
+PinLength=2
+PinVisible=3
+SwapLevel=0
+ArcDirection=0
+AddLevel=2
+PadsSameType=0
+Layer=91
+Views=" 1: -44.5479 26.9566 66.0673 106.141"
+Sheet="1"
+
 [Win_3]
 Type="Control Panel"
-Loc="296 40 1827 831"
+Loc="712 326 1593 834"
 State=2
 Number=0
 
 [Desktop]
-Screen="1920 1080"
+Screen="1600 900"
 Window="Win_1"
 Window="Win_2"
 Window="Win_3"
