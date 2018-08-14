@@ -31,14 +31,14 @@ struct cmd;
 
 typedef int (cmdfn)(const struct cmd*, char*);
 
-static int cmd_set(const struct cmd *, char* arg);
-static int cmd_get(const struct cmd *, char* arg);
-static int cmd_bitop(const struct cmd *, char* arg);
-
 typedef const struct cmd {
 	const char* name;
 	cmdfn* fn;
 } cmd_t;
+
+static int cmd_set(const cmd_t *, char* arg);
+static int cmd_get(const cmd_t *, char* arg);
+static int cmd_bitop(const cmd_t *, char* arg);
 
 
 const cmd_t cmds[] = {
@@ -106,13 +106,13 @@ shell_puts(sh, "-- ok --\n");
 }
 
 
-int cmd_set(const cmd_t *cmd, char* arg) {
+static int cmd_set(const cmd_t *cmd, char* arg) {
 	return 0;
 }
-int cmd_get(const cmd_t *cmd, char* arg) {
+static int cmd_get(const cmd_t *cmd, char* arg) {
 	return 0;
 }
-int cmd_bitop(const cmd_t *cmd, char* arg) {
+static int cmd_bitop(const cmd_t *cmd, char* arg) {
 	return 0;
 }
  
