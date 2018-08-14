@@ -51,67 +51,65 @@ COMMERCIAL APPLICATION PLEASE WRITE TO THE AUTHOR.
 
 #include <htc.h>
 
-
-//Chip Settings
+// Chip Settings
 __CONFIG(1, 0x0200);
 __CONFIG(2, 0X1E1F);
 __CONFIG(3, 0X8100);
 __CONFIG(4, 0X00C1);
 __CONFIG(5, 0XC00F);
 
+uint8_t counter = 0; // Overflow counter
 
-uint8_t counter = 0; //Overflow counter
-
-void main() {
-  //Setup Timer0
-  T0PS0 = 1; //Prescaler is divide by 256
+void
+main() {
+  // Setup Timer0
+  T0PS0 = 1; // Prescaler is divide by 256
 
   T0PS1 = 1;
   T0PS2 = 1;
 
-  PSA = 0;    //Timer Clock Source is from Prescaler
+  PSA = 0; // Timer Clock Source is from Prescaler
 
-  T0CS = 0;   //Prescaler gets clock from FCPU (5MHz)
+  T0CS = 0; // Prescaler gets clock from FCPU (5MHz)
 
-  T08BIT = 1; //8 BIT MODE
+  T08BIT = 1; // 8 BIT MODE
 
-  TMR0IE = 1; //Enable TIMER0 Interrupt
-  PEIE = 1;   //Enable Peripheral Interrupt
+  TMR0IE = 1; // Enable TIMER0 Interrupt
+  PEIE = 1; // Enable Peripheral Interrupt
 
-  GIE = 1;    //Enable INTs globally
+  GIE = 1; // Enable INTs globally
 
-  TMR0ON = 1;    //Now start the timer!
+  TMR0ON = 1; // Now start the timer!
 
-  //Set RB1 as output because we have LED on it
+  // Set RB1 as output because we have LED on it
 
   TRISB &= 0B11111101;
 
-  while(1);   //Sit Idle Timer will do every thing!
+  while(1)
+    ; // Sit Idle Timer will do every thing!
 }
 
-//Main Interrupt Service Routine (ISR)
-void interrupt ISR() {
-  //Check if it is TMR0 Overflow ISR
+// Main Interrupt Service Routine (ISR)
+void interrupt
+ISR() {
+  // Check if it is TMR0 Overflow ISR
 
   if(TMR0IE && TMR0IF) {
-    //TMR0 Overflow ISR
-    counter++;  //Increment Over Flow Counter
+    // TMR0 Overflow ISR
+    counter++; // Increment Over Flow Counter
 
     if(counter == 76) {
-      //Toggle RB1 (LED)
+      // Toggle RB1 (LED)
 
       if(RB1 == 0)
         RB1 = 1;
       else
         RB1 = 0;
 
-      counter = 0; //Reset Counter
-
+      counter = 0; // Reset Counter
     }
 
-    //Clear Flag
+    // Clear Flag
     TMR0IF = 0;
   }
 }
-
-

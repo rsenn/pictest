@@ -1,29 +1,28 @@
 #include "pictest2.h"
-#include "timer.h"
-#include "uart.h"
 #include "adc.h"
-#include "interrupt.h"
-#include "lcd44780.h"
 #include "const.h"
 #include "delay.h"
-#include "ledsense.h"
 #include "ds18b20.h"
-
+#include "interrupt.h"
+#include "lcd44780.h"
+#include "ledsense.h"
+#include "timer.h"
+#include "uart.h"
 
 #ifdef MCHP_XC8
 #pragma config WDTE = OFF, PWRTE = ON, CP = OFF, BOREN = ON, DEBUG = OFF, LVP = OFF, CPD = OFF, WRT = HALF, FOSC = XT
 #else
 #ifdef SDCC
-__code uint16_t __at (_CONFIG) __configword = CONFIG_WORD;
+__code uint16_t __at(_CONFIG) __configword = CONFIG_WORD;
 #else
-# ifdef HI_TECH_C
+#ifdef HI_TECH_C
 __CONFIG(CONFIG_WORD);
-# define NOT_RBPU nRBPU
-# elif defined(__IAR_SYSTEMS_ICC__)
-#  include <io16f876a.h>
-# else
-#  error Unknown compiler
-# endif
+#define NOT_RBPU nRBPU
+#elif defined(__IAR_SYSTEMS_ICC__)
+#include <io16f876a.h>
+#else
+#error Unknown compiler
+#endif
 #endif
 #endif
 
@@ -35,18 +34,17 @@ __CONFIG(CONFIG_WORD);
 
 volatile uint8_t button_state = 0;
 
-# if NO_PORTB
-#  define BUTTON_PORT PORTA
-#  define BUTTON_SHIFT 0
-# else
-#  define BUTTON_PORT PORTB
-#  define BUTTON_SHIFT 4
-# endif
+#if NO_PORTB
+#define BUTTON_PORT PORTA
+#define BUTTON_SHIFT 0
+#else
+#define BUTTON_PORT PORTB
+#define BUTTON_SHIFT 4
+#endif
 #endif
 
 static uint16_t temp_bits;
 static double temp_value;
-
 
 volatile BOOL run = 1, control = 0;
 volatile uint8_t ticks, prescale;
@@ -81,7 +79,7 @@ buttons_get() {
   return bits;
 }
 
-INTERRUPT_HANDLER()  {
+INTERRUPT_HANDLER() {
   if(T0IF) {
     TMR0 = ticks;
 
@@ -105,16 +103,16 @@ INTERRUPT_HANDLER()  {
     GIE = 1;
   }
   if(TMR2IF) {
-    //if(run) {
+    // if(run) {
     //}
     TMR2IF = 0;
   }
 #endif
-  /*  if(TMR1IF) {
-      tmr1_count++;
-      TMR1IF = 0;
-    }*/
-#if 0 //def PORTB_BUTTONS
+/*  if(TMR1IF) {
+    tmr1_count++;
+    TMR1IF = 0;
+  }*/
+#if 0 // def PORTB_BUTTONS
   if(RBIF) {
     button_state |= (~PORTB) & (BUTTON_A | BUTTON_B | BUTTON_C | BUTTON_D);
     RBIF = 0;
@@ -126,7 +124,7 @@ INTERRUPT_HANDLER()  {
     RCIF = 0;
   }
 #endif
-#if 0 //def USE_ADCONVERTER
+#if 0 // def USE_ADCONVERTER
   if(ADIF) {
     adc_result = ADRES;
     ADIF = 0;
@@ -149,20 +147,18 @@ button_pressed(uint8_t b) {
 
 static uint8_t
 tmr0_get_psbit() {
-  if(PSA)
-    return 0;
+  if(PSA) return 0;
   return OPTION_REGbits.PS + 1;
 }
 
-
-#define TMR0_GET_INTERVAL_TCY(treg) (((uint16_t)(255-treg))<<tmr0_get_psbit())
+#define TMR0_GET_INTERVAL_TCY(treg) (((uint16_t)(255 - treg)) << tmr0_get_psbit())
 /*
 static uint16_t
 tmr0_get_psval() {
   return 1l << tmr0_get_psbit();
 }
 */
-#define TMR0_GET_RATE() (long)(OSC_4/(1l<<tmr0_get_psbit()))
+#define TMR0_GET_RATE() (long)(OSC_4 / (1l << tmr0_get_psbit()))
 
 static void
 tmr0_set_psbit(uint8_t psbit) {
@@ -210,7 +206,8 @@ reset_speed() {
 }
 
 //-----------------------------------------------------------------------------
-int main() {
+int
+main() {
   uint8_t cd;
 
   run = 1;
@@ -218,7 +215,7 @@ int main() {
   LED_TRIS = 0;
   LED_PIN = 1;
 
-  CMCON = 0b111;          //Disable PORTA Comparators
+  CMCON = 0b111; // Disable PORTA Comparators
 
   NOT_RBPU = 1; // pull-ups
 
@@ -228,7 +225,6 @@ int main() {
   lcd_clear();
   lcd_print("TEST");
 
-
   adc_init();
 
   reset_speed();
@@ -237,46 +233,44 @@ int main() {
   uart_init();
 #endif
 
-  /*
-  PR2 = 0xff;       // Set PWM period
-  CCPR1L = 0x00;    // Set PWM duty cycle
-  CCP1CON = 0x0c;      // Set PWM mode
-  //CCP1X = 1;        // Set one of the LSB bits.
-  CCPR2L = 0;
-  CCP2CON = 0x0c;
-  // It took me a while to realize the point of
-  // these since they're so inconvenient to use.
-  // Set one but only one of these, and your PWM
-  // output will never be able to stall -- values
-  // of 0 won't disable it, values of 255 won't pin it.*/
-  //T1CON = 0x00;
-
+/*
+PR2 = 0xff;       // Set PWM period
+CCPR1L = 0x00;    // Set PWM duty cycle
+CCP1CON = 0x0c;      // Set PWM mode
+//CCP1X = 1;        // Set one of the LSB bits.
+CCPR2L = 0;
+CCP2CON = 0x0c;
+// It took me a while to realize the point of
+// these since they're so inconvenient to use.
+// Set one but only one of these, and your PWM
+// output will never be able to stall -- values
+// of 0 won't disable it, values of 255 won't pin it.*/
+// T1CON = 0x00;
 
 #ifdef USE_PWM
   // set up TMR2
   T2CONbits.TOUTPS = 0b0000;
-  T2CKPS0 = 0;      // Set timer 2 prescaler to 1:1.
-  T2CKPS1 = 0;      // These bits are in T2CON.
+  T2CKPS0 = 0; // Set timer 2 prescaler to 1:1.
+  T2CKPS1 = 0; // These bits are in T2CON.
   TMR2IE = 1;
   TMR2IF = 0;
-  TMR2ON = 1;       // Enable timer 2.
+  TMR2ON = 1; // Enable timer 2.
 
   /* Set up input capture */
   CCP1IE = 1;
-  CCP1CONbits.CCP1M = 0b0110;    // Capture mode, every 4th rising edge
+  CCP1CONbits.CCP1M = 0b0110; // Capture mode, every 4th rising edge
 
   TRISC2 = INPUT;
 
   T1SYNC = 1;
 
-  //T1CKPS0 = 0; T1CKPS1 = 1; // 1:4 prescaler
+  // T1CKPS0 = 0; T1CKPS1 = 1; // 1:4 prescaler
   T1CKPS0 = 0;
   T1CKPS1 = 0; // 1:1 prescaler
-  /*T1CONbits.*/TMR1ON = 1;
+  /*T1CONbits.*/ TMR1ON = 1;
 
   TMR1IF = 0;
 #endif
-
 
   // Set up timer0 interrupt
   T0CS = 0; // Internal clock source
@@ -284,24 +278,23 @@ int main() {
 
   tmr0_set_psbit(1);
 
-//  OPTION_REGbits.PS = 0b111; // 1:256 prescaler (4 MHz quartz, so timer0 rate 15.625 kHz (every 64ns))
+  //  OPTION_REGbits.PS = 0b111; // 1:256 prescaler (4 MHz quartz, so timer0 rate 15.625 kHz (every 64ns))
 
   TMR0 = ~ticks;
   T0IF = 0;
   T0IE = 1;
 
   tmr_overflows = 0;
-  /*
-    T1CKPS0 = 1;
-    T1CKPS1 = 0; // 1:2 prescale
-    T1OSCEN = 1;
-    T1SYNC = 1;
-    TMR1CS = 0;
-    TMR1ON = 1;
-    TMR1 = 0;
-    TMR1IE = 1;
-    TMR1IF = 0;*/
-
+/*
+  T1CKPS0 = 1;
+  T1CKPS1 = 0; // 1:2 prescale
+  T1OSCEN = 1;
+  T1SYNC = 1;
+  TMR1CS = 0;
+  TMR1ON = 1;
+  TMR1 = 0;
+  TMR1IE = 1;
+  TMR1IF = 0;*/
 
 #ifdef PORTB_BUTTONS
   TRISB |= 0b11110000;
@@ -330,17 +323,16 @@ int main() {
   for(;;) {
     adc_result = adc_read(0);
 
-    //lcd_home();
-    //lcd_clear();
+    // lcd_home();
+    // lcd_clear();
     lcd_gotoxy(5, 0);
-    //lcd_print_number(ADVAL_V(adc_result)*1000, 10, 5); lcd_print("mV");
+    // lcd_print_number(ADVAL_V(adc_result)*1000, 10, 5); lcd_print("mV");
     lcd_print_number(adc_result, 10, 4);
 
-//     lcd_putch(' ');
+    //     lcd_putch(' ');
 
     adc_result = adc_read(1);
     lcd_print_number(adc_result, 10, 4);
-
 
     lcd_putch(' ');
     lcd_print_number(buttons_get(), 2, -4);
@@ -348,9 +340,7 @@ int main() {
     delay_ms(100);
   }
 
-  if(!ow_reset())
-    ow_search();
-
+  if(!ow_reset()) ow_search();
 
   {
     double voltage;
@@ -369,16 +359,13 @@ int main() {
       } else {
         freq = 0;
       }
-      if(counter > 10000)
-        freq = 0;
-
+      if(counter > 10000) freq = 0;
 
       ledsense_charge();
       reading = ledsense_read();
       if(prev == 0) prev = reading;
 
-      if(prev - reading > 100)
-        ledon = !ledon;
+      if(prev - reading > 100) ledon = !ledon;
 
       prev = reading;
 
@@ -407,7 +394,7 @@ int main() {
 
         lcd_print("T=");
         if(presence) {
-          ds18b20_start_conversion(0  , 1);
+          ds18b20_start_conversion(0, 1);
           refresh = tmr_overflows + MS_TO_OVERFLOWS(750, 255 - ticks);
         } else {
           // not present
@@ -428,7 +415,6 @@ int main() {
 
   ledsense_loop();
   return 0;
-
 
   for(;;) {
 
@@ -451,7 +437,7 @@ int main() {
     lcd_print(",r=");
     //  lcd_print_float((double)OSC_4/TMR0_GET_INTERVAL_TCY(ticks)/256, 2);
     lcd_print_number((long)OSC_4 * 1000 / TMR0_GET_INTERVAL_TCY(ticks) / 256, 10, 0);
-//    lcd_print_float((double)TMR0_GET_RATE() / (255 - ticks) / 256, 2);
+    //    lcd_print_float((double)TMR0_GET_RATE() / (255 - ticks) / 256, 2);
     lcd_print("mHz ");
     //
     // lcd_gotoxy(10,1);
@@ -460,17 +446,14 @@ int main() {
     lcd_gotoxy(0, 1);
     lcd_print(run ? "run " : "halt");
 
-
 #ifdef PORTB_BUTTONS
     if((cd = button_pressed(BUTTON_C | BUTTON_D))) {
       increment_tmrspeed(cd == BUTTON_C ? 1 : (cd == BUTTON_D) ? -1 : 0);
       tmr0_set_psbit(prescale);
-      //uart_putch(cd == BUTTON_C ? 'C' : 'D');
+      // uart_putch(cd == BUTTON_C ? 'C' : 'D');
     }
 #endif
 
     delay_ms(25);
   }
 }
-
-

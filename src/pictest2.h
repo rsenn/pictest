@@ -1,16 +1,15 @@
 #ifndef PICTEST_H
 #define PICTEST_H 1
 
-#include "oscillator.h"
 #include "device.h"
+#include "oscillator.h"
 #include "typedef.h"
 
 extern volatile uint16_t tmr_overflows;
 extern volatile uint8_t ticks;
 
-#define CCPR1 (((uint16_t)CCPR1H << 8)|(CCPR1L))
-#define TMR1 (((uint16_t)TMR1H << 8)|(TMR1L))
-
+#define CCPR1 (((uint16_t)CCPR1H << 8) | (CCPR1L))
+#define TMR1 (((uint16_t)TMR1H << 8) | (TMR1L))
 
 #ifdef __16f628a
 #define LED_PIN RB7
@@ -29,5 +28,3 @@ extern volatile uint8_t ticks;
 #define BUTTON_MASK 0b00001111
 
 #endif
-
-

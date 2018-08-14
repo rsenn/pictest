@@ -13,11 +13,11 @@
 #if defined(USE_LCD) && !NO_PORTB
 #include "lcd44780.h"
 #endif
+#include "7segment.h"
 #include "const.h"
 #include "delay.h"
-#include "ledsense.h"
 #include "ds18b20.h"
-#include "7segment.h"
+#include "ledsense.h"
 #include "shell.h"
 /*
 #define BUTTON_MINUS 1
@@ -36,36 +36,35 @@ static const char buttons[6] = { ' ', '-', 'D', '+', 'U', '!' };
 //#endif
 
 #ifdef SDCC
-__code unsigned int __at(_CONFIG)__configword = CONFIG_WORD;
+__code unsigned int __at(_CONFIG) __configword = CONFIG_WORD;
 #endif
 
 #if defined(HI_TECH_C) || defined(__XC__)
-# define NOT_RBPU nRBPU
+#define NOT_RBPU nRBPU
 #endif
 
 #if defined(__IAR_SYSTEMS_ICC__)
-#  include <io16f876a.h>
+#include <io16f876a.h>
 #endif
 
-#if defined( PORTB_BUTTONS ) || defined(USE_7SEGMENT)
+#if defined(PORTB_BUTTONS) || defined(USE_7SEGMENT)
 #define BUTTON_A 0b10000000
 #define BUTTON_B 0b01000000
 #define BUTTON_C 0b00100000
 #define BUTTON_D 0b00010000
 
-//static uint8_t cfg_hi = ((unsigned int)(CONFIG_WORD)>> 8), cfg_lo = ((unsigned int)(CONFIG_WORD) & 0xff);
+// static uint8_t cfg_hi = ((unsigned int)(CONFIG_WORD)>> 8), cfg_lo = ((unsigned int)(CONFIG_WORD) & 0xff);
 #endif
 
 #if NO_PORTB
-# define BUTTON_PORT PORTA
-# define BUTTON_SHIFT 0
+#define BUTTON_PORT PORTA
+#define BUTTON_SHIFT 0
 #define BUTTON_MASK 0b11110000
 #else
-# define BUTTON_PORT PORTB
-# define BUTTON_SHIFT 4
+#define BUTTON_PORT PORTB
+#define BUTTON_SHIFT 4
 #define BUTTON_MASK 0b00001111
 #endif
-
 
 volatile uint8_t button_state = 0;
 
@@ -83,22 +82,20 @@ static int in_word_ptr = 0;
 static uint32_t delay_v;
 static uint8_t phase_v;
 volatile uint16_t bres, msecs, blinktime;
-volatile  uint32_t seconds;
+volatile uint32_t seconds;
 volatile BOOL led_state, led_enabled;
 static shell_t sh_soft, sh_uart;
 
-
-typedef void(*putch_fn)(uint8_t);
+typedef void (*putch_fn)(uint8_t);
 
 static putch_fn putchar =
 #if defined(USE_LCD) && !NO_PORTB
-  lcd_putch;
+    lcd_putch;
 #elif defined USE_UART
-  uart_putch;
+    uart_putch;
 #else
-  0;
+    0;
 #endif
-
 
 void increment_tmrspeed(int8_t s);
 void reset_speed(void);
@@ -106,7 +103,8 @@ void put_number(uint16_t n, uint8_t base, int8_t pad);
 
 // -------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
-int main() {
+int
+main() {
   uint32_t tmp_msecs;
   uint8_t cd, cur_note;
 
@@ -230,7 +228,6 @@ TMR2ON = 1;       // Enable timer 2.
   adc_read(0);
 #endif
 
-
   INIT_LED();
   INIT_LED2();
   SET_LED(1);
@@ -246,7 +243,6 @@ TMR2ON = 1;       // Enable timer 2.
   INTEDG = 0;
   INTE = 1;
   INTF = 0;
-
 
   PEIE = 1;
   GIE = 1;
@@ -332,7 +328,6 @@ TMR2ON = 1;       // Enable timer 2.
     lcd_putch(' ');
 #endif
 #endif
-
 
 #if defined(USE_LCD) && !NO_PORTB
     lcd_print("T:");
@@ -493,13 +488,15 @@ TMR2ON = 1;       // Enable timer 2.
 }
 
 // -------------------------------------------------------------------------
-static void set_speed(uint8_t bpm, uint8_t ph) {
+static void
+set_speed(uint8_t bpm, uint8_t ph) {
   delay_v = (60l * 1000l) / bpm;
   phase_v = ph;
 }
 
 // -------------------------------------------------------------------------
-static uint8_t rnd(void) {
+static uint8_t
+rnd(void) {
   static uint8_t s = 0xaa, a = 0;
   s ^= s << 3;
   s ^= s >> 5;
@@ -509,7 +506,8 @@ static uint8_t rnd(void) {
 
 // -------------------------------------------------------------------------
 #if !NO_PORTB
-static uint8_t buttons_get() {
+static uint8_t
+buttons_get() {
   uint8_t bits;
 
   NOT_RBPU = 0; // pull-ups
@@ -648,7 +646,8 @@ tmr0_get_psbit() {
 }*/
 
 #ifdef USE_ADCONVERTER
-uint8_t get_button() {
+uint8_t
+get_button() {
   int8_t a = adc_result >> 4;
 
   if(a >= 0 && a < 3) {
@@ -677,7 +676,8 @@ tmr0_get_psval() {
 #define TMR1_GET_RATE() (long)(OSC_4 / (1l << tmr0_get_psbit()))
 
 #ifdef USE_SOFTSER
-static int softserial_getch(uint16_t timeout) {
+static int
+softserial_getch(uint16_t timeout) {
   uint16_t t = seconds + timeout;
 
   while(seconds <= timeout) {
@@ -739,7 +739,8 @@ reset_speed()
 }
 */
 // -------------------------------------------------------------------------
-void put_number(/*void(*putchar)(char), */ uint16_t n, uint8_t base, int8_t pad /*, int8_t pointpos*/) {
+void
+put_number(/*void(*putchar)(char), */ uint16_t n, uint8_t base, int8_t pad /*, int8_t pointpos*/) {
   uint8_t buf[8 * sizeof(long)]; // Assumes 8-bit chars.
   uint8_t di;
   int8_t i = 0;
@@ -765,11 +766,8 @@ void put_number(/*void(*putchar)(char), */ uint16_t n, uint8_t base, int8_t pad 
     n /= base;
   } while(n > 0);
 
-  while(pad-- >= i)
-    putchar(padchar);
+  while(pad-- >= i) putchar(padchar);
 
-  for(; i > 0; i--)
-    putchar((char)buf[(int16_t)i - 1]);
+  for(; i > 0; i--) putchar((char)buf[(int16_t)i - 1]);
   //    lcd_putch((buf[i - 1] < 10 ?(char)'0' + buf[i - 1] : (char)'A' + buf[i - 1] - 10));
 }
-

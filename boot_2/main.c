@@ -40,68 +40,65 @@ IMPORTANT NOTE: This booloader example code is not intended to work
 with the PIC18F87J50 Family of microcontrollers.
 *********************************************************************/
 
-
 /** I N C L U D E S **********************************************************/
+#include "io_cfg.h"          // Required
+#include "system\typedefs.h" // Required
+#include "system\usb\usb.h"  // Required
 #include <p18cxxx.h>
-#include "system\typedefs.h"                        // Required
-#include "system\usb\usb.h"                         // Required
-#include "io_cfg.h"                                 // Required
 
 #include "system\usb\usb_compile_time_validation.h" // Optional
 
 /** C O N F I G U R A T I O N ************************************************/
 
-#if   defined(__18F2550)||defined(__18F4455)|| \
-      defined(__18F2550)||defined(__18F2455)|| \
-      defined(__18F4553)||defined(__18F4458)|| \
-      defined(__18F2553)||defined(__18F2458)
+#if defined(__18F2550) || defined(__18F4455) || defined(__18F2550) || defined(__18F2455) || defined(__18F4553) ||      \
+    defined(__18F4458) || defined(__18F2553) || defined(__18F2458)
 
 // Note: Some of the below configuration bits are commented out
 // to prevent build errors with some of the above listed devices.
 // For example, on the PIC18F4458 CP3, WRT3, and EBTR3 don't exist.
 
-#pragma config PLLDIV   = 5       // (20 MHz input)
+#pragma config PLLDIV = 5 // (20 MHz input)
 //#pragma config PLLDIV   = 4       // 16 MHz input
 //#pragma config PLLDIV   = 3       // 12 MHz input
 //#pragma config PLLDIV   = 2       //  8 MHz input
 //#pragma config PLLDIV   = 1       //  4 MHz input
-#pragma config CPUDIV   = OSC1_PLL2
-#pragma config USBDIV   = 2       // Clock source from 96MHz PLL/2
-#pragma config FOSC     = HSPLL_HS
+#pragma config CPUDIV = OSC1_PLL2
+#pragma config USBDIV = 2 // Clock source from 96MHz PLL/2
+#pragma config FOSC = HSPLL_HS
 //#pragma config FCMEN    = OFF
-#pragma config IESO     = OFF
-#pragma config PWRT     = ON
-#pragma config BOR      = OFF
+#pragma config IESO = OFF
+#pragma config PWRT = ON
+#pragma config BOR = OFF
 //#pragma config BORV     = 3
-#pragma config VREGEN   = ON
-#pragma config WDT      = OFF
-#pragma config WDTPS    = 32768
-#pragma config MCLRE    = OFF		//MCLR Disabled    RE3 enabled
-#pragma config LPT1OSC  = OFF
-#pragma config PBADEN   = OFF
-#pragma config CCP2MX   = ON
-#pragma config STVREN   = ON
-#pragma config LVP      = OFF
+#pragma config VREGEN = ON
+#pragma config WDT = OFF
+#pragma config WDTPS = 32768
+#pragma config MCLRE = OFF // MCLR Disabled    RE3 enabled
+#pragma config LPT1OSC = OFF
+#pragma config PBADEN = OFF
+#pragma config CCP2MX = ON
+#pragma config STVREN = ON
+#pragma config LVP = OFF
 //#pragma config ICPRT    = OFF       // Dedicated In-Circuit Debug/Programming
-#pragma config XINST    = OFF       // Extended Instruction Set
-#pragma config CP0      = OFF
-#pragma config CP1      = OFF
-#pragma config CP2      = OFF
+#pragma config XINST = OFF // Extended Instruction Set
+#pragma config CP0 = OFF
+#pragma config CP1 = OFF
+#pragma config CP2 = OFF
 //#pragma config CP3      = OFF
-#pragma config CPB      = OFF
-#pragma config CPD      = OFF
-#pragma config WRT0     = OFF
-#pragma config WRT1     = OFF
-#pragma config WRT2     = OFF
+#pragma config CPB = OFF
+#pragma config CPD = OFF
+#pragma config WRT0 = OFF
+#pragma config WRT1 = OFF
+#pragma config WRT2 = OFF
 //#pragma config WRT3     = OFF
-#pragma config WRTB     = OFF       // Boot Block Write Protection
-#pragma config WRTC     = OFF
-#pragma config WRTD     = OFF
-#pragma config EBTR0    = OFF
-#pragma config EBTR1    = OFF
-#pragma config EBTR2    = OFF
+#pragma config WRTB = OFF // Boot Block Write Protection
+#pragma config WRTC = OFF
+#pragma config WRTD = OFF
+#pragma config EBTR0 = OFF
+#pragma config EBTR1 = OFF
+#pragma config EBTR2 = OFF
 //#pragma config EBTR3    = OFF
-#pragma config EBTRB    = OFF
+#pragma config EBTRB = OFF
 
 #endif
 
@@ -113,15 +110,15 @@ with the PIC18F87J50 Family of microcontrollers.
 /** V E C T O R  R E M A P P I N G *******************************************/
 
 #pragma code _HIGH_INTERRUPT_VECTOR = 0x000008
-void _high_ISR (void)
-{
-    _asm goto RM_HIGH_INTERRUPT_VECTOR _endasm
+void
+_high_ISR(void) {
+  _asm goto RM_HIGH_INTERRUPT_VECTOR _endasm
 }
 
 #pragma code _LOW_INTERRUPT_VECTOR = 0x000018
-void _low_ISR (void)
-{
-    _asm goto RM_LOW_INTERRUPT_VECTOR _endasm
+void
+_low_ISR(void) {
+  _asm goto RM_LOW_INTERRUPT_VECTOR _endasm
 }
 
 #pragma code
@@ -143,30 +140,29 @@ void _low_ISR (void)
  *
  * Note:            None
  *****************************************************************************/
-void main(void)
-{
-// eine Brücke von RE3 (MCLR-Pin1) nach Masse kennzeichnet Bootloadermode
-// externer pull-up vorhanden
-// RE3==1  ->  Springe zur Firmware
-// RE3==0  ->  Bootloader
+void
+main(void) {
+  // eine Brücke von RE3 (MCLR-Pin1) nach Masse kennzeichnet Bootloadermode
+  // externer pull-up vorhanden
+  // RE3==1  ->  Springe zur Firmware
+  // RE3==0  ->  Bootloader
 
-    //Check Bootload Mode Entry Condition
-    if (PORTEbits.RE3 == 1)  // kein jumper
-    {
-        _asm goto RM_RESET_VECTOR _endasm
-    }//end if
-    
-    //Bootload Mode
-    mInitAllLEDs();
-	mLED_1_On();				// LED an  
-    mInitializeUSBDriver();     // See usbdrv.h
-    USBCheckBusStatus();        // Modified to always enable USB module
-    while(1)
-    {
-        USBDriverService();     // See usbdrv.c
-        BootService();          // See boot.c
-    }//end while
-}//end main
+  // Check Bootload Mode Entry Condition
+  if(PORTEbits.RE3 == 1) // kein jumper
+  {
+    _asm goto RM_RESET_VECTOR _endasm
+  } // end if
+
+  // Bootload Mode
+  mInitAllLEDs();
+  mLED_1_On();            // LED an
+  mInitializeUSBDriver(); // See usbdrv.h
+  USBCheckBusStatus();    // Modified to always enable USB module
+  while(1) {
+    USBDriverService(); // See usbdrv.c
+    BootService();      // See boot.c
+  } // end while
+} // end main
 
 #pragma code user = RM_RESET_VECTOR
 

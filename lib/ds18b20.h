@@ -1,8 +1,8 @@
 #ifndef PICLIB_DS18B20_H
 #define PICLIB_DS18B20_H 1
 
-#include "typedef.h"
 #include "onewire.h"
+#include "typedef.h"
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
@@ -12,7 +12,6 @@
 #define DS18B20_COPY_SCRATCHPAD 0x48
 #define DS18B20_RECALL_EE 0xb8
 #define DS18B20_READ_POWER_SUPPLY 0xb4
-
 
 // ---------------------------------------------------------------------------
 #define DS18B20_T_INVAL -273.15f
@@ -25,5 +24,3 @@ uint16_t ds18b20_value(int8_t actNumROM);
 double ds18b20_temperature(uint16_t value, uint8_t shift);
 
 #endif // PICLIB_DS18B20_H
- 
-
