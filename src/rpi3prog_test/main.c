@@ -131,6 +131,8 @@ main(void) {
   uart_init();
 
   while(1) {
+    if(RCIF) {
+    }
     // Add your application code
   }
 }

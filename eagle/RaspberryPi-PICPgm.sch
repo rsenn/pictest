@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -2937,15 +2937,6 @@ http://www.techmeology.co.uk/rpipic/</description>
 <pinref part="U$3" gate="1" pin="+12V"/>
 <wire x1="27.94" y1="15.24" x2="27.94" y2="22.86" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="C2" gate="G$1" pin="1"/>
-<wire x1="58.42" y1="12.7" x2="58.42" y2="15.24" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$1" pin="OUT"/>
-<wire x1="50.8" y1="15.24" x2="58.42" y2="15.24" width="0.1524" layer="91"/>
-<pinref part="U$5" gate="G$1" pin="+12V"/>
-<wire x1="58.42" y1="22.86" x2="58.42" y2="15.24" width="0.1524" layer="91"/>
-<junction x="58.42" y="15.24"/>
-</segment>
 </net>
 <net name="N$5" class="0">
 <segment>
@@ -3120,6 +3111,17 @@ http://www.techmeology.co.uk/rpipic/</description>
 <wire x1="177.8" y1="35.56" x2="177.8" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="73.66" x2="165.1" y2="73.66" width="0.1524" layer="91"/>
 <junction x="165.1" y="73.66"/>
+</segment>
+</net>
+<net name="+5V" class="0">
+<segment>
+<pinref part="U$5" gate="G$1" pin="+12V"/>
+<pinref part="C2" gate="G$1" pin="1"/>
+<wire x1="58.42" y1="22.86" x2="58.42" y2="15.24" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="OUT"/>
+<wire x1="58.42" y1="15.24" x2="58.42" y2="12.7" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="15.24" x2="58.42" y2="15.24" width="0.1524" layer="91"/>
+<junction x="58.42" y="15.24"/>
 </segment>
 </net>
 </nets>
