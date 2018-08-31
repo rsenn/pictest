@@ -1,45 +1,44 @@
 #include "pictest.h"
-#include "typedef.h"
-#include "timer.h"
-#include "interrupt.h"
 #include "const.h"
-#include "ser.h"
-#include "uart.h"
-#include "softser.h"
 #include "delay.h"
+#include "interrupt.h"
 #include "lcd44780.h"
+#include "ser.h"
+#include "softser.h"
+#include "timer.h"
+#include "typedef.h"
+#include "uart.h"
 #include <ctype.h>
 
 #include "config-bits.h"
 
 #ifdef SDCC
-__code unsigned int __at(_CONFIG)__configword = CONFIG_WORD;
+__code unsigned int __at(_CONFIG) __configword = CONFIG_WORD;
 #endif
 
 #ifdef HI_TECH_C
-#   define NOT_RBPU nRBPU
+#define NOT_RBPU nRBPU
 #elif defined(__IAR_SYSTEMS_ICC__)
-#   include <io16f876a.h>
+#include <io16f876a.h>
 #elif !defined CPROTO
-#   error Unknown compiler
+#error Unknown compiler
 #endif
 
 void loop();
-void put_number(void(*putchar)(char), uint16_t n, uint8_t base, int8_t pad);
+void put_number(void (*putchar)(char), uint16_t n, uint8_t base, int8_t pad);
 
 volatile BOOL run = 1, got_byte = 0;
 volatile uint16_t bres;
 
-volatile  uint16_t msecs;
-volatile  uint32_t seconds;
+volatile uint16_t msecs;
+volatile uint32_t seconds;
 
 volatile uint8_t serial_in = 0;
 volatile uint8_t led_state = 0;
 
 volatile uint16_t tmr1_overflows;
 
-INTERRUPT_HANDLER()
-{
+INTERRUPT_HANDLER() {
 #ifdef USE_SER
   ser_int();
 #endif
@@ -56,16 +55,14 @@ INTERRUPT_HANDLER()
 
       SET_LED(msecs < 500);
     }
-    if(msecs >= 1000)	{ // if reached 1 second!
-      seconds++;	// update clock, etc
+    if(msecs >= 1000) { // if reached 1 second!
+      seconds++;        // update clock, etc
       msecs -= 1000;
 
-          SET_LED2(seconds&1);
-
+      SET_LED2(seconds & 1);
     }
 
-    //TMR1H = 0xff;
-
+    // TMR1H = 0xff;
 
     // Clear timer interrupt bit
     T0IF = 0;
@@ -84,15 +81,14 @@ INTERRUPT_HANDLER()
 }
 
 void
-flash_busy_led(uint16_t duration)
-{
-  //LED_PIN = LOW;
-  //timer1_init(1, duration);
+flash_busy_led(uint16_t duration) {
+  // LED_PIN = LOW;
+  // timer1_init(1, duration);
 }
 
 //#ifdef USE_HD44780_LCD
-//void
-//lcd_putch(char c) {
+// void
+// lcd_putch(char c) {
 //
 //  if(isprint(c)) {
 //    lcd_putch('\'');
@@ -107,8 +103,8 @@ flash_busy_led(uint16_t duration)
 
 // -------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
-int main()
-{
+int
+main() {
   run = bres = msecs = seconds = tmr1_overflows = 0;
 
 #ifdef USE_SOFTSER
@@ -125,8 +121,8 @@ int main()
 
 #if !NO_PORTB
   NOT_RBPU = 1;
-  //TRISB &= 0;
-  //PORTB |= 0xff;
+// TRISB &= 0;
+// PORTB |= 0xff;
 #endif
   PORTA = 0;
 
@@ -138,11 +134,11 @@ int main()
 
   RA3 = RA5 = 1;
 
-//  TMR1 = 0xff00;
-  timer0_init(PRESCALE_1_1|TIMER0_FLAGS_INTR);
+  //  TMR1 = 0xff00;
+  timer0_init(PRESCALE_1_1 | TIMER0_FLAGS_INTR);
   T0IF = 0;
   T0IE = 1;
-  timer1_init(PRESCALE_1_1|TIMER1_FLAGS_INTR);
+  timer1_init(PRESCALE_1_1 | TIMER1_FLAGS_INTR);
   TMR1IF = 0;
   TMR1IE = 1;
 
@@ -151,15 +147,14 @@ int main()
   lcd_begin(2, 1);
   lcd_clear();
 
-  lcd_gotoxy(0,0);
+  lcd_gotoxy(0, 0);
 
   lcd_print_number(SOFTSER_BRG, 16, -1);
 #endif
 
 #if !NO_SSP
-  /*SSPCONbits.*/SSPEN = 0;
+  /*SSPCONbits.*/ SSPEN = 0;
 #endif
-
 
   INIT_LED();
   INIT_LED2();
@@ -172,13 +167,12 @@ int main()
   PEIE = 1;
   GIE = 1;
 
-
   RCIF = 0;
   RCIE = 1;
 
   run = 1;
 
-  //   flash_busy_led(1000);
+//   flash_busy_led(1000);
 
 #if USE_UART
   uart_puts("XXXX\r\n");
@@ -188,15 +182,15 @@ int main()
 #endif
 #ifdef USE_SOFTSER
   softser_puts("SSSS\r\n");
-  //   flash_busy_led(500);
+//   flash_busy_led(500);
 #endif
   //   flash_busy_led(500);
 
-  for(;;)
-    loop();
+  for(;;) loop();
 }
 
-void loop() {
+void
+loop() {
   char update_com, update_midi, echo_mode = 0;
   uint8_t c;
 
@@ -206,86 +200,81 @@ void loop() {
 
   if(seconds != prev) {
 #if USE_UART
-	put_number(uart_putch, seconds, 10, -5);
-	uart_putch('\r');
-	uart_putch('\n');
+    put_number(uart_putch, seconds, 10, -5);
+    uart_putch('\r');
+    uart_putch('\n');
 #endif
 #ifdef USE_SER
-	put_number(ser_putch, seconds, 10, -5);
-	ser_putch('\r');
-	ser_putch('\n');
+    put_number(ser_putch, seconds, 10, -5);
+    ser_putch('\r');
+    ser_putch('\n');
 #endif
-	prev = seconds;
+    prev = seconds;
   }
 
 #ifdef USE_SER
   //   while(SOFTSER_IN_PIN == LOW) {
   if(ser_isrx()) {
-	c = ser_getch();
+    c = ser_getch();
 
-	if(echo_mode) {
-	  ser_putch(' ');
-	  ser_puthex(c);
-	  ser_putch(' ');
-	} else {
+    if(echo_mode) {
+      ser_putch(' ');
+      ser_puthex(c);
+      ser_putch(' ');
+    } else {
 #ifdef USE_SOFTSER
-	  softser_putch(c);
+      softser_putch(c);
 #endif
-	}
+    }
 
-	update_com = 1;
+    update_com = 1;
 
-	if(c == 0x1b || c == '\t')
-	  echo_mode = !echo_mode;
+    if(c == 0x1b || c == '\t') echo_mode = !echo_mode;
   }
 #endif
 
   if(update_com) {
 #ifdef USE_HD44780_LCD
-	lcd_gotoxy(12,0);
-	lcd_print("COM:");
-	lcd_putch(c);
+    lcd_gotoxy(12, 0);
+    lcd_print("COM:");
+    lcd_putch(c);
 #endif
-	update_com = 0;
+    update_com = 0;
   }
 
-  //       flash_busy_led(150);
-  //   }
+//       flash_busy_led(150);
+//   }
 #ifdef USE_SOFTSER
-   c = 0;
+  c = 0;
 
   while(softser_poll(32)) {
-	softser_recv();
-	ser_putch(softser_rdata);
+    softser_recv();
+    ser_putch(softser_rdata);
 
-	if(softser_rdata == 0x1b  || softser_rdata == '\t')
-	  echo_mode = !echo_mode;
+    if(softser_rdata == 0x1b || softser_rdata == '\t') echo_mode = !echo_mode;
 
-	update_midi = 1;
+    update_midi = 1;
 
-   if(++c == 3)
-	 break;
+    if(++c == 3) break;
   }
 #endif
 
   if(update_midi) {
-#if defined(USE_HD44780_LCD)&& defined(USE_SOFTSER)
-	lcd_gotoxy(3,0);
-	lcd_print("MIDI:");
-	lcd_putch(softser_rdata);
+#if defined(USE_HD44780_LCD) && defined(USE_SOFTSER)
+    lcd_gotoxy(3, 0);
+    lcd_print("MIDI:");
+    lcd_putch(softser_rdata);
 #endif
-	//         flash_busy_led(150);
-	update_midi = 0;
+    //         flash_busy_led(150);
+    update_midi = 0;
   }
 
-
-//  serial_in = 'X';
-//  uart_putch(serial_in);
-//  uart_putch(serial_in);
-//  ser _putch(serial_in);
-//  uart_putch(serial_in);
+  //  serial_in = 'X';
+  //  uart_putch(serial_in);
+  //  uart_putch(serial_in);
+  //  ser _putch(serial_in);
+  //  uart_putch(serial_in);
 }
-
 
 /*
 void echo_hex_loop()
@@ -310,8 +299,7 @@ void echo_hex_loop()
 }
 */
 void
-put_number(void(*putchar)(char), uint16_t n, uint8_t base, int8_t pad/*, int8_t pointpos*/)
-{
+put_number(void (*putchar)(char), uint16_t n, uint8_t base, int8_t pad /*, int8_t pointpos*/) {
   uint8_t buf[8 * sizeof(long)]; // Assumes 8-bit chars.
   uint8_t di;
   int8_t i = 0;
@@ -337,12 +325,8 @@ put_number(void(*putchar)(char), uint16_t n, uint8_t base, int8_t pad/*, int8_t 
     n /= base;
   } while(n > 0);
 
-  while(pad-- >= i)
-    putchar(padchar);
+  while(pad-- >= i) putchar(padchar);
 
-  for(; i > 0; i--)
-    putchar((char)buf[(int16_t)i - 1]);
+  for(; i > 0; i--) putchar((char)buf[(int16_t)i - 1]);
   //    lcd_putch((buf[i - 1] < 10 ?(char)'0' + buf[i - 1] : (char)'A' + buf[i - 1] - 10));
 }
-
-

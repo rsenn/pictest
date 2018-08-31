@@ -33,8 +33,8 @@
 #ifndef PICLIB_TSMDELAY_H
 #define PICLIB_TSMDELAY_H
 
-#include "typedef.h"
 #include "oscillator.h"
+#include "typedef.h"
 
 #ifdef __16f628a
 #define BANKSEL(x)
@@ -46,9 +46,7 @@
 #pragma warning "Can't calculate delays when KHZ not defined"
 #endif
 
-typedef struct dvars {
-  uint8_t loop_x, loop_b, loop_c;
-} dvars;
+typedef struct dvars { uint8_t loop_x, loop_b, loop_c; } dvars;
 
 /**
  *  INSTANTIATE_DELAY tells it to actually define the cycle_eater
@@ -65,9 +63,9 @@ typedef struct dvars {
 // Therefore these variables must all be in the same bank, or
 // accessible from all banks.
 extern dvars dvar;
-//extern volatile uint8_t loop_x;
-//extern volatile uint8_t loop_b;
-//extern volatile uint8_t loop_c;
+// extern volatile uint8_t loop_x;
+// extern volatile uint8_t loop_b;
+// extern volatile uint8_t loop_c;
 
 /**
  * Delays a given number of cycles based on values in
@@ -79,70 +77,90 @@ void cycle_eater(void);
 #endif
 
 // This is how long cycle_eater takes for values of X, B, and C.
-#define LOOP_CYCLES(X, B, C)  (((long)X * B * 4) + (C * 3) + 13)
+#define LOOP_CYCLES(X, B, C) (((long)X * B * 4) + (C * 3) + 13)
 
 /**
  * Sets up the values in dvar without actually doing the delay.
  * If these calculations aren't happening at compile-time,
  * they can take way longer than the delay you want, so do them first!
  */
-#define SAVE_CYCLES_BIG(Y, X)  do { \
-    (Y).loop_b = ((long)(X) - 16lu) / 764lu; \
-    (Y).loop_c = ((((long)(X) - 16lu) % 764lu) / 3lu) + 1; \
+#define SAVE_CYCLES_BIG(Y, X)                                                                                          \
+  do {                                                                                                                 \
+    (Y).loop_b = ((long)(X)-16lu) / 764lu;                                                                             \
+    (Y).loop_c = ((((long)(X)-16lu) % 764lu) / 3lu) + 1;                                                               \
   } while(0)
 
 /**
  *  Use this macro for delays over 750 cycles and under
  *  190,000 cycles.
  */
-#define DELAY_BIG_TCY(X)  do { \
-    SAVE_CYCLES_BIG(dvar, X); \
-    cycle_eater(); \
+#define DELAY_BIG_TCY(X)                                                                                               \
+  do {                                                                                                                 \
+    SAVE_CYCLES_BIG(dvar, X);                                                                                          \
+    cycle_eater();                                                                                                     \
   } while(0)
 
 /**
  *  Use this macro to call a big delay previously calculated.
  */
-#define CALL_CYCLES_BIG(Y)  do { \
-    dvar.loop_x = (Y).loop_x; \
-    dvar.loop_b = (Y).loop_b; \
-    dvar.loop_c = (Y).loop_c; \
-    cycle_eater(); \
-  }  while(0)
+#define CALL_CYCLES_BIG(Y)                                                                                             \
+  do {                                                                                                                 \
+    dvar.loop_x = (Y).loop_x;                                                                                          \
+    dvar.loop_b = (Y).loop_b;                                                                                          \
+    dvar.loop_c = (Y).loop_c;                                                                                          \
+    cycle_eater();                                                                                                     \
+  } while(0)
 
 /**
  * Sets up the values in dvar without actually doing the delay.
  * If these calculations aren't happening at compile-time,
  * they can take way longer than the delay you want, so do them first!
  */
-#define SAVE_CYCLES_SMALL(Y, X) do { \
-    (Y).loop_c = ((long)(X) - 11lu) / 3lu; \
+#define SAVE_CYCLES_SMALL(Y, X)                                                                                        \
+  do {                                                                                                                 \
+    (Y).loop_c = ((long)(X)-11lu) / 3lu;                                                                               \
   } while(0)
 
-#define SAVE_CYCLES_SMALL_U8(Y, X) do { \
-    (Y) = ((long)(X) - 11lu) / 3lu; \
+#define SAVE_CYCLES_SMALL_U8(Y, X)                                                                                     \
+  do {                                                                                                                 \
+    (Y) = ((long)(X)-11lu) / 3lu;                                                                                      \
   } while(0)
 
 /**
  *  Use this macro for delays under 750 cycles and over 13 cycles.
  */
-#define DELAY_SMALL_TCY(X) do { SAVE_CYCLES_SMALL(dvar, X); BANKSEL(_dvar); /*__asm__("EXTERN _correction");*/ /*__asm__("CALL correction");*/ __asm CALL correction __endasm; } while(0)
+#define DELAY_SMALL_TCY(X)                                                                                             \
+  do {                                                                                                                 \
+    SAVE_CYCLES_SMALL(dvar, X);                                                                                        \
+    BANKSEL(_dvar); /*__asm__("EXTERN _correction");*/ /*__asm__("CALL correction");*/                                 \
+    __asm CALL correction __endasm;                                                                                    \
+  } while(0)
 
 /**
  *  Use this macro to call a small delay previously calculated.
  */
-#define CALL_CYCLES_SMALL(Y)     do { dvar.loop_c=(Y).loop_c; BANKSEL(_dvar); /*__asm__("EXTERN _correction");*/ /*__asm__("CALL correction");*/ __asm CALL correction __endasm; } while(0)
-#define CALL_CYCLES_SMALL_U8(Y)  do { dvar.loop_c=(Y);        BANKSEL(_dvar); /*__asm__("EXTERN _correction");*/ /*__asm__("CALL correction");*/ __asm CALL correction __endasm; } while(0)
+#define CALL_CYCLES_SMALL(Y)                                                                                           \
+  do {                                                                                                                 \
+    dvar.loop_c = (Y).loop_c;                                                                                          \
+    BANKSEL(_dvar); /*__asm__("EXTERN _correction");*/ /*__asm__("CALL correction");*/                                 \
+    __asm CALL correction __endasm;                                                                                    \
+  } while(0)
+#define CALL_CYCLES_SMALL_U8(Y)                                                                                        \
+  do {                                                                                                                 \
+    dvar.loop_c = (Y);                                                                                                 \
+    BANKSEL(_dvar); /*__asm__("EXTERN _correction");*/ /*__asm__("CALL correction");*/                                 \
+    __asm CALL correction __endasm;                                                                                    \
+  } while(0)
 
 /**
  *  Calculates cycles from microseconds based on clock speed relative
  *  to 4MHz.
  */
-#define US_CYCLES(N)    (((N)*(KHZ))/4000LU)
-#define MS_CYCLES(N)    (((N)*(_XTAL_FREQ))/4000LU)
+#define US_CYCLES(N) (((N) * (KHZ)) / 4000LU)
+#define MS_CYCLES(N) (((N) * (_XTAL_FREQ)) / 4000LU)
 
-#define DELAY_SMALL_US(X)  DELAY_SMALL_TCY (US_CYCLES(X))
-#define DELAY_BIG_US(X)    DELAY_BIG_TCY   (US_CYCLES(X))
+#define DELAY_SMALL_US(X) DELAY_SMALL_TCY(US_CYCLES(X))
+#define DELAY_BIG_US(X) DELAY_BIG_TCY(US_CYCLES(X))
 
 //#define SAVE_SMALL_US(Y,X)     SAVE_CYCLES_SMALL(Y, US_CYCLES(X))
 //#define SAVE_SMALL_US_U8(Y,X)  SAVE_CYCLES_SMALL_U8(Y, US_CYCLES(X))
@@ -153,7 +171,4 @@ void cycle_eater(void);
 
 //#define CALL_SMALL_US_U8  CALL_CYCLES_SMALL_U8
 
-
-#endif/*PICLIB_TSMDELAY_H*/
- 
-
+#endif /*PICLIB_TSMDELAY_H*/

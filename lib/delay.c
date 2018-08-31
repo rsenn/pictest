@@ -1,6 +1,6 @@
 #include "delay.h"
 
-#if (defined(HI_TECH_C) || defined(__XC8))
+#if(defined(HI_TECH_C) || defined(__XC8))
 
 #else
 dvars dvar;
@@ -8,9 +8,9 @@ dvars dvar;
 
 void
 delay_ms(uint16_t milliseconds) {
-  /* dvars msecs;
-   SAVE_CYCLES_BIG(msecs, US_CYCLES(milliseconds*1000lu));
-   CALL_CYCLES_BIG(msecs);*/
+/* dvars msecs;
+ SAVE_CYCLES_BIG(msecs, US_CYCLES(milliseconds*1000lu));
+ CALL_CYCLES_BIG(msecs);*/
 #if !(defined(HI_TECH_C) || defined(__XC8))
   delay_ms(milliseconds);
 #else
@@ -20,9 +20,9 @@ delay_ms(uint16_t milliseconds) {
 
 void
 delay_us(uint16_t microseconds) {
-  /*dvars usecs;
-  SAVE_CYCLES_BIG(usecs, US_CYCLES(microseconds));
-  CALL_CYCLES_BIG(usecs);*/
+/*dvars usecs;
+SAVE_CYCLES_BIG(usecs, US_CYCLES(microseconds));
+CALL_CYCLES_BIG(usecs);*/
 #if !(defined(HI_TECH_C) || defined(__XC8))
 
   delay_us(microseconds);
@@ -32,30 +32,20 @@ delay_us(uint16_t microseconds) {
 #endif
 }
 
-
 #if !(defined(HI_TECH_C) || defined(__XC8))
 /**
  *  Fixing x at 191 so b is essentially multiples of cmax
  */
 void
 cycle_eater(void) {
-  __asm
-  global correction
-  banksel _dvar  // mumblegrumble
-  nop
-  delay_big:
-  movlw   191      // Calibrated for b*764 cycles
-  movwf   _dvar+0  // Load W into reg
-  delay_inner:
-  nop  // To make the inner loop take 4 cycles per
-  decfsz  _dvar+0, 1
-  goto    delay_inner
-  decfsz  _dvar+1, 1
-  goto    delay_big
-  correction:
-  decfsz  _dvar+2, 1
-  goto    correction
-  __endasm;
+  __asm global correction banksel _dvar // mumblegrumble
+      nop delay_big : movlw 191         // Calibrated for b*764 cycles
+                      movwf _dvar +
+                      0                 // Load W into reg
+                      delay_inner : nop // To make the inner loop take 4 cycles per
+                                    decfsz _dvar +
+                                    0,
+      1 goto delay_inner decfsz _dvar + 1, 1 goto delay_big correction : decfsz _dvar + 2, 1 goto correction __endasm;
 }
 #endif
 
@@ -96,15 +86,12 @@ Delay10KTCYx(uint8_t unit) {
 void
 Delay10TCYx(uint8_t unit) {
   do {
-#if (defined(HI_TECH_C) || defined(__XC8))
+#if(defined(HI_TECH_C) || defined(__XC8))
 
     _delay(10);
 #else
     SAVE_CYCLES_SMALL(dvar, 11);
-      __asm
-      BANKSEL _dvar
-      CALL correction
-	__endasm;
+    __asm BANKSEL _dvar CALL correction __endasm;
 /*    __asm__("BANKSEL _dvar");
     __asm__("CALL correction");*/
 #endif
@@ -125,5 +112,3 @@ Delay1KTCYx(uint8_t unit) {
 #endif
   } while(--unit != 0);
 }
- 
-

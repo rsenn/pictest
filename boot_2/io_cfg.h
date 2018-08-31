@@ -51,34 +51,36 @@
 #include "autofiles\usbcfg.h"
 
 /** T R I S *********************************************************/
-#define INPUT_PIN           1
-#define OUTPUT_PIN          0
+#define INPUT_PIN 1
+#define OUTPUT_PIN 0
 
 /** U S B ***********************************************************/
-#define tris_usb_bus_sense  TRISAbits.TRISA1    // Input
+#define tris_usb_bus_sense TRISAbits.TRISA1 // Input
 
 #if defined(USE_USB_BUS_SENSE_IO)
-#define usb_bus_sense       PORTAbits.RA1
+#define usb_bus_sense PORTAbits.RA1
 #else
-#define usb_bus_sense       1
+#define usb_bus_sense 1
 #endif
 
-#define tris_self_power     TRISAbits.TRISA2    // Input
+#define tris_self_power TRISAbits.TRISA2 // Input
 
 #if defined(USE_SELF_POWER_SENSE_IO)
-#define self_power          PORTAbits.RA2
+#define self_power PORTAbits.RA2
 #else
-#define self_power          1
+#define self_power 1
 #endif
 
 /** L E D ***********************************************************/
 // LED hängt an RB7 (LED1 grün)
 
-#define mInitAllLEDs()      LATB &= 0x7F; TRISB &= 0x7F;
+#define mInitAllLEDs()                                                                                                 \
+  LATB &= 0x7F;                                                                                                        \
+  TRISB &= 0x7F;
 
-#define mLED_1              LATBbits.LATB7
-#define mLED_1_On()         mLED_1 = 1;
-#define mLED_1_Off()        mLED_1 = 0;
-#define mLED_1_Toggle()     mLED_1 = !mLED_1;
+#define mLED_1 LATBbits.LATB7
+#define mLED_1_On() mLED_1 = 1;
+#define mLED_1_Off() mLED_1 = 0;
+#define mLED_1_Toggle() mLED_1 = !mLED_1;
 
-#endif //IO_CFG_H
+#endif // IO_CFG_H

@@ -129,7 +129,7 @@ file_020=..\..\lib\pwm.h
 file_021=..\..\src\sample.h
 file_022=..\..\src\sine.h
 file_023=..\..\lib\delay.h
-file_024=..\types.h
+file_024=..\typedef.h
 file_025=..\..\lib\uart.h
 [SUITE_INFO]
 suite_guid={DBB37D42-EAE0-43C3-A936-355514C2170D}
