@@ -29,12 +29,14 @@ OS = $(shell uname -o)
 
 #PICC = $(shell which picc 2>/dev/null)
 ifeq ($(OS),GNU/Linux)
-PICC = "/home/roman/.wine32/drive_c/Program Files/Microchip/xc8/v1.34/bin/xc8.exe"
+#PICC = "/home/roman/.wine32/drive_c/Program Files/Microchip/xc8/v1.34/bin/xc8.exe"
+PICC = /opt/microchip/xc8/v1.34/bin/xc8
 endif
 
 ifeq ($(PICC),)
 ifeq ($(OS),GNU/Linux)
-CCDIR =   /home/roman/.wine32/drive_c/Program Files/Microchip/xc8/v1.34
+#CCDIR =   /home/roman/.wine32/drive_c/Program Files/Microchip/xc8/v1.34
+CCDIR = /opt/microchip/xc8/v1.34
 else
 #CCDIR = $(patsubst %/bin,%,$(dir $(PICC)))
 CCDIR = $(PROGRAMFILES)/Microchip/xc8/$(CCVER)
