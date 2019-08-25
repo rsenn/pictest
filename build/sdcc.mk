@@ -61,15 +61,15 @@ endif
 all: $(BUILDDIR) $(OBJDIR)  $(HEXFILE)
 
 $(OBJDIR)%.o: %.c
-	$(SDCC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	$(SDCC) $(CFLAGS) $(CPPFLAGS) --output=$@ -c $<
 
 $(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps.e: %.c
-	$(SDCC) $(CFLAGS) $(CPPFLAGS) -o $@ -E $<
+	$(SDCC) $(CFLAGS) $(CPPFLAGS) --output=$@ -E $<
 $(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps.asm: %.c
-	$(SDCC) $(CFLAGS) $(CPPFLAGS) -o $@ -S $<
+	$(SDCC) $(CFLAGS) $(CPPFLAGS) --output=$@ -S $<
 
 $(HEXFILE): $(OBJECTS)
-	(cd $(BUILDDIR); $(SDCC) $(CFLAGS) -o $(notdir $(HEXFILE)) $(^:%=../../%))
+	(cd $(BUILDDIR); $(SDCC) $(CFLAGS) --output=$(notdir $(HEXFILE)) $(^:%=../../%))
 
 clean:
 ifeq ($(BUILDDIR),)

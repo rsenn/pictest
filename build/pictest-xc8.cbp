@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="pictest-xc8s" />
+		<Option pch_mode="2" />
+		<Option compiler="xc8" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/pictest" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="xc8" />
+				<Compiler>
+					<Add option="--chip=16f876a" />
+					<Add option="--opt=default,+asm,-debug,+speed,-space,9" />
+					<Add option="-C" />
+					<Add option="-D__16f876a=1" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/pictest" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="xc8" />
+				<Compiler>
+					<Add option="--chip=16f876a" />
+					<Add option="-D__16f876a=1" />
+					<Add option="--opt=default,+debug" />
+					<Add option="-C" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add directory="../lib" />
+			<Add directory="../src" />
+		</Compiler>
+		<Unit filename="../lib/adc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../lib/adc.h" />
+		<Unit filename="../lib/const.h" />
+		<Unit filename="../lib/delay.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../lib/delay.h" />
+		<Unit filename="../lib/interrupt.h" />
+		<Unit filename="../lib/lcd44780.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../lib/lcd44780.h" />
+		<Unit filename="../lib/ledsense.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../lib/ledsense.h" />
+		<Unit filename="../lib/oscillator.h" />
+		<Unit filename="../lib/tsmdelay.h" />
+		<Unit filename="../lib/typedef.h" />
+		<Unit filename="../lib/uart.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../lib/uart.h" />
+		<Unit filename="../src/device.h" />
+		<Unit filename="../src/pictest.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/pictest.h" />
+		<Unit filename="../src/sample.h" />
+		<Unit filename="../src/sine.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

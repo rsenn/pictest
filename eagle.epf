@@ -7,9 +7,6 @@ Desktop="Desktop"
 
 [Globals]
 AutoSaveProject=1
-UsedLibrary="/home/roman/eagle/an-tronics/eagle/lbr/pad.lbr"
-UsedLibrary="/home/roman/eagle/an-tronics/eagle/lbr/r.lbr"
-UsedLibrary="/home/roman/eagle/an-tronics/eagle/lbr/t.lbr"
 UsedLibrary="eagle/lbr/boards.lbr"
 UsedLibrary="eagle/lbr/c.lbr"
 UsedLibrary="eagle/lbr/d.lbr"
@@ -24,11 +21,11 @@ UsedLibrary="eagle/lbr/usb.lbr"
 
 [Win_1]
 Type="Board Editor"
-Loc="169 4 1599 743"
-State=0
+Loc="169 41 1599 780"
+State=2
 Number=2
-File="eagle/Pinguino-PIC18F2550.brd"
-View="-18.9445 -7.5338 19.4064 48.5748"
+File="/home/roman/Dokumente/CSC Chef/csc-chef-eagle-20120611/SVC.brd"
+View="-1.8739 -2.14393 95.569 80.2828"
 WireWidths=" 0 0.254 0.3048 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064"
 PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
 PadDrills=" 0.5 0.6 0.7 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.8"
@@ -57,7 +54,7 @@ PolygonOrphans=0
 TextRatio=8
 DimensionUnit=1
 DimensionPrecision=2
-DimensionShowUnit=1
+DimensionShowUnit=0
 PinDirection=3
 PinFunction=0
 PinLength=2
@@ -66,16 +63,16 @@ SwapLevel=0
 ArcDirection=0
 AddLevel=2
 PadsSameType=0
-Layer=20
+Layer=16
 
 [Win_2]
 Type="Schematic Editor"
-Loc="286 32 1593 866"
+Loc="286 41 1593 875"
 State=2
 Number=1
-File="eagle/RaspberryPi-PICPgm.sch"
-View="-44.5479 26.9566 66.0673 106.141"
-WireWidths=" 0 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064 0.1524 0.254"
+File="/home/roman/Dokumente/CSC Chef/csc-chef-eagle-20120611/SVC.sch"
+View="-26.5417 -12.0701 305.795 188.515"
+WireWidths=" 0 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064 0.254 0.1524"
 PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
 PadDrills=" 0.5 0.6 0.7 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.8"
 ViaDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
@@ -101,7 +98,7 @@ PolygonRank=0
 PolygonThermals=1
 PolygonOrphans=0
 TextRatio=8
-DimensionUnit=3
+DimensionUnit=1
 DimensionPrecision=2
 DimensionShowUnit=0
 PinDirection=3
@@ -113,17 +110,16 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=91
-Views=" 1: -44.5479 26.9566 66.0673 106.141"
 Sheet="1"
 
 [Win_3]
 Type="Control Panel"
-Loc="712 326 1593 834"
-State=2
+Loc="-3 41 1916 1022"
+State=1
 Number=0
 
 [Desktop]
-Screen="1600 900"
+Screen="1920 1080"
 Window="Win_1"
 Window="Win_2"
 Window="Win_3"
