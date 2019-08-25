@@ -16,14 +16,6 @@
 			"settings":
 			{
 				"buffer_size": 6688,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/7segtest.c",
-			"settings":
-			{
-				"buffer_size": 5385,
 				"line_ending": "Windows"
 			}
 		},
@@ -31,17 +23,72 @@
 			"file": "tools/wav2h.c",
 			"settings":
 			{
-				"buffer_size": 8589,
+				"buffer_size": 8716,
 				"encoding": "Western (Windows 1252)",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "wave-cpp-xc8/wave-xc8.cpp",
+			"file": "lib/timer.h",
 			"settings":
 			{
-				"buffer_size": 57908,
+				"buffer_size": 3505,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lib/timer.c",
+			"settings":
+			{
+				"buffer_size": 2357,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lib/ports.h",
+			"settings":
+			{
+				"buffer_size": 1254,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "7segtest.c",
+			"settings":
+			{
+				"buffer_size": 5649,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lib/interrupt.h",
+			"settings":
+			{
+				"buffer_size": 2660,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "#ifndef PICLIB_ADC_H\n#define PICLIB_ADC_H\n\n#include \"typedef.h\"\n\n#define ADRES (((uint16_t)ADRESH << 8) | ADRESL)\n\n#define VREF_PLUS 4.800\n#define VREF_MINUS 0.000\n\n#define ADVAL_MIN 0x0000\n#define ADVAL_MAX 0x03ff\n\n#define ADVAL_V(val10bit) ((double)(val10bit) * ((VREF_PLUS) - (VREF_MINUS)) / ADVAL_MAX + (VREF_MINUS))\n\n#ifdef ADON\n#define ADC_ON() ADON = 1;\n#define ADC_OFF() ADON = 0;\n#else\n#define ADC_ON() ADCON0 |= 0x01;\n#define ADC_ON() ADCON0 &= ~0x01;\n#endif\n\n/* Initialize ADC clock and port configuration. */\nvoid adc_init(void);\n\n/* Enable ADC, start conversion and return data. Then disable ADC */\nuint16_t adc_read(char ch);\n\n/* Disable ADC for sleep */\nvoid adc_disable(void);\n\n/**\n * ISR for ADC\n */\nchar adc_isr(void);\n\n#endif /* PICLIB_ADC_H */\n",
+			"file": "lib/adc.h",
+			"file_size": 803,
+			"file_write_time": 132112024902300671,
+			"settings":
+			{
+				"buffer_size": 764,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 1430 files for \"TIMER0_INTERRUPT_ENABLE\" (case sensitive)\n\n/home/roman/Dokumente/Sources/pictest/build/.codelite/pictest-xc8.tags:\n    <binary>\n\n/home/roman/Dokumente/Sources/pictest/build/.codelite/pictest.tags:\n    <binary>\n\n/home/roman/Dokumente/Sources/pictest/lib/timer.h:\n   43  \n   44  #define TIMER0_INTERRUPT_FLAG T0IF\n   45: #define TIMER0_INTERRUPT_ENABLE T0IE\n   46  \n   47  #define TIMER0_FLAGS_INTR 0x80\n\n23 matches across 3 files\n\n\nSearching 1430 files for \"TIMER0_INTERRUPT_ENABLE\" (regex, case sensitive)\n\n/home/roman/Dokumente/Sources/pictest/build/.codelite/pictest-xc8.tags:\n    <binary>\n\n/home/roman/Dokumente/Sources/pictest/build/.codelite/pictest.tags:\n    <binary>\n\n/home/roman/Dokumente/Sources/pictest/lib/timer.h:\n   43  \n   44  #define TIMER0_INTERRUPT_FLAG T0IF\n   45: #define TIMER0_INTERRUPT_ENABLE T0IE\n   46  \n   47  #define TIMER0_FLAGS_INTR 0x80\n\n23 matches across 3 files\n\n\nSearching 1430 files for \"TIMER._INTERRUPT_ENABLE\" (regex, case sensitive)\n\n/home/roman/Dokumente/Sources/pictest/build/.codelite/pictest-xc8.tags:\n    <binary>\n\n/home/roman/Dokumente/Sources/pictest/build/.codelite/pictest.tags:\n    <binary>\n\n/home/roman/Dokumente/Sources/pictest/lib/timer.h:\n   43  \n   44  #define TIMER0_INTERRUPT_FLAG T0IF\n   45: #define TIMER0_INTERRUPT_ENABLE T0IE\n   46  \n   47  #define TIMER0_FLAGS_INTR 0x80\n   ..\n   63  \n   64  #define TIMER1_INTERRUPT_FLAG TMR1IF\n   65: #define TIMER1_INTERRUPT_ENABLE TMR1IE\n   66  \n   67  #define TIMER1_FLAGS_INTR 0x80\n   ..\n   93  \n   94  #define TIMER2_INTERRUPT_FLAG TMR2IF\n   95: #define TIMER2_INTERRUPT_ENABLE TMR2IE\n   96  \n   97  #define TIMER2_FLAGS_INTR 0x80\n\n69 matches across 3 files\n",
+			"settings":
+			{
+				"buffer_size": 1683,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
 			}
 		}
 	],
@@ -147,10 +194,12 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/roman/Documents/pictest"
+		"/home/roman/Dokumente/Sources/pictest",
+		"/home/roman/Dokumente/Sources/pictest/lib"
 	],
 	"file_history":
 	[
+		"/home/roman/Dokumente/Sources/pictest/src/7segtest.c",
 		"/C/Users/roman.gatling/Documents.orig/pictest/src/pictest.h",
 		"/C/Users/roman.gatling/Documents.orig/pictest/src/blinktest.c",
 		"/C/Users/roman.gatling/Documents.orig/pictest/src/7segtest.c",
@@ -277,18 +326,18 @@
 		"/E/Sources/pictest/Makefile.vars",
 		"/E/Sources/pictest/Makefile.common",
 		"/E/Sources/pictest/Makefile.htc",
-		"/E/Sources/pictest/Makefile.mcc18",
-		"/E/Sources/pictest/Makefile.xc8"
+		"/E/Sources/pictest/Makefile.mcc18"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 44.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 116.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -296,6 +345,15 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"TRISA",
+			"2",
+			"TMR1",
+			"TIMER1",
+			"TIMER0",
+			"TIMER._INTERRUPT_ENABLE",
+			"TIMER0_INTERRUPT_ENABLE",
+			"TIMER._INTERRUPT_ENABLE",
+			"TIMER0_INTERRUPT_ENABLE",
 			"int16",
 			"}*/\n",
 			"softpwm",
@@ -376,9 +434,13 @@
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"1",
+			"TMR2",
+			"TIMER2",
+			"TIMER1",
 			"tmp_msecs",
 			"b & ",
 			"hsecs",
@@ -415,7 +477,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -524,24 +586,24 @@
 						"translation.y": 2097.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/7segtest.c",
+					"file": "tools/wav2h.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5385,
+						"buffer_size": 8716,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4141,
-								4141
+								0,
+								0
 							]
 						],
 						"settings":
@@ -551,33 +613,62 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2325.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "tools/wav2h.c",
+					"file": "lib/timer.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8589,
+						"buffer_size": 3505,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								135,
-								137
+								1197,
+								1197
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C99/C99.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1156.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "lib/timer.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2357,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -587,33 +678,182 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "wave-cpp-xc8/wave-xc8.cpp",
-					"semi_transient": true,
+					"buffer": 4,
+					"file": "lib/ports.h",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 57908,
+						"buffer_size": 1254,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								168,
-								168
+								724,
+								724
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++11/C++11.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "7segtest.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5649,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3833,
+								3833
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3519.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "lib/interrupt.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2660,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1360,
+								1360
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "lib/adc.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 764,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								461,
+								461
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1683,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										353,
+										376
+									],
+									[
+										817,
+										840
+									],
+									[
+										1281,
+										1304
+									],
+									[
+										1429,
+										1452
+									],
+									[
+										1579,
+										1602
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								1299,
+								1299
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 3,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 805.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -621,11 +861,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 32.0
 	},
 	"input":
 	{
-		"height": 29.0
+		"height": 32.0
 	},
 	"layout":
 	{
@@ -666,7 +906,7 @@
 	"project": "pictest.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 80.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -675,6 +915,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"7segtest",
+				"7segtest.c"
+			]
 		],
 		"width": 0.0
 	},
