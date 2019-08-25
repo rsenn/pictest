@@ -13,6 +13,14 @@
 
 #define ADVAL_V(val10bit) ((double)(val10bit) * ((VREF_PLUS) - (VREF_MINUS)) / ADVAL_MAX + (VREF_MINUS))
 
+#ifdef ADON
+#define ADC_ON() ADON = 1;
+#define ADC_OFF() ADON = 0;
+#else
+#define ADC_ON() ADCON0 |= 0x01;
+#define ADC_OFF() ADCON0 &= ~0x01;
+#endif
+
 /* Initialize ADC clock and port configuration. */
 void adc_init(void);
 

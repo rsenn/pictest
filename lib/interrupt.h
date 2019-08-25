@@ -43,13 +43,13 @@ extern INTCON;
   { __enable_interrupt(); }
 #else
 
-#ifdef HI_TECH_C
+/*#ifdef HI_TECH_C
 #define INTERRUPT_DISABLE() #asm bcf GIE #endasm
 #define INTERRUPT_ENABLE() #asm bsf GIE #endasm
-#else
+#else*/
 #define INTERRUPT_DISABLE() (INTCON &= 0x7f);
 #define INTERRUPT_ENABLE() (INTCON |= 0x80);
-#endif
+/*#endif*/
 #endif
 #endif
 

@@ -176,8 +176,8 @@ main() {
   SET_LED(1);
   //  SET_LED2(1);
 
-  LED_TRIS = 0;
-  LED_PIN = 0;
+  LED_TRIS();
+  LED_OFF();
 
   softpwm_init();
   softpwm_values[0] = 30;

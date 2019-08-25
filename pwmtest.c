@@ -23,8 +23,6 @@
 
 #include "ding-dong.h"
 
-#define LED_PIN RA4
-#define LED_TRIS TRISA4
 
 const uint16_t sine_table[128] = {0x200, 0x219, 0x232, 0x24b, 0x263, 0x27c, 0x294, 0x2ac, 0x2c3, 0x2da, 0x2f1, 0x307,
                                   0x31c, 0x330, 0x344, 0x357, 0x36a, 0x37b, 0x38b, 0x39b, 0x3a9, 0x3b7, 0x3c3, 0x3ce,
@@ -106,8 +104,8 @@ main(void) {
   T0IE = 1;
   TMR0 = 0;
 
-  LED_TRIS = 0;
-  LED_PIN = 0;
+  LED_TRIS();
+  LED_OFF();
 
   TRISC0 = 0;
   RC0 = 0;

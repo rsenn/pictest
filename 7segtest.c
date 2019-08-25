@@ -1,4 +1,5 @@
 #include "pictest.h"
+#include "adc.h"
 #include "comparator.h"
 #include "const.h"
 #include "interrupt.h"
@@ -148,7 +149,7 @@ INTERRUPT_HANDLER() {
       msec_count -= 10;
     }
     // Clear timer interrupt bit
-    TIMER0_INTERRUPT_FLAG = 0;
+    TIMER0_INTERRUPT_CLEAR();
   }
 }
 
@@ -170,7 +171,7 @@ main() {
   run = 1;
 
   TRISA = 0b11111111;
-  ADON = 0;
+  ADC_OFF();
 
 #if defined(__16f876a) || defined(__18f252)
   TRISC4 = TRISC5 = INPUT;
@@ -191,17 +192,20 @@ main() {
 #if 1 // HAVE_TIMER_0 && USE_TIMER0
   timer0_init(PRESCALE_1_4);
 
-  TIMER0_INTERRUPT_FLAG = 0;
-  T0IE = 1;
+  TIMER0_INTERRUPT_CLEAR();
+  TIMER0_INTERRUPT_ENABLE();
 #endif
 
-  TRISA3 = TRISA5 = OUTPUT;
-  RA3 = RA5 = HIGH;
+  TRISA &= ~0b00101000;
+  PORTA |= 0b00101000;
 
-  LED_TRIS = 0;
-  LED_PIN = 0;
+  LED_TRIS();
 
+  LED_OFF();
+
+ #ifdef PEIE
   PEIE = 1;
+#endif
   INTERRUPT_ENABLE();
 
   //  put_str(put_char, "blinktest\r\n");
@@ -248,7 +252,11 @@ main() {
         if(number >= 10000) number = 0;
 
         led_state = !led_state;
-        LED_PIN = !led_state;
+	if(led_state) {
+		LED_ON();
+	} else {
+		LED_OFF();
+	}
 
         prev_hsecs = tmp_msecs;
       }

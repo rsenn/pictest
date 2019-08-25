@@ -13,10 +13,10 @@ extern volatile uint8_t ticks;
 
 #ifdef __16f628a
 #define LED_PIN RB7
-#define LED_TRIS TRISB7
+#define LED_TRIS() TRISB7 = 0;
 #else
 #define LED_PIN RA4
-#define LED_TRIS TRISA4
+#define LED_TRIS() TRISA &= ~0b0001000; 
 //#define PORTB_BUTTONS 1
 #endif
 

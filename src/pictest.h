@@ -10,7 +10,7 @@
 
 #if defined(__10f206)
 #define LED_PIN GP2
-#define LED_TRIS TRISGP2
+#define LED_TRIS() TRISGP2 = 0;
 #define LED2_CATHODE GP2
 #define LED2_CATHODE_TRIS TRISGP2
 #define LED2_ANODE RA2
@@ -21,7 +21,7 @@
 #elif defined(__12f1840)
 
 #define LED_PIN LATA4
-#define LED_TRIS ANSA4 = TRISA4
+#define LED_TRIS() TRISA &= 0b11110111;
 #define LED2_CATHODE LATA2
 #define LED2_CATHODE_TRIS ANSA2 = TRISA2
 #define LED2_ANODE RA3
@@ -30,7 +30,7 @@
 #elif defined(__16f628a)
 
 #define LED_PIN RA4
-#define LED_TRIS TRISA4
+#define LED_TRIS() TRISA &= 0b11110111;
 #define LED2_CATHODE RA2
 #define LED2_CATHODE_TRIS TRISA2
 #define LED2_ANODE RA3
@@ -41,7 +41,9 @@
 #elif defined(__16f876a) || defined(__18f252)
 
 #define LED_PIN RA4
-#define LED_TRIS TRISA4
+#define LED_ON() PORTA |= 0b0001000;
+#define LED_OFF() PORTA &= 0b11110111;
+#define LED_TRIS() TRISA &= 0b11110111;
 #define LED2_CATHODE RC2
 #define LED2_CATHODE_TRIS TRISC2
 
@@ -56,7 +58,9 @@
 #else
 
 #define LED_PIN RA4
-#define LED_TRIS TRISA4
+#define LED_ON() PORTA |= 0b0001000;
+#define LED_OFF() PORTA &= 0b11110111;
+#define LED_TRIS() TRISA &= 0b11110111;
 #define LED2_CATHODE RC0
 #define LED2_CATHODE_TRIS TRISC0
 #define LED2_ANODE RC1
@@ -74,7 +78,7 @@
 
 #define BSTRB_DELAY 30
 
-#define INIT_LED() LED_TRIS = OUTPUT
+#define INIT_LED() LED_TRIS()
 #define SET_LED(b) LED_PIN = !!(b)
 
 #ifdef LED2_ANODE

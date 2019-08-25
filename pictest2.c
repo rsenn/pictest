@@ -212,8 +212,8 @@ main() {
 
   run = 1;
 
-  LED_TRIS = 0;
-  LED_PIN = 1;
+  LED_TRIS();
+  LED_ON();
 
   CMCON = 0b111; // Disable PORTA Comparators
 
