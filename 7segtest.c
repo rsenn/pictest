@@ -2,6 +2,7 @@
 #include "comparator.h"
 #include "const.h"
 #include "interrupt.h"
+#include "ports.h"
 #include "random.h"
 #include "softpwm.h"
 #include "timer.h"
@@ -62,9 +63,9 @@ volatile char display_index = 0;
 
 //#define b & v, b) (BUTTON_GET()&(b))
 
-#ifdef SDCC
-__code unsigned int __at(_CONFIG) __configword = CONFIG_WORD;
-#endif
+//#ifdef SDCC
+//__code unsigned int __at(_CONFIG) __configword = CONFIG_WORD;
+//#endif
 
 #define SIZE_OF(arr) (sizeof(arr) / sizeof(arr[0]))
 
@@ -72,7 +73,7 @@ extern const uint16_t rainbow[64];
 extern const uint8_t rainbow8[64][3];
 
 static void
-dummy_putch(char) {}
+dummy_putch(char c) {}
 
 typedef void(putch_fn)(char);
 
@@ -101,7 +102,7 @@ volatile uint32_t msecs, hsecs;
 
 void
 set_number(uint16_t n) {
-  GIE = 0;
+  INTERRUPT_DISABLE();
   display_index = 0;
   display_bits[3] = digits[n % 10];
   n /= 10;
@@ -110,7 +111,7 @@ set_number(uint16_t n) {
   display_bits[1] = digits[n % 10];
   n /= 10;
   display_bits[0] = digits[n % 10];
-  GIE = 1;
+  INTERRUPT_ENABLE();
 }
 
 //-----------------------------------------------------------------------------
@@ -128,7 +129,7 @@ INTERRUPT_HANDLER() {
   ser_int();
 #endif
 
-  if(T0IF) {
+  if(TIMER0_INTERRUPT_FLAG) {
     bres += 256 * 4;
 
     if(bres >= 5000) {
@@ -147,7 +148,7 @@ INTERRUPT_HANDLER() {
       msec_count -= 10;
     }
     // Clear timer interrupt bit
-    T0IF = 0;
+    TIMER0_INTERRUPT_FLAG = 0;
   }
 }
 
@@ -190,7 +191,7 @@ main() {
 #if 1 // HAVE_TIMER_0 && USE_TIMER0
   timer0_init(PRESCALE_1_4);
 
-  T0IF = 0;
+  TIMER0_INTERRUPT_FLAG = 0;
   T0IE = 1;
 #endif
 
@@ -201,7 +202,7 @@ main() {
   LED_PIN = 0;
 
   PEIE = 1;
-  GIE = 1;
+  INTERRUPT_ENABLE();
 
   //  put_str(put_char, "blinktest\r\n");
 
@@ -214,9 +215,9 @@ main() {
     /*static float hue = 0;
     static int i = 0;*/
 
-    GIE = 0;
+    INTERRUPT_DISABLE();
     tmp_msecs = msecs;
-    GIE = 1;
+    INTERRUPT_ENABLE();
 
     /*
      if(tmp_msecs > last_button + 200) {
@@ -253,15 +254,15 @@ main() {
       }
     }
     /*
-        GIE = 0;
+        INTERRUPT_DISABLE();
         tmp_msecs = msecs + 1000;
-        GIE = 1;
+        INTERRUPT_ENABLE();
 
         for (;;) {
           BOOL wait;
-          GIE = 0;
+          INTERRUPT_DISABLE();
           wait = msecs < tmp_msecs;
-          GIE = 1;
+          INTERRUPT_ENABLE();
 
           if (!wait) break;
         }*/

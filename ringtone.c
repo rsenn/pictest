@@ -231,7 +231,7 @@ main() {
   timer1_init(PRESCALE_1_1 | TIMER1_FLAGS_EXTCLK | TIMER1_FLAGS_SYNC);
 
   PEIE = 1;
-  GIE = 1; /* Enable General Purpose Interrupts */
+  INTERRUPT_ENABLE(); /* Enable General Purpose Interrupts */
 
   do {
 
@@ -396,7 +396,7 @@ PlayNote(unsigned short note, unsigned char octave, unsigned int duration) {
 // void InitTimer(void) {
 //  /* Initialise Timer 0 */
 //  OPTION_REG = 0b11010111; /* Set TMR0 to Internal CLk, 1:256 */
-//  T0IF = 0; /* Clear TMR0 Flag, ready for use */
+//  TIMER0_INTERRUPT_FLAG = 0; /* Clear TMR0 Flag, ready for use */
 //  T0IE = 1; /* Enable Timer Overflow Interrupt */
 
 //  /* Initialise Timer 1 */
@@ -407,10 +407,10 @@ PlayNote(unsigned short note, unsigned char octave, unsigned int duration) {
 
 void interrupt
 interr(void) {
-  if(T0IF) {
+  if(TIMER0_INTERRUPT_FLAG) {
     TMR0 = beat_speed;
     if(TMR0Count) TMR0Count--;
-    T0IF = 0;
+    TIMER0_INTERRUPT_FLAG = 0;
   }
   if(TMR1IF) {
     if(beep)

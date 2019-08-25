@@ -88,7 +88,7 @@ INTERRUPT_HANDLER() {
   ser_int();
 #endif
 
-  if(T0IF) {
+  if(TIMER0_INTERRUPT_FLAG) {
     bres += 256 * 4;
 
     if(bres >= 5000) {
@@ -101,7 +101,7 @@ INTERRUPT_HANDLER() {
       msec_count -= 10;
     }
     // Clear timer interrupt bit
-    T0IF = 0;
+    TIMER0_INTERRUPT_FLAG = 0;
   }
 }
 
@@ -163,7 +163,7 @@ main() {
 #if HAVE_TIMER_0 && USE_TIMER0
   timer0_init(PRESCALE_1_4);
 
-  T0IF = 0;
+  TIMER0_INTERRUPT_FLAG = 0;
   T0IE = 1;
 #endif
   // timer1_init(2);
@@ -185,7 +185,7 @@ main() {
   softpwm_values[2] = 80;
 
   PEIE = 1;
-  GIE = 1;
+  INTERRUPT_ENABLE();
 
   put_str(put_char, "blinktest\r\n");
 
@@ -194,9 +194,9 @@ main() {
     /*static float hue = 0;
     static int i = 0;*/
 
-    GIE = 0;
+    INTERRUPT_DISABLE();
     tmp_msecs = msecs;
-    GIE = 1;
+    INTERRUPT_ENABLE();
 
     update_colors = 0;
     input = 0;
@@ -305,15 +305,15 @@ main() {
     }
     uart_disable();
 
-    GIE = 0;
+    INTERRUPT_DISABLE();
     tmp_msecs = msecs + 1000;
-    GIE = 1;
+    INTERRUPT_ENABLE();
 
     for(;;) {
       BOOL wait;
-      GIE = 0;
+      INTERRUPT_DISABLE();
       wait = msecs < tmp_msecs;
-      GIE = 1;
+      INTERRUPT_ENABLE();
 
       if(!wait) break;
     }

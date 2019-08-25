@@ -77,7 +77,7 @@ main() {
   TMR0IE = 1; // Enable TIMER0 Interrupt
   PEIE = 1; // Enable Peripheral Interrupt
 
-  GIE = 1; // Enable INTs globally
+  INTERRUPT_ENABLE(); // Enable INTs globally
 
   TMR0ON = 1; // Now start the timer!
 

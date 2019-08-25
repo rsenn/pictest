@@ -43,7 +43,7 @@ volatile static uint8_t ticks;
 volatile static uint16_t poti;
 
 INTERRUPT_HANDLER() {
-  if(T0IF) { // Did we get a timer0 interrupt?
+  if(TIMER0_INTERRUPT_FLAG) { // Did we get a timer0 interrupt?
 
     PWM_setduty(1, sine_table[index % ARRAY_SIZE(sine_table)]);
     PWM_setduty(2, sine_table[(uint8_t)(index + 64) % ARRAY_SIZE(sine_table)]);
@@ -51,7 +51,7 @@ INTERRUPT_HANDLER() {
     index++;
 
     TMR0 = 255 - ticks;
-    T0IF = 0;
+    TIMER0_INTERRUPT_FLAG = 0;
   }
 }
 
@@ -102,7 +102,7 @@ main(void) {
   PSA = 0;  // Assign prescaler to timer0
   OPTION_REGbits.PS = 0b110;
   INTCON = 0;
-  GIE = 1;
+  INTERRUPT_ENABLE();
   T0IE = 1;
   TMR0 = 0;
 
@@ -126,10 +126,10 @@ main(void) {
     lcd_print("mV");
 #endif
 
-    GIE = 0;
+    INTERRUPT_DISABLE();
     //    OPTION_REGbits.PS = 0b100 | (poti >> 8);
     ticks = (long)poti * 200 / 1024 + 32;
-    GIE = 1;
+    INTERRUPT_ENABLE();
 
     __delay_ms(100);
   }

@@ -15,6 +15,7 @@
 #endif // !defined(HI_TECH_C)
 
 #if defined(__SDCC) || defined(SDCC)
+#ifdef GIE
 #define INTERRUPT_DISABLE()                                                                                            \
   do {                                                                                                                 \
     GIE = 0;                                                                                                           \
@@ -23,6 +24,17 @@
   do {                                                                                                                 \
     GIE = 1;                                                                                                           \
   } while(0);
+#else
+extern INTCON;
+#define INTERRUPT_DISABLE()                                                                                            \
+  do {                                                                                                                 \
+    INTCON &= ~0x80;  \
+  } while(0);
+#define INTERRUPT_ENABLE()                                                                                             \
+  do {                                                                                                                 \
+    INTCON |= 0x80;  \
+  } while(0);
+#endif
 #else
 #ifdef __IAR_SYSTEMS_ICC__
 #define INTERRUPT_DISABLE()                                                                                            \

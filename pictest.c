@@ -172,7 +172,7 @@ TMR2ON = 1;       // Enable timer 2.
 #if HAVE_TIMER_0 && USE_TIMER0
   timer0_init(PRESCALE_1_4);
 
-  T0IF = 0;
+  TIMER0_INTERRUPT_FLAG = 0;
   T0IE = 1;
 #endif
 // timer1_init(0);
@@ -245,7 +245,7 @@ TMR2ON = 1;       // Enable timer 2.
   INTF = 0;
 
   PEIE = 1;
-  GIE = 1;
+  INTERRUPT_ENABLE();
 
 #if 0
   shell_init(&sh_soft, softserial_getch, softser_putch);
@@ -260,9 +260,9 @@ TMR2ON = 1;       // Enable timer 2.
   for(;;) {
     static int32_t prev = -1;
 
-    GIE = 0;
+    INTERRUPT_DISABLE();
     tmp_msecs = msecs;
-    GIE = 1;
+    INTERRUPT_ENABLE();
 
     if(seconds != prev) {
 #if USE_UART
@@ -297,15 +297,15 @@ TMR2ON = 1;       // Enable timer 2.
 #endif
     }
 
-    GIE = 0;
+    INTERRUPT_DISABLE();
     tmp_msecs = msecs + 1000;
-    GIE = 1;
+    INTERRUPT_ENABLE();
 
     for(;;) {
       BOOL wait;
-      GIE = 0;
+      INTERRUPT_DISABLE();
       wait = msecs < tmp_msecs;
-      GIE = 1;
+      INTERRUPT_ENABLE();
 
       if(!wait) break;
     }
@@ -533,7 +533,7 @@ buttons_get() {
 #endif
 
 INTERRUPT_HANDLER() {
-  if(T0IF) {
+  if(TIMER0_INTERRUPT_FLAG) {
     bres += 256;
 
     if(bres >= 5000) {
@@ -555,7 +555,7 @@ INTERRUPT_HANDLER() {
     if(led_enabled) SET_LED(seconds & 1);
 
     // Clear timer interrupt bit
-    T0IF = 0;
+    TIMER0_INTERRUPT_FLAG = 0;
   }
   if(TMR1IF) {
     /*
@@ -579,11 +579,11 @@ INTERRUPT_HANDLER() {
   if(CCP1IF) {
     TMR1H = 0;
     TMR1L = 0;
-    GIE = 0;
+    INTERRUPT_DISABLE();
     control = 1;
 
     CCP1IF = 0;
-    GIE = 1;
+    INTERRUPT_ENABLE();
   }
 #endif
   if(TMR2IF) {

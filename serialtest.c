@@ -45,7 +45,7 @@ INTERRUPT_HANDLER() {
 #if USE_UART
   uart_isr();
 #endif
-  if(T0IF) {
+  if(TIMER0_INTERRUPT_FLAG) {
 
     bres += 256;
 
@@ -65,7 +65,7 @@ INTERRUPT_HANDLER() {
     // TMR1H = 0xff;
 
     // Clear timer interrupt bit
-    T0IF = 0;
+    TIMER0_INTERRUPT_FLAG = 0;
   }
 
   if(TMR1IF) {
@@ -136,7 +136,7 @@ main() {
 
   //  TMR1 = 0xff00;
   timer0_init(PRESCALE_1_1 | TIMER0_FLAGS_INTR);
-  T0IF = 0;
+  TIMER0_INTERRUPT_FLAG = 0;
   T0IE = 1;
   timer1_init(PRESCALE_1_1 | TIMER1_FLAGS_INTR);
   TMR1IF = 0;
@@ -165,7 +165,7 @@ main() {
   SET_LED2(1);
 
   PEIE = 1;
-  GIE = 1;
+  INTERRUPT_ENABLE();
 
   RCIF = 0;
   RCIE = 1;

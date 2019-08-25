@@ -30,6 +30,10 @@
 #endif // defined __18f25k50
 
 #ifdef SDCC
+
+#ifndef _CONFIG
+#define _CONFIG 0x2007
+#endif
 __code unsigned int __at(_CONFIG) __configword = CONFIG_WORD;
 #endif
 

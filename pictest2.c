@@ -80,14 +80,14 @@ buttons_get() {
 }
 
 INTERRUPT_HANDLER() {
-  if(T0IF) {
+  if(TIMER0_INTERRUPT_FLAG) {
     TMR0 = ticks;
 
     tmr_overflows++;
     LED_PIN = !(tmr_overflows & 0x1000);
     RA5 = !(tmr_overflows & 0x0200);
 
-    T0IF = 0;
+    TIMER0_INTERRUPT_FLAG = 0;
 
     // Clear timer interrupt bit
   }
@@ -96,11 +96,11 @@ INTERRUPT_HANDLER() {
   if(CCP1IF) {
     TMR1H = 0;
     TMR1L = 0;
-    GIE = 0;
+    INTERRUPT_DISABLE();
     control = 1;
 
     CCP1IF = 0;
-    GIE = 1;
+    INTERRUPT_ENABLE();
   }
   if(TMR2IF) {
     // if(run) {
@@ -281,7 +281,7 @@ CCP2CON = 0x0c;
   //  OPTION_REGbits.PS = 0b111; // 1:256 prescaler (4 MHz quartz, so timer0 rate 15.625 kHz (every 64ns))
 
   TMR0 = ~ticks;
-  T0IF = 0;
+  TIMER0_INTERRUPT_FLAG = 0;
   T0IE = 1;
 
   tmr_overflows = 0;
@@ -305,7 +305,7 @@ CCP2CON = 0x0c;
 #endif
 
   PEIE = 1;
-  GIE = 1;
+  INTERRUPT_ENABLE();
 
   TRISA0 = TRISA1 = TRISA3 = INPUT;
   TRISA2 = TRISA4 = TRISA5 = OUTPUT;
