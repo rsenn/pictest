@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.6.0">
+<eagle version="7.2.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="100" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -5130,14 +5130,13 @@
 <busses>
 <bus name="RB[0..7]">
 <segment>
-<wire x1="106.68" y1="43.18" x2="106.68" y2="63.5" width="0.762" layer="92"/>
-<wire x1="109.22" y1="71.12" x2="121.92" y2="71.12" width="0.762" layer="92"/>
-<wire x1="121.92" y1="71.12" x2="124.46" y2="68.58" width="0.762" layer="92"/>
-<wire x1="124.46" y1="68.58" x2="124.46" y2="43.18" width="0.762" layer="92"/>
-<wire x1="109.22" y1="71.12" x2="106.68" y2="68.58" width="0.762" layer="92"/>
-<wire x1="106.68" y1="63.5" x2="106.68" y2="68.58" width="0.762" layer="92"/>
-<wire x1="106.68" y1="68.58" x2="104.14" y2="71.12" width="0.762" layer="92"/>
-<wire x1="104.14" y1="71.12" x2="68.58" y2="71.12" width="0.762" layer="92"/>
+<wire x1="106.68" y1="43.18" x2="106.68" y2="66.04" width="0.762" layer="92"/>
+<wire x1="109.22" y1="68.58" x2="121.92" y2="68.58" width="0.762" layer="92"/>
+<wire x1="121.92" y1="68.58" x2="124.46" y2="66.04" width="0.762" layer="92"/>
+<wire x1="124.46" y1="66.04" x2="124.46" y2="43.18" width="0.762" layer="92"/>
+<wire x1="109.22" y1="68.58" x2="106.68" y2="66.04" width="0.762" layer="92"/>
+<wire x1="106.68" y1="66.04" x2="104.14" y2="68.58" width="0.762" layer="92"/>
+<wire x1="104.14" y1="68.58" x2="68.58" y2="68.58" width="0.762" layer="92"/>
 </segment>
 </bus>
 <bus name="RC[4..7],VSS,VDD">
@@ -5203,7 +5202,6 @@
 <wire x1="20.32" y1="20.32" x2="20.32" y2="25.4" width="0.1524" layer="91"/>
 <junction x="20.32" y="25.4"/>
 <wire x1="17.78" y1="25.4" x2="22.86" y2="25.4" width="0.1524" layer="91"/>
-<junction x="17.78" y="25.4"/>
 </segment>
 </net>
 <net name="N$17" class="0">
@@ -5354,8 +5352,8 @@
 </segment>
 <segment>
 <pinref part="J6" gate="G$1" pin="PGC"/>
-<wire x1="68.58" y1="71.12" x2="66.04" y2="73.66" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="73.66" x2="66.04" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="68.58" x2="66.04" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="71.12" x2="66.04" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="RB7" class="0">
@@ -5371,8 +5369,8 @@
 </segment>
 <segment>
 <pinref part="J6" gate="G$1" pin="PGD"/>
-<wire x1="71.12" y1="71.12" x2="68.58" y2="73.66" width="0.1524" layer="91"/>
-<wire x1="68.58" y1="73.66" x2="68.58" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="68.58" x2="68.58" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="71.12" x2="68.58" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VDD" class="0">
