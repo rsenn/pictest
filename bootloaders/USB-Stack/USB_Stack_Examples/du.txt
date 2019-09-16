@@ -1,0 +1,5 @@
+1,8M	CDC_Examples
+1,8M	MSD_Examples
+4,0K	du.txt
+12M	HID_Examples
+528K	USB_uC_Test
