@@ -60,8 +60,8 @@ with the PIC18F87J50 Family of microcontrollers.
 // to prevent build errors with some of the above listed devices.
 // For example, on the PIC18F4458 CP3, WRT3, and EBTR3 don't exist.
 
-#pragma config PLLDIV   = 5       // (20 MHz input)
-//#pragma config PLLDIV   = 4       // 16 MHz input
+//#pragma config PLLDIV   = 5       // (20 MHz input)
+#pragma config PLLDIV   = 4       // 16 MHz input
 //#pragma config PLLDIV   = 3       // 12 MHz input
 //#pragma config PLLDIV   = 2       //  8 MHz input
 //#pragma config PLLDIV   = 1       //  4 MHz input

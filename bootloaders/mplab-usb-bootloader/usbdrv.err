@@ -1,1 +1,1 @@
-Warning[2056] C:\Users\roman\Documents\pictest\bootloaders\mplab-usb-bootloader\usbdrv.c 102 : expression is always true
+Warning[2056] usbdrv.c 102 : expression is always true
