@@ -43,11 +43,11 @@ with the PIC18F87J50 Family of microcontrollers.
 
 /** I N C L U D E S **********************************************************/
 #include <p18cxxx.h>
-#include "system\typedefs.h"                        // Required
-#include "system\usb\usb.h"                         // Required
+#include "system/typedefs.h"                        // Required
+#include "system/usb/usb.h"                         // Required
 #include "io_cfg.h"                                 // Required
 
-#include "system\usb\usb_compile_time_validation.h" // Optional
+#include "system/usb/usb_compile_time_validation.h" // Optional
 
 /** C O N F I G U R A T I O N ************************************************/
 
