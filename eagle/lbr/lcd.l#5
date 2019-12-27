@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="0.001" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -689,6 +689,14 @@
 <wire x1="-1.60891875" y1="3.421440625" x2="-2.117059375" y2="0.72825" width="0.012" layer="94"/>
 <wire x1="-2.117059375" y1="0.72825" x2="-3.336609375" y2="0.169290625" width="0.012" layer="94"/>
 <wire x1="-3.336609375" y1="0.169290625" x2="-2.67601875" y2="3.675509375" width="0.012" layer="94"/>
+<text x="0.5588" y="4.2418" size="0.6096" layer="97" align="center">a</text>
+<text x="0" y="0" size="0.6096" layer="97" align="center">g</text>
+<text x="-0.5588" y="-4.2418" size="0.6096" layer="97" align="center">d</text>
+<text x="-2.3876" y="2.032" size="0.6096" layer="97" align="center">f</text>
+<text x="-3.1496" y="-2.032" size="0.6096" layer="97" align="center">e</text>
+<text x="2.9972" y="2.032" size="0.6096" layer="97" align="center">b</text>
+<text x="2.2352" y="-2.032" size="0.6096" layer="97" align="center">c</text>
+<text x="3.4544" y="-4.2418" size="0.6096" layer="97" align="center">dp</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -787,6 +795,23 @@
 </gates>
 <devices>
 <device name="" package="TDSX1150">
+<connects>
+<connect gate="G$1" pin="A" pad="7"/>
+<connect gate="G$1" pin="B" pad="6"/>
+<connect gate="G$1" pin="C" pad="4"/>
+<connect gate="G$1" pin="C@1" pad="3"/>
+<connect gate="G$1" pin="C@2" pad="8"/>
+<connect gate="G$1" pin="D" pad="2"/>
+<connect gate="G$1" pin="DP" pad="5"/>
+<connect gate="G$1" pin="E" pad="1"/>
+<connect gate="G$1" pin="F" pad="10"/>
+<connect gate="G$1" pin="G" pad="9"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-2.54" package="TDSX1150-2.54">
 <connects>
 <connect gate="G$1" pin="A" pad="7"/>
 <connect gate="G$1" pin="B" pad="6"/>
