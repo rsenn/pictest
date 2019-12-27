@@ -146,8 +146,8 @@ COMMON_FLAGS += --double=32
 #COMMON_FLAGS += --float=32
 
 COMMON_FLAGS += --warn=3
-#COMMON_FLAGS += --codeoffset=$(CODEOFFSET)
-LDFLAGS += --codeoffset=$(CODEOFFSET)
+#COMMON_FLAGS += --codeoffset=$(CODE_OFFSET)
+LDFLAGS += --codeoffset=$(CODE_OFFSET)
 
 #COMMON_FLAGS += --mode=PRO
 

@@ -30,4 +30,13 @@ __CONFIG(2, BORV_LO& WRT_OFF);
 
 #endif
 
+#define _BODEN_OFF _BOREN_OFF
+#define _WDT_OFF _WDTE_OFF
+
+#ifdef __XC
+#define NOT_T1SYNC nT1SYNC 
+#else
+#define nT1SYNC NOT_T1SYNC
+#endif
+
 #endif // defined CONFIG_12F1840_H

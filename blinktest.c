@@ -37,7 +37,7 @@
 
 //#define b & v, b) (BUTTON_GET()&(b))
 
-#ifdef SDCC
+#if defined(SDCC) && !(__SDCC_VERSION_MAJOR == 3 && __SDCC_VERSION_MINOR >= 9)
 __code unsigned int __at(_CONFIG) __configword = CONFIG_WORD;
 #endif
 
@@ -47,7 +47,7 @@ extern const uint16_t rainbow[64];
 extern const uint8_t rainbow8[64][3];
 
 static void
-dummy_putch(char) {}
+dummy_putch(char c) {}
 
 typedef void(putch_fn)(char);
 
@@ -101,7 +101,7 @@ INTERRUPT_HANDLER() {
       msec_count -= 10;
     }
     // Clear timer interrupt bit
-    TIMER0_INTERRUPT_FLAG = 0;
+    TIMER0_INTERRUPT_CLEAR();
   }
 }
 
@@ -163,7 +163,7 @@ main() {
 #if HAVE_TIMER_0 && USE_TIMER0
   timer0_init(PRESCALE_1_4);
 
-  TIMER0_INTERRUPT_FLAG = 0;
+  TIMER0_INTERRUPT_CLEAR();
   T0IE = 1;
 #endif
   // timer1_init(2);

@@ -23,7 +23,7 @@ LD = gplink
 PICPROG = picprog
 #CFLAGS =  -S -V -m${target} -pp$(chipl)
 CFLAGS =  -m${target} -pp$(chipl)
-CFLAGS += --code-loc $(CODEOFFSET)
+CFLAGS += --code-loc $(CODE_OFFSET)
 
 #LDFLAGS = -m -s ${prefix}/share/gputils/lkr/$(chipl).lkr
 #LIBS = $(targetlibdir)/pic$(chipl).lib
@@ -61,15 +61,15 @@ endif
 all: $(BUILDDIR) $(OBJDIR)  $(HEXFILE)
 
 $(OBJDIR)%.o: %.c
-	$(SDCC) $(CFLAGS) $(CPPFLAGS) --output=$@ -c $<
+	$(SDCC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 $(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps.e: %.c
-	$(SDCC) $(CFLAGS) $(CPPFLAGS) --output=$@ -E $<
+	$(SDCC) $(CFLAGS) $(CPPFLAGS) -o $@ -E $<
 $(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps.asm: %.c
-	$(SDCC) $(CFLAGS) $(CPPFLAGS) --output=$@ -S $<
+	$(SDCC) $(CFLAGS) $(CPPFLAGS) -o $@ -S $<
 
 $(HEXFILE): $(OBJECTS)
-	(cd $(BUILDDIR); $(SDCC) $(CFLAGS) --output=$(notdir $(HEXFILE)) $(^:%=../../%))
+	(cd $(BUILDDIR); $(SDCC) $(CFLAGS) -o $(notdir $(HEXFILE)) $(^:%=../../%))
 
 clean:
 ifeq ($(BUILDDIR),)

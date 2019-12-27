@@ -13,11 +13,15 @@ BUILD_TYPES := debug release
 endif
 
 ifeq ($(XTAL_FREQS),)
-XTAL_FREQS := 20000000
+XTAL_FREQS := 16000000 20000000
 endif
 
 ifeq ($(BAUD_RATES),)
-BAUD_RATES := 38400
+BAUD_RATES := 19200 38400
+endif
+
+ifeq ($(CODE_OFFSETS),)
+CODE_OFFSETS := 0x0000 0x0800 0x1000 0x2000
 endif
 
 ifeq ($(BUILD_TYPE),debug)
@@ -67,6 +71,15 @@ MAKE_LOOP := for BAUD_RATE in $(call get-list,BAUD_RATES); do $(MAKE_LOOP); done
 else
 ifneq ($(call get-list,BAUD_RATE),)
 MAKE_CMD += BAUD=$(call get-list,BAUD_RATE)
+endif
+endif
+
+ifneq ($(call is-list,CODE_OFFSET),)
+MAKE_CMD +=  CODE_OFFSET=$$CODE_OFFSET
+MAKE_LOOP := for CODE_OFFSET in $(call get-list,CODE_OFFSET); do $(MAKE_LOOP); done
+else
+ifneq ($(call get-list,CODE_OFFSET),)
+MAKE_CMD += CODE_OFFSET=$(call get-list,CODE_OFFSET)
 endif
 endif
 

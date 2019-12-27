@@ -21,6 +21,8 @@
 #elif defined(__12f1840)
 
 #define LED_PIN LATA4
+#define LED_ON() PORTA |= 0b0001000;
+#define LED_OFF() PORTA &= 0b11110111;
 #define LED_TRIS() TRISA &= 0b11110111;
 #define LED2_CATHODE LATA2
 #define LED2_CATHODE_TRIS ANSA2 = TRISA2
