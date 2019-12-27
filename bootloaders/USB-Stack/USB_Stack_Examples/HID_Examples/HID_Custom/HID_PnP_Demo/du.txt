@@ -1,0 +1,14 @@
+2,5M	mac
+4,0K	demoapp.cpp
+4,0K	demoapp.h
+4,0K	demoapp.ui
+4,0K	hid_pnp.cpp
+4,0K	HID_PnP_Demo.pro
+4,0K	hid_pnp.h
+4,0K	main.cpp
+4,0M	windows
+24K	HID_PnP_Demo.pro.user
+24K	HID_PnP_Demo.pro.user.959330a
+28K	Makefile
+48K	Makefile.Debug
+48K	Makefile.Release

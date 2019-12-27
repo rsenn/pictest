@@ -38,8 +38,8 @@
 #define USBMMAP_H
 
 /** I N C L U D E S **********************************************************/
-#include "system\typedefs.h"
-#include "system\usb\usb.h"
+#include "system/typedefs.h"
+#include "system/usb/usb.h"
 
 /** D E F I N I T I O N S ****************************************************/
 

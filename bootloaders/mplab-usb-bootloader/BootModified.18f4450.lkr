@@ -10,7 +10,7 @@ LIBPATH .
 
 FILES c018i.o
 FILES clib.lib
-FILES p18f4450.lib
+FILES p18F4450.lib
 
 //Modified linker script to be used with the USB HID Bootloader firmware.
 CODEPAGE   NAME=vectors    START=0x0               END=0x1F           PROTECTED

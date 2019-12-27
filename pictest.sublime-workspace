@@ -199,6 +199,9 @@
 	],
 	"file_history":
 	[
+		"/home/roman/Dokumente/Sources/pic-softser/SoftUART_PIC16F/Software_UART.h",
+		"/home/roman/Dokumente/Sources/pic-softser/16f-softuart--20MHZ/main.c",
+		"/home/roman/Dokumente/Sources/pic-softser/SoftUART_PIC16F/Software_UART.c",
 		"/home/roman/Dokumente/Sources/pictest/src/7segtest.c",
 		"/C/Users/roman.gatling/Documents.orig/pictest/src/pictest.h",
 		"/C/Users/roman.gatling/Documents.orig/pictest/src/blinktest.c",
@@ -323,10 +326,7 @@
 		"/E/Sources/pictest/config-18f252.h",
 		"/E/Sources/pictest/config-16f628a.h",
 		"/E/Sources/pictest/files.list",
-		"/E/Sources/pictest/Makefile.vars",
-		"/E/Sources/pictest/Makefile.common",
-		"/E/Sources/pictest/Makefile.htc",
-		"/E/Sources/pictest/Makefile.mcc18"
+		"/E/Sources/pictest/Makefile.vars"
 	],
 	"find":
 	{

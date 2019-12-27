@@ -1,0 +1,6 @@
+7,9M	HID_Custom
+660K	HID1_11.pdf
+820K	HID_Mouse_Example
+856K	HID_Keyboard+Consumer_Example
+856K	HID_RubberDucky_Example
+952K	Hut1_12v2.pdf

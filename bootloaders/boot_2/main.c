@@ -43,11 +43,11 @@ with the PIC18F87J50 Family of microcontrollers.
 
 /** I N C L U D E S **********************************************************/
 #include <p18cxxx.h>
-#include "system\typedefs.h"                        // Required
-#include "system\usb\usb.h"                         // Required
+#include "system/typedefs.h"                        // Required
+#include "system/usb/usb.h"                         // Required
 #include "io_cfg.h"                                 // Required
 
-#include "system\usb\usb_compile_time_validation.h" // Optional
+#include "system/usb/usb_compile_time_validation.h" // Optional
 
 /** C O N F I G U R A T I O N ************************************************/
 
@@ -60,8 +60,8 @@ with the PIC18F87J50 Family of microcontrollers.
 // to prevent build errors with some of the above listed devices.
 // For example, on the PIC18F4458 CP3, WRT3, and EBTR3 don't exist.
 
-#pragma config PLLDIV   = 5       // (20 MHz input)
-//#pragma config PLLDIV   = 4       // 16 MHz input
+//#pragma config PLLDIV   = 5       // (20 MHz input)
+#pragma config PLLDIV   = 4       // 16 MHz input
 //#pragma config PLLDIV   = 3       // 12 MHz input
 //#pragma config PLLDIV   = 2       //  8 MHz input
 //#pragma config PLLDIV   = 1       //  4 MHz input
