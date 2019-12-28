@@ -272,7 +272,9 @@ main() {
 
       rgb = rainbow8[index];
 
+#ifdef USE_UART
       uart_enable();
+#endif
 
 #if USE_SER || USE_UART
       put_char('#');
@@ -303,7 +305,9 @@ main() {
       update_colors = 0;
       //      prev_index = index;
     }
+#ifdef USE_UART
     uart_disable();
+#endif
 
     INTERRUPT_DISABLE();
     tmp_msecs = msecs + 1000;
