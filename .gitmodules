@@ -11,3 +11,7 @@
 [submodule "bootloaders/18f4550-usb-hid-xc8"]
 	path = bootloaders/18f4550-usb-hid-xc8
 	url = https://github.com/rsenn/18F4550-USB-HID-XC8.git
+[submodule "libpicp"]
+	path = lib
+	url = https://github.com/rsenn/libpicp.git
+	branch = master
