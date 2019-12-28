@@ -20,22 +20,22 @@ ifeq ($(CHIP),)
 CHIP := 16F876A
 endif
 
-ifeq ($(CODE_OFFSET),)
-ODE_OFFSET := 0x0
-endif
+#ifeq ($(CODE_OFFSET),)
+#CODE_OFFSET := 0x0
+#endif
 
-CODE_OFFSET := $(CODE_OFFSET:0x%=%)
-CODE_OFFSET = 0x2000
+#CODE_OFFSET := $(CODE_OFFSET:0x%=%)
+#CODE_OFFSET = 0x2000
 
-ifeq ($(CODE_OFFSET),0x0)
-	CODE_OFFSET := 
-endif
-ifeq ($(CODE_OFFSET),0x0000)
-	CODE_OFFSET := 
-endif
-ifeq ($(CODE_OFFSET),0)
-	CODE_OFFSET := 
-endif
+#ifeq ($(CODE_OFFSET),0x0)
+#	CODE_OFFSET := 
+#endif
+#ifeq ($(CODE_OFFSET),0x0000)
+#	CODE_OFFSET := 
+#endif
+#ifeq ($(CODE_OFFSET),0)
+#	CODE_OFFSET := 
+#endif
 
 
 
