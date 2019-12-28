@@ -27,15 +27,15 @@ endif
 #CODE_OFFSET := $(CODE_OFFSET:0x%=%)
 #CODE_OFFSET = 0x2000
 
-#ifeq ($(CODE_OFFSET),0x0)
-#	CODE_OFFSET := 
-#endif
-#ifeq ($(CODE_OFFSET),0x0000)
-#	CODE_OFFSET := 
-#endif
-#ifeq ($(CODE_OFFSET),0)
-#	CODE_OFFSET := 
-#endif
+ifeq ($(CODE_OFFSET),0x0)
+	CODE_OFFSET := 
+endif
+ifeq ($(CODE_OFFSET),0x0000)
+	CODE_OFFSET := 
+endif
+ifeq ($(CODE_OFFSET),0)
+	CODE_OFFSET := 
+endif
 
 
 
@@ -54,7 +54,7 @@ ifeq ($(PROGRAM)$(PROGRAMS),)
 PROGRAMS := pictest blinktest serialtest ringtone
 endif
 
-ifneq ($(CODE_OFFSET),0)
+ifneq ($(CODE_OFFSET),)
 BUILD_ID := $(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_at$(CODE_OFFSET)
 else
 BUILD_ID := $(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps
