@@ -33,6 +33,8 @@
 
 #define LED_PIN RA4
 #define LED_TRIS() TRISA &= 0b11110111;
+#define LED_ON() PORTA |= 0b0001000;
+#define LED_OFF() PORTA &= 0b11110111;
 #define LED2_CATHODE RA2
 #define LED2_CATHODE_TRIS TRISA2
 #define LED2_ANODE RA3
