@@ -38,6 +38,7 @@ CCDIR = /opt/microchip/xc8/v1.34
 else
 #CCDIR = $(patsubst %/bin,%,$(dir $(PICC)))
 CCDIR = $(PROGRAMFILES)/Microchip/xc8/$(CCVER)
+CCDIR := 
 endif
 endif
 

@@ -58,7 +58,7 @@ xc8_driver() {
   while [ $# -gt 0 ]; do
 	case "$1" in
 	   @*) CFG="${1#@}"; shift ;;
-	   *.exe|*/xc8) EXE="$1"; shift ;;
+	   *.exe|*/xc8|xc8) EXE="$1"; shift ;;
 	   -C | -P | -Q | -S | \
 --asmlist | --chipinfo | --echo | --maxipic | --nodel | --nofallback | --pass1 | --pre | --proto | --scandep | --shroud | \
 --ASMLIST | --CHIPINFO | --ECHO | --MAXIPIC | --NODEL | --NOFALLBACK | --PASS1 | --PRE | --PROTO | --SCANDEP | --SHROUD) pushv CFLAGS "$1"; shift ;;
@@ -87,7 +87,7 @@ xc8_driver() {
 	  
   INCDIR="${EXE%/bin/*}/include"
 
-  if [ -z "$EXE" -o ! -e "$EXE" ]; then
+  if ! type "$EXE" 2>/dev/null 1>/dev/null && [ -z "$EXE" -o ! -e "$EXE" ]; then
     return 1
   fi
   

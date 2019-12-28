@@ -66,7 +66,7 @@ CCDIR := $(PROGRAMFILES)/HI-TECH Software/$(COMPILER_DIR)/$(CCVER)
 endif
 endif
 
-
+CCDIR :=
 ifneq ($(CCDIR),)
 CC := "$(CCDIR)/bin/$(COMPILER_NAME)"
 else
