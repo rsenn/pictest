@@ -12,23 +12,6 @@
 	"buffers":
 	[
 		{
-			"file": "bootloaders/18f2550-usb-hid-xc8/FIRMWARE/PIC18F2550/src/main_hid.c",
-			"settings":
-			{
-				"buffer_size": 6688,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "tools/wav2h.c",
-			"settings":
-			{
-				"buffer_size": 8716,
-				"encoding": "Western (Windows 1252)",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "lib/timer.h",
 			"settings":
 			{
@@ -38,63 +21,12 @@
 			}
 		},
 		{
-			"file": "Makefile",
+			"file": "bootloaders/usb-msd-bootloader/USB MSD Bootloader.txt",
 			"settings":
 			{
-				"buffer_size": 4822,
+				"buffer_size": 18014,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "lib/timer.c",
-			"settings":
-			{
-				"buffer_size": 2902,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "lib/ports.h",
-			"settings":
-			{
-				"buffer_size": 1254,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "7segtest.c",
-			"settings":
-			{
-				"buffer_size": 5649,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "lib/interrupt.h",
-			"settings":
-			{
-				"buffer_size": 2191,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "lib/adc.h",
-			"settings":
-			{
-				"buffer_size": 622,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 1430 files for \"TIMER0_INTERRUPT_ENABLE\" (case sensitive)\n\n/home/roman/Dokumente/Sources/pictest/build/.codelite/pictest-xc8.tags:\n    <binary>\n\n/home/roman/Dokumente/Sources/pictest/build/.codelite/pictest.tags:\n    <binary>\n\n/home/roman/Dokumente/Sources/pictest/lib/timer.h:\n   43  \n   44  #define TIMER0_INTERRUPT_FLAG T0IF\n   45: #define TIMER0_INTERRUPT_ENABLE T0IE\n   46  \n   47  #define TIMER0_FLAGS_INTR 0x80\n\n23 matches across 3 files\n\n\nSearching 1430 files for \"TIMER0_INTERRUPT_ENABLE\" (regex, case sensitive)\n\n/home/roman/Dokumente/Sources/pictest/build/.codelite/pictest-xc8.tags:\n    <binary>\n\n/home/roman/Dokumente/Sources/pictest/build/.codelite/pictest.tags:\n    <binary>\n\n/home/roman/Dokumente/Sources/pictest/lib/timer.h:\n   43  \n   44  #define TIMER0_INTERRUPT_FLAG T0IF\n   45: #define TIMER0_INTERRUPT_ENABLE T0IE\n   46  \n   47  #define TIMER0_FLAGS_INTR 0x80\n\n23 matches across 3 files\n\n\nSearching 1430 files for \"TIMER._INTERRUPT_ENABLE\" (regex, case sensitive)\n\n/home/roman/Dokumente/Sources/pictest/build/.codelite/pictest-xc8.tags:\n    <binary>\n\n/home/roman/Dokumente/Sources/pictest/build/.codelite/pictest.tags:\n    <binary>\n\n/home/roman/Dokumente/Sources/pictest/lib/timer.h:\n   43  \n   44  #define TIMER0_INTERRUPT_FLAG T0IF\n   45: #define TIMER0_INTERRUPT_ENABLE T0IE\n   46  \n   47  #define TIMER0_FLAGS_INTR 0x80\n   ..\n   63  \n   64  #define TIMER1_INTERRUPT_FLAG TMR1IF\n   65: #define TIMER1_INTERRUPT_ENABLE TMR1IE\n   66  \n   67  #define TIMER1_FLAGS_INTR 0x80\n   ..\n   93  \n   94  #define TIMER2_INTERRUPT_FLAG TMR2IF\n   95: #define TIMER2_INTERRUPT_ENABLE TMR2IE\n   96  \n   97  #define TIMER2_FLAGS_INTR 0x80\n\n69 matches across 3 files\n",
-			"settings":
-			{
-				"buffer_size": 1683,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
 			}
 		}
 	],
@@ -106,9 +38,13 @@
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "Package Control: ",
+		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"install pac",
+				"Package Control: Install Package"
+			],
 			[
 				"Package Control: ",
 				"Package Control: Remove Package"
@@ -200,10 +136,28 @@
 	},
 	"expanded_folders":
 	[
-		"/home/roman/Dokumente/Sources/pictest"
+		"/home/roman/Dokumente/Sources/pictest",
+		"/home/roman/Dokumente/Sources/pictest/boot_2",
+		"/home/roman/Dokumente/Sources/pictest/bootloaders",
+		"/home/roman/Dokumente/Sources/pictest/bootloaders/msd-bootloader",
+		"/home/roman/Dokumente/Sources/pictest/bootloaders/usb-msd-bootloader",
+		"/home/roman/Dokumente/Sources/pictest/bootloaders/usb-msd-bootloader/Firmware",
+		"/home/roman/Dokumente/Sources/pictest/bootloaders/usb-msd-bootloader/Sample Application v1.0",
+		"/home/roman/Dokumente/Sources/pictest/bootloaders/usb-msd-bootloader/USB MSD Boot Loader v1.0",
+		"/home/roman/Dokumente/Sources/pictest/bootloaders/usb-msd-bootloader/USB MSD Boot Loader v1.0/Boot",
+		"/home/roman/Dokumente/Sources/pictest/bootloaders/usb-msd-bootloader/USB MSD Boot Loader v1.0/Config",
+		"/home/roman/Dokumente/Sources/pictest/bootloaders/usb-msd-bootloader/USB MSD Boot Loader v1.0/USB"
 	],
 	"file_history":
 	[
+		"/home/roman/Dokumente/Sources/pictest/bootloaders/18f2550-usb-hid-xc8/FIRMWARE/PIC18F2550/src/main_hid.c",
+		"/home/roman/Dokumente/Sources/pictest/tools/wav2h.c",
+		"/home/roman/Dokumente/Sources/pictest/Makefile",
+		"/home/roman/Dokumente/Sources/pictest/lib/timer.c",
+		"/home/roman/Dokumente/Sources/pictest/lib/ports.h",
+		"/home/roman/Dokumente/Sources/pictest/7segtest.c",
+		"/home/roman/Dokumente/Sources/pictest/lib/interrupt.h",
+		"/home/roman/Dokumente/Sources/pictest/lib/adc.h",
 		"/home/roman/Dokumente/Sources/pic-softser/SoftUART_PIC16F/Software_UART.h",
 		"/home/roman/Dokumente/Sources/pic-softser/16f-softuart--20MHZ/main.c",
 		"/home/roman/Dokumente/Sources/pic-softser/SoftUART_PIC16F/Software_UART.c",
@@ -323,15 +277,7 @@
 		"/E/Sources/pictest/config-18f25k22.h",
 		"/E/Sources/pictest/config-16f876a.h",
 		"/E/Sources/pictest/pictest.c",
-		"/E/Sources/pictest/CMakeLists.txt",
-		"/E/Sources/pictest/config-18f2550.h",
-		"/E/Sources/pictest/scripts/baud.sh",
-		"/E/Sources/pictest/scripts/init-brd.rb",
-		"/E/Sources/pictest/cmdline.txt",
-		"/E/Sources/pictest/config-18f252.h",
-		"/E/Sources/pictest/config-16f628a.h",
-		"/E/Sources/pictest/files.list",
-		"/E/Sources/pictest/Makefile.vars"
+		"/E/Sources/pictest/CMakeLists.txt"
 	],
 	"find":
 	{
@@ -482,150 +428,11 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "bootloaders/18f2550-usb-hid-xc8/FIRMWARE/PIC18F2550/src/main_hid.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6688,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								848,
-								848
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
-							],
-							"incomplete_sync": null,
-							"is_init_dirty_state": false,
-							"origin_encoding": "ASCII",
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C99/C99.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2097.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "tools/wav2h.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8716,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C99/C99.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "lib/timer.h",
 					"semi_transient": false,
 					"settings":
@@ -653,12 +460,12 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "Makefile",
-					"semi_transient": false,
+					"buffer": 1,
+					"file": "bootloaders/usb-msd-bootloader/USB MSD Bootloader.txt",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 4822,
+						"buffer_size": 18014,
 						"regions":
 						{
 						},
@@ -671,223 +478,13 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Makefile/Makefile.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "lib/timer.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2902,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "lib/ports.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1254,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								724,
-								724
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "7segtest.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5649,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3833,
-								3833
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3519.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "lib/interrupt.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2191,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "lib/adc.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 622,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								461,
-								461
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1683,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										353,
-										376
-									],
-									[
-										817,
-										840
-									],
-									[
-										1281,
-										1304
-									],
-									[
-										1429,
-										1452
-									],
-									[
-										1579,
-										1602
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								1299,
-								1299
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 3,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 805.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
 					"type": "text"
 				}
 			]
@@ -982,7 +579,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 248.0,
+	"side_bar_width": 427.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -6568,8 +6568,8 @@ Source: www.kingbright.com</description>
 <part name="J2" library="usb" deviceset="USB" device="-PRINT"/>
 <part name="U$3" library="pad" deviceset="GND" device=""/>
 <part name="U$5" library="pad" deviceset="GND" device=""/>
-<part name="R1" library="r" deviceset="R" device="0202/10" value="330"/>
-<part name="LED1" library="led" deviceset="LED" device="3MM"/>
+<part name="R1" library="r" deviceset="R" device="0204/10" value="330"/>
+<part name="LED1" library="led" deviceset="LED" device="5MM"/>
 <part name="VDD1" library="supply1" deviceset="VDD" device=""/>
 <part name="VDD2" library="supply1" deviceset="VDD" device=""/>
 <part name="C3" library="c" deviceset="C" device="025-015X024" value="15p"/>
@@ -6592,8 +6592,8 @@ Source: www.kingbright.com</description>
 <part name="VDD7" library="supply1" deviceset="VDD" device=""/>
 <part name="J6" library="pinconn" deviceset="CONN-8P" device="" value="RB[0..7]"/>
 <part name="J3" library="pinconn" deviceset="CONN-5P" device="" value="RA[0..4]"/>
-<part name="R2" library="r" deviceset="R" device="0202/7-V" value="100"/>
-<part name="R3" library="r" deviceset="R" device="0202/7-V" value="100"/>
+<part name="R2" library="r" deviceset="R" device="0204/7-V" value="100"/>
+<part name="R3" library="r" deviceset="R" device="0204/7-V" value="100"/>
 <part name="U$1" library="mcu" deviceset="PIC18F2550-I/SP" device="-V" value="PIC18F2550-I/SP-V"/>
 </parts>
 <sheets>

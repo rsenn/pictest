@@ -1,4 +1,24 @@
 {
+    "build_systems":
+    [
+        {
+            "name": "List",
+            "shell_cmd": "ls -l"
+        },
+        { "name": "Program 18F2550 USB MSD bootloader",
+            "shell_cmd":  "ipecmd.sh -tppk3 -p18f2550 -M  -W -F'bootloaders/usb-msd-bootloader-18f2550.hex'"
+        },
+        { "name": "Program 18F2550 Current HEX File",
+            "shell_cmd":  "ipecmd.sh -tppk3 -p18f2550 -M  -W -F'${file}'"
+        },
+        { "name": "Program 18F25K50 Pinguino Bootloader",
+            "shell_cmd":  "ipecmd.sh -tppk3 -p18f25k50 -M  -W -F'bootloaders/Bootloader_v4.14_18f25k50_INTOSC.hex'"
+        },
+        { "name": "Program 18F25K50 Current HEX File",
+            "shell_cmd":  "ipecmd.sh -tppk3 -p18f25k50 -M  -W -F'${file}'"
+        }
+      
+    ],
 	"folders": [
 		{
 			"path": ".",
