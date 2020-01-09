@@ -23,7 +23,7 @@ LD = gplink
 PICPROG = picprog
 #CFLAGS =  -S -V -m${target} -pp$(chipl)
 CFLAGS =  -m${target} -pp$(chipl)
-CFLAGS += --code-loc $(CODE_OFFSET)
+#CFLAGS += --code-loc $(CODE_OFFSET)
 
 #LDFLAGS = -m -s ${prefix}/share/gputils/lkr/$(chipl).lkr
 #LIBS = $(targetlibdir)/pic$(chipl).lib

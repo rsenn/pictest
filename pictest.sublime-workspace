@@ -28,6 +28,15 @@
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "pictest.sublime-project",
+			"settings":
+			{
+				"buffer_size": 1078,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
 		}
 	],
 	"build_system": "",
@@ -136,17 +145,7 @@
 	},
 	"expanded_folders":
 	[
-		"/home/roman/Dokumente/Sources/pictest",
-		"/home/roman/Dokumente/Sources/pictest/boot_2",
-		"/home/roman/Dokumente/Sources/pictest/bootloaders",
-		"/home/roman/Dokumente/Sources/pictest/bootloaders/msd-bootloader",
-		"/home/roman/Dokumente/Sources/pictest/bootloaders/usb-msd-bootloader",
-		"/home/roman/Dokumente/Sources/pictest/bootloaders/usb-msd-bootloader/Firmware",
-		"/home/roman/Dokumente/Sources/pictest/bootloaders/usb-msd-bootloader/Sample Application v1.0",
-		"/home/roman/Dokumente/Sources/pictest/bootloaders/usb-msd-bootloader/USB MSD Boot Loader v1.0",
-		"/home/roman/Dokumente/Sources/pictest/bootloaders/usb-msd-bootloader/USB MSD Boot Loader v1.0/Boot",
-		"/home/roman/Dokumente/Sources/pictest/bootloaders/usb-msd-bootloader/USB MSD Boot Loader v1.0/Config",
-		"/home/roman/Dokumente/Sources/pictest/bootloaders/usb-msd-bootloader/USB MSD Boot Loader v1.0/USB"
+		"/home/roman/Dokumente/Sources/pictest"
 	],
 	"file_history":
 	[
@@ -428,7 +427,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -456,7 +455,7 @@
 						"translation.y": 1156.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -479,6 +478,42 @@
 						"settings":
 						{
 							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "pictest.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1078,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								541,
+								541
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JSON (JavaScriptNext).tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": true,
+								"indentSize": 4,
+								"tabSize": 4
+							}
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -523,7 +558,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 0.0
+		"height": 374.0
 	},
 	"output.find_results":
 	{
@@ -533,7 +568,7 @@
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "Packages/Makefile Improved/Make.sublime-build",
+	"pinned_build_system": "Program 18F2550 USB MSD bootloader",
 	"project": "pictest.sublime-project",
 	"replace":
 	{
