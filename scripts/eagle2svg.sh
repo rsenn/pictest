@@ -135,7 +135,7 @@ eagle_to_pdf() {
            ;;
        esac
 
-       #EAGLE_CMD="DISPLAY  -bKeepout -tKeepout -bRestrict -tRestrict -bTest -tTest -bOrigins -tOrigins -bStop -tStop -bCream -tCream bValues tValues; $EAGLE_CMD"
+       #EAGLE_CMD="DISPLAY  -bKeepout -tKeepout -bRestrict -tRestrict -bTest -tTest -bStop -tStop -bCream -tCream bValues tValues; $EAGLE_CMD"
         [ "$RATSNEST" = true ] && EAGLE_CMD="RATSNEST; WRITE; $EAGLE_CMD"
        ;;
    esac

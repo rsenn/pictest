@@ -98,7 +98,7 @@ esac
 
   case $INPUT in
      *.brd)   
-       EAGLE_CMD="DISPLAY -bRestrict -tRestrict -bTest -tTest -bOrigins -tOrigins -bStop -tStop -bCream -tCream -Drills -Holes -Document -Reference bValues tValues; $EAGLE_CMD" 
+       EAGLE_CMD="DISPLAY -bTest -tTest -bStop -tStop -bCream -tCream -Drills -Holes -Document -Reference bValues tValues; $EAGLE_CMD" 
        ;;
    esac
   EAGLE_CMDS=${EAGLE_CMDS:+"$EAGLE_CMDS; "}$EAGLE_CMD
