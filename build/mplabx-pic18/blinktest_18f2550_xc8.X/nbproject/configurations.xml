@@ -13,17 +13,17 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="lib" projectFiles="true">
-        <itemPath>/e/Sources/pictest/lib/comparator.c</itemPath>
-        <itemPath>/e/Sources/pictest/lib/delay.c</itemPath>
-        <itemPath>/e/Sources/pictest/lib/pwm.c</itemPath>
-        <itemPath>/e/Sources/pictest/lib/random.c</itemPath>
-        <itemPath>/e/Sources/pictest/lib/ser.c</itemPath>
-        <itemPath>/e/Sources/pictest/lib/softpwm.c</itemPath>
-        <itemPath>/e/Sources/pictest/lib/softser.c</itemPath>
-        <itemPath>/e/Sources/pictest/lib/timer.c</itemPath>
-        <itemPath>/e/Sources/pictest/lib/uart.c</itemPath>
+        <itemPath>../../../lib/comparator.c</itemPath>
+        <itemPath>../../../lib/delay.c</itemPath>
+        <itemPath>../../../lib/pwm.c</itemPath>
+        <itemPath>../../../lib/random.c</itemPath>
+        <itemPath>../../../lib/ser.c</itemPath>
+        <itemPath>../../../lib/softpwm.c</itemPath>
+        <itemPath>../../../lib/softser.c</itemPath>
+        <itemPath>../../../lib/timer.c</itemPath>
+        <itemPath>../../../lib/uart.c</itemPath>
       </logicalFolder>
-      <itemPath>/e/Sources/pictest/blinktest.c</itemPath>
+      <itemPath>../../../blinktest.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
