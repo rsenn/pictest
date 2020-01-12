@@ -15,6 +15,7 @@
 #pragma config EBTRB = OFF
 
 #elif defined(HI_TECH_C)
+#include <htc.h>
 
 __CONFIG(1, FOSC_HSHP);
 __CONFIG(2, BOREN_ON& PWRTEN_ON& WDTEN_OFF);

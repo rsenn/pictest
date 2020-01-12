@@ -24,6 +24,7 @@
 #pragma config BORV = LO    // Brown-out Reset Voltage Selection [ HI | LO    ]
 
 #elif defined(HI_TECH_C)
+#include <htc.h>
 
 __CONFIG(1, FOSC_INTOSC& WDTE_OFF& PWRTE_ON& MCLRE_OFF& BOREN_ON& CP_OFF& CPD_OFF& CLKOUTEN_OFF);
 __CONFIG(2, BORV_LO& WRT_OFF);

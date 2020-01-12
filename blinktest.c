@@ -153,7 +153,7 @@ main() {
 #endif
 
 #if !NO_PORTB
-N_RBPU = 0;
+   N_RBPU = 0;
 //  N_RBPU = 0; // enable portb pull-ups
   TRISB |= 0b11110000;
   TRISB &= 0b11110011;
