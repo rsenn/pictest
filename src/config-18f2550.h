@@ -1,7 +1,7 @@
 #ifndef CONFIG_18F2550_H
 #define CONFIG_18F2550_H 1
 
-#ifdef __XC
+#if defined(__XC) || defined(SDCC)
 
 #pragma config FOSC = HSPLL_HS
 #pragma config PWRT = ON, BOR = ON, BORV = 27

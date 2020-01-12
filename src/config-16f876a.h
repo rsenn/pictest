@@ -1,7 +1,7 @@
 #ifndef CONFIG_16F876A_H
 #define CONFIG_16F876A_H 1
 
-#ifdef __XC
+#if defined(__XC) || defined(SDCC)
 
 #pragma config FOSC = HS, WDTE = OFF, PWRTE = ON, BOREN = ON, LVP = OFF, CPD = OFF, WRT = OFF, CP = OFF
 

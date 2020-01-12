@@ -5,6 +5,7 @@
 #include "random.h"
 #include "softpwm.h"
 #include "timer.h"
+#include "lib/device.h"
 
 #if USE_UART
 #include "uart.h"
