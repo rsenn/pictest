@@ -114,7 +114,7 @@ eagle_to_pdf() {
  set-layers() {
    (IFS=" "
    P="$1"; shift
-   [ $# -gt 0 ] || set --  ""{Docu,Finish,Keepout,Map,Names,Origins,Place,Restrict,Silk,Stop,Values}
+   [ $# -gt 0 ] || set --  ""{Docu,Finish,Keepout,Map,Names,Place,Restrict,Silk,Stop,Values}
    set --  $(addprefix "$P" "$@")
    echo "$*")
  }
@@ -123,7 +123,7 @@ eagle_to_pdf() {
   case $INPUT in
      *.brd)
 
-       EAGLE_LAYERS=$(set -- Origins Stop Cream ; set-layers -b "$@"; set-layers -t "$@")
+       EAGLE_LAYERS=$(set -- Stop Cream ; set-layers -b "$@"; set-layers -t "$@")
        EAGLE_LAYERS="$EAGLE_LAYERS -Drills -Holes Document -Reference bValues tValues"
 
        case "$OUTPUT" in
