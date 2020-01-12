@@ -99,6 +99,9 @@ INTERRUPT_HANDLER() {
     }
     if(msec_count >= 10) { // if reached 1 decisecond!
       hsecs++;             // update clock, etc
+
+      LED2_ANODE = hsecs & 1;
+
       msec_count -= 10;
     }
     // Clear timer interrupt bit
@@ -182,6 +185,8 @@ main() {
 
   LED2_CATHODE_TRIS = 0;
   LED2_CATHODE = 0;
+  LED2_ANODE_TRIS = 0;
+  LED2_ANODE = 0;
 
   softpwm_init();
   softpwm_values[0] = 30;

@@ -14,9 +14,7 @@
 #pragma config EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF
 #pragma config EBTRB = OFF
 
-#endif
-
-#ifdef HI_TECH_C
+#elif defined(HI_TECH_C)
 #include <htc.h>
 #include <pic18.h>
 __CONFIG(1,FOSC_HS);
