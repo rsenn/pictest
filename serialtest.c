@@ -1,13 +1,13 @@
 #include "pictest.h"
-#include "const.h"
-#include "delay.h"
-#include "interrupt.h"
-#include "lcd44780.h"
-#include "ser.h"
-#include "softser.h"
-#include "timer.h"
-#include "typedef.h"
-#include "uart.h"
+#include "lib/const.h"
+#include "lib/delay.h"
+#include "lib/interrupt.h"
+#include "lib/lcd44780.h"
+#include "lib/ser.h"
+#include "lib/softser.h"
+#include "lib/timer.h"
+#include "lib/typedef.h"
+#include "lib/uart.h"
 #include <ctype.h>
 
 #include "config-bits.h"
@@ -17,7 +17,6 @@ __code unsigned int __at(_CONFIG) __configword = CONFIG_WORD;
 #endif
 
 #ifdef HI_TECH_C
-#define NOT_RBPU nRBPU
 #elif defined(__IAR_SYSTEMS_ICC__)
 #include <io16f876a.h>
 #elif !defined CPROTO
@@ -120,7 +119,7 @@ main() {
 #endif
 
 #if !NO_PORTB
-  NOT_RBPU = 1;
+  N_RBPU = 1;
 // TRISB &= 0;
 // PORTB |= 0xff;
 #endif

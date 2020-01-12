@@ -1,9 +1,9 @@
 #ifndef PICTEST_H
 #define PICTEST_H 1
 
-#include "device.h"
-#include "oscillator.h"
-#include "typedef.h"
+#include "../lib/device.h"
+#include "../lib/oscillator.h"
+#include "../lib/typedef.h"
 
 extern volatile uint16_t tmr_overflows;
 extern volatile uint8_t ticks;

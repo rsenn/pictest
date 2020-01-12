@@ -1,24 +1,24 @@
 #include "pictest.h"
-#include "timer.h"
+#include "lib/timer.h"
 #if USE_UART
-#include "uart.h"
+#include "lib/uart.h"
 #endif
 #ifdef USE_SER
-#include "ser.h"
+#include "lib/ser.h"
 #endif
 //#ifdef USE_SOFTSER
-#include "softser.h"
+#include "lib/softser.h"
 //#endif
-#include "interrupt.h"
+#include "lib/interrupt.h"
 #if defined(USE_LCD) && !NO_PORTB
-#include "lcd44780.h"
+#include "lib/lcd44780.h"
 #endif
-#include "7segment.h"
-#include "const.h"
-#include "delay.h"
-#include "ds18b20.h"
-#include "ledsense.h"
-#include "shell.h"
+#include "lib/7segment.h"
+#include "lib/const.h"
+#include "lib/delay.h"
+#include "lib/ds18b20.h"
+#include "lib/ledsense.h"
+#include "lib/extra/shell.h"
 /*
 #define BUTTON_MINUS 1
 #define BUTTON_PLUS  3
@@ -40,7 +40,6 @@ __code unsigned int __at(_CONFIG) __configword = CONFIG_WORD;
 #endif
 
 #if defined(HI_TECH_C) || defined(__XC__)
-#define NOT_RBPU nRBPU
 #endif
 
 #if defined(__IAR_SYSTEMS_ICC__)
@@ -87,7 +86,6 @@ volatile BOOL led_state, led_enabled;
 static shell_t sh_soft, sh_uart;
 
 typedef void (*putch_fn)(uint8_t);
-
 static putch_fn putchar =
 #if defined(USE_LCD) && !NO_PORTB
     lcd_putch;
@@ -96,7 +94,6 @@ static putch_fn putchar =
 #else
     0;
 #endif
-
 void increment_tmrspeed(int8_t s);
 void reset_speed(void);
 void put_number(uint16_t n, uint8_t base, int8_t pad);
@@ -126,7 +123,7 @@ main() {
   CMCONbits.CM = 0b111;          //Disable PORTA Comparators
 #endif
 #if !NO_PORTB
-  NOT_RBPU = 1; // pull-ups
+  N_RBPU = 1; // pull-ups
 #endif
 
 //  reset_speed();
@@ -510,7 +507,7 @@ static uint8_t
 buttons_get() {
   uint8_t bits;
 
-  NOT_RBPU = 0; // pull-ups
+  N_RBPU = 0; // pull-ups
 
   BSTRB_PIN = LOW;
   BSTRB_TRIS = OUTPUT;
@@ -523,7 +520,7 @@ buttons_get() {
 
   delay_ms(BSTRB_DELAY);
 
-  NOT_RBPU = 1; // pull-ups
+  N_RBPU = 1; // pull-ups
   BSTRB_TRIS = INPUT;
 
   delay_us(100);

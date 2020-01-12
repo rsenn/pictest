@@ -14,13 +14,16 @@
 #pragma config EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF
 #pragma config EBTRB = OFF
 
-#elif defined(HI_TECH_C)
+#endif
 
-__CONFIG(1, FOSC_HSPLL_HS);
-__CONFIG(2, BOR_ON& PWRT_ON& WDT_OFF);
-__CONFIG(3, CCP2MX_ON);
-__CONFIG(4, LVP_OFF);
-__CONFIG(5, CPD_OFF);
+#ifdef HI_TECH_C
+#include <htc.h>
+#include <pic18.h>
+__CONFIG(1,FOSC_HS);
+__CONFIG(2,BOR_ON & PWRT_ON & WDT_ON);
+__CONFIG(3,CCP2MX_ON);
+__CONFIG(4,DEBUG_ON);
+__CONFIG(5,CPD_OFF );
 
 #endif
 

@@ -1,9 +1,9 @@
 #ifndef PICTEST_H
 #define PICTEST_H 1
 
-#include "device.h"
-#include "oscillator.h"
-#include "typedef.h"
+#include "../lib/device.h"
+#include "../lib/oscillator.h"
+#include "../lib/typedef.h"
 
 //#define CCPR1 (((uint16_t)CCPR1H << 8)|(CCPR1L))
 //#define TMR1 (((uint16_t)TMR1H << 8)|(TMR1L))

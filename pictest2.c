@@ -1,13 +1,13 @@
 #include "pictest2.h"
-#include "adc.h"
-#include "const.h"
-#include "delay.h"
-#include "ds18b20.h"
-#include "interrupt.h"
-#include "lcd44780.h"
-#include "ledsense.h"
-#include "timer.h"
-#include "uart.h"
+#include "lib/adc.h"
+#include "lib/const.h"
+#include "lib/delay.h"
+#include "lib/ds18b20.h"
+#include "lib/interrupt.h"
+#include "lib/lcd44780.h"
+#include "lib/ledsense.h"
+#include "lib/timer.h"
+#include "lib/uart.h"
 
 #ifdef MCHP_XC8
 #pragma config WDTE = OFF, PWRTE = ON, CP = OFF, BOREN = ON, DEBUG = OFF, LVP = OFF, CPD = OFF, WRT = HALF, FOSC = XT
@@ -17,7 +17,6 @@ __code uint16_t __at(_CONFIG) __configword = CONFIG_WORD;
 #else
 #ifdef HI_TECH_C
 __CONFIG(CONFIG_WORD);
-#define NOT_RBPU nRBPU
 #elif defined(__IAR_SYSTEMS_ICC__)
 #include <io16f876a.h>
 #else
@@ -58,7 +57,7 @@ uint8_t
 buttons_get() {
   uint8_t bits;
 
-  NOT_RBPU = 0; // pull-ups
+  N_RBPU = 0; // pull-ups
 
   BSTRB_PIN = LOW;
   BSTRB_TRIS = OUTPUT;
@@ -71,7 +70,7 @@ buttons_get() {
 
   delay_ms(BSTRB_DELAY);
 
-  NOT_RBPU = 1; // pull-ups
+  N_RBPU = 1; // pull-ups
   BSTRB_TRIS = INPUT;
 
   delay_us(100);
@@ -217,7 +216,7 @@ main() {
 
   CMCON = 0b111; // Disable PORTA Comparators
 
-  NOT_RBPU = 1; // pull-ups
+  N_RBPU = 1; // pull-ups
 
   lcd_init(1);
   lcd_begin(2, 1);

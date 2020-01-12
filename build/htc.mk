@@ -15,7 +15,7 @@ VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
 PROGRAMFILES ?= C:/Program Files (x86)
 
-OS = $(shell uname -o)
+OS := $(shell uname -o)
 $(info OS: $(OS))
 $(info CHIP: $(CHIP))
 #CC = $(shell which picc 2>/dev/null)
@@ -163,6 +163,7 @@ COMMON_FLAGS += --errformat="Error   [%n] %f; %l.%c %s"
 #COMMON_FLAGS += --warnformat="Warning [%n] %f; %l.%c %s"
 
 CPPFLAGS += $(DEFINES:%=-D%)
+CPPFLAGS += -DHI_TECH_C=1
 
 _CPPFLAGS += \
 	-DVERSION_MAJOR=$(VERSION_MAJOR) \
