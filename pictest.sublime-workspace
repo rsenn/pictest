@@ -145,7 +145,8 @@
 	},
 	"expanded_folders":
 	[
-		"/home/roman/Dokumente/Sources/pictest"
+		"/home/roman/Sources/pictest",
+		"/home/roman/Sources/pictest/bootloaders"
 	],
 	"file_history":
 	[
@@ -499,8 +500,8 @@
 						"selection":
 						[
 							[
-								541,
-								541
+								1077,
+								1077
 							]
 						],
 						"settings":
