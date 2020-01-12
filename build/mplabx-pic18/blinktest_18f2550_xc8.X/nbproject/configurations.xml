@@ -13,17 +13,17 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="lib" projectFiles="true">
-        <itemPath>/home/roman/Sources/pictest/lib/comparator.c</itemPath>
-        <itemPath>/home/roman/Sources/pictest/lib/delay.c</itemPath>
-        <itemPath>/home/roman/Sources/pictest/lib/pwm.c</itemPath>
-        <itemPath>/home/roman/Sources/pictest/lib/random.c</itemPath>
-        <itemPath>/home/roman/Sources/pictest/lib/ser.c</itemPath>
-        <itemPath>/home/roman/Sources/pictest/lib/softpwm.c</itemPath>
-        <itemPath>/home/roman/Sources/pictest/lib/softser.c</itemPath>
-        <itemPath>/home/roman/Sources/pictest/lib/timer.c</itemPath>
-        <itemPath>/home/roman/Sources/pictest/lib/uart.c</itemPath>
+        <itemPath>/e/Sources/pictest/lib/comparator.c</itemPath>
+        <itemPath>/e/Sources/pictest/lib/delay.c</itemPath>
+        <itemPath>/e/Sources/pictest/lib/pwm.c</itemPath>
+        <itemPath>/e/Sources/pictest/lib/random.c</itemPath>
+        <itemPath>/e/Sources/pictest/lib/ser.c</itemPath>
+        <itemPath>/e/Sources/pictest/lib/softpwm.c</itemPath>
+        <itemPath>/e/Sources/pictest/lib/softser.c</itemPath>
+        <itemPath>/e/Sources/pictest/lib/timer.c</itemPath>
+        <itemPath>/e/Sources/pictest/lib/uart.c</itemPath>
       </logicalFolder>
-      <itemPath>/home/roman/Sources/pictest/blinktest.c</itemPath>
+      <itemPath>/e/Sources/pictest/blinktest.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -32,7 +32,7 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>/home/roman/Sources/pictest</Elem>
+    <Elem>/e/Sources/pictest</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
