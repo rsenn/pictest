@@ -3,3 +3,5 @@ bin*
 *.pre
 *.DBK
 *.PWI
+/build/mplabx-pic18/blinktest_18f2550_xc8.X/build/
+/build/mplabx-pic18/blinktest_18f2550_xc8.X/dist/
