@@ -292,7 +292,7 @@ N=$#
       --verb=FileSave --verb=FileQuit \
       "$(outfile "${BASE}.svg")"
 
-    exec_cmd INKSCAPE --export-area-drawing -f "$(outfile "$BASE.svg")" -A "$(outfile "$BASE.pdf")"
+    exec_cmd INKSCAPE --export-area-drawing --export-margin=10 -f "$(outfile "$BASE.svg")" -A "$(outfile "$BASE.pdf")"
 
    exec_cmd PDF
     exec_cmd PDFTOCAIRO -paper A4 -noshrink -expand -svg  "$(outfile "$BASE.pdf")" "$(outfile "$BASE.svg")" || exit $?
