@@ -82,8 +82,8 @@ OBJDIR := obj/$(COMPILER)-$(chipl)/$(BUILD_ID)/$(PROGRAM)/
 #OBJDIR := $(BUILDDIR)$(BUILD_ID)/
 endif
 
-vpath lib src $(OBJDIR) $(BUILDDIR)
-VPATH = lib src $(OBJDIR) $(BUILDDIR)
+vpath lib lib/extra src $(OBJDIR) $(BUILDDIR)
+VPATH = lib lib/extra src $(OBJDIR) $(BUILDDIR)
 
 DEFINES = PIC$(chipu)=1 __$(chipl)=1
 ##DEFINES +=  USE_ADC=1
