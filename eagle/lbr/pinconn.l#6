@@ -2016,9 +2016,9 @@ Breakout</text>
 <connect gate="G$1" pin="D5" pad="10"/>
 <connect gate="G$1" pin="D6" pad="11"/>
 <connect gate="G$1" pin="D7" pad="12"/>
-<connect gate="G$1" pin="E" pad="3"/>
+<connect gate="G$1" pin="E" pad="4"/>
 <connect gate="G$1" pin="GND" pad="1"/>
-<connect gate="G$1" pin="RS" pad="4"/>
+<connect gate="G$1" pin="RS" pad="3"/>
 <connect gate="G$1" pin="VCC" pad="2"/>
 </connects>
 <technologies>

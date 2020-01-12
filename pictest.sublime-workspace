@@ -15,16 +15,7 @@
 			"file": "lib/timer.h",
 			"settings":
 			{
-				"buffer_size": 3688,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "bootloaders/usb-msd-bootloader/USB MSD Bootloader.txt",
-			"settings":
-			{
-				"buffer_size": 18014,
+				"buffer_size": 3690,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -36,6 +27,15 @@
 				"buffer_size": 1078,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/eagle2svg.sh",
+			"settings":
+			{
+				"buffer_size": 10176,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -145,7 +145,8 @@
 	},
 	"expanded_folders":
 	[
-		"/home/roman/Dokumente/Sources/pictest"
+		"/home/roman/Dokumente/Sources/pictest",
+		"/home/roman/Dokumente/Sources/pictest/scripts"
 	],
 	"file_history":
 	[
@@ -280,7 +281,7 @@
 	],
 	"find":
 	{
-		"height": 44.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -295,6 +296,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"pdf",
 			"TRISA",
 			"2",
 			"TMR1",
@@ -436,7 +438,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3688,
+						"buffer_size": 3690,
 						"regions":
 						{
 						},
@@ -460,34 +462,6 @@
 				},
 				{
 					"buffer": 1,
-					"file": "bootloaders/usb-msd-bootloader/USB MSD Bootloader.txt",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 18014,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "pictest.sublime-project",
 					"semi_transient": false,
 					"settings":
@@ -499,12 +473,13 @@
 						"selection":
 						[
 							[
-								541,
-								541
+								1077,
+								1077
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Color Scheme - Legacy/Sunburst.tmTheme",
 							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JSON (JavaScriptNext).tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true,
@@ -517,6 +492,36 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "scripts/eagle2svg.sh",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10176,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8388,
+								8388
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/ShellScript/Shell-Unix-Generic.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4578.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

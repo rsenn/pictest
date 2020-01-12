@@ -7,9 +7,10 @@
 /*****************************************************************************/
 
 #include "pictest.h"
-#include "device.h"
-#include "random.h"
-#include "timer.h"
+#include "lib/interrupt.h"
+#include "lib/device.h"
+#include "lib/random.h"
+#include "lib/timer.h"
 
 #if NO_PORTB
 #define TONE RA0

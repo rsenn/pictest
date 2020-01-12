@@ -1,5 +1,5 @@
 #pragma interrupt high_handler
-#include "timer.h"
+#include "lib/timer.h"
 void
 high_handler(void) {
   if(INTCONbits.TMR0IF) {        // check timer0 irq

@@ -1,7 +1,7 @@
 #ifndef CONFIG_18F252_H
 #define CONFIG_18F252_H 1
 
-#ifdef __XC
+#if defined(__XC) || defined(SDCC)
 
 #pragma config OSC = HSPLL, OSCS = OFF
 #pragma config PWRT = ON, BOR = ON, BORV = 27
@@ -19,6 +19,7 @@
 */
 
 #elif defined(HI_TECH_C)
+#include <htc.h>
 
 __CONFIG(1, OSC_HSPLL& OSCS_OFF);
 __CONFIG(2, BOR_ON& BORV_27& PWRT_ON& WDT_OFF);

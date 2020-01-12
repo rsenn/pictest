@@ -1,9 +1,9 @@
 #ifndef PICTEST_H
 #define PICTEST_H 1
 
-#include "device.h"
-#include "oscillator.h"
-#include "typedef.h"
+#include "../lib/device.h"
+#include "../lib/oscillator.h"
+#include "../lib/typedef.h"
 
 //#define CCPR1 (((uint16_t)CCPR1H << 8)|(CCPR1L))
 //#define TMR1 (((uint16_t)TMR1H << 8)|(TMR1L))
@@ -42,7 +42,7 @@
 #define BSTRB_TRIS TRISA1
 #define BSTRB_PIN RA1
 
-#elif defined(__16f876a) || defined(__18f252)
+#elif defined(__16f876a) 
 
 #define LED_PIN RA4
 #define LED_ON() PORTA |= 0b0001000;
@@ -59,19 +59,21 @@
 #define BSTRB_TRIS TRISB0
 #define BSTRB_PIN RB0
 
-#else
+#elif defined(__18f252) || defined(__18f2550) || defined(__18f25k50)
 
-#define LED_PIN RA4
-#define LED_ON() PORTA |= 0b0001000;
-#define LED_OFF() PORTA &= 0b11110111;
-#define LED_TRIS() TRISA &= 0b11110111;
-#define LED2_CATHODE RC0
-#define LED2_CATHODE_TRIS TRISC0
-#define LED2_ANODE RC1
-#define LED2_ANODE_TRIS TRISC1
+#define LED_PIN LATA4
+#define LED_ON() LATA4 = 1;
+#define LED_OFF() LATA4 = 0;
+#define LED_TRIS() TRISA4 = 0;
+#define LED2_CATHODE LATA2
+#define LED2_CATHODE_TRIS TRISA2
+#define LED2_ANODE LATA3
+#define LED2_ANODE_TRIS TRISA3
 #define BSTRB_TRIS TRISC0
-#define BSTRB_PIN RC0
+#define BSTRB_PIN LATC0
 
+#else
+#error Unsupported PIC device
 #endif
 
 #if NO_PORTB && NO_PORTC

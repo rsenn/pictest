@@ -967,6 +967,25 @@
 <text x="8.89" y="2.54" size="0.8128" layer="48" align="bottom-center">16</text>
 <text x="8.89" y="-2.54" size="0.8128" layer="48" align="top-center">15</text>
 </package>
+<package name="CONN-12P">
+<pad name="6" x="-2.54" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="5" x="-5.08" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="4" x="-7.62" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="3" x="-10.16" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="2" x="-12.7" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="1" x="-15.24" y="0" drill="0.9" diameter="1.4224" shape="square" rot="R180"/>
+<wire x1="-16.256" y1="1.27" x2="-16.256" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="-16.256" y1="-1.27" x2="13.716" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="13.716" y1="-1.27" x2="13.716" y2="1.27" width="0.127" layer="21"/>
+<wire x1="13.716" y1="1.27" x2="-16.256" y2="1.27" width="0.127" layer="21"/>
+<text x="-16.764" y="-1.27" size="0.8128" layer="20" rot="R90">1</text>
+<pad name="7" x="0" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="8" x="2.54" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="9" x="5.08" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="10" x="7.62" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="11" x="10.16" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="12" x="12.7" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+</package>
 </packages>
 <symbols>
 <symbol name="FTDI232-BO">
@@ -1982,6 +2001,25 @@ Breakout</text>
 <connect gate="G$1" pin="GND" pad="9"/>
 <connect gate="G$1" pin="RS" pad="5"/>
 <connect gate="G$1" pin="VCC" pad="7"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-12P" package="CONN-12P">
+<connects>
+<connect gate="G$1" pin="D0" pad="5"/>
+<connect gate="G$1" pin="D1" pad="6"/>
+<connect gate="G$1" pin="D2" pad="7"/>
+<connect gate="G$1" pin="D3" pad="8"/>
+<connect gate="G$1" pin="D4" pad="9"/>
+<connect gate="G$1" pin="D5" pad="10"/>
+<connect gate="G$1" pin="D6" pad="11"/>
+<connect gate="G$1" pin="D7" pad="12"/>
+<connect gate="G$1" pin="E" pad="3"/>
+<connect gate="G$1" pin="GND" pad="1"/>
+<connect gate="G$1" pin="RS" pad="4"/>
+<connect gate="G$1" pin="VCC" pad="2"/>
 </connects>
 <technologies>
 <technology name=""/>

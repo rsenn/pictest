@@ -1,21 +1,21 @@
 #include "pictest.h"
-#include "adc.h"
-#include "comparator.h"
-#include "const.h"
-#include "interrupt.h"
-#include "ports.h"
-#include "random.h"
-#include "softpwm.h"
-#include "timer.h"
+#include "lib/adc.h"
+#include "lib/comparator.h"
+#include "lib/const.h"
+#include "lib/interrupt.h"
+#include "lib/ports.h"
+#include "lib/random.h"
+#include "lib/softpwm.h"
+#include "lib/timer.h"
 
 #if USE_UART
-#include "uart.h"
+#include "lib/uart.h"
 #endif
 #if USE_SER
-#include "ser.h"
+#include "lib/ser.h"
 #endif
 #if USE_SOFTSER
-#include "softser.h"
+#include "lib/softser.h"
 #endif
 
 #include "config-bits.h"
@@ -181,7 +181,7 @@ main() {
   PORTC |= 0b1111;
 
 #if !NO_PORTB
-  // NOT_RBPU = 0; // enable portb pull-ups
+  // N_RBPU = 0; // enable portb pull-ups
 
   //  TRISB |= 0b11110000;
   TRISB &= 0b00000000;

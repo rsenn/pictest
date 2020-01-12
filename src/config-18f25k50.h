@@ -1,7 +1,7 @@
 #ifndef CONFIG_18F25K50_H
 #define CONFIG_18F25K50_H 1
 
-#ifdef __XC
+#if defined(__XC) || defined(SDCC)
 
 #pragma config FOSC = INTOSCIO
 #pragma config nPWRTEN = ON, BOREN = ON, BORV = 285
@@ -15,6 +15,7 @@
 #pragma config EBTRB = OFF
 
 #elif defined(HI_TECH_C)
+#include <htc.h>
 
 __CONFIG(1, FOSC_HSHP);
 __CONFIG(2, BOREN_ON& PWRTEN_ON& WDTEN_OFF);

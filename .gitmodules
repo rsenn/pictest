@@ -3,7 +3,7 @@
 	url = https://github.com/rsenn/wave-cpp-xc8.git
 [submodule "lib"]
 	path = lib
-	url = https://github.com/rsenn/libpicp
+	url = https://github.com/rsenn/libpicp.git
 	branch = master
 [submodule "bootloaders/18f2550-usb-hid-xc8"]
 	path = bootloaders/18f2550-usb-hid-xc8
@@ -11,7 +11,7 @@
 [submodule "bootloaders/18f4550-usb-hid-xc8"]
 	path = bootloaders/18f4550-usb-hid-xc8
 	url = https://github.com/rsenn/18F4550-USB-HID-XC8.git
-[submodule "libpicp"]
-	path = lib
-	url = https://github.com/rsenn/libpicp.git
+[submodule "hackaday-badge-18f25k50"]
+	path = hackaday-badge-18f25k50
+	url = https://github.com/rsenn/hackaday-belgrade-badge-MPLABX.git
 	branch = master

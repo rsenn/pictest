@@ -1,10 +1,10 @@
 #ifndef CONFIG_18F2550_H
 #define CONFIG_18F2550_H 1
 
-#ifdef __XC
+#if defined(__XC) || defined(SDCC)
 
 #pragma config FOSC = HSPLL_HS
-#pragma config PWRT = ON, BOR = ON, BORV = 27
+#pragma config PWRT = ON, BOR = OFF
 #pragma config WDT = OFF
 #pragma config CCP2MX = ON, STVREN = OFF, LVP = OFF
 #pragma config CP0 = OFF, CP1 = OFF, CP2 = OFF, CP3 = OFF
@@ -15,12 +15,13 @@
 #pragma config EBTRB = OFF
 
 #elif defined(HI_TECH_C)
-
-__CONFIG(1, FOSC_HSPLL_HS);
-__CONFIG(2, BOR_ON& PWRT_ON& WDT_OFF);
-__CONFIG(3, CCP2MX_ON);
-__CONFIG(4, LVP_OFF);
-__CONFIG(5, CPD_OFF);
+#include <htc.h>
+#include <pic18.h>
+__CONFIG(1,FOSC_HS);
+__CONFIG(2,BOR_ON & PWRT_ON & WDT_ON);
+__CONFIG(3,CCP2MX_ON);
+__CONFIG(4,DEBUG_ON);
+__CONFIG(5,CPD_OFF );
 
 #endif
 

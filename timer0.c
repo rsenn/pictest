@@ -50,6 +50,7 @@ COMMERCIAL APPLICATION PLEASE WRITE TO THE AUTHOR.
 *****************************************************************/
 
 #include <htc.h>
+#include "lib/interrupt.h"
 
 // Chip Settings
 __CONFIG(1, 0x0200);

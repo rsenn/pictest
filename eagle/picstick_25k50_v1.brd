@@ -41,7 +41,7 @@
 <layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
-<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="yes"/>
 <layer number="51" name="tDocu" color="6" fill="1" visible="yes" active="yes"/>
@@ -1232,7 +1232,7 @@ https://github.com/kaza007/picstick_25k50</description>
 25k50 v1</text>
 <text x="0" y="25.4" size="0.8128" layer="48" ratio="15">picstick_25k50
 PIC18F25K50 Pinguino compatible USB stick
- </text>
+</text>
 </plain>
 <libraries>
 <library name="LeoStick">
