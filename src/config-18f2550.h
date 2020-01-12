@@ -4,7 +4,7 @@
 #if defined(__XC) || defined(SDCC)
 
 #pragma config FOSC = HSPLL_HS
-#pragma config PWRT = ON, BOR = ON, BORV = 27
+#pragma config PWRT = ON, BOR = OFF
 #pragma config WDT = OFF
 #pragma config CCP2MX = ON, STVREN = OFF, LVP = OFF
 #pragma config CP0 = OFF, CP1 = OFF, CP2 = OFF, CP3 = OFF
