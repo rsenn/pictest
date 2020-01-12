@@ -32,7 +32,7 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>/e/Sources/pictest</Elem>
+    <Elem>../../..</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
