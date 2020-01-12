@@ -180,6 +180,9 @@ main() {
   LED_TRIS();
   LED_OFF();
 
+  LED2_CATHODE_TRIS = 0;
+  LED2_CATHODE = 0;
+
   softpwm_init();
   softpwm_values[0] = 30;
   softpwm_values[1] = 60;
