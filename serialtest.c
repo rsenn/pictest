@@ -1,27 +1,16 @@
+#include "config-bits.h"
 #include "pictest.h"
+#include "lib/typedef.h"
 #include "lib/const.h"
-#include "lib/delay.h"
+//#include "lib/delay.h"
 #include "lib/interrupt.h"
 #include "lib/lcd44780.h"
 #include "lib/ser.h"
 #include "lib/softser.h"
 #include "lib/timer.h"
-#include "lib/typedef.h"
 #include "lib/uart.h"
 #include <ctype.h>
 
-#include "config-bits.h"
-
-#ifdef SDCC
-__code unsigned int __at(_CONFIG) __configword = CONFIG_WORD;
-#endif
-
-#ifdef HI_TECH_C
-#elif defined(__IAR_SYSTEMS_ICC__)
-#include <io16f876a.h>
-#elif !defined CPROTO
-#error Unknown compiler
-#endif
 
 void loop();
 void put_number(void (*putchar)(char), uint16_t n, uint8_t base, int8_t pad);

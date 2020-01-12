@@ -1,3 +1,4 @@
+#include "config-bits.h"
 #include "pictest.h"
 #include "lib/timer.h"
 #if USE_UART
@@ -17,7 +18,7 @@
 #include "lib/const.h"
 #include "lib/delay.h"
 #include "lib/ds18b20.h"
-#include "lib/ledsense.h"
+#include "lib/extra/ledsense.h"
 #include "lib/extra/shell.h"
 /*
 #define BUTTON_MINUS 1
@@ -29,15 +30,10 @@
 static const char buttons[6] = { ' ', '-', 'D', '+', 'U', '!' };
 */
 
-#include "config-bits.h"
 
 //#ifdef __XC8__
 //__PROG_CONFIG(1, 0x3f72);
 //#endif
-
-#ifdef SDCC
-__code unsigned int __at(_CONFIG) __configword = CONFIG_WORD;
-#endif
 
 #if defined(HI_TECH_C) || defined(__XC__)
 #endif

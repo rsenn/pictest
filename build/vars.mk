@@ -134,8 +134,8 @@ pictest2_DEFS += -DUSE_TIMER0=1
 ps2test_SOURCES = ps2test.c uart.c timer.c
 ps2test_DEFS += -DUSE_TIMER0=1
 
-blinktest_SOURCES = blinktest.c  timer.c softpwm.c random.c ser.c uart.c softser.c comparator.c
-blinktest_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_SOFTPWM=1
+blinktest_SOURCES = comparator.c blinktest.c  timer.c softpwm.c random.c ser.c uart.c softser.c comparator.c
+blinktest_DEFS += -DHAVE_COMPARATOR=1 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_SOFTPWM=1
 blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1
 #blinktest_DEFS += -DUSE_SER=1
 #blinktest_DEFS += -DUSE_UART=1
