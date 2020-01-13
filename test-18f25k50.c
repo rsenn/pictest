@@ -55,8 +55,8 @@ void interrupt isr() {
 
     bres += TIMER0_TICKS;
 
-    if(bres >= XTAL_FREQ / 1000) {
-      bres -= XTAL_FREQ / 1000;
+    if(bres >= 48000) {
+      bres -= 48000;
       msecs++;
     }
 
