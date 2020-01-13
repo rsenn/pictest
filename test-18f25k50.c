@@ -45,7 +45,7 @@
 #pragma config EBTR3 = OFF       // Block 3 is not protected from table reads executed in other blocks
 #pragma config EBTRB = OFF       // Boot block is not protected from table reads executed in other blocks
 
-#define TIMER0_TICKS 256
+#define TIMER0_TICKS (256*256)
 
 volatile uint32_t bres;
 volatile uint32_t seconds;
