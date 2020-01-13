@@ -3,23 +3,20 @@
 
 #define XTAL_FREQ 48000000
 
-#pragma config CFGPLLEN = OFF // pll off on startup
-#pragma config CPUDIV = NOCLKDIV //Use 48MHz clock for cpu clock = 48MHz/1 = 48MHz
-//#pragma config CPUDIV = CLKDIV2 //Use 24MHz clock for cpu clock = 48MHz/2 = 24MHz
-#pragma config LS48MHZ = SYS48X8 //system clock is 48Mhz
-#pragma config FOSC = INTOSCIO // Internal oscillator,
-#pragma config IESO = OFF
-#pragma config FCMEN = ON
+#pragma config PLLSEL = PLL3X // PLL Selection (3x clock multiplier)
+#pragma config CFGPLLEN = ON // PLL Enable Configuration bit (PLL Enabled)
+#pragma config CPUDIV = NOCLKDIV// CPU System Clock Postscaler (CPU uses system clock (no divide))
+#pragma config LS48MHZ = SYS48X8// Low Speed USB mode with 48 MHz system clock (System clock at 48 MHz, USB clock divider is set to 8)
+
+// CONFIG1H
+#pragma config FOSC = INTOSCIO // Oscillator Selection (Internal oscillator)
+#pragma config PCLKEN = OFF // Primary Oscillator Shutdown (Primary oscillator shutdown firmware controlled)
+#pragma config FCMEN = OFF // Fail-Safe Clock Monitor (Fail-Safe Clock Monitor disabled)
+#pragma config IESO = OFF // Internal/External Oscillator Switchover (Oscillator Switchover mode disabled)
 
 
-//#pragma config PLLSEL = PLL3X    // 4x clock multiplier
-//#pragma config CFGPLLEN = ON    // PLL Enabled
-#pragma config CPUDIV = NOCLKDIV // CPU uses system clock (no divide)
-//#pragma config LS48MHZ = SYS48X8 // System clock at 48 MHz, USB clock divider is set to 8
-//#pragma config FOSC = INTOSCIO   // Internal oscillator
-#pragma config PCLKEN = OFF      // Primary oscillator shutdown firmware controlled
-//#pragma config FCMEN = OFF       // Fail-Safe Clock Monitor disabled
-//#pragma config IESO = OFF        // Oscillator Switchover mode disabled
+
+
 #pragma config nPWRTEN = OFF     // Power up timer disabled
 #pragma config BOREN = OFF       // BOR disabled in hardware (SBOREN is ignored)
 #pragma config BORV = 2V5        // BOR set to 2.5V nominal
@@ -80,6 +77,14 @@ void interrupt isr() {
 
 int
 main() {
+
+OSCCON = 0x72;
+OSCCON2 = 0x90;
+OSCTUNEbits.SPLLMULT = 1;
+UCON = 0x0E;
+UCFG = 0x14;
+ 
+
   bres = 0;
   msecs = 0;
   seconds = 0;
