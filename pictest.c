@@ -1,5 +1,5 @@
-#include "config-bits.h"
 #include "pictest.h"
+#include "config-bits.h"
 #include "lib/timer.h"
 #if USE_UART
 #include "lib/uart.h"
@@ -29,7 +29,6 @@
 
 static const char buttons[6] = { ' ', '-', 'D', '+', 'U', '!' };
 */
-
 
 //#ifdef __XC8__
 //__PROG_CONFIG(1, 0x3f72);
@@ -168,33 +167,33 @@ TMR2ON = 1;       // Enable timer 2.
   TIMER0_INTERRUPT_FLAG = 0;
   T0IE = 1;
 #endif
-// timer1_init(0);
-/*
-  T1SYNC = 1;
+  // timer1_init(0);
+  /*
+    T1SYNC = 1;
 
-  T1CKPS0 = 0;
-  T1CKPS1 = 0; // 1:1 prescaler
+    T1CKPS0 = 0;
+    T1CKPS1 = 0; // 1:1 prescaler
 
-  // Set up timer0 interrupt
-  T1OSCEN = 1;
-  TMR1CS = 0; // Internal clock source
-  TMR1L = 0x00;
-  TMR1H = 0xff;
+    // Set up timer0 interrupt
+    T1OSCEN = 1;
+    TMR1CS = 0; // Internal clock source
+    TMR1L = 0x00;
+    TMR1H = 0xff;
 
-  TMR1ON = 1;
-  //PSA = 0;  // Enable TMR1 prescaler
+    TMR1ON = 1;
+    //PSA = 0;  // Enable TMR1 prescaler
 
 
-  //tmr0_set_psbit(0);
+    //tmr0_set_psbit(0);
 
-  PSA = 1; // Assign prescaler to WDT
+    PSA = 1; // Assign prescaler to WDT
 
-  OPTION_REGbits.PS = 0b000;
+    OPTION_REGbits.PS = 0b000;
 
-  //TMR1 = ~ticks;
-  TMR1IF = 0;
-  TMR1IE = 1;
-*/
+    //TMR1 = ~ticks;
+    TMR1IF = 0;
+    TMR1IE = 1;
+  */
 
 #if USE_UART
   uart_init();

@@ -86,7 +86,7 @@ ReadCTMU(int ch) {
   ADCON0bits.CHS = ch;       // Select ADC channel
   CTMUCONHbits.CTMUEN = 1;   // Enable the CTMU
   CTMUCONLbits.EDG1STAT = 0; // Set Edge status bits to zero
-  CTMUCONHbits.IDISSEN = 1; // drain charge on the circuit
+  CTMUCONHbits.IDISSEN = 1;  // drain charge on the circuit
   DELAY1;
   CTMUCONHbits.IDISSEN = 0; // end drain of circuit
   CTMUCONLbits.EDG2STAT = 0;
@@ -94,11 +94,11 @@ ReadCTMU(int ch) {
   // using CTMU current source
   DELAY2;
   CTMUCONLbits.EDG1STAT = 0; // Stop charging circuit
-  PIR1bits.ADIF = 0; // make sure A/D Int not set
-  ADCON0bits.GO = 1; // and begin A/D conv.
+  PIR1bits.ADIF = 0;         // make sure A/D Int not set
+  ADCON0bits.GO = 1;         // and begin A/D conv.
   DELAY1;
   while(ADCON0bits.GO)
-    ; // Wait for A/D convert complete
+    ;          // Wait for A/D convert complete
   res = ADRES; // Get the value from the A/D
   // ADCON0bits.GO=0; //and begin A/D conv.
   CTMUCONHbits.CTMUEN = 0; // Enable the CTMU

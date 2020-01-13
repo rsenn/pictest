@@ -1,12 +1,12 @@
 #include "config-bits.h"
-#include "pictest.h"
 #include "lib/comparator.h"
 #include "lib/const.h"
+#include "lib/device.h"
 #include "lib/interrupt.h"
 #include "lib/random.h"
 #include "lib/softpwm.h"
 #include "lib/timer.h"
-#include "lib/device.h"
+#include "pictest.h"
 
 #if USE_UART
 #include "lib/uart.h"
@@ -17,7 +17,6 @@
 #if USE_SOFTSER
 #include "lib/softser.h"
 #endif
-
 
 #include <math.h>
 
@@ -79,11 +78,11 @@ volatile uint32_t msecs, hsecs;
 //-----------------------------------------------------------------------------
 INTERRUPT_HANDLER() {
   SOFTPWM_ISR();
-/*
-  if(TMR1IF) {
-    // Clear timer interrupt bit
-    TMR1IF = 0;
-  }*/
+  /*
+    if(TMR1IF) {
+      // Clear timer interrupt bit
+      TMR1IF = 0;
+    }*/
 
 #if USE_SER
   ser_int();
@@ -156,8 +155,8 @@ main() {
 #endif
 
 #if !NO_PORTB
-   N_RBPU = 0;
-//  N_RBPU = 0; // enable portb pull-ups
+  N_RBPU = 0;
+  //  N_RBPU = 0; // enable portb pull-ups
   TRISB |= 0b11110000;
   TRISB &= 0b11110011;
   RB2 = RB3 = LOW;

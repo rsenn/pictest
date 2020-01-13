@@ -10,19 +10,18 @@
  * If you hook a LED up to this pin, it should seem to dim and fade.
  */
 
-#include "lib/device.h"
+#include "lib/pwm.h"
 #include "lib/adc.h"
 #include "lib/const.h"
 #include "lib/delay.h"
+#include "lib/device.h"
 #include "lib/interrupt.h"
 #include "lib/lcd44780.h"
-#include "lib/pwm.h"
 #include "lib/typedef.h"
 
 #include "config-bits.h"
 
 #include "ding-dong.h"
-
 
 const uint16_t sine_table[128] = {0x200, 0x219, 0x232, 0x24b, 0x263, 0x27c, 0x294, 0x2ac, 0x2c3, 0x2da, 0x2f1, 0x307,
                                   0x31c, 0x330, 0x344, 0x357, 0x36a, 0x37b, 0x38b, 0x39b, 0x3a9, 0x3b7, 0x3c3, 0x3ce,

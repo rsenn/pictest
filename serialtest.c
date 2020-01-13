@@ -1,7 +1,7 @@
 #include "config-bits.h"
-#include "pictest.h"
-#include "lib/typedef.h"
 #include "lib/const.h"
+#include "lib/typedef.h"
+#include "pictest.h"
 //#include "lib/delay.h"
 #include "lib/interrupt.h"
 #include "lib/lcd44780.h"
@@ -10,7 +10,6 @@
 #include "lib/timer.h"
 #include "lib/uart.h"
 #include <ctype.h>
-
 
 void loop();
 void put_number(void (*putchar)(char), uint16_t n, uint8_t base, int8_t pad);
@@ -160,7 +159,7 @@ main() {
 
   run = 1;
 
-//   flash_busy_led(1000);
+  //   flash_busy_led(1000);
 
 #if USE_UART
   uart_puts("XXXX\r\n");

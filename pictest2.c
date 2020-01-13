@@ -232,19 +232,19 @@ main() {
   uart_init();
 #endif
 
-/*
-PR2 = 0xff;       // Set PWM period
-CCPR1L = 0x00;    // Set PWM duty cycle
-CCP1CON = 0x0c;      // Set PWM mode
-//CCP1X = 1;        // Set one of the LSB bits.
-CCPR2L = 0;
-CCP2CON = 0x0c;
-// It took me a while to realize the point of
-// these since they're so inconvenient to use.
-// Set one but only one of these, and your PWM
-// output will never be able to stall -- values
-// of 0 won't disable it, values of 255 won't pin it.*/
-// T1CON = 0x00;
+  /*
+  PR2 = 0xff;       // Set PWM period
+  CCPR1L = 0x00;    // Set PWM duty cycle
+  CCP1CON = 0x0c;      // Set PWM mode
+  //CCP1X = 1;        // Set one of the LSB bits.
+  CCPR2L = 0;
+  CCP2CON = 0x0c;
+  // It took me a while to realize the point of
+  // these since they're so inconvenient to use.
+  // Set one but only one of these, and your PWM
+  // output will never be able to stall -- values
+  // of 0 won't disable it, values of 255 won't pin it.*/
+  // T1CON = 0x00;
 
 #ifdef USE_PWM
   // set up TMR2
@@ -284,16 +284,16 @@ CCP2CON = 0x0c;
   T0IE = 1;
 
   tmr_overflows = 0;
-/*
-  T1CKPS0 = 1;
-  T1CKPS1 = 0; // 1:2 prescale
-  T1OSCEN = 1;
-  T1SYNC = 1;
-  TMR1CS = 0;
-  TMR1ON = 1;
-  TMR1 = 0;
-  TMR1IE = 1;
-  TMR1IF = 0;*/
+  /*
+    T1CKPS0 = 1;
+    T1CKPS1 = 0; // 1:2 prescale
+    T1OSCEN = 1;
+    T1SYNC = 1;
+    TMR1CS = 0;
+    TMR1ON = 1;
+    TMR1 = 0;
+    TMR1IE = 1;
+    TMR1IF = 0;*/
 
 #ifdef PORTB_BUTTONS
   TRISB |= 0b11110000;

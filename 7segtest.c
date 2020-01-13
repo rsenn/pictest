@@ -1,4 +1,3 @@
-#include "pictest.h"
 #include "lib/adc.h"
 #include "lib/comparator.h"
 #include "lib/const.h"
@@ -7,6 +6,7 @@
 #include "lib/random.h"
 #include "lib/softpwm.h"
 #include "lib/timer.h"
+#include "pictest.h"
 
 #if USE_UART
 #include "lib/uart.h"
@@ -119,12 +119,12 @@ set_number(uint16_t n) {
 // Interrupt handling routine
 //-----------------------------------------------------------------------------
 INTERRUPT_HANDLER() {
-// SOFTPWM_ISR();
-/*
-  if(TMR1IF) {
-    // Clear timer interrupt bit
-    TMR1IF = 0;
-  }*/
+  // SOFTPWM_ISR();
+  /*
+    if(TMR1IF) {
+      // Clear timer interrupt bit
+      TMR1IF = 0;
+    }*/
 
 #if USE_SER
   ser_int();
@@ -203,7 +203,7 @@ main() {
 
   LED_OFF();
 
- #ifdef PEIE
+#ifdef PEIE
   PEIE = 1;
 #endif
   INTERRUPT_ENABLE();
@@ -252,11 +252,11 @@ main() {
         if(number >= 10000) number = 0;
 
         led_state = !led_state;
-	if(led_state) {
-		LED_ON();
-	} else {
-		LED_OFF();
-	}
+        if(led_state) {
+          LED_ON();
+        } else {
+          LED_OFF();
+        }
 
         prev_hsecs = tmp_msecs;
       }

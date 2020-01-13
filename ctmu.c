@@ -73,8 +73,9 @@ the resistor value needed is calculated as
     RCAL = 2.31V/0.55 uA for a value of 4.2 MΩ.
 */
 
-#define RCAL (NOMINALCURRENT /).027 // R value is 4200000 (4.2M)
-                                    // scaled so that result is in 1/100th of uA
+#define RCAL                                                                                                           \
+  (NOMINALCURRENT /).027 // R value is 4200000 (4.2M)
+                         // scaled so that result is in 1/100th of uA
 
 /// PROTOTYPES
 

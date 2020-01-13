@@ -55,9 +55,9 @@ main() {
 
 void
 Capture_init() {
-  TRISC |= 0x03; // Make PS2 CLK and DATA Pins as Input
+  TRISC |= 0x03;  // Make PS2 CLK and DATA Pins as Input
   CCP2CON = 0x04; // Capture Every Falling Edge
-  T1CON = 0x04; // Timer1 1:1 Prescale, Internal Clock
+  T1CON = 0x04;   // Timer1 1:1 Prescale, Internal Clock
   TMR1H = 0;
   TMR1L = 0;
   CCP2IF = 0; // Clear the Interrupt Flag
@@ -81,7 +81,7 @@ uint8_t
 Scan_Data() {
   uint8_t Data = 0, temp;
   while(CCP2IF == 0)
-    ; // Wait for First Falling Edge
+    ;         // Wait for First Falling Edge
   CCP2IF = 0; // Clear the Flag--Bcoz this is Start Pulse
   for(i = 0; i < 7; i++) {
 

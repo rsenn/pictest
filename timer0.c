@@ -49,8 +49,8 @@ COMMERCIAL APPLICATION PLEASE WRITE TO THE AUTHOR.
 
 *****************************************************************/
 
-#include <htc.h>
 #include "lib/interrupt.h"
+#include <htc.h>
 
 // Chip Settings
 __CONFIG(1, 0x0200);
@@ -76,7 +76,7 @@ main() {
   T08BIT = 1; // 8 BIT MODE
 
   TMR0IE = 1; // Enable TIMER0 Interrupt
-  PEIE = 1; // Enable Peripheral Interrupt
+  PEIE = 1;   // Enable Peripheral Interrupt
 
   INTERRUPT_ENABLE(); // Enable INTs globally
 
