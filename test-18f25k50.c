@@ -3,14 +3,23 @@
 
 #define XTAL_FREQ 48000000
 
-#pragma config PLLSEL = PLL3X    // 4x clock multiplier
-#pragma config CFGPLLEN = OFF    // PLL Enabled
+#pragma config CFGPLLEN = OFF // pll off on startup
+#pragma config CPUDIV = NOCLKDIV //Use 48MHz clock for cpu clock = 48MHz/1 = 48MHz
+//#pragma config CPUDIV = CLKDIV2 //Use 24MHz clock for cpu clock = 48MHz/2 = 24MHz
+#pragma config LS48MHZ = SYS48X8 //system clock is 48Mhz
+#pragma config FOSC = INTOSCIO // Internal oscillator,
+#pragma config IESO = OFF
+#pragma config FCMEN = ON
+
+
+//#pragma config PLLSEL = PLL3X    // 4x clock multiplier
+//#pragma config CFGPLLEN = ON    // PLL Enabled
 #pragma config CPUDIV = NOCLKDIV // CPU uses system clock (no divide)
-#pragma config LS48MHZ = SYS48X8 // System clock at 48 MHz, USB clock divider is set to 8
-#pragma config FOSC = INTOSCIO   // Internal oscillator
+//#pragma config LS48MHZ = SYS48X8 // System clock at 48 MHz, USB clock divider is set to 8
+//#pragma config FOSC = INTOSCIO   // Internal oscillator
 #pragma config PCLKEN = OFF      // Primary oscillator shutdown firmware controlled
-#pragma config FCMEN = OFF       // Fail-Safe Clock Monitor disabled
-#pragma config IESO = OFF        // Oscillator Switchover mode disabled
+//#pragma config FCMEN = OFF       // Fail-Safe Clock Monitor disabled
+//#pragma config IESO = OFF        // Oscillator Switchover mode disabled
 #pragma config nPWRTEN = OFF     // Power up timer disabled
 #pragma config BOREN = OFF       // BOR disabled in hardware (SBOREN is ignored)
 #pragma config BORV = 2V5        // BOR set to 2.5V nominal
