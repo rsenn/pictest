@@ -54,7 +54,7 @@
 #define TIMER0_TICKS (256)
 
 volatile unsigned long bres;
-volatile unsigned long msecs, seconds;
+volatile unsigned long seconds;
 
 void interrupt isr() {
   if(TMR0IF) {
@@ -63,14 +63,10 @@ void interrupt isr() {
 
     if(bres >= 48000) {
       bres -= 48000;
-      msecs++;
+      seconds++;
     }
 
-    if(msecs >= 1000) {
-      msecs -= 1000;
-      seconds += 1;
-    }
-
+  
     TMR0IF = 0;
   }
 }
@@ -86,7 +82,6 @@ UCFG = 0x14;
  
 
   bres = 0;
-  msecs = 0;
   seconds = 0;
 
   RCONbits.IPEN = 0;
