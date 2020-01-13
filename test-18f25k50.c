@@ -53,7 +53,7 @@ volatile unsigned long msecs, seconds;
 void interrupt isr() {
   if(TMR0IF) {
 
-    bres += TIMER0_TICKS;
+    bres += 256;
 
     if(bres >= 48000) {
       bres -= 48000;
