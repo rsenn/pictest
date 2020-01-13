@@ -45,13 +45,12 @@
 #pragma config EBTR3 = OFF       // Block 3 is not protected from table reads executed in other blocks
 #pragma config EBTRB = OFF       // Boot block is not protected from table reads executed in other blocks
 
-#define TIMER0_TICKS (256*256)
+#define TIMER0_TICKS (256)
 
 volatile uint32_t bres;
 volatile uint32_t seconds;
 
-void __interrupt
-isr() {
+void interrupt isr() {
   if(TMR0IF) {
 
     bres += TIMER0_TICKS;
@@ -75,7 +74,7 @@ main() {
   T0CONbits.T0CS = 0;
   T0CONbits.T0PS = 0b111;
   T0CONbits.T08BIT = 1;
-  T0CONbits.PSA = 1;
+  T0CONbits.PSA = 0;
   T0CONbits.TMR0ON = 1;
 
   TMR0IE = 1;
