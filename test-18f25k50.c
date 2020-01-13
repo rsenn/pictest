@@ -47,17 +47,22 @@
 
 #define TIMER0_TICKS (256)
 
-volatile uint32_t bres;
-volatile uint32_t seconds;
+volatile unsigned long bres;
+volatile unsigned long msecs, seconds;
 
 void interrupt isr() {
   if(TMR0IF) {
 
     bres += TIMER0_TICKS;
 
-    if(bres >= XTAL_FREQ) {
-      bres -= XTAL_FREQ;
-      seconds++;
+    if(bres >= XTAL_FREQ / 1000) {
+      bres -= XTAL_FREQ / 1000;
+      msecs++;
+    }
+
+    if(msecs >= 1000) {
+      msecs -= 1000;
+      seconds += 1;
     }
 
     TMR0IF = 0;
@@ -67,6 +72,7 @@ void interrupt isr() {
 int
 main() {
   bres = 0;
+  msecs = 0;
   seconds = 0;
 
   RCONbits.IPEN = 0;
@@ -86,6 +92,6 @@ main() {
   TRISA4 = 0;
 
   for(;;) {
-    LATA4 = seconds & 1;
+    LATA4 = !!(seconds & 1);
   }
 }
