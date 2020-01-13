@@ -50,7 +50,7 @@
 volatile uint32_t bres;
 volatile uint32_t seconds;
 
-void interrupt
+void __interrupt
 isr() {
   if(TMR0IF) {
 
@@ -70,12 +70,16 @@ main() {
   bres = 0;
   seconds = 0;
 
+  RCONbits.IPEN = 0;
+
   T0CONbits.T0CS = 0;
   T0CONbits.T0PS = 0b111;
-
+  T0CONbits.T08BIT = 1;
   T0CONbits.PSA = 1;
+  T0CONbits.TMR0ON = 1;
 
   TMR0IE = 1;
+  TMR0IF = 0;
 
   GIE = 1;
   PEIE = 1;
