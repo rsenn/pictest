@@ -17,7 +17,7 @@
 
 #pragma config nPWRTEN = OFF // Power up timer disabled
 #pragma config BOREN = OFF   // BOR disabled in hardware (SBOREN is ignored)
-#pragma config BORV = 2V5    // BOR set to 2.5V nominal
+//#pragma config BORV = 27    // BOR set to 2.5V nominal
 #pragma config nLPBOR = OFF  // Low-Power Brown-out Reset disabled
 #pragma config WDTEN = OFF   // WDT disabled in hardware (SWDTEN ignored)
 #pragma config WDTPS = 32768 // Watchdog Timer Postscaler 1:32768
@@ -49,14 +49,17 @@
 #pragma config EBTR3 = OFF   // Block 3 is not protected from table reads executed in other blocks
 #pragma config EBTRB = OFF   // Boot block is not protected from table reads executed in other blocks
 
+#include "lib/device.h"
+#include "lib/interrupt.h"
+
+
 #define TIMER0_TICKS (256)
 
 volatile unsigned long bres;
 volatile unsigned long seconds;
 
-void interrupt
-isr() {
-  if(TMR0IF) {
+INTERRUPT_FN() {
+  if(/*INTCONbits.*/TMR0IF) {
 
     bres += 256;
 
@@ -65,7 +68,7 @@ isr() {
       seconds++;
     }
 
-    TMR0IF = 0;
+    /*INTCONbits.*/TMR0IF = 0;
   }
 }
 
@@ -83,14 +86,14 @@ main() {
 
   RCONbits.IPEN = 0;
 
-  T0CONbits.T0CS = 0;
-  T0CONbits.T0PS = 0b111;
-  T0CONbits.T08BIT = 1;
-  T0CONbits.PSA = 0;
-  T0CONbits.TMR0ON = 1;
+  /*T0CONbits.*/T0CS = 0;
+  /*T0CONbits.*/T0PS = 0b111;
+  /*T0CONbits.*/T08BIT = 1;
+  /*T0CONbits.*/PSA = 0;
+  /*T0CONbits.*/TMR0ON = 1;
 
-  TMR0IE = 1;
-  TMR0IF = 0;
+  /*INTCONbits.*/TMR0IE = 1;
+  /*INTCONbits.*/TMR0IF = 0;
 
   GIE = 1;
   PEIE = 1;
