@@ -1,4 +1,3 @@
-#include <pic18f25k50.h>
 #include <stdint.h>
 
 #define XTAL_FREQ 48000000
