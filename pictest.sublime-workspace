@@ -15,7 +15,7 @@
 			"file": "test-18f25k50.c",
 			"settings":
 			{
-				"buffer_size": 4040,
+				"buffer_size": 4143,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -130,10 +130,17 @@
 		"/home/roman/Dokumente/Sources/pictest",
 		"/home/roman/Dokumente/Sources/pictest/lib",
 		"/home/roman/Dokumente/Sources/pictest/lib/build",
+		"/home/roman/Dokumente/Sources/pictest/lib/build/mplabx-pic16",
+		"/home/roman/Dokumente/Sources/pictest/lib/build/mplabx-pic16/libpicp-16f876a-htc.X",
+		"/home/roman/Dokumente/Sources/pictest/lib/build/mplabx-pic16/libpicp-16f876a-sdcc.X",
+		"/home/roman/Dokumente/Sources/pictest/lib/build/mplabx-pic16/libpicp-16f876a-xc8.X",
+		"/home/roman/Dokumente/Sources/pictest/lib/build/mplabx-pic16/libpicp-16f876a-xc8.X/nbproject",
 		"/home/roman/Dokumente/Sources/pictest/src"
 	],
 	"file_history":
 	[
+		"/home/roman/Dokumente/Sources/pictest/lib/device.h",
+		"/home/roman/Dokumente/Sources/pictest/lib/interrupt.h",
 		"/home/roman/Dokumente/Sources/pictest/lib/timer.h",
 		"/home/roman/Dokumente/Sources/pictest/pictest.sublime-project",
 		"/home/roman/Dokumente/Sources/pictest/scripts/eagle2svg.sh",
@@ -147,7 +154,6 @@
 		"/home/roman/Dokumente/Sources/pictest/lib/timer.c",
 		"/home/roman/Dokumente/Sources/pictest/lib/ports.h",
 		"/home/roman/Dokumente/Sources/pictest/7segtest.c",
-		"/home/roman/Dokumente/Sources/pictest/lib/interrupt.h",
 		"/home/roman/Dokumente/Sources/pictest/lib/adc.h",
 		"/home/roman/Dokumente/Sources/pic-softser/SoftUART_PIC16F/Software_UART.h",
 		"/home/roman/Dokumente/Sources/pic-softser/16f-softuart--20MHZ/main.c",
@@ -260,8 +266,7 @@
 		"/C/Users/roman/Documents/lc-meter/scripts/baud.sh",
 		"/C/Users/roman/Documents/lc-meter/scripts/calc-lc-tank.c",
 		"/C/Users/roman/Documents/pictest/src/config-12f1840.h",
-		"/C/Users/roman/Documents/pictest/src/config-18f252.h",
-		"/C/Users/roman/Documents/pictest/src/config-18f2550.h"
+		"/C/Users/roman/Documents/pictest/src/config-18f252.h"
 	],
 	"find":
 	{
@@ -280,6 +285,10 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"T0PS",
+			"(INTCONbits.)",
+			"(T0CONbits.)",
+			"T0CONbits.",
 			"bres",
 			"LED2",
 			"pdf",
@@ -375,6 +384,8 @@
 		"regex": true,
 		"replace_history":
 		[
+			"/*$1*/",
+			"/*&*/",
 			"1",
 			"TMR2",
 			"TIMER2",
@@ -424,26 +435,26 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4040,
+						"buffer_size": 4143,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4040,
-								4040
+								3915,
+								3915
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/User/SchemeEditorTemp/Gloom Contrast (rainglow).tmTheme",
+							"color_scheme": "Packages/Perv - Color Scheme/Perv Orange Moonlight.tmTheme",
 							"syntax": "Packages/C99/C99.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1173.0,
+						"translation.y": 624.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -454,7 +465,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 32.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -499,7 +510,7 @@
 	"project": "pictest.sublime-project",
 	"replace":
 	{
-		"height": 80.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -508,6 +519,14 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"interr",
+				"lib/interrupt.h"
+			],
+			[
+				"device.h",
+				"lib/device.h"
+			],
 			[
 				"7segtest",
 				"7segtest.c"
