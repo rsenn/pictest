@@ -1,7 +1,7 @@
 #ifndef CONFIG_12F1840_H
 #define CONFIG_12F1840_H 1
 
-#if defined(__XC) || defined(SDCC)
+#if defined(__XC) || defined(MCHP_XC8) || defined(SDCC)
 
 // Word CONFIG1 @ 0x8007
 
@@ -23,21 +23,15 @@
 #pragma config STVREN = OFF // Stack Overflow/Underflow Reset Enable [ OFF | ON   ]
 #pragma config BORV = LO    // Brown-out Reset Voltage Selection [ HI | LO    ]
 
+#ifdef _DEBUG
+#pragma config DEBUG = ON
+#endif
+
 #elif defined(HI_TECH_C)
-#include <htc.h>
 
 __CONFIG(1, FOSC_INTOSC& WDTE_OFF& PWRTE_ON& MCLRE_OFF& BOREN_ON& CP_OFF& CPD_OFF& CLKOUTEN_OFF);
 __CONFIG(2, BORV_LO& WRT_OFF);
 
-#endif
-
-#define _BODEN_OFF _BOREN_OFF
-#define _WDT_OFF _WDTE_OFF
-
-#ifdef __XC
-#define NOT_T1SYNC nT1SYNC 
-#else
-#define nT1SYNC NOT_T1SYNC
 #endif
 
 #endif // defined CONFIG_12F1840_H
