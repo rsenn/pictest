@@ -16,7 +16,7 @@ set -- --preproc="./cpp-xc8${EXEEXT}"
 : ${CHIPS='16f876a 18f2450 18f2520 18f2550 18f25k22 18f25k50'}
 CHIPS='18f25k50 18f2550'
 BUILD_TYPES='debug release'
-BUILD_TYPES='debug' 
+#BUILD_TYPES='debug' 
 : ${PROGRAM_NAME:=${SOURCES%%.*}}
 for CHIP in $CHIPS;  do
 	for BUILD_TYPE in $BUILD_TYPES; do
@@ -31,7 +31,7 @@ for CHIP in $CHIPS;  do
 				--no-create-libs \
 				--$BUILD_TYPE \
 				--chip=${CHIP} \
-        -o build/mplab/$PROGRAM_NAME-$CHIP-$BUILD_TYPE-$COMPILER.mcp ">&genmakefile-$COMPILER-$BUILD_TYPE.log) 2>&10"
+        --builddir build/mplab -o build/mplab/$PROGRAM_NAME-$CHIP-$COMPILER-$BUILD_TYPE.mcp ">&genmakefile-$COMPILER-$BUILD_TYPE.log) 2>&10"
 		done
 	done
 done

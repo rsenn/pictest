@@ -1,6 +1,8 @@
 #ifndef CONFIG_BITS_H
 #define CONFIG_BITS_H 1
 
+#include "../lib/device.h"
+
 #ifdef __10f206
 #include "config-10f206.h"
 #endif // defined __10f206
