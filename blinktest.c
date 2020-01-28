@@ -1,4 +1,4 @@
-#include "config-bits.h"
+#include "src/config-bits.h"
 #include "lib/comparator.h"
 #include "lib/const.h"
 #include "lib/device.h"
