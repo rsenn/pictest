@@ -10,13 +10,13 @@ IFS=" ""
  	"
 : ${COMPILERS:="xc8 htc sdcc"}
 [ $# -gt 0 ] && SOURCES="$*" ||
-SOURCES='${PROGRAM_NAME}.c ${PROGRAM_NAME}.h lib/{adc,buffer,comparator,delay,format,lcd*,random,ser,softpwm,softser,timer,uart}.? src/*.c'
+SOURCES='${PROGRAM_NAME}.c ${PROGRAM_NAME}.h lib/{adc,buffer,comparator,delay,format,lcd*,random,ser,softpwm,softser,timer,uart}.? src/config-${CHIP}.h src/config-bits.h src/*.c'
 
 echo "SOURCES='$SOURCES'" 1>&2
 set -- --preproc="./cpp-xc8${EXEEXT}" 
-: ${CHIPS='16f876a 18f2450 18f2520 18f2550 18f25k22 18f25k50'}
+: ${CHIPS='12f1840 16f628a 16f876a 18f2450 18f2520 18f2550 18f25k22 18f25k50'}
 
-CHIPS='18f25k50 18f2550'
+#CHIPS='18f25k50 18f2550'
 BUILD_TYPES='debug release'
 #BUILD_TYPES='debug' 
 : ${PROGRAM_NAME:=${SOURCES%%.*}}

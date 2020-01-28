@@ -5,7 +5,7 @@ device=PIC18F2550
 [PATH_INFO]
 BuildDirPolicy=BuildDirIsProjectDir
 dir_src=
-dir_bin=..\..\bin\xc8-18f2550
+dir_bin=.
 dir_tmp=
 dir_sin=
 dir_inc=..\..;..\..\lib;..\..\src
@@ -19,7 +19,7 @@ filter_lib=*.lib;*.lpp
 filter_lkr=*.unknown
 [CAT_SUBFOLDERS]
 subfolder_src=lib
-subfolder_inc=lib
+subfolder_inc=lib;src
 subfolder_obj=
 subfolder_lib=
 subfolder_lkr=
@@ -52,6 +52,7 @@ file_024=lib
 file_025=lib
 file_026=lib
 file_027=lib
+file_028=src
 [GENERATED_FILES]
 file_000=no
 file_001=no
@@ -81,6 +82,7 @@ file_024=no
 file_025=no
 file_026=no
 file_027=no
+file_028=no
 [OTHER_FILES]
 file_000=no
 file_001=no
@@ -110,6 +112,7 @@ file_024=no
 file_025=no
 file_026=no
 file_027=no
+file_028=no
 [FILE_INFO]
 file_000=..\..\lib\adc.c
 file_001=..\..\lib\buffer.c
@@ -139,6 +142,7 @@ file_024=..\..\lib\softpwm.h
 file_025=..\..\lib\softser.h
 file_026=..\..\lib\timer.h
 file_027=..\..\lib\uart.h
+file_028=..\..\src\config-bits.h
 [SUITE_INFO]
 suite_guid={38171385-97B2-4EC5-BF2C-C2C027BA5B04}
 suite_state=
