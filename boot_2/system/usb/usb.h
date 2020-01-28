@@ -45,16 +45,16 @@
  */
 
 #include "autofiles\usbcfg.h"
-#include "system\usb\usbdefs\usbdefs_std_dsc.h"
 #include "autofiles\usbdsc.h"
+#include "system\usb\usbdefs\usbdefs_std_dsc.h"
 
 #include "system\usb\class\boot\boot.h"
 
 #include "system\usb\usbdefs\usbdefs_ep0_buff.h"
 #include "system\usb\usbmmap.h"
 
-#include "system\usb\usbdrv\usbdrv.h"
-#include "system\usb\usbctrltrf\usbctrltrf.h"
 #include "system\usb\usb9\usb9.h"
+#include "system\usb\usbctrltrf\usbctrltrf.h"
+#include "system\usb\usbdrv\usbdrv.h"
 
-#endif //USB_H
+#endif // USB_H

@@ -1,4 +1,4 @@
-//DOM-IGNORE-BEGIN
+// DOM-IGNORE-BEGIN
 /*******************************************************************************
 Software License Agreement
 
@@ -21,7 +21,7 @@ IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
 CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 
 *******************************************************************************/
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
 #ifndef AUDIO_H
 #define AUDIO_H
@@ -29,7 +29,6 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 #include <usb/usb_ch9.h>
 
 /** I N C L U D E S *******************************************************/
-
 
 /** DEFINITIONS ****************************************************/
 /******Audio Interface Class Code**********/
@@ -80,17 +79,17 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 
 /****** Audio Class-Specific Request Codes ************/
 #define REQUEST_CODE_UNDEFINED 0x00
-#define SET_CUR  0x01
-#define SET_MIN  0x02
-#define SET_MAX  0x03
-#define SET_RES  0x04
-#define SET_MEM  0x05
-#define GET_CUR  0x81
-#define GET_MIN  0x82
-#define GET_MAX  0x83
-#define GET_RES  0x84
-#define GET_MEM  0x85
-#define GET_STAT  0xFF
+#define SET_CUR 0x01
+#define SET_MIN 0x02
+#define SET_MAX 0x03
+#define SET_RES 0x04
+#define SET_MEM 0x05
+#define GET_CUR 0x81
+#define GET_MIN 0x82
+#define GET_MAX 0x83
+#define GET_RES 0x84
+#define GET_MEM 0x85
+#define GET_STAT 0xFF
 
 /************ Terminal Control Selectors ******/
 #define TE_CONTROL_UNDEFINED 0x00
@@ -108,7 +107,6 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 #define DELAY_CONTROL 0x08
 #define BASS_BOOST_CONTROL 0x09
 #define LOUDNESS_CONTROL 0x0A
-
 
 /************  Processing Unit Control Selectors ****/
 /*  Up/Down-mix Processing Unit Control Selectors */
@@ -150,7 +148,6 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 #define ATTACK_TIME 0x05
 #define RELEASE_TIME 0x06
 
-
 /************ Extension Unit Control Selectors **********/
 #define XU_CONTROL_UNDEFINED 0x00
 #define XU_ENABLE_CONTROL 0x01
@@ -160,14 +157,13 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 #define SAMPLING_FREQ_CONTROL 0x01
 #define PITCH_CONTROL 0x02
 
-/*********** Terminal Types***********************/ 
-/*A complete list of Terminal Type codes is provided in 
-the document USB Audio Terminal Types */ 
+/*********** Terminal Types***********************/
+/*A complete list of Terminal Type codes is provided in
+the document USB Audio Terminal Types */
 #define USB_STREAMING 0x01, 0x01
-#define MICROPHONE 0x01,0x02 
-#define SPEAKER 0x01,0x03
-#define HEADPHONES 0x02,0x03
-
+#define MICROPHONE 0x01, 0x02
+#define SPEAKER 0x01, 0x03
+#define HEADPHONES 0x02, 0x03
 
 /** E X T E R N S ************************************************************/
 extern USB_HANDLE lastTransmission;
@@ -175,32 +171,30 @@ extern volatile CTRL_TRF_SETUP SetupPkt;
 extern const uint8_t configDescriptor1[];
 extern volatile uint8_t CtrlTrfData[USB_EP0_BUFF_SIZE];
 
-
-
 /********************************************************************
     Function:
- 		void USBCheckAudioRequest(void)
-        
+        void USBCheckAudioRequest(void)
+        
     Summary:
- 		This routine checks the setup data packet to see if it
- 		knows how to handle it
-        
+        This routine checks the setup data packet to see if it
+        knows how to handle it
+        
     Description:
- 		This routine checks the setup data packet to see if it
- 		knows how to handle it
+        This routine checks the setup data packet to see if it
+        knows how to handle it
 
     PreCondition:
         None
-        
+        
     Parameters:
-		None
-        
+        None
+        
     Return Values:
-		None
-        
+        None
+        
     Remarks:
         None
-  
+  
  *******************************************************************/
 void USBCheckAudioRequest(void);
-#endif //AUDIO_H
+#endif // AUDIO_H

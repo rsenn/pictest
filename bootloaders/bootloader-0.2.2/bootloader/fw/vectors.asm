@@ -1,6 +1,87 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;  BootLoader.                                                             ;;
-;;  Copyright (C) 2007 Diolan ( http://www.diolan.com )                     ;;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+BootLoader.;
+;
+;
+;  Copyright (C) 2007 Diolan ( http://www.diolan.com )                     ;;
 ;;                                                                          ;;
 ;;  This program is free software: you can redistribute it and/or modify    ;;
 ;;  it under the terms of the GNU General Public License as published by    ;;
@@ -17,9 +98,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Device Reset Vectors
 ;-----------------------------------------------------------------------------
-	#include "P18F4455.INC"
-	#include "boot.inc"
-	#include "io_cfg.inc"
+#include "P18F4455.INC"
+#include "boot.inc"
+#include "io_cfg.inc"
 ;-----------------------------------------------------------------------------
 ; Externals
 ;-----------------------------------------------------------------------------

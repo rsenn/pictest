@@ -15,7 +15,9 @@ void hsv2rgb(float h, float s, float v, uint8_t* rgb, uint8_t range);
 void hsv2rgb_rainbow(float h, float s, float v, uint8_t* rgb, uint8_t range);
 
 convert_fn_t* const convert_functions[] = {
-    &hsi2rgb, &hsv2rgb, &hsv2rgb_rainbow,
+    &hsi2rgb,
+    &hsv2rgb,
+    &hsv2rgb_rainbow,
 };
 //
 // in the calling function. After calling hsi2rgb

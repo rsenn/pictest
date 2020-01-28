@@ -24,87 +24,86 @@
 #include "../osdep/osdep.h"
 
 /**
-*	Buffer with direct access.
-*/
-class Buffer
-{
+ *	Buffer with direct access.
+ */
+class Buffer {
 public:
-	class Iterator;
-	Buffer(); /**< Constructs an empty buffer. */
-	~Buffer(); /**< Deletes internal data */
+  class Iterator;
+  Buffer();  /**< Constructs an empty buffer. */
+  ~Buffer(); /**< Deletes internal data */
 
-	/**
-	*	Constructs buffer of size specified.
-	*	The buffer data will be filled with \a fill value.
-	*
-	*	@param size	The size of the buffer.
-	*	@param fill	The value to fill buffer with. Default = 0xFF.
-	*/
-	Buffer(size_t size, unsigned char fill = 0xFF);
+  /**
+   *	Constructs buffer of size specified.
+   *	The buffer data will be filled with \a fill value.
+   *
+   *	@param size	The size of the buffer.
+   *	@param fill	The value to fill buffer with. Default = 0xFF.
+   */
+  Buffer(size_t size, unsigned char fill = 0xFF);
 
+  /**
+   *	Fill buffer with value provided.
+   *
+   *	@param val			Byte value with which to fill internal buffer.
+   */
+  void fill(unsigned char val);
 
+  /**
+   *	Reads internal buffer data from specified addr.
+   *
+   *	Copies data starting from \a addr address of the internal buffer into \a buf.
+   *	If end of internal buffer reached, only part of the \a buf will be filled.
+   *	Check return value for number bytes copied.
+   *
+   *	@param buf			Pointer to a block of memory to receive the read data.
+   *	@param buf_size		Maximum number of bytes to read.
+   *	@param addr			Address to read from.
+   *	@return				The number of bytes actually read.
+   */
+  size_t read(unsigned char* buf, size_t buf_size, size_t addr);
 
-	/**
-	*	Fill buffer with value provided.
-	*
-	*	@param val			Byte value with which to fill internal buffer.
-	*/
-	void fill(unsigned char val);
+  /**
+   *	Overwrites internal buffer with data provided
+   *
+   *	@param buf		Pointer to the buffer containing the data to be written.
+   *	@param buf_size	Number of bytes to be written.
+   *	@param addr		Address of the first byte provided in \a buf.
+   *   @throws out_of_range Data couldn't fit into buffer.
+   */
+  void write(unsigned char* buf, size_t buf_size, size_t addr);
 
-	/**
-	*	Reads internal buffer data from specified addr.
-	*
-	*	Copies data starting from \a addr address of the internal buffer into \a buf.
-	*	If end of internal buffer reached, only part of the \a buf will be filled.
-	*	Check return value for number bytes copied.
-	*
-	*	@param buf			Pointer to a block of memory to receive the read data.
-	*	@param buf_size		Maximum number of bytes to read.
-	*	@param addr			Address to read from.
-	*	@return				The number of bytes actually read.
-	*/
-	size_t read(unsigned char* buf, size_t buf_size, size_t addr);
+  /**
+   *	Resize the internal buffer.
+   *	All previous data will be lost. The buffer data will be filled with \a fill value.
+   *	Call \a resize(0) to delete the internal buffer.
+   *
+   *	@param size	The size of the new internal buffer.
+   *	@param fill	The value to fill buffer with. Default = 0xFF.
+   */
+  void resize(size_t size, unsigned char fill = 0xFF);
 
-	/**
-	*	Overwrites internal buffer with data provided
-	*
-	*	@param buf		Pointer to the buffer containing the data to be written.
-	*	@param buf_size	Number of bytes to be written.
-	*	@param addr		Address of the first byte provided in \a buf.
-	*   @throws out_of_range Data couldn't fit into buffer.
-	*/
-	void write(unsigned char* buf, size_t buf_size, size_t addr);
+  /**
+   *	Returns the size of the internal buffer.
+   *
+   *   @return Buffer size.
+   */
+  size_t
+  size() {
+    return _size;
+  }
 
-	/**
-	*	Resize the internal buffer.
-	*	All previous data will be lost. The buffer data will be filled with \a fill value.
-	*	Call \a resize(0) to delete the internal buffer.
-	*
-	*	@param size	The size of the new internal buffer.
-	*	@param fill	The value to fill buffer with. Default = 0xFF.
-	*/
-	void resize(size_t size, unsigned char fill = 0xFF);
+  /**
+   *	Swaps bytes in internal buffer.
+   *	Block of \a word_size bytes swaps to reverse order.
+   *	Useful to switch between big-endian and little-endian bytes order.
+   *   @param	word_size	The size in bytes of the blocks to be switched to reverse order.
+   */
+  void swapBytes(unsigned long word_size);
 
-	/**
-	*	Returns the size of the internal buffer.
-	*
-	*   @return Buffer size.
-	*/
-	size_t size() {return _size;}
-
-	/**
-	*	Swaps bytes in internal buffer.
-	*	Block of \a word_size bytes swaps to reverse order.
-	*	Useful to switch between big-endian and little-endian bytes order.
-	*   @param	word_size	The size in bytes of the blocks to be switched to reverse order.
-	*/
-	void swapBytes(unsigned long word_size);
 protected:
-	Buffer(const Buffer&){}; /**< Disables copy constructor. */
-	unsigned char *_data;
-	size_t _size;
+  Buffer(const Buffer&){}; /**< Disables copy constructor. */
+  unsigned char* _data;
+  size_t _size;
 };
 
-
 #endif // BUFFER_H_INCLUDED
-

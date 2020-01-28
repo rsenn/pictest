@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   system_config.h
  * Author: vsk hs-ulm
  *
@@ -9,5 +9,4 @@
 
 #include "usb_config.h"
 
-#endif	/* SYSTEM_CONFIG_H */
-
+#endif /* SYSTEM_CONFIG_H */

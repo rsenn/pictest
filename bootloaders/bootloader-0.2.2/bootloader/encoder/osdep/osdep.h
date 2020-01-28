@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#if (defined _WIN32 || defined _WIN64)
+#if(defined _WIN32 || defined _WIN64)
 /* Windows definitions */
 #ifndef BUILD_WIN32
 #define BUILD_WIN32
@@ -27,6 +27,6 @@
 #else
 /* Linux definitions */
 #include "lnxdefs.h"
-#include <stdarg.h>
 #include <errno.h>
+#include <stdarg.h>
 #endif /* (defined _WIN32 || defined _WIN64) */

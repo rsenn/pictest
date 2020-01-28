@@ -8,8 +8,8 @@
 #include <xc.h>
 
 #define NO_XTAL 0
-#define MHz_12  1
-#define MHz_16  2
+#define MHz_12 1
+#define MHz_16 2
 
 #define NORMAL 0
 #define DEV_BOARD 1
@@ -24,37 +24,37 @@
 #endif
 
 #if XTAL_USED == NO_XTAL && PIN_VERSION == NORMAL
-#define BUTTON      PORTAbits.RA6
-#define LED         LATAbits.LA7
+#define BUTTON PORTAbits.RA6
+#define LED LATAbits.LA7
 #define BUTTON_TRIS TRISAbits.TRISA6
-#define LED_TRIS    TRISAbits.TRISA7
+#define LED_TRIS TRISAbits.TRISA7
 #else
-#define BUTTON      PORTBbits.RB6
-#define LED         LATBbits.LB7
+#define BUTTON PORTBbits.RB6
+#define LED LATBbits.LB7
 #define BUTTON_TRIS TRISBbits.TRISB6
-#define LED_TRIS    TRISBbits.TRISB7
+#define LED_TRIS TRISBbits.TRISB7
 #endif
 
-void main(void) {
+void
+main(void) {
 #if XTAL_USED == NO_XTAL
-    OSCCONbits.IRCF = 7;
-    ANSELA = 0;
+  OSCCONbits.IRCF = 7;
+  ANSELA = 0;
 #endif
-    LED = 0;
-    LED_TRIS = 0;
-    while(1){
-        if(BUTTON){
-            LED = 1;
-            __delay_ms(250);
-            LED = 0;
-            __delay_ms(250);
-        }
-        else{
-            LED = 1;
-            __delay_ms(500);
-            LED = 0;
-            __delay_ms(500);
-        }
+  LED = 0;
+  LED_TRIS = 0;
+  while(1) {
+    if(BUTTON) {
+      LED = 1;
+      __delay_ms(250);
+      LED = 0;
+      __delay_ms(250);
+    } else {
+      LED = 1;
+      __delay_ms(500);
+      LED = 0;
+      __delay_ms(500);
     }
-    return;
+  }
+  return;
 }

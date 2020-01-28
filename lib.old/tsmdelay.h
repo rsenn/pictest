@@ -46,7 +46,9 @@
 #pragma warning "Can't calculate delays when KHZ not defined"
 #endif
 
-typedef struct dvars { uint8_t loop_x, loop_b, loop_c; } dvars;
+typedef struct dvars {
+  uint8_t loop_x, loop_b, loop_c;
+} dvars;
 
 /**
  *  INSTANTIATE_DELAY tells it to actually define the cycle_eater

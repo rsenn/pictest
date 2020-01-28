@@ -161,7 +161,7 @@ main(void) {
   while(1) {
     USBDriverService(); // See usbdrv.c
     BootService();      // See boot.c
-  } // end while
+  }                     // end while
 } // end main
 
 #pragma code user = RM_RESET_VECTOR

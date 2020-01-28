@@ -1,4 +1,4 @@
-//DOM-IGNORE-BEGIN
+// DOM-IGNORE-BEGIN
 /*******************************************************************************
 Software License Agreement
 
@@ -21,53 +21,48 @@ IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
 CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 
 *******************************************************************************/
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
 #ifndef _PHD_COM_H
 #define _PHD_COM_H
 
 /** I N C L U D E S **********************************************************/
-#include "GenericTypeDefs.h"
 #include "Compiler.h"
+#include "GenericTypeDefs.h"
 #include "HardwareProfile.h"
 
-
 /** D E F I N I T I O N S ****************************************************/
-#define BYTE_SWAP16(a) (UINT16)((((UINT16)(a)&0xFF00)>>8) | \
-                                    (((UINT16)(a)&0x00FF)<<8))
+#define BYTE_SWAP16(a) (UINT16)((((UINT16)(a)&0xFF00) >> 8) | (((UINT16)(a)&0x00FF) << 8))
 
 /* callback function pointer structure for Application to handle events */
-typedef void(* PHDC_APP_CB)(UINT8);
-
+typedef void (*PHDC_APP_CB)(UINT8);
 
 /* Application States */
-#define PHD_DISCONNECTED  0x00
-#define PHD_CONNECTING    0x01
-#define PHD_CONNECTED     0x02
+#define PHD_DISCONNECTED 0x00
+#define PHD_CONNECTING 0x01
+#define PHD_CONNECTED 0x02
 #define PHD_DISCONNECTING 0x03
 #define PHD_MEASUREMENT_SENT 0x04
 #define PHD_MEASUREMENT_SENDING 0x05
 
-
 /* Agent states */
-#define  PHD_COM_STATE_DISCONNECTED                  0x00
-#define  PHD_COM_STATE_UNASSOCIATED                  0x01
-#define  PHD_COM_STATE_ASSOCIATING                   0x02
-#define  PHD_COM_STATE_ASSOC_CFG_SENDING_CONFIG      0x03
-#define  PHD_COM_STATE_ASSOC_CFG_WAITING_APPROVAL    0x04
-#define  PHD_COM_STATE_ASSOC_OPERATING               0x05
-#define  PHD_COM_STATE_DISASSOCIATING                0x06
+#define PHD_COM_STATE_DISCONNECTED 0x00
+#define PHD_COM_STATE_UNASSOCIATED 0x01
+#define PHD_COM_STATE_ASSOCIATING 0x02
+#define PHD_COM_STATE_ASSOC_CFG_SENDING_CONFIG 0x03
+#define PHD_COM_STATE_ASSOC_CFG_WAITING_APPROVAL 0x04
+#define PHD_COM_STATE_ASSOC_OPERATING 0x05
+#define PHD_COM_STATE_DISASSOCIATING 0x06
 
 /* requests */
-#define PHD_ASSOCIATION_REQUEST     0xE200
-#define PHD_ASSOCIATION_RESPONSE    0xE300
-#define PHD_RELEASE_REQUEST         0xE400
-#define PHD_RELEASE_RESPONSE        0xE500
-#define PHD_ABORT_REQUEST           0xE600
-#define PHD_PRESET_APDU             0xE700
+#define PHD_ASSOCIATION_REQUEST 0xE200
+#define PHD_ASSOCIATION_RESPONSE 0xE300
+#define PHD_RELEASE_REQUEST 0xE400
+#define PHD_RELEASE_RESPONSE 0xE500
+#define PHD_ABORT_REQUEST 0xE600
+#define PHD_PRESET_APDU 0xE700
 
-
- /******************************************************************************
+/******************************************************************************
  * Function:
  *      void PHDConnect(void)
  *
@@ -140,7 +135,6 @@ void PHDConnect(void);
  *
  *****************************************************************************/
 void PHDDisConnect(void);
-
 
 /******************************************************************************
  * Function:
@@ -260,7 +254,6 @@ void PHDSendMeasuredData(void);
  *      None
  *
  *****************************************************************************/
-void PHDSendAppBufferPointer(UINT8 * pAppBuffer);
+void PHDSendAppBufferPointer(UINT8* pAppBuffer);
 
 #endif
-

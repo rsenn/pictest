@@ -22,277 +22,223 @@
 #define DEXCEPTION_H_INCLUDED
 
 #include "../osdep/osdep.h"
-#include <string>
 #include <list>
+#include <string>
 
 using namespace std;
 
-class DException
-{
+class DException {
 public:
-	DException(){};
-	virtual ~DException(){};
-	string getErrMessage() { return _message;};
+  DException(){};
+  virtual ~DException(){};
+  string
+  getErrMessage() {
+    return _message;
+  };
+
 protected:
-	string _message;
+  string _message;
 };
 
-class DEBadValue: public DException
-{
+class DEBadValue : public DException {
 public:
-	DEBadValue(string argument);
-	DEBadValue(string argument, string rangeBegin, string rangeEnd);
-	DEBadValue(string argument, unsigned int rangeBegin, unsigned int rangeEnd);
-	DEBadValue(string argument, list<string> values);
+  DEBadValue(string argument);
+  DEBadValue(string argument, string rangeBegin, string rangeEnd);
+  DEBadValue(string argument, unsigned int rangeBegin, unsigned int rangeEnd);
+  DEBadValue(string argument, list<string> values);
 };
 
-class DEFileOpenFailed: public DException
-{
+class DEFileOpenFailed : public DException {
 public:
-	DEFileOpenFailed(string fileName, bool read);
+  DEFileOpenFailed(string fileName, bool read);
 };
 
-class DEFileCloseFailed: public DException
-{
+class DEFileCloseFailed : public DException {
 public:
-	DEFileCloseFailed(string fileName)
-	{_message = string("Failed to close file \"") + fileName + string("\".");}
+  DEFileCloseFailed(string fileName) { _message = string("Failed to close file \"") + fileName + string("\"."); }
 };
 
-class DEFileLargeImage: public DException
-{
+class DEFileLargeImage : public DException {
 public:
-	DEFileLargeImage()
-	{_message = string("Image file is too large to fit in device memory.");}
+  DEFileLargeImage() { _message = string("Image file is too large to fit in device memory."); }
 };
 
-class DEFileReadFailed: public DException
-{
+class DEFileReadFailed : public DException {
 public:
-	DEFileReadFailed()
-	{_message = string("Failed to read image file.");}
+  DEFileReadFailed() { _message = string("Failed to read image file."); }
 };
 
-class DEFileWriteFailed: public DException
-{
+class DEFileWriteFailed : public DException {
 public:
-	DEFileWriteFailed()
-	{_message = string("Failed to write image file.");}
+  DEFileWriteFailed() { _message = string("Failed to write image file."); }
 };
 
 /**
-*	No data has been loaded from image.
-*/
-class DEFileNoDataLoad: public DException
-{
+ *	No data has been loaded from image.
+ */
+class DEFileNoDataLoad : public DException {
 public:
-	DEFileNoDataLoad()
-	{_message = string("No data has been loaded from the image provided.");}
+  DEFileNoDataLoad() { _message = string("No data has been loaded from the image provided."); }
 };
 
-class DEFileInvalidHexFormat: public DException
-{
+class DEFileInvalidHexFormat : public DException {
 public:
-	DEFileInvalidHexFormat()
-	{_message = string("Invalid HEX file format.");}
+  DEFileInvalidHexFormat() { _message = string("Invalid HEX file format."); }
 };
 
-class DEDevComandNotSupported: public DException
-{
+class DEDevComandNotSupported : public DException {
 public:
-	DEDevComandNotSupported(string command, string devSubtype, string memory="");
+  DEDevComandNotSupported(string command, string devSubtype, string memory = "");
 };
 
-
-class DEVerificationFailed: public DException
-{
+class DEVerificationFailed : public DException {
 public:
-	DEVerificationFailed()
-	{_message = "Verification failed.";}
+  DEVerificationFailed() { _message = "Verification failed."; }
 };
 
-class DEReadingFailed: public DException
-{
+class DEReadingFailed : public DException {
 public:
-	DEReadingFailed()
-	{_message = "Reading failed.";}
+  DEReadingFailed() { _message = "Reading failed."; }
 };
 
 /**
-*	USB universal device programmer is not found.
-*/
-class DEU2cAbsent: public DException
-{
+ *	USB universal device programmer is not found.
+ */
+class DEU2cAbsent : public DException {
 public:
-	DEU2cAbsent()
-	{_message = "U2C-11 device is not found.";}
+  DEU2cAbsent() { _message = "U2C-11 device is not found."; }
 };
 
-class DEImageAbsent: public DException
-{
+class DEImageAbsent : public DException {
 public:
-	DEImageAbsent()
-	{_message = "Image file has to be provided for current operation.";}
+  DEImageAbsent() { _message = "Image file has to be provided for current operation."; }
 };
 
-class DEBadDeviceType: public DException
-{
+class DEBadDeviceType : public DException {
 public:
-	DEBadDeviceType(string devType)
-	{
-		_message = string("Device \"") + devType + string("\" is not supported.");
-		_message += string("\nUse \"u2prog -h\" to see the list of supported devices.");
-	}
+  DEBadDeviceType(string devType) {
+    _message = string("Device \"") + devType + string("\" is not supported.");
+    _message += string("\nUse \"u2prog -h\" to see the list of supported devices.");
+  }
 };
 
-class DEBadArgument: public DException
-{
+class DEBadArgument : public DException {
 public:
-	DEBadArgument(string argument)
-	{	_message = string("Wrong argument - \"") + argument + string("\".");}
-	DEBadArgument(string argument, string command)
-	{
-		_message = string("Argument \"") + argument +
-			string("\" is not supported by \"") + command + string("\" command.");
-	}
+  DEBadArgument(string argument) { _message = string("Wrong argument - \"") + argument + string("\"."); }
+  DEBadArgument(string argument, string command) {
+    _message = string("Argument \"") + argument + string("\" is not supported by \"") + command + string("\" command.");
+  }
 };
 
-class DEArgumentMultipleUsage: public DException
-{
+class DEArgumentMultipleUsage : public DException {
 public:
-	DEArgumentMultipleUsage(string argument)
-	{_message = string("Argument \"") + argument + string("\" provided more then once.");}
+  DEArgumentMultipleUsage(string argument) {
+    _message = string("Argument \"") + argument + string("\" provided more then once.");
+  }
 };
 
-class DEArgumentAbsent: public DException
-{
+class DEArgumentAbsent : public DException {
 public:
-	DEArgumentAbsent(string argument)
-	{_message = string("Argument \"") + argument + string(" \" is required for the selected operation."); }
+  DEArgumentAbsent(string argument) {
+    _message = string("Argument \"") + argument + string(" \" is required for the selected operation.");
+  }
 };
 
-class DEValueAbsent: public DException
-{
+class DEValueAbsent : public DException {
 public:
-	DEValueAbsent(string argument)
-	{_message = string("Value not provided for \"") + argument + string("\".");}
+  DEValueAbsent(string argument) { _message = string("Value not provided for \"") + argument + string("\"."); }
 };
 
-class DEValueRedundant: public DException
-{
+class DEValueRedundant : public DException {
 public:
-	DEValueRedundant(string argument)
-	{_message = string("Argument \"") + argument + string("\" doesn't accept parameters.");}
+  DEValueRedundant(string argument) {
+    _message = string("Argument \"") + argument + string("\" doesn't accept parameters.");
+  }
 };
 
-class DEMultipleCommands: public DException
-{
+class DEMultipleCommands : public DException {
 public:
-	DEMultipleCommands()
-	{_message = "Only one command allowed.";}
+  DEMultipleCommands() { _message = "Only one command allowed."; }
 };
 
-class DECommandAbsent: public DException
-{
+class DECommandAbsent : public DException {
 public:
-	DECommandAbsent()
-	{_message = "Command not provided.";}
+  DECommandAbsent() { _message = "Command not provided."; }
 };
 
-
-class DETimeout: public DException
-{
+class DETimeout : public DException {
 public:
-	DETimeout()
-	{_message = "Wait timeout.";}
+  DETimeout() { _message = "Wait timeout."; }
 };
 
-class DEProgrammingModeEnterFailed: public DException
-{
+class DEProgrammingModeEnterFailed : public DException {
 public:
-	DEProgrammingModeEnterFailed()
-	{_message = "Failed to enter programming mode.";}
+  DEProgrammingModeEnterFailed() { _message = "Failed to enter programming mode."; }
 };
 
-class DEI2cSlaveAbsent: public DException
-{
+class DEI2cSlaveAbsent : public DException {
 public:
-	DEI2cSlaveAbsent()
-	{_message = "I2C EEPROM is not found.";}
+  DEI2cSlaveAbsent() { _message = "I2C EEPROM is not found."; }
 };
 
-
-class DEDeviceAbsent: public DException
-{
+class DEDeviceAbsent : public DException {
 public:
-	DEDeviceAbsent()
-	{_message = "Device is not found.";}
+  DEDeviceAbsent() { _message = "Device is not found."; }
 };
 
-class DEHidWriteFailed: public DException
-{
+class DEHidWriteFailed : public DException {
 public:
-	DEHidWriteFailed()
-	{_message = "Failed to send HID buffer.";}
+  DEHidWriteFailed() { _message = "Failed to send HID buffer."; }
 };
 
-class DEHidReadFailed: public DException
-{
+class DEHidReadFailed : public DException {
 public:
-	DEHidReadFailed()
-	{_message = "Failed to read HID buffer.";}
+  DEHidReadFailed() { _message = "Failed to read HID buffer."; }
 };
 
-class DEHidWriteTimeout: public DException
-{
+class DEHidWriteTimeout : public DException {
 public:
-	DEHidWriteTimeout()
-	{_message = "HID buffer write timeout.";}
+  DEHidWriteTimeout() { _message = "HID buffer write timeout."; }
 };
 
-class DEHidReadTimeout: public DException
-{
+class DEHidReadTimeout : public DException {
 public:
-	DEHidReadTimeout()
-	{_message = "HID buffer read timeout.";}
+  DEHidReadTimeout() { _message = "HID buffer read timeout."; }
 };
 
-class DEHidResponseIdMismatch: public DException
-{
+class DEHidResponseIdMismatch : public DException {
 public:
-	DEHidResponseIdMismatch()
-	{_message = "HID response ID doesn't correspond to command ID.";}
+  DEHidResponseIdMismatch() { _message = "HID response ID doesn't correspond to command ID."; }
 };
 
-class DEInternalError: public DException
-{
+class DEInternalError : public DException {
 public:
-	DEInternalError()
-	{_message = "Internal error occurred. Please contact Diolan Technical Support at support@diolan.com.";}
+  DEInternalError() {
+    _message = "Internal error occurred. Please contact Diolan Technical Support at support@diolan.com.";
+  }
 };
 
 /**
-*	Exception thrown if invalid device memory type is provided by user.
-*/
-class DEBadMemoryType: public DException
-{
+ *	Exception thrown if invalid device memory type is provided by user.
+ */
+class DEBadMemoryType : public DException {
 public:
-	/**
-	*	Memory type is not supported by device provided.
-	*
-	*   @param	device  Device type.
-	*   @param	memory	Memory type.
-	*/
-	DEBadMemoryType(string device, string memory);
+  /**
+   *	Memory type is not supported by device provided.
+   *
+   *   @param	device  Device type.
+   *   @param	memory	Memory type.
+   */
+  DEBadMemoryType(string device, string memory);
 
-			/**
-	*	Operation is not supported for provided device memory type.
-	*
-	*   @param	device		Device type.
-	*   @param	memory		Memory type.
-	*   @param	operation	Requested operation.
-	*/
-	DEBadMemoryType(string device, string memory, string operation);
+  /**
+   *	Operation is not supported for provided device memory type.
+   *
+   *   @param	device		Device type.
+   *   @param	memory		Memory type.
+   *   @param	operation	Requested operation.
+   */
+  DEBadMemoryType(string device, string memory, string operation);
 };
 
-#endif //DEXCEPTION_H_INCLUDED
+#endif // DEXCEPTION_H_INCLUDED

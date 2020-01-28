@@ -1,6 +1,87 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;  BootLoader.                                                             ;;
-;;  Copyright (C) 2007 Diolan ( http://www.diolan.com )                     ;;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+BootLoader.;
+;
+;
+;  Copyright (C) 2007 Diolan ( http://www.diolan.com )                     ;;
 ;;                                                                          ;;
 ;;  This program is free software: you can redistribute it and/or modify    ;;
 ;;  it under the terms of the GNU General Public License as published by    ;;
@@ -17,13 +98,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; BootLoader Main code
 ;-----------------------------------------------------------------------------
-	#include "P18F4455.INC"
-	#include "boot.inc"
-	#include "io_cfg.inc"
-	#include "usb_defs.inc"
-	#include "usb_desc.inc"
-	#include "usb.inc"
-	#include "boot_if.inc"
+#include "P18F4455.INC"
+#include "boot.inc"
+#include "io_cfg.inc"
+#include "usb_defs.inc"
+#include "usb_desc.inc"
+#include "usb.inc"
+#include "boot_if.inc"
 ;-----------------------------------------------------------------------------
 ; Configuration Bits 
 ;-----------------------------------------------------------------------------

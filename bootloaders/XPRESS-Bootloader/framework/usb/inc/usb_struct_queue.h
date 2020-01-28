@@ -14,14 +14,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-To request to license the code under the MLA license (www.microchip.com/mla_license), 
+To request to license the code under the MLA license (www.microchip.com/mla_license),
 please contact mla_licensing@microchip.com
 *******************************************************************************/
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
 #ifndef STRUCT_QUEUE_H
 #define STRUCT_QUEUE_H
-
 
 /* StructQueueInit
  *************************************************************************
@@ -35,23 +34,20 @@ please contact mla_licensing@microchip.com
  *
  * Returns:         zero (0)
  *
- * Side Effects:    The queue structure has been initialized and is ready 
+ * Side Effects:    The queue structure has been initialized and is ready
  *                  to use.
  *
  * Overview:        This operation initializes a queue and makes it empty.
  *
- * Note:            This operation is implemented with a macro that 
+ * Note:            This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
- 
-#define StructQueueInit(q,N) (  (q)->head  = (N), \
-                                (q)->tail  = (N), \
-                                (q)->count =  0   )
 
+#define StructQueueInit(q, N) ((q)->head = (N), (q)->tail = (N), (q)->count = 0)
 
 /* StructQueueAdd
  *************************************************************************
- * Precondition:    The queue must have been initialized and must not 
+ * Precondition:    The queue must have been initialized and must not
  *                  currently be full.
  *
  * Input:           q   Pointer to the queue data structure
@@ -66,26 +62,22 @@ please contact mla_licensing@microchip.com
  *
  *                  IMPORTANT!  No data has been copied to the item.
  *
- * Overview:        This operation adds (enqueues) a new item into the 
+ * Overview:        This operation adds (enqueues) a new item into the
  *                  queue data buffer and updates the head index,
  *                  handling buffer wrap correctly.
  *
- * Notes:           The caller must first ensure that the queue is not 
- *                  full by performing one of the other operations (such 
- *                  as "StructQueueIsNotFull") before performing this 
- *                  operation.  Adding an item into a full queue will 
+ * Notes:           The caller must first ensure that the queue is not
+ *                  full by performing one of the other operations (such
+ *                  as "StructQueueIsNotFull") before performing this
+ *                  operation.  Adding an item into a full queue will
  *                  cause an access violation.
  *
- *                  This operation is implemented with a macro that 
+ *                  This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueAdd(q,N) ( (q)->count++,            \
-                              ( ((q)->head < (N-1)) ?  \
-                                  ((q)->head++)     :  \
-                                  ((q)->head=0)     ), \
-                              &(q)->buffer[(q)->head]  )
-
+#define StructQueueAdd(q, N)                                                                                           \
+  ((q)->count++, (((q)->head < (N - 1)) ? ((q)->head++) : ((q)->head = 0)), &(q)->buffer[(q)->head])
 
 /* StructQueueRemove
  *************************************************************************
@@ -104,7 +96,7 @@ please contact mla_licensing@microchip.com
  *
  *                  IMPORTANT!  No data has been copied from the item.
  *
- * Overview:        This routine removes (dequeues) an item from the 
+ * Overview:        This routine removes (dequeues) an item from the
  *                  queue data buffer and updates the tail index,
  *                  handling buffer wrap correctly.
  *
@@ -114,16 +106,12 @@ please contact mla_licensing@microchip.com
  *                  operation.  Dequeueing an item from an empty queue
  *                  will cause an access violation.
  *
- *                  This operation is implemented with a macro that 
+ *                  This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueRemove(q,N) ( (q)->count--,            \
-                                 ( ((q)->tail < (N-1)) ?  \
-                                     ((q)->tail++)     :  \
-                                     ((q)->tail=0)     ), \
-                                 &(q)->buffer[(q)->tail]  )
-
+#define StructQueueRemove(q, N)                                                                                        \
+  ((q)->count--, (((q)->tail < (N - 1)) ? ((q)->tail++) : ((q)->tail = 0)), &(q)->buffer[(q)->tail])
 
 /* StructQueuePeekTail
  *************************************************************************
@@ -142,7 +130,7 @@ please contact mla_licensing@microchip.com
  *
  *                  IMPORTANT!  No data has been copied from the item.
  *
- * Overview:        This routine provides access to an item in the 
+ * Overview:        This routine provides access to an item in the
  *                  queue data buffer at the tail index position,
  *                  handling buffer wrap correctly.
  *
@@ -151,14 +139,11 @@ please contact mla_licensing@microchip.com
  *                  (such as "StructQueueIsNotEmpty") before performing this
  *                  operation.
  *
- *                  This operation is implemented with a macro that 
+ *                  This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueuePeekTail(q,N) ( ((q)->tail < (N-1))         ?  \
-                                     &(q)->buffer[(q)->tail+1] :  \
-                                     &(q)->buffer[0]              )
-
+#define StructQueuePeekTail(q, N) (((q)->tail < (N - 1)) ? &(q)->buffer[(q)->tail + 1] : &(q)->buffer[0])
 
 /* StructQueueIsFull
  *************************************************************************
@@ -176,12 +161,11 @@ please contact mla_licensing@microchip.com
  *
  * Overview:        This routine checks to see if the queue is full.
  *
- * Note:            This operation is implemented with a macro that 
+ * Note:            This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueIsFull(q,N) ( (q)->count >= N )
-
+#define StructQueueIsFull(q, N) ((q)->count >= N)
 
 /* StructQueueIsNotFull
  *************************************************************************
@@ -199,12 +183,11 @@ please contact mla_licensing@microchip.com
  *
  * Overview:        This routine checks to see if the queue is full.
  *
- * Note:            This operation is implemented with a macro that 
+ * Note:            This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueIsNotFull(q,N) ( (q)->count < N )
-
+#define StructQueueIsNotFull(q, N) ((q)->count < N)
 
 /* StructQueueIsEmpty
  *************************************************************************
@@ -222,12 +205,11 @@ please contact mla_licensing@microchip.com
  *
  * Overview:        This routine checks to see if the queue is empty.
  *
- * Note:            This operation is implemented with a macro that 
+ * Note:            This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueIsEmpty(q,N) ( (q)->count == 0 )
-
+#define StructQueueIsEmpty(q, N) ((q)->count == 0)
 
 /* StructQueueIsNotEmpty
  *************************************************************************
@@ -245,12 +227,11 @@ please contact mla_licensing@microchip.com
  *
  * Overview:        This routine checks to see if the queue is not empty.
  *
- * Note:            This operation is implemented with a macro that 
+ * Note:            This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueIsNotEmpty(q,N) ( (q)->count != 0 )
-
+#define StructQueueIsNotEmpty(q, N) ((q)->count != 0)
 
 /* StructQueueSpaceAvailable
  *************************************************************************
@@ -270,12 +251,11 @@ please contact mla_licensing@microchip.com
  * Overview:        This routine checks to see if the queue has at least
  *                  the specified number of slots free.
  *
- * Note:            This operation is implemented with a macro that 
+ * Note:            This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueSpaceAvailable(c,q,N) ( ((q)->count + c) <= N )
-
+#define StructQueueSpaceAvailable(c, q, N) (((q)->count + c) <= N)
 
 /* StructQueueCount
  *************************************************************************
@@ -293,15 +273,13 @@ please contact mla_licensing@microchip.com
  *
  * Overview:        This routine provides the number of items in the queue.
  *
- * Note:            This operation is implemented with a macro that 
+ * Note:            This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueCount(q,N) ( (q)->count )
-
+#define StructQueueCount(q, N) ((q)->count)
 
 #endif // STRUCT_QUEUE_H
 /*************************************************************************
  * EOF struct_queue.c
  */
-

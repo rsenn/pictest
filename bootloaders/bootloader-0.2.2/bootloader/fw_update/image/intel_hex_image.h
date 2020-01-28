@@ -23,38 +23,37 @@
 
 #include "../osdep/osdep.h"
 
-#include "intel_hex_record.h"
 #include "image.h"
+#include "intel_hex_record.h"
 
-class IntelHexImage: public Image
-{
+class IntelHexImage : public Image {
 public:
-	IntelHexImage(string name);
-	virtual ~IntelHexImage();
-	void open(bool read);
-	void close();
-	size_t read(unsigned char *buffer, size_t bufSize, size_t *addr);
-	void write(unsigned char *buffer, size_t bufSize);
-	virtual void setWriteAddress(size_t addr);
-	size_t getSize() {return _size;};
+  IntelHexImage(string name);
+  virtual ~IntelHexImage();
+  void open(bool read);
+  void close();
+  size_t read(unsigned char* buffer, size_t bufSize, size_t* addr);
+  void write(unsigned char* buffer, size_t bufSize);
+  virtual void setWriteAddress(size_t addr);
+  size_t
+  getSize() {
+    return _size;
+  };
 
 private:
-	// The function will be called from open() only. It affects the current file pointer.
-	size_t calcSize();
-	string _name;
-	FILE* _file;
-	bool _read;
-	size_t _size;
+  // The function will be called from open() only. It affects the current file pointer.
+  size_t calcSize();
+  string _name;
+  FILE* _file;
+  bool _read;
+  size_t _size;
 
-	CIntelHexRec _record;
-	size_t _readCurrent;
-	size_t _readAddr;
+  CIntelHexRec _record;
+  size_t _readCurrent;
+  size_t _readAddr;
 
-	size_t _writeAddr;
-	size_t _linAddr;
+  size_t _writeAddr;
+  size_t _linAddr;
 };
 
-
-
 #endif // INTEL_HEX_IMAGE_H_INCLUDED
-

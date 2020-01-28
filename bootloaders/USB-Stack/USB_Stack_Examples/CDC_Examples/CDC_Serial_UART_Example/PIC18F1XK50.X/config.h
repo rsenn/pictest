@@ -3,7 +3,7 @@
  * @brief PIC Microcontroller Settings.
  * @author John Izzard
  * @date 13/02/2019
- * 
+ *
  * PIC18F1XK50 Configuration File.
  * Copyright (C) 2017-2019  John Izzard
  *
@@ -26,10 +26,10 @@
 #define _XTAL_FREQ 48000000
 #define PLL_STARTUP_DELAY() __delay_ms(3)
 
-#define BUTTON      PORTCbits.RC0
-#define LED         LATCbits.LATC1
+#define BUTTON PORTCbits.RC0
+#define LED LATCbits.LATC1
 
 #define BUTTON_TRIS TRISCbits.TRISC0
-#define LED_TRIS    TRISCbits.TRISC1
+#define LED_TRIS TRISCbits.TRISC1
 
 #endif /* CONFIG_H */

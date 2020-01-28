@@ -37,9 +37,9 @@
  * in conjunction with the usbdsc.h file. When a descriptor is added
  * or removed from the main configuration descriptor, i.e. CFG01,
  * the user must also change the descriptor structure defined in
- * the usbdsc.h file. The structure is used to calculate the 
+ * the usbdsc.h file. The structure is used to calculate the
  * descriptor size, i.e. sizeof(CFG01).
- * 
+ *
  * A typical configuration descriptor consists of:
  * At least one configuration descriptor (USB_CFG_DSC)
  * One or more interface descriptors (USB_INTF_DSC)
@@ -70,7 +70,7 @@
  *     USB_INTF_DSC            i01a00;                 \
  *     USB_EP_DSC              ep02i_i01a00;           \
  * } cfg01
- * 
+ *
  * Note the hierarchy of the descriptors above, it follows the USB
  * specification requirement. All endpoints belonging to an interface
  * should be listed immediately after that interface.
@@ -168,7 +168,7 @@
  * Configuration information is defined in:
  * autofiles\usbcfg.h
  ********************************************************************/
- 
+
 /** I N C L U D E S *************************************************/
 #include "system/typedefs.h"
 #include "system/usb/usb.h"
@@ -177,56 +177,66 @@
 #pragma romdata
 
 /* Device Descriptor */
-rom USB_DEV_DSC device_dsc=
-{    
-    sizeof(USB_DEV_DSC),    // Size of this descriptor in bytes
-    DSC_DEV,                // DEVICE descriptor type
-    0x0200,                 // USB Spec Release Number in BCD format
-    0x00,                   // Class Code
-    0x00,                   // Subclass code
-    0x00,                   // Protocol code
-    EP0_BUFF_SIZE,          // Max packet size for EP0, see usbcfg.h
-    0x04D8,                 // Vendor ID
-//    0x000b,                 // Product ID: PICDEM FS USB (Boot Mode)
-    0xFF0B,                 // Product ID: Sprut
-    0x0001,                 // Device release number in BCD format
-    0x00,                   // Manufacturer string index
-    0x00,                   // Product string index
-    0x00,                   // Device serial number string index
-    0x01                    // Number of possible configurations
+rom USB_DEV_DSC device_dsc = {
+    sizeof(USB_DEV_DSC), // Size of this descriptor in bytes
+    DSC_DEV,             // DEVICE descriptor type
+    0x0200,              // USB Spec Release Number in BCD format
+    0x00,                // Class Code
+    0x00,                // Subclass code
+    0x00,                // Protocol code
+    EP0_BUFF_SIZE,       // Max packet size for EP0, see usbcfg.h
+    0x04D8,              // Vendor ID
+                         //    0x000b,                 // Product ID: PICDEM FS USB (Boot Mode)
+    0xFF0B,              // Product ID: Sprut
+    0x0001,              // Device release number in BCD format
+    0x00,                // Manufacturer string index
+    0x00,                // Product string index
+    0x00,                // Device serial number string index
+    0x01                 // Number of possible configurations
 };
 
 /* Configuration 1 Descriptor */
-CFG01=
-{
+CFG01 = {
     /* Configuration Descriptor */
-    sizeof(USB_CFG_DSC),    // Size of this descriptor in bytes
-    DSC_CFG,                // CONFIGURATION descriptor type
-    sizeof(cfg01),          // Total length of data for this cfg
-    1,                      // Number of interfaces in this cfg
-    1,                      // Index value of this configuration
-    0,                      // Configuration string index
-    _DEFAULT,               // Attributes, see usbdefs_std_dsc.h
-    50,                     // Max power consumption (2X mA)
-    
-    /* Interface Descriptor */
-    sizeof(USB_INTF_DSC),   // Size of this descriptor in bytes
-    DSC_INTF,               // INTERFACE descriptor type
-    0,                      // Interface Number
-    0,                      // Alternate Setting Number
-    2,                      // Number of endpoints in this intf
-    0x00,                   // Class code
-    0x00,                   // Subclass code
-    0x00,                   // Protocol code
-    0,                      // Interface string index
-    
-    /* Endpoint Descriptors */
-    sizeof(USB_EP_DSC),DSC_EP,_EP01_OUT,_BULK,BOOT_EP_SIZE,0x00,
-    sizeof(USB_EP_DSC),DSC_EP,_EP01_IN,_BULK,BOOT_EP_SIZE,0x00
-};
+    sizeof(USB_CFG_DSC), // Size of this descriptor in bytes
+    DSC_CFG,             // CONFIGURATION descriptor type
+    sizeof(cfg01),       // Total length of data for this cfg
+    1,                   // Number of interfaces in this cfg
+    1,                   // Index value of this configuration
+    0,                   // Configuration string index
+    _DEFAULT,            // Attributes, see usbdefs_std_dsc.h
+    50,                  // Max power consumption (2X mA)
 
-rom struct{byte bLength;byte bDscType;word string[1];}sd000={
-sizeof(sd000),DSC_STR,0x0409};
+    /* Interface Descriptor */
+    sizeof(USB_INTF_DSC), // Size of this descriptor in bytes
+    DSC_INTF,             // INTERFACE descriptor type
+    0,                    // Interface Number
+    0,                    // Alternate Setting Number
+    2,                    // Number of endpoints in this intf
+    0x00,                 // Class code
+    0x00,                 // Subclass code
+    0x00,                 // Protocol code
+    0,                    // Interface string index
+
+    /* Endpoint Descriptors */
+    sizeof(USB_EP_DSC),
+    DSC_EP,
+    _EP01_OUT,
+    _BULK,
+    BOOT_EP_SIZE,
+    0x00,
+    sizeof(USB_EP_DSC),
+    DSC_EP,
+    _EP01_IN,
+    _BULK,
+    BOOT_EP_SIZE,
+    0x00};
+
+rom struct {
+  byte bLength;
+  byte bDscType;
+  word string[1];
+} sd000 = {sizeof(sd000), DSC_STR, 0x0409};
 
 #pragma code
 

@@ -25,44 +25,34 @@
 
 using namespace std;
 
-Parser::Parser(const Usage &usage)
-: _usage(usage)
-{
-}
+Parser::Parser(const Usage& usage) : _usage(usage) {}
 
-Parser::~Parser()
-{
-}
+Parser::~Parser() {}
 
-void Parser::parse(int argc, char *argv[], Parameters* params)
-{
-	int i;
-	size_t j;
-	string argument, value;
-	for (i = 1; i < argc; i++)
-	{
-		argument.erase();
-		value.erase();
-		if (argv[i][0] != '-')
-			throw EBadArgument(argv[i]);
-		// Search argument in usage descriptors
-		argument = &argv[i][1];
-		if (argument.find_first_of('=') != string::npos)
-			argument.erase(argument.find_first_of('='));
-		j = argument.size() + 1; // If there is value in form -x=VALUE it will start immediately after string
-		if ((argv[i][j] != 0) && (argv[i][j] != '='))
-			throw EBadArgument(argv[i]);
+void
+Parser::parse(int argc, char* argv[], Parameters* params) {
+  int i;
+  size_t j;
+  string argument, value;
+  for(i = 1; i < argc; i++) {
+    argument.erase();
+    value.erase();
+    if(argv[i][0] != '-') throw EBadArgument(argv[i]);
+    // Search argument in usage descriptors
+    argument = &argv[i][1];
+    if(argument.find_first_of('=') != string::npos) argument.erase(argument.find_first_of('='));
+    j = argument.size() + 1; // If there is value in form -x=VALUE it will start immediately after string
+    if((argv[i][j] != 0) && (argv[i][j] != '=')) throw EBadArgument(argv[i]);
 
-		// Determine option value
-		if (argv[i][j] == '=')
-			value = &argv[i][j+1]; // Value in =VALUE format
-		else if ((i+1 < argc) && (argv[i+1][0] != '-'))
-		{	// Take next argument as value
-			value = argv[i+1];
-			i++;
-		}
-		params->add(argument, value);
-	}
+    // Determine option value
+    if(argv[i][j] == '=')
+      value = &argv[i][j + 1];                           // Value in =VALUE format
+    else if((i + 1 < argc) && (argv[i + 1][0] != '-')) { // Take next argument as value
+      value = argv[i + 1];
+      i++;
+    }
+    params->add(argument, value);
+  }
 }
 
 /* End of file */

@@ -547,7 +547,7 @@ INTERRUPT_HANDLER() {
     if(led_enabled) SET_LED(seconds & 1);
 
     // Clear timer interrupt bit
-    TIMER0_INTERRUPT_FLAG = 0;
+    TMR0IF = 0;
   }
   if(TMR1IF) {
     /*

@@ -52,7 +52,7 @@ INTERRUPT_HANDLER() {
     // TMR1H = 0xff;
 
     // Clear timer interrupt bit
-    TIMER0_INTERRUPT_FLAG = 0;
+    TIMER0_INTERRUPT_DISABLE();
   }
 
   if(TMR1IF) {
@@ -123,11 +123,11 @@ main() {
 
   //  TMR1 = 0xff00;
   timer0_init(PRESCALE_1_1 | TIMER0_FLAGS_INTR);
-  TIMER0_INTERRUPT_FLAG = 0;
-  T0IE = 1;
+  TIMER0_INTERRUPT_CLEAR();
+  TIMER0_INTERRUPT_ENABLE();
   timer1_init(PRESCALE_1_1 | TIMER1_FLAGS_INTR);
   TMR1IF = 0;
-  TMR1IE = 1;
+  TIMER1_INTERRUPT_ENABLE();
 
 #ifdef USE_HD44780_LCD
   lcd_init(1);

@@ -48,10 +48,9 @@ const unsigned int ARG_INPUT_BIN = 15;
 const unsigned int ARG_OUTPUT_HEX = 16;
 const unsigned int ARG_OUTPUT_BIN = 17;
 
-class FUUsage: public Usage
-{
+class FUUsage : public Usage {
 public:
-	FUUsage();
+  FUUsage();
 };
 
 #endif // FU_USAGE_H_INCLUDED

@@ -1,6 +1,87 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;  BootLoader.                                                             ;;
-;;  Copyright (C) 2007 Diolan ( http://www.diolan.com )                     ;;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+BootLoader.;
+;
+;
+;  Copyright (C) 2007 Diolan ( http://www.diolan.com )                     ;;
 ;;                                                                          ;;
 ;;  This program is free software: you can redistribute it and/or modify    ;;
 ;;  it under the terms of the GNU General Public License as published by    ;;
@@ -17,11 +98,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; USB functions
 ;-----------------------------------------------------------------------------
-	#include "P18F4455.INC"
-	#include "boot.inc"
-	#include "usb_defs.inc"
-	#include "usb_desc.inc"
-	#include "usb.inc"
+#include "P18F4455.INC"
+#include "boot.inc"
+#include "usb_defs.inc"
+#include "usb_desc.inc"
+#include "usb.inc"
 ;-----------------------------------------------------------------------------
 ; Global variables
 BOOT_DATA	UDATA
@@ -492,7 +573,7 @@ usb_sm_ctrl_setup_sdtrq_gets_re
 	btfsc	INDF1, BSTALL	; Use BSTALL as a bit mask
 	movwf	INDF0		; Set bit0 to indicate that EP Halted
 	movff	byte_to_read, (SetupPktCopy + EPNum)	; Restore EPDir
-#endif ; GET_STATUS_FULLY_SUPPORTED
+#endif; GET_STATUS_FULLY_SUPPORTED
 	movlw	LOW(CtrlTrfData)
 	movwf	pSrc
 	movlw	HIGH(CtrlTrfData)

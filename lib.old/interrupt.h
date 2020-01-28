@@ -28,11 +28,11 @@
 extern INTCON;
 #define INTERRUPT_DISABLE()                                                                                            \
   do {                                                                                                                 \
-    INTCON &= ~0x80;  \
+    INTCON &= ~0x80;                                                                                                   \
   } while(0);
 #define INTERRUPT_ENABLE()                                                                                             \
   do {                                                                                                                 \
-    INTCON |= 0x80;  \
+    INTCON |= 0x80;                                                                                                    \
   } while(0);
 #endif
 #else

@@ -20,78 +20,64 @@
 
 #include "../osdep/osdep.h"
 
-#include "argumentimage.h"
 #include "../exception/exception.h"
+#include "argumentimage.h"
 //#include "encoder_usage.h"
 
-ArgumentImage::ArgumentImage(const unsigned int  argument, const Parameters &params)
-: _data(NULL), _size(0), _readAddress(0), _params(params)
-{
-	try
-	{
-		char buffer[3], *end;
-		string data = params[argument].value();
-		size_t current;
-		if(data.size() & 0x01)
-			throw DEBadValue(params[argument].argument());
-		_size = data.size()/2;
-		_data = new (unsigned char[_size]);
-		for (current = 0; current < _size; current++)
-		{
-			buffer[0] = data[current*2];
-			buffer[1] = data[current*2+1];
-			buffer[2] = 0;
-			_data[current] = (unsigned char)(strtoul(buffer, &end, 16));
-			if (*end)
-				throw DEBadValue(params[argument].argument());
-		}
+ArgumentImage::ArgumentImage(const unsigned int argument, const Parameters& params)
+    : _data(NULL), _size(0), _readAddress(0), _params(params) {
+  try {
+    char buffer[3], *end;
+    string data = params[argument].value();
+    size_t current;
+    if(data.size() & 0x01) throw DEBadValue(params[argument].argument());
+    _size = data.size() / 2;
+    _data = new(unsigned char[_size]);
+    for(current = 0; current < _size; current++) {
+      buffer[0] = data[current * 2];
+      buffer[1] = data[current * 2 + 1];
+      buffer[2] = 0;
+      _data[current] = (unsigned char)(strtoul(buffer, &end, 16));
+      if(*end) throw DEBadValue(params[argument].argument());
+    }
 
-	}
-	catch(...)
-	{
-		if (_data != NULL)
-		{
-			delete[] _data;
-			_data = NULL;
-			_size = 0;
-		}
-		throw;
-	}
+  } catch(...) {
+    if(_data != NULL) {
+      delete[] _data;
+      _data = NULL;
+      _size = 0;
+    }
+    throw;
+  }
 }
 
-ArgumentImage::~ArgumentImage()
-{
-	if (_data != NULL)
-	{
-		delete[] _data;
-		_data = NULL;
-		_size = 0;
-	}
+ArgumentImage::~ArgumentImage() {
+  if(_data != NULL) {
+    delete[] _data;
+    _data = NULL;
+    _size = 0;
+  }
 }
 
-void ArgumentImage::open(bool read)
-{
+void
+ArgumentImage::open(bool read) {}
+
+void
+ArgumentImage::close() {}
+
+size_t
+ArgumentImage::read(unsigned char* buffer, size_t bufSize, size_t* address) {
+  if(_readAddress == _size) return 0;
+  size_t pc;
+  if(_readAddress + bufSize > _size)
+    pc = _size - _readAddress;
+  else
+    pc = bufSize;
+  memcpy(buffer, &_data[_readAddress], pc);
+  *address = _readAddress;
+  _readAddress += pc;
+  return pc;
 }
 
-void ArgumentImage::close()
-{
-}
-
-size_t ArgumentImage::read(unsigned char *buffer, size_t bufSize, size_t *address)
-{
-	if (_readAddress == _size)
-		return 0;
-	size_t pc;
-	if (_readAddress + bufSize > _size)
-		pc = _size - _readAddress;
-	else
-		pc = bufSize;
-	memcpy(buffer, &_data[_readAddress], pc);
-	*address = _readAddress;
-	_readAddress += pc;
-	return pc;
-}
-
-void ArgumentImage::write(unsigned char *, size_t)
-{
-}
+void
+ArgumentImage::write(unsigned char*, size_t) {}

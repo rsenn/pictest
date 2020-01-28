@@ -25,59 +25,58 @@
 
 #include <string>
 
-class Parameter
-{
+class Parameter {
 public:
-	Parameter(unsigned int id, std::string argument, std::string value);
-	operator unsigned int() const
-	{ return _id;};
-	unsigned long ulongValue() const;
-	unsigned char ucharValue() const;
-	unsigned short ushortValue() const;
-	bool boolValue() const;
-	bool hasValue() const;
+  Parameter(unsigned int id, std::string argument, std::string value);
+  operator unsigned int() const { return _id; };
+  unsigned long ulongValue() const;
+  unsigned char ucharValue() const;
+  unsigned short ushortValue() const;
+  bool boolValue() const;
+  bool hasValue() const;
 
-	/**
-	*	Checks whether current parameter has the numerical ID equal to provided one.
-	*
-	*   @param	id	Numerical ID to check with.
-	*   @return
-	*		\arg true if id corresponds to current parameter.
-	*		\arg false if id doesn't corresponds to current parameter.
-	*/
-	bool operator==(const unsigned int &id)
-	{ return (_id == id);};
+  /**
+   *	Checks whether current parameter has the numerical ID equal to provided one.
+   *
+   *   @param	id	Numerical ID to check with.
+   *   @return
+   *		\arg true if id corresponds to current parameter.
+   *		\arg false if id doesn't corresponds to current parameter.
+   */
+  bool
+  operator==(const unsigned int& id) {
+    return (_id == id);
+  };
 
+  /**
+   *	Returns string value provided for current parameter.
+   *
+   *	@return String value provided for current parameter.
+   *   @throws	DEValueAbsent	Value doesn't provided for parameter.
+   */
+  std::string value() const;
 
-	/**
-	*	Returns string value provided for current parameter.
-	*
-	*	@return String value provided for current parameter.
-	*   @throws	DEValueAbsent	Value doesn't provided for parameter.
-	*/
-	std::string value() const;
+  /**
+   *	Checks whether parameter value is numerical and fits into range provided.
+   *
+   *   @param	min Minimum acceptable value.
+   *   @param	max Maximum acceptable value.
+   *   @throws	DEValueAbsent	Value doesn't provided for parameter.
+   *	@throws DEBadValue	Value doesn't fill into range.
+   */
+  void range(unsigned int min, unsigned int max) const;
 
+  std::string argument() const;
 
-	/**
-	*	Checks whether parameter value is numerical and fits into range provided.
-	*
-	*   @param	min Minimum acceptable value.
-	*   @param	max Maximum acceptable value.
-	*   @throws	DEValueAbsent	Value doesn't provided for parameter.
-	*	@throws DEBadValue	Value doesn't fill into range.
-	*/
-	void range(unsigned int min, unsigned int max) const;
+  unsigned int
+  id() const {
+    return _id;
+  };
 
-	std::string argument() const;
-
-	unsigned int id() const {return _id;};
 private:
-	unsigned int _id;
-	std::string _value;
-	std::string _argument;
+  unsigned int _id;
+  std::string _value;
+  std::string _argument;
 };
 
-
-
 #endif // PARAMETER_H_INCLUDED
-

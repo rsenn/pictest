@@ -56,7 +56,6 @@
 #define TIMER0_INTERRUPT_DISABLE() INTCON &= ~0x20;
 #endif
 
-
 #define TIMER0_FLAGS_INTR 0x80
 #define TIMER0_FLAGS_EXTCLK 0x40
 
@@ -73,7 +72,6 @@ void timer0_init(uint8_t prescale);
 #define TIMER1_TICK_US (1000000 / TIMER1_FREQ)
 #define TIMER1_INTERVAL_US (1000000 * 65536 / TIMER1_FREQ)
 #define TIMER1_INTERVAL_MS (1000 * 65536 / TIMER1_FREQ)
-
 
 #ifdef TMR1IF
 #define TIMER1_INTERRUPT_FLAG TMR1IF
@@ -121,7 +119,6 @@ void timer1_init(uint8_t ps_mode);
 #else
 #define TIMER2_INTERRUPT_FLAG (!!(PIR1 & 0x02))
 #endif
-
 
 #ifdef TMR2IE
 #define TIMER2_INTERRUPT_ENABLE() TMR2IE = 1;

@@ -25,40 +25,46 @@
 
 #include <stdio.h>
 
-enum ETraceType
-{
-	ttError,
-	ttDebug,
+enum ETraceType {
+  ttError,
+  ttDebug,
 };
 
-enum ETraceOutput
-{
-	toNowhere,
-	toDebugger,
-	toFile,
+enum ETraceOutput {
+  toNowhere,
+  toDebugger,
+  toFile,
 };
 
 static const ETraceOutput eTraceOut = toFile;
 static const ETraceOutput dTraceOut = toFile;
 
-void imp_Trace(const ETraceType TraceType, const ETraceOutput TraceOutput,
-			   const char* FileName, const int LineNumber, const char* Str, ...);
-void imp_eAssert(const char* TraceString, const ETraceType TraceType,
-				 const ETraceOutput TraceOutput, const char* FileName,
-				 const int LineNumber);
+void imp_Trace(const ETraceType TraceType,
+               const ETraceOutput TraceOutput,
+               const char* FileName,
+               const int LineNumber,
+               const char* Str,
+               ...);
+void imp_eAssert(const char* TraceString,
+                 const ETraceType TraceType,
+                 const ETraceOutput TraceOutput,
+                 const char* FileName,
+                 const int LineNumber);
 
 #define eTrace0(mes) imp_Trace(ttError, eTraceOut, __FILE__, __LINE__, mes)
 #define eTrace1(mes, par1) imp_Trace(ttError, eTraceOut, __FILE__, __LINE__, mes, par1)
 #define eTrace2(mes, par1, par2) imp_Trace(ttError, eTraceOut, __FILE__, __LINE__, mes, par1, par2)
 #define eTrace3(mes, par1, par2, par3) imp_Trace(ttError, eTraceOut, __FILE__, __LINE__, mes, par1, par2, par3)
-#define eTrace4(mes, par1, par2, par3, par4) imp_Trace(ttError, eTraceOut, __FILE__, __LINE__, mes, par1, par2, par3, par4)
+#define eTrace4(mes, par1, par2, par3, par4)                                                                           \
+  imp_Trace(ttError, eTraceOut, __FILE__, __LINE__, mes, par1, par2, par3, par4)
 
 #define dTrace0(mes) imp_Trace(ttDebug, dTraceOut, __FILE__, __LINE__, mes)
 #define dTrace1(mes, par1) imp_Trace(ttDebug, dTraceOut, __FILE__, __LINE__, mes, par1)
 #define dTrace2(mes, par1, par2) imp_Trace(ttDebug, dTraceOut, __FILE__, __LINE__, mes, par1, par2)
 #define dTrace3(mes, par1, par2, par3) imp_Trace(ttDebug, dTraceOut, __FILE__, __LINE__, mes, par1, par2, par3)
-#define dTrace4(mes, par1, par2, par3, par4) imp_Trace(ttDebug, dTraceOut, __FILE__, __LINE__, mes, par1, par2, par3, par4)
+#define dTrace4(mes, par1, par2, par3, par4)                                                                           \
+  imp_Trace(ttDebug, dTraceOut, __FILE__, __LINE__, mes, par1, par2, par3, par4)
 
-#define eAssert(exp) (void)((exp)||(imp_eAssert(#exp, ttError, eTraceOut, __FILE__, __LINE__), 0) )
+#define eAssert(exp) (void)((exp) || (imp_eAssert(#exp, ttError, eTraceOut, __FILE__, __LINE__), 0))
 
 #endif /* DTRACE_H_INCLUDED */

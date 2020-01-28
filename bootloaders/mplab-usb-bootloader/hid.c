@@ -35,16 +35,16 @@
  ********************************************************************/
 
 /** I N C L U D E S **********************************************************/
-#include <p18cxxx.h>
 #include "typedefs.h"
 #include "usb.h"
+#include <p18cxxx.h>
 
 #ifdef USB_USE_HID
 
 /** V A R I A B L E S ********************************************************/
 #pragma udata
 byte idle_rate;
-byte active_protocol;               // [0] Boot Protocol [1] Report Protocol
+byte active_protocol; // [0] Boot Protocol [1] Report Protocol
 byte hid_rpt_rx_len;
 
 /** P R I V A T E  P R O T O T Y P E S ***************************************/
@@ -71,80 +71,77 @@ void HIDSetReportHandler(void);
  *
  * Note:            None
  *****************************************************************************/
-void USBCheckHIDRequest(void)
-{
-    if(SetupPkt.Recipient != RCPT_INTF) return;
-    if(SetupPkt.bIntfID != HID_INTF_ID) return;
-    
-    /*
-     * There are two standard requests that hid.c may support.
-     * 1. GET_DSC(DSC_HID,DSC_RPT,DSC_PHY);
-     * 2. SET_DSC(DSC_HID,DSC_RPT,DSC_PHY);
-     */
-    if(SetupPkt.bRequest == GET_DSC)
-    {
-        switch(SetupPkt.bDscType)
-        {
-            case DSC_HID:
-                ctrl_trf_session_owner = MUID_HID;
-                mUSBGetHIDDscAdr(pSrc.bRom);        // See usbcfg.h
-                wCount._word = sizeof(USB_HID_DSC);
-                break;
-            case DSC_RPT:
-                ctrl_trf_session_owner = MUID_HID;
-                mUSBGetHIDRptDscAdr(pSrc.bRom);     // See usbcfg.h
-                mUSBGetHIDRptDscSize(wCount._word); // See usbcfg.h
-                break;
-            case DSC_PHY:
-                // ctrl_trf_session_owner = MUID_HID;
-                break;
-        }//end switch(SetupPkt.bDscType)
-        usb_stat.ctrl_trf_mem = _ROM;
-    }//end if(SetupPkt.bRequest == GET_DSC)
-    
-    if(SetupPkt.RequestType != CLASS) return;
-    switch(SetupPkt.bRequest)
-    {
-        case GET_REPORT:
-            HIDGetReportHandler();
-            break;
-        case SET_REPORT:
-            HIDSetReportHandler();            
-            break;
-        case GET_IDLE:
-            ctrl_trf_session_owner = MUID_HID;
-            pSrc.bRam = (byte*)&idle_rate;      // Set source
-            usb_stat.ctrl_trf_mem = _RAM;       // Set memory type
-            LSB(wCount) = 1;                    // Set data count
-            break;
-        case SET_IDLE:
-            ctrl_trf_session_owner = MUID_HID;
-            idle_rate = MSB(SetupPkt.W_Value);
-            break;
-        case GET_PROTOCOL:
-            ctrl_trf_session_owner = MUID_HID;
-            pSrc.bRam = (byte*)&active_protocol;// Set source
-            usb_stat.ctrl_trf_mem = _RAM;       // Set memory type
-            LSB(wCount) = 1;                    // Set data count
-            break;
-        case SET_PROTOCOL:
-            ctrl_trf_session_owner = MUID_HID;
-            active_protocol = LSB(SetupPkt.W_Value);
-            break;
-    }//end switch(SetupPkt.bRequest)
+void
+USBCheckHIDRequest(void) {
+  if(SetupPkt.Recipient != RCPT_INTF) return;
+  if(SetupPkt.bIntfID != HID_INTF_ID) return;
 
-}//end USBCheckHIDRequest
+  /*
+   * There are two standard requests that hid.c may support.
+   * 1. GET_DSC(DSC_HID,DSC_RPT,DSC_PHY);
+   * 2. SET_DSC(DSC_HID,DSC_RPT,DSC_PHY);
+   */
+  if(SetupPkt.bRequest == GET_DSC) {
+    switch(SetupPkt.bDscType) {
+      case DSC_HID:
+        ctrl_trf_session_owner = MUID_HID;
+        mUSBGetHIDDscAdr(pSrc.bRom); // See usbcfg.h
+        wCount._word = sizeof(USB_HID_DSC);
+        break;
+      case DSC_RPT:
+        ctrl_trf_session_owner = MUID_HID;
+        mUSBGetHIDRptDscAdr(pSrc.bRom);     // See usbcfg.h
+        mUSBGetHIDRptDscSize(wCount._word); // See usbcfg.h
+        break;
+      case DSC_PHY:
+        // ctrl_trf_session_owner = MUID_HID;
+        break;
+    } // end switch(SetupPkt.bDscType)
+    usb_stat.ctrl_trf_mem = _ROM;
+  } // end if(SetupPkt.bRequest == GET_DSC)
 
-void HIDGetReportHandler(void)
-{
-    // ctrl_trf_session_owner = MUID_HID;
-}//end HIDGetReportHandler
+  if(SetupPkt.RequestType != CLASS) return;
+  switch(SetupPkt.bRequest) {
+    case GET_REPORT:
+      HIDGetReportHandler();
+      break;
+    case SET_REPORT:
+      HIDSetReportHandler();
+      break;
+    case GET_IDLE:
+      ctrl_trf_session_owner = MUID_HID;
+      pSrc.bRam = (byte*)&idle_rate; // Set source
+      usb_stat.ctrl_trf_mem = _RAM;  // Set memory type
+      LSB(wCount) = 1;               // Set data count
+      break;
+    case SET_IDLE:
+      ctrl_trf_session_owner = MUID_HID;
+      idle_rate = MSB(SetupPkt.W_Value);
+      break;
+    case GET_PROTOCOL:
+      ctrl_trf_session_owner = MUID_HID;
+      pSrc.bRam = (byte*)&active_protocol; // Set source
+      usb_stat.ctrl_trf_mem = _RAM;        // Set memory type
+      LSB(wCount) = 1;                     // Set data count
+      break;
+    case SET_PROTOCOL:
+      ctrl_trf_session_owner = MUID_HID;
+      active_protocol = LSB(SetupPkt.W_Value);
+      break;
+  } // end switch(SetupPkt.bRequest)
 
-void HIDSetReportHandler(void)
-{
-    // ctrl_trf_session_owner = MUID_HID;
-    // pDst.bRam = (byte*)&hid_report_out;
-}//end HIDSetReportHandler
+} // end USBCheckHIDRequest
+
+void
+HIDGetReportHandler(void) {
+  // ctrl_trf_session_owner = MUID_HID;
+} // end HIDGetReportHandler
+
+void
+HIDSetReportHandler(void) {
+  // ctrl_trf_session_owner = MUID_HID;
+  // pDst.bRam = (byte*)&hid_report_out;
+} // end HIDSetReportHandler
 
 /** U S E R  A P I ***********************************************************/
 
@@ -167,31 +164,31 @@ void HIDSetReportHandler(void)
  *
  * Note:            None
  *****************************************************************************/
-void HIDInitEP(void)
-{   
-    hid_rpt_rx_len =0;
-    
-    HID_UEP = EP_OUT_IN|HSHK_EN;                // Enable 2 data pipes
-    
-    HID_BD_OUT.Cnt = sizeof(hid_report_out);    // Set buffer size
-    HID_BD_OUT.ADR = (byte*)&hid_report_out;    // Set buffer address
-    HID_BD_OUT.Stat._byte = _USIE|_DAT0|_DTSEN; // Set status
+void
+HIDInitEP(void) {
+  hid_rpt_rx_len = 0;
 
-    /*
-     * Do not have to init Cnt of IN pipes here.
-     * Reason:  Number of bytes to send to the host
-     *          varies from one transaction to
-     *          another. Cnt should equal the exact
-     *          number of bytes to transmit for
-     *          a given IN transaction.
-     *          This number of bytes will only
-     *          be known right before the data is
-     *          sent.
-     */
-    HID_BD_IN.ADR = (byte*)&hid_report_in;      // Set buffer address
-    HID_BD_IN.Stat._byte = _UCPU|_DAT1;         // Set status
+  HID_UEP = EP_OUT_IN | HSHK_EN; // Enable 2 data pipes
 
-}//end HIDInitEP
+  HID_BD_OUT.Cnt = sizeof(hid_report_out);        // Set buffer size
+  HID_BD_OUT.ADR = (byte*)&hid_report_out;        // Set buffer address
+  HID_BD_OUT.Stat._byte = _USIE | _DAT0 | _DTSEN; // Set status
+
+  /*
+   * Do not have to init Cnt of IN pipes here.
+   * Reason:  Number of bytes to send to the host
+   *          varies from one transaction to
+   *          another. Cnt should equal the exact
+   *          number of bytes to transmit for
+   *          a given IN transaction.
+   *          This number of bytes will only
+   *          be known right before the data is
+   *          sent.
+   */
+  HID_BD_IN.ADR = (byte*)&hid_report_in; // Set buffer address
+  HID_BD_IN.Stat._byte = _UCPU | _DAT1;  // Set status
+
+} // end HIDInitEP
 
 /******************************************************************************
  * Function:        void HIDTxReport(char *buffer, byte len)
@@ -223,27 +220,25 @@ void HIDInitEP(void)
  *
  * Note:            None
  *****************************************************************************/
-void HIDTxReport(char *buffer, byte len)
-{
-	byte i;
-	
-    /*
-     * Value of len should be equal to or smaller than HID_INT_IN_EP_SIZE.
-     * This check forces the value of len to meet the precondition.
-     */
-	if(len > HID_INT_IN_EP_SIZE)
-	    len = HID_INT_IN_EP_SIZE;
+void
+HIDTxReport(char* buffer, byte len) {
+  byte i;
 
-   /*
-    * Copy data from user's buffer to dual-ram buffer
-    */
-    for (i = 0; i < len; i++)
-    	hid_report_in[i] = buffer[i];
+  /*
+   * Value of len should be equal to or smaller than HID_INT_IN_EP_SIZE.
+   * This check forces the value of len to meet the precondition.
+   */
+  if(len > HID_INT_IN_EP_SIZE) len = HID_INT_IN_EP_SIZE;
 
-    HID_BD_IN.Cnt = len;
-    mUSBBufferReady(HID_BD_IN);
+  /*
+   * Copy data from user's buffer to dual-ram buffer
+   */
+  for(i = 0; i < len; i++) hid_report_in[i] = buffer[i];
 
-}//end HIDTxReport
+  HID_BD_IN.Cnt = len;
+  mUSBBufferReady(HID_BD_IN);
+
+} // end HIDTxReport
 
 /******************************************************************************
  * Function:        byte HIDRxReport(char *buffer, byte len)
@@ -266,7 +261,7 @@ void HIDTxReport(char *buffer, byte len)
  *                  mHIDGetRptRxLength().
  *
  * Overview:        HIDRxReport copies a string of bytes received through
- *                  USB HID OUT endpoint to a user's specified location. 
+ *                  USB HID OUT endpoint to a user's specified location.
  *                  It is a non-blocking function. It does not wait
  *                  for data if there is no data available. Instead it returns
  *                  '0' to notify the caller that there is no data available.
@@ -278,36 +273,34 @@ void HIDTxReport(char *buffer, byte len)
  *                  number of bytes expected (len), only the actual number
  *                  of bytes received will be copied to buffer.
  *****************************************************************************/
-byte HIDRxReport(char *buffer, byte len)
-{
-    hid_rpt_rx_len = 0;
-    
-    if(!mHIDRxIsBusy())
-    {
-        /*
-         * Adjust the expected number of bytes to equal
-         * the actual number of bytes received.
-         */
-        if(len > HID_BD_OUT.Cnt)
-            len = HID_BD_OUT.Cnt;
-        
-        /*
-         * Copy data from dual-ram buffer to user's buffer
-         */
-        for(hid_rpt_rx_len = 0; hid_rpt_rx_len < len; hid_rpt_rx_len++)
-            buffer[hid_rpt_rx_len] = hid_report_out[hid_rpt_rx_len];
+byte
+HIDRxReport(char* buffer, byte len) {
+  hid_rpt_rx_len = 0;
 
-        /*
-         * Prepare dual-ram buffer for next OUT transaction
-         */
-        HID_BD_OUT.Cnt = sizeof(hid_report_out);
-        mUSBBufferReady(HID_BD_OUT);
-    }//end if
-    
-    return hid_rpt_rx_len;
-    
-}//end HIDRxReport
+  if(!mHIDRxIsBusy()) {
+    /*
+     * Adjust the expected number of bytes to equal
+     * the actual number of bytes received.
+     */
+    if(len > HID_BD_OUT.Cnt) len = HID_BD_OUT.Cnt;
 
-#endif //def USB_USE_HID
+    /*
+     * Copy data from dual-ram buffer to user's buffer
+     */
+    for(hid_rpt_rx_len = 0; hid_rpt_rx_len < len; hid_rpt_rx_len++)
+      buffer[hid_rpt_rx_len] = hid_report_out[hid_rpt_rx_len];
+
+    /*
+     * Prepare dual-ram buffer for next OUT transaction
+     */
+    HID_BD_OUT.Cnt = sizeof(hid_report_out);
+    mUSBBufferReady(HID_BD_OUT);
+  } // end if
+
+  return hid_rpt_rx_len;
+
+} // end HIDRxReport
+
+#endif // def USB_USE_HID
 
 /** EOF hid.c ***************************************************************/

@@ -1,5 +1,5 @@
 /******************************************************************************
- 
+ 
   USB Host Generic Client Driver
 
 Description:
@@ -24,7 +24,7 @@ Summary:
     This is the Generic client driver file for a USB Embedded Host device.
 
 *******************************************************************************/
-//DOM-IGNORE-BEGIN
+// DOM-IGNORE-BEGIN
 /******************************************************************************
 
 * FileName:        usb_client_generic.c
@@ -58,19 +58,18 @@ Author          Date    Comments
 BC/KO       25-Dec-2007 First release
 
 *******************************************************************************/
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
-#include <stdlib.h>
-#include <string.h>
+#include "USB/usb_host_generic.h"
 #include "GenericTypeDefs.h"
 #include "USB/usb.h"
-#include "USB/usb_host_generic.h"
+#include <stdlib.h>
+#include <string.h>
 
 //#define DEBUG_MODE
 #ifdef DEBUG_MODE
-    #include "uart2.h"
+#include "uart2.h"
 #endif
-
 
 // *****************************************************************************
 // *****************************************************************************
@@ -86,11 +85,11 @@ can support.  If the user does not define a value, it will be set to 1.
 Currently this must be set to 1, due to limitations in the USB Host layer.
 */
 #ifndef USB_MAX_GENERIC_DEVICES
-    #define USB_MAX_GENERIC_DEVICES     1
+#define USB_MAX_GENERIC_DEVICES 1
 #endif
 
 #if USB_MAX_GENERIC_DEVICES != 1
-    #error The Generic client driver supports only one attached device.
+#error The Generic client driver supports only one attached device.
 #endif
 
 // *****************************************************************************
@@ -99,16 +98,15 @@ Currently this must be set to 1, due to limitations in the USB Host layer.
 // *****************************************************************************
 // *****************************************************************************
 
-GENERIC_DEVICE  gc_DevData;
+GENERIC_DEVICE gc_DevData;
 
 #ifdef USB_GENERIC_SUPPORT_SERIAL_NUMBERS
-    #ifndef USB_GENERIC_MAX_SERIAL_NUMBER
-        #define USB_GENERIC_MAX_SERIAL_NUMBER   64
-    #endif
-
-    WORD    serialNumbers[USB_MAX_GENERIC_DEVICES][USB_GENERIC_MAX_SERIAL_NUMBER];
+#ifndef USB_GENERIC_MAX_SERIAL_NUMBER
+#define USB_GENERIC_MAX_SERIAL_NUMBER 64
 #endif
 
+WORD serialNumbers[USB_MAX_GENERIC_DEVICES][USB_GENERIC_MAX_SERIAL_NUMBER];
+#endif
 
 // *****************************************************************************
 // *****************************************************************************
@@ -138,7 +136,7 @@ GENERIC_DEVICE  gc_DevData;
     DWORD flags     - Initialization flags
     BYTE clientDriverID - ID to send when issuing a Device Request via
                             USBHostIssueDeviceRequest(), USBHostSetDeviceConfiguration(),
-                            or USBHostSetDeviceInterface().  
+                            or USBHostSetDeviceInterface().
 
   Return Values:
     TRUE    - Initialization was successful
@@ -150,100 +148,100 @@ GENERIC_DEVICE  gc_DevData;
     attached device.
   ***************************************************************************/
 
-BOOL USBHostGenericInit ( BYTE address, DWORD flags, BYTE clientDriverID )
-{
-    BYTE *pDesc;
+BOOL
+USBHostGenericInit(BYTE address, DWORD flags, BYTE clientDriverID) {
+  BYTE* pDesc;
 
-    // Initialize state
-    gc_DevData.rxLength     = 0;
-    gc_DevData.flags.val = 0;
+  // Initialize state
+  gc_DevData.rxLength = 0;
+  gc_DevData.flags.val = 0;
 
-    // Save device the address, VID, & PID
-    gc_DevData.ID.deviceAddress = address;
-    pDesc  = USBHostGetDeviceDescriptor(address);
-    pDesc += 8;
-    gc_DevData.ID.vid  =  (WORD)*pDesc;       pDesc++;
-    gc_DevData.ID.vid |= ((WORD)*pDesc) << 8; pDesc++;
-    gc_DevData.ID.pid  =  (WORD)*pDesc;       pDesc++;
-    gc_DevData.ID.pid |= ((WORD)*pDesc) << 8; pDesc++;
+  // Save device the address, VID, & PID
+  gc_DevData.ID.deviceAddress = address;
+  pDesc = USBHostGetDeviceDescriptor(address);
+  pDesc += 8;
+  gc_DevData.ID.vid = (WORD)*pDesc;
+  pDesc++;
+  gc_DevData.ID.vid |= ((WORD)*pDesc) << 8;
+  pDesc++;
+  gc_DevData.ID.pid = (WORD)*pDesc;
+  pDesc++;
+  gc_DevData.ID.pid |= ((WORD)*pDesc) << 8;
+  pDesc++;
 
-    // Save the Client Driver ID
-    gc_DevData.clientDriverID = clientDriverID;
-    
-    #ifdef DEBUG_MODE
-        UART2PrintString( "GEN: USB Generic Client Initalized: flags=0x" );
-        UART2PutHex(      flags );
-        UART2PrintString( " address=" );
-        UART2PutDec( address );
-        UART2PrintString( " VID=0x" );
-        UART2PutHex(      gc_DevData.ID.vid >> 8   );
-        UART2PutHex(      gc_DevData.ID.vid & 0xFF );
-        UART2PrintString( " PID=0x"      );
-        UART2PutHex(      gc_DevData.ID.pid >> 8   );
-        UART2PutHex(      gc_DevData.ID.pid & 0xFF );
-        UART2PrintString( "\r\n"         );
-    #endif
+  // Save the Client Driver ID
+  gc_DevData.clientDriverID = clientDriverID;
 
-    #ifdef USB_GENERIC_SUPPORT_SERIAL_NUMBERS
-    {
-        BYTE    *deviceDescriptor;
-        BYTE    serialNumberIndex;
+#ifdef DEBUG_MODE
+  UART2PrintString("GEN: USB Generic Client Initalized: flags=0x");
+  UART2PutHex(flags);
+  UART2PrintString(" address=");
+  UART2PutDec(address);
+  UART2PrintString(" VID=0x");
+  UART2PutHex(gc_DevData.ID.vid >> 8);
+  UART2PutHex(gc_DevData.ID.vid & 0xFF);
+  UART2PrintString(" PID=0x");
+  UART2PutHex(gc_DevData.ID.pid >> 8);
+  UART2PutHex(gc_DevData.ID.pid & 0xFF);
+  UART2PrintString("\r\n");
+#endif
 
-        // MCHP - when multiple devices are implemented, this init will change
-        // to find a free slot
-        gc_DevData.flags.serialNumberValid = 0;
+#ifdef USB_GENERIC_SUPPORT_SERIAL_NUMBERS
+  {
+    BYTE* deviceDescriptor;
+    BYTE serialNumberIndex;
 
-        gc_DevData.ID.serialNumber = &(serialNumbers[0][0]);
-        gc_DevData.ID.serialNumberLength = 0;
+    // MCHP - when multiple devices are implemented, this init will change
+    // to find a free slot
+    gc_DevData.flags.serialNumberValid = 0;
 
-        deviceDescriptor = USBHostGetDeviceDescriptor( deviceAddress );
-        serialNumberIndex = deviceDescriptor[16];
+    gc_DevData.ID.serialNumber = &(serialNumbers[0][0]);
+    gc_DevData.ID.serialNumberLength = 0;
 
-        if (serialNumberIndex)
-        {
-            #ifdef DEBUG_MODE
-                UART2PrintString( "GEN: Getting serial number...\r\n" );
-            #endif
-        }
-        else
-        {
-            serialNumberIndex = 1;
-            #ifdef DEBUG_MODE
-                UART2PrintString( "GEN: Getting string descriptor...\r\n" );
-            #endif
-        }
+    deviceDescriptor = USBHostGetDeviceDescriptor(deviceAddress);
+    serialNumberIndex = deviceDescriptor[16];
 
-        if (USBHostGetStringDescriptor( address, serialNumberIndex, (BYTE *)gc_DevData.ID.serialNumber, USB_GENERIC_MAX_SERIAL_NUMBER*2 ))
-        {
-            // We can't get the serial number.  Just set the pointer to null
-            // and call it good.  We have to call the SN valid so we don't get trapped
-            // in the event handler.
-            gc_DevData.ID.serialNumber          = NULL;
-            gc_DevData.flags.initialized        = 1;
-            gc_DevData.flags.serialNumberValid  = 1;
-
-            // Tell the application layer that we have a device.
-            USB_HOST_APP_EVENT_HANDLER(address, EVENT_GENERIC_ATTACH, &(gc_DevData.ID), sizeof(GENERIC_DEVICE_ID) );
-
-            #ifdef DEBUG_MODE
-                UART2PrintString( "GEN: Cannot get string descriptor!\r\n" );
-            #endif
-        }
+    if(serialNumberIndex) {
+#ifdef DEBUG_MODE
+      UART2PrintString("GEN: Getting serial number...\r\n");
+#endif
+    } else {
+      serialNumberIndex = 1;
+#ifdef DEBUG_MODE
+      UART2PrintString("GEN: Getting string descriptor...\r\n");
+#endif
     }
-    #else
-        // Generic Client Driver Init Complete.
-        gc_DevData.flags.initialized = 1;
 
-        // Notify that application that we've been attached to a device.
-        USB_HOST_APP_EVENT_HANDLER(address, EVENT_GENERIC_ATTACH, &(gc_DevData.ID), sizeof(GENERIC_DEVICE_ID) );
-    #endif
+    if(USBHostGetStringDescriptor(
+           address, serialNumberIndex, (BYTE*)gc_DevData.ID.serialNumber, USB_GENERIC_MAX_SERIAL_NUMBER * 2)) {
+      // We can't get the serial number.  Just set the pointer to null
+      // and call it good.  We have to call the SN valid so we don't get trapped
+      // in the event handler.
+      gc_DevData.ID.serialNumber = NULL;
+      gc_DevData.flags.initialized = 1;
+      gc_DevData.flags.serialNumberValid = 1;
 
-    // TBD
+      // Tell the application layer that we have a device.
+      USB_HOST_APP_EVENT_HANDLER(address, EVENT_GENERIC_ATTACH, &(gc_DevData.ID), sizeof(GENERIC_DEVICE_ID));
 
-    return TRUE;
+#ifdef DEBUG_MODE
+      UART2PrintString("GEN: Cannot get string descriptor!\r\n");
+#endif
+    }
+  }
+#else
+  // Generic Client Driver Init Complete.
+  gc_DevData.flags.initialized = 1;
+
+  // Notify that application that we've been attached to a device.
+  USB_HOST_APP_EVENT_HANDLER(address, EVENT_GENERIC_ATTACH, &(gc_DevData.ID), sizeof(GENERIC_DEVICE_ID));
+#endif
+
+  // TBD
+
+  return TRUE;
 
 } // USBHostGenericInit
-
 
 /****************************************************************************
   Function:
@@ -277,84 +275,76 @@ BOOL USBHostGenericInit ( BYTE address, DWORD flags, BYTE clientDriverID )
     None
   ***************************************************************************/
 
-BOOL USBHostGenericEventHandler ( BYTE address, USB_EVENT event, void *data, DWORD size )
-{
-    // Make sure it was for our device
-    if ( address != gc_DevData.ID.deviceAddress)
-    {
-        return FALSE;
-    }
+BOOL
+USBHostGenericEventHandler(BYTE address, USB_EVENT event, void* data, DWORD size) {
+  // Make sure it was for our device
+  if(address != gc_DevData.ID.deviceAddress) {
+    return FALSE;
+  }
 
-    // Handle specific events.
-    switch (event)
-    {
+  // Handle specific events.
+  switch(event) {
     case EVENT_DETACH:
-        // Notify that application that the device has been detached.
-        USB_HOST_APP_EVENT_HANDLER(gc_DevData.ID.deviceAddress, EVENT_GENERIC_DETACH, &gc_DevData.ID.deviceAddress, sizeof(BYTE) );
-        gc_DevData.flags.val        = 0;
-        gc_DevData.ID.deviceAddress = 0;
-        #ifdef DEBUG_MODE
-            UART2PrintString( "USB Generic Client Device Detached: address=" );
-            UART2PutDec( address );
-            UART2PrintString( "\r\n" );
-        #endif
+      // Notify that application that the device has been detached.
+      USB_HOST_APP_EVENT_HANDLER(gc_DevData.ID.deviceAddress,
+                                 EVENT_GENERIC_DETACH,
+                                 &gc_DevData.ID.deviceAddress,
+                                 sizeof(BYTE));
+      gc_DevData.flags.val = 0;
+      gc_DevData.ID.deviceAddress = 0;
+#ifdef DEBUG_MODE
+      UART2PrintString("USB Generic Client Device Detached: address=");
+      UART2PutDec(address);
+      UART2PrintString("\r\n");
+#endif
+      return TRUE;
+
+#ifdef USB_ENABLE_TRANSFER_EVENT
+    case EVENT_TRANSFER:
+      if((data != NULL) && (size == sizeof(HOST_TRANSFER_DATA))) {
+        DWORD dataCount = ((HOST_TRANSFER_DATA*)data)->dataCount;
+
+        if(((HOST_TRANSFER_DATA*)data)->bEndpointAddress == (USB_IN_EP | USB_GENERIC_EP)) {
+          gc_DevData.flags.rxBusy = 0;
+          gc_DevData.rxLength = dataCount;
+          USB_HOST_APP_EVENT_HANDLER(gc_DevData.ID.deviceAddress, EVENT_GENERIC_RX_DONE, &dataCount, sizeof(DWORD));
+        } else if(((HOST_TRANSFER_DATA*)data)->bEndpointAddress == (USB_OUT_EP | USB_GENERIC_EP)) {
+          gc_DevData.flags.txBusy = 0;
+          USB_HOST_APP_EVENT_HANDLER(gc_DevData.ID.deviceAddress, EVENT_GENERIC_TX_DONE, &dataCount, sizeof(DWORD));
+        } else
+#ifdef USB_GENERIC_SUPPORT_SERIAL_NUMBERS
+            if(((((HOST_TRANSFER_DATA*)data)->bEndpointAddress & 0x7F) == 0) && !gc_DevData.flags.serialNumberValid) {
+#ifdef DEBUG_MODE
+          UART2PrintString("GEN: Got serial number!\r\n");
+#endif
+          // Set the serial number information
+          gc_DevData.ID.serialNumberLength = dataCount;
+          gc_DevData.flags.serialNumberValid = 1;
+          gc_DevData.flags.initialized = 1;
+
+          // Tell the application layer that we have a device.
+          USB_HOST_APP_EVENT_HANDLER(address, EVENT_GENERIC_ATTACH, &(gc_DevData.ID), sizeof(GENERIC_DEVICE_ID));
+        } else
+#endif
+        {
+          return FALSE;
+        }
+
         return TRUE;
 
-    #ifdef USB_ENABLE_TRANSFER_EVENT
-    case EVENT_TRANSFER:
-        if ( (data != NULL) && (size == sizeof(HOST_TRANSFER_DATA)) )
-        {
-            DWORD dataCount = ((HOST_TRANSFER_DATA *)data)->dataCount;
-
-            if ( ((HOST_TRANSFER_DATA *)data)->bEndpointAddress == (USB_IN_EP|USB_GENERIC_EP) )
-            {
-                gc_DevData.flags.rxBusy = 0;
-                gc_DevData.rxLength = dataCount;
-                USB_HOST_APP_EVENT_HANDLER(gc_DevData.ID.deviceAddress, EVENT_GENERIC_RX_DONE, &dataCount, sizeof(DWORD) );
-            }
-            else if ( ((HOST_TRANSFER_DATA *)data)->bEndpointAddress == (USB_OUT_EP|USB_GENERIC_EP) )
-            {
-                gc_DevData.flags.txBusy = 0;
-                USB_HOST_APP_EVENT_HANDLER(gc_DevData.ID.deviceAddress, EVENT_GENERIC_TX_DONE, &dataCount, sizeof(DWORD) );
-            }
-            else
-            #ifdef USB_GENERIC_SUPPORT_SERIAL_NUMBERS
-                if (((((HOST_TRANSFER_DATA *)data)->bEndpointAddress & 0x7F) == 0) && !gc_DevData.flags.serialNumberValid)
-                {
-                    #ifdef DEBUG_MODE
-                        UART2PrintString( "GEN: Got serial number!\r\n" );
-                    #endif
-                    // Set the serial number information
-                    gc_DevData.ID.serialNumberLength    = dataCount;
-                    gc_DevData.flags.serialNumberValid  = 1;
-                    gc_DevData.flags.initialized        = 1;
-
-                    // Tell the application layer that we have a device.
-                    USB_HOST_APP_EVENT_HANDLER(address, EVENT_GENERIC_ATTACH, &(gc_DevData.ID), sizeof(GENERIC_DEVICE_ID) );
-                }
-            else
-            #endif
-            {
-                return FALSE;
-            }
-
-            return TRUE;
-
-        }
-        else
-            return FALSE;
-    #endif
+      } else
+        return FALSE;
+#endif
 
     case EVENT_SUSPEND:
     case EVENT_RESUME:
     case EVENT_BUS_ERROR:
     default:
-        break;
-    }
+      break;
+  }
 
-    return FALSE;
+  return FALSE;
 } // USBHostGenericEventHandler
-
 
 // *****************************************************************************
 // *****************************************************************************
@@ -392,8 +382,7 @@ BOOL USBHostGenericEventHandler ( BYTE address, USB_EVENT event, void *data, DWO
     None
   ***************************************************************************/
 
- // Implemented as a macro. See usb_client_generic.h
-
+// Implemented as a macro. See usb_client_generic.h
 
 /****************************************************************************
   Function:
@@ -408,7 +397,7 @@ BOOL USBHostGenericEventHandler ( BYTE address, USB_EVENT event, void *data, DWO
 
   Parameters:
     GENERIC_DEVICE_ID* pDevID  - Pointer to a structure containing the Device ID Info (VID,
-                    		 PID, serial number, and device address).
+                             PID, serial number, and device address).
 
   Return Values:
     TRUE    - The device is connected
@@ -434,28 +423,25 @@ BOOL USBHostGenericEventHandler ( BYTE address, USB_EVENT event, void *data, DWO
     None
   ***************************************************************************/
 
-BOOL USBHostGenericGetDeviceAddress(GENERIC_DEVICE_ID *pDevID)
-{
-    if (!gc_DevData.flags.initialized) return FALSE;
+BOOL
+USBHostGenericGetDeviceAddress(GENERIC_DEVICE_ID* pDevID) {
+  if(!gc_DevData.flags.initialized) return FALSE;
 
-    if (gc_DevData.ID.deviceAddress != 0 && pDevID != NULL)
-    {
-        if (pDevID->vid == gc_DevData.ID.vid && pDevID->pid == gc_DevData.ID.pid)
-        {
+  if(gc_DevData.ID.deviceAddress != 0 && pDevID != NULL) {
+    if(pDevID->vid == gc_DevData.ID.vid && pDevID->pid == gc_DevData.ID.pid) {
 #ifdef USB_GENERIC_SUPPORT_SERIAL_NUMBERS
-            if (!strncmp( (char *)gc_DevData.ID.serialNumber, (char *)pDevID->serialNumber, gc_DevData.ID.serialNumberLength*2 ))
+      if(!strncmp((char*)gc_DevData.ID.serialNumber, (char*)pDevID->serialNumber, gc_DevData.ID.serialNumberLength * 2))
 #endif
-            {
-                pDevID->deviceAddress = gc_DevData.ID.deviceAddress;
-                return TRUE;
-            }
-        }
+      {
+        pDevID->deviceAddress = gc_DevData.ID.deviceAddress;
+        return TRUE;
+      }
     }
+  }
 
-    return FALSE;
+  return FALSE;
 
 } // USBHostGenericGetDeviceAddress
-
 
 /****************************************************************************
   Function:
@@ -480,8 +466,7 @@ BOOL USBHostGenericGetDeviceAddress(GENERIC_DEVICE_ID *pDevID)
     return zero until new data has been received.
   ***************************************************************************/
 
- // Implemented as a macro. See usb_client_generic.h
-
+// Implemented as a macro. See usb_client_generic.h
 
 /****************************************************************************
   Function:
@@ -515,24 +500,23 @@ BOOL USBHostGenericGetDeviceAddress(GENERIC_DEVICE_ID *pDevID)
     None
   ***************************************************************************/
 
-BYTE USBHostGenericRead( BYTE deviceAddress, void *buffer, DWORD length )
-{
-    BYTE RetVal;
+BYTE
+USBHostGenericRead(BYTE deviceAddress, void* buffer, DWORD length) {
+  BYTE RetVal;
 
-    // Validate the call
-    if (!API_VALID(deviceAddress)) return USB_INVALID_STATE;
-    if (gc_DevData.flags.rxBusy)   return USB_BUSY;
+  // Validate the call
+  if(!API_VALID(deviceAddress)) return USB_INVALID_STATE;
+  if(gc_DevData.flags.rxBusy) return USB_BUSY;
 
-    // Set the busy flag, clear the count and start a new IN transfer.
-    gc_DevData.flags.rxBusy = 1;
-    gc_DevData.rxLength = 0;
-    RetVal = USBHostRead( deviceAddress, USB_IN_EP|USB_GENERIC_EP, (BYTE *)buffer, length );
-    if (RetVal != USB_SUCCESS)
-    {
-        gc_DevData.flags.rxBusy = 0;    // Clear flag to allow re-try
-    }
+  // Set the busy flag, clear the count and start a new IN transfer.
+  gc_DevData.flags.rxBusy = 1;
+  gc_DevData.rxLength = 0;
+  RetVal = USBHostRead(deviceAddress, USB_IN_EP | USB_GENERIC_EP, (BYTE*)buffer, length);
+  if(RetVal != USB_SUCCESS) {
+    gc_DevData.flags.rxBusy = 0; // Clear flag to allow re-try
+  }
 
-    return RetVal;
+  return RetVal;
 
 } // USBHostGenericRead
 
@@ -573,8 +557,7 @@ BYTE USBHostGenericRead( BYTE deviceAddress, void *buffer, DWORD length )
     None
   ***************************************************************************/
 
- // Implemented as a macro. See usb_client_generic.h
-
+// Implemented as a macro. See usb_client_generic.h
 
 /****************************************************************************
   Function:
@@ -611,19 +594,15 @@ BYTE USBHostGenericRead( BYTE deviceAddress, void *buffer, DWORD length )
   ***************************************************************************/
 
 #ifndef USB_ENABLE_TRANSFER_EVENT
-BOOL USBHostGenericRxIsComplete( BYTE deviceAddress,
-                                    BYTE *errorCode, DWORD *byteCount )
-{
-    if (gc_DevData.flags.rxBusy)
-    {
-        return FALSE;
-    }
-    else
-    {
-        *byteCount = gc_DevData.rxLength;
-        *errorCode = gc_DevData.rxErrorCode;
-        return TRUE;
-    }
+BOOL
+USBHostGenericRxIsComplete(BYTE deviceAddress, BYTE* errorCode, DWORD* byteCount) {
+  if(gc_DevData.flags.rxBusy) {
+    return FALSE;
+  } else {
+    *byteCount = gc_DevData.rxLength;
+    *errorCode = gc_DevData.rxErrorCode;
+    return TRUE;
+  }
 }
 #endif
 
@@ -656,51 +635,45 @@ BOOL USBHostGenericRxIsComplete( BYTE deviceAddress,
   ***************************************************************************/
 
 #ifndef USB_ENABLE_TRANSFER_EVENT
-void USBHostGenericTasks( void )
-{
-    DWORD   byteCount;
-    BYTE    errorCode;
+void
+USBHostGenericTasks(void) {
+  DWORD byteCount;
+  BYTE errorCode;
 
-    if (gc_DevData.ID.deviceAddress && gc_DevData.flags.initialized)
-    {
-        #ifdef USB_GENERIC_SUPPORT_SERIAL_NUMBERS
-            if (!gc_DevData.flags.serialNumberValid)
-            {
+  if(gc_DevData.ID.deviceAddress && gc_DevData.flags.initialized) {
+#ifdef USB_GENERIC_SUPPORT_SERIAL_NUMBERS
+    if(!gc_DevData.flags.serialNumberValid) {
                 if (USBHostTransferIsComplete( gc_DevData.ID.deviceAddress, USB_IN_EP, &errorCode, &byteCount );
                 {
-                    #ifdef DEBUG_MODE
-                        UART2PrintString( "GEN: Got serial number!\r\n" );
-                    #endif
-                    // Set the serial number information
-                    gc_DevData.ID.serialNumberLength    = byteCount;
-                    gc_DevData.flags.serialNumberValid  = 1;
-                    gc_DevData.flags.initialized        = 1;
+#ifdef DEBUG_MODE
+        UART2PrintString("GEN: Got serial number!\r\n");
+#endif
+        // Set the serial number information
+        gc_DevData.ID.serialNumberLength = byteCount;
+        gc_DevData.flags.serialNumberValid = 1;
+        gc_DevData.flags.initialized = 1;
 
-                    // Tell the application layer that we have a device.
-                    USB_HOST_APP_EVENT_HANDLER(address, EVENT_GENERIC_ATTACH, &(gc_DevData.ID), sizeof(GENERIC_DEVICE_ID) );
+        // Tell the application layer that we have a device.
+        USB_HOST_APP_EVENT_HANDLER(address, EVENT_GENERIC_ATTACH, &(gc_DevData.ID), sizeof(GENERIC_DEVICE_ID));
                 }
-            }
-        #endif
-
-        if (gc_DevData.flags.rxBusy)
-        {
-            if (USBHostTransferIsComplete( gc_DevData.ID.deviceAddress, USB_IN_EP|USB_GENERIC_EP, &errorCode, &byteCount ))
-            {
-                gc_DevData.flags.rxBusy = 0;
-                gc_DevData.rxLength     = byteCount;
-                gc_DevData.rxErrorCode  = errorCode;
-            }
-        }
-
-        if (gc_DevData.flags.txBusy)
-        {
-            if (USBHostTransferIsComplete( gc_DevData.ID.deviceAddress, USB_OUT_EP|USB_GENERIC_EP, &errorCode, &byteCount ))
-            {
-                gc_DevData.flags.txBusy = 0;
-                gc_DevData.txErrorCode  = errorCode;
-            }
-        }
     }
+#endif
+
+    if(gc_DevData.flags.rxBusy) {
+      if(USBHostTransferIsComplete(gc_DevData.ID.deviceAddress, USB_IN_EP | USB_GENERIC_EP, &errorCode, &byteCount)) {
+        gc_DevData.flags.rxBusy = 0;
+        gc_DevData.rxLength = byteCount;
+        gc_DevData.rxErrorCode = errorCode;
+      }
+    }
+
+    if(gc_DevData.flags.txBusy) {
+      if(USBHostTransferIsComplete(gc_DevData.ID.deviceAddress, USB_OUT_EP | USB_GENERIC_EP, &errorCode, &byteCount)) {
+        gc_DevData.flags.txBusy = 0;
+        gc_DevData.txErrorCode = errorCode;
+      }
+    }
+  }
 }
 #endif
 
@@ -741,8 +714,7 @@ void USBHostGenericTasks( void )
     None
   ***************************************************************************/
 
- // Implemented as a macro. See usb_client_generic.h
-
+// Implemented as a macro. See usb_client_generic.h
 
 /****************************************************************************
   Function:
@@ -775,20 +747,16 @@ void USBHostGenericTasks( void )
   ***************************************************************************/
 
 #ifndef USB_ENABLE_TRANSFER_EVENT
-BOOL USBHostGenericTxIsComplete( BYTE deviceAddress, BYTE *errorCode )
-{
-    if (gc_DevData.flags.txBusy)
-    {
-        return FALSE;
-    }
-    else
-    {
-        *errorCode = gc_DevData.txErrorCode;
-        return TRUE;
-    }
+BOOL
+USBHostGenericTxIsComplete(BYTE deviceAddress, BYTE* errorCode) {
+  if(gc_DevData.flags.txBusy) {
+    return FALSE;
+  } else {
+    *errorCode = gc_DevData.txErrorCode;
+    return TRUE;
+  }
 }
 #endif
-
 
 /****************************************************************************
   Function:
@@ -822,29 +790,25 @@ BOOL USBHostGenericTxIsComplete( BYTE deviceAddress, BYTE *errorCode )
     None
   ***************************************************************************/
 
-BYTE USBHostGenericWrite( BYTE deviceAddress, void *buffer, DWORD length )
-{
-    BYTE RetVal;
+BYTE
+USBHostGenericWrite(BYTE deviceAddress, void* buffer, DWORD length) {
+  BYTE RetVal;
 
-    // Validate the call
-    if (!API_VALID(deviceAddress)) return USB_INVALID_STATE;
-    if (gc_DevData.flags.txBusy)   return USB_BUSY;
+  // Validate the call
+  if(!API_VALID(deviceAddress)) return USB_INVALID_STATE;
+  if(gc_DevData.flags.txBusy) return USB_BUSY;
 
-    // Set the busy flag and start a new OUT transfer.
-    gc_DevData.flags.txBusy = 1;
-    RetVal = USBHostWrite( deviceAddress, USB_OUT_EP|USB_GENERIC_EP, (BYTE *)buffer, length );
-    if (RetVal != USB_SUCCESS)
-    {
-        gc_DevData.flags.txBusy = 0;    // Clear flag to allow re-try
-    }
+  // Set the busy flag and start a new OUT transfer.
+  gc_DevData.flags.txBusy = 1;
+  RetVal = USBHostWrite(deviceAddress, USB_OUT_EP | USB_GENERIC_EP, (BYTE*)buffer, length);
+  if(RetVal != USB_SUCCESS) {
+    gc_DevData.flags.txBusy = 0; // Clear flag to allow re-try
+  }
 
-    return RetVal;
+  return RetVal;
 
 } // USBHostGenericWrite
-
 
 /*************************************************************************
  * EOF usb_client_generic.c
  */
-
-

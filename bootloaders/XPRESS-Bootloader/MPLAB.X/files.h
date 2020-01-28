@@ -15,70 +15,69 @@ limitations under the License.
 
 *******************************************************************************/
 
-#include "system.h"
 #include "direct.h"
+#include "system.h"
 
 #ifndef FILES_H
-#define	FILES_H
+#define FILES_H
 
-#define ROOT_ENTRY_SIZE             32  // standard root entry size
-#define ENTRY_FILE_SIZE_OFFSET      28  // offset to entry.file_size field
-#define ENTRY_CLUSTER               26  // offset of entry.cluster 
+#define ROOT_ENTRY_SIZE 32        // standard root entry size
+#define ENTRY_FILE_SIZE_OFFSET 28 // offset to entry.file_size field
+#define ENTRY_CLUSTER 26          // offset of entry.cluster
 
-#define DATEH(y, m, d)    (((y-1980) << 1) + (m >> 3))  // y:1980..2099, m:1..12
-#define DATEL(y, m, d)    ((m << 5) + d)                // d: 1..31
-#define TIMEH(h, m, s)    ((h << 3) +(m >> 3))  // h:0..23, m:0..59
-#define TIMEL(h, m, s)    ((m << 5) + s)        // s = seconds/2 (0-29)
+#define DATEH(y, m, d) (((y - 1980) << 1) + (m >> 3)) // y:1980..2099, m:1..12
+#define DATEL(y, m, d) ((m << 5) + d)                 // d: 1..31
+#define TIMEH(h, m, s) ((h << 3) + (m >> 3))          // h:0..23, m:0..59
+#define TIMEL(h, m, s) ((m << 5) + s)                 // s = seconds/2 (0-29)
 
 extern const char readme[];
 
-/** 
+/**
  */
-uint8_t readme_size( void); 
+uint8_t readme_size(void);
 
 /**
  */
-void MasterBootRecordGet( uint8_t* buffer, uint8_t seg);
+void MasterBootRecordGet(uint8_t* buffer, uint8_t seg);
 
 /**
- * 
+ *
  * @param buffer
  */
-void VolumeBootRecordGet( uint8_t*buffer, uint8_t seg);
+void VolumeBootRecordGet(uint8_t* buffer, uint8_t seg);
 
 /**
- * 
+ *
  * @param buffer
  */
-void FATRecordGet( uint8_t* buffer, uint8_t seg);
+void FATRecordGet(uint8_t* buffer, uint8_t seg);
 
 /**
- * 
+ *
  * @param buffer
  */
-void FATRecordSet( uint8_t* buffer, uint8_t seg);
+void FATRecordSet(uint8_t* buffer, uint8_t seg);
 
 /**
- * 
+ *
  * @param buffer
  */
-void RootRecordGet( uint8_t* buffer, uint8_t seg);
+void RootRecordGet(uint8_t* buffer, uint8_t seg);
 
 /**
- * 
+ *
  * @param buffer
  */
-void RootRecordSet( uint8_t* buffer, uint8_t seg);
+void RootRecordSet(uint8_t* buffer, uint8_t seg);
 
 /**
  * Initializes the ROOT directory in RAM
  */
-void RootRecordInit( void);
+void RootRecordInit(void);
 
-/** 
+/**
  Initializes the FAT table in RAM
  */
-void FATRecordInit( void);
+void FATRecordInit(void);
 
-#endif	/* FILES_H */
-
+#endif /* FILES_H */

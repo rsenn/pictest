@@ -26,66 +26,61 @@
 #include "parameter.h"
 #include "usage.h"
 
-class Parameters
-{
+class Parameters {
 public:
+  Parameters(const Usage& usage);
+  virtual ~Parameters();
 
-	Parameters(const Usage &usage);
-	virtual ~Parameters();
+  /**
+   *	Checks whether parameters list contains parameter corresponds to provided numerical ID.
+   *	If descriptor is found returns true.
+   *	In contrast to real_contain() function it also returns true if parameters list
+   *	doesn't contain the parameter but it has default value.
+   *
+   *   @param	id Numeric ID to search corresponding parameter.
+   *   @return
+   *		\arg true if parameter is found.
+   *		\arg false if parameter is not found
+   */
+  bool contain(unsigned int id) const;
 
+  /**
+   *	Returns reference to the parameter with corresponding numerical ID.
+   *
+   *   @param	id Numeric ID to search corresponding parameter.
+   *   @return	Reference to the parameter with corresponding numerical ID.
+   *   @throws	DEArgumentAbsent Provided ID doesn't correspond to any parameter.
+   */
+  Parameter operator[](const unsigned int& id) const;
+  //	const Parameter& operator[](const unsigned int &id) const;
 
-	/**
-	*	Checks whether parameters list contains parameter corresponds to provided numerical ID.
-	*	If descriptor is found returns true.
-	*	In contrast to real_contain() function it also returns true if parameters list
-	*	doesn't contain the parameter but it has default value.
-	*
-	*   @param	id Numeric ID to search corresponding parameter.
-	*   @return
-	*		\arg true if parameter is found.
-	*		\arg false if parameter is not found
-	*/
-	bool contain(unsigned int id) const;
+  /**
+   *
+   *
+   *   @param
+   *   @param
+   *   @return
+   *   @throws DEArgumentMultipleUsage
+   */
+  void add(std::string argument, std::string value);
 
-	/**
-	*	Returns reference to the parameter with corresponding numerical ID.
-	*
-	*   @param	id Numeric ID to search corresponding parameter.
-	*   @return	Reference to the parameter with corresponding numerical ID.
-	*   @throws	DEArgumentAbsent Provided ID doesn't correspond to any parameter.
-	*/
-	Parameter operator[](const unsigned int &id) const;
-//	const Parameter& operator[](const unsigned int &id) const;
-
-	/**
-	*
-	*
-	*   @param
-	*   @param
-	*   @return
-	*   @throws DEArgumentMultipleUsage
-	*/
-	void add(std::string argument, std::string value);
-
-	Parameter command();
-
+  Parameter command();
 
 protected:
-	/**
-	*	Checks whether parameters list contains parameter corresponds to provided numerical ID.
-	*	In contrast to contain() function doesn't check default value of the parameter.
-	*	If descriptor is found returns true.
-	*
-	*   @param	id Numeric ID to search corresponding parameter.
-	*   @return
-	*		\arg true if parameter is found.
-	*		\arg false if parameter is not found
-	*/
-	bool real_contain(unsigned int id) const;
+  /**
+   *	Checks whether parameters list contains parameter corresponds to provided numerical ID.
+   *	In contrast to contain() function doesn't check default value of the parameter.
+   *	If descriptor is found returns true.
+   *
+   *   @param	id Numeric ID to search corresponding parameter.
+   *   @return
+   *		\arg true if parameter is found.
+   *		\arg false if parameter is not found
+   */
+  bool real_contain(unsigned int id) const;
 
-	std::list<Parameter> _params;
-	Usage _usage;
+  std::list<Parameter> _params;
+  Usage _usage;
 };
-
 
 #endif // PARAMETERS_H_INCLUDED

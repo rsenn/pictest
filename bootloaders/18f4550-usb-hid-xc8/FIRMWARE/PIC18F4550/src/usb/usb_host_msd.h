@@ -1,4 +1,4 @@
-﻿//DOM-IGNORE-BEGIN
+﻿// DOM-IGNORE-BEGIN
 /*******************************************************************************
 Software License Agreement
 
@@ -21,12 +21,12 @@ IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
 CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 
 *******************************************************************************/
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
-//DOM-IGNORE-BEGIN
+// DOM-IGNORE-BEGIN
 #ifndef _USBHOSTMSD_H_
 #define _USBHOSTMSD_H_
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
 // *****************************************************************************
 // *****************************************************************************
@@ -38,50 +38,49 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 // Section: MSD Class Error Codes
 // *****************************************************************************
 
-#define MSD_COMMAND_PASSED                  0x00    // Transfer was successful. Returned in dCSWStatus.
-#define MSD_COMMAND_FAILED                  0x01    // Transfer failed. Returned in dCSWStatus.
-#define MSD_PHASE_ERROR                     0x02    // Transfer phase error. Returned in dCSWStatus.
+#define MSD_COMMAND_PASSED 0x00 // Transfer was successful. Returned in dCSWStatus.
+#define MSD_COMMAND_FAILED 0x01 // Transfer failed. Returned in dCSWStatus.
+#define MSD_PHASE_ERROR 0x02    // Transfer phase error. Returned in dCSWStatus.
 
-#define USB_MSD_ERROR                       USB_ERROR_CLASS_DEFINED             // Error code offset.
+#define USB_MSD_ERROR USB_ERROR_CLASS_DEFINED // Error code offset.
 
-#define USB_MSD_COMMAND_PASSED              USB_SUCCESS                         // Command was successful.
-#define USB_MSD_COMMAND_FAILED              (USB_MSD_ERROR | MSD_COMMAND_FAILED)// Command failed at the device.
-#define USB_MSD_PHASE_ERROR                 (USB_MSD_ERROR | MSD_PHASE_ERROR)   // Command had a phase error at the device.
-#define USB_MSD_OUT_OF_MEMORY               (USB_MSD_ERROR | 0x03)              // No dynamic memory is available.
-#define USB_MSD_CBW_ERROR                   (USB_MSD_ERROR | 0x04)              // The CBW was not transferred successfully.
-#define USB_MSD_CSW_ERROR                   (USB_MSD_ERROR | 0x05)              // The CSW was not transferred successfully.
-#define USB_MSD_DEVICE_NOT_FOUND            (USB_MSD_ERROR | 0x06)              // Device with the specified address is not available.
-#define USB_MSD_DEVICE_BUSY                 (USB_MSD_ERROR | 0x07)              // A transfer is currently in progress.
-#define USB_MSD_INVALID_LUN                 (USB_MSD_ERROR | 0x08)              // Invalid LUN specified.
-#define USB_MSD_MEDIA_INTERFACE_ERROR       (USB_MSD_ERROR | 0x09)              // The media interface layer cannot support the device.
-#define USB_MSD_RESET_ERROR                 (USB_MSD_ERROR | 0x0A)              // An error occurred while resetting the device.
-#define USB_MSD_ILLEGAL_REQUEST             (USB_MSD_ERROR | 0x0B)              // Cannot perform requested operation.
+#define USB_MSD_COMMAND_PASSED USB_SUCCESS                          // Command was successful.
+#define USB_MSD_COMMAND_FAILED (USB_MSD_ERROR | MSD_COMMAND_FAILED) // Command failed at the device.
+#define USB_MSD_PHASE_ERROR (USB_MSD_ERROR | MSD_PHASE_ERROR)       // Command had a phase error at the device.
+#define USB_MSD_OUT_OF_MEMORY (USB_MSD_ERROR | 0x03)                // No dynamic memory is available.
+#define USB_MSD_CBW_ERROR (USB_MSD_ERROR | 0x04)                    // The CBW was not transferred successfully.
+#define USB_MSD_CSW_ERROR (USB_MSD_ERROR | 0x05)                    // The CSW was not transferred successfully.
+#define USB_MSD_DEVICE_NOT_FOUND (USB_MSD_ERROR | 0x06)      // Device with the specified address is not available.
+#define USB_MSD_DEVICE_BUSY (USB_MSD_ERROR | 0x07)           // A transfer is currently in progress.
+#define USB_MSD_INVALID_LUN (USB_MSD_ERROR | 0x08)           // Invalid LUN specified.
+#define USB_MSD_MEDIA_INTERFACE_ERROR (USB_MSD_ERROR | 0x09) // The media interface layer cannot support the device.
+#define USB_MSD_RESET_ERROR (USB_MSD_ERROR | 0x0A)           // An error occurred while resetting the device.
+#define USB_MSD_ILLEGAL_REQUEST (USB_MSD_ERROR | 0x0B)       // Cannot perform requested operation.
 
 // *****************************************************************************
 // Section: Additional return values for USBHostMSDDeviceStatus (see USBHostDeviceStatus also)
 // *****************************************************************************
 
-#define USB_MSD_DEVICE_DETACHED             0x50    // Device is detached.
-#define USB_MSD_INITIALIZING                0x51    // Device is initializing.
-#define USB_MSD_NORMAL_RUNNING              0x52    // Device is running and available for data transfers.
-#define USB_MSD_RESETTING_DEVICE            0x53    // Device is being reset.
-#define USB_MSD_ERROR_STATE                 0x55    // Device is holding due to a MSD error.
+#define USB_MSD_DEVICE_DETACHED 0x50  // Device is detached.
+#define USB_MSD_INITIALIZING 0x51     // Device is initializing.
+#define USB_MSD_NORMAL_RUNNING 0x52   // Device is running and available for data transfers.
+#define USB_MSD_RESETTING_DEVICE 0x53 // Device is being reset.
+#define USB_MSD_ERROR_STATE 0x55      // Device is holding due to a MSD error.
 
 // *****************************************************************************
 // Section: Interface and Protocol Constants
 // *****************************************************************************
 
-#define DEVICE_CLASS_MASS_STORAGE           0x08    // Class code for Mass Storage.
+#define DEVICE_CLASS_MASS_STORAGE 0x08 // Class code for Mass Storage.
 
-#define DEVICE_SUBCLASS_RBC                 0x01    // SubClass code for Reduced Block Commands (not supported).
-#define DEVICE_SUBCLASS_CD_DVD              0x02    // SubClass code for a CD/DVD drive (not supported).
-#define DEVICE_SUBCLASS_TAPE_DRIVE          0x03    // SubClass code for a tape drive (not supported).
-#define DEVICE_SUBCLASS_FLOPPY_INTERFACE    0x04    // SubClass code for a floppy disk interface (not supported).
-#define DEVICE_SUBCLASS_REMOVABLE           0x05    // SubClass code for removable media (not supported).
-#define DEVICE_SUBCLASS_SCSI                0x06    // SubClass code for a SCSI interface device (supported).
+#define DEVICE_SUBCLASS_RBC 0x01              // SubClass code for Reduced Block Commands (not supported).
+#define DEVICE_SUBCLASS_CD_DVD 0x02           // SubClass code for a CD/DVD drive (not supported).
+#define DEVICE_SUBCLASS_TAPE_DRIVE 0x03       // SubClass code for a tape drive (not supported).
+#define DEVICE_SUBCLASS_FLOPPY_INTERFACE 0x04 // SubClass code for a floppy disk interface (not supported).
+#define DEVICE_SUBCLASS_REMOVABLE 0x05        // SubClass code for removable media (not supported).
+#define DEVICE_SUBCLASS_SCSI 0x06             // SubClass code for a SCSI interface device (supported).
 
-#define DEVICE_INTERFACE_PROTOCOL_BULK_ONLY 0x50    // Protocol code for Bulk-only mass storage.
-
+#define DEVICE_INTERFACE_PROTOCOL_BULK_ONLY 0x50 // Protocol code for Bulk-only mass storage.
 
 // *****************************************************************************
 // Section: MSD Event Definition
@@ -89,14 +88,14 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 
 // If the application has not defined an offset for MSD events, set it to 0.
 #ifndef EVENT_MSD_OFFSET
-    #define EVENT_MSD_OFFSET    0
+#define EVENT_MSD_OFFSET 0
 #endif
 
-#define EVENT_MSD_NONE      EVENT_MSD_BASE + EVENT_MSD_OFFSET + 0   // No event occured (NULL event)
-#define EVENT_MSD_TRANSFER  EVENT_MSD_BASE + EVENT_MSD_OFFSET + 1   // A MSD transfer has completed
-#define EVENT_MSD_RESET     EVENT_MSD_BASE + EVENT_MSD_OFFSET + 2   // MSD reset complete
-#define EVENT_MSD_MAX_LUN   EVENT_MSD_BASE + EVENT_MSD_OFFSET + 3   // Set maximum LUN for the device
-#define EVENT_MSD_ATTACH    EVENT_MSD_BASE + EVENT_MSD_OFFSET + 4   // MSD device has attached
+#define EVENT_MSD_NONE EVENT_MSD_BASE + EVENT_MSD_OFFSET + 0     // No event occured (NULL event)
+#define EVENT_MSD_TRANSFER EVENT_MSD_BASE + EVENT_MSD_OFFSET + 1 // A MSD transfer has completed
+#define EVENT_MSD_RESET EVENT_MSD_BASE + EVENT_MSD_OFFSET + 2    // MSD reset complete
+#define EVENT_MSD_MAX_LUN EVENT_MSD_BASE + EVENT_MSD_OFFSET + 3  // Set maximum LUN for the device
+#define EVENT_MSD_ATTACH EVENT_MSD_BASE + EVENT_MSD_OFFSET + 4   // MSD device has attached
 
 // *****************************************************************************
 // *****************************************************************************
@@ -136,8 +135,7 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
     None
   ***************************************************************************/
 
-uint8_t    USBHostMSDDeviceStatus( uint8_t deviceAddress );
-
+uint8_t USBHostMSDDeviceStatus(uint8_t deviceAddress);
 
 /*******************************************************************************
   Function:
@@ -169,9 +167,8 @@ uint8_t    USBHostMSDDeviceStatus( uint8_t deviceAddress );
   Remarks:
     None
 *******************************************************************************/
-#define USBHostMSDRead( deviceAddress,deviceLUN,commandBlock,commandBlockLength,data,dataLength ) \
-        USBHostMSDTransfer( deviceAddress, deviceLUN, 1, commandBlock, commandBlockLength, data, dataLength )
-
+#define USBHostMSDRead(deviceAddress, deviceLUN, commandBlock, commandBlockLength, data, dataLength)                   \
+  USBHostMSDTransfer(deviceAddress, deviceLUN, 1, commandBlock, commandBlockLength, data, dataLength)
 
 /****************************************************************************
   Function:
@@ -199,8 +196,7 @@ uint8_t    USBHostMSDDeviceStatus( uint8_t deviceAddress );
     None
   ***************************************************************************/
 
-uint8_t    USBHostMSDResetDevice( uint8_t deviceAddress );
-
+uint8_t USBHostMSDResetDevice(uint8_t deviceAddress);
 
 /****************************************************************************
   Function:
@@ -230,8 +226,7 @@ uint8_t    USBHostMSDResetDevice( uint8_t deviceAddress );
     None
   ***************************************************************************/
 
-void    USBHostMSDTasks( void );
-
+void USBHostMSDTasks(void);
 
 /****************************************************************************
   Function:
@@ -254,8 +249,7 @@ void    USBHostMSDTasks( void );
     device in order for the device to continue working properly.
   ***************************************************************************/
 
-void    USBHostMSDTerminateTransfer( uint8_t deviceAddress );
-
+void USBHostMSDTerminateTransfer(uint8_t deviceAddress);
 
 /****************************************************************************
   Function:
@@ -294,9 +288,13 @@ void    USBHostMSDTerminateTransfer( uint8_t deviceAddress );
     None
   ***************************************************************************/
 
-uint8_t    USBHostMSDTransfer( uint8_t deviceAddress, uint8_t deviceLUN, uint8_t direction, uint8_t *commandBlock,
-                            uint8_t commandBlockLength, uint8_t *data, uint32_t dataLength );
-
+uint8_t USBHostMSDTransfer(uint8_t deviceAddress,
+                           uint8_t deviceLUN,
+                           uint8_t direction,
+                           uint8_t* commandBlock,
+                           uint8_t commandBlockLength,
+                           uint8_t* data,
+                           uint32_t dataLength);
 
 /****************************************************************************
   Function:
@@ -328,8 +326,7 @@ uint8_t    USBHostMSDTransfer( uint8_t deviceAddress, uint8_t deviceLUN, uint8_t
     None
   ***************************************************************************/
 
-bool    USBHostMSDTransferIsComplete( uint8_t deviceAddress, uint8_t *errorCode, uint32_t *byteCount );
-
+bool USBHostMSDTransferIsComplete(uint8_t deviceAddress, uint8_t* errorCode, uint32_t* byteCount);
 
 /*******************************************************************************
   Function:
@@ -362,9 +359,8 @@ bool    USBHostMSDTransferIsComplete( uint8_t deviceAddress, uint8_t *errorCode,
     None
 *******************************************************************************/
 
-#define USBHostMSDWrite( deviceAddress,deviceLUN,commandBlock,commandBlockLength,data,dataLength ) \
-        USBHostMSDTransfer( deviceAddress, deviceLUN, 0, commandBlock, commandBlockLength, data, dataLength )
-
+#define USBHostMSDWrite(deviceAddress, deviceLUN, commandBlock, commandBlockLength, data, dataLength)                  \
+  USBHostMSDTransfer(deviceAddress, deviceLUN, 0, commandBlock, commandBlockLength, data, dataLength)
 
 // *****************************************************************************
 // *****************************************************************************
@@ -394,7 +390,7 @@ bool    USBHostMSDTransferIsComplete( uint8_t deviceAddress, uint8_t *errorCode,
     uint32_t flags         - Initialization flags
     uint8_t clientDriverID - ID to send when issuing a Device Request via
                             USBHostSendDeviceRequest(), USBHostSetDeviceConfiguration(),
-                            or USBHostSetDeviceInterface().  
+                            or USBHostSetDeviceInterface().
 
   Return Values:
     true   - We can support the device.
@@ -404,8 +400,7 @@ bool    USBHostMSDTransferIsComplete( uint8_t deviceAddress, uint8_t *errorCode,
     None
   ***************************************************************************/
 
-bool USBHostMSDInitialize( uint8_t address, uint32_t flags, uint8_t clientDriverID );
-
+bool USBHostMSDInitialize(uint8_t address, uint32_t flags, uint8_t clientDriverID);
 
 /****************************************************************************
   Function:
@@ -436,7 +431,6 @@ bool USBHostMSDInitialize( uint8_t address, uint32_t flags, uint8_t clientDriver
     None
   ***************************************************************************/
 
-bool USBHostMSDEventHandler( uint8_t address, USB_EVENT event, void *data, uint32_t size );
-
+bool USBHostMSDEventHandler(uint8_t address, USB_EVENT event, void* data, uint32_t size);
 
 #endif

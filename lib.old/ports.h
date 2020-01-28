@@ -28,7 +28,6 @@ extern volatile unsigned char __at(0xFC2) ADCON0;
 
 #endif
 
-
 #if defined(LATA) && !defined(PORTA)
 #define PORTA LATA
 #endif

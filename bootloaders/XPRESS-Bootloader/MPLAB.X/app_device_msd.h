@@ -16,31 +16,31 @@ limitations under the License.
 *******************************************************************************/
 
 /*********************************************************************
-* Function: void APP_DeviceMSDInitialize(void);
-*
-* Overview: Initializes the Custom HID demo code
-*
-* PreCondition: None
-*
-* Input: None
-*
-* Output: None
-*
-********************************************************************/
+ * Function: void APP_DeviceMSDInitialize(void);
+ *
+ * Overview: Initializes the Custom HID demo code
+ *
+ * PreCondition: None
+ *
+ * Input: None
+ *
+ * Output: None
+ *
+ ********************************************************************/
 void APP_DeviceMSDInitialize();
 
 /*********************************************************************
-* Function: void APP_DeviceMSDTasks(void);
-*
-* Overview: Keeps the Custom HID demo running.
-*
-* PreCondition: The demo should have been initialized and started via
-*   the APP_DeviceMSDInitialize() and APP_DeviceMSDStart() demos
-*   respectively.
-*
-* Input: None
-*
-* Output: None
-*
-********************************************************************/
+ * Function: void APP_DeviceMSDTasks(void);
+ *
+ * Overview: Keeps the Custom HID demo running.
+ *
+ * PreCondition: The demo should have been initialized and started via
+ *   the APP_DeviceMSDInitialize() and APP_DeviceMSDStart() demos
+ *   respectively.
+ *
+ * Input: None
+ *
+ * Output: None
+ *
+ ********************************************************************/
 void APP_DeviceMSDTasks();

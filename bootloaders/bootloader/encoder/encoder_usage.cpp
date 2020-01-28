@@ -20,105 +20,80 @@
 
 #include "osdep/osdep.h"
 
-#include <string>
 #include "encoder_usage.h"
+#include <string>
 
 using namespace std;
 
-EncoderUsage::EncoderUsage()
-{
-	add(UsageDescriptor(
-		ARG_HELP,
-		"h",
-		"help",
-		UsageDescriptor::possible,
-		"DEVICE",
-		"Print this message.",
-		UsageDescriptor::command
-		));
+EncoderUsage::EncoderUsage() {
+  add(UsageDescriptor(
+      ARG_HELP, "h", "help", UsageDescriptor::possible, "DEVICE", "Print this message.", UsageDescriptor::command));
 
+  add(UsageDescriptor(
+      ARG_CMD_ENCODE,
+      "e",
+      "encode",
+      UsageDescriptor::required,
+      "PASSWORD",
+      string("Encode the input file with PASSWORD and save it to output file.") +
+          string("\n\tPASSWORD has to be provided as string of two hex digits per byte (like 01202040ac)."),
+      UsageDescriptor::command));
 
-	add(UsageDescriptor(
-		ARG_CMD_ENCODE,
-		"e",
-		"encode",
-		UsageDescriptor::required,
-		"PASSWORD",
-		string("Encode the input file with PASSWORD and save it to output file.")
-		+ string("\n\tPASSWORD has to be provided as string of two hex digits per byte (like 01202040ac)."),
-		UsageDescriptor::command
-		));
+  add(UsageDescriptor(
+      ARG_CMD_DECODE,
+      "d",
+      "decode",
+      UsageDescriptor::required,
+      "PASSWORD",
+      string("Decode the input file with PASSWORD and save it to output file.") +
+          string("\n\tPASSWORD has to be provided as string of two hex digits per byte (like 01202040ac)."),
+      UsageDescriptor::command));
+  add(UsageDescriptor(ARG_CMD_CONVERT,
+                      "c",
+                      "convert",
+                      UsageDescriptor::absent,
+                      "",
+                      "Convert the file from one format to enother.",
+                      UsageDescriptor::command));
 
-	add(UsageDescriptor(
-		ARG_CMD_DECODE,
-		"d",
-		"decode",
-		UsageDescriptor::required,
-		"PASSWORD",
-		string("Decode the input file with PASSWORD and save it to output file.")
-		+ string("\n\tPASSWORD has to be provided as string of two hex digits per byte (like 01202040ac)."),
-		UsageDescriptor::command
-		));
-	add(UsageDescriptor(
-		ARG_CMD_CONVERT,
-		"c",
-		"convert",
-		UsageDescriptor::absent,
-		"",
-		"Convert the file from one format to enother.",
-		UsageDescriptor::command
-		));
+  add(UsageDescriptor(ARG_INPUT_HEX,
+                      "ix",
+                      "input_hex",
+                      UsageDescriptor::required,
+                      "FILE_NAME",
+                      "Input file in Intel Hex Format.",
+                      UsageDescriptor::option));
 
+  add(UsageDescriptor(ARG_INPUT_BIN,
+                      "ib",
+                      "input_bin",
+                      UsageDescriptor::required,
+                      "FILE_NAME",
+                      "Input file in Binary Format.",
+                      UsageDescriptor::option));
 
-	add(UsageDescriptor(
-		ARG_INPUT_HEX,
-		"ix",
-		"input_hex",
-		UsageDescriptor::required,
-		"FILE_NAME",
-		"Input file in Intel Hex Format.",
-		UsageDescriptor::option
-		));
+  add(UsageDescriptor(ARG_INPUT_DATA,
+                      "id",
+                      "input_data",
+                      UsageDescriptor::required,
+                      "DATA",
+                      string("Immediate mode - actual byte(s) specified in the command line") +
+                          string("\n\tas string of two hex digits per byte (like 01202040ac)."),
+                      UsageDescriptor::option));
 
-	add(UsageDescriptor(
-		ARG_INPUT_BIN,
-		"ib",
-		"input_bin",
-		UsageDescriptor::required,
-		"FILE_NAME",
-		"Input file in Binary Format.",
-		UsageDescriptor::option
-		));
+  add(UsageDescriptor(ARG_OUTPUT_HEX,
+                      "ox",
+                      "output_hex",
+                      UsageDescriptor::required,
+                      "FILE_NAME",
+                      "Output file in Intel Hex Format.",
+                      UsageDescriptor::option));
 
-	add(UsageDescriptor(
-		ARG_INPUT_DATA,
-		"id",
-		"input_data",
-		UsageDescriptor::required,
-		"DATA",
-		string("Immediate mode - actual byte(s) specified in the command line")
-		+ string("\n\tas string of two hex digits per byte (like 01202040ac)."),
-		UsageDescriptor::option
-		));
-
-	add(UsageDescriptor(
-		ARG_OUTPUT_HEX,
-		"ox",
-		"output_hex",
-		UsageDescriptor::required,
-		"FILE_NAME",
-		"Output file in Intel Hex Format.",
-		UsageDescriptor::option
-		));
-
-	add(UsageDescriptor(
-		ARG_OUTPUT_BIN,
-		"ob",
-		"output_bin",
-		UsageDescriptor::required,
-		"FILE_NAME",
-		"Output file in Binary Format.",
-		UsageDescriptor::option
-		));
-
+  add(UsageDescriptor(ARG_OUTPUT_BIN,
+                      "ob",
+                      "output_bin",
+                      UsageDescriptor::required,
+                      "FILE_NAME",
+                      "Output file in Binary Format.",
+                      UsageDescriptor::option));
 }

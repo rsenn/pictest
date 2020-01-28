@@ -1,6 +1,87 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;  BootLoader.                                                             ;;
-;;  Copyright (C) 2007 Diolan ( http://www.diolan.com )                     ;;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+BootLoader.;
+;
+;
+;  Copyright (C) 2007 Diolan ( http://www.diolan.com )                     ;;
 ;;                                                                          ;;
 ;;  This program is free software: you can redistribute it and/or modify    ;;
 ;;  it under the terms of the GNU General Public License as published by    ;;
@@ -17,10 +98,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Flash Reading / Writing
 ;-----------------------------------------------------------------------------
-	#include "P18F4455.INC"
-	#include "boot.inc"
-	#include "boot_if.inc"
-	#include "usb_defs.inc"
+#include "P18F4455.INC"
+#include "boot.inc"
+#include "boot_if.inc"
+#include "usb_defs.inc"
 ;-----------------------------------------------------------------------------
 ; Constants
 ;-----------------------------------------------------------------------------
@@ -177,7 +258,7 @@ read_id_loop
 	bra	read_id_loop
 	
 rdwr_id_return
-	clrf	TBLPTRU                  
+	clrf	TBLPTRU
 #if ENCODE_ID
 	; Encode and return
 	;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -307,7 +388,7 @@ hid_process_cmd
 	; Start processing
 	movwf	boot_rep + CMD_OFFS			; boot_rep.cmd = boot_cmd.cmd
 	movff	boot_cmd + ID_OFFS, boot_rep + ID_OFFS	; boot_rep.id = boot_cmd.id
-	
+
 #if USE_EEPROM_MARK 
 	; Set EEPROM Mark on first command received
 	btfss	eep_mark_set, 0	; if( eeprom_mark_set == 0 )

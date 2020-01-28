@@ -14,38 +14,37 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 *******************************************************************************/
-#include <xc.h>
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
+#include <xc.h>
 
 #ifndef LVP_H
-#define	LVP_H
+#define LVP_H
 
-#define _XTAL_FREQ  48000000L
+#define _XTAL_FREQ 48000000L
 
-#define INPUT_PIN           1
-#define OUTPUT_PIN          0
+#define INPUT_PIN 1
+#define OUTPUT_PIN 0
 
-#define SLAVE_RUN           0
-#define SLAVE_RESET         1
+#define SLAVE_RUN 0
+#define SLAVE_RESET 1
 
-#define ICSP_TRIS_DAT       TRISBbits.TRISB3
-#define ICSP_DAT            LATBbits.LATB3
-#define ICSP_TRIS_CLK       TRISBbits.TRISB2
-#define ICSP_CLK            LATBbits.LATB2
-#define ICSP_TRIS_nMCLR     TRISBbits.TRISB4
-#define ICSP_nMCLR          LATBbits.LATB4
+#define ICSP_TRIS_DAT TRISBbits.TRISB3
+#define ICSP_DAT LATBbits.LATB3
+#define ICSP_TRIS_CLK TRISBbits.TRISB2
+#define ICSP_CLK LATBbits.LATB2
+#define ICSP_TRIS_nMCLR TRISBbits.TRISB4
+#define ICSP_nMCLR LATBbits.LATB4
 
-#define  LVP_init() LVP_exit();
+#define LVP_init() LVP_exit();
 
-void LVP_enter( void);
-void LVP_exit( void);
-void LVP_addressLoad( uint16_t address);
-void LVP_bulkErase( void);
-void LVP_skip( uint16_t count);
+void LVP_enter(void);
+void LVP_exit(void);
+void LVP_addressLoad(uint16_t address);
+void LVP_bulkErase(void);
+void LVP_skip(uint16_t count);
 bool LVP_inProgress(void);
-void LVP_rowWrite( uint16_t *buffer, uint8_t n);
-void LVP_cfgWrite( uint16_t *buffer, uint8_t n);
+void LVP_rowWrite(uint16_t* buffer, uint8_t n);
+void LVP_cfgWrite(uint16_t* buffer, uint8_t n);
 
-#endif	/* LVP_H */
-
+#endif /* LVP_H */

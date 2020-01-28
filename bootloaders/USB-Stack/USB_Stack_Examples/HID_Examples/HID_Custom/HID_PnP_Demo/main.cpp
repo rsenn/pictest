@@ -1,11 +1,11 @@
-#include <QtWidgets/QApplication>
 #include "demoapp.h"
+#include <QtWidgets/QApplication>
 
-int main(int argc, char *argv[])
-{
-    QApplication a(argc, argv);
-    DemoApp w;
-    w.show();
+int
+main(int argc, char* argv[]) {
+  QApplication a(argc, argv);
+  DemoApp w;
+  w.show();
 
-    return a.exec();
+  return a.exec();
 }

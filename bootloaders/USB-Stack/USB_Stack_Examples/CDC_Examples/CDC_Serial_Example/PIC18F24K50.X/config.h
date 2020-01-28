@@ -3,7 +3,7 @@
  * @brief PIC Microcontroller Settings.
  * @author John Izzard
  * @date 13/02/2019
- * 
+ *
  * PIC18F24K50/PICFX5K50 Configuration File.
  * Copyright (C) 2017-2019  John Izzard
  *
@@ -24,8 +24,8 @@
 #define CONFIG_H
 
 #define NO_XTAL 0
-#define MHz_12  1
-#define MHz_16  2
+#define MHz_12 1
+#define MHz_16 2
 
 #define NORMAL 0
 #define BLUE_BOARD 1
@@ -37,15 +37,15 @@
 #define PLL_STARTUP_DELAY() __delay_ms(3)
 
 #if XTAL_USED == NO_XTAL && PIN_VERSION == NORMAL
-#define BUTTON      PORTAbits.RA6
-#define LED         LATAbits.LA7
+#define BUTTON PORTAbits.RA6
+#define LED LATAbits.LA7
 #define BUTTON_TRIS TRISAbits.TRISA6
-#define LED_TRIS    TRISAbits.TRISA7
+#define LED_TRIS TRISAbits.TRISA7
 #else
-#define BUTTON      PORTBbits.RB6
-#define LED         LATBbits.LB7
+#define BUTTON PORTBbits.RB6
+#define LED LATBbits.LB7
 #define BUTTON_TRIS TRISBbits.TRISB6
-#define LED_TRIS    TRISBbits.TRISB7
+#define LED_TRIS TRISBbits.TRISB7
 #endif
 
 #endif /* CONFIG_H */

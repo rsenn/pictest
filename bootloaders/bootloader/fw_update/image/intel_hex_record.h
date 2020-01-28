@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 #ifndef INTEL_HEX_RECORD_H
 #define INTEL_HEX_RECORD_H
 
@@ -32,24 +31,26 @@ const unsigned char cHexTypeEndOfData = 1;
 const unsigned char cHexTypeExtSegmentAddr = 2;
 const unsigned char cHexTypeExtLinearAddr = 4;
 
-class CIntelHexRec
-{
+class CIntelHexRec {
 public:
-	CIntelHexRec():m_Size(0){};
-	~CIntelHexRec(){};
-	bool InitFromString(string str);
-	void InitData(unsigned char Size, unsigned short Addr, unsigned char* pData);
-	void InitEndOfData();
-	void InitExtAddr(unsigned short ExtAddr);
-	unsigned long GetExtAddr();
-	string GetString();
-	unsigned char CalcCrc();
-	void clear(){m_Size = 0;};
+  CIntelHexRec() : m_Size(0){};
+  ~CIntelHexRec(){};
+  bool InitFromString(string str);
+  void InitData(unsigned char Size, unsigned short Addr, unsigned char* pData);
+  void InitEndOfData();
+  void InitExtAddr(unsigned short ExtAddr);
+  unsigned long GetExtAddr();
+  string GetString();
+  unsigned char CalcCrc();
+  void
+  clear() {
+    m_Size = 0;
+  };
 
-	unsigned char m_Size;
-	unsigned short m_Addr;
-	unsigned char m_Type;
-	unsigned char m_Data[256];
+  unsigned char m_Size;
+  unsigned short m_Addr;
+  unsigned char m_Type;
+  unsigned char m_Data[256];
 };
 
 #endif /* INTEL_HEX_RECORD_H */

@@ -35,44 +35,43 @@
 #define USBCFG_H
 
 /** D E F I N I T I O N S *******************************************/
-#define MAX_NUM_INT             1   // For tracking Alternate Setting
-#define EP0_BUFF_SIZE           8   // Valid Options: 8, 16, 32, or 64 bytes.
-									// There is little advantage in using 
-									// more than 8 bytes on EP0 IN/OUT in most cases.
+#define MAX_NUM_INT 1 // For tracking Alternate Setting
+#define EP0_BUFF_SIZE                                                                                                  \
+  8 // Valid Options: 8, 16, 32, or 64 bytes.
+    // There is little advantage in using
+    // more than 8 bytes on EP0 IN/OUT in most cases.
 
 /* Parameter definitions are defined in usbdrv.h */
-#define MODE_PP                 _PPBM0
-#define UCFG_VAL                _PUEN|_TRINT|_FS|MODE_PP
-
+#define MODE_PP _PPBM0
+#define UCFG_VAL _PUEN | _TRINT | _FS | MODE_PP
 
 /* Make sure the proper hardware platform is being used*/
-#if defined(__18F4550) || defined(__18F4455) || defined(__18F4450) || defined(__18F2550) || defined(__18F2455) || defined(__18F2450) || defined(__18F2458) || defined(__18F2553) || defined(__18F4453) || defined(__18F4553)
-	#define PIC18F4550_PICDEM_FS_USB
+#if defined(__18F4550) || defined(__18F4455) || defined(__18F4450) || defined(__18F2550) || defined(__18F2455) ||      \
+    defined(__18F2450) || defined(__18F2458) || defined(__18F2553) || defined(__18F4453) || defined(__18F4553)
+#define PIC18F4550_PICDEM_FS_USB
 #endif
 #if defined(__18F14K50) || defined(__18F13K50) || defined(__18LF14K50) || defined(__18LF13K50)
-	#define LOW_PIN_COUNT_USB_DEVELOPMENT_KIT
+#define LOW_PIN_COUNT_USB_DEVELOPMENT_KIT
 #endif
 //#define YOUR_BOARD
-
 
 #if defined(PIC18F4550_PICDEM_FS_USB)
 //    #define USE_SELF_POWER_SENSE_IO
 //    #define USE_USB_BUS_SENSE_IO
 
 #elif defined(PIC18F87J50_FS_USB_PIM)
-    //#define USE_USB_BUS_SENSE_IO		//JP1 must be in R-U position to use this feature on this board		
+//#define USE_USB_BUS_SENSE_IO		//JP1 must be in R-U position to use this feature on this board
 
 #elif defined(LOW_PIN_COUNT_USB_DEVELOPMENT_KIT)
 
-
 /*If using the YOUR_BOARD selection, uncomment below section as appropriate for your hardware*/
 //#elif defined(YOUR_BOARD)
-	//#define USE_SELF_POWER_SENSE_IO	//See MCHPFSUSB Firmware User's Guide
-   	//#define USE_USB_BUS_SENSE_IO		//(DS51679) for more details about these features.
+//#define USE_SELF_POWER_SENSE_IO	//See MCHPFSUSB Firmware User's Guide
+//#define USE_USB_BUS_SENSE_IO		//(DS51679) for more details about these features.
 
 #else
-    #error Not a supported board (yet), See __FILE__, line __LINE__, or double click on this text.
-//See above commented section.  You need to select the features your hardware will be using.
+#error Not a supported board (yet), See __FILE__, line __LINE__, or double click on this text.
+// See above commented section.  You need to select the features your hardware will be using.
 #endif
 
 /** D E V I C E  C L A S S  U S A G E *******************************/
@@ -83,10 +82,10 @@
  * Used to identify which of the USB classes owns the current
  * session of control transfer over EP0
  */
-#define MUID_NULL               0
-#define MUID_USB9               1
-#define MUID_HID                2
-#define MUID_CDC                3
+#define MUID_NULL 0
+#define MUID_USB9 1
+#define MUID_HID 2
+#define MUID_CDC 3
 
 /** E N D P O I N T S  A L L O C A T I O N **************************/
 /*
@@ -94,34 +93,31 @@
  */
 
 /* HID */
-#define HID_INTF_ID             0x00
-#define HID_UEP                 UEP1
-#define HID_BD_OUT              ep1Bo
-#define HID_INT_OUT_EP_SIZE     64
-#define HID_BD_IN               ep1Bi
-#define HID_INT_IN_EP_SIZE      64
-#define HID_NUM_OF_DSC          1		//Just the Report descriptor (no physical descriptor present)
-#define HID_RPT01_SIZE          29
+#define HID_INTF_ID 0x00
+#define HID_UEP UEP1
+#define HID_BD_OUT ep1Bo
+#define HID_INT_OUT_EP_SIZE 64
+#define HID_BD_IN ep1Bi
+#define HID_INT_IN_EP_SIZE 64
+#define HID_NUM_OF_DSC 1 // Just the Report descriptor (no physical descriptor present)
+#define HID_RPT01_SIZE 29
 
 /* HID macros */
-#define mUSBGetHIDDscAdr(ptr)               \
-{                                           \
-    if(usb_active_cfg == 1)                 \
-        ptr = (rom byte*)&cfg01.hid_i00a00; \
-}
+#define mUSBGetHIDDscAdr(ptr)                                                                                          \
+  {                                                                                                                    \
+    if(usb_active_cfg == 1) ptr = (rom byte*)&cfg01.hid_i00a00;                                                        \
+  }
 
-#define mUSBGetHIDRptDscAdr(ptr)            \
-{                                           \
-    if(usb_active_cfg == 1)                 \
-        ptr = (rom byte*)&hid_rpt01;        \
-}
+#define mUSBGetHIDRptDscAdr(ptr)                                                                                       \
+  {                                                                                                                    \
+    if(usb_active_cfg == 1) ptr = (rom byte*)&hid_rpt01;                                                               \
+  }
 
-#define mUSBGetHIDRptDscSize(count)         \
-{                                           \
-    if(usb_active_cfg == 1)                 \
-        count = sizeof(hid_rpt01);          \
-}
+#define mUSBGetHIDRptDscSize(count)                                                                                    \
+  {                                                                                                                    \
+    if(usb_active_cfg == 1) count = sizeof(hid_rpt01);                                                                 \
+  }
 
-#define MAX_EP_NUMBER           1           // UEP1
+#define MAX_EP_NUMBER 1 // UEP1
 
-#endif //USBCFG_H
+#endif // USBCFG_H

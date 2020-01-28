@@ -1,28 +1,28 @@
 /******************************************************************************
-* PIC USB
-* interrupt.c
-******************************************************************************/
+ * PIC USB
+ * interrupt.c
+ ******************************************************************************/
 
 /** I N C L U D E S **********************************************************/
-#include <p18cxxx.h>
-#include "system/typedefs.h"
 #include "system/interrupt/interrupt.h"
+#include "system/typedefs.h"
+#include <p18cxxx.h>
 
 /** V A R I A B L E S ********************************************************/
 
 /** I N T E R R U P T  V E C T O R S *****************************************/
 
-#pragma code high_vector=0x08
-void interrupt_at_high_vector(void)
-{
-    _asm goto high_isr _endasm
+#pragma code high_vector = 0x08
+void
+interrupt_at_high_vector(void) {
+  _asm goto high_isr _endasm
 }
 #pragma code
 
-#pragma code low_vector=0x18
-void interrupt_at_low_vector(void)
-{
-    _asm goto low_isr _endasm
+#pragma code low_vector = 0x18
+void
+interrupt_at_low_vector(void) {
+  _asm goto low_isr _endasm
 }
 #pragma code
 
@@ -36,9 +36,8 @@ void interrupt_at_low_vector(void)
  * Overview:
  *****************************************************************************/
 #pragma interrupt high_isr
-void high_isr(void)
-{
-}
+void
+high_isr(void) {}
 
 /******************************************************************************
  * Function:        void low_isr(void)
@@ -49,9 +48,8 @@ void high_isr(void)
  * Overview:
  *****************************************************************************/
 #pragma interruptlow low_isr
-void low_isr(void)
-{
-}
+void
+low_isr(void) {}
 #pragma code
 
 /** EOF interrupt.c **********************************************************/

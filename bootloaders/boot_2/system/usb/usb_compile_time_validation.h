@@ -43,9 +43,8 @@
 
 /** U S B  V A L I D A T I O N **************************************/
 
-#if (EP0_BUFF_SIZE != 8) && (EP0_BUFF_SIZE != 16) && \
-    (EP0_BUFF_SIZE != 32) && (EP0_BUFF_SIZE != 64)
+#if(EP0_BUFF_SIZE != 8) && (EP0_BUFF_SIZE != 16) && (EP0_BUFF_SIZE != 32) && (EP0_BUFF_SIZE != 64)
 #error(Invalid buffer size for endpoint 0,check "autofiles\usbcfg.h")
 #endif
 
-#endif //USB_COMPILE_TIME_VALIDATION_H
+#endif // USB_COMPILE_TIME_VALIDATION_H

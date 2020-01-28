@@ -1,5 +1,5 @@
 /************************************************************************
-	usb_config.c
+    usb_config.c
 
     usbGenericHidCommunication reference firmware 3_0_0_0
     Copyright (C) 2011 Simon Inns
@@ -17,7 +17,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-	Email: simon.inns@gmail.com
+    Email: simon.inns@gmail.com
 
 ************************************************************************/
 
@@ -25,9 +25,9 @@
 #define USBCONFIG_H
 
 // Definitions
-#define USB_EP0_BUFF_SIZE		8	// Valid Options are 8, 16, 32, or 64 bytes.								
-#define USB_MAX_NUM_INT     	1
-#define USB_MAX_EP_NUMBER	    1
+#define USB_EP0_BUFF_SIZE 8 // Valid Options are 8, 16, 32, or 64 bytes.
+#define USB_MAX_NUM_INT 1
+#define USB_MAX_EP_NUMBER 1
 
 // USB device descriptor
 #define USB_USER_DEVICE_DESCRIPTOR &device_dsc
@@ -35,7 +35,7 @@
 
 // Configuration descriptors
 #define USB_USER_CONFIG_DESCRIPTOR USB_CD_Ptr
-#define USB_USER_CONFIG_DESCRIPTOR_INCLUDE extern ROM BYTE *ROM USB_CD_Ptr[]
+#define USB_USER_CONFIG_DESCRIPTOR_INCLUDE extern ROM BYTE* ROM USB_CD_Ptr[]
 
 // Set the USB ping pong mode
 #define USB_PING_PONG_MODE USB_PING_PONG__FULL_PING_PONG
@@ -61,9 +61,10 @@
 
 // Section 9.2.6 of the USB 2.0 specifications state that:
 // Control transfers with no data stage must complete within 50ms of the start of the control transfer.
-// Control transfers with (IN) data stage must complete within 50ms of sending the last IN data packet in fullfilment of the data stage.
-// Control transfers with (OUT) data stage have no specific status stage timing (but must not exceed 5 seconds)
-#define USB_STATUS_STAGE_TIMEOUT     (BYTE)45
+// Control transfers with (IN) data stage must complete within 50ms of sending the last IN data packet in fullfilment of
+// the data stage. Control transfers with (OUT) data stage have no specific status stage timing (but must not exceed 5
+// seconds)
+#define USB_STATUS_STAGE_TIMEOUT (BYTE)45
 
 #define USB_SUPPORT_DEVICE
 
@@ -86,11 +87,11 @@
 #define USB_USE_HID
 
 // HID endpoint allocation
-#define HID_INTF_ID             0x00
-#define HID_EP 					1
-#define HID_INT_OUT_EP_SIZE     3
-#define HID_INT_IN_EP_SIZE      3
-#define HID_NUM_OF_DSC          1
-#define HID_RPT01_SIZE          28
+#define HID_INTF_ID 0x00
+#define HID_EP 1
+#define HID_INT_OUT_EP_SIZE 3
+#define HID_INT_IN_EP_SIZE 3
+#define HID_NUM_OF_DSC 1
+#define HID_RPT01_SIZE 28
 
 #endif

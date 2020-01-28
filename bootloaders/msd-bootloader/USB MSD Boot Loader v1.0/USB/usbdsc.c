@@ -31,12 +31,12 @@
  *
  ********************************************************************/
 /*
- * RPG 1/10/07: Added casts from Framework v1.2 
- *    		    Modified descriptors for MSD device as per Microchip example 
+ * RPG 1/10/07: Added casts from Framework v1.2
+ *    		    Modified descriptors for MSD device as per Microchip example
  *
  * IMPORTANT NOTE
- * -------------- 
- *   
+ * --------------
+ *
  * (1) You need to use your own unique USB VID/PID for the Bootloader
  * (2) You will need an additional unique USB VID/PID for your User Code (if it uses USB).
  *
@@ -47,9 +47,9 @@
  * in conjunction with the usbdsc.h file. When a descriptor is added
  * or removed from the main configuration descriptor, i.e. CFG01,
  * the user must also change the descriptor structure defined in
- * the usbdsc.h file. The structure is used to calculate the 
+ * the usbdsc.h file. The structure is used to calculate the
  * descriptor size, i.e. sizeof(CFG01).
- * 
+ *
  * A typical configuration descriptor consists of:
  * At least one configuration descriptor (USB_CFG_DSC)
  * One or more interface descriptors (USB_INTF_DSC)
@@ -80,7 +80,7 @@
  *     USB_INTF_DSC            i01a00;                 \
  *     USB_EP_DSC              ep02i_i01a00;           \
  * } cfg01
- * 
+ *
  * Note the hierarchy of the descriptors above, it follows the USB
  * specification requirement. All endpoints belonging to an interface
  * should be listed immediately after that interface.
@@ -170,8 +170,7 @@
  * state according to the definition in the USB specification.
  *
  ********************************************************************/
- 
- 
+
 /** I N C L U D E S *************************************************/
 #include "usb.h"
 
@@ -179,81 +178,82 @@
 #pragma romdata
 
 /* Device Descriptor */
-rom USB_DEV_DSC device_dsc=
-{    
-    sizeof(USB_DEV_DSC),    // Size of this descriptor in bytes
-    DSC_DEV,                // DEVICE descriptor type
-    0x0200,                 // USB Spec Release Number in BCD format
-    0x00,                   // Class Code
-    0x00,                   // Subclass code
-    0x00,                   // Protocol code
-    EP0_BUFF_SIZE,          // Max packet size for EP0, see usbcfg.h
-    6017,					// Vendor ID (USE YOUR OWN!)
-    3611,					// Product ID (USE YOUR OWN!)
-    0x0100,                 // Device release number in BCD format (1.0)
-    0x01,                   // Manufacturer string index
-    0x01,                   // Product string index
-    0x00,                   // Device serial number string index
-    0x01                    // Number of possible configurations
+rom USB_DEV_DSC device_dsc = {
+    sizeof(USB_DEV_DSC), // Size of this descriptor in bytes
+    DSC_DEV,             // DEVICE descriptor type
+    0x0200,              // USB Spec Release Number in BCD format
+    0x00,                // Class Code
+    0x00,                // Subclass code
+    0x00,                // Protocol code
+    EP0_BUFF_SIZE,       // Max packet size for EP0, see usbcfg.h
+    6017,                // Vendor ID (USE YOUR OWN!)
+    3611,                // Product ID (USE YOUR OWN!)
+    0x0100,              // Device release number in BCD format (1.0)
+    0x01,                // Manufacturer string index
+    0x01,                // Product string index
+    0x00,                // Device serial number string index
+    0x01                 // Number of possible configurations
 };
 
 /* Configuration 1 Descriptor */
-CFG01={
+CFG01 = {
     /* Configuration Descriptor */
-    sizeof(USB_CFG_DSC),    // Size of this descriptor in bytes
-    DSC_CFG,                // CONFIGURATION descriptor type
-    sizeof(cfg01),          // Total length of data for this cfg
-    1,                      // Number of interfaces in this cfg
-    1,                      // Index value of this configuration
-    0,                      // Configuration string index
-    _DEFAULT|_SELF,         // Attributes, see usbdefs_std_dsc.h
-    150,                    // Max power consumption (2X mA)
+    sizeof(USB_CFG_DSC), // Size of this descriptor in bytes
+    DSC_CFG,             // CONFIGURATION descriptor type
+    sizeof(cfg01),       // Total length of data for this cfg
+    1,                   // Number of interfaces in this cfg
+    1,                   // Index value of this configuration
+    0,                   // Configuration string index
+    _DEFAULT | _SELF,    // Attributes, see usbdefs_std_dsc.h
+    150,                 // Max power consumption (2X mA)
 
     /* Interface Descriptor */
-    sizeof(USB_INTF_DSC),   // Size of this descriptor in bytes
-    DSC_INTF,               // INTERFACE descriptor type
-    0,                      // Interface Number
-    0,                      // Alternate Setting Number
-    2,                      // Number of endpoints in this intf
-    MSD_INTF,               // Class code
-    MSD_INTF_SUBCLASS,      // Subclass code
-    MSD_PROTOCOL, 		    // Protocol code
-    0,                      // Interface string index
-    
+    sizeof(USB_INTF_DSC), // Size of this descriptor in bytes
+    DSC_INTF,             // INTERFACE descriptor type
+    0,                    // Interface Number
+    0,                    // Alternate Setting Number
+    2,                    // Number of endpoints in this intf
+    MSD_INTF,             // Class code
+    MSD_INTF_SUBCLASS,    // Subclass code
+    MSD_PROTOCOL,         // Protocol code
+    0,                    // Interface string index
+
     /* Endpoint Descriptor */
-    sizeof(USB_EP_DSC),DSC_EP,_EP01_IN,_BULK,MSD_IN_EP_SIZE,0x00,
-    sizeof(USB_EP_DSC),DSC_EP,_EP01_OUT,_BULK,MSD_OUT_EP_SIZE,0x00
+    sizeof(USB_EP_DSC),
+    DSC_EP,
+    _EP01_IN,
+    _BULK,
+    MSD_IN_EP_SIZE,
+    0x00,
+    sizeof(USB_EP_DSC),
+    DSC_EP,
+    _EP01_OUT,
+    _BULK,
+    MSD_OUT_EP_SIZE,
+    0x00
 
 };
 
-/* String Descriptors */    
-rom struct{byte bLength;byte bDscType;word string[1];}sd000={
-sizeof(sd000),DSC_STR,0x0409};
+/* String Descriptors */
+rom struct {
+  byte bLength;
+  byte bDscType;
+  word string[1];
+} sd000 = {sizeof(sd000), DSC_STR, 0x0409};
 
-rom struct{byte bLength;byte bDscType;word string[15];}sd001={
-sizeof(sd001),DSC_STR,
-'F','i','r','m','w','a','r','e',' ','L','o','a','d','e','r'};
+rom struct {
+  byte bLength;
+  byte bDscType;
+  word string[15];
+} sd001 = {sizeof(sd001), DSC_STR, 'F', 'i', 'r', 'm', 'w', 'a', 'r', 'e', ' ', 'L', 'o', 'a', 'd', 'e', 'r'};
 
+rom const unsigned char* rom USB_CD_Ptr[] = {(rom const unsigned char* rom) & cfg01};
 
-rom const unsigned char *rom USB_CD_Ptr[]=
-{
-	(rom const unsigned char *rom)&cfg01
-};
+rom const unsigned char* rom USB_SD_Ptr[] = {(rom const unsigned char* rom) & sd000,
+                                             (rom const unsigned char* rom) & sd001};
 
-rom const unsigned char *rom USB_SD_Ptr[]=
-{
-	(rom const unsigned char *rom)&sd000,
-	(rom const unsigned char *rom)&sd001
-};
-
-
-rom pFunc ClassReqHandler[1]=
-{
-    &USBCheckMSDRequest
-};
+rom pFunc ClassReqHandler[1] = {&USBCheckMSDRequest};
 
 #pragma code
-
-
 
 /** EOF usbdsc.c ****************************************************/

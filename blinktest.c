@@ -1,4 +1,3 @@
-#include "src/config-bits.h"
 #include "lib/comparator.h"
 #include "lib/const.h"
 #include "lib/device.h"
@@ -7,6 +6,7 @@
 #include "lib/softpwm.h"
 #include "lib/timer.h"
 #include "pictest.h"
+#include "src/config-bits.h"
 
 #if USE_UART
 #include "lib/uart.h"

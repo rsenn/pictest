@@ -21,15 +21,14 @@
 #ifndef ENCODER_H_INCLUDED
 #define ENCODER_H_INCLUDED
 
-#include "osdep/osdep.h"
 #include "dtrace/dtrace.h"
+#include "osdep/osdep.h"
 
 // stl includes
-#include <string>
 #include <algorithm>
-#include <list>
 #include <iostream>
+#include <list>
+#include <string>
 using namespace std;
-
 
 #endif // ENCODER_H_INCLUDED

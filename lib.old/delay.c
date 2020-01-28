@@ -39,12 +39,12 @@ CALL_CYCLES_BIG(usecs);*/
 void
 cycle_eater(void) {
   __asm global correction banksel _dvar // mumblegrumble
-      nop delay_big : movlw 191         // Calibrated for b*764 cycles
-                      movwf _dvar +
-                      0                 // Load W into reg
-                      delay_inner : nop // To make the inner loop take 4 cycles per
-                                    decfsz _dvar +
-                                    0,
+          nop delay_big : movlw 191     // Calibrated for b*764 cycles
+                          movwf _dvar +
+                          0                 // Load W into reg
+                          delay_inner : nop // To make the inner loop take 4 cycles per
+                                            decfsz _dvar +
+                                        0,
       1 goto delay_inner decfsz _dvar + 1, 1 goto delay_big correction : decfsz _dvar + 2, 1 goto correction __endasm;
 }
 #endif

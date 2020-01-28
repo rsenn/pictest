@@ -16,7 +16,7 @@
  *					For use with PICDEM FS USB board
  *					EEPROM locations 0 to 7 each contain a value (0 - 0x0F)
  *					Each value determines which LEDS (D1 - D4) are lit
- *						e.g. 0x01 will light D1 & 0x0F wil light them all. 
+ *						e.g. 0x01 will light D1 & 0x0F wil light them all.
  *					Every 800mS the next value is read (wrapped) and written to the LEDs
  *					On first ever power-up the LED pattern is initialised to count up (0 - 7)
  *					The pattern may be altered via the CONFIG file through the MSD Bootloader
@@ -28,55 +28,50 @@
  *					(1) Export the hex file (file -> export) without configuration fuses, ID, or EEPROM data
  *					(2) Format the firmware using the accompanying HEXStream Windows application
  *
- *					See the accompanying documentation for a more detailed explanation 		
+ *					See the accompanying documentation for a more detailed explanation
  *
- * History: 
- * 		
- * 
+ * History:
+ *
+ *
  ********************************************************************/
-
 
 /** INCLUDES **/
 #include "Config_Fuses.h"
-#include "sample.h"		
-
+#include "sample.h"
 
 /** GLOBAL VARIABLES **/
-										
 
 /** FUNCTION PROTOTYPES **/
 
 static void InitializeSystem(void);
 
-
 /** VECTOR REMAPPING **/
 
-extern void _startup (void);        									// Remap to User area
+extern void _startup(void); // Remap to User area
 #pragma code _RESET_VECTOR = REMAP_RESET_VECTOR
-void _reset (void)
-{
-    _asm goto _startup _endasm
+void
+_reset(void) {
+  _asm goto _startup _endasm
 }
 
-// Ensure correct interrupt operation when not programmed with Bootloader 
+// Ensure correct interrupt operation when not programmed with Bootloader
 #pragma code HIGH_INTERRUPT_VECTOR = 0x08
-void High_ISR (void)
-{
-     _asm goto REMAP_HIGH_INTERRUPT_VECTOR _endasm
+void
+High_ISR(void) {
+  _asm goto REMAP_HIGH_INTERRUPT_VECTOR _endasm
 }
 
 #pragma code LOW_INTERRUPT_VECTOR = 0x18
-void Low_ISR (void)
-{
-	  _asm goto REMAP_LOW_INTERRUPT_VECTOR _endasm
+void
+Low_ISR(void) {
+  _asm goto REMAP_LOW_INTERRUPT_VECTOR _endasm
 }
 
-/** FIRMWARE VERSION **/												// Firmware version is located in ROM
+/** FIRMWARE VERSION **/ // Firmware version is located in ROM
 
 #pragma romdata fw_ver = FIRMWARE_VERSION
 const rom byte Firmware_Version[] = {MAJOR_FW_VAL, MINOR_FW_VAL, FW_VALID};
 #pragma romdata
-
 
 #pragma code
 
@@ -95,37 +90,31 @@ const rom byte Firmware_Version[] = {MAJOR_FW_VAL, MINOR_FW_VAL, FW_VALID};
  *
  * Note:            None
  *****************************************************************************/
-void main(void)
-{
+void
+main(void) {
 
-	byte i = 0;
+  byte i = 0;
 
-	InitializeSystem();													// Initialise everything
+  InitializeSystem(); // Initialise everything
 
-	
-    while(1)															// Infinite task loop
-    {  
-		
-		// Display next LED pattern
-		if( Timer_800mS == 0 )
-		{
-			mSet_Status_LEDS( ReadEE(i) )
-			i++;														// Increment & wrap EEPROM address
-			i &= 0x07;
-			Timer_800mS = 800;											// Preset timer
-		}
-		
-		// Enter Bootloader if Switch 2 is pressed (no debounce)
-		if( !SWITCH_2 )													
-		{
-			WriteEE(SIG1_VAL, BOOT_MODE_SIG1);							// Write BootLoader signature to EE
- 			WriteEE(SIG2_VAL, BOOT_MODE_SIG2);
-	
-			Reset_CPU();												// Reset & enter Boot Mode
-		}
-	}
-	     
- 
+  while(1) // Infinite task loop
+  {
+
+    // Display next LED pattern
+    if(Timer_800mS == 0) {
+      mSet_Status_LEDS(ReadEE(i)) i++; // Increment & wrap EEPROM address
+      i &= 0x07;
+      Timer_800mS = 800; // Preset timer
+    }
+
+    // Enter Bootloader if Switch 2 is pressed (no debounce)
+    if(!SWITCH_2) {
+      WriteEE(SIG1_VAL, BOOT_MODE_SIG1); // Write BootLoader signature to EE
+      WriteEE(SIG2_VAL, BOOT_MODE_SIG2);
+
+      Reset_CPU(); // Reset & enter Boot Mode
+    }
+  }
 }
 
 /******************************************************************************
@@ -144,26 +133,24 @@ void main(void)
  *                  here.
  *
  *****************************************************************************/
-static void InitializeSystem(void)
-{
-	byte i;
+static void
+InitializeSystem(void) {
+  byte i;
 
- 	mInitAllIO()														// Initialise PIC I/O
-	mInitTimer_1mS()													// Start 1mS timer
+  mInitAllIO()         // Initialise PIC I/O
+      mInitTimer_1mS() // Start 1mS timer
 
-	mSet_Status_LEDS(0)													// Clear status LEDS
+      mSet_Status_LEDS(0) // Clear status LEDS
 
-	if( (ReadEE(ID1) != ID1_VAL) || (ReadEE(ID2) != ID2_VAL) )			// First ever power up?		
-	{
-		WriteEE(ID1_VAL, ID1);											// Write ID1 to EE  (to flag 1st power up init done)
-		WriteEE(ID2_VAL, ID2);											// Write ID2 to EE
-		
-		for(i = 0; i < MAX_PATTERNS; i++)								// Write a default pattern to EEPROM
-			WriteEE(i,i);												// Binary count: 0 - 7
-	}																
+      if((ReadEE(ID1) != ID1_VAL) || (ReadEE(ID2) != ID2_VAL)) // First ever power up?
+  {
+    WriteEE(ID1_VAL, ID1); // Write ID1 to EE  (to flag 1st power up init done)
+    WriteEE(ID2_VAL, ID2); // Write ID2 to EE
 
+    for(i = 0; i < MAX_PATTERNS; i++) // Write a default pattern to EEPROM
+      WriteEE(i, i);                  // Binary count: 0 - 7
+  }
 }
-
 
 /******************************************************************************
  * Function:        byte ReadEE(byte address)
@@ -180,14 +167,13 @@ static void InitializeSystem(void)
  *
  *****************************************************************************/
 
-byte ReadEE(byte address)
-{
-	EECON1 = 0;
-	EEADR = address;
-	EECON1bits.RD = 1;
-	return (EEDATA);
+byte
+ReadEE(byte address) {
+  EECON1 = 0;
+  EEADR = address;
+  EECON1bits.RD = 1;
+  return (EEDATA);
 }
-
 
 /******************************************************************************
  * Function:        void WriteEE(byte data, byte address)
@@ -205,22 +191,22 @@ byte ReadEE(byte address)
  *
  *****************************************************************************/
 
-void WriteEE(byte data, byte address)
-{
-	EECON1 = 0;
-	EECON1bits.WREN = 1;
-	EEADR = address;
-	EEDATA = data;
-	EECON2 = 0x55;
-	EECON2 = 0xAA;
-	EECON1bits.WR = 1;
+void
+WriteEE(byte data, byte address) {
+  EECON1 = 0;
+  EECON1bits.WREN = 1;
+  EEADR = address;
+  EEDATA = data;
+  EECON2 = 0x55;
+  EECON2 = 0xAA;
+  EECON1bits.WR = 1;
 
-	while(EECON1bits.WR);												// Wait until written
+  while(EECON1bits.WR)
+    ; // Wait until written
 
-	PIR2bits.EEIF = 0;													// Clear flags & disable writes
-	EECON1 = 0;
+  PIR2bits.EEIF = 0; // Clear flags & disable writes
+  EECON1 = 0;
 }
-
 
 /******************************************************************************
  * Function:        void Reset_CPU(void)
@@ -239,10 +225,8 @@ void WriteEE(byte data, byte address)
  *
  *****************************************************************************/
 
-void Reset_CPU(void)
-{
+void
+Reset_CPU(void) {
 
-	_asm reset _endasm
-
+  _asm reset _endasm
 }
-

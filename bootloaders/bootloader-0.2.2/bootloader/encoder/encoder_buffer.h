@@ -25,12 +25,10 @@
 
 #include "buffer/fragbuffer.h"
 
-class EncoderBuffer: public FragBuffer
-{
+class EncoderBuffer : public FragBuffer {
 public:
-	void encode(XTEA_KEY_T key[4]);
-	void decode(XTEA_KEY_T key[4]);
+  void encode(XTEA_KEY_T key[4]);
+  void decode(XTEA_KEY_T key[4]);
 };
 
-
-#endif //ENCODER_BUFFER_H_INCLUDED
+#endif // ENCODER_BUFFER_H_INCLUDED

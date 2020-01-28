@@ -15,5 +15,5 @@ limitations under the License.
 
 *******************************************************************************/
 
-#include "usb_config.h"
 #include "fileio_config.h"
+#include "usb_config.h"

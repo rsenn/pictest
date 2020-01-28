@@ -24,17 +24,17 @@
 #define SYSTEM_H
 
 #if defined(COMPILER_MPLAB_C18) //++VSK def(COMP_MPLAB_C18)
-    #define __attribute__(a)
-    #define const far rom
+#define __attribute__(a)
+#define const far rom
 
-    #include <p18cxxx.h>
-    #include <adc.h>
+#include <adc.h>
+#include <p18cxxx.h>
 
 #elif defined(__XC8)
-    #include <xc.h>
+#include <xc.h>
 
 #else
-    #pragma warning "compiler ???"
+#pragma warning "compiler ???"
 #endif
 
 //#include <stdbool.h>  --VSK wth is ist needed for ?
@@ -45,52 +45,45 @@
 //#include <fixed_address_memory.h>
 //#include <power.h>
 #if defined(__18F2550)
-    #include "../config_18F2550.h"
+#include "../config_18F2550.h"
 #elif defined(__18F4550)
-    #include "../config_18F4550.h"
+#include "../config_18F4550.h"
 
 #else
-    #pragma warning "which PIC ???"
+#pragma warning "which PIC ???"
 #endif
 #define MAIN_RETURN void
 
 /*** System States **************************************************/
-typedef enum
-{
-    SYSTEM_STATE_USB_START,
-    SYSTEM_STATE_USB_SUSPEND,
-    SYSTEM_STATE_USB_RESUME
-} SYSTEM_STATE;
-
+typedef enum { SYSTEM_STATE_USB_START, SYSTEM_STATE_USB_SUSPEND, SYSTEM_STATE_USB_RESUME } SYSTEM_STATE;
 
 /*********************************************************************
-* Function: void SYSTEM_Initialize( SYSTEM_STATE state )
-*
-* Overview: Initializes the system.
-*
-* PreCondition: None
-*
-* Input:  SYSTEM_STATE - the state to initialize the system into
-*
-* Output: None
-*
-********************************************************************/
-void SYSTEM_Initialize( SYSTEM_STATE state );
-
+ * Function: void SYSTEM_Initialize( SYSTEM_STATE state )
+ *
+ * Overview: Initializes the system.
+ *
+ * PreCondition: None
+ *
+ * Input:  SYSTEM_STATE - the state to initialize the system into
+ *
+ * Output: None
+ *
+ ********************************************************************/
+void SYSTEM_Initialize(SYSTEM_STATE state);
 
 /*********************************************************************
-* Function: void SYSTEM_Tasks(void)
-*
-* Overview: Runs system level tasks that keep the system running
-*
-* PreCondition: System has been initalized with SYSTEM_Initialize()
-*
-* Input: None
-*
-* Output: None
-*
-********************************************************************/
-//void SYSTEM_Tasks(void);
-#define SYSTEM_Tasks()  // VSK nothing to do ???
+ * Function: void SYSTEM_Tasks(void)
+ *
+ * Overview: Runs system level tasks that keep the system running
+ *
+ * PreCondition: System has been initalized with SYSTEM_Initialize()
+ *
+ * Input: None
+ *
+ * Output: None
+ *
+ ********************************************************************/
+// void SYSTEM_Tasks(void);
+#define SYSTEM_Tasks() // VSK nothing to do ???
 
-#endif //SYSTEM_H
+#endif // SYSTEM_H

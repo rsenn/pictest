@@ -48,204 +48,202 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
   Section: Included Files
 */
 
-#include <xc.h>
 #include "memory.h"
-
+#include <xc.h>
 
 /**
   Section: Flash Module APIs
 */
 
-uint8_t FLASH_ReadByte(uint32_t flashAddr)
-{
-    TBLPTRU = (uint8_t)((flashAddr & 0x00FF0000) >> 16);
-    TBLPTRH = (uint8_t)((flashAddr & 0x0000FF00)>> 8);
-    TBLPTRL = (uint8_t)(flashAddr & 0x000000FF);
+uint8_t
+FLASH_ReadByte(uint32_t flashAddr) {
+  TBLPTRU = (uint8_t)((flashAddr & 0x00FF0000) >> 16);
+  TBLPTRH = (uint8_t)((flashAddr & 0x0000FF00) >> 8);
+  TBLPTRL = (uint8_t)(flashAddr & 0x000000FF);
 
-    asm("TBLRD");
+  asm("TBLRD");
 
-    return (TABLAT);
+  return (TABLAT);
 }
 
-uint16_t FLASH_ReadWord(uint32_t flashAddr)
-{
-    return ((((uint16_t)FLASH_ReadByte(flashAddr+1))<<8)|(FLASH_ReadByte(flashAddr)));
+uint16_t
+FLASH_ReadWord(uint32_t flashAddr) {
+  return ((((uint16_t)FLASH_ReadByte(flashAddr + 1)) << 8) | (FLASH_ReadByte(flashAddr)));
 }
 
-void FLASH_WriteSome(uint32_t flashAddr, uint8_t *flashRdBufPtr, uint8_t *byte, uint8_t count){
-    uint32_t blockStartAddr = (uint32_t)(flashAddr & ((END_FLASH-1) ^ (ERASE_FLASH_BLOCKSIZE-1)));
-    uint8_t offset = (uint8_t)(flashAddr & (ERASE_FLASH_BLOCKSIZE-1));
-    
-    FLASH_WriteCount(blockStartAddr, offset, flashRdBufPtr, byte, count);
-    // Check if we wanted to write to the next block
-    if((offset+count) > ERASE_FLASH_BLOCKSIZE){
-        FLASH_WriteCount(blockStartAddr+ERASE_FLASH_BLOCKSIZE, 0,flashRdBufPtr, &byte[ERASE_FLASH_BLOCKSIZE-offset], offset+count-ERASE_FLASH_BLOCKSIZE);
+void
+FLASH_WriteSome(uint32_t flashAddr, uint8_t* flashRdBufPtr, uint8_t* byte, uint8_t count) {
+  uint32_t blockStartAddr = (uint32_t)(flashAddr & ((END_FLASH - 1) ^ (ERASE_FLASH_BLOCKSIZE - 1)));
+  uint8_t offset = (uint8_t)(flashAddr & (ERASE_FLASH_BLOCKSIZE - 1));
+
+  FLASH_WriteCount(blockStartAddr, offset, flashRdBufPtr, byte, count);
+  // Check if we wanted to write to the next block
+  if((offset + count) > ERASE_FLASH_BLOCKSIZE) {
+    FLASH_WriteCount(blockStartAddr + ERASE_FLASH_BLOCKSIZE,
+                     0,
+                     flashRdBufPtr,
+                     &byte[ERASE_FLASH_BLOCKSIZE - offset],
+                     offset + count - ERASE_FLASH_BLOCKSIZE);
+  }
+}
+void
+FLASH_WriteCount(uint32_t blockStartAddr, uint8_t offset, uint8_t* flashRdBufPtr, uint8_t* byte, uint8_t count) {
+  uint8_t i;
+
+  // Entire row will be erased, read and save the existing data
+  for(i = 0; i < ERASE_FLASH_BLOCKSIZE; i++) {
+    if(i >= offset && i < (offset + count)) {
+      flashRdBufPtr[i] = *byte++;
+    } else {
+      flashRdBufPtr[i] = FLASH_ReadByte((blockStartAddr + i));
     }
+  }
+  // Writes buffer contents to current block
+  FLASH_WriteBlock(blockStartAddr, flashRdBufPtr);
 }
-void FLASH_WriteCount(uint32_t blockStartAddr, uint8_t offset, uint8_t *flashRdBufPtr, uint8_t *byte, uint8_t count){
-    uint8_t i;
 
-    // Entire row will be erased, read and save the existing data
-    for (i=0; i<ERASE_FLASH_BLOCKSIZE; i++)
-    {
-        if(i >= offset && i < (offset + count)){
-            flashRdBufPtr[i] = *byte++;
-        } else {
-            flashRdBufPtr[i] = FLASH_ReadByte((blockStartAddr+i));
-        }
+void
+FLASH_WriteByte(uint32_t flashAddr, uint8_t* flashRdBufPtr, uint8_t byte) {
+  uint32_t blockStartAddr = (uint32_t)(flashAddr & ((END_FLASH - 1) ^ (ERASE_FLASH_BLOCKSIZE - 1)));
+  uint8_t offset = (uint8_t)(flashAddr & (ERASE_FLASH_BLOCKSIZE - 1));
+  uint8_t i;
+
+  // Entire row will be erased, read and save the existing data
+  for(i = 0; i < ERASE_FLASH_BLOCKSIZE; i++) {
+    flashRdBufPtr[i] = FLASH_ReadByte((blockStartAddr + i));
+  }
+
+  // Load byte at offset
+  flashRdBufPtr[offset] = byte;
+
+  // Writes buffer contents to current block
+  FLASH_WriteBlock(blockStartAddr, flashRdBufPtr);
+}
+
+int8_t
+FLASH_WriteBlock(uint32_t writeAddr, uint8_t* flashWrBufPtr) {
+  uint32_t blockStartAddr = (uint32_t)(writeAddr & ((END_FLASH - 1) ^ (ERASE_FLASH_BLOCKSIZE - 1)));
+  uint8_t i;
+
+  // Flash write must start at the beginning of a row
+  if(writeAddr != blockStartAddr) {
+    return -1;
+  }
+
+  // Block erase sequence
+  FLASH_EraseBlock(writeAddr);
+
+  // Block write sequence
+  TBLPTRU = (uint8_t)((writeAddr & 0x00FF0000) >> 16); // Load Table point register
+  TBLPTRH = (uint8_t)((writeAddr & 0x0000FF00) >> 8);
+  TBLPTRL = (uint8_t)(writeAddr & 0x000000FF);
+
+  // Write block of data
+  for(i = 0; i < WRITE_FLASH_BLOCKSIZE; i++) {
+    TABLAT = flashWrBufPtr[i]; // Load data byte
+
+    if(i == (WRITE_FLASH_BLOCKSIZE - 1)) {
+      asm("TBLWT");
+    } else {
+      asm("TBLWTPOSTINC");
     }
-    // Writes buffer contents to current block
-    FLASH_WriteBlock(blockStartAddr, flashRdBufPtr);
+  }
+
+  return FLASH_PerformWrite(false);
 }
 
-void FLASH_WriteByte(uint32_t flashAddr, uint8_t *flashRdBufPtr, uint8_t byte)
-{
-    uint32_t blockStartAddr = (uint32_t)(flashAddr & ((END_FLASH-1) ^ (ERASE_FLASH_BLOCKSIZE-1)));
-    uint8_t offset = (uint8_t)(flashAddr & (ERASE_FLASH_BLOCKSIZE-1));
-    uint8_t i;
+int8_t
+FLASH_WriteConfigs(uint8_t* cfgWrBufPtr) {
+  uint8_t i;
+  // Write block of data
+  TBLPTRU = (uint8_t)0x30; // Load Table point register
+  TBLPTRH = (uint8_t)0x00;
+  for(i = 0; i < 14; i++) {
+    TBLPTRL = i;
+    TABLAT = cfgWrBufPtr[i]; // Load data byte
+    asm("TBLWT");
 
-    // Entire row will be erased, read and save the existing data
-    for (i=0; i<ERASE_FLASH_BLOCKSIZE; i++)
-    {
-        flashRdBufPtr[i] = FLASH_ReadByte((blockStartAddr+i));
-    }
-
-    // Load byte at offset
-    flashRdBufPtr[offset] = byte;
-
-    // Writes buffer contents to current block
-    FLASH_WriteBlock(blockStartAddr, flashRdBufPtr);
+    FLASH_PerformWrite(true);
+  }
+  return 0;
 }
 
-int8_t FLASH_WriteBlock(uint32_t writeAddr, uint8_t *flashWrBufPtr )
-{
-    uint32_t blockStartAddr  = (uint32_t )(writeAddr & ((END_FLASH-1) ^ (ERASE_FLASH_BLOCKSIZE-1)));
-    uint8_t i;
+int8_t
+FLASH_PerformWrite(bool writeCFGS) {
+  uint8_t GIEBitValue = INTCONbits.GIE; // Save interrupt enable
 
-    // Flash write must start at the beginning of a row
-    if( writeAddr != blockStartAddr )
-    {
-        return -1;
-    }
+  EECON1bits.EEPGD = 1;
+  EECON1bits.CFGS = writeCFGS ? 1 : 0;
+  EECON1bits.WREN = 1;
+  INTCONbits.GIE = 0; // Disable interrupts
+  EECON2 = 0x55;
+  EECON2 = 0xAA;
+  EECON1bits.WR = 1; // Start program
 
-    // Block erase sequence
-    FLASH_EraseBlock(writeAddr);
-    
-    // Block write sequence
-    TBLPTRU = (uint8_t)((writeAddr & 0x00FF0000) >> 16);    // Load Table point register
-    TBLPTRH = (uint8_t)((writeAddr & 0x0000FF00)>> 8);
-    TBLPTRL = (uint8_t)(writeAddr & 0x000000FF);
+  EECON1bits.WREN = 0;          // Disable writes to memory
+  INTCONbits.GIE = GIEBitValue; // Restore interrupt enable
 
-    // Write block of data
-    for (i=0; i<WRITE_FLASH_BLOCKSIZE; i++)
-    {
-        TABLAT = flashWrBufPtr[i];  // Load data byte
-
-        if (i == (WRITE_FLASH_BLOCKSIZE-1))
-        {
-            asm("TBLWT");
-        }
-        else
-        {
-            asm("TBLWTPOSTINC");
-        }
-    }
-
-    return FLASH_PerformWrite(false);
+  return 0;
 }
+void
+FLASH_EraseBlock(uint32_t baseAddr) {
+  uint8_t GIEBitValue = INTCONbits.GIE; // Save interrupt enable
 
-int8_t FLASH_WriteConfigs(uint8_t *cfgWrBufPtr){
-    uint8_t i;
-    // Write block of data
-    TBLPTRU = (uint8_t)0x30;    // Load Table point register
-    TBLPTRH = (uint8_t)0x00;
-    for (i=0; i < 14; i++)
-    {
-        TBLPTRL = i;
-        TABLAT = cfgWrBufPtr[i];  // Load data byte
-        asm("TBLWT");
-        
-        FLASH_PerformWrite(true);
-    }
-    return 0;
-}
+  TBLPTRU = (uint8_t)((baseAddr & 0x00FF0000) >> 16);
+  TBLPTRH = (uint8_t)((baseAddr & 0x0000FF00) >> 8);
+  TBLPTRL = (uint8_t)(baseAddr & 0x000000FF);
 
-int8_t FLASH_PerformWrite(bool writeCFGS){
-    uint8_t GIEBitValue = INTCONbits.GIE;     // Save interrupt enable
-    
-    EECON1bits.EEPGD = 1;
-    EECON1bits.CFGS = writeCFGS ? 1 : 0;
-    EECON1bits.WREN = 1;
-    INTCONbits.GIE = 0; // Disable interrupts
-    EECON2 = 0x55;
-    EECON2 = 0xAA;
-    EECON1bits.WR = 1;  // Start program
-
-    EECON1bits.WREN = 0;    // Disable writes to memory
-    INTCONbits.GIE = GIEBitValue;   // Restore interrupt enable
-
-    return 0;
-}
-void FLASH_EraseBlock(uint32_t baseAddr)
-{
-    uint8_t GIEBitValue = INTCONbits.GIE;   // Save interrupt enable
-
-    TBLPTRU = (uint8_t)((baseAddr & 0x00FF0000) >> 16);
-    TBLPTRH = (uint8_t)((baseAddr & 0x0000FF00)>> 8);
-    TBLPTRL = (uint8_t)(baseAddr & 0x000000FF);
-
-    EECON1bits.EEPGD = 1;
-    EECON1bits.CFGS = 0;
-    EECON1bits.WREN = 1;
-    EECON1bits.FREE = 1;
-    INTCONbits.GIE = 0; // Disable interrupts
-    EECON2 = 0x55;
-    EECON2 = 0xAA;
-    EECON1bits.WR = 1;
-    INTCONbits.GIE = GIEBitValue;   // Restore interrupt enable
+  EECON1bits.EEPGD = 1;
+  EECON1bits.CFGS = 0;
+  EECON1bits.WREN = 1;
+  EECON1bits.FREE = 1;
+  INTCONbits.GIE = 0; // Disable interrupts
+  EECON2 = 0x55;
+  EECON2 = 0xAA;
+  EECON1bits.WR = 1;
+  INTCONbits.GIE = GIEBitValue; // Restore interrupt enable
 }
 
 /**
   Section: Data EEPROM Module APIs
 */
 
-void DATAEE_WriteByte(uint8_t bAdd, uint8_t bData)
-{
-    uint8_t GIEBitValue = INTCONbits.GIE;
+void
+DATAEE_WriteByte(uint8_t bAdd, uint8_t bData) {
+  uint8_t GIEBitValue = INTCONbits.GIE;
 
-    EEADR = (bAdd & 0xFF);
-    EEDATA = bData;
-    EECON1bits.EEPGD = 0;
-    EECON1bits.CFGS = 0;
-    EECON1bits.WREN = 1;
-    INTCONbits.GIE = 0;     // Disable interrupts
-    EECON2 = 0x55;
-    EECON2 = 0xAA;
-    EECON1bits.WR = 1;
-    // Wait for write to complete
-    while (EECON1bits.WR)
-    {
-    }
+  EEADR = (bAdd & 0xFF);
+  EEDATA = bData;
+  EECON1bits.EEPGD = 0;
+  EECON1bits.CFGS = 0;
+  EECON1bits.WREN = 1;
+  INTCONbits.GIE = 0; // Disable interrupts
+  EECON2 = 0x55;
+  EECON2 = 0xAA;
+  EECON1bits.WR = 1;
+  // Wait for write to complete
+  while(EECON1bits.WR) {
+  }
 
-    EECON1bits.WREN = 0;
-    INTCONbits.GIE = GIEBitValue;   // Restore interrupt enable
+  EECON1bits.WREN = 0;
+  INTCONbits.GIE = GIEBitValue; // Restore interrupt enable
 }
 
-uint8_t DATAEE_ReadByte(uint8_t bAdd)
-{
-    EEADR = (bAdd & 0xFF);
-    EECON1bits.CFGS = 0;
-    EECON1bits.EEPGD = 0;
-    EECON1bits.RD = 1;
-    NOP();  // NOPs may be required for latency at high frequencies
-    NOP();
+uint8_t
+DATAEE_ReadByte(uint8_t bAdd) {
+  EEADR = (bAdd & 0xFF);
+  EECON1bits.CFGS = 0;
+  EECON1bits.EEPGD = 0;
+  EECON1bits.RD = 1;
+  NOP(); // NOPs may be required for latency at high frequencies
+  NOP();
 
-    return (EEDATA);
+  return (EEDATA);
 }
-void MEMORY_Tasks( void )
-{
-    /* TODO : Add interrupt handling code */
-    PIR2bits.EEIF = 0;
+void
+MEMORY_Tasks(void) {
+  /* TODO : Add interrupt handling code */
+  PIR2bits.EEIF = 0;
 }
 /**
  End of File

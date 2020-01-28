@@ -16,16 +16,16 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 //  include often used files from the stdlib
-#include <iostream>
+#include <algorithm>
 #include <fstream>
+#include <iostream>
+#include <iterator>
 #include <string>
 #include <vector>
-#include <algorithm>
-#include <iterator>
 
 ///////////////////////////////////////////////////////////////////////////////
 //  include boost config
-#include <boost/config.hpp>     //  global configuration information
+#include <boost/config.hpp> //  global configuration information
 
 ///////////////////////////////////////////////////////////////////////////////
 //  build version
