@@ -10,7 +10,9 @@
 #endif // defined __12f1840
 
 #ifdef __16f876a
+#ifndef HI_TECH_C
 #include "config-16f876a.h"
+#endif
 #endif // defined __16f876a
 
 #ifdef __18f252
