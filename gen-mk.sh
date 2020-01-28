@@ -11,7 +11,7 @@ IFS="
 [ $# -gt 0 ] && SOURCES="$*" ||
 SOURCES='blinktest.c lib/comparator.c lib/random.c lib/ser.c lib/softpwm.c lib/softser.c lib/timer.c lib/uart.c'
 echo "SOURCES='$SOURCES'" 1>&2
-set -- --preproc="./cpp-xc8${EXEEXT} -DMCHP_XC8=1 -D__XC=1" 
+set -- --preproc="./cpp-xc8${EXEEXT}" 
 : ${CHIPS='16f876a 18f2450 18f2520 18f2550 18f25k22 18f25k50'}
 CHIPS='18f25k50 18f2550'
 BUILD_TYPES='debug release'
