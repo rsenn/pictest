@@ -9,8 +9,8 @@ case "$OS" in
 IFS="
  	"
 [ $# -gt 0 ] && SOURCES="$*" ||
-SOURCES='blinktest.c lib/comparator.c lib/random.c lib/ser.c lib/softpwm.c lib/softser.c lib/timer.c lib/uart.c'
-echo "SOURCES='$SOURCES'" 1>&2
+SOURCES='blinktest.c lib/{adc,buffer,comparator,delay,format,random,ser,softpwm,softser,timer,uart}.? src/*.c'
+
 #set -- --preproc="./cpp-xc8${EXEEXT}" 
 : ${CHIPS='16f876a 18f2450 18f2520 18f2550 18f25k22 18f25k50'}
 CHIPS='18f25k50 18f2550'
@@ -18,6 +18,10 @@ BUILD_TYPES='debug release'
 BUILD_TYPES='debug' 
 : ${MAKE_PROGRAMS:='make ninja nmake mplab'}
 : ${PROGRAM_NAME=${SOURCES%%.*}}
+
+eval "SOURCES=\$(set -- $SOURCES; ls -d \$@)"
+echo "SOURCES='$SOURCES'" 1>&2
+
 for CHIP in $CHIPS;  do
 	for BUILD_TYPE in $BUILD_TYPES; do
 		for COMPILER in xc8 htc sdcc; do 
