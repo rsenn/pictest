@@ -11,7 +11,7 @@ nl="
 IFS="
  	"
 [ $# -gt 0 ] && SOURCES="$*" ||
-SOURCES='${PROGRAM_NAME}.c ${PROGRAM_NAME}.h lib/{adc,buffer,comparator,delay,format,lcd*,random,ser,softpwm,softser,timer,uart}.? src/config-${CHIP}.h src/config-bits.h src/*.c'
+SOURCES='${PROGRAM_NAME}.c ${PROGRAM_NAME}.h lib/*.[ch] src/config-${CHIP}.h src/config-bits.h src/*.c'
 
 #set -- --preproc="./cpp-xc8${EXEEXT}" 
 : ${CHIPS='12f1840 16f628a 16f876a 18f2450 18f2520 18f2550 18f25k22 18f25k50'}

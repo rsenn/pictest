@@ -10,7 +10,7 @@ IFS=" ""
  	"
 : ${COMPILERS:="xc8 htc sdcc"}
 [ $# -gt 0 ] && SOURCES="$*" ||
-SOURCES='${PROGRAM_NAME}.c ${PROGRAM_NAME}.h lib/{adc,buffer,comparator,delay,format,lcd*,random,ser,softpwm,softser,timer,uart}.? src/config-${CHIP}.h src/config-bits.h src/*.c'
+SOURCES='${PROGRAM_NAME}.c ${PROGRAM_NAME}.h lib/*.[ch] src/config-${CHIP}.h src/config-bits.h src/*.c'
 
 echo "SOURCES='$SOURCES'" 1>&2
 set -- --preproc="./cpp-xc8${EXEEXT}" 
