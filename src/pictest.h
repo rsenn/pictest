@@ -42,7 +42,7 @@
 #define BSTRB_TRIS TRISA1
 #define BSTRB_PIN RA1
 
-#elif defined(__16f876a) 
+#elif defined(__16f876a)
 
 #define LED_PIN RA4
 #define LED_ON() PORTA |= 0b0001000;

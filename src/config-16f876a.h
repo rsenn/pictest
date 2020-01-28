@@ -4,15 +4,15 @@
 #if defined(__XC) || defined(MCHP_XC8) || defined(SDCC)
 
 #ifdef _DEBUG
-#pragma config FOSC = HS, LVP = OFF, CPD = OFF, BOREN = OFF, WDTE = OFF, WRT = OFF, DEBUG=ON
+#pragma config FOSC = HS, LVP = OFF, CPD = OFF, BOREN = OFF, WDTE = OFF, WRT = OFF, DEBUG = ON
 #else
-#pragma config FOSC = HS, LVP = OFF, CPD = OFF, BOREN = OFF, WDTE = OFF,  WRT = OFF, DEBUG = OFF
+#pragma config FOSC = HS, LVP = OFF, CPD = OFF, BOREN = OFF, WDTE = OFF, WRT = OFF, DEBUG = OFF
 #endif
 
 #elif defined(HI_TECH_C)
 
 #ifdef _DEBUG
-__CONFIG(FOSC_HS& WDTE_OFF& PWRTE_ON& LVP_OFF& CPD_OFF& DEBUG_ON&CP_OFF);
+__CONFIG(FOSC_HS& WDTE_OFF& PWRTE_ON& LVP_OFF& CPD_OFF& DEBUG_ON& CP_OFF);
 #else
 __CONFIG(FOSC_HS& WDTE_OFF& PWRTE_ON& LVP_OFF& CPD_OFF& DEBUG_OFF& CP_OFF);
 #endif
