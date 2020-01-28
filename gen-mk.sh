@@ -25,9 +25,6 @@ BUILD_TYPES='debug'
 : ${PROGRAMS:='blinktest pictest serialtest'}
 
 for PROGRAM_NAME in $PROGRAMS; do 
- (eval "SOURCES=\$(set -- $SOURCES; ls -d \$@ 2>/dev/null)"
-  echo "${nl}SOURCES='"$SOURCES"'${nl}" 1>&2
-
   for CHIP in $CHIPS;  do
     for BUILD_TYPE in $BUILD_TYPES; do
       for COMPILER in xc8 htc sdcc; do 
@@ -42,6 +39,9 @@ for PROGRAM_NAME in $PROGRAMS; do
             nmake) EXT=.jom ;;
             mplab) EXT=.mcp ;;
            esac
+ (eval "SOURCES=\$(set -- $SOURCES; ls -d \$@ 2>/dev/null)"
+  echo "${nl}SOURCES='"$SOURCES"'${nl}" 1>&2
+
           (set -x;
           genmakefile -t $COMPILER -m $MAKE_PROGRAM \
             $PREPROC \
@@ -52,9 +52,9 @@ for PROGRAM_NAME in $PROGRAMS; do
             --no-create-libs \
             --$BUILD_TYPE \
             --chip=${CHIP} \
-            -o $PROGRAM_NAME-$CHIP-$COMPILER-$BUILD_TYPE$EXT >&genmakefile-$COMPILER-$BUILD_TYPE.log) 2>&10
+            -o $PROGRAM_NAME-$CHIP-$COMPILER-$BUILD_TYPE$EXT >&genmakefile-$COMPILER-$BUILD_TYPE.log) 2>&10)
         done
       done
     done
-  done)
+  done
 done

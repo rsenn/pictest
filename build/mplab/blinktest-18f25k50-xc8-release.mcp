@@ -53,6 +53,7 @@ file_025=lib
 file_026=lib
 file_027=lib
 file_028=src
+file_029=src
 [GENERATED_FILES]
 file_000=no
 file_001=no
@@ -83,6 +84,7 @@ file_025=no
 file_026=no
 file_027=no
 file_028=no
+file_029=no
 [OTHER_FILES]
 file_000=no
 file_001=no
@@ -113,6 +115,7 @@ file_025=no
 file_026=no
 file_027=no
 file_028=no
+file_029=no
 [FILE_INFO]
 file_000=..\..\blinktest.c
 file_001=..\..\lib\adc.c
@@ -142,7 +145,8 @@ file_024=..\..\lib\softpwm.h
 file_025=..\..\lib\softser.h
 file_026=..\..\lib\timer.h
 file_027=..\..\lib\uart.h
-file_028=..\..\src\config-bits.h
+file_028=..\..\src\config-18f25k50.h
+file_029=..\..\src\config-bits.h
 [SUITE_INFO]
 suite_guid={38171385-97B2-4EC5-BF2C-C2C027BA5B04}
 suite_state=
