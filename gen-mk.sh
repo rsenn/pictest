@@ -16,6 +16,7 @@ set -- --preproc="./cpp-xc8${EXEEXT} -DMCHP_XC8=1 -D__XC=1"
 CHIPS='18f25k50 18f2550'
 BUILD_TYPES='debug release'
 BUILD_TYPES='debug' 
+: ${PROGRAM_NAME=${SOURCES%%.*}}
 for CHIP in $CHIPS;  do
 	for BUILD_TYPE in $BUILD_TYPES; do
 		for COMPILER in xc8 htc sdcc
@@ -30,7 +31,7 @@ for CHIP in $CHIPS;  do
 				--no-create-libs \
 				--$BUILD_TYPE \
 				--chip=${CHIP} \
-        -o $COMPILER-$CHIP-$BUILD_TYPE.mk >&genmakefile-$COMPILER-$BUILD_TYPE.log) 2>&10
+        -o $PROGRAM_NAME-$CHIP-$BUILD_TYPE-$COMPILER.mk >&genmakefile-$COMPILER-$BUILD_TYPE.log) 2>&10
 		done
 	done
 done
