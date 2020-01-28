@@ -17,7 +17,7 @@ IFS="
 SOURCES='${PROGRAM_NAME}.c ${PROGRAM_NAME}.h lib/*.[ch] src/config-${CHIP}.h src/config-bits.h src/*.c'
 
 #set -- --preproc="./cpp-xc8${EXEEXT}" 
-: ${CHIPS='12f1840 16f628a 16f876a 18f2450 18f2520 18f2550 18f25k22 18f25k50'}
+: ${CHIPS='12f1840 16f628a 16f876a 18f2450 18f2520 18f2550 18f25k50'}
 #CHIPS='18f25k50 18f2550'
 BUILD_TYPES='debug release'
 BUILD_TYPES='debug' 
