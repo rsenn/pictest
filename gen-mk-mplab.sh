@@ -22,16 +22,9 @@ for CHIP in $CHIPS;  do
 	for BUILD_TYPE in $BUILD_TYPES; do
 		for COMPILER in $COMPILERS
 		do
-		eval \(set -x\;	genmakefile -t $COMPILER -m mplab \
-				"$@" \
-				-I. -Ilib -Isrc \
-		${SOURCES} \
-      -DHAVE_COMPARATOR=1 -DSOFTSER_TIMER=2 -DUART_BAUD=38400 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -D_XTAL_FREQ=20000000 \
-				--create-bins \
-				--no-create-libs \
-				--$BUILD_TYPE \
-				--chip=${CHIP} \
-        --builddir build/mplab -o build/mplab/$PROGRAM_NAME-$CHIP-$COMPILER-$BUILD_TYPE.mcp ">&genmakefile-$COMPILER-$BUILD_TYPE.log) 2>&10"
+      eval "SOURCES=\$(set -- $SOURCES; echo \$(ls -d \$@))"
+
+		eval "(set -x;	genmakefile -t "$COMPILER" -m mplab $@ -I. -Ilib -Isrc "$SOURCES" -DHAVE_COMPARATOR=1 -DSOFTSER_TIMER=2 -DUART_BAUD=38400 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -D_XTAL_FREQ=20000000 --create-bins --no-create-libs --$BUILD_TYPE --chip=${CHIP} -o build/mplab/$PROGRAM_NAME-$CHIP-$COMPILER-$BUILD_TYPE.mcp >&genmakefile-$COMPILER-$BUILD_TYPE.log) 2>&10"
 		done
 	done
 done
