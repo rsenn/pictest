@@ -1,4 +1,7 @@
 : ${OS:=`uname -o`}
+MYDIR=`dirname "$0"`
+cd "$MYDIR"
+
 
 exec 10>&2
 
@@ -39,6 +42,7 @@ for PROGRAM_NAME in $PROGRAMS; do
             nmake) EXT=.jom ;;
             mplab) EXT=.mcp ;;
            esac
+        
  (eval "SOURCES=\$(set -- $SOURCES; ls -d \$@ 2>/dev/null)"
   echo "${nl}SOURCES='"$SOURCES"'${nl}" 1>&2
 

@@ -1,4 +1,7 @@
 : ${OS:=`uname -o`}
+MYDIR=`dirname "$0"`
+cd "$MYDIR"
+
 
 exec 10>&2
 
