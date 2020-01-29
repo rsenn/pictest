@@ -15,8 +15,34 @@
 			"file": "test-18f25k50.c",
 			"settings":
 			{
-				"buffer_size": 4143,
+				"buffer_size": 4151,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/onewire.h",
+			"settings":
+			{
+				"buffer_size": 1513,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/onewire.c",
+			"settings":
+			{
+				"buffer_size": 8851,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/roman/Dokumente/Sources/lc-meter/build/mplabx-pic18f/LC_meter_18f2550_xc8.X/nbproject/configurations.xml",
+			"settings":
+			{
+				"buffer_size": 21503,
 				"line_ending": "Unix"
 			}
 		}
@@ -129,12 +155,6 @@
 	[
 		"/home/roman/Dokumente/Sources/pictest",
 		"/home/roman/Dokumente/Sources/pictest/lib",
-		"/home/roman/Dokumente/Sources/pictest/lib/build",
-		"/home/roman/Dokumente/Sources/pictest/lib/build/mplabx-pic16",
-		"/home/roman/Dokumente/Sources/pictest/lib/build/mplabx-pic16/libpicp-16f876a-htc.X",
-		"/home/roman/Dokumente/Sources/pictest/lib/build/mplabx-pic16/libpicp-16f876a-sdcc.X",
-		"/home/roman/Dokumente/Sources/pictest/lib/build/mplabx-pic16/libpicp-16f876a-xc8.X",
-		"/home/roman/Dokumente/Sources/pictest/lib/build/mplabx-pic16/libpicp-16f876a-xc8.X/nbproject",
 		"/home/roman/Dokumente/Sources/pictest/src"
 	],
 	"file_history":
@@ -426,7 +446,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -435,15 +455,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4143,
+						"buffer_size": 4151,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3915,
-								3915
+								0,
+								0
 							]
 						],
 						"settings":
@@ -457,6 +477,94 @@
 						"translation.y": 624.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "lib/onewire.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1513,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								172,
+								172
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "lib/onewire.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8851,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8851,
+								8851
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5645.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/roman/Dokumente/Sources/lc-meter/build/mplabx-pic18f/LC_meter_18f2550_xc8.X/nbproject/configurations.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 21503,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								408,
+								408
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
 					"type": "text"
 				}
@@ -465,7 +573,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 25.0
+		"height": 30.0
 	},
 	"input":
 	{
