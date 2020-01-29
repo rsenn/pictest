@@ -107,7 +107,7 @@ main() {
 #endif
 
 #if !NO_PORTB
-  N_RBPU = 1;
+  nRBPU = 1;
 // TRISB &= 0;
 // PORTB |= 0xff;
 #endif

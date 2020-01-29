@@ -20,6 +20,7 @@
 #include "lib/ds18b20.h"
 #include "lib/extra/ledsense.h"
 #include "lib/extra/shell.h"
+#include "lib/device.h"
 /*
 #define BUTTON_MINUS 1
 #define BUTTON_PLUS  3
@@ -118,7 +119,15 @@ main() {
   CMCONbits.CM = 0b111;          //Disable PORTA Comparators
 #endif
 #if !NO_PORTB
-  N_RBPU = 1; // pull-ups
+#ifndef nRBPU
+#ifdef PIC18
+  INTCON2bits |= 0b10000000;
+#else
+  OPTION_REG |= 0b00100000;
+#endif
+#else
+  nRBPU = 1; // pull-ups
+#endif
 #endif
 
 //  reset_speed();
@@ -164,7 +173,7 @@ TMR2ON = 1;       // Enable timer 2.
 #if HAVE_TIMER_0 && USE_TIMER0
   timer0_init(PRESCALE_1_4);
 
-  TIMER0_INTERRUPT_FLAG = 0;
+  TIMER0_INTERRUPT_CLEAR();
   T0IE = 1;
 #endif
   // timer1_init(0);
@@ -502,7 +511,15 @@ static uint8_t
 buttons_get() {
   uint8_t bits;
 
-  N_RBPU = 0; // pull-ups
+#ifndef nRBPU
+#ifdef PIC18
+  INTCON2bits &= ~0b10000000;
+#else
+  OPTION_REG &= ~0b00100000;
+#endif
+#else
+  nRBPU = 0; // pull-ups
+#endif
 
   BSTRB_PIN = LOW;
   BSTRB_TRIS = OUTPUT;
@@ -515,7 +532,15 @@ buttons_get() {
 
   delay_ms(BSTRB_DELAY);
 
-  N_RBPU = 1; // pull-ups
+#ifndef nRBPU
+#ifdef PIC18
+  INTCON2bits |= 0b10000000;
+#else
+  OPTION_REG |= 0b00100000;
+#endif
+#else
+  nRBPU = 1; // pull-ups
+#endif
   BSTRB_TRIS = INPUT;
 
   delay_us(100);

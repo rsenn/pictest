@@ -1,7 +1,7 @@
-CHIPS = 16f876a 16f628a 18f252 18f2550    #18f25k50
-#CHIPS +=
+CHIPS = 16f876a 18f2550 
+#CHIPS += 16f628a 18f252 18f252  18f25k50
 #CHIPS += 10f206
-CHIPS += 12f1840
+#CHIPS += 12f1840
 COMPILERS = htc xc8
 #CHIP = 16F876A
 
@@ -85,7 +85,7 @@ endif
 vpath lib lib/extra src $(OBJDIR) $(BUILDDIR)
 VPATH = lib lib/extra src $(OBJDIR) $(BUILDDIR)
 
-DEFINES = PIC$(chipu)=1 __$(chipl)=1
+DEFINES += PIC$(chipu)=1 __$(chipl)=1
 ##DEFINES +=  USE_ADC=1
 #DEFINES +=  USE_HD44780_LCD=1
 ##DEFINES +=  USE_7SEGMENT=1
@@ -135,7 +135,7 @@ ps2test_SOURCES = ps2test.c uart.c timer.c
 ps2test_DEFS += -DUSE_TIMER0=1
 
 blinktest_SOURCES = comparator.c blinktest.c  timer.c softpwm.c random.c ser.c uart.c softser.c comparator.c
-blinktest_DEFS += -DHAVE_COMPARATOR=1 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_SOFTPWM=1
+blinktest_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_SOFTPWM=1
 blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1
 #blinktest_DEFS += -DUSE_SER=1
 #blinktest_DEFS += -DUSE_UART=1

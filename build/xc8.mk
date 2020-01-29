@@ -135,6 +135,8 @@ COMMON_FLAGS += --msgformat="%f:%l: advisory: (%n) %s"
 #COMMON_FLAGS += -P
 #COMMON_FLAGS += -V
 
+DEFINES += __XC=1
+
 CPPFLAGS += $(DEFINES:%=-D%)
 
 _CPPFLAGS += \
