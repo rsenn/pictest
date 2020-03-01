@@ -27,4 +27,4 @@
 
 typedef unsigned __int32 XTEA_KEY_T;
 
-#endif //WINDEFS_H_INCLUDED
+#endif // WINDEFS_H_INCLUDED

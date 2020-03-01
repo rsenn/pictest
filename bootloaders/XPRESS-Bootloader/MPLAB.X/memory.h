@@ -31,9 +31,9 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stdbool.h>
 #include <stdint.h>
 
-#ifdef __cplusplus  // Provide C++ Compatibility
+#ifdef __cplusplus // Provide C++ Compatibility
 
-    extern "C" {
+extern "C" {
 
 #endif
 
@@ -41,9 +41,9 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
   Section: Macro Declarations
 */
 
-#define WRITE_FLASH_BLOCKSIZE    64
-#define ERASE_FLASH_BLOCKSIZE    64
-#define END_FLASH                32768
+#define WRITE_FLASH_BLOCKSIZE 64
+#define ERASE_FLASH_BLOCKSIZE 64
+#define END_FLASH 32768
 
 /**
   Section: Flash Module APIs
@@ -133,40 +133,40 @@ uint16_t FLASH_ReadWord(uint32_t flashAddr);
     FLASH_WriteSome(flashAddr, Buf, writeData, count);
     </code>
 */
-void FLASH_WriteCount(uint32_t blockStartAddr, uint8_t offset, uint8_t *flashRdBufPtr, uint8_t *byte, uint8_t count);
-void FLASH_WriteSome(uint32_t flashAddr, uint8_t *flashRdBufPtr, uint8_t *byte, uint8_t count);
- /**
-  @Summary
-    Writes a data byte into Flash
+void FLASH_WriteCount(uint32_t blockStartAddr, uint8_t offset, uint8_t* flashRdBufPtr, uint8_t* byte, uint8_t count);
+void FLASH_WriteSome(uint32_t flashAddr, uint8_t* flashRdBufPtr, uint8_t* byte, uint8_t count);
+/**
+ @Summary
+   Writes a data byte into Flash
 
-  @Description
-    This routine writes the given data byte into mentioned Flash address.
+ @Description
+   This routine writes the given data byte into mentioned Flash address.
 
-    This routine intially reads block of data (from Flash) into RAM, updates
-    data values in RAM, and writes back updated values to Flash.
+   This routine intially reads block of data (from Flash) into RAM, updates
+   data values in RAM, and writes back updated values to Flash.
 
-  @Preconditions
-    None
+ @Preconditions
+   None
 
-  @Param
-    flashAddr      - Flash program memory location to which data has to be written
-    *flashRdBufPtr - Pointer to RAM buffer of size 'ERASE_FLASH_BLOCKSIZE' at least
-    byte           - Data byte to be written in Flash
+ @Param
+   flashAddr      - Flash program memory location to which data has to be written
+   *flashRdBufPtr - Pointer to RAM buffer of size 'ERASE_FLASH_BLOCKSIZE' at least
+   byte           - Data byte to be written in Flash
 
-  @Returns
-    None
+ @Returns
+   None
 
-  @Example
-    <code>
-    uint8_t    writeData = 0xAA;
-    uint32_t    flashAddr = 0x7D00;
-    uint8_t    Buf[ERASE_FLASH_BLOCKSIZE];
+ @Example
+   <code>
+   uint8_t    writeData = 0xAA;
+   uint32_t    flashAddr = 0x7D00;
+   uint8_t    Buf[ERASE_FLASH_BLOCKSIZE];
 
-    FLASH_WriteWord(flashAddr, Buf, writeData);
-    </code>
+   FLASH_WriteWord(flashAddr, Buf, writeData);
+   </code>
 */
-void FLASH_WriteByte(uint32_t flashAddr, uint8_t *flashRdBufPtr, uint8_t byte);
-int8_t FLASH_WriteConfigs(uint8_t *cfgWrBufPtr);
+void FLASH_WriteByte(uint32_t flashAddr, uint8_t* flashRdBufPtr, uint8_t byte);
+int8_t FLASH_WriteConfigs(uint8_t* cfgWrBufPtr);
 int8_t FLASH_PerformWrite(bool writeCFGS);
 /**
   @Summary
@@ -202,7 +202,7 @@ int8_t FLASH_PerformWrite(bool writeCFGS);
     FLASH_WriteBlock((uint32_t)FLASH_ROW_ADDRESS, (uint8_t *)wrBlockData);
     </code>
 */
-int8_t FLASH_WriteBlock(uint32_t writeAddr, uint8_t *flashWrBufPtr);
+int8_t FLASH_WriteBlock(uint32_t writeAddr, uint8_t* flashWrBufPtr);
 
 /**
   @Summary
@@ -286,10 +286,8 @@ void DATAEE_WriteByte(uint8_t bAdd, uint8_t bData);
 */
 uint8_t DATAEE_ReadByte(uint8_t bAdd);
 
-
-#ifdef __cplusplus  // Provide C++ Compatibility
-
-    }
+#ifdef __cplusplus // Provide C++ Compatibility
+}
 
 #endif
 
@@ -297,4 +295,3 @@ uint8_t DATAEE_ReadByte(uint8_t bAdd);
 /**
  End of File
 */
-

@@ -10,7 +10,7 @@
 #define __UINT_LEAST8_TYPE__ unsigned char
 #define __SIZEOF_FLOAT80__ 12
 #define _WIN32 1
-#define __INTMAX_C(c) c ## LL
+#define __INTMAX_C(c) c##LL
 #define __CHAR_BIT__ 8
 #define __UINT8_MAX__ 0xff
 #define __WINT_MAX__ 0xffff
@@ -64,7 +64,7 @@
 #define __SCHAR_MAX__ 0x7f
 #define __FLT128_MANT_DIG__ 113
 #define __WCHAR_MIN__ 0
-#define __INT64_C(c) c ## LL
+#define __INT64_C(c) c##LL
 #define __DBL_DIG__ 15
 #define __GCC_ATOMIC_POINTER_LOCK_FREE 2
 #define __FLT64X_MANT_DIG__ 64
@@ -168,7 +168,7 @@
 #define __FLT64_MIN_10_EXP__ (-307)
 #define __FLT64X_DECIMAL_DIG__ 21
 #define __DEC128_MIN__ 1E-6143DL
-#define __REGISTER_PREFIX__ 
+#define __REGISTER_PREFIX__
 #define __UINT16_MAX__ 0xffff
 #define __DBL_HAS_DENORM__ 1
 #define __cdecl __attribute__((__cdecl__))
@@ -179,7 +179,7 @@
 #define __FLT_MANT_DIG__ 24
 #define __LDBL_DECIMAL_DIG__ 21
 #define __VERSION__ "7.3.0"
-#define __UINT64_C(c) c ## ULL
+#define __UINT64_C(c) c##ULL
 #define __cpp_unicode_characters 200704
 #define __GCC_ATOMIC_INT_LOCK_FREE 2
 #define __FLT128_MAX_EXP__ 16384
@@ -209,7 +209,7 @@
 #define __FLT_RADIX__ 2
 #define __INT_LEAST16_TYPE__ short int
 #define __LDBL_EPSILON__ 1.08420217248550443400745280086994171e-19L
-#define __UINTMAX_C(c) c ## ULL
+#define __UINTMAX_C(c) c##ULL
 #define __SIG_ATOMIC_MAX__ 0x7fffffff
 #define __GCC_ATOMIC_WCHAR_T_LOCK_FREE 2
 #define __SIZEOF_PTRDIFF_T__ 4
@@ -317,7 +317,7 @@
 #define __ORDER_BIG_ENDIAN__ 4321
 #define __cpp_runtime_arrays 198712
 #define __UINT64_TYPE__ long long unsigned int
-#define __UINT32_C(c) c ## U
+#define __UINT32_C(c) c##U
 #define __INTMAX_MAX__ 0x7fffffffffffffffLL
 #define __cpp_alias_templates 200704
 #define __BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__

@@ -1,4 +1,4 @@
-﻿//DOM-IGNORE-BEGIN
+﻿// DOM-IGNORE-BEGIN
 /*******************************************************************************
 Software License Agreement
 
@@ -21,12 +21,12 @@ IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
 CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 
 *******************************************************************************/
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
-//DOM-IGNORE-BEGIN
+// DOM-IGNORE-BEGIN
 #ifndef _USB_HOST_CDC_INTERFACE_H_
 #define _USB_HOST_CDC_INTERFACE_H_
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
 // *****************************************************************************
 // *****************************************************************************
@@ -119,7 +119,7 @@ bool USBHostCDC_Api_Send_OUT_Data(uint16_t no_of_bytes, uint8_t* data);
   Remarks:
     None
 ***************************************************************************/
-bool USBHostCDC_ApiTransferIsComplete(uint8_t* errorCodeDriver, uint8_t* byteCount );
+bool USBHostCDC_ApiTransferIsComplete(uint8_t* errorCodeDriver, uint8_t* byteCount);
 
 /*******************************************************************************
   Function:
@@ -143,8 +143,7 @@ bool USBHostCDC_ApiTransferIsComplete(uint8_t* errorCodeDriver, uint8_t* byteCou
     Since this will often be called in a loop while waiting for
     a device, we'll make sure the tasks are executed.
 *******************************************************************************/
-bool USBHostCDC_ApiDeviceDetect( void );
-
+bool USBHostCDC_ApiDeviceDetect(void);
 
 /*******************************************************************************
   Function:

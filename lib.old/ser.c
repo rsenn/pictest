@@ -29,12 +29,12 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
-*/
+ */
 #ifdef USE_SER
 #define _SER_C_
-#include "device.h"
-#include "const.h"
 #include "ser.h"
+#include "const.h"
+#include "device.h"
 
 #ifndef SER_BRG
 //# if HIGH_SPEED == 1

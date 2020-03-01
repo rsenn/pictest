@@ -35,12 +35,12 @@
 #define USBCFG_H
 
 /** D E F I N I T I O N S *******************************************/
-#define EP0_BUFF_SIZE           8   // 8, 16, 32, or 64
-#define MAX_NUM_INT             1   // For tracking Alternate Setting
+#define EP0_BUFF_SIZE 8 // 8, 16, 32, or 64
+#define MAX_NUM_INT 1   // For tracking Alternate Setting
 
 /* Parameter definitions are defined in usbdrv.h */
-#define MODE_PP                 _PPBM0
-#define UCFG_VAL                _PUEN|_TRINT|_FS|MODE_PP
+#define MODE_PP _PPBM0
+#define UCFG_VAL _PUEN | _TRINT | _FS | MODE_PP
 
 /*
  * Both I/O sense pins below are not used in this application.
@@ -56,8 +56,8 @@
  * Used to identify which of the USB classes owns the current
  * session of control transfer over EP0
  */
-#define MUID_NULL               0
-#define MUID_USB9               1
+#define MUID_NULL 0
+#define MUID_USB9 1
 
 /** E N D P O I N T S  A L L O C A T I O N **************************/
 /*
@@ -65,12 +65,12 @@
  */
 
 /* Bootloader */
-#define BOOT_INTF_ID            0x00
-#define BOOT_UEP                UEP1
-#define BOOT_BD_OUT             ep1Bo
-#define BOOT_BD_IN              ep1Bi
-#define BOOT_EP_SIZE            64
+#define BOOT_INTF_ID 0x00
+#define BOOT_UEP UEP1
+#define BOOT_BD_OUT ep1Bo
+#define BOOT_BD_IN ep1Bi
+#define BOOT_EP_SIZE 64
 
-#define MAX_EP_NUMBER           1           // UEP1
+#define MAX_EP_NUMBER 1 // UEP1
 
-#endif //USBCFG_H
+#endif // USBCFG_H

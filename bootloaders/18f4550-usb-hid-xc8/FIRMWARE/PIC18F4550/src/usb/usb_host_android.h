@@ -1,4 +1,4 @@
-﻿//DOM-IGNORE-BEGIN
+﻿// DOM-IGNORE-BEGIN
 /*******************************************************************************
 Software License Agreement
 
@@ -21,17 +21,17 @@ IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
 CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 
 *******************************************************************************/
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
-/* Error code indicating that the buffer passed to the read function was too small.  
+/* Error code indicating that the buffer passed to the read function was too small.
    Since the USB host can't control how much data it will receive in a single packet,
    the user must provide a buffer that is at least the size of the endpoint of the
-   attached device.  If a buffer is passed in that is too small, the read will not 
+   attached device.  If a buffer is passed in that is too small, the read will not
    start and this error is returned to the user. */
-#define USB_ERROR_BUFFER_TOO_SMALL      USB_ERROR_CLASS_DEFINED + 0
+#define USB_ERROR_BUFFER_TOO_SMALL USB_ERROR_CLASS_DEFINED + 0
 
 /* This defintion is used in the usbClientDrvTable[] in the flags field in order to
    bypass the Android accessory initialization phase.  This should be used only when
@@ -39,88 +39,81 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
    are already matching the accessory mode VID/PID).  In some cases an Android device
    doesn't exit accessory mode and thus those other protocol commands will not work.
    This flag must be used to save those devices */
-#define ANDROID_INIT_FLAG_BYPASS_PROTOCOL           0x00000001
-
+#define ANDROID_INIT_FLAG_BYPASS_PROTOCOL 0x00000001
 
 #ifndef ANDROID_BASE_OFFSET
-    /* Defines the event offset for the Android specific events.  If not defined, then a default of 0 is used. */
-    #define ANDROID_BASE_OFFSET 0
+/* Defines the event offset for the Android specific events.  If not defined, then a default of 0 is used. */
+#define ANDROID_BASE_OFFSET 0
 #endif
 
 #ifndef NUM_ANDROID_DEVICES_SUPPORTED
-    /* Defines the number of concurrent Android devices this implementation is allowed to 
-       talk to.  This definition is only used for implementations where the accessory is
-       the host and the Android device is the slave.  This is also most often defined to
-       be 1.  If this is not defined by the user, a default of 1 is used. 
+/* Defines the number of concurrent Android devices this implementation is allowed to
+   talk to.  This definition is only used for implementations where the accessory is
+   the host and the Android device is the slave.  This is also most often defined to
+   be 1.  If this is not defined by the user, a default of 1 is used.
 
-       This option is only used when compiling the source version of the library. This
-       value is set to 1 for pre-compiled versions of the library. */
-    #define NUM_ANDROID_DEVICES_SUPPORTED 1
+   This option is only used when compiling the source version of the library. This
+   value is set to 1 for pre-compiled versions of the library. */
+#define NUM_ANDROID_DEVICES_SUPPORTED 1
 #endif
 
 #define ANDROID_EVENT_BASE EVENT_USER_BASE + ANDROID_BASE_OFFSET
 
-
-
 /* This event is thrown when an Android device is attached and successfully entered into
-   accessory mode already.  The data portion of this event is the handle that is 
+   accessory mode already.  The data portion of this event is the handle that is
    required to communicate to the device and should be saved so that it can be passed to
    all of the transfer functions.  Always use this definition in the code and never put
    a static value as the value of this event may change based on various build options. */
-#define EVENT_ANDROID_ATTACH      ANDROID_EVENT_BASE + 0
+#define EVENT_ANDROID_ATTACH ANDROID_EVENT_BASE + 0
 
 /* This event is thrown when an Android device is removed.  The data portion of the
    event is the handle of the device that has been removed.  Always use this definition
    in the code and never put a static value as the value of this event may change based
    on various build options. */
-#define EVENT_ANDROID_DETACH      ANDROID_EVENT_BASE + 1
+#define EVENT_ANDROID_DETACH ANDROID_EVENT_BASE + 1
 
 /* This event is thrown after a HID report is successfully registered.  That report is
    now available for use by the application */
 #define EVENT_ANDROID_HID_REGISTRATION_COMPLETE ANDROID_EVENT_BASE + 2
 
 /* The requested report has been sent to the requested device.  */
-#define EVENT_ANDROID_HID_SEND_EVENT_COMPLETE   ANDROID_EVENT_BASE + 3
+#define EVENT_ANDROID_HID_SEND_EVENT_COMPLETE ANDROID_EVENT_BASE + 3
 
 /* Defines the available audio modes */
-typedef enum
-{
-    /* No audio support enabled */
-    ANDROID_AUDIO_MODE__NONE = 0,
+typedef enum {
+  /* No audio support enabled */
+  ANDROID_AUDIO_MODE__NONE = 0,
 
-    /* 44K 16B PCM audio mode enabled */
-    ANDROID_AUDIO_MODE__44K_16B_PCM = 1
+  /* 44K 16B PCM audio mode enabled */
+  ANDROID_AUDIO_MODE__44K_16B_PCM = 1
 } ANDROID_AUDIO_MODE;
 
-/* This structure contains the informatin that is required to successfully create a link 
-   between the Android device and the accessory.  This information must match the 
-   information entered in the accessory filter in the Android application in order for 
-   the Android application to access the device.  An instance of this structure should be 
+/* This structure contains the informatin that is required to successfully create a link
+   between the Android device and the accessory.  This information must match the
+   information entered in the accessory filter in the Android application in order for
+   the Android application to access the device.  An instance of this structure should be
    passed into the AndroidAppStart() at initialization. */
-typedef struct
-{
-    char* manufacturer;         //String: manufacturer name
-    uint8_t manufacturer_size;     //length of manufacturer string
+typedef struct {
+  char* manufacturer;        // String: manufacturer name
+  uint8_t manufacturer_size; // length of manufacturer string
 
-    char* model;                //String: model name
-    uint8_t model_size;            //length of model name string
+  char* model;        // String: model name
+  uint8_t model_size; // length of model name string
 
-    char* description;          //String: description of the accessory
-    uint8_t description_size;      //length of the description string
+  char* description;        // String: description of the accessory
+  uint8_t description_size; // length of the description string
 
-    char* version;              //String: version number
-    uint8_t version_size;          //length of the version number string
+  char* version;        // String: version number
+  uint8_t version_size; // length of the version number string
 
-    char* URI;                  //String: URI for the accessory (most commonly a URL)
-    uint8_t URI_size;              //length of the URI string
+  char* URI;        // String: URI for the accessory (most commonly a URL)
+  uint8_t URI_size; // length of the URI string
 
-    char* serial;               //String: serial number of the device
-    uint8_t serial_size;           //length of the serial number string
+  char* serial;        // String: serial number of the device
+  uint8_t serial_size; // length of the serial number string
 
-    ANDROID_AUDIO_MODE  audio_mode;
+  ANDROID_AUDIO_MODE audio_mode;
 } ANDROID_ACCESSORY_INFORMATION;
-
-
 
 /****************************************************************************
   Function:
@@ -133,7 +126,7 @@ typedef struct
   Description:
     Sets the accessory information and initializes the client driver information
     after the initial power cycles.  Since this resets all device information
-    this function should be used only after a compete system reset.  This should 
+    this function should be used only after a compete system reset.  This should
     not be called while the USB is active or while connected to a device.
 
   Precondition:
@@ -222,8 +215,8 @@ uint8_t AndroidAppWrite(void* handle, uint8_t* data, uint32_t size);
     Check to see if the last write to the Android device was completed
 
   Description:
-    Check to see if the last write to the Android device was completed.  If 
-    complete, returns the amount of data that was sent and the corresponding 
+    Check to see if the last write to the Android device was completed.  If
+    complete, returns the amount of data that was sent and the corresponding
     error code for the transmission.
 
   Precondition:
@@ -264,7 +257,7 @@ bool AndroidAppIsWriteComplete(void* handle, uint8_t* errorCode, uint32_t* size)
 
   Description:
     Attempts to read information from the specified Android device.  This
-    function does not block.  Data availability is checked via the 
+    function does not block.  Data availability is checked via the
     AndroidAppIsReadComplete() function.
 
   Precondition:
@@ -291,7 +284,7 @@ bool AndroidAppIsWriteComplete(void* handle, uint8_t* errorCode, uint32_t* size)
     USB_ENDPOINT_NOT_FOUND          - Invalid endpoint.
     USB_ERROR_BUFFER_TOO_SMALL      - The buffer passed to the read function was
                                         smaller than the endpoint size being used
-                                        (buffer must be larger than or equal to 
+                                        (buffer must be larger than or equal to
                                         the endpoint size).
 
   Remarks:
@@ -307,8 +300,8 @@ uint8_t AndroidAppRead(void* handle, uint8_t* data, uint32_t size);
     Check to see if the last read to the Android device was completed
 
   Description:
-    Check to see if the last read to the Android device was completed.  If 
-    complete, returns the amount of data that was sent and the corresponding 
+    Check to see if the last read to the Android device was completed.  If
+    complete, returns the amount of data that was sent and the corresponding
     error code for the transmission.
 
   Precondition:
@@ -340,7 +333,6 @@ uint8_t AndroidAppRead(void* handle, uint8_t* data, uint32_t size);
   ***************************************************************************/
 bool AndroidAppIsReadComplete(void* handle, uint8_t* errorCode, uint32_t* size);
 
-
 /****************************************************************************
   Function:
     bool AndroidAppInitialize( uint8_t address, uint32_t flags, uint8_t clientDriverID )
@@ -369,7 +361,7 @@ bool AndroidAppIsReadComplete(void* handle, uint8_t* errorCode, uint32_t* size);
     This is a internal API only.  This should not be called by anything other
     than the USB host stack via the client driver table
   ***************************************************************************/
-bool AndroidAppInitialize( uint8_t address, uint32_t flags, uint8_t clientDriverID );
+bool AndroidAppInitialize(uint8_t address, uint32_t flags, uint8_t clientDriverID);
 
 /****************************************************************************
   Function:
@@ -398,7 +390,7 @@ bool AndroidAppInitialize( uint8_t address, uint32_t flags, uint8_t clientDriver
     This is a internal API only.  This should not be called by anything other
     than the USB host stack via the client driver table
   ***************************************************************************/
-bool AndroidAppEventHandler( uint8_t address, USB_EVENT event, void *data, uint32_t size );
+bool AndroidAppEventHandler(uint8_t address, USB_EVENT event, void* data, uint32_t size);
 
 /****************************************************************************
   Function:
@@ -427,8 +419,7 @@ bool AndroidAppEventHandler( uint8_t address, USB_EVENT event, void *data, uint3
     This is a internal API only.  This should not be called by anything other
     than the USB host stack via the client driver table
   ***************************************************************************/
-bool AndroidAppDataEventHandler( uint8_t address, USB_EVENT event, void *data, uint32_t size );
-
+bool AndroidAppDataEventHandler(uint8_t address, USB_EVENT event, void* data, uint32_t size);
 
 /****************************************************************************
   Function:
@@ -456,7 +447,6 @@ bool AndroidAppDataEventHandler( uint8_t address, USB_EVENT event, void *data, u
     None
   ***************************************************************************/
 uint8_t AndroidAppHIDSendEvent(uint8_t address, uint8_t id, uint8_t* report, uint8_t length);
-
 
 /****************************************************************************
   Function:

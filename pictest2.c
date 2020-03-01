@@ -57,7 +57,7 @@ uint8_t
 buttons_get() {
   uint8_t bits;
 
-  N_RBPU = 0; // pull-ups
+  nRBPU = 0; // pull-ups
 
   BSTRB_PIN = LOW;
   BSTRB_TRIS = OUTPUT;
@@ -70,7 +70,7 @@ buttons_get() {
 
   delay_ms(BSTRB_DELAY);
 
-  N_RBPU = 1; // pull-ups
+  nRBPU = 1; // pull-ups
   BSTRB_TRIS = INPUT;
 
   delay_us(100);
@@ -86,7 +86,7 @@ INTERRUPT_HANDLER() {
     LED_PIN = !(tmr_overflows & 0x1000);
     RA5 = !(tmr_overflows & 0x0200);
 
-    TIMER0_INTERRUPT_FLAG = 0;
+    TIMER0_INTERRUPT_CLEAR();
 
     // Clear timer interrupt bit
   }
@@ -216,7 +216,7 @@ main() {
 
   CMCON = 0b111; // Disable PORTA Comparators
 
-  N_RBPU = 1; // pull-ups
+  nRBPU = 1; // pull-ups
 
   lcd_init(1);
   lcd_begin(2, 1);
@@ -280,7 +280,7 @@ main() {
   //  OPTION_REGbits.PS = 0b111; // 1:256 prescaler (4 MHz quartz, so timer0 rate 15.625 kHz (every 64ns))
 
   TMR0 = ~ticks;
-  TIMER0_INTERRUPT_FLAG = 0;
+  TIMER0_INTERRUPT_CLEAR();
   T0IE = 1;
 
   tmr_overflows = 0;

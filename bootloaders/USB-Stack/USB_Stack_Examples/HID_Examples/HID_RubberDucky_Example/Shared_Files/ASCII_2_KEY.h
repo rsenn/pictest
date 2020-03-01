@@ -3,7 +3,7 @@
  * @brief Convert ASCII to HID Key values.
  * @author John Izzard
  * @date 13/02/2019
- * 
+ *
  * USB uC - HID Examples.
  * Copyright (C) 2017-2019  John Izzard
  *
@@ -23,9 +23,9 @@
 #ifndef ASCII_2_KEY_H
 #define ASCII_2_KEY_H
 
-#include <stdint.h>
-#include "usb_hid.h"
 #include "hid_pages.h"
+#include "usb_hid.h"
+#include <stdint.h>
 
 // Choose a End of Line Character (\n or \r) used to convert to enter/return.
 // Windows uses \r\n so use either \n or \r.
@@ -33,10 +33,10 @@
 // Mac uses \r.
 #define ELC '\r'
 
-struct{
-    uint8_t Modifier;
-    uint8_t KeyCode;
-}KeyResult;
+struct {
+  uint8_t Modifier;
+  uint8_t KeyCode;
+} KeyResult;
 
 void ascii_2_key(uint8_t val);
 

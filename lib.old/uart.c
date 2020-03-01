@@ -1,7 +1,7 @@
+#include "uart.h"
 #include "delay.h"
 #include "softser.h"
 #include "typedef.h"
-#include "uart.h"
 
 #if USE_UART
 

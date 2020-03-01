@@ -17,7 +17,7 @@
     None
 
 ******************************************************************************/
-//DOM-IGNORE-BEGIN
+// DOM-IGNORE-BEGIN
 /******************************************************************************
 
  FileName:        usb_host_printer_primitives.c
@@ -52,8 +52,7 @@ Change History:
   2.6 - 2.6a  No change
 
 *******************************************************************************/
-//DOM-IGNORE-END
-
+// DOM-IGNORE-END
 
 #include <stdlib.h>
 #include <string.h>
@@ -61,17 +60,20 @@ Change History:
 #include <usb/usb_host_printer_primitives.h>
 
 #ifndef USB_MALLOC
-    #define USB_MALLOC(size) malloc(size)
+#define USB_MALLOC(size) malloc(size)
 #endif
 
 #ifndef USB_FREE
-    #define USB_FREE(ptr) free(ptr)
+#define USB_FREE(ptr) free(ptr)
 #endif
 
-#define USB_FREE_AND_CLEAR(ptr) {USB_FREE(ptr); ptr = NULL;}
+#define USB_FREE_AND_CLEAR(ptr)                                                                                        \
+  {                                                                                                                    \
+    USB_FREE(ptr);                                                                                                     \
+    ptr = NULL;                                                                                                        \
+  }
 
 #ifdef USE_GRAPHICS_LIBRARY_PRINTER_INTERFACE
-
 
 // *****************************************************************************
 // *****************************************************************************
@@ -79,8 +81,4 @@ Change History:
 // *****************************************************************************
 // *****************************************************************************
 
-
-
-
 #endif
-

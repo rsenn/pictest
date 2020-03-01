@@ -1,4 +1,4 @@
-//DOM-IGNORE-BEGIN
+// DOM-IGNORE-BEGIN
 /*******************************************************************************
 Software License Agreement
 
@@ -21,11 +21,10 @@ IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
 CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 
 *******************************************************************************/
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
 #ifndef STRUCT_QUEUE_H
 #define STRUCT_QUEUE_H
-
 
 /* StructQueueInit
  *************************************************************************
@@ -39,23 +38,20 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
  *
  * Returns:         zero (0)
  *
- * Side Effects:    The queue structure has been initialized and is ready 
+ * Side Effects:    The queue structure has been initialized and is ready
  *                  to use.
  *
  * Overview:        This operation initializes a queue and makes it empty.
  *
- * Note:            This operation is implemented with a macro that 
+ * Note:            This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
- 
-#define StructQueueInit(q,N) (  (q)->head  = (N), \
-                                (q)->tail  = (N), \
-                                (q)->count =  0   )
 
+#define StructQueueInit(q, N) ((q)->head = (N), (q)->tail = (N), (q)->count = 0)
 
 /* StructQueueAdd
  *************************************************************************
- * Precondition:    The queue must have been initialized and must not 
+ * Precondition:    The queue must have been initialized and must not
  *                  currently be full.
  *
  * Input:           q   Pointer to the queue data structure
@@ -70,26 +66,22 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
  *
  *                  IMPORTANT!  No data has been copied to the item.
  *
- * Overview:        This operation adds (enqueues) a new item into the 
+ * Overview:        This operation adds (enqueues) a new item into the
  *                  queue data buffer and updates the head index,
  *                  handling buffer wrap correctly.
  *
- * Notes:           The caller must first ensure that the queue is not 
- *                  full by performing one of the other operations (such 
- *                  as "StructQueueIsNotFull") before performing this 
- *                  operation.  Adding an item into a full queue will 
+ * Notes:           The caller must first ensure that the queue is not
+ *                  full by performing one of the other operations (such
+ *                  as "StructQueueIsNotFull") before performing this
+ *                  operation.  Adding an item into a full queue will
  *                  cause an access violation.
  *
- *                  This operation is implemented with a macro that 
+ *                  This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueAdd(q,N) ( (q)->count++,            \
-                              ( ((q)->head < (N-1)) ?  \
-                                  ((q)->head++)     :  \
-                                  ((q)->head=0)     ), \
-                              &(q)->buffer[(q)->head]  )
-
+#define StructQueueAdd(q, N)                                                                                           \
+  ((q)->count++, (((q)->head < (N - 1)) ? ((q)->head++) : ((q)->head = 0)), &(q)->buffer[(q)->head])
 
 /* StructQueueRemove
  *************************************************************************
@@ -108,7 +100,7 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
  *
  *                  IMPORTANT!  No data has been copied from the item.
  *
- * Overview:        This routine removes (dequeues) an item from the 
+ * Overview:        This routine removes (dequeues) an item from the
  *                  queue data buffer and updates the tail index,
  *                  handling buffer wrap correctly.
  *
@@ -118,16 +110,12 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
  *                  operation.  Dequeueing an item from an empty queue
  *                  will cause an access violation.
  *
- *                  This operation is implemented with a macro that 
+ *                  This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueRemove(q,N) ( (q)->count--,            \
-                                 ( ((q)->tail < (N-1)) ?  \
-                                     ((q)->tail++)     :  \
-                                     ((q)->tail=0)     ), \
-                                 &(q)->buffer[(q)->tail]  )
-
+#define StructQueueRemove(q, N)                                                                                        \
+  ((q)->count--, (((q)->tail < (N - 1)) ? ((q)->tail++) : ((q)->tail = 0)), &(q)->buffer[(q)->tail])
 
 /* StructQueuePeekTail
  *************************************************************************
@@ -146,7 +134,7 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
  *
  *                  IMPORTANT!  No data has been copied from the item.
  *
- * Overview:        This routine provides access to an item in the 
+ * Overview:        This routine provides access to an item in the
  *                  queue data buffer at the tail index position,
  *                  handling buffer wrap correctly.
  *
@@ -155,14 +143,11 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
  *                  (such as "StructQueueIsNotEmpty") before performing this
  *                  operation.
  *
- *                  This operation is implemented with a macro that 
+ *                  This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueuePeekTail(q,N) ( ((q)->tail < (N-1))         ?  \
-                                     &(q)->buffer[(q)->tail+1] :  \
-                                     &(q)->buffer[0]              )
-
+#define StructQueuePeekTail(q, N) (((q)->tail < (N - 1)) ? &(q)->buffer[(q)->tail + 1] : &(q)->buffer[0])
 
 /* StructQueueIsFull
  *************************************************************************
@@ -180,12 +165,11 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
  *
  * Overview:        This routine checks to see if the queue is full.
  *
- * Note:            This operation is implemented with a macro that 
+ * Note:            This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueIsFull(q,N) ( (q)->count >= N )
-
+#define StructQueueIsFull(q, N) ((q)->count >= N)
 
 /* StructQueueIsNotFull
  *************************************************************************
@@ -203,12 +187,11 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
  *
  * Overview:        This routine checks to see if the queue is full.
  *
- * Note:            This operation is implemented with a macro that 
+ * Note:            This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueIsNotFull(q,N) ( (q)->count < N )
-
+#define StructQueueIsNotFull(q, N) ((q)->count < N)
 
 /* StructQueueIsEmpty
  *************************************************************************
@@ -226,12 +209,11 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
  *
  * Overview:        This routine checks to see if the queue is empty.
  *
- * Note:            This operation is implemented with a macro that 
+ * Note:            This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueIsEmpty(q,N) ( (q)->count == 0 )
-
+#define StructQueueIsEmpty(q, N) ((q)->count == 0)
 
 /* StructQueueIsNotEmpty
  *************************************************************************
@@ -249,12 +231,11 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
  *
  * Overview:        This routine checks to see if the queue is not empty.
  *
- * Note:            This operation is implemented with a macro that 
+ * Note:            This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueIsNotEmpty(q,N) ( (q)->count != 0 )
-
+#define StructQueueIsNotEmpty(q, N) ((q)->count != 0)
 
 /* StructQueueSpaceAvailable
  *************************************************************************
@@ -274,12 +255,11 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
  * Overview:        This routine checks to see if the queue has at least
  *                  the specified number of slots free.
  *
- * Note:            This operation is implemented with a macro that 
+ * Note:            This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueSpaceAvailable(c,q,N) ( ((q)->count + c) <= N )
-
+#define StructQueueSpaceAvailable(c, q, N) (((q)->count + c) <= N)
 
 /* StructQueueCount
  *************************************************************************
@@ -297,15 +277,13 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
  *
  * Overview:        This routine provides the number of items in the queue.
  *
- * Note:            This operation is implemented with a macro that 
+ * Note:            This operation is implemented with a macro that
  *                  supports queues of any type of data items.
  *************************************************************************/
 
-#define StructQueueCount(q,N) ( (q)->count )
-
+#define StructQueueCount(q, N) ((q)->count)
 
 #endif // STRUCT_QUEUE_H
 /*************************************************************************
  * EOF struct_queue.c
  */
-

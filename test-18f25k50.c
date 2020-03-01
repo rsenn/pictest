@@ -51,14 +51,13 @@
 #include "lib/device.h"
 #include "lib/interrupt.h"
 
-
 #define TIMER0_TICKS (256)
 
 volatile unsigned long bres;
 volatile unsigned long seconds;
 
 INTERRUPT_FN() {
-  if(/*INTCONbits.*/TMR0IF) {
+  if(/*INTCONbits.*/ TMR0IF) {
 
     bres += 256;
 
@@ -67,7 +66,7 @@ INTERRUPT_FN() {
       seconds++;
     }
 
-    /*INTCONbits.*/TMR0IF = 0;
+    /*INTCONbits.*/ TMR0IF = 0;
   }
 }
 
@@ -85,14 +84,14 @@ main() {
 
   RCONbits.IPEN = 0;
 
-  /*T0CONbits.*/T0CS = 0;
-  /*T0CONbits.*/T0PS = 0b111;
-  /*T0CONbits.*/T08BIT = 1;
-  /*T0CONbits.*/PSA = 0;
-  /*T0CONbits.*/TMR0ON = 1;
+  /*T0CONbits.*/ T0CS = 0;
+  /*T0CONbits.*/ T0PS = 0b111;
+  /*T0CONbits.*/ T08BIT = 1;
+  /*T0CONbits.*/ PSA = 0;
+  /*T0CONbits.*/ TMR0ON = 1;
 
-  /*INTCONbits.*/TMR0IE = 1;
-  /*INTCONbits.*/TMR0IF = 0;
+  /*INTCONbits.*/ TMR0IE = 1;
+  /*INTCONbits.*/ TMR0IF = 0;
 
   GIE = 1;
   PEIE = 1;

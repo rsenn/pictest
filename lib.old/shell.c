@@ -46,7 +46,9 @@ static int cmd_get(const cmd_t*, char* arg);
 static int cmd_bitop(const cmd_t*, char* arg);
 
 const cmd_t cmds[] = {
-    {"set", &cmd_set}, {"get", &cmd_get}, {"bitop", &cmd_bitop},
+    {"set", &cmd_set},
+    {"get", &cmd_get},
+    {"bitop", &cmd_bitop},
 };
 
 void

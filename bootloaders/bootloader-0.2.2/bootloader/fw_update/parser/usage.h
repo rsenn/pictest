@@ -28,60 +28,57 @@
 
 #include <list>
 
-class Usage
-{
+class Usage {
 public:
+  Usage();
+  virtual ~Usage();
+  void add(const UsageDescriptor& descriptor);
 
+  /**
+   *	Returns reference to the descriptor with corresponding numerical ID.
+   *
+   *   @param	id Numeric ID to search corresponding descriptor.
+   *   @return	Reference to the descriptor with corresponding numerical ID.
+   *   @throws	invalid_argument Provided ID doesn't correspond to any descriptor.
+   */
+  const UsageDescriptor& operator[](const unsigned int& id) const;
 
-	Usage();
-	virtual ~Usage();
-	void add(const UsageDescriptor& descriptor);
+  /**
+   *	Returns reference to the descriptor corresponding to argument provided.
+   *
+   *   @param	argument Argument to search corresponding descriptor.
+   *   @return	Reference to the descriptor corresponding to argument provided.
+   *   @throws	EBadArgument Provided argument doesn't correspond to any descriptor.
+   */
+  const UsageDescriptor& operator[](const std::string& argument) const;
+  void print();
+  void print(const std::list<UsageUpdate>& update);
 
-	/**
-	*	Returns reference to the descriptor with corresponding numerical ID.
-	*
-	*   @param	id Numeric ID to search corresponding descriptor.
-	*   @return	Reference to the descriptor with corresponding numerical ID.
-	*   @throws	invalid_argument Provided ID doesn't correspond to any descriptor.
-	*/
-	const UsageDescriptor& operator[](const unsigned int &id) const;
-
-	/**
-	*	Returns reference to the descriptor corresponding to argument provided.
-	*
-	*   @param	argument Argument to search corresponding descriptor.
-	*   @return	Reference to the descriptor corresponding to argument provided.
-	*   @throws	EBadArgument Provided argument doesn't correspond to any descriptor.
-	*/
-	const UsageDescriptor& operator[](const std::string &argument) const;
-	void print();
-	void print(const std::list<UsageUpdate> &update);
 protected:
-	void print(const std::list<UsageUpdate> &update, UsageDescriptor::Type type);
+  void print(const std::list<UsageUpdate>& update, UsageDescriptor::Type type);
 
-	/**
-	*	Checks whether usage contains descriptor with corresponding numerical ID.
-	*	If descriptor is found returns true.
-	*
-	*   @param	id Numeric ID to search corresponding descriptor.
-	*   @return
-	*		\arg true if descriptor is found.
-	*		\arg false if descriptor is not found
-	*/
-	bool contain(unsigned int id);
+  /**
+   *	Checks whether usage contains descriptor with corresponding numerical ID.
+   *	If descriptor is found returns true.
+   *
+   *   @param	id Numeric ID to search corresponding descriptor.
+   *   @return
+   *		\arg true if descriptor is found.
+   *		\arg false if descriptor is not found
+   */
+  bool contain(unsigned int id);
 
-	/**
-	*	Checks whether usage contains descriptor corresponding for argument provided.
-	*	If descriptor is found returns true.
-	*
-	*   @param	argument Argument to search corresponding descriptor.
-	*   @return
-	*		\arg true if descriptor is found.
-	*		\arg false if descriptor is not found
-	*/
-	bool contain(std::string argument);
-	std::list<UsageDescriptor> _descriptors;
+  /**
+   *	Checks whether usage contains descriptor corresponding for argument provided.
+   *	If descriptor is found returns true.
+   *
+   *   @param	argument Argument to search corresponding descriptor.
+   *   @return
+   *		\arg true if descriptor is found.
+   *		\arg false if descriptor is not found
+   */
+  bool contain(std::string argument);
+  std::list<UsageDescriptor> _descriptors;
 };
-
 
 #endif // USAGE_H_INCLUDED

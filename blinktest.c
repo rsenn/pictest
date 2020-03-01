@@ -1,4 +1,3 @@
-#include "config-bits.h"
 #include "lib/comparator.h"
 #include "lib/const.h"
 #include "lib/device.h"
@@ -7,6 +6,7 @@
 #include "lib/softpwm.h"
 #include "lib/timer.h"
 #include "pictest.h"
+#include "src/config-bits.h"
 
 #if USE_UART
 #include "lib/uart.h"
@@ -155,8 +155,8 @@ main() {
 #endif
 
 #if !NO_PORTB
-  N_RBPU = 0;
-  //  N_RBPU = 0; // enable portb pull-ups
+  nRBPU = 0;
+  //  nRBPU = 0; // enable portb pull-ups
   TRISB |= 0b11110000;
   TRISB &= 0b11110011;
   RB2 = RB3 = LOW;

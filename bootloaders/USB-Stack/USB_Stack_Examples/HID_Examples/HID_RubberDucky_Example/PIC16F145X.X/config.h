@@ -3,7 +3,7 @@
  * @brief PIC Microcontroller Settings.
  * @author John Izzard
  * @date 13/02/2019
- * 
+ *
  * PIC16F145X Configuration File.
  * Copyright (C) 2017-2019  John Izzard
  *
@@ -24,8 +24,8 @@
 #define CONFIG_H
 
 #define NO_XTAL 0
-#define MHz_12  1
-#define MHz_16  2
+#define MHz_12 1
+#define MHz_16 2
 
 #define XTAL_USED NO_XTAL
 
@@ -35,17 +35,17 @@
 #define XPRESS
 
 #ifdef XPRESS
-#define BUTTON      !PORTAbits.RA5
-#define LED         LATCbits.LATC3
+#define BUTTON !PORTAbits.RA5
+#define LED LATCbits.LATC3
 
 #define BUTTON_TRIS TRISAbits.TRISA5
-#define LED_TRIS    TRISCbits.TRISC3
+#define LED_TRIS TRISCbits.TRISC3
 #else
-#define BUTTON      PORTCbits.RC4
-#define LED         LATCbits.LATC5
+#define BUTTON PORTCbits.RC4
+#define LED LATCbits.LATC5
 
 #define BUTTON_TRIS TRISCbits.TRISC4
-#define LED_TRIS    TRISCbits.TRISC5
+#define LED_TRIS TRISCbits.TRISC5
 #endif
 
 #endif /* CONFIG_H */

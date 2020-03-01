@@ -42,27 +42,27 @@
 /** D E F I N I T I O N S ****************************************************/
 
 /* Control Transfer States */
-#define WAIT_SETUP          0
-#define CTRL_TRF_TX         1
-#define CTRL_TRF_RX         2
+#define WAIT_SETUP 0
+#define CTRL_TRF_TX 1
+#define CTRL_TRF_RX 2
 
 /* USB PID: Token Types - See chapter 8 in the USB specification */
-#define SETUP_TOKEN         0b00001101
-#define OUT_TOKEN           0b00000001
-#define IN_TOKEN            0b00001001
+#define SETUP_TOKEN 0b00001101
+#define OUT_TOKEN 0b00000001
+#define IN_TOKEN 0b00001001
 
 /* bmRequestType Definitions */
-#define HOST_TO_DEV         0
-#define DEV_TO_HOST         1
+#define HOST_TO_DEV 0
+#define DEV_TO_HOST 1
 
-#define STANDARD            0x00
-#define CLASS               0x01
-#define VENDOR              0x02
+#define STANDARD 0x00
+#define CLASS 0x01
+#define VENDOR 0x02
 
-#define RCPT_DEV            0
-#define RCPT_INTF           1
-#define RCPT_EP             2
-#define RCPT_OTH            3
+#define RCPT_DEV 0
+#define RCPT_INTF 1
+#define RCPT_EP 2
+#define RCPT_OTH 3
 
 /** E X T E R N S ************************************************************/
 extern byte ctrl_trf_session_owner;
@@ -78,5 +78,4 @@ void USBCtrlTrfRxService(void);
 void USBCtrlEPServiceComplete(void);
 void USBPrepareForNextSetupTrf(void);
 
-
-#endif //USBCTRLTRF_H
+#endif // USBCTRLTRF_H

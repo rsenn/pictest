@@ -23,108 +23,85 @@
 
 #include "../osdep/osdep.h"
 
-#include <stdexcept>
-#include <string>
-#include <list>
 #include <cstdio>
 #include <errno.h>
+#include <list>
+#include <stdexcept>
+#include <string>
 
-class EParserException: public std::runtime_error
-{
+class EParserException : public std::runtime_error {
 public:
-	explicit EParserException (const std::string& msg)
-		: std::runtime_error(""), _message(msg) {};
+  explicit EParserException(const std::string& msg) : std::runtime_error(""), _message(msg){};
 
-	virtual ~EParserException() throw() {;};
+  virtual ~EParserException() throw() { ; };
 
-	virtual const char *what() const throw()
-	{	// return pointer to message string
-		return (_message.c_str());
-	}
+  virtual const char* what() const throw() { // return pointer to message string
+    return (_message.c_str());
+  }
 
 protected:
-	std::string _message;
+  std::string _message;
 };
 
-class EArgumentAbsent: public EParserException
-{
+class EArgumentAbsent : public EParserException {
 public:
-	explicit EArgumentAbsent(std::string argument)
-		: EParserException(std::string("Argument \"") + argument + std::string("\" is required for the selected operation.")){};
+  explicit EArgumentAbsent(std::string argument)
+      : EParserException(std::string("Argument \"") + argument +
+                         std::string("\" is required for the selected operation.")){};
 };
 
-class EArgumentMultipleUsage: public EParserException
-{
+class EArgumentMultipleUsage : public EParserException {
 public:
-	explicit EArgumentMultipleUsage(std::string argument)
-		: EParserException(std::string("Argument \"") + argument + std::string("\" is provided more then once.")){};
+  explicit EArgumentMultipleUsage(std::string argument)
+      : EParserException(std::string("Argument \"") + argument + std::string("\" is provided more then once.")){};
 };
 
-class EBadArgument: public EParserException
-{
+class EBadArgument : public EParserException {
 public:
-	explicit EBadArgument(std::string argument)
-		: EParserException(std::string("Wrong argument - \"")  + argument + std::string("\".")){};
+  explicit EBadArgument(std::string argument)
+      : EParserException(std::string("Wrong argument - \"") + argument + std::string("\".")){};
 };
 
-class EValueAbsent: public EParserException
-{
+class EValueAbsent : public EParserException {
 public:
-	explicit EValueAbsent(std::string argument)
-		: EParserException(std::string("Value not provided for \"") + argument + std::string("\".")){};
+  explicit EValueAbsent(std::string argument)
+      : EParserException(std::string("Value not provided for \"") + argument + std::string("\".")){};
 };
 
-
-class EBadValue: public EParserException
-{
+class EBadValue : public EParserException {
 public:
-	explicit EBadValue(std::string argument)
-		: EParserException(std::string("Bad value provided for \"") + argument + std::string("\" argument.")){};
-	EBadValue(std::string argument, std::string rangeBegin, std::string rangeEnd)
-		: EParserException(std::string("Bad value provided for \"") + argument + std::string("\" argument.")
-			+ std::string("\nValue must be in range from ") + rangeBegin
-			+ std::string(" to ") + rangeEnd + std::string(".")){};
-	EBadValue(std::string argument, unsigned int rangeBegin, unsigned int rangeEnd)
-		: EParserException("")
-	{
-		char str[12];
-		sprintf(str, "%d", rangeBegin);
-		std::string strBegin(str);
-		sprintf(str, "%d", rangeEnd);
-		std::string strEnd(str);
-		_message = std::string("Bad value provided for \"") + argument + std::string("\" argument.");
-		_message += std::string("\nValue must be in range from ") + strBegin
-				+ std::string(" to ") + strEnd + std::string(".");
-	}
-	EBadValue(std::string argument, std::list<std::string> values)
-		: EParserException("")
-	{
-		_message = std::string("Bad value provided for \"") + argument + std::string("\" argument.");
-		_message += std::string("\nValid values for this argument are:");
-		for (std::list<std::string>::iterator i = values.begin(); i != values.end(); i++)
-			_message += std::string("\n\t") + (*i);
-	}
+  explicit EBadValue(std::string argument)
+      : EParserException(std::string("Bad value provided for \"") + argument + std::string("\" argument.")){};
+  EBadValue(std::string argument, std::string rangeBegin, std::string rangeEnd)
+      : EParserException(std::string("Bad value provided for \"") + argument + std::string("\" argument.") +
+                         std::string("\nValue must be in range from ") + rangeBegin + std::string(" to ") + rangeEnd +
+                         std::string(".")){};
+  EBadValue(std::string argument, unsigned int rangeBegin, unsigned int rangeEnd) : EParserException("") {
+    char str[12];
+    sprintf(str, "%d", rangeBegin);
+    std::string strBegin(str);
+    sprintf(str, "%d", rangeEnd);
+    std::string strEnd(str);
+    _message = std::string("Bad value provided for \"") + argument + std::string("\" argument.");
+    _message +=
+        std::string("\nValue must be in range from ") + strBegin + std::string(" to ") + strEnd + std::string(".");
+  }
+  EBadValue(std::string argument, std::list<std::string> values) : EParserException("") {
+    _message = std::string("Bad value provided for \"") + argument + std::string("\" argument.");
+    _message += std::string("\nValid values for this argument are:");
+    for(std::list<std::string>::iterator i = values.begin(); i != values.end(); i++)
+      _message += std::string("\n\t") + (*i);
+  }
 };
 
-
-
-
-class EMultipleCommands: public EParserException
-{
+class EMultipleCommands : public EParserException {
 public:
-	EMultipleCommands()
-		: EParserException("Only one command allowed."){};
+  EMultipleCommands() : EParserException("Only one command allowed."){};
 };
 
-
-class ECommandAbsent: public EParserException
-{
+class ECommandAbsent : public EParserException {
 public:
-	ECommandAbsent()
-		: EParserException("Command not provided."){};
+  ECommandAbsent() : EParserException("Command not provided."){};
 };
-
-
 
 #endif // PARSER_EXCEPTIONS_H_INCLUDED
-

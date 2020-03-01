@@ -35,11 +35,9 @@ const unsigned int ARG_INPUT_DATA = 7;
 const unsigned int ARG_OUTPUT_HEX = 8;
 const unsigned int ARG_OUTPUT_BIN = 9;
 
-class EncoderUsage: public Usage
-{
+class EncoderUsage : public Usage {
 public:
-	EncoderUsage();
+  EncoderUsage();
 };
-
 
 #endif // FU_USAGE_H_INCLUDED

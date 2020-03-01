@@ -44,10 +44,10 @@
  *****************************************************************************/
 
 /** I N C L U D E S **********************************************************/
-#include <p18cxxx.h>
+#include "io_cfg.h" // Required for self_power status
 #include "system\typedefs.h"
 #include "system\usb\usb.h"
-#include "io_cfg.h"                     // Required for self_power status
+#include <p18cxxx.h>
 
 /** V A R I A B L E S ********************************************************/
 #pragma udata
@@ -76,74 +76,67 @@ void USBStdFeatureReqHandler(void);
  *
  * Note:            None
  *****************************************************************************/
-void USBCheckStdRequest(void)
-{   
-    if(SetupPkt.RequestType != STANDARD) return;
-    
-    switch(SetupPkt.bRequest)
-    {
-        case SET_ADR:
-            ctrl_trf_session_owner = MUID_USB9;
-            usb_device_state = ADR_PENDING_STATE;       // Update state only
-            /* See USBCtrlTrfInHandler() in usbctrltrf.c for the next step */
-            break;
-        case GET_DSC:
-            ctrl_trf_session_owner = MUID_USB9;
-            if(SetupPkt.bDscType == DSC_DEV)
-            {
-                pSrc.bRom = (rom byte*)&device_dsc;
-                wCount._word = sizeof(device_dsc);  // Set data count
-            }
-            else if(SetupPkt.bDscType == DSC_CFG)
-            {
-                pSrc.bRom = (rom byte*)&cfg01;
-                wCount._word = sizeof(cfg01);       // Set data count
-            }
-            else if(SetupPkt.bDscType == DSC_STR)
-            {
-                pSrc.bRom = (rom byte*)&sd000;
-                wCount._word = sizeof(sd000);       // Set data count
-            }
-            else
-                /*
-                 * This is required to stall the DEVICE_QUALIFIER request
-                 */
-                ctrl_trf_session_owner = MUID_NULL;
-            usb_stat.ctrl_trf_mem = _ROM;               // Set memory type
-            break;
-        case SET_CFG:
-            USBStdSetCfgHandler();
-            break;
-        case GET_CFG:
-            ctrl_trf_session_owner = MUID_USB9;
-            pSrc.bRam = (byte*)&usb_active_cfg;         // Set Source
-            usb_stat.ctrl_trf_mem = _RAM;               // Set memory type
-            LSB(wCount) = 1;                            // Set data count
-            break;
-        //case GET_STATUS:
-        //    USBStdGetStatusHandler();
-        //    break;
-        //case CLR_FEATURE:
-        //case SET_FEATURE:
-        //    USBStdFeatureReqHandler();
-        //    break;
-        //case GET_INTF:
-        //    ctrl_trf_session_owner = MUID_USB9;
-        //    pSrc.bRam = (byte*)&usb_alt_intf+SetupPkt.bIntfID;  // Set source
-        //    usb_stat.ctrl_trf_mem = _RAM;               // Set memory type
-        //    LSB(wCount) = 1;                            // Set data count
-        //    break;
-        //case SET_INTF:
-        //    ctrl_trf_session_owner = MUID_USB9;
-        //    usb_alt_intf[SetupPkt.bIntfID] = SetupPkt.bAltID;
-        //    break;
-        //case SET_DSC:
-        //case SYNCH_FRAME:
-        default:
-            break;
-    }//end switch
-    
-}//end USBCheckStdRequest
+void
+USBCheckStdRequest(void) {
+  if(SetupPkt.RequestType != STANDARD) return;
+
+  switch(SetupPkt.bRequest) {
+    case SET_ADR:
+      ctrl_trf_session_owner = MUID_USB9;
+      usb_device_state = ADR_PENDING_STATE; // Update state only
+      /* See USBCtrlTrfInHandler() in usbctrltrf.c for the next step */
+      break;
+    case GET_DSC:
+      ctrl_trf_session_owner = MUID_USB9;
+      if(SetupPkt.bDscType == DSC_DEV) {
+        pSrc.bRom = (rom byte*)&device_dsc;
+        wCount._word = sizeof(device_dsc); // Set data count
+      } else if(SetupPkt.bDscType == DSC_CFG) {
+        pSrc.bRom = (rom byte*)&cfg01;
+        wCount._word = sizeof(cfg01); // Set data count
+      } else if(SetupPkt.bDscType == DSC_STR) {
+        pSrc.bRom = (rom byte*)&sd000;
+        wCount._word = sizeof(sd000); // Set data count
+      } else
+        /*
+         * This is required to stall the DEVICE_QUALIFIER request
+         */
+        ctrl_trf_session_owner = MUID_NULL;
+      usb_stat.ctrl_trf_mem = _ROM; // Set memory type
+      break;
+    case SET_CFG:
+      USBStdSetCfgHandler();
+      break;
+    case GET_CFG:
+      ctrl_trf_session_owner = MUID_USB9;
+      pSrc.bRam = (byte*)&usb_active_cfg; // Set Source
+      usb_stat.ctrl_trf_mem = _RAM;       // Set memory type
+      LSB(wCount) = 1;                    // Set data count
+      break;
+    // case GET_STATUS:
+    //    USBStdGetStatusHandler();
+    //    break;
+    // case CLR_FEATURE:
+    // case SET_FEATURE:
+    //    USBStdFeatureReqHandler();
+    //    break;
+    // case GET_INTF:
+    //    ctrl_trf_session_owner = MUID_USB9;
+    //    pSrc.bRam = (byte*)&usb_alt_intf+SetupPkt.bIntfID;  // Set source
+    //    usb_stat.ctrl_trf_mem = _RAM;               // Set memory type
+    //    LSB(wCount) = 1;                            // Set data count
+    //    break;
+    // case SET_INTF:
+    //    ctrl_trf_session_owner = MUID_USB9;
+    //    usb_alt_intf[SetupPkt.bIntfID] = SetupPkt.bAltID;
+    //    break;
+    // case SET_DSC:
+    // case SYNCH_FRAME:
+    default:
+      break;
+  } // end switch
+
+} // end USBCheckStdRequest
 
 /******************************************************************************
  * Function:        void USBStdGetDscHandler(void)
@@ -163,7 +156,7 @@ void USBCheckStdRequest(void)
  *
  * Note:            None
  *****************************************************************************/
-//void USBStdGetDscHandler(void)
+// void USBStdGetDscHandler(void)
 //{
 //    if(SetupPkt.bmRequestType == 0x80)
 //    {
@@ -185,7 +178,7 @@ void USBCheckStdRequest(void)
 //                wCount._word = *pSrc.bRom;                  // Set data count
 //                break;
 //        }//end switch
-//        
+//
 //        usb_stat.ctrl_trf_mem = _ROM;                       // Set memory type
 //    }//end if
 //}//end USBStdGetDscHandler
@@ -207,26 +200,25 @@ void USBCheckStdRequest(void)
  *
  * Note:            None
  *****************************************************************************/
-void USBStdSetCfgHandler(void)
-{
-    ctrl_trf_session_owner = MUID_USB9;
-    //mDisableEP1to15();                          // See usbdrv.h
-    //ClearArray((byte*)&usb_alt_intf,MAX_NUM_INT);
-    usb_active_cfg = SetupPkt.bCfgValue;
-    if(SetupPkt.bCfgValue == 0)
-        usb_device_state = ADDRESS_STATE;
-    else
-    {
-        usb_device_state = CONFIGURED_STATE;
+void
+USBStdSetCfgHandler(void) {
+  ctrl_trf_session_owner = MUID_USB9;
+  // mDisableEP1to15();                          // See usbdrv.h
+  // ClearArray((byte*)&usb_alt_intf,MAX_NUM_INT);
+  usb_active_cfg = SetupPkt.bCfgValue;
+  if(SetupPkt.bCfgValue == 0)
+    usb_device_state = ADDRESS_STATE;
+  else {
+    usb_device_state = CONFIGURED_STATE;
 
-        /* Modifiable Section */
+    /* Modifiable Section */
 
-        BootInitEP();
-        
-        /* End modifiable section */
+    BootInitEP();
 
-    }//end if(SetupPkt.bcfgValue == 0)
-}//end USBStdSetCfgHandler
+    /* End modifiable section */
+
+  } // end if(SetupPkt.bcfgValue == 0)
+} // end USBStdSetCfgHandler
 
 /******************************************************************************
  * Function:        void USBStdGetStatusHandler(void)
@@ -243,11 +235,11 @@ void USBStdSetCfgHandler(void)
  *
  * Note:            None
  *****************************************************************************/
-//void USBStdGetStatusHandler(void)
+// void USBStdGetStatusHandler(void)
 //{
 //    CtrlTrfData._byte0 = 0;                         // Initialize content
 //    CtrlTrfData._byte1 = 0;
-//        
+//
 //    switch(SetupPkt.Recipient)
 //    {
 //        case RCPT_DEV:
@@ -258,7 +250,7 @@ void USBStdSetCfgHandler(void)
 //             */
 //            if(self_power == 1)                     // self_power defined in io_cfg.h
 //                CtrlTrfData._byte0|=0b00000001;     // Set bit0
-//            
+//
 //            if(usb_stat.RemoteWakeup == 1)          // usb_stat defined in usbmmap.c
 //                CtrlTrfData._byte0|=0b00000010;     // Set bit1
 //            break;
@@ -275,7 +267,7 @@ void USBStdSetCfgHandler(void)
 //                CtrlTrfData._byte0=0x01;// Set bit0
 //            break;
 //    }//end switch
-//    
+//
 //    if(ctrl_trf_session_owner == MUID_USB9)
 //    {
 //        pSrc.bRam = (byte*)&CtrlTrfData;            // Set Source
@@ -300,7 +292,7 @@ void USBStdSetCfgHandler(void)
  *
  * Note:            None
  *****************************************************************************/
-//void USBStdFeatureReqHandler(void)
+// void USBStdFeatureReqHandler(void)
 //{
 //    if((SetupPkt.bFeature == DEVICE_REMOTE_WAKEUP)&&
 //       (SetupPkt.Recipient == RCPT_DEV))
@@ -311,7 +303,7 @@ void USBStdSetCfgHandler(void)
 //        else
 //            usb_stat.RemoteWakeup = 0;
 //    }//end if
-//    
+//
 //    if((SetupPkt.bFeature == ENDPOINT_HALT)&&
 //       (SetupPkt.Recipient == RCPT_EP)&&
 //       (SetupPkt.EPNum != 0))
@@ -319,7 +311,7 @@ void USBStdSetCfgHandler(void)
 //        ctrl_trf_session_owner = MUID_USB9;
 //        /* Must do address calculation here */
 //        pDst.bRam = (byte*)&ep0Bo+(SetupPkt.EPNum*8)+(SetupPkt.EPDir*4);
-//        
+//
 //        if(SetupPkt.bRequest == SET_FEATURE)
 //            *pDst.bRam = _USIE|_BSTALL;
 //        else

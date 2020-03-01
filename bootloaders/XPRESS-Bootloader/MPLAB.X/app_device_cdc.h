@@ -24,33 +24,33 @@ limitations under the License.
 //#include "usb_device_cdc.h"
 
 /*********************************************************************
-* Function: void APP_DeviceCDCEmulatorInitialize(void);
-*
-* Overview: Initializes the Serial Emulator code
-*
-* PreCondition: None
-*
-* Input: None
-*
-* Output: None
-*
-********************************************************************/
+ * Function: void APP_DeviceCDCEmulatorInitialize(void);
+ *
+ * Overview: Initializes the Serial Emulator code
+ *
+ * PreCondition: None
+ *
+ * Input: None
+ *
+ * Output: None
+ *
+ ********************************************************************/
 void APP_DeviceCDCEmulatorInitialize();
 
 /*********************************************************************
-* Function: void APP_DeviceCDCBasicDemoTasks(void);
-*
-* Overview: Keeps the demo running.
-*
-* PreCondition: The demo should have been initialized and started via
-*   the APP_DeviceCDCBasicDemoInitialize() and APP_DeviceCDCBasicDemoStart() demos
-*   respectively.
-*
-* Input: None
-*
-* Output: None
-*
-********************************************************************/
+ * Function: void APP_DeviceCDCBasicDemoTasks(void);
+ *
+ * Overview: Keeps the demo running.
+ *
+ * PreCondition: The demo should have been initialized and started via
+ *   the APP_DeviceCDCBasicDemoInitialize() and APP_DeviceCDCBasicDemoStart() demos
+ *   respectively.
+ *
+ * Input: None
+ *
+ * Output: None
+ *
+ ********************************************************************/
 void APP_DeviceCDCEmulatorTasks();
 
 #endif

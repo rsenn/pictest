@@ -103,12 +103,12 @@
 #define __GXX_EXPERIMENTAL_CXX0X__ 1
 #define __GXX_RTTI 1
 #define __GXX_WEAK__ 1
-#define __INT16_C_SUFFIX__ 
+#define __INT16_C_SUFFIX__
 #define __INT16_FMTd__ "hd"
 #define __INT16_FMTi__ "hi"
 #define __INT16_MAX__ 32767
 #define __INT16_TYPE__ short
-#define __INT32_C_SUFFIX__ 
+#define __INT32_C_SUFFIX__
 #define __INT32_FMTd__ "d"
 #define __INT32_FMTi__ "i"
 #define __INT32_MAX__ 2147483647
@@ -118,7 +118,7 @@
 #define __INT64_FMTi__ "lli"
 #define __INT64_MAX__ 9223372036854775807LL
 #define __INT64_TYPE__ long long int
-#define __INT8_C_SUFFIX__ 
+#define __INT8_C_SUFFIX__
 #define __INT8_FMTd__ "hhd"
 #define __INT8_FMTi__ "hhi"
 #define __INT8_MAX__ 127
@@ -206,7 +206,7 @@
 #define __PTRDIFF_MAX__ 9223372036854775807L
 #define __PTRDIFF_TYPE__ long int
 #define __PTRDIFF_WIDTH__ 64
-#define __REGISTER_PREFIX__ 
+#define __REGISTER_PREFIX__
 #define __SCHAR_MAX__ 127
 #define __SHRT_MAX__ 32767
 #define __SIG_ATOMIC_MAX__ 2147483647
@@ -245,7 +245,7 @@
 #define __STDC_UTF_16__ 1
 #define __STDC_UTF_32__ 1
 #define __STDC__ 1
-#define __UINT16_C_SUFFIX__ 
+#define __UINT16_C_SUFFIX__
 #define __UINT16_FMTX__ "hX"
 #define __UINT16_FMTo__ "ho"
 #define __UINT16_FMTu__ "hu"
@@ -266,7 +266,7 @@
 #define __UINT64_FMTx__ "llx"
 #define __UINT64_MAX__ 18446744073709551615ULL
 #define __UINT64_TYPE__ long long unsigned int
-#define __UINT8_C_SUFFIX__ 
+#define __UINT8_C_SUFFIX__
 #define __UINT8_FMTX__ "hhX"
 #define __UINT8_FMTo__ "hho"
 #define __UINT8_FMTu__ "hhu"
@@ -383,9 +383,9 @@
 #define __nullable _Nullable
 #define __pic__ 2
 #define __private_extern__ extern
-#define __strong 
+#define __strong
 #define __tune_core2__ 1
-#define __unsafe_unretained 
+#define __unsafe_unretained
 #define __weak __attribute__((objc_gc(weak)))
 #define __x86_64 1
 #define __x86_64__ 1

@@ -4,8 +4,8 @@
 // Changed variable name ROM[] to RomBytes[] because ROM is a reserved word
 // in version 4 of the CCS compiler.
 
-#include "delay.h"
 #include "onewire.h"
+#include "delay.h"
 
 #ifdef HI_TECH_C
 #include <htc.h>

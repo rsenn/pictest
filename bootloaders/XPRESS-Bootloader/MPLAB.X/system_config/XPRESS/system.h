@@ -15,38 +15,37 @@ limitations under the License.
 
 *******************************************************************************/
 
-#include <xc.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <xc.h>
 
 #include "io_mapping.h"
 
 // semantic versioning
-#define MAJOR   2       // change only when incompatible changes are made
-#define MINOR   1       // change when adding functionality or fixing bugs
+#define MAJOR 2 // change only when incompatible changes are made
+#define MINOR 1 // change when adding functionality or fixing bugs
 
 // this release date
-#define YEAR            2016
-#define MONTH           2       // January=1, February=2 ..
-#define DAY             7       // Day:1..31
+#define YEAR 2016
+#define MONTH 2 // January=1, February=2 ..
+#define DAY 7   // Day:1..31
 
 #define MAIN_RETURN void
 
 /*********************************************************************
-* Function: void SYSTEM_Initialize(void)
-*
-* Overview: Initializes the system.
-*
-********************************************************************/
+ * Function: void SYSTEM_Initialize(void)
+ *
+ * Overview: Initializes the system.
+ *
+ ********************************************************************/
 void SYSTEM_Initialize(void);
 
 /*********************************************************************
-* Function: void SYSTEM_Tasks(void)
-*
-* Overview: Runs system level tasks that keep the system running
-*
-* PreCondition: System has been initalized with SYSTEM_Initialize()
-*
-********************************************************************/
+ * Function: void SYSTEM_Tasks(void)
+ *
+ * Overview: Runs system level tasks that keep the system running
+ *
+ * PreCondition: System has been initalized with SYSTEM_Initialize()
+ *
+ ********************************************************************/
 #define SYSTEM_Tasks()
-

@@ -44,9 +44,9 @@
 /****** Compiler Specific Definitions *******************************/
 
 #if defined(HI_TECH_C)
-    #define HITECH_C18
+#define HITECH_C18
 #else
-    #define MCHP_C18
+#define MCHP_C18
 #endif
 
 #if defined(MCHP_C18) && defined(HITECH_C18)
@@ -58,50 +58,48 @@
 #endif
 
 #if defined(MCHP_C18)
-    #define EECON1_RD       EECON1bits.RD
-    #define EECON1_WR       EECON1bits.WR
+#define EECON1_RD EECON1bits.RD
+#define EECON1_WR EECON1bits.WR
 #endif
 
 /****** Processor Specific Definitions ******************************/
 
-#if defined(__18F2455)||defined(__18F2550)|| \
-    defined(__18F4455)||defined(__18F2550)|| \
-    defined(__18F2458)||defined(__18F2553)|| \
-    defined(__18F4458)||defined(__18F4553)
-    
-   /****** Remapped Vectors ********************
-    *   _____________________
-    *   |       RESET       |   0x000000
-    *   |      LOW_INT      |   0x000008
-    *   |      HIGH_INT     |   0x000018
-    *   |       TRAP        |   0x000028
-    *   |     Bootloader    |   0x00002E
-    *   .                   .
-    *   .                   .
-    *   |     USER_RESET    |   0x000800
-    *   |    USER_LOW_INT   |   0x000808
-    *   |    USER_HIGH_INT  |   0x000818
-    *   |      USER_TRAP    |   0x000828
-    *   |                   |
-    *   |   Program Memory  |
-    *   .                   .
-    *   |___________________|   0x0005FFF / 0x0007FFF
-    */
-    #define RM_RESET_VECTOR             0x000800
-    #define RM_HIGH_INTERRUPT_VECTOR    0x000808
-    #define RM_LOW_INTERRUPT_VECTOR     0x000818
+#if defined(__18F2455) || defined(__18F2550) || defined(__18F4455) || defined(__18F2550) || defined(__18F2458) ||      \
+    defined(__18F2553) || defined(__18F4458) || defined(__18F4553)
+
+/****** Remapped Vectors ********************
+ *   _____________________
+ *   |       RESET       |   0x000000
+ *   |      LOW_INT      |   0x000008
+ *   |      HIGH_INT     |   0x000018
+ *   |       TRAP        |   0x000028
+ *   |     Bootloader    |   0x00002E
+ *   .                   .
+ *   .                   .
+ *   |     USER_RESET    |   0x000800
+ *   |    USER_LOW_INT   |   0x000808
+ *   |    USER_HIGH_INT  |   0x000818
+ *   |      USER_TRAP    |   0x000828
+ *   |                   |
+ *   |   Program Memory  |
+ *   .                   .
+ *   |___________________|   0x0005FFF / 0x0007FFF
+ */
+#define RM_RESET_VECTOR 0x000800
+#define RM_HIGH_INTERRUPT_VECTOR 0x000808
+#define RM_LOW_INTERRUPT_VECTOR 0x000818
 #else
 #error "Processor not supported."
 #endif
 
 /* Bootloader Version */
 //#define MINOR_VERSION   0x14    //Bootloader Version 1.20
-#define MINOR_VERSION   0x02    //Bootloader 2 fuer Homepage
-#define MAJOR_VERSION   0x01
+#define MINOR_VERSION 0x02 // Bootloader 2 fuer Homepage
+#define MAJOR_VERSION 0x01
 
 /* State Machine */
-#define WAIT_FOR_CMD    0x00    //Wait for Command packet
-#define SENDING_RESP    0x01    //Sending Response
+#define WAIT_FOR_CMD 0x00 // Wait for Command packet
+#define SENDING_RESP 0x01 // Sending Response
 
 /******************************************************************************
  * Macro:           (bit) mBootRxIsBusy(void)
@@ -120,7 +118,7 @@
  *
  * Note:            None
  *****************************************************************************/
-#define mBootRxIsBusy()             BOOT_BD_OUT.Stat.UOWN
+#define mBootRxIsBusy() BOOT_BD_OUT.Stat.UOWN
 
 /******************************************************************************
  * Macro:           (bit) mBootTxIsBusy(void)
@@ -139,7 +137,7 @@
  *
  * Note:            None
  *****************************************************************************/
-#define mBootTxIsBusy()             BOOT_BD_IN.Stat.UOWN
+#define mBootTxIsBusy() BOOT_BD_IN.Stat.UOWN
 
 /** S T R U C T U R E S ******************************************************/
 
@@ -161,46 +159,40 @@
  *
  ********************************************************************/
 
-#define OVER_HEAD   5           //Overhead: <CMD_CODE><LEN><ADDR:3>
-#define DATA_SIZE   (BOOT_EP_SIZE - OVER_HEAD)
+#define OVER_HEAD 5 // Overhead: <CMD_CODE><LEN><ADDR:3>
+#define DATA_SIZE (BOOT_EP_SIZE - OVER_HEAD)
 
-typedef union _BOOT_DATA_PACKET
-{
-    byte _byte[BOOT_EP_SIZE];  //For Byte Access
-    struct
-    {
-        enum
-        {
-            READ_VERSION    = 0x00,
-            READ_FLASH      = 0x01,
-            WRITE_FLASH     = 0x02,
-            ERASE_FLASH     = 0x03,
-            READ_EEDATA     = 0x04,
-            WRITE_EEDATA    = 0x05,
-            READ_CONFIG     = 0x06,
-            WRITE_CONFIG    = 0x07,
-            UPDATE_LED      = 0x32,
-            RESET           = 0xFF
-        }CMD;
-        byte len;
-        union
-        {
-            rom far char *pAdr;             //Address Pointer
-            struct
-            {
-                byte low;                   //Little-indian order
-                byte high;
-                byte upper;
-            };
-        }ADR;
-        byte data[DATA_SIZE];
-    };
-    struct
-    {
-        unsigned :8;
-        byte led_num;
-        byte led_status;
-    };
+typedef union _BOOT_DATA_PACKET {
+  byte _byte[BOOT_EP_SIZE]; // For Byte Access
+  struct {
+    enum {
+      READ_VERSION = 0x00,
+      READ_FLASH = 0x01,
+      WRITE_FLASH = 0x02,
+      ERASE_FLASH = 0x03,
+      READ_EEDATA = 0x04,
+      WRITE_EEDATA = 0x05,
+      READ_CONFIG = 0x06,
+      WRITE_CONFIG = 0x07,
+      UPDATE_LED = 0x32,
+      RESET = 0xFF
+    } CMD;
+    byte len;
+    union {
+      rom far char* pAdr; // Address Pointer
+      struct {
+        byte low; // Little-indian order
+        byte high;
+        byte upper;
+      };
+    } ADR;
+    byte data[DATA_SIZE];
+  };
+  struct {
+    unsigned : 8;
+    byte led_num;
+    byte led_status;
+  };
 } BOOT_DATA_PACKET;
 
 /** E X T E R N S ************************************************************/
@@ -209,4 +201,4 @@ typedef union _BOOT_DATA_PACKET
 void BootInitEP(void);
 void BootService(void);
 
-#endif //BOOT_H
+#endif // BOOT_H

@@ -481,7 +481,7 @@ PlayNote(unsigned short note, unsigned char octave, unsigned int duration) {
 // void InitTimer(void) {
 //  /* Initialise Timer 0 */
 //  OPTION_REG = 0b11010111; /* Set TMR0 to Internal CLk, 1:256 */
-//  TIMER0_INTERRUPT_FLAG = 0; /* Clear TMR0 Flag, ready for use */
+//  TIMER0_INTERRUPT_CLEAR(); /* Clear TMR0 Flag, ready for use */
 //  T0IE = 1; /* Enable Timer Overflow Interrupt */
 
 //  /* Initialise Timer 1 */
@@ -495,7 +495,7 @@ interr(void) {
   if(TIMER0_INTERRUPT_FLAG) {
     TMR0 = beat_speed;
     if(TMR0Count) TMR0Count--;
-    TIMER0_INTERRUPT_FLAG = 0;
+    TIMER0_INTERRUPT_CLEAR();
   }
   if(TMR1IF) {
     if(beep)

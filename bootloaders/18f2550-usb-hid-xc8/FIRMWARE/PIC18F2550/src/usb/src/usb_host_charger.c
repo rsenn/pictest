@@ -18,7 +18,7 @@ Summary:
     This is the Charger client driver file for a USB Embedded Host device.
 
 *******************************************************************************/
-//DOM-IGNORE-BEGIN
+// DOM-IGNORE-BEGIN
 /******************************************************************************
 
 FileName:        usb_host_charger.c
@@ -53,19 +53,18 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
   2.6-2.7a   No change
 
 *******************************************************************************/
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
-#include <stdlib.h>
-#include <string.h>
+#include "USB/usb_host_charger.h"
 #include "GenericTypeDefs.h"
 #include "USB/usb.h"
-#include "USB/usb_host_charger.h"
+#include <stdlib.h>
+#include <string.h>
 
 //#define DEBUG_MODE
 #ifdef DEBUG_MODE
-    #include "uart2.h"
+#include "uart2.h"
 #endif
-
 
 // *****************************************************************************
 // *****************************************************************************
@@ -73,9 +72,8 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 // *****************************************************************************
 // *****************************************************************************
 
-BYTE                currentChargingRecord;
+BYTE currentChargingRecord;
 USB_CHARGING_DEVICE usbChargingDevices[USB_MAX_CHARGING_DEVICES];
-
 
 // *****************************************************************************
 // *****************************************************************************
@@ -83,8 +81,7 @@ USB_CHARGING_DEVICE usbChargingDevices[USB_MAX_CHARGING_DEVICES];
 // *****************************************************************************
 // *****************************************************************************
 
-static BOOL _USBHostCharger_FindDevice( BYTE address );
-
+static BOOL _USBHostCharger_FindDevice(BYTE address);
 
 // *****************************************************************************
 // *****************************************************************************
@@ -125,58 +122,61 @@ static BOOL _USBHostCharger_FindDevice( BYTE address );
     attached device.
   ***************************************************************************/
 
-BOOL USBHostChargerInitialize( BYTE address, DWORD flags, BYTE clientDriverID )
-{
-    BYTE    *pDesc;
+BOOL
+USBHostChargerInitialize(BYTE address, DWORD flags, BYTE clientDriverID) {
+  BYTE* pDesc;
 
-    // Find a new entry
-    for (currentChargingRecord=0; currentChargingRecord<USB_MAX_CHARGING_DEVICES; currentChargingRecord++)
-    {
-        if (!usbChargingDevices[currentChargingRecord].flags.inUse) break;
-    }
-    if (currentChargingRecord == USB_MAX_CHARGING_DEVICES)
-    {
-        #ifdef DEBUG_MODE
-            UART2PrintString( "CHG: No more space\r\n" );
-        #endif
-        return FALSE;   // We have no more room for a new device.
-    }
+  // Find a new entry
+  for(currentChargingRecord = 0; currentChargingRecord < USB_MAX_CHARGING_DEVICES; currentChargingRecord++) {
+    if(!usbChargingDevices[currentChargingRecord].flags.inUse) break;
+  }
+  if(currentChargingRecord == USB_MAX_CHARGING_DEVICES) {
+#ifdef DEBUG_MODE
+    UART2PrintString("CHG: No more space\r\n");
+#endif
+    return FALSE; // We have no more room for a new device.
+  }
 
-    // Initialize state - set the inUse flag.
-    usbChargingDevices[currentChargingRecord].flags.val = 1;
+  // Initialize state - set the inUse flag.
+  usbChargingDevices[currentChargingRecord].flags.val = 1;
 
-    // Save device the address, VID, & PID
-    usbChargingDevices[currentChargingRecord].ID.deviceAddress = address;
-    usbChargingDevices[currentChargingRecord].ID.clientDriverID = clientDriverID;
-    pDesc  = USBHostGetDeviceDescriptor(address);
-    pDesc += 8;
-    usbChargingDevices[currentChargingRecord].ID.vid  =  (WORD)*pDesc;       pDesc++;
-    usbChargingDevices[currentChargingRecord].ID.vid |= ((WORD)*pDesc) << 8; pDesc++;
-    usbChargingDevices[currentChargingRecord].ID.pid  =  (WORD)*pDesc;       pDesc++;
-    usbChargingDevices[currentChargingRecord].ID.pid |= ((WORD)*pDesc) << 8; pDesc++;
+  // Save device the address, VID, & PID
+  usbChargingDevices[currentChargingRecord].ID.deviceAddress = address;
+  usbChargingDevices[currentChargingRecord].ID.clientDriverID = clientDriverID;
+  pDesc = USBHostGetDeviceDescriptor(address);
+  pDesc += 8;
+  usbChargingDevices[currentChargingRecord].ID.vid = (WORD)*pDesc;
+  pDesc++;
+  usbChargingDevices[currentChargingRecord].ID.vid |= ((WORD)*pDesc) << 8;
+  pDesc++;
+  usbChargingDevices[currentChargingRecord].ID.pid = (WORD)*pDesc;
+  pDesc++;
+  usbChargingDevices[currentChargingRecord].ID.pid |= ((WORD)*pDesc) << 8;
+  pDesc++;
 
-    #ifdef DEBUG_MODE
-        UART2PrintString( "CHG: USB Charging Client Initalized: flags=0x" );
-        UART2PutHex(      flags );
-        UART2PrintString( " address=" );
-        UART2PutDec( address );
-        UART2PrintString( " VID=0x" );
-        UART2PutHex(      usbChargingDevices[currentChargingRecord].ID.vid >> 8   );
-        UART2PutHex(      usbChargingDevices[currentChargingRecord].ID.vid & 0xFF );
-        UART2PrintString( " PID=0x"      );
-        UART2PutHex(      usbChargingDevices[currentChargingRecord].ID.pid >> 8   );
-        UART2PutHex(      usbChargingDevices[currentChargingRecord].ID.pid & 0xFF );
-        UART2PrintString( "\r\n"         );
-    #endif
+#ifdef DEBUG_MODE
+  UART2PrintString("CHG: USB Charging Client Initalized: flags=0x");
+  UART2PutHex(flags);
+  UART2PrintString(" address=");
+  UART2PutDec(address);
+  UART2PrintString(" VID=0x");
+  UART2PutHex(usbChargingDevices[currentChargingRecord].ID.vid >> 8);
+  UART2PutHex(usbChargingDevices[currentChargingRecord].ID.vid & 0xFF);
+  UART2PrintString(" PID=0x");
+  UART2PutHex(usbChargingDevices[currentChargingRecord].ID.pid >> 8);
+  UART2PutHex(usbChargingDevices[currentChargingRecord].ID.pid & 0xFF);
+  UART2PrintString("\r\n");
+#endif
 
-    // Notify that application that we've been attached to a device.
-    USB_HOST_APP_EVENT_HANDLER(address, EVENT_CHARGER_ATTACH,
-            &(usbChargingDevices[currentChargingRecord].ID), sizeof(USB_CHARGING_DEVICE_ID) );
+  // Notify that application that we've been attached to a device.
+  USB_HOST_APP_EVENT_HANDLER(address,
+                             EVENT_CHARGER_ATTACH,
+                             &(usbChargingDevices[currentChargingRecord].ID),
+                             sizeof(USB_CHARGING_DEVICE_ID));
 
-    return TRUE;
+  return TRUE;
 
 } // USBHostChargerInit
-
 
 /****************************************************************************
   Function:
@@ -210,40 +210,40 @@ BOOL USBHostChargerInitialize( BYTE address, DWORD flags, BYTE clientDriverID )
     None
   ***************************************************************************/
 
-BOOL USBHostChargerEventHandler( BYTE address, USB_EVENT event, void *data, DWORD size )
-{
-    // Make sure the event is for a connected device
-    if (!_USBHostCharger_FindDevice( address ))
-    {
-        return FALSE;
-    }
-
-    // Handle specific events.
-    switch (event)
-    {
-        case EVENT_DETACH:
-            // Notify that application that the device has been detached.
-            USB_HOST_APP_EVENT_HANDLER(usbChargingDevices[currentChargingRecord].ID.deviceAddress, EVENT_CHARGER_DETACH, &usbChargingDevices[currentChargingRecord].ID.deviceAddress, sizeof(BYTE) );
-            usbChargingDevices[currentChargingRecord].flags.val        = 0;
-            usbChargingDevices[currentChargingRecord].ID.deviceAddress = 0;
-            #ifdef DEBUG_MODE
-                UART2PrintString( "USB Charging Client Device Detached: address=" );
-                UART2PutDec( address );
-                UART2PrintString( "\r\n" );
-            #endif
-            return TRUE;
-            break;
-
-        case EVENT_SUSPEND:
-        case EVENT_RESUME:
-        case EVENT_BUS_ERROR:
-        default:
-            break;
-    }
-
+BOOL
+USBHostChargerEventHandler(BYTE address, USB_EVENT event, void* data, DWORD size) {
+  // Make sure the event is for a connected device
+  if(!_USBHostCharger_FindDevice(address)) {
     return FALSE;
-} // USBHostChargerEventHandler
+  }
 
+  // Handle specific events.
+  switch(event) {
+    case EVENT_DETACH:
+      // Notify that application that the device has been detached.
+      USB_HOST_APP_EVENT_HANDLER(usbChargingDevices[currentChargingRecord].ID.deviceAddress,
+                                 EVENT_CHARGER_DETACH,
+                                 &usbChargingDevices[currentChargingRecord].ID.deviceAddress,
+                                 sizeof(BYTE));
+      usbChargingDevices[currentChargingRecord].flags.val = 0;
+      usbChargingDevices[currentChargingRecord].ID.deviceAddress = 0;
+#ifdef DEBUG_MODE
+      UART2PrintString("USB Charging Client Device Detached: address=");
+      UART2PutDec(address);
+      UART2PrintString("\r\n");
+#endif
+      return TRUE;
+      break;
+
+    case EVENT_SUSPEND:
+    case EVENT_RESUME:
+    case EVENT_BUS_ERROR:
+    default:
+      break;
+  }
+
+  return FALSE;
+} // USBHostChargerEventHandler
 
 // *****************************************************************************
 // *****************************************************************************
@@ -281,11 +281,10 @@ BOOL USBHostChargerEventHandler( BYTE address, USB_EVENT event, void *data, DWOR
     None
   ***************************************************************************/
 
-BOOL USBHostChargerDeviceDetached( BYTE deviceAddress )
-{
-    return !_USBHostCharger_FindDevice( deviceAddress );
+BOOL
+USBHostChargerDeviceDetached(BYTE deviceAddress) {
+  return !_USBHostCharger_FindDevice(deviceAddress);
 }
-
 
 /****************************************************************************
   Function:
@@ -324,28 +323,24 @@ BOOL USBHostChargerDeviceDetached( BYTE deviceAddress )
     None
   ***************************************************************************/
 
-BOOL USBHostChargerGetDeviceAddress(USB_CHARGING_DEVICE_ID *pDevID)
-{
-    if (pDevID == NULL)
-    {
-        return FALSE;
-    }
+BOOL
+USBHostChargerGetDeviceAddress(USB_CHARGING_DEVICE_ID* pDevID) {
+  if(pDevID == NULL) {
+    return FALSE;
+  }
 
-    for (currentChargingRecord=0; currentChargingRecord<USB_MAX_CHARGING_DEVICES; currentChargingRecord++)
-    {
-        if (usbChargingDevices[currentChargingRecord].flags.inUse &&
-            (usbChargingDevices[currentChargingRecord].ID.vid == pDevID->vid) && 
-            (usbChargingDevices[currentChargingRecord].ID.pid == pDevID->pid))
-        {
-            pDevID->deviceAddress = usbChargingDevices[currentChargingRecord].ID.deviceAddress;
-            return TRUE;
-        }
+  for(currentChargingRecord = 0; currentChargingRecord < USB_MAX_CHARGING_DEVICES; currentChargingRecord++) {
+    if(usbChargingDevices[currentChargingRecord].flags.inUse &&
+       (usbChargingDevices[currentChargingRecord].ID.vid == pDevID->vid) &&
+       (usbChargingDevices[currentChargingRecord].ID.pid == pDevID->pid)) {
+      pDevID->deviceAddress = usbChargingDevices[currentChargingRecord].ID.deviceAddress;
+      return TRUE;
     }
+  }
 
-    return FALSE;   // The device was not found.
+  return FALSE; // The device was not found.
 
 } // USBHostChargingGetDeviceAddress
-
 
 // *****************************************************************************
 // *****************************************************************************
@@ -377,22 +372,17 @@ BOOL USBHostChargerGetDeviceAddress(USB_CHARGING_DEVICE_ID *pDevID)
     None
   ***************************************************************************/
 
-BOOL _USBHostCharger_FindDevice( BYTE address )
-{
-    for (currentChargingRecord=0; currentChargingRecord<USB_MAX_CHARGING_DEVICES; currentChargingRecord++)
-    {
-        if (usbChargingDevices[currentChargingRecord].flags.inUse &&
-            (usbChargingDevices[currentChargingRecord].ID.deviceAddress == address))
-        {
-            return TRUE;
-        }
+BOOL
+_USBHostCharger_FindDevice(BYTE address) {
+  for(currentChargingRecord = 0; currentChargingRecord < USB_MAX_CHARGING_DEVICES; currentChargingRecord++) {
+    if(usbChargingDevices[currentChargingRecord].flags.inUse &&
+       (usbChargingDevices[currentChargingRecord].ID.deviceAddress == address)) {
+      return TRUE;
     }
-    return FALSE;   // The device was not found.
+  }
+  return FALSE; // The device was not found.
 }
-
 
 /*************************************************************************
  * EOF
  */
-
-

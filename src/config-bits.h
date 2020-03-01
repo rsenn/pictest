@@ -1,6 +1,8 @@
 #ifndef CONFIG_BITS_H
 #define CONFIG_BITS_H 1
 
+#include "../lib/device.h"
+
 #ifdef __10f206
 #include "config-10f206.h"
 #endif // defined __10f206
@@ -10,7 +12,9 @@
 #endif // defined __12f1840
 
 #ifdef __16f876a
+#ifndef HI_TECH_C
 #include "config-16f876a.h"
+#endif
 #endif // defined __16f876a
 
 #ifdef __18f252
@@ -28,6 +32,5 @@
 #ifdef __18f25k50
 #include "config-18f25k50.h"
 #endif // defined __18f25k50
-
 
 #endif // defined CONFIG_BITS_H

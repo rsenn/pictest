@@ -39,7 +39,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 *******************************************************************************/
 // DOM-IGNORE-END
 
-
 // *****************************************************************************
 // *****************************************************************************
 // Section: Included Files
@@ -60,19 +59,17 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // Section: File Scope Data Types
 // *****************************************************************************
 // *****************************************************************************
-typedef struct __attribute__((packed))
-{
-    unsigned :8;
-    unsigned :8;
-    uint8_t reportId;
-    uint8_t duration;
+typedef struct __attribute__((packed)) {
+  unsigned : 8;
+  unsigned : 8;
+  uint8_t reportId;
+  uint8_t duration;
 } USB_SETUP_SET_IDLE_RATE;
 
-typedef struct __attribute__((packed))
-{
-    unsigned :8;
-    unsigned :8;
-    uint8_t protocol;
+typedef struct __attribute__((packed)) {
+  unsigned : 8;
+  unsigned : 8;
+  uint8_t protocol;
 } USB_SETUP_SET_PROTOCOL;
 
 // *****************************************************************************
@@ -81,9 +78,9 @@ typedef struct __attribute__((packed))
 // *****************************************************************************
 // *****************************************************************************
 static uint8_t idle_rate;
-static uint8_t active_protocol;   // [0] Boot Protocol [1] Report Protocol
+static uint8_t active_protocol; // [0] Boot Protocol [1] Report Protocol
 
-extern const struct{uint8_t report[HID_RPT01_SIZE];}hid_rpt01;
+extern const struct { uint8_t report[HID_RPT01_SIZE]; } hid_rpt01;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -91,12 +88,12 @@ extern const struct{uint8_t report[HID_RPT01_SIZE];}hid_rpt01;
 // *****************************************************************************
 // *****************************************************************************
 #if defined USER_GET_REPORT_HANDLER
-    void USER_GET_REPORT_HANDLER(void);
+void USER_GET_REPORT_HANDLER(void);
 #endif
 
 #if defined USER_SET_REPORT_HANDLER
-    extern void USER_SET_REPORT_HANDLER(void);
-#endif     
+extern void USER_SET_REPORT_HANDLER(void);
+#endif
 
 // *****************************************************************************
 // *****************************************************************************
@@ -104,29 +101,28 @@ extern const struct{uint8_t report[HID_RPT01_SIZE];}hid_rpt01;
 // *****************************************************************************
 // *****************************************************************************
 
-//To implement a set idle rate callback function in the application,
-//Make sure "#define USB_DEVICE_HID_IDLE_RATE_CALLBACK(reportID, newIdleRate)    USBHIDCBSetIdleRateHandler(reportID, newIdleRate)"
-//is placed in your usb_config.h file, and then in your application .c file,
-//add the void USBHIDCBSetIdleRateHandler(reportID, newIdleRate) function
-//implementation that saves the new idle rate and report ID info, so that it
-//gets used later when sending subsequent HID input report packets to the host.
+// To implement a set idle rate callback function in the application,
+// Make sure "#define USB_DEVICE_HID_IDLE_RATE_CALLBACK(reportID, newIdleRate)    USBHIDCBSetIdleRateHandler(reportID,
+// newIdleRate)" is placed in your usb_config.h file, and then in your application .c file, add the void
+// USBHIDCBSetIdleRateHandler(reportID, newIdleRate) function implementation that saves the new idle rate and report ID
+// info, so that it gets used later when sending subsequent HID input report packets to the host.
 #ifndef USB_DEVICE_HID_IDLE_RATE_CALLBACK
-    #define USB_DEVICE_HID_IDLE_RATE_CALLBACK(reportId, idleRate)
+#define USB_DEVICE_HID_IDLE_RATE_CALLBACK(reportId, idleRate)
 #else
-    extern void USB_DEVICE_HID_IDLE_RATE_CALLBACK(uint8_t reportId, uint8_t idleRate);
+extern void USB_DEVICE_HID_IDLE_RATE_CALLBACK(uint8_t reportId, uint8_t idleRate);
 #endif
 
 /********************************************************************
-	Function:
-		void USBCheckHIDRequest(void)
+    Function:
+        void USBCheckHIDRequest(void)
 
- 	Summary:
- 		This routine handles HID specific request that happen on EP0.
+    Summary:
+        This routine handles HID specific request that happen on EP0.
         This function should be called from the USBCBCheckOtherReq() call back
         function whenever implementing a HID device.
 
- 	Description:
- 		This routine handles HID specific request that happen on EP0.  These
+    Description:
+        This routine handles HID specific request that happen on EP0.  These
         include, but are not limited to, requests for the HID report
         descriptors.  This function should be called from the
         USBCBCheckOtherReq() call back function whenever using an HID device.
@@ -141,118 +137,106 @@ extern const struct{uint8_t report[HID_RPT01_SIZE];}hid_rpt01;
         }
         </code>
 
-	PreCondition:
-		None
+    PreCondition:
+        None
 
-	Parameters:
-		None
+    Parameters:
+        None
 
-	Return Values:
-		None
+    Return Values:
+        None
 
-	Remarks:
-		None
- 
+    Remarks:
+        None
+ 
  *******************************************************************/
-void USBCheckHIDRequest(void)
-{
-    if(SetupPkt.Recipient != USB_SETUP_RECIPIENT_INTERFACE_BITFIELD) return;
-    if(SetupPkt.bIntfID != HID_INTF_ID) return;
-    
-    /*
-     * There are two standard requests that hid.c may support.
-     * 1. GET_DSC(DSC_HID,DSC_RPT,DSC_PHY);
-     * 2. SET_DSC(DSC_HID,DSC_RPT,DSC_PHY);
-     */
-    if(SetupPkt.bRequest == USB_REQUEST_GET_DESCRIPTOR)
-    {
-        switch(SetupPkt.bDescriptorType)
+void
+USBCheckHIDRequest(void) {
+  if(SetupPkt.Recipient != USB_SETUP_RECIPIENT_INTERFACE_BITFIELD) return;
+  if(SetupPkt.bIntfID != HID_INTF_ID) return;
+
+  /*
+   * There are two standard requests that hid.c may support.
+   * 1. GET_DSC(DSC_HID,DSC_RPT,DSC_PHY);
+   * 2. SET_DSC(DSC_HID,DSC_RPT,DSC_PHY);
+   */
+  if(SetupPkt.bRequest == USB_REQUEST_GET_DESCRIPTOR) {
+    switch(SetupPkt.bDescriptorType) {
+      case DSC_HID: // HID Descriptor
+        if(USBActiveConfiguration == 1) {
+          USBEP0SendROMPtr((const uint8_t*)&configDescriptor1 +
+                               18, // 18 is a magic number.  It is the offset from start of the configuration descriptor
+                                   // to the start of the HID descriptor.
+                           sizeof(USB_HID_DSC) + 3,
+                           USB_EP0_INCLUDE_ZERO);
+        }
+        break;
+      case DSC_RPT: // Report Descriptor
+        // if(USBActiveConfiguration == 1)
         {
-            case DSC_HID: //HID Descriptor          
-                if(USBActiveConfiguration == 1)
-                {
-                    USBEP0SendROMPtr(
-                        (const uint8_t*)&configDescriptor1 + 18,		//18 is a magic number.  It is the offset from start of the configuration descriptor to the start of the HID descriptor.
-                        sizeof(USB_HID_DSC)+3,
-                        USB_EP0_INCLUDE_ZERO);
-                }
-                break;
-            case DSC_RPT:  //Report Descriptor           
-                //if(USBActiveConfiguration == 1)
-                {
-                    USBEP0SendROMPtr(
-                        (const uint8_t*)&hid_rpt01,
-                        HID_RPT01_SIZE,     //See usbcfg.h
-                        USB_EP0_INCLUDE_ZERO);
-                }
-                break;
-            case DSC_PHY:  //Physical Descriptor
-				//Note: The below placeholder code is commented out.  HID Physical Descriptors are optional and are not used
-				//in many types of HID applications.  If an application does not have a physical descriptor,
-				//then the device should return STALL in response to this request (stack will do this automatically
-				//if no-one claims ownership of the control transfer).
-				//If an application does implement a physical descriptor, then make sure to declare
-				//hid_phy01 (rom structure containing the descriptor data), and hid_phy01 (the size of the descriptors in uint8_ts),
-				//and then uncomment the below code.
-                //if(USBActiveConfiguration == 1)
-                //{
-                //    USBEP0SendROMPtr((const uint8_t*)&hid_phy01, sizeof(hid_phy01), USB_EP0_INCLUDE_ZERO);
-                //}
-                break;
-        }//end switch(SetupPkt.bDescriptorType)
-    }//end if(SetupPkt.bRequest == GET_DSC)
-    
-    if(SetupPkt.RequestType != USB_SETUP_TYPE_CLASS_BITFIELD)
-    {
-        return;
-    }
+          USBEP0SendROMPtr((const uint8_t*)&hid_rpt01,
+                           HID_RPT01_SIZE, // See usbcfg.h
+                           USB_EP0_INCLUDE_ZERO);
+        }
+        break;
+      case DSC_PHY: // Physical Descriptor
+        // Note: The below placeholder code is commented out.  HID Physical Descriptors are optional and are not used
+        // in many types of HID applications.  If an application does not have a physical descriptor,
+        // then the device should return STALL in response to this request (stack will do this automatically
+        // if no-one claims ownership of the control transfer).
+        // If an application does implement a physical descriptor, then make sure to declare
+        // hid_phy01 (rom structure containing the descriptor data), and hid_phy01 (the size of the descriptors in
+        // uint8_ts), and then uncomment the below code. if(USBActiveConfiguration == 1)
+        //{
+        //    USBEP0SendROMPtr((const uint8_t*)&hid_phy01, sizeof(hid_phy01), USB_EP0_INCLUDE_ZERO);
+        //}
+        break;
+    } // end switch(SetupPkt.bDescriptorType)
+  }   // end if(SetupPkt.bRequest == GET_DSC)
 
-    switch(SetupPkt.bRequest)
-    {
-        case GET_REPORT:
-            #if defined USER_GET_REPORT_HANDLER
-                USER_GET_REPORT_HANDLER();
-            #endif
-            break;
-        case SET_REPORT:
-            #if defined USER_SET_REPORT_HANDLER
-                USER_SET_REPORT_HANDLER();
-            #endif       
-            break;
-        case GET_IDLE:
-            USBEP0SendRAMPtr(
-                (uint8_t*)&idle_rate,
-                1,
-                USB_EP0_INCLUDE_ZERO);
-            break;
-        case SET_IDLE:
-            USBEP0Transmit(USB_EP0_NO_DATA);
-            idle_rate = ((USB_SETUP_SET_IDLE_RATE*)&SetupPkt)->duration;
-            USB_DEVICE_HID_IDLE_RATE_CALLBACK(((USB_SETUP_SET_IDLE_RATE*)&SetupPkt)->reportId, idle_rate);
-            break;
-        case GET_PROTOCOL:
-            USBEP0SendRAMPtr(
-                (uint8_t*)&active_protocol,
-                1,
-                USB_EP0_NO_OPTIONS);
-            break;
-        case SET_PROTOCOL:
-            USBEP0Transmit(USB_EP0_NO_DATA);
-            active_protocol = ((USB_SETUP_SET_PROTOCOL*)&SetupPkt)->protocol;
-            break;
-    }//end switch(SetupPkt.bRequest)
+  if(SetupPkt.RequestType != USB_SETUP_TYPE_CLASS_BITFIELD) {
+    return;
+  }
 
-}//end USBCheckHIDRequest
+  switch(SetupPkt.bRequest) {
+    case GET_REPORT:
+#if defined USER_GET_REPORT_HANDLER
+      USER_GET_REPORT_HANDLER();
+#endif
+      break;
+    case SET_REPORT:
+#if defined USER_SET_REPORT_HANDLER
+      USER_SET_REPORT_HANDLER();
+#endif
+      break;
+    case GET_IDLE:
+      USBEP0SendRAMPtr((uint8_t*)&idle_rate, 1, USB_EP0_INCLUDE_ZERO);
+      break;
+    case SET_IDLE:
+      USBEP0Transmit(USB_EP0_NO_DATA);
+      idle_rate = ((USB_SETUP_SET_IDLE_RATE*)&SetupPkt)->duration;
+      USB_DEVICE_HID_IDLE_RATE_CALLBACK(((USB_SETUP_SET_IDLE_RATE*)&SetupPkt)->reportId, idle_rate);
+      break;
+    case GET_PROTOCOL:
+      USBEP0SendRAMPtr((uint8_t*)&active_protocol, 1, USB_EP0_NO_OPTIONS);
+      break;
+    case SET_PROTOCOL:
+      USBEP0Transmit(USB_EP0_NO_DATA);
+      active_protocol = ((USB_SETUP_SET_PROTOCOL*)&SetupPkt)->protocol;
+      break;
+  } // end switch(SetupPkt.bRequest)
+
+} // end USBCheckHIDRequest
 
 /********************************************************************
     Function:
         USB_HANDLE HIDTxPacket(uint8_t ep, uint8_t* data, uint16_t len)
-        
+        
     Summary:
         Sends the specified data out the specified endpoint
 
     Description:
-        This function sends the specified data out the specified 
+        This function sends the specified data out the specified
         endpoint and returns a handle to the transfer information.
 
         Typical Usage:
@@ -265,32 +249,32 @@ void USBCheckHIDRequest(void)
             USBInHandle = HIDTxPacket(HID_EP,(uint8_t*)&ToSendDataBuffer[0],sizeof(ToSendDataBuffer));
         }
         </code>
-        
+        
     PreCondition:
         None
-        
+        
     Parameters:
         uint8_t ep    - the endpoint you want to send the data out of
         uint8_t* data - pointer to the data that you wish to send
         uint16_t len   - the length of the data that you wish to send
-        
+        
     Return Values:
         USB_HANDLE - a handle for the transfer.  This information
         should be kept to track the status of the transfer
-        
+        
     Remarks:
         None
-  
+  
  *******************************************************************/
- // Implemented as a macro. See usb_function_hid.h
+// Implemented as a macro. See usb_function_hid.h
 
 /********************************************************************
     Function:
         USB_HANDLE HIDRxPacket(uint8_t ep, uint8_t* data, uint16_t len)
-        
+        
     Summary:
         Receives the specified data out the specified endpoint
-        
+        
     Description:
         Receives the specified data out the specified endpoint.
 
@@ -304,22 +288,22 @@ void USBCheckHIDRequest(void)
 
     PreCondition:
         None
-        
+        
     Parameters:
         uint8_t ep    - the endpoint you want to receive the data into
         uint8_t* data - pointer to where the data will go when it arrives
         uint16_t len   - the length of the data that you wish to receive
-        
+        
     Return Values:
         USB_HANDLE - a handle for the transfer.  This information
         should be kept to track the status of the transfer
-        
+        
     Remarks:
         None
-  
+  
  *******************************************************************/
-  // Implemented as a macro. See usb_function_hid.h
-  
+// Implemented as a macro. See usb_function_hid.h
+
 /*******************************************************************************
  End of File
 */

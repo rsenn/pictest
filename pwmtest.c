@@ -48,7 +48,7 @@ INTERRUPT_HANDLER() {
     index++;
 
     TMR0 = 255 - ticks;
-    TIMER0_INTERRUPT_FLAG = 0;
+    TIMER0_INTERRUPT_CLEAR();
   }
 }
 

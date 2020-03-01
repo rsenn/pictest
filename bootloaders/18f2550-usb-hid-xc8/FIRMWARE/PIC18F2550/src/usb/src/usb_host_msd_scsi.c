@@ -53,17 +53,17 @@ Change History:
 
 *******************************************************************************/
 
-#include <stdlib.h>
-#include <string.h>
-#include "system_config.h"
+#include "usb/usb_host_msd_scsi.h"
 #include "fileio/fileio.h"
+#include "system_config.h"
 #include "usb/usb.h"
 #include "usb/usb_host_msd.h"
-#include "usb/usb_host_msd_scsi.h"
+#include <stdlib.h>
+#include <string.h>
 
 //#define DEBUG_MODE
 #if defined(DEBUG_MODE)
-    #include "uart2.h"
+#include "uart2.h"
 #endif
 
 #define PERFORM_TEST_UNIT_READY
@@ -74,14 +74,13 @@ Change History:
 // *****************************************************************************
 // *****************************************************************************
 
-#define FAT_GOOD_SIGN_0             0x55        // The value in the Signature0 field of a valid partition.
-#define FAT_GOOD_SIGN_1             0xAA        // The value in the Signature1 field of a valid partition.
-#define FO_MBR                      0L          // Master Boot Record sector LBA
-#define FUA_ALLOW_CACHE             0x00        // Force Unit Access, allow cache use
-#define INITIALIZATION_ATTEMPTS     100         // How many times to try to initialize the media before failing
-#define RDPROTECT_NORMAL            0x00        // Normal Read Protect behavior.
-#define WRPROTECT_NORMAL            0x00        // Normal Write Protect behavior.
-
+#define FAT_GOOD_SIGN_0 0x55        // The value in the Signature0 field of a valid partition.
+#define FAT_GOOD_SIGN_1 0xAA        // The value in the Signature1 field of a valid partition.
+#define FO_MBR 0L                   // Master Boot Record sector LBA
+#define FUA_ALLOW_CACHE 0x00        // Force Unit Access, allow cache use
+#define INITIALIZATION_ATTEMPTS 100 // How many times to try to initialize the media before failing
+#define RDPROTECT_NORMAL 0x00       // Normal Read Protect behavior.
+#define WRPROTECT_NORMAL 0x00       // Normal Write Protect behavior.
 
 //******************************************************************************
 //******************************************************************************
@@ -89,18 +88,17 @@ Change History:
 //******************************************************************************
 //******************************************************************************
 
-#if !defined( USBTasks )
-    #define USBTasks()                  \
-        {                               \
-            USBHostTasks();             \
-            USBHostMSDTasks();          \
-        }
+#if !defined(USBTasks)
+#define USBTasks()                                                                                                     \
+  {                                                                                                                    \
+    USBHostTasks();                                                                                                    \
+    USBHostMSDTasks();                                                                                                 \
+  }
 #endif
 
-#if defined( PERFORM_TEST_UNIT_READY )
-    bool    _USBHostMSDSCSI_TestUnitReady( uint8_t * address );
+#if defined(PERFORM_TEST_UNIT_READY)
+bool _USBHostMSDSCSI_TestUnitReady(uint8_t* address);
 #endif
-
 
 //******************************************************************************
 //******************************************************************************
@@ -112,7 +110,7 @@ Change History:
 // Section: Internal Global Variables
 //******************************************************************************
 
-static FILEIO_MEDIA_INFORMATION   mediaInformation;   // Information about the attached media.
+static FILEIO_MEDIA_INFORMATION mediaInformation; // Information about the attached media.
 
 // *****************************************************************************
 // *****************************************************************************
@@ -144,14 +142,13 @@ static FILEIO_MEDIA_INFORMATION   mediaInformation;   // Information about the a
     None
   ***************************************************************************/
 
-bool USBHostMSDSCSIInitialize( uint8_t address, uint32_t flags, uint8_t clientDriverID )
-{
-    #ifdef DEBUG_MODE
-        UART2PrintString( "SCSI: Device attached.\r\n" );
-    #endif
-    return true;
+bool
+USBHostMSDSCSIInitialize(uint8_t address, uint32_t flags, uint8_t clientDriverID) {
+#ifdef DEBUG_MODE
+  UART2PrintString("SCSI: Device attached.\r\n");
+#endif
+  return true;
 }
-
 
 /****************************************************************************
   Function:
@@ -179,55 +176,51 @@ bool USBHostMSDSCSIInitialize( uint8_t address, uint32_t flags, uint8_t clientDr
     None
   ***************************************************************************/
 
-bool USBHostMSDSCSIEventHandler( uint8_t address, USB_EVENT event, void *data, uint32_t size )
-{
-    switch( (int) event )
-    {
-        case EVENT_MSD_NONE:
-        case EVENT_MSD_TRANSFER:                 // A MSD transfer has completed
-            return true;
-            break;
+bool
+USBHostMSDSCSIEventHandler(uint8_t address, USB_EVENT event, void* data, uint32_t size) {
+  switch((int)event) {
+    case EVENT_MSD_NONE:
+    case EVENT_MSD_TRANSFER: // A MSD transfer has completed
+      return true;
+      break;
 
-        case EVENT_MSD_RESET:
-            #ifdef DEBUG_MODE
-                UART2PrintString( "SCSI: MSD Reset performed.\r\n" );
-            #endif
-            return true;
-            break;
+    case EVENT_MSD_RESET:
+#ifdef DEBUG_MODE
+      UART2PrintString("SCSI: MSD Reset performed.\r\n");
+#endif
+      return true;
+      break;
 
-        case EVENT_MSD_MAX_LUN:
-            {
-                uint8_t i;
-                #ifdef DEBUG_MODE
-                    UART2PrintString( "SCSI: Max LUN set.\r\n" );
-                #endif
-                mediaInformation.maxLUN                     = *((uint8_t *)data);
-                mediaInformation.validityFlags.bits.maxLUN  = 1;
+    case EVENT_MSD_MAX_LUN: {
+      uint8_t i;
+#ifdef DEBUG_MODE
+      UART2PrintString("SCSI: Max LUN set.\r\n");
+#endif
+      mediaInformation.maxLUN = *((uint8_t*)data);
+      mediaInformation.validityFlags.bits.maxLUN = 1;
 
-                for (i = 0; i < mediaInformation.maxLUN + 1; i++)
-                {
-                    USB_ApplicationEventHandler (address, EVENT_MSD_ATTACH, &i, 1);
-                }
-            }
-            return true;
-            break;
-
-        case EVENT_DETACH:                      // USB cable has been detached (data: uint8_t, address of device)
-            #ifdef DEBUG_MODE
-                UART2PrintString( "SCSI: Device detached.\r\n" );
-            #endif
-            address                           = 0;
-            mediaInformation.validityFlags.value    = 0;
-            return true;
-            break;
-
-        default:
-            return false;
-            break;
+      for(i = 0; i < mediaInformation.maxLUN + 1; i++) {
+        USB_ApplicationEventHandler(address, EVENT_MSD_ATTACH, &i, 1);
+      }
     }
-    return false;
-}
+      return true;
+      break;
 
+    case EVENT_DETACH: // USB cable has been detached (data: uint8_t, address of device)
+#ifdef DEBUG_MODE
+      UART2PrintString("SCSI: Device detached.\r\n");
+#endif
+      address = 0;
+      mediaInformation.validityFlags.value = 0;
+      return true;
+      break;
+
+    default:
+      return false;
+      break;
+  }
+  return false;
+}
 
 // *****************************************************************************
 // *****************************************************************************
@@ -258,16 +251,14 @@ bool USBHostMSDSCSIEventHandler( uint8_t address, USB_EVENT event, void *data, u
     we need to make sure that USB tasks are executed.
   ***************************************************************************/
 
-uint8_t USBHostMSDSCSIMediaDetect( uint8_t * address)
-{
-    if (USBHostMSDDeviceStatus( *(uint8_t *)address ) == USB_MSD_NORMAL_RUNNING)
-    {
-        return true;
-    }
+uint8_t
+USBHostMSDSCSIMediaDetect(uint8_t* address) {
+  if(USBHostMSDDeviceStatus(*(uint8_t*)address) == USB_MSD_NORMAL_RUNNING) {
+    return true;
+  }
 
-    return false;
+  return false;
 }
-
 
 /****************************************************************************
   Function:
@@ -325,260 +316,237 @@ uint8_t USBHostMSDSCSIMediaDetect( uint8_t * address)
     </code>
   ***************************************************************************/
 
-FILEIO_MEDIA_INFORMATION * USBHostMSDSCSIMediaInitialize( uint8_t * address )
-{
-    uint8_t        attempts;
-    uint32_t       byteCount;
-    uint8_t        commandBlock[10];
-    uint8_t        errorCode;
-    uint8_t        inquiryData[36];
+FILEIO_MEDIA_INFORMATION*
+USBHostMSDSCSIMediaInitialize(uint8_t* address) {
+  uint8_t attempts;
+  uint32_t byteCount;
+  uint8_t commandBlock[10];
+  uint8_t errorCode;
+  uint8_t inquiryData[36];
 
-    // Make sure the device is still attached.
-    if (*address == 0)
-    {
-        mediaInformation.errorCode = MEDIA_DEVICE_NOT_PRESENT;
-        return &mediaInformation;
-    }
-
-    attempts = INITIALIZATION_ATTEMPTS;
-    while (attempts != 0)
-    {
-        attempts --;
-
-        #ifdef DEBUG_MODE
-            UART2PrintString( "SCSI: READ CAPACITY 10..." );
-        #endif
-
-        // Fill in the command block with the READ CAPACITY 10 parameters.
-        commandBlock[0] = 0x25;     // Operation Code
-        commandBlock[1] = 0;        //
-        commandBlock[2] = 0;        //
-        commandBlock[3] = 0;        //
-        commandBlock[4] = 0;        //
-        commandBlock[5] = 0;        //
-        commandBlock[6] = 0;        //
-        commandBlock[7] = 0;        //
-        commandBlock[8] = 0;        //
-        commandBlock[9] = 0x00;     // Control
-
-        errorCode = USBHostMSDRead( *address, 0, commandBlock, 10, inquiryData, 8 );
-        #ifdef DEBUG_MODE
-            UART2PutHex( errorCode ) ;
-            UART2PutChar( ' ' );
-        #endif
-
-        if (!errorCode)
-        {
-            while (!USBHostMSDTransferIsComplete( *address, &errorCode, &byteCount ))
-            {
-                USBTasks();
-            }
-        }
-
-        if (!errorCode)
-        {
-            #ifdef DEBUG_MODE
-                UART2PutHex( errorCode ) ;
-                UART2PrintString( "\r\n" );
-            #endif
-
-            // Determine sector size.
-            #ifdef DEBUG_MODE
-                UART2PrintString( "SCSI: Sector size:" );
-                UART2PutChar( inquiryData[7] + '0' );
-                UART2PutChar( inquiryData[6] + '0' );
-                UART2PutChar( inquiryData[5] + '0' );
-                UART2PutChar( inquiryData[4] + '0' );
-                UART2PrintString( "\r\n" );
-            #endif
-            mediaInformation.sectorSize                     = (inquiryData[7] << 12) + (inquiryData[6] << 8) + (inquiryData[5] << 4) + (inquiryData[4]);
-            mediaInformation.validityFlags.bits.sectorSize  = 1;
-
-            mediaInformation.errorCode = MEDIA_NO_ERROR;
-            return &mediaInformation;
-        }
-        else
-        {
-            // Perform a Request Sense to try to clear the stall.
-            #ifdef DEBUG_MODE
-                UART2PrintString( "SCSI: REQUEST SENSE..." );
-            #endif
-
-            // Fill in the command block with the REQUEST SENSE parameters.
-            commandBlock[0] = 0x03;     // Operation Code
-            commandBlock[1] = 0;        //
-            commandBlock[2] = 0;        //
-            commandBlock[3] = 0;        //
-            commandBlock[4] = 18;       // Allocation length
-            commandBlock[5] = 0;        // Control
-
-            errorCode = USBHostMSDRead( *address, 0, commandBlock, 6, inquiryData, 18 );
-            #ifdef DEBUG_MODE
-                UART2PutHex( errorCode ) ;
-                UART2PutChar( ' ' );
-            #endif
-
-            if (!errorCode)
-            {
-                while (!USBHostMSDTransferIsComplete( *address, &errorCode, &byteCount ))
-                {
-                    USBTasks();
-                }
-            }
-        }
-    }
-
-    attempts = INITIALIZATION_ATTEMPTS;
-    while (attempts != 0)
-    {
-        attempts --;
-
-        // Perform a Request Sense to try to clear the stall.
-        #ifdef DEBUG_MODE
-            UART2PrintString( "SCSI: REQUEST SENSE..." );
-        #endif
-
-        // Fill in the command block with the REQUEST SENSE parameters.
-        commandBlock[0] = 0x03;     // Operation Code
-        commandBlock[1] = 0;        //
-        commandBlock[2] = 0;        //
-        commandBlock[3] = 0;        //
-        commandBlock[4] = 18;       // Allocation length
-        commandBlock[5] = 0;        // Control
-
-        errorCode = USBHostMSDRead( *address, 0, commandBlock, 6, inquiryData, 18 );
-        #ifdef DEBUG_MODE
-            UART2PutHex( errorCode ) ;
-            UART2PutChar( ' ' );
-        #endif
-
-        if (!errorCode)
-        {
-            while (!USBHostMSDTransferIsComplete( *address, &errorCode, &byteCount ))
-            {
-                USBTasks();
-            }
-        }
-
-
-        _USBHostMSDSCSI_TestUnitReady(address);
-
-
-        // Perform a Request Sense to try to clear the stall.
-        #ifdef DEBUG_MODE
-            UART2PrintString( "SCSI: REQUEST SENSE..." );
-        #endif
-
-        // Fill in the command block with the REQUEST SENSE parameters.
-        commandBlock[0] = 0x03;     // Operation Code
-        commandBlock[1] = 0;        //
-        commandBlock[2] = 0;        //
-        commandBlock[3] = 0;        //
-        commandBlock[4] = 18;       // Allocation length
-        commandBlock[5] = 0;        // Control
-
-        errorCode = USBHostMSDRead( *address, 0, commandBlock, 6, inquiryData, 18 );
-        #ifdef DEBUG_MODE
-            UART2PutHex( errorCode ) ;
-            UART2PutChar( ' ' );
-        #endif
-
-        if (!errorCode)
-        {
-            while (!USBHostMSDTransferIsComplete( *address, &errorCode, &byteCount ))
-            {
-                USBTasks();
-            }
-        }
-
-        #ifdef DEBUG_MODE
-            UART2PrintString( "SCSI: READ CAPACITY 10..." );
-        #endif
-
-        // Fill in the command block with the READ CAPACITY 10 parameters.
-        commandBlock[0] = 0x25;     // Operation Code
-        commandBlock[1] = 0;        //
-        commandBlock[2] = 0;        //
-        commandBlock[3] = 0;        //
-        commandBlock[4] = 0;        //
-        commandBlock[5] = 0;        //
-        commandBlock[6] = 0;        //
-        commandBlock[7] = 0;        //
-        commandBlock[8] = 0;        //
-        commandBlock[9] = 0x00;     // Control
-
-        errorCode = USBHostMSDRead( *address, 0, commandBlock, 10, inquiryData, 8 );
-        #ifdef DEBUG_MODE
-            UART2PutHex( errorCode ) ;
-            UART2PutChar( ' ' );
-        #endif
-
-        if (!errorCode)
-        {
-            while (!USBHostMSDTransferIsComplete( *address, &errorCode, &byteCount ))
-            {
-                USBTasks();
-            }
-        }
-
-        if (!errorCode)
-        {
-            #ifdef DEBUG_MODE
-                UART2PutHex( errorCode ) ;
-                UART2PrintString( "\r\n" );
-            #endif
-
-            // Determine sector size.
-            #ifdef DEBUG_MODE
-                UART2PrintString( "SCSI: Sector size:" );
-                UART2PutChar( inquiryData[7] + '0' );
-                UART2PutChar( inquiryData[6] + '0' );
-                UART2PutChar( inquiryData[5] + '0' );
-                UART2PutChar( inquiryData[4] + '0' );
-                UART2PrintString( "\r\n" );
-            #endif
-            mediaInformation.sectorSize                     = (inquiryData[7] << 12) + (inquiryData[6] << 8) + (inquiryData[5] << 4) + (inquiryData[4]);
-            mediaInformation.validityFlags.bits.sectorSize  = 1;
-
-            mediaInformation.errorCode = MEDIA_NO_ERROR;
-            return &mediaInformation;
-        }
-        else
-        {
-            // Perform a Request Sense to try to clear the stall.
-            #ifdef DEBUG_MODE
-                UART2PrintString( "SCSI: REQUEST SENSE..." );
-            #endif
-
-            // Fill in the command block with the REQUEST SENSE parameters.
-            commandBlock[0] = 0x03;     // Operation Code
-            commandBlock[1] = 0;        //
-            commandBlock[2] = 0;        //
-            commandBlock[3] = 0;        //
-            commandBlock[4] = 18;       // Allocation length
-            commandBlock[5] = 0;        // Control
-
-            errorCode = USBHostMSDRead( *address, 0, commandBlock, 6, inquiryData, 18 );
-            #ifdef DEBUG_MODE
-                UART2PutHex( errorCode ) ;
-                UART2PutChar( ' ' );
-            #endif
-
-            if (!errorCode)
-            {
-                while (!USBHostMSDTransferIsComplete( *address, &errorCode, &byteCount ))
-                {
-                    USBTasks();
-                }
-            }
-        }
-    }
-
-    mediaInformation.errorCode = MEDIA_CANNOT_INITIALIZE;
+  // Make sure the device is still attached.
+  if(*address == 0) {
+    mediaInformation.errorCode = MEDIA_DEVICE_NOT_PRESENT;
     return &mediaInformation;
+  }
 
+  attempts = INITIALIZATION_ATTEMPTS;
+  while(attempts != 0) {
+    attempts--;
+
+#ifdef DEBUG_MODE
+    UART2PrintString("SCSI: READ CAPACITY 10...");
+#endif
+
+    // Fill in the command block with the READ CAPACITY 10 parameters.
+    commandBlock[0] = 0x25; // Operation Code
+    commandBlock[1] = 0;    //
+    commandBlock[2] = 0;    //
+    commandBlock[3] = 0;    //
+    commandBlock[4] = 0;    //
+    commandBlock[5] = 0;    //
+    commandBlock[6] = 0;    //
+    commandBlock[7] = 0;    //
+    commandBlock[8] = 0;    //
+    commandBlock[9] = 0x00; // Control
+
+    errorCode = USBHostMSDRead(*address, 0, commandBlock, 10, inquiryData, 8);
+#ifdef DEBUG_MODE
+    UART2PutHex(errorCode);
+    UART2PutChar(' ');
+#endif
+
+    if(!errorCode) {
+      while(!USBHostMSDTransferIsComplete(*address, &errorCode, &byteCount)) {
+        USBTasks();
+      }
+    }
+
+    if(!errorCode) {
+#ifdef DEBUG_MODE
+      UART2PutHex(errorCode);
+      UART2PrintString("\r\n");
+#endif
+
+// Determine sector size.
+#ifdef DEBUG_MODE
+      UART2PrintString("SCSI: Sector size:");
+      UART2PutChar(inquiryData[7] + '0');
+      UART2PutChar(inquiryData[6] + '0');
+      UART2PutChar(inquiryData[5] + '0');
+      UART2PutChar(inquiryData[4] + '0');
+      UART2PrintString("\r\n");
+#endif
+      mediaInformation.sectorSize =
+          (inquiryData[7] << 12) + (inquiryData[6] << 8) + (inquiryData[5] << 4) + (inquiryData[4]);
+      mediaInformation.validityFlags.bits.sectorSize = 1;
+
+      mediaInformation.errorCode = MEDIA_NO_ERROR;
+      return &mediaInformation;
+    } else {
+// Perform a Request Sense to try to clear the stall.
+#ifdef DEBUG_MODE
+      UART2PrintString("SCSI: REQUEST SENSE...");
+#endif
+
+      // Fill in the command block with the REQUEST SENSE parameters.
+      commandBlock[0] = 0x03; // Operation Code
+      commandBlock[1] = 0;    //
+      commandBlock[2] = 0;    //
+      commandBlock[3] = 0;    //
+      commandBlock[4] = 18;   // Allocation length
+      commandBlock[5] = 0;    // Control
+
+      errorCode = USBHostMSDRead(*address, 0, commandBlock, 6, inquiryData, 18);
+#ifdef DEBUG_MODE
+      UART2PutHex(errorCode);
+      UART2PutChar(' ');
+#endif
+
+      if(!errorCode) {
+        while(!USBHostMSDTransferIsComplete(*address, &errorCode, &byteCount)) {
+          USBTasks();
+        }
+      }
+    }
+  }
+
+  attempts = INITIALIZATION_ATTEMPTS;
+  while(attempts != 0) {
+    attempts--;
+
+// Perform a Request Sense to try to clear the stall.
+#ifdef DEBUG_MODE
+    UART2PrintString("SCSI: REQUEST SENSE...");
+#endif
+
+    // Fill in the command block with the REQUEST SENSE parameters.
+    commandBlock[0] = 0x03; // Operation Code
+    commandBlock[1] = 0;    //
+    commandBlock[2] = 0;    //
+    commandBlock[3] = 0;    //
+    commandBlock[4] = 18;   // Allocation length
+    commandBlock[5] = 0;    // Control
+
+    errorCode = USBHostMSDRead(*address, 0, commandBlock, 6, inquiryData, 18);
+#ifdef DEBUG_MODE
+    UART2PutHex(errorCode);
+    UART2PutChar(' ');
+#endif
+
+    if(!errorCode) {
+      while(!USBHostMSDTransferIsComplete(*address, &errorCode, &byteCount)) {
+        USBTasks();
+      }
+    }
+
+    _USBHostMSDSCSI_TestUnitReady(address);
+
+// Perform a Request Sense to try to clear the stall.
+#ifdef DEBUG_MODE
+    UART2PrintString("SCSI: REQUEST SENSE...");
+#endif
+
+    // Fill in the command block with the REQUEST SENSE parameters.
+    commandBlock[0] = 0x03; // Operation Code
+    commandBlock[1] = 0;    //
+    commandBlock[2] = 0;    //
+    commandBlock[3] = 0;    //
+    commandBlock[4] = 18;   // Allocation length
+    commandBlock[5] = 0;    // Control
+
+    errorCode = USBHostMSDRead(*address, 0, commandBlock, 6, inquiryData, 18);
+#ifdef DEBUG_MODE
+    UART2PutHex(errorCode);
+    UART2PutChar(' ');
+#endif
+
+    if(!errorCode) {
+      while(!USBHostMSDTransferIsComplete(*address, &errorCode, &byteCount)) {
+        USBTasks();
+      }
+    }
+
+#ifdef DEBUG_MODE
+    UART2PrintString("SCSI: READ CAPACITY 10...");
+#endif
+
+    // Fill in the command block with the READ CAPACITY 10 parameters.
+    commandBlock[0] = 0x25; // Operation Code
+    commandBlock[1] = 0;    //
+    commandBlock[2] = 0;    //
+    commandBlock[3] = 0;    //
+    commandBlock[4] = 0;    //
+    commandBlock[5] = 0;    //
+    commandBlock[6] = 0;    //
+    commandBlock[7] = 0;    //
+    commandBlock[8] = 0;    //
+    commandBlock[9] = 0x00; // Control
+
+    errorCode = USBHostMSDRead(*address, 0, commandBlock, 10, inquiryData, 8);
+#ifdef DEBUG_MODE
+    UART2PutHex(errorCode);
+    UART2PutChar(' ');
+#endif
+
+    if(!errorCode) {
+      while(!USBHostMSDTransferIsComplete(*address, &errorCode, &byteCount)) {
+        USBTasks();
+      }
+    }
+
+    if(!errorCode) {
+#ifdef DEBUG_MODE
+      UART2PutHex(errorCode);
+      UART2PrintString("\r\n");
+#endif
+
+// Determine sector size.
+#ifdef DEBUG_MODE
+      UART2PrintString("SCSI: Sector size:");
+      UART2PutChar(inquiryData[7] + '0');
+      UART2PutChar(inquiryData[6] + '0');
+      UART2PutChar(inquiryData[5] + '0');
+      UART2PutChar(inquiryData[4] + '0');
+      UART2PrintString("\r\n");
+#endif
+      mediaInformation.sectorSize =
+          (inquiryData[7] << 12) + (inquiryData[6] << 8) + (inquiryData[5] << 4) + (inquiryData[4]);
+      mediaInformation.validityFlags.bits.sectorSize = 1;
+
+      mediaInformation.errorCode = MEDIA_NO_ERROR;
+      return &mediaInformation;
+    } else {
+// Perform a Request Sense to try to clear the stall.
+#ifdef DEBUG_MODE
+      UART2PrintString("SCSI: REQUEST SENSE...");
+#endif
+
+      // Fill in the command block with the REQUEST SENSE parameters.
+      commandBlock[0] = 0x03; // Operation Code
+      commandBlock[1] = 0;    //
+      commandBlock[2] = 0;    //
+      commandBlock[3] = 0;    //
+      commandBlock[4] = 18;   // Allocation length
+      commandBlock[5] = 0;    // Control
+
+      errorCode = USBHostMSDRead(*address, 0, commandBlock, 6, inquiryData, 18);
+#ifdef DEBUG_MODE
+      UART2PutHex(errorCode);
+      UART2PutChar(' ');
+#endif
+
+      if(!errorCode) {
+        while(!USBHostMSDTransferIsComplete(*address, &errorCode, &byteCount)) {
+          USBTasks();
+        }
+      }
+    }
+  }
+
+  mediaInformation.errorCode = MEDIA_CANNOT_INITIALIZE;
+  return &mediaInformation;
 }
-
 
 /****************************************************************************
   Function:
@@ -607,32 +575,27 @@ FILEIO_MEDIA_INFORMATION * USBHostMSDSCSIMediaInitialize( uint8_t * address )
     None
   ***************************************************************************/
 
-uint8_t USBHostMSDSCSIMediaReset( uint8_t * address )
-{
-    uint32_t   byteCount;
-    uint8_t    errorCode;
+uint8_t
+USBHostMSDSCSIMediaReset(uint8_t* address) {
+  uint32_t byteCount;
+  uint8_t errorCode;
 
-    errorCode = USBHostMSDResetDevice( *address );
-    if (errorCode)
-    {
-        return errorCode;
-    }
+  errorCode = USBHostMSDResetDevice(*address);
+  if(errorCode) {
+    return errorCode;
+  }
 
-    do
-    {
-        USBTasks();
-        errorCode = USBHostMSDDeviceStatus( *address );
-    } while (errorCode == USB_MSD_RESETTING_DEVICE);
+  do {
+    USBTasks();
+    errorCode = USBHostMSDDeviceStatus(*address);
+  } while(errorCode == USB_MSD_RESETTING_DEVICE);
 
+  if(USBHostMSDTransferIsComplete(*address, &errorCode, &byteCount)) {
+    return errorCode;
+  }
 
-    if (USBHostMSDTransferIsComplete( *address, &errorCode, &byteCount ))
-    {
-        return errorCode;
-    }
-
-    return USB_MSD_RESET_ERROR;
+  return USB_MSD_RESET_ERROR;
 }
-
 
 /****************************************************************************
   Function:
@@ -675,71 +638,65 @@ uint8_t USBHostMSDSCSIMediaReset( uint8_t * address )
     </code>
   ***************************************************************************/
 
-uint8_t USBHostMSDSCSISectorRead(uint8_t * address, uint32_t sectorAddress, uint8_t *dataBuffer )
-{
-    uint32_t   byteCount;
-    uint8_t    commandBlock[10];
-    uint8_t    errorCode;
+uint8_t
+USBHostMSDSCSISectorRead(uint8_t* address, uint32_t sectorAddress, uint8_t* dataBuffer) {
+  uint32_t byteCount;
+  uint8_t commandBlock[10];
+  uint8_t errorCode;
 
-    #ifdef DEBUG_MODE
-        UART2PrintString( "SCSI: Reading sector " );
-        UART2PutHex(sectorAddress >> 24);
-        UART2PutHex(sectorAddress >> 16);
-        UART2PutHex(sectorAddress >> 8);
-        UART2PutHex(sectorAddress);
-        UART2PrintString( " Device " );
-        UART2PutHex(*address);
-        UART2PrintString( "\r\n" );
-    #endif
+#ifdef DEBUG_MODE
+  UART2PrintString("SCSI: Reading sector ");
+  UART2PutHex(sectorAddress >> 24);
+  UART2PutHex(sectorAddress >> 16);
+  UART2PutHex(sectorAddress >> 8);
+  UART2PutHex(sectorAddress);
+  UART2PrintString(" Device ");
+  UART2PutHex(*address);
+  UART2PrintString("\r\n");
+#endif
 
-    if (*address == 0)
-    {
-        return false;       // USB_MSD_DEVICE_NOT_FOUND;
+  if(*address == 0) {
+    return false; // USB_MSD_DEVICE_NOT_FOUND;
+  }
+
+  // Fill in the command block with the READ10 parameters.
+  commandBlock[0] = 0x28; // Operation code
+  commandBlock[1] = RDPROTECT_NORMAL | FUA_ALLOW_CACHE;
+  commandBlock[2] = (uint8_t)(sectorAddress >> 24); // Big endian!
+  commandBlock[3] = (uint8_t)(sectorAddress >> 16);
+  commandBlock[4] = (uint8_t)(sectorAddress >> 8);
+  commandBlock[5] = (uint8_t)(sectorAddress);
+  commandBlock[6] = 0x00; // Group Number
+  commandBlock[7] = 0x00; // Number of blocks - Big endian!
+  commandBlock[8] = 0x01;
+  commandBlock[9] = 0x00; // Control
+
+  // Currently using LUN=0.  When the File System supports multiple LUN's, this will change.
+  errorCode = USBHostMSDRead(*address, 0, commandBlock, 10, dataBuffer, mediaInformation.sectorSize);
+#ifdef DEBUG_MODE
+  UART2PrintString("SCSI: Read sector init error ");
+  UART2PutHex(errorCode);
+  UART2PrintString("\r\n");
+#endif
+
+  if(!errorCode) {
+    while(!USBHostMSDTransferIsComplete(*address, &errorCode, &byteCount)) {
+      USBTasks();
     }
+  }
 
-    // Fill in the command block with the READ10 parameters.
-    commandBlock[0] = 0x28;     // Operation code
-    commandBlock[1] = RDPROTECT_NORMAL | FUA_ALLOW_CACHE;
-    commandBlock[2] = (uint8_t) (sectorAddress >> 24);     // Big endian!
-    commandBlock[3] = (uint8_t) (sectorAddress >> 16);
-    commandBlock[4] = (uint8_t) (sectorAddress >> 8);
-    commandBlock[5] = (uint8_t) (sectorAddress);
-    commandBlock[6] = 0x00;     // Group Number
-    commandBlock[7] = 0x00;     // Number of blocks - Big endian!
-    commandBlock[8] = 0x01;
-    commandBlock[9] = 0x00;     // Control
+#ifdef DEBUG_MODE
+  UART2PrintString("SCSI: Read sector error ");
+  UART2PutHex(errorCode);
+  UART2PrintString("\r\n");
+#endif
 
-    // Currently using LUN=0.  When the File System supports multiple LUN's, this will change.
-    errorCode = USBHostMSDRead( *address, 0, commandBlock, 10, dataBuffer, mediaInformation.sectorSize );
-    #ifdef DEBUG_MODE
-        UART2PrintString( "SCSI: Read sector init error " );
-        UART2PutHex( errorCode );
-        UART2PrintString( "\r\n" );
-    #endif
-
-    if (!errorCode)
-    {
-        while (!USBHostMSDTransferIsComplete( *address, &errorCode, &byteCount ))
-        {
-            USBTasks();
-        }
-    }
-
-    #ifdef DEBUG_MODE
-        UART2PrintString( "SCSI: Read sector error " );
-        UART2PutHex( errorCode );
-        UART2PrintString( "\r\n" );
-    #endif
-
-    if (!errorCode)
-    {
-        return true;
-    }
-    else
-    {
-//        USBHostMSDSCSIMediaReset();
-        return false;
-    }
+  if(!errorCode) {
+    return true;
+  } else {
+    //        USBHostMSDSCSIMediaReset();
+    return false;
+  }
 }
 
 /****************************************************************************
@@ -786,78 +743,70 @@ uint8_t USBHostMSDSCSISectorRead(uint8_t * address, uint32_t sectorAddress, uint
     </code>
   ***************************************************************************/
 
-uint8_t USBHostMSDSCSISectorWrite(uint8_t * address, uint32_t sectorAddress, uint8_t *dataBuffer, uint8_t allowWriteToZero )
-{
-    uint32_t   byteCount;
-    uint8_t    commandBlock[10];
-    uint8_t    errorCode;
+uint8_t
+USBHostMSDSCSISectorWrite(uint8_t* address, uint32_t sectorAddress, uint8_t* dataBuffer, uint8_t allowWriteToZero) {
+  uint32_t byteCount;
+  uint8_t commandBlock[10];
+  uint8_t errorCode;
 
-    #ifdef DEBUG_MODE
-        UART2PrintString( "SCSI: Writing sector " );
-        UART2PutHex(sectorAddress >> 24);
-        UART2PutHex(sectorAddress >> 16);
-        UART2PutHex(sectorAddress >> 8);
-        UART2PutHex(sectorAddress);
-        UART2PrintString( " Device " );
-        UART2PutHex(*address);
-        UART2PrintString( "\r\n" );
-    #endif
+#ifdef DEBUG_MODE
+  UART2PrintString("SCSI: Writing sector ");
+  UART2PutHex(sectorAddress >> 24);
+  UART2PutHex(sectorAddress >> 16);
+  UART2PutHex(sectorAddress >> 8);
+  UART2PutHex(sectorAddress);
+  UART2PrintString(" Device ");
+  UART2PutHex(*address);
+  UART2PrintString("\r\n");
+#endif
 
-    if (*address == 0)
-    {
-        return false;   //USB_MSD_DEVICE_NOT_FOUND;
+  if(*address == 0) {
+    return false; // USB_MSD_DEVICE_NOT_FOUND;
+  }
+
+  if((sectorAddress == 0) && (allowWriteToZero == false)) {
+    return false;
+  }
+
+  // Fill in the command block with the WRITE 10 parameters.
+  commandBlock[0] = 0x2A; // Operation code
+  commandBlock[1] = WRPROTECT_NORMAL | FUA_ALLOW_CACHE;
+  commandBlock[2] = (uint8_t)(sectorAddress >> 24); // Big endian!
+  commandBlock[3] = (uint8_t)(sectorAddress >> 16);
+  commandBlock[4] = (uint8_t)(sectorAddress >> 8);
+  commandBlock[5] = (uint8_t)(sectorAddress);
+  commandBlock[6] = 0x00; // Group Number
+  commandBlock[7] = 0x00; // Number of blocks - Big endian!
+  commandBlock[8] = 0x01;
+  commandBlock[9] = 0x00; // Control
+
+  // Currently using LUN=0.  When the File System supports multiple LUN's, this will change.
+  errorCode = USBHostMSDWrite(*address, 0, commandBlock, 10, dataBuffer, mediaInformation.sectorSize);
+#ifdef DEBUG_MODE
+  UART2PrintString("SCSI: Write sector init error ");
+  UART2PutHex(errorCode);
+  UART2PrintString("\r\n");
+#endif
+
+  if(!errorCode) {
+    while(!USBHostMSDTransferIsComplete(*address, &errorCode, &byteCount)) {
+      USBTasks();
     }
+  }
 
-    if ((sectorAddress == 0) && (allowWriteToZero == false))
-    {
-        return false;
-    }
+#ifdef DEBUG_MODE
+  UART2PrintString("SCSI: Write sector error ");
+  UART2PutHex(errorCode);
+  UART2PrintString("\r\n");
+#endif
 
-    // Fill in the command block with the WRITE 10 parameters.
-    commandBlock[0] = 0x2A;     // Operation code
-    commandBlock[1] = WRPROTECT_NORMAL | FUA_ALLOW_CACHE;
-    commandBlock[2] = (uint8_t) (sectorAddress >> 24);     // Big endian!
-    commandBlock[3] = (uint8_t) (sectorAddress >> 16);
-    commandBlock[4] = (uint8_t) (sectorAddress >> 8);
-    commandBlock[5] = (uint8_t) (sectorAddress);
-    commandBlock[6] = 0x00;     // Group Number
-    commandBlock[7] = 0x00;     // Number of blocks - Big endian!
-    commandBlock[8] = 0x01;
-    commandBlock[9] = 0x00;     // Control
-
-    // Currently using LUN=0.  When the File System supports multiple LUN's, this will change.
-    errorCode = USBHostMSDWrite( *address, 0, commandBlock, 10, dataBuffer, mediaInformation.sectorSize );
-    #ifdef DEBUG_MODE
-        UART2PrintString( "SCSI: Write sector init error " );
-        UART2PutHex( errorCode );
-        UART2PrintString( "\r\n" );
-    #endif
-
-    if (!errorCode)
-    {
-        while (!USBHostMSDTransferIsComplete( *address, &errorCode, &byteCount ))
-        {
-            USBTasks();
-        }
-    }
-
-    #ifdef DEBUG_MODE
-        UART2PrintString( "SCSI: Write sector error " );
-        UART2PutHex( errorCode );
-        UART2PrintString( "\r\n" );
-    #endif
-
-    if (!errorCode)
-    {
-        return true;
-    }
-    else
-    {
-//        USBHostMSDSCSIMediaReset();
-        return false;
-    }
+  if(!errorCode) {
+    return true;
+  } else {
+    //        USBHostMSDSCSIMediaReset();
+    return false;
+  }
 }
-
 
 /****************************************************************************
   Function:
@@ -880,18 +829,16 @@ uint8_t USBHostMSDSCSISectorWrite(uint8_t * address, uint32_t sectorAddress, uin
     None
   ***************************************************************************/
 
-uint8_t    USBHostMSDSCSIWriteProtectState( uint8_t * address)
-{
-    return 0;
+uint8_t
+USBHostMSDSCSIWriteProtectState(uint8_t* address) {
+  return 0;
 }
-
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Internal Functions
 // *****************************************************************************
 // *****************************************************************************
-
 
 /*******************************************************************************
   Function:
@@ -925,56 +872,51 @@ uint8_t    USBHostMSDSCSIWriteProtectState( uint8_t * address)
   ***************************************************************************/
 
 #ifdef PERFORM_TEST_UNIT_READY
-bool _USBHostMSDSCSI_TestUnitReady( uint8_t * address)
-{
-    uint32_t       byteCount;
-    uint8_t        commandBlock[10];
-    uint8_t        errorCode;
-    uint8_t        inquiryData[36];
-    uint8_t        unitReadyCount;
+bool
+_USBHostMSDSCSI_TestUnitReady(uint8_t* address) {
+  uint32_t byteCount;
+  uint8_t commandBlock[10];
+  uint8_t errorCode;
+  uint8_t inquiryData[36];
+  uint8_t unitReadyCount;
 
-    // Issue a TEST UNIT READY
-    #ifdef DEBUG_MODE
-        UART2PrintString( "SCSI: TEST UNIT READY..." );
-    #endif
-
-    unitReadyCount = 0;
-    while (unitReadyCount < 5)
-    {
-        unitReadyCount ++;
-
-        // Fill in the command block with the TEST UNIT READY parameters.
-        commandBlock[0] = 0x00;     // Operation Code
-        commandBlock[1] = 0;        // Reserved
-        commandBlock[2] = 0;        // Reserved
-        commandBlock[3] = 0;        // Reserved
-        commandBlock[4] = 0;        // Reserved
-        commandBlock[5] = 0x00;     // Control
-
-        errorCode = USBHostMSDRead( *address, 0, commandBlock, 6, inquiryData, 0 );
-        #ifdef DEBUG_MODE
-            UART2PutHex( errorCode ) ;
-            UART2PutChar( ' ' );
-        #endif
-
-        if (!errorCode)
-        {
-            while (!USBHostMSDTransferIsComplete( *address, &errorCode, &byteCount ))
-            {
-                USBTasks();
-            }
-        }
-        #ifdef DEBUG_MODE
-            UART2PutHex( errorCode ) ;
-            UART2PrintString( "\r\n" );
-        #endif
-        if (!errorCode)
-        {
-            return true;
-        }
-    }
-
-    return false;
-}
+// Issue a TEST UNIT READY
+#ifdef DEBUG_MODE
+  UART2PrintString("SCSI: TEST UNIT READY...");
 #endif
 
+  unitReadyCount = 0;
+  while(unitReadyCount < 5) {
+    unitReadyCount++;
+
+    // Fill in the command block with the TEST UNIT READY parameters.
+    commandBlock[0] = 0x00; // Operation Code
+    commandBlock[1] = 0;    // Reserved
+    commandBlock[2] = 0;    // Reserved
+    commandBlock[3] = 0;    // Reserved
+    commandBlock[4] = 0;    // Reserved
+    commandBlock[5] = 0x00; // Control
+
+    errorCode = USBHostMSDRead(*address, 0, commandBlock, 6, inquiryData, 0);
+#ifdef DEBUG_MODE
+    UART2PutHex(errorCode);
+    UART2PutChar(' ');
+#endif
+
+    if(!errorCode) {
+      while(!USBHostMSDTransferIsComplete(*address, &errorCode, &byteCount)) {
+        USBTasks();
+      }
+    }
+#ifdef DEBUG_MODE
+    UART2PutHex(errorCode);
+    UART2PrintString("\r\n");
+#endif
+    if(!errorCode) {
+      return true;
+    }
+  }
+
+  return false;
+}
+#endif

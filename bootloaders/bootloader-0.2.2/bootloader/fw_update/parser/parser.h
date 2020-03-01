@@ -23,18 +23,17 @@
 
 #include "../osdep/osdep.h"
 
-#include "usage.h"
 #include "parameters.h"
+#include "usage.h"
 
-class Parser
-{
+class Parser {
 public:
-	Parser(const Usage &usage);
-	virtual ~Parser();
-	void parse(int argc, char *argv[], Parameters* params);
+  Parser(const Usage& usage);
+  virtual ~Parser();
+  void parse(int argc, char* argv[], Parameters* params);
+
 protected:
-	Usage _usage;
+  Usage _usage;
 };
 
 #endif // PARSER_H_INCLUDED
-

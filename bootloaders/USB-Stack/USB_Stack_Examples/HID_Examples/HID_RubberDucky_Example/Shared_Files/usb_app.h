@@ -3,7 +3,7 @@
  * @brief Contains USB application related declarations of global prototypes and variables.
  * @author John Izzard
  * @date 13/02/2019
- * 
+ *
  * USB uC - USB Application file.
  * Copyright (C) 2017-2019  John Izzard
  *

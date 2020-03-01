@@ -1,6 +1,87 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;  BootLoader.                                                             ;;
-;;  Copyright (C) 2007 Diolan ( http://www.diolan.com )                     ;;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+BootLoader.;
+;
+;
+;  Copyright (C) 2007 Diolan ( http://www.diolan.com )                     ;;
 ;;                                                                          ;;
 ;;  This program is free software: you can redistribute it and/or modify    ;;
 ;;  it under the terms of the GNU General Public License as published by    ;;
@@ -17,10 +98,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; USB Descriptors
 ;-----------------------------------------------------------------------------
-	#include "P18F4455.INC"
-	#include "boot.inc"
-	#include "usb_defs.inc"
-	#include "usb_desc.inc"
+#include "P18F4455.INC"
+#include "boot.inc"
+#include "usb_defs.inc"
+#include "usb_desc.inc"
 ;-----------------------------------------------------------------------------
 ; Packed code segment for USB descriptor
 ; We need to avoid zero padding for descriptors.

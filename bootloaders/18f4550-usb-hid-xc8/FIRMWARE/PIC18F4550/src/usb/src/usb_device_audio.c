@@ -4,7 +4,7 @@
     Dependencies:   See INCLUDES section
     Processor:      Microchip USB Microcontrollers
     Hardware:       Please see help file in "<install directory>\Microchip\Help"
-	                for details.
+                    for details.
     Complier:   	Microchip C18 (for PIC18) or C30 (for PIC24)
     Company:        Microchip Technology, Inc.
 
@@ -72,7 +72,7 @@
     C:\\Microchip Solutions\\My Demo Application
   ********************************************************************************/
 
- /** I N C L U D E S *******************************************************/
+/** I N C L U D E S *******************************************************/
 #include <system_config.h>
 #include <usb/usb.h>
 #include <usb/usb_device_audio.h>
@@ -80,134 +80,131 @@
 #ifdef USB_USE_AUDIO_CLASS
 
 #if defined USB_AUDIO_INPUT_TERMINAL_CONTROL_REQUESTS_HANDLER
-    void USB_AUDIO_INPUT_TERMINAL_CONTROL_REQUESTS_HANDLER(void);
-#endif 
+void USB_AUDIO_INPUT_TERMINAL_CONTROL_REQUESTS_HANDLER(void);
+#endif
 
 #if defined USB_AUDIO_OUTPUT_TERMINAL_CONTROL_REQUESTS_HANDLER
-    void USB_AUDIO_OUTPUT_TERMINAL_CONTROL_REQUESTS_HANDLER(void);
+void USB_AUDIO_OUTPUT_TERMINAL_CONTROL_REQUESTS_HANDLER(void);
 #endif
 
 #if defined USB_AUDIO_MIXER_UNIT_CONTROL_REQUESTS_HANDLER
-    void USB_AUDIO_MIXER_UNIT_CONTROL_REQUESTS_HANDLER(void);
+void USB_AUDIO_MIXER_UNIT_CONTROL_REQUESTS_HANDLER(void);
 #endif
 
 #if defined USB_AUDIO_SELECTOR_UNIT_CONTROL_REQUESTS_HANDLER
-    void USB_AUDIO_SELECTOR_UNIT_CONTROL_REQUESTS_HANDLER(void);
+void USB_AUDIO_SELECTOR_UNIT_CONTROL_REQUESTS_HANDLER(void);
 #endif
 
 #if defined USB_AUDIO_FEATURE_UNIT_CONTROL_REQUESTS_HANDLER
-    void USB_AUDIO_FEATURE_UNIT_CONTROL_REQUESTS_HANDLER(void);
+void USB_AUDIO_FEATURE_UNIT_CONTROL_REQUESTS_HANDLER(void);
 #endif
 
 #if defined USB_AUDIO_PROCESSING_UNIT_CONTROL_REQUESTS_HANDLER
-    void USB_AUDIO_PROCESSING_UNIT_CONTROL_REQUESTS_HANDLER(void);
+void USB_AUDIO_PROCESSING_UNIT_CONTROL_REQUESTS_HANDLER(void);
 #endif
 
 #if defined USB_AUDIO_EXTENSION_UNIT_CONTROL_REQUESTS_HANDLER
-    void USB_AUDIO_EXTENSION_UNIT_CONTROL_REQUESTS_HANDLER(void);
+void USB_AUDIO_EXTENSION_UNIT_CONTROL_REQUESTS_HANDLER(void);
 #endif
 
 #if defined USB_AUDIO_INTRFACE_CONTROL_REQUESTS_HANDLER
-    void USB_AUDIO_INTRFACE_CONTROL_REQUESTS_HANDLER(void);
+void USB_AUDIO_INTRFACE_CONTROL_REQUESTS_HANDLER(void);
 #endif
 
 #if defined USB_AUDIO_ENDPOINT_CONTROL_REQUESTS_HANDLER
-    void USB_AUDIO_ENDPOINT_CONTROL_REQUESTS_HANDLER(void);
+void USB_AUDIO_ENDPOINT_CONTROL_REQUESTS_HANDLER(void);
 #endif
 
 #if defined USB_AUDIO_MEMORY_REQUESTS_HANDLER
-    void USB_AUDIO_MEMORY_REQUESTS_HANDLER(void);
+void USB_AUDIO_MEMORY_REQUESTS_HANDLER(void);
 #endif
 
 #if defined USB_AUDIO_STATUS_REQUESTS_HANDLER
-    void USB_AUDIO_STATUS_REQUESTS_HANDLER(void);
+void USB_AUDIO_STATUS_REQUESTS_HANDLER(void);
 #endif
-
-
 
 /** V A R I A B L E S ********************************************************/
 
 /** C L A S S  S P E C I F I C  R E Q ****************************************/
 /******************************************************************************
- 	Function:
- 		void USBCheckAudioRequest(void)
+    Function:
+        void USBCheckAudioRequest(void)
 
- 	Description:
- 		This routine checks the setup data packet to see if it
- 		knows how to handle it
+    Description:
+        This routine checks the setup data packet to see if it
+        knows how to handle it
 
- 	PreCondition:
- 		None
+    PreCondition:
+        None
 
-	Parameters:
-		None
+    Parameters:
+        None
 
-	Return Values:
-		None
+    Return Values:
+        None
 
-	Remarks:
-		None
+    Remarks:
+        None
 
  *****************************************************************************/
 
-void USBCheckAudioRequest(void)
-{
-    /*
-     * If request recipient is not an interface then return
-     */
-    if(SetupPkt.Recipient != USB_SETUP_RECIPIENT_INTERFACE_BITFIELD) return;
-    /*
-     * If request type is not class-specific then return
-     */
-    if(SetupPkt.RequestType != USB_SETUP_TYPE_CLASS_BITFIELD) return;
-    /*
-     * Interface ID must match interface numbers associated with
-     * Audio class, else return
-     */
-    if((SetupPkt.bIntfID != AUDIO_CONTROL_INTERFACE_ID)&&
-       (SetupPkt.bIntfID != AUDIO_STREAMING_INTERFACE_ID)) return;
-    
-    switch(SetupPkt.wIndex >> 8)// checking for the Entity ID (Entity ID are defined in the config.h file)
-    {
-        case ID_INPUT_TERMINAL:
-             #if defined USB_AUDIO_INPUT_TERMINAL_CONTROL_REQUESTS_HANDLER
-                 USB_AUDIO_INPUT_TERMINAL_CONTROL_REQUESTS_HANDLER();
-             #endif
-             break;
-        case ID_OUTPUT_TERMINAL:
-             #if defined USB_AUDIO_OUTPUT_TERMINAL_CONTROL_REQUESTS_HANDLER
-                 USB_AUDIO_OUTPUT_TERMINAL_CONTROL_REQUESTS_HANDLER();
-             #endif
-             break;
-        case ID_MIXER_UNIT:
-            #if defined USB_AUDIO_MIXER_UNIT_CONTROL_REQUESTS_HANDLER
-                USB_AUDIO_MIXER_UNIT_CONTROL_REQUESTS_HANDLER();
-            #endif
-            break;
-        case ID_SELECTOR_UNIT:
-            #if defined USB_AUDIO_SELECTOR_UNIT_CONTROL_REQUESTS_HANDLER
-                USB_AUDIO_SELECTOR_UNIT_CONTROL_REQUESTS_HANDLER();
-            #endif
-            break;
-        case ID_FEATURE_UNIT:
-            #if defined USB_AUDIO_FEATURE_UNIT_CONTROL_REQUESTS_HANDLER
-                USB_AUDIO_FEATURE_UNIT_CONTROL_REQUESTS_HANDLER();
-            #endif
-            break;
-        case ID_PROCESSING_UNIT:
-            #if defined USB_AUDIO_PROCESSING_UNIT_CONTROL_REQUESTS_HANDLER
-                USB_AUDIO_PROCESSING_UNIT_CONTROL_REQUESTS_HANDLER();
-            #endif
-            break;
-        case ID_EXTENSION_UNIT:
-            #if defined USB_AUDIO_EXTENSION_UNIT_CONTROL_REQUESTS_HANDLER
-                USB_AUDIO_EXTENSION_UNIT_CONTROL_REQUESTS_HANDLER();
-            #endif
-            break;
-        default:
-            break;
+void
+USBCheckAudioRequest(void) {
+  /*
+   * If request recipient is not an interface then return
+   */
+  if(SetupPkt.Recipient != USB_SETUP_RECIPIENT_INTERFACE_BITFIELD) return;
+  /*
+   * If request type is not class-specific then return
+   */
+  if(SetupPkt.RequestType != USB_SETUP_TYPE_CLASS_BITFIELD) return;
+  /*
+   * Interface ID must match interface numbers associated with
+   * Audio class, else return
+   */
+  if((SetupPkt.bIntfID != AUDIO_CONTROL_INTERFACE_ID) && (SetupPkt.bIntfID != AUDIO_STREAMING_INTERFACE_ID)) return;
 
-    }//end switch(SetupPkt.bRequest
-}//end USBCheckAudioRequest
+  switch(SetupPkt.wIndex >> 8) // checking for the Entity ID (Entity ID are defined in the config.h file)
+  {
+    case ID_INPUT_TERMINAL:
+#if defined USB_AUDIO_INPUT_TERMINAL_CONTROL_REQUESTS_HANDLER
+      USB_AUDIO_INPUT_TERMINAL_CONTROL_REQUESTS_HANDLER();
+#endif
+      break;
+    case ID_OUTPUT_TERMINAL:
+#if defined USB_AUDIO_OUTPUT_TERMINAL_CONTROL_REQUESTS_HANDLER
+      USB_AUDIO_OUTPUT_TERMINAL_CONTROL_REQUESTS_HANDLER();
+#endif
+      break;
+    case ID_MIXER_UNIT:
+#if defined USB_AUDIO_MIXER_UNIT_CONTROL_REQUESTS_HANDLER
+      USB_AUDIO_MIXER_UNIT_CONTROL_REQUESTS_HANDLER();
+#endif
+      break;
+    case ID_SELECTOR_UNIT:
+#if defined USB_AUDIO_SELECTOR_UNIT_CONTROL_REQUESTS_HANDLER
+      USB_AUDIO_SELECTOR_UNIT_CONTROL_REQUESTS_HANDLER();
+#endif
+      break;
+    case ID_FEATURE_UNIT:
+#if defined USB_AUDIO_FEATURE_UNIT_CONTROL_REQUESTS_HANDLER
+      USB_AUDIO_FEATURE_UNIT_CONTROL_REQUESTS_HANDLER();
+#endif
+      break;
+    case ID_PROCESSING_UNIT:
+#if defined USB_AUDIO_PROCESSING_UNIT_CONTROL_REQUESTS_HANDLER
+      USB_AUDIO_PROCESSING_UNIT_CONTROL_REQUESTS_HANDLER();
+#endif
+      break;
+    case ID_EXTENSION_UNIT:
+#if defined USB_AUDIO_EXTENSION_UNIT_CONTROL_REQUESTS_HANDLER
+      USB_AUDIO_EXTENSION_UNIT_CONTROL_REQUESTS_HANDLER();
+#endif
+      break;
+    default:
+      break;
+
+  } // end switch(SetupPkt.bRequest
+} // end USBCheckAudioRequest
 
 #endif

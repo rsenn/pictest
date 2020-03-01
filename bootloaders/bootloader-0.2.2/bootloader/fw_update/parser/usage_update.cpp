@@ -25,16 +25,14 @@
 using namespace std;
 
 UsageUpdate::UsageUpdate(unsigned int id,
-						 UsageDescriptor::ValueRelevance valueRelevance,
-						 string valueAlias,  string description)
-:	_id(id), _valueRelevance(valueRelevance), _valueAlias(valueAlias),
-	_description(description)
-{
-}
+                         UsageDescriptor::ValueRelevance valueRelevance,
+                         string valueAlias,
+                         string description)
+    : _id(id), _valueRelevance(valueRelevance), _valueAlias(valueAlias), _description(description) {}
 
-bool UsageUpdate::operator==(const unsigned int &id)
-{
-	return (id == _id);
+bool
+UsageUpdate::operator==(const unsigned int& id) {
+  return (id == _id);
 }
 
 /* End of file */

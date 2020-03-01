@@ -14,23 +14,23 @@
 
 #define BUTTON PORTCbits.RC0
 
-void main(void) {
-    ANSEL = 0;
-    LED = 0;
-    LED_TRIS = 0;
-    while(1){
-        if(BUTTON){
-            LED = 1;
-            __delay_ms(250);
-            LED = 0;
-            __delay_ms(250);
-        }
-        else{
-            LED = 1;
-            __delay_ms(500);
-            LED = 0;
-            __delay_ms(500);
-        }
+void
+main(void) {
+  ANSEL = 0;
+  LED = 0;
+  LED_TRIS = 0;
+  while(1) {
+    if(BUTTON) {
+      LED = 1;
+      __delay_ms(250);
+      LED = 0;
+      __delay_ms(250);
+    } else {
+      LED = 1;
+      __delay_ms(500);
+      LED = 0;
+      __delay_ms(500);
     }
-    return;
+  }
+  return;
 }

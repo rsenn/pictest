@@ -38,8 +38,8 @@
 #ifndef USB_H
 #define USB_H
 
-#include <p18cxxx.h>
 #include "GenericTypeDefs.h"
+#include <p18cxxx.h>
 
 /*
  * usb.h provides a centralize way to include all files
@@ -56,12 +56,12 @@
 #include "usbdefs_ep0_buff.h"
 #include "usbmmap.h"
 
-#include "usbdrv.h"
-#include "usbctrltrf.h"
 #include "usb9.h"
+#include "usbctrltrf.h"
+#include "usbdrv.h"
 
-#if defined(USB_USE_MSD)                // See usbcfg.h
+#if defined(USB_USE_MSD) // See usbcfg.h
 #include "msd.h"
 #endif
 
-#endif //USB_H
+#endif // USB_H

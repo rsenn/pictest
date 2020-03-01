@@ -45,12 +45,11 @@
  * fit under 2KB, which is the size of the boot block.
  *****************************************************************************/
 
-
 /** I N C L U D E S **********************************************************/
-#include <p18cxxx.h>
+#include "io_cfg.h" // Required for USBCheckBusStatus()
 #include "system\typedefs.h"
 #include "system\usb\usb.h"
-#include "io_cfg.h"             // Required for USBCheckBusStatus()
+#include <p18cxxx.h>
 
 /** V A R I A B L E S ********************************************************/
 #pragma udata
@@ -85,21 +84,22 @@ void USBErrorHandler(void);
  *
  * Note:            None
  *****************************************************************************/
-void USBCheckBusStatus(void)
-{
-    UCON = 0b00001000;              // Enable USBEN only
-    /*
-     * After enabling the USB module, it takes some time for the voltage
-     * on the D+ or D- line to rise high enough to get out of the SE0 condition.
-     * The USB Reset interrupt should not be unmasked until the SE0 condition is
-     * cleared. This helps preventing the firmware from misinterpreting this
-     * unique event as a USB bus reset from the USB host.
-     */
-    while(UCONbits.SE0);            // Blocking loop
-    UIR = 0;                        // Clear all USB interrupts
-    UIE = 0b00010001;               // Unmask RESET & IDLE interrupts only
-    usb_device_state = POWERED_STATE;
-}//end USBCheckBusStatus
+void
+USBCheckBusStatus(void) {
+  UCON = 0b00001000; // Enable USBEN only
+  /*
+   * After enabling the USB module, it takes some time for the voltage
+   * on the D+ or D- line to rise high enough to get out of the SE0 condition.
+   * The USB Reset interrupt should not be unmasked until the SE0 condition is
+   * cleared. This helps preventing the firmware from misinterpreting this
+   * unique event as a USB bus reset from the USB host.
+   */
+  while(UCONbits.SE0)
+    ;               // Blocking loop
+  UIR = 0;          // Clear all USB interrupts
+  UIE = 0b00010001; // Unmask RESET & IDLE interrupts only
+  usb_device_state = POWERED_STATE;
+} // end USBCheckBusStatus
 
 /******************************************************************************
  * Function:        void USBDriverService(void)
@@ -119,119 +119,116 @@ void USBCheckBusStatus(void)
  *                  DETACHED -> ATTACHED -> POWERED -> DEFAULT ->
  *                  ADDRESS_PENDING -> ADDRESSED -> CONFIGURED -> READY
  *****************************************************************************/
-void USBDriverService(void)
-{   
-    /*
-     * Task A: Service USB Activity Interrupt
-     */
+void
+USBDriverService(void) {
+  /*
+   * Task A: Service USB Activity Interrupt
+   */
 
-    if(UIRbits.ACTVIF && UIEbits.ACTVIE)
-    {
-        UCONbits.SUSPND = 0;
-        UIEbits.ACTVIE = 0;
-/********************************************************************
-Bug Fix: May 14, 2007
-*********************************************************************
-The ACTVIF bit cannot be cleared immediately after the USB module wakes
-up from Suspend or while the USB module is suspended. A few clock cycles
-are required to synchronize the internal hardware state machine before
-the ACTIVIF bit can be cleared by firmware. Clearing the ACTVIF bit
-before the internal hardware is synchronized may not have an effect on
-the value of ACTVIF. Additonally, if the USB module uses the clock from
-the 96 MHz PLL source, then after clearing the SUSPND bit, the USB
-module may not be immediately operational while waiting for the 96 MHz
-PLL to lock.
-********************************************************************/
-        // UIRbits.ACTVIF = 0;                      // Removed
-        while(UIRbits.ACTVIF){UIRbits.ACTVIF = 0;}  // Added
-    }//end if
-            
+  if(UIRbits.ACTVIF && UIEbits.ACTVIE) {
+    UCONbits.SUSPND = 0;
+    UIEbits.ACTVIE = 0;
+    /********************************************************************
+    Bug Fix: May 14, 2007
+    *********************************************************************
+    The ACTVIF bit cannot be cleared immediately after the USB module wakes
+    up from Suspend or while the USB module is suspended. A few clock cycles
+    are required to synchronize the internal hardware state machine before
+    the ACTIVIF bit can be cleared by firmware. Clearing the ACTVIF bit
+    before the internal hardware is synchronized may not have an effect on
+    the value of ACTVIF. Additonally, if the USB module uses the clock from
+    the 96 MHz PLL source, then after clearing the SUSPND bit, the USB
+    module may not be immediately operational while waiting for the 96 MHz
+    PLL to lock.
+    ********************************************************************/
+    // UIRbits.ACTVIF = 0;                      // Removed
+    while(UIRbits.ACTVIF) {
+      UIRbits.ACTVIF = 0;
+    } // Added
+  }   // end if
+
+  /*
+   * Task B: Service USB Bus Reset Interrupt.
+   * When bus reset is received during suspend, ACTVIF will be set first,
+   * once the UCONbits.SUSPND is clear, then the URSTIF bit will be asserted.
+   * This is why URSTIF is checked after ACTVIF.
+   *
+   * The USB reset flag is masked when the USB state is in
+   * DETACHED_STATE or ATTACHED_STATE, and therefore cannot
+   * cause a USB reset event during these two states.
+   */
+  if(UIRbits.URSTIF && UIEbits.URSTIE) USBProtocolResetHandler();
+
+  /*
+   * Task C: Service other USB interrupts
+   */
+  if(UIRbits.IDLEIF && UIEbits.IDLEIE) {
+    UIEbits.ACTVIE = 1; // Enable bus activity interrupt
+    UIRbits.IDLEIF = 0;
+    UCONbits.SUSPND = 1; // Put USB module in power conserve
+                         // mode, SIE clock inactive
+    /* Now, go into power saving */
+    PIR2bits.USBIF = 0; // Added May 14, 2007
+    PIE2bits.USBIE = 1; // Set wakeup source
+    Sleep();
+    PIR2bits.USBIF = 0;
+  } // end if
+
+  if(UIRbits.STALLIF && UIEbits.STALLIE) {
+    if(UEP0bits.EPSTALL == 1) {
+      /********************************************************************
+      Bug Fix: May 14, 2007 (#F4)
+      *********************************************************************
+      In a control transfer, when a request is not supported, all
+      subsequent transactions should be stalled until a new SETUP
+      transaction is received. The original firmware only stalls the
+      first subsequent transaction, then ACKs others. Typically, a
+      compliance USB host will stop sending subsequent transactions
+      once the first stall is received. In the original firmware,
+      function USBStallHandler() in usbdrv.c calls
+      USBPrepareForNextSetupTrf() when a STALL event occurred on EP0.
+      In turn, USBPrepareForNextSetupTrf() reconfigures EP0 IN and OUT
+      to prepare for the next SETUP transaction. The work around is not
+      to call USBPrepareForNextSetupTrf() in USBStallHandler().
+      ********************************************************************/
+      // USBPrepareForNextSetupTrf();      // Removed
+      /*******************************************************************/
+      UEP0bits.EPSTALL = 0;
+    } // end if
+    UIRbits.STALLIF = 0;
+  } // end if
+
+  /*
+   * Pointless to continue servicing if the host has not sent a bus reset.
+   * Once bus reset is received, the device transitions into the DEFAULT
+   * state and is ready for communication.
+   */
+  if(usb_device_state < DEFAULT_STATE) return;
+
+  /*
+   * Task D: Servicing USB Transaction Complete Interrupt
+   */
+  if(UIRbits.TRNIF && UIEbits.TRNIE) {
     /*
-     * Task B: Service USB Bus Reset Interrupt.
-     * When bus reset is received during suspend, ACTVIF will be set first,
-     * once the UCONbits.SUSPND is clear, then the URSTIF bit will be asserted.
-     * This is why URSTIF is checked after ACTVIF.
+     * USBCtrlEPService only services transactions over EP0.
+     * It ignores all other EP transactions.
+     */
+    USBCtrlEPService();
+
+    /*
+     * Other EP can be serviced later by responsible device class firmware.
+     * Each device driver knows when an OUT or IN transaction is ready by
+     * checking the buffer ownership bit.
+     * An OUT EP should always be owned by SIE until the data is ready.
+     * An IN EP should always be owned by CPU until the data is ready.
      *
-     * The USB reset flag is masked when the USB state is in
-     * DETACHED_STATE or ATTACHED_STATE, and therefore cannot
-     * cause a USB reset event during these two states.
+     * Because of this logic, it is not necessary to save the USTAT value
+     * of non-EP0 transactions.
      */
-    if(UIRbits.URSTIF && UIEbits.URSTIE)    USBProtocolResetHandler();
-    
-    /*
-     * Task C: Service other USB interrupts
-     */
-    if(UIRbits.IDLEIF && UIEbits.IDLEIE)
-    {
-        UIEbits.ACTVIE = 1;                     // Enable bus activity interrupt
-        UIRbits.IDLEIF = 0;
-        UCONbits.SUSPND = 1;                    // Put USB module in power conserve
-                                                // mode, SIE clock inactive
-        /* Now, go into power saving */
-        PIR2bits.USBIF = 0;                     // Added May 14, 2007
-        PIE2bits.USBIE = 1;                     // Set wakeup source
-        Sleep();
-        PIR2bits.USBIF = 0;
-    }//end if
-    
-    if(UIRbits.STALLIF && UIEbits.STALLIE)
-    {
-        if(UEP0bits.EPSTALL == 1)
-        {
-/********************************************************************
-Bug Fix: May 14, 2007 (#F4)
-*********************************************************************
-In a control transfer, when a request is not supported, all
-subsequent transactions should be stalled until a new SETUP
-transaction is received. The original firmware only stalls the
-first subsequent transaction, then ACKs others. Typically, a
-compliance USB host will stop sending subsequent transactions
-once the first stall is received. In the original firmware,
-function USBStallHandler() in usbdrv.c calls
-USBPrepareForNextSetupTrf() when a STALL event occurred on EP0.
-In turn, USBPrepareForNextSetupTrf() reconfigures EP0 IN and OUT
-to prepare for the next SETUP transaction. The work around is not
-to call USBPrepareForNextSetupTrf() in USBStallHandler().
-********************************************************************/
-            //USBPrepareForNextSetupTrf();      // Removed
-/*******************************************************************/
-            UEP0bits.EPSTALL = 0;
-        }//end if
-        UIRbits.STALLIF = 0;
-    }//end if
+    UIRbits.TRNIF = 0;
+  } // end if(UIRbits.TRNIF && UIEbits.TRNIE)
 
-    /*
-     * Pointless to continue servicing if the host has not sent a bus reset.
-     * Once bus reset is received, the device transitions into the DEFAULT
-     * state and is ready for communication.
-     */
-    if(usb_device_state < DEFAULT_STATE) return;
-
-    /*
-     * Task D: Servicing USB Transaction Complete Interrupt
-     */
-    if(UIRbits.TRNIF && UIEbits.TRNIE)
-    {
-        /*
-         * USBCtrlEPService only services transactions over EP0.
-         * It ignores all other EP transactions.
-         */
-        USBCtrlEPService();
-        
-        /*
-         * Other EP can be serviced later by responsible device class firmware.
-         * Each device driver knows when an OUT or IN transaction is ready by
-         * checking the buffer ownership bit.
-         * An OUT EP should always be owned by SIE until the data is ready.
-         * An IN EP should always be owned by CPU until the data is ready.
-         *
-         * Because of this logic, it is not necessary to save the USTAT value
-         * of non-EP0 transactions.
-         */
-        UIRbits.TRNIF = 0;
-    }//end if(UIRbits.TRNIF && UIEbits.TRNIE)
-    
-}//end USBDriverService
+} // end USBDriverService
 
 /******************************************************************************
  * Function:        void USBProtocolResetHandler(void)
@@ -255,32 +252,36 @@ to call USBPrepareForNextSetupTrf() in USBStallHandler().
  *
  * Note:            None
  *****************************************************************************/
-void USBProtocolResetHandler(void)
-{
-    UIR = 0;                        // Clears all USB interrupts
-    UIE = 0b01111011;               // Enable all interrupts except ACTVIE
-    UADDR = 0x00;                   // Reset to default address
-    UEP0 = EP_CTRL|HSHK_EN;         // Init EP0 as a Ctrl EP, see usbdrv.h
-    while(UIRbits.TRNIF == 1)       // Flush any pending transactions
-    {
-        UIRbits.TRNIF = 0;
-/********************************************************************
-Bug Fix: May 14, 2007
-*********************************************************************
-Clearing the transfer complete flag bit, TRNIF, causes the SIE to
-advance the FIFO. If the next data in the FIFO holding register is
-valid, the SIE will reassert the interrupt within 6Tcy of clearing
-TRNIF. If no additional data is preset, TRNIF will remain clear.
-Additional nops were added in this fix to guarantee that TRNIF is
-properly updated before being checked again.
-********************************************************************/
-        Nop(); Nop(); Nop();
-        Nop(); Nop(); Nop();
-    }
-    UCONbits.PKTDIS = 0;            // Make sure packet processing is enabled
-    USBPrepareForNextSetupTrf();    // Declared in usbctrltrf.c
-    usb_active_cfg = 0;             // Clear active configuration
-    usb_device_state = DEFAULT_STATE;
-}//end USBProtocolResetHandler
+void
+USBProtocolResetHandler(void) {
+  UIR = 0;                  // Clears all USB interrupts
+  UIE = 0b01111011;         // Enable all interrupts except ACTVIE
+  UADDR = 0x00;             // Reset to default address
+  UEP0 = EP_CTRL | HSHK_EN; // Init EP0 as a Ctrl EP, see usbdrv.h
+  while(UIRbits.TRNIF == 1) // Flush any pending transactions
+  {
+    UIRbits.TRNIF = 0;
+    /********************************************************************
+    Bug Fix: May 14, 2007
+    *********************************************************************
+    Clearing the transfer complete flag bit, TRNIF, causes the SIE to
+    advance the FIFO. If the next data in the FIFO holding register is
+    valid, the SIE will reassert the interrupt within 6Tcy of clearing
+    TRNIF. If no additional data is preset, TRNIF will remain clear.
+    Additional nops were added in this fix to guarantee that TRNIF is
+    properly updated before being checked again.
+    ********************************************************************/
+    Nop();
+    Nop();
+    Nop();
+    Nop();
+    Nop();
+    Nop();
+  }
+  UCONbits.PKTDIS = 0;         // Make sure packet processing is enabled
+  USBPrepareForNextSetupTrf(); // Declared in usbctrltrf.c
+  usb_active_cfg = 0;          // Clear active configuration
+  usb_device_state = DEFAULT_STATE;
+} // end USBProtocolResetHandler
 
 /** EOF usbdrv.c *************************************************************/

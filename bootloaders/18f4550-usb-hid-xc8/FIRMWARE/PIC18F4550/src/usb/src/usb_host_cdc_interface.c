@@ -57,13 +57,12 @@ ADG          15-Sep-2008 First release
               Modified API USBHostCDC_Api_Send_OUT_Data to allow data transfers
               more than 256 bytes
 ********************************************************************************/
+#include "usb_config.h"
 #include <stdlib.h>
 #include <string.h>
-#include "usb_config.h"
 #include <usb/usb.h>
 #include <usb/usb_host_cdc.h>
 #include <usb/usb_host_cdc_interface.h>
-
 
 // *****************************************************************************
 // *****************************************************************************
@@ -91,7 +90,6 @@ ADG          15-Sep-2008 First release
 //******************************************************************************
 //******************************************************************************
 
-
 //******************************************************************************
 //******************************************************************************
 // Section: CDC Host Global Variables
@@ -103,8 +101,8 @@ ADG          15-Sep-2008 First release
 // Section: CDC Host External Variables
 //******************************************************************************
 //******************************************************************************
-extern USB_CDC_DEVICE_INFO                  deviceInfoCDC[] __attribute__ ((aligned));
-extern uint8_t CDCdeviceAddress ;
+extern USB_CDC_DEVICE_INFO deviceInfoCDC[] __attribute__((aligned));
+extern uint8_t CDCdeviceAddress;
 
 //******************************************************************************
 //******************************************************************************
@@ -112,13 +110,12 @@ extern uint8_t CDCdeviceAddress ;
 //******************************************************************************
 //******************************************************************************
 
-
 /****************************************************************************
   Function:
     bool USBHostCDC_Api_Get_IN_Data(uint8_t no_of_bytes, uint8_t* data)
 
   Description:
-    This function is called by application to receive Input data over DATA 
+    This function is called by application to receive Input data over DATA
     interface. This function setsup the request to receive data from the device.
 
   Precondition:
@@ -135,28 +132,30 @@ extern uint8_t CDCdeviceAddress ;
   Remarks:
     None
 ***************************************************************************/
-bool USBHostCDC_Api_Get_IN_Data(uint8_t no_of_bytes, uint8_t* data)
-{
-    uint8_t    i;
+bool
+USBHostCDC_Api_Get_IN_Data(uint8_t no_of_bytes, uint8_t* data) {
+  uint8_t i;
 
-    for (i=0; (i<USB_MAX_CDC_DEVICES) && (deviceInfoCDC[i].deviceAddress != CDCdeviceAddress); i++);
+  for(i = 0; (i < USB_MAX_CDC_DEVICES) && (deviceInfoCDC[i].deviceAddress != CDCdeviceAddress); i++)
+    ;
 
-   if(!USBHostCDCRead_DATA(CDCdeviceAddress, deviceInfoCDC[i].dataInterface.interfaceNum,
-                           no_of_bytes,data,deviceInfoCDC[i].dataInterface.endpointIN))
-    {
-       return true;
-    }
-    return false;
+  if(!USBHostCDCRead_DATA(CDCdeviceAddress,
+                          deviceInfoCDC[i].dataInterface.interfaceNum,
+                          no_of_bytes,
+                          data,
+                          deviceInfoCDC[i].dataInterface.endpointIN)) {
+    return true;
+  }
+  return false;
 }
-
 
 /****************************************************************************
   Function:
     bool USBHostCDC_Api_Send_OUT_Data(uint8_t no_of_bytes, uint8_t* data)
 
   Description:
-    This function is called by application to transmit out data over DATA 
-    interface. This function setsup the request to transmit data to the 
+    This function is called by application to transmit out data over DATA
+    interface. This function setsup the request to transmit data to the
     device.
 
   Precondition:
@@ -174,29 +173,31 @@ bool USBHostCDC_Api_Get_IN_Data(uint8_t no_of_bytes, uint8_t* data)
   Remarks:
     None
 ***************************************************************************/
-bool USBHostCDC_Api_Send_OUT_Data(uint16_t no_of_bytes, uint8_t* data)
-{
-    uint8_t    i;
+bool
+USBHostCDC_Api_Send_OUT_Data(uint16_t no_of_bytes, uint8_t* data) {
+  uint8_t i;
 
-    for (i=0; (i<USB_MAX_CDC_DEVICES) && (deviceInfoCDC[i].deviceAddress != CDCdeviceAddress); i++);
+  for(i = 0; (i < USB_MAX_CDC_DEVICES) && (deviceInfoCDC[i].deviceAddress != CDCdeviceAddress); i++)
+    ;
 
-   if(!USBHostCDCSend_DATA(CDCdeviceAddress, deviceInfoCDC[i].dataInterface.interfaceNum,
-                           no_of_bytes,data,deviceInfoCDC[i].dataInterface.endpointOUT))
-    {
-       return true;
-    }
-    return false;
+  if(!USBHostCDCSend_DATA(CDCdeviceAddress,
+                          deviceInfoCDC[i].dataInterface.interfaceNum,
+                          no_of_bytes,
+                          data,
+                          deviceInfoCDC[i].dataInterface.endpointOUT)) {
+    return true;
+  }
+  return false;
 }
-
 
 /****************************************************************************
   Function:
     bool USBHostCDC_ApiTransferIsComplete(uint8_t* errorCodeDriver,uint8_t* byteCount)
 
   Description:
-    This function is called by application to poll for transfer status. This 
+    This function is called by application to poll for transfer status. This
     function returns true in the transfer is over. To check whether the transfer
-    was successfull or not , application must check the error code returned by 
+    was successfull or not , application must check the error code returned by
     reference.
 
   Precondition:
@@ -214,9 +215,9 @@ bool USBHostCDC_Api_Send_OUT_Data(uint16_t no_of_bytes, uint8_t* data)
   Remarks:
     None
 ***************************************************************************/
-bool USBHostCDC_ApiTransferIsComplete(uint8_t* errorCodeDriver, uint8_t* byteCount )
-{       
-    return(USBHostCDCTransferIsComplete(CDCdeviceAddress,errorCodeDriver,byteCount));
+bool
+USBHostCDC_ApiTransferIsComplete(uint8_t* errorCodeDriver, uint8_t* byteCount) {
+  return (USBHostCDCTransferIsComplete(CDCdeviceAddress, errorCodeDriver, byteCount));
 }
 
 /*******************************************************************************
@@ -241,20 +242,17 @@ bool USBHostCDC_ApiTransferIsComplete(uint8_t* errorCodeDriver, uint8_t* byteCou
     Since this will often be called in a loop while waiting for
     a device, we'll make sure the tasks are executed.
 *******************************************************************************/
-bool USBHostCDC_ApiDeviceDetect( void )
-{
-    USBHostTasks();
-    USBHostCDCTasks();
+bool
+USBHostCDC_ApiDeviceDetect(void) {
+  USBHostTasks();
+  USBHostCDCTasks();
 
-    if ((USBHostCDCDeviceStatus(CDCdeviceAddress) == USB_CDC_NORMAL_RUNNING) &&
-        (CDCdeviceAddress != 0))
-    {
-        return true;
-    }
+  if((USBHostCDCDeviceStatus(CDCdeviceAddress) == USB_CDC_NORMAL_RUNNING) && (CDCdeviceAddress != 0)) {
+    return true;
+  }
 
-    return false;
+  return false;
 }
-
 
 /*******************************************************************************
   Function:
@@ -262,7 +260,7 @@ bool USBHostCDC_ApiDeviceDetect( void )
 
   Description:
     This function can be used by application code to dynamically access ACM specific
-    requests. This function should be used only if apllication intends to modify for 
+    requests. This function should be used only if apllication intends to modify for
     example the Baudrate from previouly configured rate. Data transmitted/received
     to/from device is a array of bytes. Application must take extra care of understanding
     the data format before using this function.
@@ -292,60 +290,69 @@ bool USBHostCDC_ApiDeviceDetect( void )
   Remarks:
     None
  *******************************************************************************/
-uint8_t USBHostCDC_Api_ACM_Request(uint8_t requestType, uint8_t size, uint8_t* data)
-{
-    uint8_t    i;
-    uint8_t    return_val = USB_CDC_COMMAND_FAILED;
+uint8_t
+USBHostCDC_Api_ACM_Request(uint8_t requestType, uint8_t size, uint8_t* data) {
+  uint8_t i;
+  uint8_t return_val = USB_CDC_COMMAND_FAILED;
 
-    // Find the correct device.
-    for (i=0; (i<USB_MAX_CDC_DEVICES) && (deviceInfoCDC[i].deviceAddress != CDCdeviceAddress); i++);
-    if (i == USB_MAX_CDC_DEVICES)
-    {
-        return USB_CDC_DEVICE_NOT_FOUND;
-    }
+  // Find the correct device.
+  for(i = 0; (i < USB_MAX_CDC_DEVICES) && (deviceInfoCDC[i].deviceAddress != CDCdeviceAddress); i++)
+    ;
+  if(i == USB_MAX_CDC_DEVICES) {
+    return USB_CDC_DEVICE_NOT_FOUND;
+  }
 
-    switch(requestType)
-    {
-        case USB_CDC_SEND_ENCAPSULATED_COMMAND : 
-                               return_val = USBHostCDCTransfer(CDCdeviceAddress, USB_CDC_SEND_ENCAPSULATED_COMMAND,0,
-                                                       deviceInfoCDC[i].commInterface.interfaceNum,size,data,
-                                                       0);
-            break;
-        case USB_CDC_GET_ENCAPSULATED_REQUEST :
-                               return_val = USBHostCDCTransfer(CDCdeviceAddress,  USB_CDC_GET_ENCAPSULATED_REQUEST,1,
-                                                       deviceInfoCDC[i].commInterface.interfaceNum,size,data,
-                                                       0);
-            break;
+  switch(requestType) {
+    case USB_CDC_SEND_ENCAPSULATED_COMMAND:
+      return_val = USBHostCDCTransfer(CDCdeviceAddress,
+                                      USB_CDC_SEND_ENCAPSULATED_COMMAND,
+                                      0,
+                                      deviceInfoCDC[i].commInterface.interfaceNum,
+                                      size,
+                                      data,
+                                      0);
+      break;
+    case USB_CDC_GET_ENCAPSULATED_REQUEST:
+      return_val = USBHostCDCTransfer(CDCdeviceAddress,
+                                      USB_CDC_GET_ENCAPSULATED_REQUEST,
+                                      1,
+                                      deviceInfoCDC[i].commInterface.interfaceNum,
+                                      size,
+                                      data,
+                                      0);
+      break;
 
-        case USB_CDC_SET_COMM_FEATURE :
-            break;
+    case USB_CDC_SET_COMM_FEATURE:
+      break;
 
-        case USB_CDC_GET_COMM_FEATURE :
-            break;
-        
-        case USB_CDC_SET_LINE_CODING :
-                               return_val = USBHostCDCTransfer(CDCdeviceAddress,  USB_CDC_SET_LINE_CODING,0,
-                                                       deviceInfoCDC[i].commInterface.interfaceNum,size,data,
-                                                       0);
-            break;
-        
-        case USB_CDC_GET_LINE_CODING :
-                               return_val = USBHostCDCTransfer(CDCdeviceAddress,  USB_CDC_GET_LINE_CODING,1,
-                                                       deviceInfoCDC[i].commInterface.interfaceNum,size,data,
-                                                       0);
-            break;
-        
-        case USB_CDC_SET_CONTROL_LINE_STATE :
-                               return_val = USBHostCDCTransfer(CDCdeviceAddress,  USB_CDC_SET_CONTROL_LINE_STATE,0,
-                                                       deviceInfoCDC[i].commInterface.interfaceNum,size,data,
-                                                       0);
-            break;
+    case USB_CDC_GET_COMM_FEATURE:
+      break;
 
-        case USB_CDC_SEND_BREAK :
-            break;
-        default:
-                 return USB_CDC_ILLEGAL_REQUEST;
-            break;
-    }
-    return return_val;
+    case USB_CDC_SET_LINE_CODING:
+      return_val = USBHostCDCTransfer(
+          CDCdeviceAddress, USB_CDC_SET_LINE_CODING, 0, deviceInfoCDC[i].commInterface.interfaceNum, size, data, 0);
+      break;
+
+    case USB_CDC_GET_LINE_CODING:
+      return_val = USBHostCDCTransfer(
+          CDCdeviceAddress, USB_CDC_GET_LINE_CODING, 1, deviceInfoCDC[i].commInterface.interfaceNum, size, data, 0);
+      break;
+
+    case USB_CDC_SET_CONTROL_LINE_STATE:
+      return_val = USBHostCDCTransfer(CDCdeviceAddress,
+                                      USB_CDC_SET_CONTROL_LINE_STATE,
+                                      0,
+                                      deviceInfoCDC[i].commInterface.interfaceNum,
+                                      size,
+                                      data,
+                                      0);
+      break;
+
+    case USB_CDC_SEND_BREAK:
+      break;
+    default:
+      return USB_CDC_ILLEGAL_REQUEST;
+      break;
+  }
+  return return_val;
 }

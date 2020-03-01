@@ -5,9 +5,9 @@
  *
  */
 
- /* should these types already be #defined, do not redefine them */
-  
- /* fixed width types */
+/* should these types already be #defined, do not redefine them */
+
+/* fixed width types */
 
 #ifndef int8_t
 typedef signed char int8_t;
@@ -65,7 +65,7 @@ typedef unsigned long int uint32_t;
 #define UINT32_MAX (4294967295UL)
 #endif
 
-  /* types that are at least as wide */
+/* types that are at least as wide */
 
 #ifndef int_least8_t
 typedef signed char int_least8_t;
@@ -130,8 +130,7 @@ typedef unsigned long int uint_least32_t;
 #define UINT_LEAST32_MAX (4294967295UL)
 #endif
 
-
-  /* types that are at least as wide and are usually the fastest */
+/* types that are at least as wide and are usually the fastest */
 
 #ifndef int_fast8_t
 typedef signed char int_fast8_t;
@@ -207,7 +206,7 @@ typedef uint32_t uintmax_t;
 #endif
 
 #ifndef intptr_t
-typedef int16_t	intptr_t;
+typedef int16_t intptr_t;
 #define intptr_t intptr_t
 #endif
 
@@ -222,7 +221,6 @@ typedef int32_t intmax_t
 #endif
 
 #ifndef uintmax_t
-typedef uint32_t uintmax_t
+    typedef uint32_t uintmax_t
 #define uintmax_t uintmax_t
 #endif
-

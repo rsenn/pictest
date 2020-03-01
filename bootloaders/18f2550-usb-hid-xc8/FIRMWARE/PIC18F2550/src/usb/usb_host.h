@@ -1,4 +1,4 @@
-﻿//DOM-IGNORE-BEGIN
+﻿// DOM-IGNORE-BEGIN
 /*******************************************************************************
 Software License Agreement
 
@@ -21,11 +21,11 @@ IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
 CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 
 *******************************************************************************/
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
 #ifndef __USBHOST_H__
 #define __USBHOST_H__
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
 #include <limits.h>
 
@@ -35,10 +35,9 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 // *****************************************************************************
 // *****************************************************************************
 
-#define USB_HOST_FW_MAJOR_VER   1       // Firmware version, major release number.
-#define USB_HOST_FW_MINOR_VER   0       // Firmware version, minor release number.
-#define USB_HOST_FW_DOT_VER     0       // Firmware version, dot release number.
-
+#define USB_HOST_FW_MAJOR_VER 1 // Firmware version, major release number.
+#define USB_HOST_FW_MINOR_VER 0 // Firmware version, minor release number.
+#define USB_HOST_FW_DOT_VER 0   // Firmware version, dot release number.
 
 // *****************************************************************************
 // *****************************************************************************
@@ -47,51 +46,54 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 // *****************************************************************************
 
 #ifndef USB_NUM_BULK_NAKS
-    #define USB_NUM_BULK_NAKS       10000   // Define how many NAK's are allowed
-                                            // during a bulk transfer before erroring.
+#define USB_NUM_BULK_NAKS                                                                                              \
+  10000 // Define how many NAK's are allowed
+        // during a bulk transfer before erroring.
 #endif
 
 #ifndef USB_NUM_COMMAND_TRIES
-    #define USB_NUM_COMMAND_TRIES       3   // During enumeration, define how many
-                                            // times each command will be tried before
-                                            // giving up and resetting the device.
+#define USB_NUM_COMMAND_TRIES                                                                                          \
+  3 // During enumeration, define how many
+    // times each command will be tried before
+    // giving up and resetting the device.
 #endif
 
 #ifndef USB_NUM_CONTROL_NAKS
-    #define USB_NUM_CONTROL_NAKS        20  // Define how many NAK's are allowed
-                                            // during a control transfer before erroring.
+#define USB_NUM_CONTROL_NAKS                                                                                           \
+  20 // Define how many NAK's are allowed
+     // during a control transfer before erroring.
 #endif
 
 #ifndef USB_NUM_ENUMERATION_TRIES
-    #define USB_NUM_ENUMERATION_TRIES   3   // Define how many times the host will try
-                                            // to enumerate the device before giving
-                                            // up and setting the state to DETACHED.
+#define USB_NUM_ENUMERATION_TRIES                                                                                      \
+  3 // Define how many times the host will try
+    // to enumerate the device before giving
+    // up and setting the state to DETACHED.
 #endif
 
 #ifndef USB_NUM_INTERRUPT_NAKS
-    #define USB_NUM_INTERRUPT_NAKS      3   // Define how many NAK's are allowed
-                                            // during an interrupt OUT transfer before
-                                            // erroring.  Interrupt IN transfers that
-                                            // are NAK'd are terminated without error.
+#define USB_NUM_INTERRUPT_NAKS                                                                                         \
+  3 // Define how many NAK's are allowed
+    // during an interrupt OUT transfer before
+    // erroring.  Interrupt IN transfers that
+    // are NAK'd are terminated without error.
 #endif
-
 
 #ifndef USB_INITIAL_VBUS_CURRENT
-    #error The application must define USB_INITIAL_VBUS_CURRENT as 100 mA for Host or 8-100 mA for OTG.
+#error The application must define USB_INITIAL_VBUS_CURRENT as 100 mA for Host or 8-100 mA for OTG.
 #endif
 
-#if defined (USB_SUPPORT_HOST)
-    #if defined (USB_SUPPORT_OTG)
-        #if (USB_INITIAL_VBUS_CURRENT < 8/2) || (USB_INITIAL_VBUS_CURRENT > 100/2)
-            #pragma warning USB_INITIAL_VBUS_CURRENT is in violation of the USB specification.
-        #endif
-    #else
-        #if (USB_INITIAL_VBUS_CURRENT != 100/2)
-            #pragma warning USB_INITIAL_VBUS_CURRENT is in violation of the USB specification.
-        #endif
-    #endif
+#if defined(USB_SUPPORT_HOST)
+#if defined(USB_SUPPORT_OTG)
+#if(USB_INITIAL_VBUS_CURRENT < 8 / 2) || (USB_INITIAL_VBUS_CURRENT > 100 / 2)
+#pragma warning USB_INITIAL_VBUS_CURRENT is in violation of the USB specification.
 #endif
-
+#else
+#if(USB_INITIAL_VBUS_CURRENT != 100 / 2)
+#pragma warning USB_INITIAL_VBUS_CURRENT is in violation of the USB specification.
+#endif
+#endif
+#endif
 
 // *****************************************************************************
 // *****************************************************************************
@@ -101,13 +103,12 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 
 // Section: Values for USBHostIssueDeviceRequest(), dataDirection
 
-#define USB_DEVICE_REQUEST_SET                  0       // USBHostIssueDeviceRequest() will set information.
-#define USB_DEVICE_REQUEST_GET                  1       // USBHostIssueDeviceRequest() will get information.
+#define USB_DEVICE_REQUEST_SET 0 // USBHostIssueDeviceRequest() will set information.
+#define USB_DEVICE_REQUEST_GET 1 // USBHostIssueDeviceRequest() will get information.
 
 // Section: Dummy Device ID's
 
-#define USB_ROOT_HUB                            255     // Invalid Device ID used to indicate the root hub.
-
+#define USB_ROOT_HUB 255 // Invalid Device ID used to indicate the root hub.
 
 // *****************************************************************************
 // *****************************************************************************
@@ -120,17 +121,14 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 
 This structure describes the transfer attributes of an endpoint.
 */
-typedef union
-{
-   uint8_t     val;                            //
-   struct
-   {
-       uint8_t bfTransferType          : 2;    // See USB_TRANSFER_TYPE_* for values.
-       uint8_t bfSynchronizationType   : 2;    // For isochronous endpoints only.
-       uint8_t bfUsageType             : 2;    // For isochronous endpoints only.
-   };
+typedef union {
+  uint8_t val; //
+  struct {
+    uint8_t bfTransferType : 2;        // See USB_TRANSFER_TYPE_* for values.
+    uint8_t bfSynchronizationType : 2; // For isochronous endpoints only.
+    uint8_t bfUsageType : 2;           // For isochronous endpoints only.
+  };
 } TRANSFER_ATTRIBUTES;
-
 
 // *****************************************************************************
 /* Host Transfer Information
@@ -139,16 +137,14 @@ This structure is used when the event handler is used to notify the upper layer
 of transfer completion.
 */
 
-typedef struct _HOST_TRANSFER_DATA
-{
-   uint32_t                dataCount;          // Count of bytes transferred.
-   uint8_t                *pUserData;          // Pointer to transfer data.
-   uint8_t                 bEndpointAddress;   // Transfer endpoint.
-   uint8_t                 bErrorCode;         // Transfer error code.
-   TRANSFER_ATTRIBUTES  bmAttributes;       // INTERNAL USE ONLY - Endpoint transfer attributes.
-   uint8_t                 clientDriver;       // INTERNAL USE ONLY - Client driver index for sending the event.
+typedef struct _HOST_TRANSFER_DATA {
+  uint32_t dataCount;               // Count of bytes transferred.
+  uint8_t* pUserData;               // Pointer to transfer data.
+  uint8_t bEndpointAddress;         // Transfer endpoint.
+  uint8_t bErrorCode;               // Transfer error code.
+  TRANSFER_ATTRIBUTES bmAttributes; // INTERNAL USE ONLY - Endpoint transfer attributes.
+  uint8_t clientDriver;             // INTERNAL USE ONLY - Client driver index for sending the event.
 } HOST_TRANSFER_DATA;
-
 
 // *****************************************************************************
 /* Isochronous Data Buffer
@@ -163,13 +159,11 @@ maximum transfer size.  This structure contains a pointer to an allocated
 buffer, plus the valid data length of the buffer.
 */
 
-typedef struct _ISOCHRONOUS_DATA_BUFFER
-{
-    uint8_t                *pBuffer;               // Data buffer pointer.
-    uint16_t                dataLength;             // Amount of valid data in the buffer.
-    uint8_t                bfDataLengthValid : 1;  // dataLength value is valid.
+typedef struct _ISOCHRONOUS_DATA_BUFFER {
+  uint8_t* pBuffer;              // Data buffer pointer.
+  uint16_t dataLength;           // Amount of valid data in the buffer.
+  uint8_t bfDataLengthValid : 1; // dataLength value is valid.
 } ISOCHRONOUS_DATA_BUFFER;
-
 
 // *****************************************************************************
 /* Isochronous Data
@@ -179,29 +173,27 @@ This requires a tighter integration between the host layer and the application
 layer to manage the streaming data.
 
 If an application uses isochronous transfers, it must allocate one variable
-of type ISOCHRONOUS_DATA for each concurrent transfer.  When the device 
+of type ISOCHRONOUS_DATA for each concurrent transfer.  When the device
 attaches, the client driver must inform the application layer of the maximum
-transfer size.  At this point, the application must allocate space for the 
+transfer size.  At this point, the application must allocate space for the
 data buffers, and set the data buffer points in this structure to point to them.
 */
 
-#if !defined( USB_MAX_ISOCHRONOUS_DATA_BUFFERS )
-    #define USB_MAX_ISOCHRONOUS_DATA_BUFFERS    2
+#if !defined(USB_MAX_ISOCHRONOUS_DATA_BUFFERS)
+#define USB_MAX_ISOCHRONOUS_DATA_BUFFERS 2
 #endif
 #if USB_MAX_ISOCHRONOUS_DATA_BUFFERS < 2
-    #error At least two buffers must be defined for isochronous data.
+#error At least two buffers must be defined for isochronous data.
 #endif
 
-typedef struct _ISOCHRONOUS_DATA
-{
-    uint8_t    totalBuffers;       // Total number of buffers available.
-    uint8_t    currentBufferUSB;   // The current buffer the USB peripheral is accessing.
-    uint8_t    currentBufferUser;  // The current buffer the user is reading/writing.
-    uint8_t    *pDataUser;         // User pointer for accessing data.
-    
-    ISOCHRONOUS_DATA_BUFFER buffers[USB_MAX_ISOCHRONOUS_DATA_BUFFERS];  // Data buffer information.
+typedef struct _ISOCHRONOUS_DATA {
+  uint8_t totalBuffers;      // Total number of buffers available.
+  uint8_t currentBufferUSB;  // The current buffer the USB peripheral is accessing.
+  uint8_t currentBufferUser; // The current buffer the user is reading/writing.
+  uint8_t* pDataUser;        // User pointer for accessing data.
+
+  ISOCHRONOUS_DATA_BUFFER buffers[USB_MAX_ISOCHRONOUS_DATA_BUFFERS]; // Data buffer information.
 } ISOCHRONOUS_DATA;
-    
 
 // *****************************************************************************
 /* Targeted Peripheral List
@@ -211,56 +203,52 @@ host is a USB Embedded Host or Dual Role Device that does not support OTG, the
 TPL may contain both specific devices and generic classes.  If the host supports
 OTG, then the TPL may contain ONLY specific devices.
 */
-typedef struct _USB_TPL
-{
-    union
-    {
-        uint32_t       val;                        //
-        struct
-        {
-            uint16_t    idVendor;                   // Vendor ID
-            uint16_t    idProduct;                  // Product ID
-        };
-        struct
-        {
-            uint8_t    bClass;                     // Class ID
-            uint8_t    bSubClass;                  // SubClass ID
-            uint8_t    bProtocol;                  // Protocol ID
-        };
-    } device;                                   //
-    uint8_t            bConfiguration;             // Initial device configuration
-    uint8_t            ClientDriver;               // Index of client driver in the Client Driver table
-    union
-    {
-        uint8_t         val;                       //
-        struct
-        {
-            uint8_t     bfAllowHNP             :1;     // Is HNP allowed?
-            uint8_t     bfIsClassDriver        :1;     // Client driver is a class-level driver
-            uint8_t     bfSetConfiguration     :1;     // bConfiguration is valid
-            uint8_t     bfIgnoreProtocol       :1;
-            uint8_t     bfIgnoreSubClass       :1;
-            uint8_t     bfIgnoreClass          :1;
-            uint8_t     bfIgnorePID            :1;
-            uint8_t     bfEP0OnlyCustomDriver  :1;
-        };
-    } flags;                                    //
+typedef struct _USB_TPL {
+  union {
+    uint32_t val; //
+    struct {
+      uint16_t idVendor;  // Vendor ID
+      uint16_t idProduct; // Product ID
+    };
+    struct {
+      uint8_t bClass;    // Class ID
+      uint8_t bSubClass; // SubClass ID
+      uint8_t bProtocol; // Protocol ID
+    };
+  } device;               //
+  uint8_t bConfiguration; // Initial device configuration
+  uint8_t ClientDriver;   // Index of client driver in the Client Driver table
+  union {
+    uint8_t val; //
+    struct {
+      uint8_t bfAllowHNP : 1;         // Is HNP allowed?
+      uint8_t bfIsClassDriver : 1;    // Client driver is a class-level driver
+      uint8_t bfSetConfiguration : 1; // bConfiguration is valid
+      uint8_t bfIgnoreProtocol : 1;
+      uint8_t bfIgnoreSubClass : 1;
+      uint8_t bfIgnoreClass : 1;
+      uint8_t bfIgnorePID : 1;
+      uint8_t bfEP0OnlyCustomDriver : 1;
+    };
+  } flags; //
 } USB_TPL;
 
 // Section: TPL Initializers
-#define INIT_VID_PID(v,p)   {((v)|((p)<<16))}           // Set VID/PID support in the TPL.
-#define INIT_CL_SC_P(c,s,p) {((c)|((s)<<8)|((p)<<16))}  // Set class support in the TPL (non-OTG only).
+#define INIT_VID_PID(v, p)                                                                                             \
+  { ((v) | ((p) << 16)) } // Set VID/PID support in the TPL.
+#define INIT_CL_SC_P(c, s, p)                                                                                          \
+  { ((c) | ((s) << 8) | ((p) << 16)) } // Set class support in the TPL (non-OTG only).
 
 // Section: TPL Flags
-#define TPL_ALLOW_HNP               0x01                    // Bitmask for Host Negotiation Protocol.
-#define TPL_CLASS_DRV               0x02                    // Bitmask for class driver support.
-#define TPL_SET_CONFIG              0x04                    // Bitmask for setting the configuration.
-#define TPL_IGNORE_PROTOCOL         0x08                    // Bitmask for ignoring the protocol of a CL/SC/P driver
-#define TPL_IGNORE_SUBCLASS         0x10                    // Bitmask for ignoring the subclass of a CL/SC/P driver
-#define TPL_IGNORE_CLASS            0x20                    // Bitmask for ignoring the class of a CL/SC/P driver
-#define TPL_IGNORE_PID              0x40                    // Bitmask for ignoring the PID of a VID/PID driver
-#define TPL_EP0_ONLY_CUSTOM_DRIVER  0x80                    // Bitmask to let a custom driver gain EP0 only and allow other interfaces to use standard drivers
-
+#define TPL_ALLOW_HNP 0x01       // Bitmask for Host Negotiation Protocol.
+#define TPL_CLASS_DRV 0x02       // Bitmask for class driver support.
+#define TPL_SET_CONFIG 0x04      // Bitmask for setting the configuration.
+#define TPL_IGNORE_PROTOCOL 0x08 // Bitmask for ignoring the protocol of a CL/SC/P driver
+#define TPL_IGNORE_SUBCLASS 0x10 // Bitmask for ignoring the subclass of a CL/SC/P driver
+#define TPL_IGNORE_CLASS 0x20    // Bitmask for ignoring the class of a CL/SC/P driver
+#define TPL_IGNORE_PID 0x40      // Bitmask for ignoring the PID of a VID/PID driver
+#define TPL_EP0_ONLY_CUSTOM_DRIVER                                                                                     \
+  0x80 // Bitmask to let a custom driver gain EP0 only and allow other interfaces to use standard drivers
 
 // *****************************************************************************
 // *****************************************************************************
@@ -305,8 +293,7 @@ typedef struct _USB_TPL
     macro as the name of that function.
   ***************************************************************************/
 
-typedef bool (*USB_CLIENT_EVENT_HANDLER) ( uint8_t address, USB_EVENT event, void *data, uint32_t size );
-
+typedef bool (*USB_CLIENT_EVENT_HANDLER)(uint8_t address, USB_EVENT event, void* data, uint32_t size);
 
 /****************************************************************************
   Function:
@@ -330,7 +317,7 @@ typedef bool (*USB_CLIENT_EVENT_HANDLER) ( uint8_t address, USB_EVENT event, voi
     uint32_t flags         - Initialization flags
     uint8_t clientDriverID - ID to send when issuing a Device Request via
                             USBHostIssueDeviceRequest() or USBHostSetDeviceConfiguration().
-                            
+                            
   Return Values:
     true    - Successful
     false   - Not successful
@@ -341,8 +328,7 @@ typedef bool (*USB_CLIENT_EVENT_HANDLER) ( uint8_t address, USB_EVENT event, voi
     selected configuration.
   ***************************************************************************/
 
-typedef bool (*USB_CLIENT_INIT)   ( uint8_t address, uint32_t flags, uint8_t clientDriverID );
-
+typedef bool (*USB_CLIENT_INIT)(uint8_t address, uint32_t flags, uint8_t clientDriverID);
 
 /****************************************************************************
   Function:
@@ -389,14 +375,13 @@ typedef bool (*USB_CLIENT_INIT)   ( uint8_t address, uint32_t flags, uint8_t cli
     If this function is not provided by the application, then all application
     events are assumed to function without error.
   ***************************************************************************/
-#if defined( USB_HOST_APP_EVENT_HANDLER )
-    bool USB_HOST_APP_EVENT_HANDLER ( uint8_t address, USB_EVENT event, void *data, uint32_t size );
+#if defined(USB_HOST_APP_EVENT_HANDLER)
+bool USB_HOST_APP_EVENT_HANDLER(uint8_t address, USB_EVENT event, void* data, uint32_t size);
 #else
-    // If the application does not provide an event handler, then we will
-    // assume that all events function without error.
-    #define USB_HOST_APP_EVENT_HANDLER(a,e,d,s) ((e==EVENT_OVERRIDE_CLIENT_DRIVER_SELECTION)?false:true)
+// If the application does not provide an event handler, then we will
+// assume that all events function without error.
+#define USB_HOST_APP_EVENT_HANDLER(a, e, d, s) ((e == EVENT_OVERRIDE_CLIENT_DRIVER_SELECTION) ? false : true)
 #endif
-
 
 /****************************************************************************
   Function:
@@ -419,7 +404,7 @@ typedef bool (*USB_CLIENT_INIT)   ( uint8_t address, uint32_t flags, uint8_t cli
     passed to this event handler.
 
     If the application can handle the event successfully, the function
-    should return true.  
+    should return true.
 
   Precondition:
     None
@@ -438,14 +423,13 @@ typedef bool (*USB_CLIENT_INIT)   ( uint8_t address, uint32_t flags, uint8_t cli
     If this function is not provided by the application, then all application
     events are assumed to function without error.
   ***************************************************************************/
-#if defined( USB_HOST_APP_DATA_EVENT_HANDLER )
-    bool USB_HOST_APP_DATA_EVENT_HANDLER ( uint8_t address, USB_EVENT event, void *data, uint32_t size );
+#if defined(USB_HOST_APP_DATA_EVENT_HANDLER)
+bool USB_HOST_APP_DATA_EVENT_HANDLER(uint8_t address, USB_EVENT event, void* data, uint32_t size);
 #else
-    // If the application does not provide an event handler, then we will
-    // assume that all events function without error.
-    #define USB_HOST_APP_DATA_EVENT_HANDLER(a,e,d,s) true
+// If the application does not provide an event handler, then we will
+// assume that all events function without error.
+#define USB_HOST_APP_DATA_EVENT_HANDLER(a, e, d, s) true
 #endif
-
 
 // *****************************************************************************
 /* Client Driver Table Structure
@@ -456,19 +440,17 @@ manage a particular USB client driver, including pointers to the
 interface routines that the Client Driver must implement.
  */
 
-typedef struct _CLIENT_DRIVER_TABLE
-{
-    USB_CLIENT_INIT          Initialize;     // Initialization routine
-    USB_CLIENT_EVENT_HANDLER EventHandler;   // Event routine
-    
-    #ifdef USB_HOST_APP_DATA_EVENT_HANDLER
-    USB_CLIENT_EVENT_HANDLER DataEventHandler;  // Data Event routine
-    #endif
-    
-    uint32_t                    flags;          // Initialization flags
+typedef struct _CLIENT_DRIVER_TABLE {
+  USB_CLIENT_INIT Initialize;            // Initialization routine
+  USB_CLIENT_EVENT_HANDLER EventHandler; // Event routine
+
+#ifdef USB_HOST_APP_DATA_EVENT_HANDLER
+  USB_CLIENT_EVENT_HANDLER DataEventHandler; // Data Event routine
+#endif
+
+  uint32_t flags; // Initialization flags
 
 } CLIENT_DRIVER_TABLE;
-
 
 // *****************************************************************************
 // *****************************************************************************
@@ -476,11 +458,11 @@ typedef struct _CLIENT_DRIVER_TABLE
 // *****************************************************************************
 // *****************************************************************************
 
-extern uint8_t                *pCurrentConfigurationDescriptor;    // Pointer to the current Configuration Descriptor of the attached device.
-extern uint8_t                *pDeviceDescriptor;                  // Pointer to the Device Descriptor of the attached device.
-extern USB_TPL              usbTPL[];                           // Application's Targeted Peripheral List.
-extern CLIENT_DRIVER_TABLE  usbClientDrvTable[];                // Application's client driver table.
-
+extern uint8_t*
+    pCurrentConfigurationDescriptor; // Pointer to the current Configuration Descriptor of the attached device.
+extern uint8_t* pDeviceDescriptor;   // Pointer to the Device Descriptor of the attached device.
+extern USB_TPL usbTPL[];             // Application's Targeted Peripheral List.
+extern CLIENT_DRIVER_TABLE usbClientDrvTable[]; // Application's client driver table.
 
 // *****************************************************************************
 // *****************************************************************************
@@ -517,8 +499,7 @@ extern CLIENT_DRIVER_TABLE  usbClientDrvTable[];                // Application's
     None
   ***************************************************************************/
 
-uint8_t    USBHostClearEndpointErrors( uint8_t deviceAddress, uint8_t endpoint );
-
+uint8_t USBHostClearEndpointErrors(uint8_t deviceAddress, uint8_t endpoint);
 
 /****************************************************************************
   Function:
@@ -566,8 +547,7 @@ uint8_t    USBHostClearEndpointErrors( uint8_t deviceAddress, uint8_t endpoint )
     subclass, and protocol fields can be safely ignored.
   ***************************************************************************/
 
-bool    USBHostDeviceSpecificClientDriver( uint8_t deviceAddress );
-
+bool USBHostDeviceSpecificClientDriver(uint8_t deviceAddress);
 
 /****************************************************************************
   Function:
@@ -607,8 +587,7 @@ bool    USBHostDeviceSpecificClientDriver( uint8_t deviceAddress );
     None
   ***************************************************************************/
 
-uint8_t    USBHostDeviceStatus( uint8_t deviceAddress );
-
+uint8_t USBHostDeviceStatus(uint8_t deviceAddress);
 
 /****************************************************************************
   Function:
@@ -632,8 +611,7 @@ uint8_t    USBHostDeviceStatus( uint8_t deviceAddress );
     support is added.
   ***************************************************************************/
 
-#define USBHostGetCurrentConfigurationDescriptor( deviceAddress) ( pCurrentConfigurationDescriptor )
-
+#define USBHostGetCurrentConfigurationDescriptor(deviceAddress) (pCurrentConfigurationDescriptor)
 
 /****************************************************************************
   Function:
@@ -657,13 +635,12 @@ uint8_t    USBHostDeviceStatus( uint8_t deviceAddress );
     support is added.
   ***************************************************************************/
 
-#define USBHostGetDeviceDescriptor( deviceAddress )     ( pDeviceDescriptor )
-
+#define USBHostGetDeviceDescriptor(deviceAddress) (pDeviceDescriptor)
 
 /****************************************************************************
   Function:
     uint8_t USBHostGetStringDescriptor ( uint8_t deviceAddress,  uint8_t stringNumber,
-                        uint8_t LangID, uint8_t *stringDescriptor, uint8_t stringLength, 
+                        uint8_t LangID, uint8_t *stringDescriptor, uint8_t stringLength,
                         uint8_t clientDriverID )
 
   Summary:
@@ -684,7 +661,7 @@ uint8_t    USBHostDeviceStatus( uint8_t deviceAddress );
         LangID,
         stringDescriptorBuffer,
         sizeof(stringDescriptorBuffer),
-        0xFF 
+        0xFF
         );
 
     while(1)
@@ -719,7 +696,7 @@ uint8_t    USBHostDeviceStatus( uint8_t deviceAddress );
     *stringDescriptor   - Pointer to where to store the string.
     stringLength        - Maximum length of the returned string.
     clientDriverID      - Client driver to return the completion event to.
-    
+    
   Return Values:
     USB_SUCCESS             - The request was started successfully.
     USB_UNKNOWN_DEVICE      - Device not found
@@ -734,11 +711,17 @@ uint8_t    USBHostDeviceStatus( uint8_t deviceAddress );
     for more information about the format of string descriptors.
   ***************************************************************************/
 
-#define USBHostGetStringDescriptor( deviceAddress, stringNumber, LangID, stringDescriptor, stringLength, clientDriverID )                   \
-        USBHostIssueDeviceRequest( deviceAddress, USB_SETUP_DEVICE_TO_HOST | USB_SETUP_TYPE_STANDARD | USB_SETUP_RECIPIENT_DEVICE,   \
-                USB_REQUEST_GET_DESCRIPTOR, (USB_DESCRIPTOR_STRING << 8) | stringNumber,                                            \
-                LangID, stringLength, stringDescriptor, USB_DEVICE_REQUEST_GET, clientDriverID )
-
+#define USBHostGetStringDescriptor(                                                                                    \
+    deviceAddress, stringNumber, LangID, stringDescriptor, stringLength, clientDriverID)                               \
+  USBHostIssueDeviceRequest(deviceAddress,                                                                             \
+                            USB_SETUP_DEVICE_TO_HOST | USB_SETUP_TYPE_STANDARD | USB_SETUP_RECIPIENT_DEVICE,           \
+                            USB_REQUEST_GET_DESCRIPTOR,                                                                \
+                            (USB_DESCRIPTOR_STRING << 8) | stringNumber,                                               \
+                            LangID,                                                                                    \
+                            stringLength,                                                                              \
+                            stringDescriptor,                                                                          \
+                            USB_DEVICE_REQUEST_GET,                                                                    \
+                            clientDriverID)
 
 /****************************************************************************
   Function:
@@ -770,14 +753,13 @@ uint8_t    USBHostDeviceStatus( uint8_t deviceAddress );
     application.
   ***************************************************************************/
 
-bool USBHostInit(  unsigned long flags  );
-
+bool USBHostInit(unsigned long flags);
 
 /****************************************************************************
   Function:
-    bool USBHostIsochronousBuffersCreate( ISOCHRONOUS_DATA * isocData, 
+    bool USBHostIsochronousBuffersCreate( ISOCHRONOUS_DATA * isocData,
             uint8_t numberOfBuffers, uint16_t bufferSize )
-    
+    
   Description:
     This function initializes the isochronous data buffer information and
     allocates memory for each buffer.  This function will not allocate memory
@@ -791,7 +773,7 @@ bool USBHostInit(  unsigned long flags  );
 
   Return Values:
     true    - All buffers are allocated successfully.
-    false   - Not enough heap space to allocate all buffers - adjust the 
+    false   - Not enough heap space to allocate all buffers - adjust the
                 project to provide more heap space.
 
   Remarks:
@@ -800,14 +782,13 @@ bool USBHostInit(  unsigned long flags  );
 ***************************************************************************/
 
 #ifdef USB_SUPPORT_ISOCHRONOUS_TRANSFERS
-bool USBHostIsochronousBuffersCreate( ISOCHRONOUS_DATA * isocData, uint8_t numberOfBuffers, uint16_t bufferSize );
+bool USBHostIsochronousBuffersCreate(ISOCHRONOUS_DATA* isocData, uint8_t numberOfBuffers, uint16_t bufferSize);
 #endif
-
 
 /****************************************************************************
   Function:
     void USBHostIsochronousBuffersDestroy( ISOCHRONOUS_DATA * isocData, uint8_t numberOfBuffers )
-    
+    
   Description:
     This function releases all of the memory allocated for the isochronous
     data buffers.  It also resets all other information about the buffers.
@@ -827,16 +808,15 @@ bool USBHostIsochronousBuffersCreate( ISOCHRONOUS_DATA * isocData, uint8_t numbe
 ***************************************************************************/
 
 #ifdef USB_SUPPORT_ISOCHRONOUS_TRANSFERS
-void USBHostIsochronousBuffersDestroy( ISOCHRONOUS_DATA * isocData, uint8_t numberOfBuffers );
+void USBHostIsochronousBuffersDestroy(ISOCHRONOUS_DATA* isocData, uint8_t numberOfBuffers);
 #endif
-
 
 /****************************************************************************
   Function:
     void USBHostIsochronousBuffersReset( ISOCHRONOUS_DATA * isocData, uint8_t numberOfBuffers )
-    
+    
   Description:
-    This function resets all the isochronous data buffers.  It does not do 
+    This function resets all the isochronous data buffers.  It does not do
     anything with the space allocated for the buffers.
 
   Precondition:
@@ -854,9 +834,8 @@ void USBHostIsochronousBuffersDestroy( ISOCHRONOUS_DATA * isocData, uint8_t numb
 ***************************************************************************/
 
 #ifdef USB_SUPPORT_ISOCHRONOUS_TRANSFERS
-void USBHostIsochronousBuffersReset( ISOCHRONOUS_DATA * isocData, uint8_t numberOfBuffers );
+void USBHostIsochronousBuffersReset(ISOCHRONOUS_DATA* isocData, uint8_t numberOfBuffers);
 #endif
-
 
 /****************************************************************************
   Function:
@@ -914,10 +893,15 @@ void USBHostIsochronousBuffersReset( ISOCHRONOUS_DATA * isocData, uint8_t number
     DTS reset is done before the command is issued.
   ***************************************************************************/
 
-uint8_t    USBHostIssueDeviceRequest( uint8_t deviceAddress, uint8_t bmRequestType, uint8_t bRequest,
-             uint16_t wValue, uint16_t wIndex, uint16_t wLength, uint8_t *data, uint8_t dataDirection, 
-             uint8_t clientDriverID );
-
+uint8_t USBHostIssueDeviceRequest(uint8_t deviceAddress,
+                                  uint8_t bmRequestType,
+                                  uint8_t bRequest,
+                                  uint16_t wValue,
+                                  uint16_t wIndex,
+                                  uint16_t wLength,
+                                  uint8_t* data,
+                                  uint8_t dataDirection,
+                                  uint8_t clientDriverID);
 
 /****************************************************************************
   Function:
@@ -971,8 +955,7 @@ uint8_t    USBHostIssueDeviceRequest( uint8_t deviceAddress, uint8_t bmRequestTy
     None
   ***************************************************************************/
 
-uint8_t    USBHostRead( uint8_t deviceAddress, uint8_t endpoint, uint8_t *data, uint32_t size );
-
+uint8_t USBHostRead(uint8_t deviceAddress, uint8_t endpoint, uint8_t* data, uint32_t size);
 
 /****************************************************************************
   Function:
@@ -988,7 +971,7 @@ uint8_t    USBHostRead( uint8_t deviceAddress, uint8_t endpoint, uint8_t *data, 
     attached device.  If the endpoint is not isochronous, use USBHostRead().
 
     Once started, an isochronous transfer will continue with no upper layer
-    intervention until USBHostTerminateTransfer() is called.  
+    intervention until USBHostTerminateTransfer() is called.
 
   Precondition:
     None
@@ -1019,8 +1002,7 @@ uint8_t    USBHostRead( uint8_t deviceAddress, uint8_t endpoint, uint8_t *data, 
     None
   ***************************************************************************/
 
-#define USBHostReadIsochronous( a, e, p ) USBHostRead( a, e, (uint8_t *)p, (uint32_t)0 );
-
+#define USBHostReadIsochronous(a, e, p) USBHostRead(a, e, (uint8_t*)p, (uint32_t)0);
 
 /****************************************************************************
   Function:
@@ -1052,8 +1034,7 @@ uint8_t    USBHostRead( uint8_t deviceAddress, uint8_t endpoint, uint8_t *data, 
     performed.
   ***************************************************************************/
 
-uint8_t    USBHostResetDevice( uint8_t deviceAddress );
-
+uint8_t USBHostResetDevice(uint8_t deviceAddress);
 
 /****************************************************************************
   Function:
@@ -1081,8 +1062,7 @@ uint8_t    USBHostResetDevice( uint8_t deviceAddress );
     None
   ***************************************************************************/
 
-uint8_t    USBHostResumeDevice( uint8_t deviceAddress );
-
+uint8_t USBHostResumeDevice(uint8_t deviceAddress);
 
 /****************************************************************************
   Function:
@@ -1107,7 +1087,7 @@ uint8_t    USBHostResumeDevice( uint8_t deviceAddress );
   Parameters:
     uint8_t deviceAddress  - Device address
     uint8_t configuration  - Index of the new configuration
-    
+    
   Return Values:
     USB_SUCCESS         - Process of changing the configuration was started
                             successfully.
@@ -1143,8 +1123,7 @@ uint8_t    USBHostResumeDevice( uint8_t deviceAddress );
     USB_HOLDING_UNSUPPORTED_DEVICE error returned by USBHostDeviceStatus().
   ***************************************************************************/
 
-uint8_t USBHostSetDeviceConfiguration( uint8_t deviceAddress, uint8_t configuration );
-
+uint8_t USBHostSetDeviceConfiguration(uint8_t deviceAddress, uint8_t configuration);
 
 /****************************************************************************
   Function:
@@ -1179,8 +1158,7 @@ uint8_t USBHostSetDeviceConfiguration( uint8_t deviceAddress, uint8_t configurat
     None
   ***************************************************************************/
 
-uint8_t USBHostSetNAKTimeout( uint8_t deviceAddress, uint8_t endpoint, uint16_t flags, uint16_t timeoutCount );
-
+uint8_t USBHostSetNAKTimeout(uint8_t deviceAddress, uint8_t endpoint, uint16_t flags, uint16_t timeoutCount);
 
 /****************************************************************************
   Function:
@@ -1207,8 +1185,7 @@ uint8_t USBHostSetNAKTimeout( uint8_t deviceAddress, uint8_t endpoint, uint16_t 
     None
   ***************************************************************************/
 
-void    USBHostShutdown( void );
-
+void USBHostShutdown(void);
 
 /****************************************************************************
   Function:
@@ -1237,8 +1214,7 @@ void    USBHostShutdown( void );
     None
   ****************************************************************************/
 
-uint8_t    USBHostSuspendDevice( uint8_t deviceAddress );
-
+uint8_t USBHostSuspendDevice(uint8_t deviceAddress);
 
 /****************************************************************************
   Function:
@@ -1274,8 +1250,7 @@ uint8_t    USBHostSuspendDevice( uint8_t deviceAddress );
     None
   ***************************************************************************/
 
-void    USBHostTasks( void );
-
+void USBHostTasks(void);
 
 /****************************************************************************
   Function:
@@ -1305,8 +1280,7 @@ void    USBHostTasks( void );
     None
   ***************************************************************************/
 
-void    USBHostTerminateTransfer( uint8_t deviceAddress, uint8_t endpoint );
-
+void USBHostTerminateTransfer(uint8_t deviceAddress, uint8_t endpoint);
 
 /****************************************************************************
   Function:
@@ -1357,8 +1331,7 @@ void    USBHostTerminateTransfer( uint8_t deviceAddress, uint8_t endpoint );
         * USB_ENDPOINT_ERROR              - Other error
   ***************************************************************************/
 
-bool    USBHostTransferIsComplete( uint8_t deviceAddress, uint8_t endpoint, uint8_t *errorCode, uint32_t *byteCount );
-
+bool USBHostTransferIsComplete(uint8_t deviceAddress, uint8_t endpoint, uint8_t* errorCode, uint32_t* byteCount);
 
 /****************************************************************************
   Function:
@@ -1399,8 +1372,7 @@ bool    USBHostTransferIsComplete( uint8_t deviceAddress, uint8_t endpoint, uint
     None
   ***************************************************************************/
 
-uint8_t    USBHostVbusEvent(USB_EVENT vbusEvent, uint8_t hubAddress, uint8_t portNumber);
-
+uint8_t USBHostVbusEvent(USB_EVENT vbusEvent, uint8_t hubAddress, uint8_t portNumber);
 
 /****************************************************************************
   Function:
@@ -1457,8 +1429,7 @@ uint8_t    USBHostVbusEvent(USB_EVENT vbusEvent, uint8_t hubAddress, uint8_t por
     None
   ***************************************************************************/
 
-uint8_t    USBHostWrite( uint8_t deviceAddress, uint8_t endpoint, uint8_t *data, uint32_t size );
-
+uint8_t USBHostWrite(uint8_t deviceAddress, uint8_t endpoint, uint8_t* data, uint32_t size);
 
 /****************************************************************************
   Function:
@@ -1505,7 +1476,7 @@ uint8_t    USBHostWrite( uint8_t deviceAddress, uint8_t endpoint, uint8_t *data,
     None
   ***************************************************************************/
 
-#define USBHostWriteIsochronous( a, e, p ) USBHostWrite( a, e, (uint8_t *)p, (uint32_t)0 );
+#define USBHostWriteIsochronous(a, e, p) USBHostWrite(a, e, (uint8_t*)p, (uint32_t)0);
 
 /****************************************************************************
   Function:
@@ -1535,5 +1506,3 @@ void USB_HostInterruptHandler(void);
 
 // *****************************************************************************
 // EOF
-
-

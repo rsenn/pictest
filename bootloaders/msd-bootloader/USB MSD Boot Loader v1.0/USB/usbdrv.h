@@ -47,24 +47,25 @@
 /** D E F I N I T I O N S ****************************************************/
 
 /* UCFG Initialization Parameters */
-#define _PPBM0      0x00            // Pingpong Buffer Mode 0
-#define _PPBM1      0x01            // Pingpong Buffer Mode 1
-#define _PPBM2      0x02            // Pingpong Buffer Mode 2
-#define _LS         0x00            // Use Low-Speed USB Mode
-#define _FS         0x04            // Use Full-Speed USB Mode
-#define _TRINT      0x00            // Use internal transceiver
-#define _TREXT      0x08            // Use external transceiver
-#define _PUEN       0x10            // Use internal pull-up resistor
-#define _OEMON      0x40            // Use SIE output indicator
-#define _UTEYE      0x80            // Use Eye-Pattern test
+#define _PPBM0 0x00 // Pingpong Buffer Mode 0
+#define _PPBM1 0x01 // Pingpong Buffer Mode 1
+#define _PPBM2 0x02 // Pingpong Buffer Mode 2
+#define _LS 0x00    // Use Low-Speed USB Mode
+#define _FS 0x04    // Use Full-Speed USB Mode
+#define _TRINT 0x00 // Use internal transceiver
+#define _TREXT 0x08 // Use external transceiver
+#define _PUEN 0x10  // Use internal pull-up resistor
+#define _OEMON 0x40 // Use SIE output indicator
+#define _UTEYE 0x80 // Use Eye-Pattern test
 
 /* UEPn Initialization Parameters */
-#define EP_CTRL     0x06            // Cfg Control pipe for this ep
-#define EP_OUT      0x0C            // Cfg OUT only pipe for this ep
-#define EP_IN       0x0A            // Cfg IN only pipe for this ep
-#define EP_OUT_IN   0x0E            // Cfg both OUT & IN pipes for this ep
-#define HSHK_EN     0x10            // Enable handshake packet
-                                    // Handshake should be disable for isoch
+#define EP_CTRL 0x06   // Cfg Control pipe for this ep
+#define EP_OUT 0x0C    // Cfg OUT only pipe for this ep
+#define EP_IN 0x0A     // Cfg IN only pipe for this ep
+#define EP_OUT_IN 0x0E // Cfg both OUT & IN pipes for this ep
+#define HSHK_EN                                                                                                        \
+  0x10 // Enable handshake packet
+       // Handshake should be disable for isoch
 
 /******************************************************************************
  * USB - PICmicro Endpoint Definitions
@@ -75,45 +76,44 @@
  * EP addresses used in the descriptors have different format and
  * are defined in: "system\usb\usbdefs\usbdefs_std_dsc.h"
  *****************************************************************************/
-#define OUT         0
-#define IN          1
+#define OUT 0
+#define IN 1
 
 #define PIC_EP_NUM_MASK 0b01111000
 #define PIC_EP_DIR_MASK 0b00000100
 
-#define EP00_OUT    ((0x00<<3)|(OUT<<2))
-#define EP00_IN     ((0x00<<3)|(IN<<2))
-#define EP01_OUT    ((0x01<<3)|(OUT<<2))
-#define EP01_IN     ((0x01<<3)|(IN<<2))
-#define EP02_OUT    ((0x02<<3)|(OUT<<2))
-#define EP02_IN     ((0x02<<3)|(IN<<2))
-#define EP03_OUT    ((0x03<<3)|(OUT<<2))
-#define EP03_IN     ((0x03<<3)|(IN<<2))
-#define EP04_OUT    ((0x04<<3)|(OUT<<2))
-#define EP04_IN     ((0x04<<3)|(IN<<2))
-#define EP05_OUT    ((0x05<<3)|(OUT<<2))
-#define EP05_IN     ((0x05<<3)|(IN<<2))
-#define EP06_OUT    ((0x06<<3)|(OUT<<2))
-#define EP06_IN     ((0x06<<3)|(IN<<2))
-#define EP07_OUT    ((0x07<<3)|(OUT<<2))
-#define EP07_IN     ((0x07<<3)|(IN<<2))
-#define EP08_OUT    ((0x08<<3)|(OUT<<2))
-#define EP08_IN     ((0x08<<3)|(IN<<2))
-#define EP09_OUT    ((0x09<<3)|(OUT<<2))
-#define EP09_IN     ((0x09<<3)|(IN<<2))
-#define EP10_OUT    ((0x0A<<3)|(OUT<<2))
-#define EP10_IN     ((0x0A<<3)|(IN<<2))
-#define EP11_OUT    ((0x0B<<3)|(OUT<<2))
-#define EP11_IN     ((0x0B<<3)|(IN<<2))
-#define EP12_OUT    ((0x0C<<3)|(OUT<<2))
-#define EP12_IN     ((0x0C<<3)|(IN<<2))
-#define EP13_OUT    ((0x0D<<3)|(OUT<<2))
-#define EP13_IN     ((0x0D<<3)|(IN<<2))
-#define EP14_OUT    ((0x0E<<3)|(OUT<<2))
-#define EP14_IN     ((0x0E<<3)|(IN<<2))
-#define EP15_OUT    ((0x0F<<3)|(OUT<<2))
-#define EP15_IN     ((0x0F<<3)|(IN<<2))
-
+#define EP00_OUT ((0x00 << 3) | (OUT << 2))
+#define EP00_IN ((0x00 << 3) | (IN << 2))
+#define EP01_OUT ((0x01 << 3) | (OUT << 2))
+#define EP01_IN ((0x01 << 3) | (IN << 2))
+#define EP02_OUT ((0x02 << 3) | (OUT << 2))
+#define EP02_IN ((0x02 << 3) | (IN << 2))
+#define EP03_OUT ((0x03 << 3) | (OUT << 2))
+#define EP03_IN ((0x03 << 3) | (IN << 2))
+#define EP04_OUT ((0x04 << 3) | (OUT << 2))
+#define EP04_IN ((0x04 << 3) | (IN << 2))
+#define EP05_OUT ((0x05 << 3) | (OUT << 2))
+#define EP05_IN ((0x05 << 3) | (IN << 2))
+#define EP06_OUT ((0x06 << 3) | (OUT << 2))
+#define EP06_IN ((0x06 << 3) | (IN << 2))
+#define EP07_OUT ((0x07 << 3) | (OUT << 2))
+#define EP07_IN ((0x07 << 3) | (IN << 2))
+#define EP08_OUT ((0x08 << 3) | (OUT << 2))
+#define EP08_IN ((0x08 << 3) | (IN << 2))
+#define EP09_OUT ((0x09 << 3) | (OUT << 2))
+#define EP09_IN ((0x09 << 3) | (IN << 2))
+#define EP10_OUT ((0x0A << 3) | (OUT << 2))
+#define EP10_IN ((0x0A << 3) | (IN << 2))
+#define EP11_OUT ((0x0B << 3) | (OUT << 2))
+#define EP11_IN ((0x0B << 3) | (IN << 2))
+#define EP12_OUT ((0x0C << 3) | (OUT << 2))
+#define EP12_IN ((0x0C << 3) | (IN << 2))
+#define EP13_OUT ((0x0D << 3) | (OUT << 2))
+#define EP13_IN ((0x0D << 3) | (IN << 2))
+#define EP14_OUT ((0x0E << 3) | (OUT << 2))
+#define EP14_IN ((0x0E << 3) | (IN << 2))
+#define EP15_OUT ((0x0F << 3) | (OUT << 2))
+#define EP15_IN ((0x0F << 3) | (IN << 2))
 
 /******************************************************************************
  * Macro:           void mInitializeUSBDriver(void)
@@ -136,11 +136,13 @@
  *
  * Note:            None
  *****************************************************************************/
-#define mInitializeUSBDriver()      {UCFG = UCFG_VAL;                       \
-                                     usb_device_state = DETACHED_STATE;     \
-                                     usb_stat._byte = 0x00;                 \
-                                     usb_active_cfg = 0x00;                 \
-                                     }
+#define mInitializeUSBDriver()                                                                                         \
+  {                                                                                                                    \
+    UCFG = UCFG_VAL;                                                                                                   \
+    usb_device_state = DETACHED_STATE;                                                                                 \
+    usb_stat._byte = 0x00;                                                                                             \
+    usb_active_cfg = 0x00;                                                                                             \
+  }
 
 /******************************************************************************
  * Macro:           void mDisableEP1to15(void)
@@ -159,7 +161,7 @@
  *
  * Note:            None
  *****************************************************************************/
-#define mDisableEP1to15()       ClearArray((byte*)&UEP1,15);
+#define mDisableEP1to15() ClearArray((byte*)&UEP1, 15);
 /*
 #define mDisableEP1to15()       UEP1=0x00;UEP2=0x00;UEP3=0x00;\
                                 UEP4=0x00;UEP5=0x00;UEP6=0x00;UEP7=0x00;\
@@ -190,13 +192,12 @@
  *
  * Note:            None
  *****************************************************************************/
-#define mUSBBufferReady(buffer_dsc)                                         \
-{                                                                           \
-    buffer_dsc.Stat._byte &= _DTSMASK;          /* Save only DTS bit */     \
-    buffer_dsc.Stat.DTS = !buffer_dsc.Stat.DTS; /* Toggle DTS bit    */     \
-    buffer_dsc.Stat._byte |= _USIE|_DTSEN;      /* Turn ownership to SIE */ \
-}
-
+#define mUSBBufferReady(buffer_dsc)                                                                                    \
+  {                                                                                                                    \
+    buffer_dsc.Stat._byte &= _DTSMASK;          /* Save only DTS bit */                                                \
+    buffer_dsc.Stat.DTS = !buffer_dsc.Stat.DTS; /* Toggle DTS bit    */                                                \
+    buffer_dsc.Stat._byte |= _USIE | _DTSEN;    /* Turn ownership to SIE */                                            \
+  }
 
 /******************************************************************************
  * Macro:           void mUSBBufferIsBusy(buffer_dsc)
@@ -216,16 +217,13 @@
  * Overview:        Generic way of determining whether an EP buffer is available.
  *					These macros replace class specific macros in the original framework
  *
- *					Macros taken from VCP example on Microchip forum 
+ *					Macros taken from VCP example on Microchip forum
  *
  * Note:            None
  *****************************************************************************/
 
-
 #define mUSBBufferIsBusy(buffer_dsc) (buffer_dsc).Stat.UOWN
 #define mUSBBufferIsReady(buffer_dsc) !(buffer_dsc).Stat.UOWN
-
-
 
 /** T Y P E S ****************************************************************/
 
@@ -235,7 +233,7 @@
 void USBCheckBusStatus(void);
 void USBDriverService(void);
 void USBRemoteWakeup(void);
-void USBSoftDetach(void); 
+void USBSoftDetach(void);
 
-void ClearArray(byte* startAdr,byte count);
-#endif //USBDRV_H
+void ClearArray(byte* startAdr, byte count);
+#endif // USBDRV_H

@@ -31,24 +31,24 @@
 
 #include "usb.h"
 
-#define	MAX_CD	2						// Number of configuration descriptors in table
-#define MAX_SD	2						// Number of string descriptors in table
+#define MAX_CD 2 // Number of configuration descriptors in table
+#define MAX_SD 2 // Number of string descriptors in table
 
 /** DEFINITIONS **/
-#define CFG01 rom struct	\
-{   USB_CFG_DSC     cd01;	\
-    USB_INTF_DSC    i00a00;	\
-    USB_EP_DSC      ep01i_i00a00;	\
-    USB_EP_DSC      ep01o_i00a00;	\
-} cfg01
+#define CFG01                                                                                                          \
+  rom struct {                                                                                                         \
+    USB_CFG_DSC cd01;                                                                                                  \
+    USB_INTF_DSC i00a00;                                                                                               \
+    USB_EP_DSC ep01i_i00a00;                                                                                           \
+    USB_EP_DSC ep01o_i00a00;                                                                                           \
+  } cfg01
 
 /** EXTERNS **/
 extern rom USB_DEV_DSC device_dsc;
 extern CFG01;
-extern rom const unsigned char *rom USB_CD_Ptr[];
-extern rom const unsigned char *rom USB_SD_Ptr[];
+extern rom const unsigned char* rom USB_CD_Ptr[];
+extern rom const unsigned char* rom USB_SD_Ptr[];
 
 extern rom pFunc ClassReqHandler[1];
 
-
-#endif //USBDSC_H
+#endif // USBDSC_H

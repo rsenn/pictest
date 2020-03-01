@@ -44,5 +44,4 @@
 void UserInit(void);
 void ProcessIO(void);
 
-
-#endif //BOOTPIC18NONJ_H
+#endif // BOOTPIC18NONJ_H

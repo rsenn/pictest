@@ -51,12 +51,12 @@
 #include "usbdefs_ep0_buff.h"
 #include "usbmmap.h"
 
-#include "usbdrv.h"
-#include "usbctrltrf.h"
 #include "usb9.h"
+#include "usbctrltrf.h"
+#include "usbdrv.h"
 
-#if defined(USB_USE_HID)                // See autofiles\usbcfg.h
+#if defined(USB_USE_HID) // See autofiles\usbcfg.h
 #include "hid.h"
 #endif
 
-#endif //USB_H
+#endif // USB_H

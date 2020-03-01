@@ -25,78 +25,57 @@
 
 using namespace std;
 
+Parameters::Parameters(const Usage& usage) : _usage(usage) {}
 
+Parameters::~Parameters() {}
 
-Parameters::Parameters(const Usage &usage)
-: _usage(usage)
-{
+bool
+Parameters::real_contain(unsigned int id) const {
+  list<Parameter>::const_iterator i;
+  for(i = _params.begin(); i != _params.end(); i++) {
+    if(i->id() == id) return true;
+  }
+  return false;
 }
 
-Parameters::~Parameters()
-{
+bool
+Parameters::contain(unsigned int id) const {
+  if(real_contain(id) || (_usage[id].defaultValue().size() != 0)) return true;
+  return false;
 }
 
-bool Parameters::real_contain(unsigned int id) const
-{
-	list<Parameter>::const_iterator i;
-	for (i = _params.begin(); i != _params.end(); i++)
-	{
-		if (i->id() == id)
-			return true;
-	}
-	return false;
+Parameter Parameters::operator[](const unsigned int& id) const {
+  list<Parameter>::const_iterator i;
+  for(i = _params.begin(); i != _params.end(); i++) {
+    if(i->id() == id) return (*i);
+  }
+  if(_usage[id].defaultValue().size() != 0)
+    return Parameter(id, _usage[id].verboseArgument(), _usage[id].defaultValue());
+  throw EArgumentAbsent(_usage[id].argument());
 }
 
-
-bool Parameters::contain(unsigned int id) const
-{
-	if (real_contain(id) || (_usage[id].defaultValue().size() != 0))
-		return true;
-	return false;
+void
+Parameters::add(string argument, string value) {
+  unsigned int id = _usage[argument].id();
+  if(real_contain(id)) throw EArgumentMultipleUsage(argument);
+  if(value.size() == 0) value = _usage[argument].defaultValue();
+  Parameter param(id, argument, value);
+  _params.push_back(param);
 }
 
-Parameter Parameters::operator[](const unsigned int &id) const
-{
-	list<Parameter>::const_iterator i;
-	for (i = _params.begin(); i != _params.end(); i++)
-	{
-		if (i->id() == id)
-			return (*i);
-	}
-	if (_usage[id].defaultValue().size() != 0)
-		return Parameter(id, _usage[id].verboseArgument(), _usage[id].defaultValue());
-	throw EArgumentAbsent(_usage[id].argument());
-}
-
-void Parameters::add(string argument, string value)
-{
-	unsigned int id = _usage[argument].id();
-	if (real_contain(id))
-		throw EArgumentMultipleUsage(argument);
-	if (value.size()==0)
-		value = _usage[argument].defaultValue();
-	Parameter param(id, argument, value);
-	_params.push_back(param);
-}
-
-
-Parameter Parameters::command()
-{
-	bool found = false;
-	unsigned int cmd;
-	list<Parameter>::iterator pc;
-	for (pc = _params.begin(); pc != _params.end(); pc++)
-	{
-		if (_usage[pc->id()].type() != UsageDescriptor::command)
-			continue;
-		if (found)
-			throw EMultipleCommands();
-		found = true;
-		cmd = pc->id();
-	}
-	if (!found)
-		throw ECommandAbsent();
-	return (*this)[cmd];
+Parameter
+Parameters::command() {
+  bool found = false;
+  unsigned int cmd;
+  list<Parameter>::iterator pc;
+  for(pc = _params.begin(); pc != _params.end(); pc++) {
+    if(_usage[pc->id()].type() != UsageDescriptor::command) continue;
+    if(found) throw EMultipleCommands();
+    found = true;
+    cmd = pc->id();
+  }
+  if(!found) throw ECommandAbsent();
+  return (*this)[cmd];
 }
 
 /* End of file */
