@@ -81,8 +81,9 @@ OPT = space
 
 SOURCES = $($(PROGRAM)_SOURCES) $(COMMON_SOURCES)
 COMMON_FLAGS += $($(PROGRAM)_DEFS)
-P1OBJS = $(SOURCES:%.c=$(OBJDIR)%.p1)
-ASSRCS = $(SOURCES:%.c=$(OBJDIR)%.as)
+DEPENDS := $(patsubst %.c,$(OBJDIR)%.dep,$(notdir $(SOURCES)))
+P1OBJS := $(patsubst %.c,$(OBJDIR)%.p1,$(notdir $(SOURCES)))
+ASSRCS := $(patsubst %.c,$(OBJDIR)%.as,$(notdir $(SOURCES)))
 
 COMMON_FLAGS += -g
 COMMON_FLAGS += -N127
