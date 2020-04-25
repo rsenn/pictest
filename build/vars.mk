@@ -118,29 +118,29 @@ is-list = $(if $(subst 1,,$(subst 0,,$(words $(call get-list,$(1))))),$(call get
 
 HEXFILE = $(BUILDDIR)$(PROGRAM)_$(BUILD_ID).hex
 
-COMMON_SOURCES = queue.c
+COMMON_SOURCES = lib/queue.c
 
 
-pictest_SOURCES = pictest.c delay.c lcd44780.c ser.c softser.c  uart.c adc.c ledsense.c timer.c 7segment.c #onewire.c ds18b20.c midi.c softser.c #shell.c
+pictest_SOURCES = pictest.c lib/delay.c lib/lcd44780.c lib/ser.c lib/softser.c  lib/uart.c lib/adc.c ledsense.c lib/timer.c lib/7segment.c #lib/onewire.c lib/ds18b20.c midi.c lib/softser.c #shell.c
 pictest_DEFS +=  -DUSE_TIMER0=1 #-DUSE_UART=1
 
 ifneq ($(chipl),12f1840)
 pictest_DEFS += -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
 endif
 
-pictest2_SOURCES = pictest2.c adc.c delay.c lcd44780.c ser.c pwm.c onewire.c ds18b20.c ledsense.c  timer.c
+pictest2_SOURCES = pictest2.c lib/adc.c lib/delay.c lib/lcd44780.c lib/ser.c lib/pwm.c lib/onewire.c lib/ds18b20.c ledsense.c  lib/timer.c
 pictest2_DEFS += -DUSE_TIMER0=1
 
-ps2test_SOURCES = ps2test.c uart.c timer.c
+ps2test_SOURCES = ps2test.c lib/uart.c lib/timer.c
 ps2test_DEFS += -DUSE_TIMER0=1
 
-blinktest_SOURCES = comparator.c blinktest.c  timer.c softpwm.c random.c ser.c uart.c softser.c comparator.c
+blinktest_SOURCES = blinktest.c lib/comparator.c lib/random.c lib/ser.c lib/softpwm.c lib/softser.c lib/timer.c lib/uart.c
 blinktest_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_SOFTPWM=1
 blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1
 #blinktest_DEFS += -DUSE_SER=1
 #blinktest_DEFS += -DUSE_UART=1
 
-seg7test_SOURCES = 7segtest.c  timer.c random.c ser.c uart.c
+seg7test_SOURCES = 7segtest.c  lib/timer.c lib/random.c lib/ser.c lib/uart.c
 seg7test_DEFS += -DUSE_TIMER0=1
 ifeq ($(CHIP),$(subst 18f,,$(CHIP)))
 
@@ -152,7 +152,7 @@ endif
 #seg7test_DEFS += -DUSE_SER=1
 #seg7test_DEFS += -DUSE_UART=1
 
-serialtest_SOURCES = serialtest.c ser.c uart.c softser.c lcd44780.c timer.c
+serialtest_SOURCES = serialtest.c lib/ser.c lib/uart.c lib/softser.c lib/lcd44780.c lib/timer.c
 ifeq ($(filter 10f%,$(chipl)),)
 serialtest_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_SER=1
 endif
@@ -160,15 +160,15 @@ ifeq ($(filter 10f% 12f%,$(chipl)),)
 serialtest_DEFS +=  -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
 endif
 
-pwmtest_SOURCES = pwmtest.c timer.c adc.c pwm.c
+pwmtest_SOURCES = pwmtest.c lib/timer.c lib/adc.c lib/pwm.c
 pwmtest_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_ADCONVERTER=1 -DUSE_PWM=1
 
-ctmutest_SOURCES = ctmutest.c timer.c
+ctmutest_SOURCES = ctmutest.c lib/timer.c
 ctmutest_DEFS += -DUSE_TIMER0=1
 
-ctmutest2_SOURCES = ctmutest2.c timer.c
+ctmutest2_SOURCES = ctmutest2.c lib/timer.c
 ctmutest2_DEFS += -DUSE_TIMER0=1
 
-ringtone_SOURCES = ringtone.c timer.c random.c
+ringtone_SOURCES = ringtone.c lib/timer.c lib/random.c
 ringtone_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1  -DAxelF=1
 

@@ -87,11 +87,36 @@ OPT = speed
 
 #DEFINES += HI_TECH_C=1
 
-SOURCES := $($(subst -,_,$(PROGRAM))_SOURCES) $(COMMON_SOURCES)
+SOURCES := $(sort $($(subst -,_,$(PROGRAM))_SOURCES) $(COMMON_SOURCES))
 COMMON_FLAGS += $($(subst -,_,$(PROGRAM))_DEFS)
-DEPENDS := $(SOURCES:%.c=$(OBJDIR)%.dep)
-P1OBJS = $(SOURCES:%.c=$(OBJDIR)%.p1)
-ASSRCS = $(SOURCES:%.c=$(OBJDIR)%.as)
+DEPENDS := $(patsubst %.c,$(OBJDIR)%.dep,$(notdir $(SOURCES)))
+P1OBJS := $(patsubst %.c,$(OBJDIR)%.p1,$(notdir $(SOURCES)))
+ASSRCS := $(patsubst %.c,$(OBJDIR)%.as,$(notdir $(SOURCES)))
+
+tab := $(empty)	$(empty)
+define nl
+
+
+endef
+define target
+$(nl)$(OBJDIR)$1: $2
+$(tab)$(subst $(nl),$(nl)$(tab),$3)$(nl)
+endef
+
+
+define p1cmds
+-mkdir -p $(OBJDIR)
+(cd obj && $$(CC) --pass1 $$(CFLAGS) $$(CPPFLAGS:-I%=-I../%) --outdir=$(OBJDIR:obj/%/=%) ../$$<)
+endef
+
+targets = $(foreach SRC,$(SOURCES),$(call target,$(subst .c,.p1,$(notdir $(SRC))),$(SRC),@echo "Target for $(SRC)"$(nl)$(p1cmds)))
+
+
+$(info targets= $(nl)$(targets))
+$(info OBJDIR: $(OBJDIR))
+$(info SOURCES: $(SOURCES))
+$(info P1OBJS: $(P1OBJS))
+$(info ASSRCS: $(ASSRCS))
 
 COMMON_FLAGS += -N127
 #COMMON_FLAGS += --scandep
@@ -200,15 +225,17 @@ $(HEXFILE): $(P1OBJS) | $(BUILDDIR) $(OBJDIR)
 	-(type cygpath 2>/dev/null >/dev/null && PATHTOOL="cygpath -w"; \
 	 test -f "$$PWD/$(HEXFILE)" && { echo; echo "Got HEX file: `$${PATHTOOL:-echo} $$PWD/$(HEXFILE)`"; })
 
-$(P1OBJS): $(OBJDIR)%.p1: %.c
-	-mkdir -p $(OBJDIR)
-	(cd obj; mkdir -p $(OBJDIR:obj/%/=%); $(CC) --pass1 $(CFLAGS) $(CPPFLAGS:-I%=-I../%) --outdir=$(OBJDIR:obj/%/=%) ../$<)
-#	$(CC) --pass1 $(CFLAGS) $(CPPFLAGS) -o$(<:%.c=$(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.p1) $<
+$(eval $(targets))
+#$(P1OBJS): $(OBJDIR)%.p1: %.c
+#	-mkdir -p $(OBJDIR)
+#	(cd obj; mkdir -p $(OBJDIR:obj/%/=%); $(CC) --pass1 $(CFLAGS) $(CPPFLAGS:-I%=-I../%) --outdir=$(OBJDIR:obj/%/=%) ../$<)
+##	$(CC) --pass1 $(CFLAGS) $(CPPFLAGS) -o$(<:%.c=$(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.p1) $<
 
+SED_SCRIPT := /:/d; s,[\\\\],/,g ; s|^\.\./|| ; # /[ ()]/ s,.*,"&",
 $(DEPENDS): $(OBJDIR)%.dep: %.c
 	-mkdir -p $(OBJDIR)
 	(cd obj; mkdir -p $(OBJDIR:obj/%/=%); $(CC) --scandep $(CFLAGS) $(CPPFLAGS:-I%=-I../%) --outdir=$(OBJDIR:obj/%/=%) ../$<); \
-	 sed  '/:/d; s,[\\\\],/,g ; s|^\.\./||;  /[ ()]/ s,.*,"&",' <"$@" | sed ':lp; N; $$! { b lp }; s,\n, ,g; s|^|$(patsubst %.c,$(OBJDIR)/%.p1,$(notdir $<)): |;  s|/\+|/|g'  >"$(@:%.dep=%.d)"
+	 sed  '$(SED_SCRIPT)' <"$@" | sed ':lp; N; $$! { b lp }; s,\n, ,g; s|^|$(patsubst %.c,$(OBJDIR)/%.p1,$(notdir $<)): |;  s|/\+|/|g'  >"$(@:%.dep=%.d)"
 
 #	$(CC) --pass1 $(CFLAGS) $(CPPFLAGS) -o$(<:%.c=$(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.p1) $<
 
