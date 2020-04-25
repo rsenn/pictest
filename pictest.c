@@ -17,10 +17,10 @@
 #include "lib/7segment.h"
 #include "lib/const.h"
 #include "lib/delay.h"
+#include "lib/device.h"
 #include "lib/ds18b20.h"
 #include "lib/extra/ledsense.h"
 #include "lib/extra/shell.h"
-#include "lib/device.h"
 /*
 #define BUTTON_MINUS 1
 #define BUTTON_PLUS  3
