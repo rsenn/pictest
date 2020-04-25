@@ -7,13 +7,14 @@ VERSION_MINOR = 9
 VERSION_PATCH = 1
 
 COMPILER := htc
+DEBUGGER ?= pickit3
 
 -include build/vars.mk
 -include build/targets.mk
 
 VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
-PROGRAMFILES ?= C:/Program Files (x86)
+PROGRAMFILES = C:/Program Files (x86)
 
 OS := $(shell uname -o)
 $(info OS: $(OS))
@@ -30,23 +31,15 @@ PIC18 = true
 DEFINES += __PICC18__=1
 else
 COMPILER_NAME = picc
-
 ifeq ($(OS),GNU/Linux)
 COMPILER_DIR = picc
 else
 COMPILER_DIR = PICC
 endif
-
+#CCVER = PRO/9.60
 CCVER = 9.83
-
 #CCVER := 9.71a
 endif
-
-
-ifneq ($($(PROGRAM)_CCVER),)
-CCVER := $($(PROGRAM)_CCVER)
-endif
-
 
 ifneq ($($(subst -,_,$(PROGRAM))_CCVER),)
 CCVER := $($(subst -,_,$(PROGRAM))_CCVER)
@@ -66,7 +59,7 @@ CCDIR := $(PROGRAMFILES)/HI-TECH Software/$(COMPILER_DIR)/$(CCVER)
 endif
 endif
 
-CCDIR :=
+
 ifneq ($(CCDIR),)
 CC := "$(CCDIR)/bin/$(COMPILER_NAME)"
 else
@@ -136,24 +129,20 @@ endif
 #COMMON_FLAGS +=  -V
 
 ifeq ($(_DEBUG),1)
-COMMON_FLAGS += -G --debugger=pickit2
+COMMON_FLAGS += -G $(if $(DEBUGGER),--debugger="$(DEBUGGER),)"
 COMMON_FLAGS += --opt=default$(OPT_DEBUG)
 else
 COMMON_FLAGS += --opt="default,+asm$(OPT_SPEED)"
 endif
 
-COMMON_FLAGS += --double=32
+COMMON_FLAGS += --double=32 
 #COMMON_FLAGS += --float=32
 
 COMMON_FLAGS += --warn=3
 #COMMON_FLAGS += --codeoffset=$(CODE_OFFSET)
 
 ifneq ($(CODE_OFFSET),)
-ifneq ($(CODE_OFFSET),0)
-ifneq ($(CODE_OFFSET),0x0000)
 LDFLAGS += --codeoffset=$(CODE_OFFSET)
-endif
-endif
 endif
 
 #COMMON_FLAGS += --mode=PRO
@@ -163,8 +152,8 @@ COMMON_FLAGS += --errformat="Error   [%n] %f; %l.%c %s"
 #COMMON_FLAGS += --warnformat="Warning [%n] %f; %l.%c %s"
 
 CPPFLAGS += $(DEFINES:%=-D%)
-CPPFLAGS += -DHI_TECH_C=1
 
+CPPFLAGS += -DHI_TECH_C=1
 _CPPFLAGS += \
 	-DVERSION_MAJOR=$(VERSION_MAJOR) \
 	-DVERSION_MINOR=$(VERSION_MINOR) \
@@ -213,17 +202,18 @@ $(HEXFILE): $(P1OBJS) | $(BUILDDIR) $(OBJDIR)
 
 $(P1OBJS): $(OBJDIR)%.p1: %.c
 	-mkdir -p $(OBJDIR)
-	(cd obj; $(CC) --pass1 $(CFLAGS) $(CPPFLAGS:-I%=-I../%) --outdir=$(OBJDIR:obj/%/=%) ../$<)
+	(cd obj; mkdir -p $(OBJDIR:obj/%/=%); $(CC) --pass1 $(CFLAGS) $(CPPFLAGS:-I%=-I../%) --outdir=$(OBJDIR:obj/%/=%) ../$<)
 #	$(CC) --pass1 $(CFLAGS) $(CPPFLAGS) -o$(<:%.c=$(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.p1) $<
 
 $(DEPENDS): $(OBJDIR)%.dep: %.c
 	-mkdir -p $(OBJDIR)
-	(cd obj; $(CC) --scandep $(CFLAGS) $(CPPFLAGS:-I%=-I../%) --outdir=$(OBJDIR:obj/%/=%) ../$<); \
-	 sed  '/:/d; s,[\\\\],/,g ; s|^\.\./||;  /[ ()]/ s,.*,"&",' <"$@" | sed ':lp; N; $$! { b lp }; s,\n, ,g; s|^|$(patsubst %.c,$(OBJDIR)/%.p1,$(notdir $<)): |;  s|/\+|/|g ; s|\r$$||'  >"$(@:%.dep=%.d)"
+	(cd obj; mkdir -p $(OBJDIR:obj/%/=%); $(CC) --scandep $(CFLAGS) $(CPPFLAGS:-I%=-I../%) --outdir=$(OBJDIR:obj/%/=%) ../$<); \
+	 sed  '/:/d; s,[\\\\],/,g ; s|^\.\./||;  /[ ()]/ s,.*,"&",' <"$@" | sed ':lp; N; $$! { b lp }; s,\n, ,g; s|^|$(patsubst %.c,$(OBJDIR)/%.p1,$(notdir $<)): |;  s|/\+|/|g'  >"$(@:%.dep=%.d)"
 
 #	$(CC) --pass1 $(CFLAGS) $(CPPFLAGS) -o$(<:%.c=$(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.p1) $<
 
 $(ASSRCS): $(OBJDIR)%.as: %.c
+	-mkdir -p $(OBJDIR)
 	$(CC) -S $(CFLAGS) $(CPPFLAGS) --outdir=$(OBJDIR:%/=%) $<
 
 prototypes:
