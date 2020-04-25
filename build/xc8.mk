@@ -29,12 +29,12 @@ OS = $(shell uname -o)
 
 #PICC = $(shell which picc 2>/dev/null)
 ifeq ($(OS),GNU/Linux)
-PICC = /opt/microchip/xc8/v1.34/bin/xc8
+PICC = /opt/microchip/xc8/$(CCVER)/bin/xc8
 endif
 
 ifeq ($(PICC),)
 ifeq ($(OS),GNU/Linux)
-CCDIR = /opt/microchip/xc8/v1.34
+CCDIR = /opt/microchip/xc8/$(CCVER)
 else
 #CCDIR = $(patsubst %/bin,%,$(dir $(PICC)))
 CCDIR = $(PROGRAMFILES)/Microchip/xc8/$(CCVER)

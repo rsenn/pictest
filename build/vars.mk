@@ -118,7 +118,7 @@ is-list = $(if $(subst 1,,$(subst 0,,$(words $(call get-list,$(1))))),$(call get
 
 HEXFILE = $(BUILDDIR)$(PROGRAM)_$(BUILD_ID).hex
 
-COMMON_SOURCES = lib/queue.c
+COMMON_SOURCES = #lib/queue.c
 
 
 pictest_SOURCES = pictest.c lib/delay.c lib/lcd44780.c lib/ser.c lib/softser.c  lib/uart.c lib/adc.c ledsense.c lib/timer.c lib/7segment.c #lib/onewire.c lib/ds18b20.c midi.c lib/softser.c #shell.c
