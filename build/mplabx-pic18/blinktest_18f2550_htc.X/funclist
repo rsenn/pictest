@@ -1,17 +1,17 @@
-_timer0_init: CODE, 3102 0 114
-_timer1_init: CODE, 3216 0 90
-_main: CODE, 2260 0 616
-_softpwm_set: CODE, 3662 0 18
-_softpwm_init: CODE, 3464 0 56
-_dummy_putch: CODE, 3712 0 2
-_softpwm_enable: CODE, 3704 0 4
-_softser_init: CODE, 3680 0 14
-_put_number: CODE, 2876 0 226
-_softser_putch: CODE, 3306 0 84
-_comparator_disable: CODE, 3714 0 2
-___lwdiv: CODE, 3390 0 74
-_put_str: CODE, 3574 0 46
-_softpwm_disable: CODE, 3708 0 4
-___lwmod: CODE, 3520 0 54
-_random_init: CODE, 3620 0 42
-Total: 1446
+_timer0_init: CODE, 4140 0 328
+_timer1_init: CODE, 5202 0 150
+_main: CODE, 2260 0 1404
+_softpwm_set: CODE, 5530 0 24
+_softpwm_init: CODE, 5046 0 156
+_dummy_putch: CODE, 5564 0 2
+_softpwm_enable: CODE, 5554 0 4
+_softser_init: CODE, 5502 0 28
+_put_number: CODE, 3664 0 476
+_softser_putch: CODE, 4676 0 194
+_comparator_disable: CODE, 5562 0 2
+___lwdiv: CODE, 4468 0 208
+_put_str: CODE, 5352 0 98
+_softpwm_disable: CODE, 5558 0 4
+___lwmod: CODE, 4870 0 176
+_random_init: CODE, 5450 0 52
+Total: 3306

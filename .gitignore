@@ -5,3 +5,9 @@ bin*
 *.PWI
 /build/mplabx-pic18/blinktest_18f2550_xc8.X/build/
 /build/mplabx-pic18/blinktest_18f2550_xc8.X/dist/
+/build/mplabx-pic18/blinktest_18f2550_htc.X/build/
+/build/mplabx-pic18/blinktest_18f2550_htc.X/dist/
+/build/mplabx-pic16/blinktest_16f876a_xc8.X/build/
+/build/mplabx-pic16/blinktest_16f876a_xc8.X/dist/
+/build/mplabx-pic18/blinktest_18f25k50_xc8.X/build/
+/build/mplabx-pic18/blinktest_18f25k50_xc8.X/dist/
