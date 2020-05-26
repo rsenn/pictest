@@ -6,7 +6,7 @@
 #include "lib/random.h"
 #include "lib/softpwm.h"
 #include "lib/timer.h"
-#include "pictest.h"
+#include "src/pictest.h"
 
 #if USE_UART
 #include "lib/uart.h"
@@ -171,7 +171,7 @@ main() {
   run = 1;
 
   TRISA = 0b11111111;
-  ADC_OFF();
+  //ADC_OFF();
 
 #if defined(__16f876a) || defined(__18f252)
   TRISC4 = TRISC5 = INPUT;
