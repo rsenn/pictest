@@ -23,3 +23,9 @@ bin*
 /build/mplabx-pic16/blinktest_16f876a_sdcc.X/dist/
 /build/mplabx-pic18/blinktest_18f25k22_sdcc.X/build/
 /build/mplabx-pic18/blinktest_18f25k22_sdcc.X/dist/
+/build/mplabx-pic18/blinktest_18f14k50_sdcc.X/build/
+/build/mplabx-pic18/blinktest_18f14k50_sdcc.X/dist/
+/build/mplabx-pic18/blinktest_18f14k50_xc8.X/build/
+/build/mplabx-pic18/blinktest_18f14k50_xc8.X/dist/
+/build/mplabx-pic18/blinktest_18f14k50_htc.X/build/
+/build/mplabx-pic18/blinktest_18f14k50_htc.X/dist/

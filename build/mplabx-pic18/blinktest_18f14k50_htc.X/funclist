@@ -1,0 +1,11 @@
+_timer1_init: CODE, 2412 0 150
+_main: CODE, 976 0 1280
+_softpwm_set: CODE, 2712 0 24
+_softpwm_init: CODE, 2256 0 156
+_dummy_putch: CODE, 2746 0 2
+_softpwm_enable: CODE, 2736 0 4
+_comparator_disable: CODE, 2744 0 2
+_put_str: CODE, 2562 0 98
+_softpwm_disable: CODE, 2740 0 4
+_random_init: CODE, 2660 0 52
+Total: 1772
