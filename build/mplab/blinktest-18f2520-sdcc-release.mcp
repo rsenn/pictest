@@ -5,7 +5,7 @@ device=PIC18F2520
 [PATH_INFO]
 BuildDirPolicy=BuildDirIsProjectDir
 dir_src=
-dir_bin=.
+dir_bin=..\..\bin\sdcc-18f2520\blinktest-release
 dir_tmp=
 dir_sin=
 dir_inc=..\..;..\..\lib;..\..\src

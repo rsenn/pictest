@@ -5,7 +5,7 @@ device=PIC18F2550
 [PATH_INFO]
 BuildDirPolicy=BuildDirIsProjectDir
 dir_src=
-dir_bin=.
+dir_bin=..\..\bin\htc-18f25k50\blinktest-debug
 dir_tmp=
 dir_sin=
 dir_inc=..\..;..\..\lib;..\..\src

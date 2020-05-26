@@ -5,7 +5,7 @@ device=PIC18F25K22
 [PATH_INFO]
 BuildDirPolicy=BuildDirIsProjectDir
 dir_src=
-dir_bin=.
+dir_bin=..\..\bin\htc-18f25k22\7segtest-debug
 dir_tmp=
 dir_sin=
 dir_inc=..\..;..\..\lib;..\..\src
