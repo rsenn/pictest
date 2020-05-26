@@ -33,3 +33,11 @@ bin*
 /build/mplabx-pic18/blinktest_18f2550_mcc.X/dist/
 /build/mplabx-pic18/blinktest_18f25k22_mcc.X/build/
 /build/mplabx-pic18/blinktest_18f25k22_mcc.X/dist/
+/build/mplabx-pic16/seg7test_16f876a_xc8.X/build/
+/build/mplabx-pic16/seg7test_16f876a_xc8.X/dist/
+/build/mplabx-pic18/seg7test_18f2550_htc.X/build/
+/build/mplabx-pic18/seg7test_18f2550_htc.X/dist/
+/build/mplabx-pic18/seg7test_18f25k50_sdcc.X/build/
+/build/mplabx-pic18/seg7test_18f25k50_sdcc.X/dist/
+/build/mplabx-pic18/seg7test_18f25k50_xc8.X/build/
+/build/mplabx-pic18/seg7test_18f25k50_xc8.X/dist/

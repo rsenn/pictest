@@ -1,0 +1,6 @@
+_timer0_init: CODE, 2534 0 328
+_main: CODE, 2062 0 472
+_set_number: CODE, 2862 0 304
+___lwdiv: CODE, 3166 0 208
+___lwmod: CODE, 3374 0 176
+Total: 1488
