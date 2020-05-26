@@ -51,7 +51,7 @@ MHZ := $(shell echo $$(($(XTAL) / 1000000)))
 KBPS := $(shell echo $$(($(BAUD) / 1000)))
 
 ifeq ($(PROGRAM)$(PROGRAMS),)
-PROGRAMS := pictest blinktest serialtest ringtone
+PROGRAMS := pictest blinktest serialtest ringtone 7segtest
 endif
 
 ifneq ($(CODE_OFFSET),)
@@ -144,6 +144,8 @@ blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1
 
 seg7test_SOURCES = 7segtest.c  lib/timer.c lib/random.c lib/ser.c lib/uart.c
 seg7test_DEFS += -DUSE_TIMER0=1
+seg7test_DEFS += -DUSE_TIMER1=1
+seg7test_DEFS += -DUSE_TIMER2=1
 ifeq ($(CHIP),$(subst 18f,,$(CHIP)))
 
 seg7test_CCVER = 9.83
@@ -151,7 +153,7 @@ else
 seg7test_CCVER = 9.80
 endif
 #seg7test_DEFS += -DUSE_TIMER2=1 #-DUSE_TIMER1=1
-#seg7test_DEFS += -DUSE_SER=1
+seg7test_DEFS += -DUSE_SER=1
 #seg7test_DEFS += -DUSE_UART=1
 
 serialtest_SOURCES = serialtest.c lib/ser.c lib/uart.c lib/softser.c lib/lcd44780.c lib/timer.c
