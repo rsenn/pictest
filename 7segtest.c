@@ -6,7 +6,7 @@
 #include "lib/random.h"
 #include "lib/softpwm.h"
 #include "lib/timer.h"
-#include "pictest.h"
+#include "src/pictest.h"
 
 #if USE_UART
 #include "lib/uart.h"
