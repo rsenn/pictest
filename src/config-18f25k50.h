@@ -4,7 +4,12 @@
 #if defined(__XC) || defined(MCHP_XC8) || defined(SDCC)
 
 #pragma config FOSC = INTOSCIO
-#pragma config nPWRTEN = ON, BOREN = ON, BORV = 285
+
+#ifndef SDCC
+#pragma config nPWRTEN = ON
+#endif
+
+#pragma config BOREN = ON, BORV = 285
 #pragma config WDTEN = OFF
 #pragma config STVREN = OFF, LVP = ON
 #pragma config CP0 = OFF, CP1 = OFF, CP2 = OFF, CP3 = OFF
@@ -14,6 +19,7 @@
 #pragma config EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF
 #pragma config EBTRB = OFF
 
+#pragma config XINST = OFF
 #ifdef _DEBUG
 #pragma config DEBUG = ON
 #endif
