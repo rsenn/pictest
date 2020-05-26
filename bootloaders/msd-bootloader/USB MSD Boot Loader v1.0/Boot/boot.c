@@ -49,21 +49,21 @@
  *					  After updating, the window is refreshed and the updated version number should** be displayed.
  *					  If there were any problems the version number is reported as 'BAD'.
  *					- Windows appears to have an overall file write time-out and a MSD/SCSI NAK time-out.
- *					- To ensure we do not have any time-out issues we process file writes in 64 byte chunks (as the packets
- *for each sector arrive). However, file reads are done on a 512 byte sector basis.
+ *					- To ensure we do not have any time-out issues we process file writes in 64 byte chunks (as the
+ *packets for each sector arrive). However, file reads are done on a 512 byte sector basis.
  *					- Flash memory write are verified & we assume that USB takes care of any possible transfer errors.
  *
  *					** Quirks
- *					- After an update we attempt to 'refresh' the folder display to show the results of the operation. We
- *do this by reporting that the media has been removed (in response to a SCSI Test Unit Ready command). Under Windows
+ *					- After an update we attempt to 'refresh' the folder display to show the results of the operation.
+ *We do this by reporting that the media has been removed (in response to a SCSI Test Unit Ready command). Under Windows
  *the refresh is instant. However, when used with operating systems (such as OS X & some Linux) the MSD device will be
  *reported as removed by the OS and will then automatically re-attach. You may need to re-open the emulated disk folder
  *or do a folder refresh to correctly view the current status.
  *
- *					- Operating systems such as Linux & Windows 2000 may take up to 50 seconds to write data/delete from the
- *MSD device: WAIT & BE-CAREFUL! (Note: If you want to reduce this time for your OS, investigate disabling write caching
- *for handling surprise drive removal. It is fairly simple to adjust under Linux. However, unles you are doing a lot of
- *updates it is probably better to wait....) OS X and Windows XP SP2 (or later) have no delay.
+ *					- Operating systems such as Linux & Windows 2000 may take up to 50 seconds to write data/delete from
+ *the MSD device: WAIT & BE-CAREFUL! (Note: If you want to reduce this time for your OS, investigate disabling write
+ *caching for handling surprise drive removal. It is fairly simple to adjust under Linux. However, unles you are doing a
+ *lot of updates it is probably better to wait....) OS X and Windows XP SP2 (or later) have no delay.
  *
  * 					- See accompanying notes for a more detailed description
  *
@@ -479,8 +479,8 @@ SectorRead(dword sector_addr, byte* buffer) {
  * Notes:           This is a write emulation. As we are implementing a FAT emulation the action taken
  * 					depends upon the sector address.
  *
- *					This function is actually called from the (modified) MSD class handler every 64 bytes (to minimise chance
- *of OS time-out)
+ *					This function is actually called from the (modified) MSD class handler every 64 bytes (to minimise
+ *chance of OS time-out)
  *
  *
  *****************************************************************************/
