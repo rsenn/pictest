@@ -6,7 +6,7 @@
 #include "lib/random.h"
 #include "lib/softpwm.h"
 #include "lib/timer.h"
-#include "pictest.h"
+#include "src/pictest.h"
 #include "src/config-bits.h"
 
 #if USE_UART
@@ -100,6 +100,8 @@ INTERRUPT_HANDLER() {
     if(msec_count >= 10) { // if reached 1 decisecond!
       hsecs++;             // update clock, etc
 
+
+
       LED2_ANODE = hsecs & 1;
 
       msec_count -= 10;
@@ -140,7 +142,9 @@ main() {
 
 #if HAVE_ADC
   ADON = 0;
+  #ifndef __18f14k50
   PCFG = 0b0110;
+#endif
 #endif
 
 #if defined(__16f876a) || defined(__18f252)
@@ -156,11 +160,13 @@ main() {
 #endif
 
 #if !NO_PORTB
+#ifndef __18f14k50
   nRBPU = 0;
+#endif
   //  nRBPU = 0; // enable portb pull-ups
   TRISB |= 0b11110000;
   TRISB &= 0b11110011;
-  RB2 = RB3 = LOW;
+  //RB2 = RB3 = LOW;
 
 #endif
 
@@ -171,8 +177,7 @@ main() {
   T0IE = 1;
 #endif
   // timer1_init(2);
-
-  TRISA3 = TRISA5 = OUTPUT;
+LED_TRIS() ;
   RA3 = RA5 = HIGH;
 
   INIT_LED();
