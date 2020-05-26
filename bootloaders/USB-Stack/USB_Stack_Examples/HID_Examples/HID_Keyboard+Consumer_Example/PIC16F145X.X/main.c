@@ -138,7 +138,8 @@ main(void) {
     // Uncomment out the following for polling method.
     // USB_Tasks();
 
-    if(USB_STATE != Configured) continue;
+    if(USB_STATE != Configured)
+      continue;
 
     ServiceReportsToSend();
 
@@ -153,7 +154,8 @@ main(void) {
         released = true;
         SendKey(0, 0);
         i++;
-        if(message[i] == 0) i = 0;
+        if(message[i] == 0)
+          i = 0;
       }
     }
 

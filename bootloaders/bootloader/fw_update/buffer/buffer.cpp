@@ -63,7 +63,8 @@ Buffer::write(unsigned char* buf, size_t buf_size, size_t addr) {
   eAssert(buf != NULL);
   eAssert(addr + buf_size <= _size);
   eAssert(_data != NULL);
-  if(addr + buf_size > _size) throw out_of_range("Buffer is full.");
+  if(addr + buf_size > _size)
+    throw out_of_range("Buffer is full.");
   memcpy(_data + addr, buf, buf_size);
 }
 void
@@ -72,7 +73,8 @@ Buffer::resize(size_t size, unsigned char fill /* = 0xFF */) {
     delete[] _data;
     _data = NULL;
   }
-  if(size != 0) _data = new unsigned char[size];
+  if(size != 0)
+    _data = new unsigned char[size];
   _size = size;
   memset(_data, fill, _size);
 }

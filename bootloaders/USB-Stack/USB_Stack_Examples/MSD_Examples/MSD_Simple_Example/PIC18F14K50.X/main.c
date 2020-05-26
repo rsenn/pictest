@@ -289,10 +289,12 @@ MSD_RxSector(void) {
       RSC_EPaddress[4] = 0x0F;
     }
   } else if(R_W_10_Vars.LBA == ROOT_SECT_ADDR) { // If PC is reading the Root Sector.
-    if(ByteOfSect == 0) USB_ROMCopy((const uint8_t*)(&ROOT), RSC_EPaddress, 64);
+    if(ByteOfSect == 0)
+      USB_ROMCopy((const uint8_t*)(&ROOT), RSC_EPaddress, 64);
   } else if(R_W_10_Vars.LBA >= DATA_SECT_ADDR) { // If PC is reading the Data Sector.
     if(R_W_10_Vars.LBA == FILE_SECT_ADDR) {      // If PC is reading ABOUT file data.
-      if(ByteOfSect == 0) USB_ROMCopy(FILE_DATA, RSC_EPaddress, sizeof(FILE_DATA));
+      if(ByteOfSect == 0)
+        USB_ROMCopy(FILE_DATA, RSC_EPaddress, sizeof(FILE_DATA));
     }
   }
 #else

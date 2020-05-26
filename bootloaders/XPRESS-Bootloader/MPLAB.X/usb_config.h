@@ -23,12 +23,13 @@ limitations under the License.
 #define USBCFG_H
 
 /** DEFINITIONS ****************************************************/
-#define USB_EP0_BUFF_SIZE 8 // Valid Options: 8, 16, 32, or 64 bytes.
-                            // Using larger options take more SRAM, but
-                            // does not provide much advantage in most types
-                            // of applications.  Exceptions to this, are applications
-                            // that use EP0 IN or OUT for sending large amounts of
-                            // application related data.
+#define USB_EP0_BUFF_SIZE                                                                                              \
+  8 // Valid Options: 8, 16, 32, or 64 bytes.
+    // Using larger options take more SRAM, but
+    // does not provide much advantage in most types
+    // of applications.  Exceptions to this, are applications
+    // that use EP0 IN or OUT for sending large amounts of
+    // application related data.
 
 #define USB_MAX_NUM_INT 3 // For tracking Alternate Setting
 #define USB_MAX_EP_NUMBER 3

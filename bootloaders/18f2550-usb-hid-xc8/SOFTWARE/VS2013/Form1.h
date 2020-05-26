@@ -1,7 +1,7 @@
 #pragma once
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------BEGIN CUT AND PASTE
-//BLOCK-----------------------------------------------------------------------------------
+// BLOCK-----------------------------------------------------------------------------------
 /********************************************************************
  FileName:		Form1.h
  Dependencies:	Windows Server 2003 R2 Platform SDK during development.
@@ -73,7 +73,7 @@ NOTE:	All user made code contained in this project is in the Form1.h file.
 // microcontroller). Use the formatting: "Vid_xxxx&Pid_xxxx" where xxxx is a 16-bit hexadecimal number.
 #define MY_DEVICE_ID "Vid_04d8&Pid_003f"
 //-------------------------------------------------------END CUT AND PASTE
-//BLOCK-------------------------------------------------------------------------------------
+// BLOCK-------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 namespace HIDPnPDemo {
@@ -87,7 +87,7 @@ using namespace System::Drawing;
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------BEGIN CUT AND PASTE
-//BLOCK-----------------------------------------------------------------------------------
+// BLOCK-----------------------------------------------------------------------------------
 #pragma region DLL Imports
 using namespace System::Threading;
 using namespace System::Runtime::InteropServices; // Need this to support "unmanaged" code.
@@ -217,7 +217,7 @@ unsigned int ADCValue = 0; // Updated by ReadWriteThread, read by FormUpdateTime
 
 #pragma endregion
 //-------------------------------------------------------END CUT AND PASTE
-//BLOCK-------------------------------------------------------------------------------------
+// BLOCK-------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /// <summary>
@@ -239,7 +239,7 @@ public:
     //
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //-------------------------------------------------------BEGIN CUT AND PASTE
-    //BLOCK----------------------------------------------------------------------------------- Additional constructor
+    // BLOCK----------------------------------------------------------------------------------- Additional constructor
     // code
 
     // Initialize tool tips, to provide pop up help when the mouse cursor is moved over objects on the form.
@@ -299,8 +299,10 @@ public:
         AttachedState = FALSE; // Let the rest of this application known not to read/write to the device.
         AttachedButBroken =
             TRUE; // Flag so that next time a WM_DEVICECHANGE message occurs, can retry to re-open read/write pipes
-        if(ErrorStatusWrite == ERROR_SUCCESS) CloseHandle(WriteHandleToUSBDevice);
-        if(ErrorStatusRead == ERROR_SUCCESS) CloseHandle(ReadHandleToUSBDevice);
+        if(ErrorStatusWrite == ERROR_SUCCESS)
+          CloseHandle(WriteHandleToUSBDevice);
+        if(ErrorStatusRead == ERROR_SUCCESS)
+          CloseHandle(ReadHandleToUSBDevice);
       }
     } else // Device must not be connected (or not programmed with correct firmware)
     {
@@ -308,12 +310,13 @@ public:
       AttachedButBroken = FALSE;
     }
 
-    ReadWriteThread->RunWorkerAsync(); // Recommend performing USB read/write operations in a separate thread.
-                                       // Otherwise, the Read/Write operations are effectively blocking functions and can
-                                       // lock up the user interface if the I/O operations take a long time to complete.
+    ReadWriteThread
+        ->RunWorkerAsync(); // Recommend performing USB read/write operations in a separate thread.
+                            // Otherwise, the Read/Write operations are effectively blocking functions and can
+                            // lock up the user interface if the I/O operations take a long time to complete.
 
     //-------------------------------------------------------END CUT AND PASTE
-    //BLOCK-------------------------------------------------------------------------------------
+    // BLOCK-------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
   }
 
@@ -324,14 +327,14 @@ protected:
   ~Form1() {
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //-------------------------------------------------------BEGIN CUT AND PASTE
-    //BLOCK----------------------------------------------------------------------------------- Close the read/write
+    // BLOCK----------------------------------------------------------------------------------- Close the read/write
     // handles, if they are currently open.
     if(AttachedState == TRUE) {
       CloseHandle(WriteHandleToUSBDevice);
       CloseHandle(ReadHandleToUSBDevice);
     }
     //-------------------------------------------------------END CUT AND PASTE
-    //BLOCK-------------------------------------------------------------------------------------
+    // BLOCK-------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
     if(components) {
       delete components;
@@ -516,14 +519,15 @@ private:
 
   //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
   //-------------------------------------------------------BEGIN CUT AND PASTE
-  //BLOCK-----------------------------------------------------------------------------------
+  // BLOCK-----------------------------------------------------------------------------------
 
   // FUNCTION:	CheckIfPresentAndGetUSBDevicePath()
   // PURPOSE:	Check if a USB device is currently plugged in with a matching VID and PID
   // INPUT:	Uses globally declared "DetailedInterfaceDataStructure" structure, globally declared GUID, and the
   // MY_DEVICE_ID constant. OUTPUT:	Returns BOOL.  TRUE when device with matching VID/PID found.  FALSE if device with
-  // VID/PID could not be found. 			When returns TRUE, the globally accessable "DetailedInterfaceDataStructure" will contain
-  //the device path 			to the USB device with the matching VID/PID.
+  // VID/PID could not be found. 			When returns TRUE, the globally accessable "DetailedInterfaceDataStructure"
+  // will contain
+  // the device path 			to the USB device with the matching VID/PID.
 
   BOOL
   CheckIfPresentAndGetUSBDevicePath(void) {
@@ -686,12 +690,12 @@ private:
     } // end of while(true)
   }
   //-------------------------------------------------------END CUT AND PASTE
-  //BLOCK-------------------------------------------------------------------------------------
+  // BLOCK-------------------------------------------------------------------------------------
   //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
   //-------------------------------------------------------BEGIN CUT AND PASTE
-  //BLOCK-----------------------------------------------------------------------------------
+  // BLOCK-----------------------------------------------------------------------------------
 
   // This is a callback function that gets called when a Windows message is received by the form.
   // We will receive various different types of messages, but the ones we really want to use are the WM_DEVICECHANGE
@@ -748,8 +752,10 @@ protected:
                   FALSE; // Let the rest of this application know not to try reading/writing to the USB device
               AttachedButBroken = TRUE; // Let this WM_DEVICECHANGE handler know to retry to open handles the next time
                                         // a WM_DEVICECHANGE message occurs.
-              if(ErrorStatusWrite == ERROR_SUCCESS) CloseHandle(WriteHandleToUSBDevice);
-              if(ErrorStatusRead == ERROR_SUCCESS) CloseHandle(ReadHandleToUSBDevice);
+              if(ErrorStatusWrite == ERROR_SUCCESS)
+                CloseHandle(WriteHandleToUSBDevice);
+              if(ErrorStatusRead == ERROR_SUCCESS)
+                CloseHandle(ReadHandleToUSBDevice);
             }
           }
           // else we did find the device, but AttachedState was already TRUE.  In this case, don't do anything to the
@@ -771,7 +777,7 @@ protected:
     Form::WndProc(m);
   } // end of: WndProc() function
   //-------------------------------------------------------END CUT AND PASTE
-  //BLOCK-------------------------------------------------------------------------------------
+  // BLOCK-------------------------------------------------------------------------------------
   //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 private:
@@ -779,7 +785,7 @@ private:
   FormUpdateTimer_Tick(System::Object ^ sender, System::EventArgs ^ e) {
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //-------------------------------------------------------BEGIN CUT AND PASTE
-    //BLOCK----------------------------------------------------------------------------------- This timer tick event
+    // BLOCK----------------------------------------------------------------------------------- This timer tick event
     // handler function is used to update the user interface on the form, based on data obtained asynchronously by the
     // ReadWriteThread and the WM_DEVICECHANGE event handler functions.
 
@@ -817,7 +823,7 @@ private:
       progressBar1->Value = ADCValue;
     }
     //-------------------------------------------------------END CUT AND PASTE
-    //BLOCK-------------------------------------------------------------------------------------
+    // BLOCK-------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
   }
 
@@ -826,7 +832,7 @@ private:
   ReadWriteThread_DoWork(System::Object ^ sender, System::ComponentModel::DoWorkEventArgs ^ e) {
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //-------------------------------------------------------BEGIN CUT AND PASTE
-    //BLOCK-----------------------------------------------------------------------------------
+    // BLOCK-----------------------------------------------------------------------------------
 
     /*This thread does the actual USB read/write operations (but only when AttachedState == TRUE) to the USB device.
     It is generally preferrable to write applications so that read and write operations are handled in a separate
@@ -963,7 +969,7 @@ private:
 
     } // end of while(true) loop
     //-------------------------------------------------------END CUT AND PASTE
-    //BLOCK-------------------------------------------------------------------------------------
+    // BLOCK-------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
   }
 
@@ -972,10 +978,10 @@ private:
   ToggleLEDs_btn_Click(System::Object ^ sender, System::EventArgs ^ e) {
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //-------------------------------------------------------BEGIN CUT AND PASTE
-    //BLOCK-----------------------------------------------------------------------------------
+    // BLOCK-----------------------------------------------------------------------------------
     ToggleLEDsPending = TRUE; // Will get used asynchronously by the ReadWriteThread
     //-------------------------------------------------------END CUT AND PASTE
-    //BLOCK-------------------------------------------------------------------------------------
+    // BLOCK-------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
   }
 };

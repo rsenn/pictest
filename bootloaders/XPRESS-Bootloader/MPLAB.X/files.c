@@ -24,10 +24,12 @@ limitations under the License.
 //------------------------------------------------------------------------------
 // Master boot record (MBR) at LBA = 0
 //------------------------------------------------------------------------------
-void MasterBootRecordGet(uint8_t* buffer, uint8_t seg) { // fabricate an MBR structure in the RAM buffer segment
-  memset(buffer, 0, MSD_OUT_EP_SIZE);                    // clear buffer
-  if(seg < 6) return;                                    // segments 0-5 from 0x000 - 0x17f are empty
-                                                         // Code Area
+void
+MasterBootRecordGet(uint8_t* buffer, uint8_t seg) { // fabricate an MBR structure in the RAM buffer segment
+  memset(buffer, 0, MSD_OUT_EP_SIZE);               // clear buffer
+  if(seg < 6)
+    return; // segments 0-5 from 0x000 - 0x17f are empty
+            // Code Area
   // 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,	//0x0000
   // ...
   // 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,                                     //0x0180
@@ -81,10 +83,11 @@ void MasterBootRecordGet(uint8_t* buffer, uint8_t seg) { // fabricate an MBR str
 //------------------------------------------------------------------------------
 // Physical Sector - 1, Logical Sector - 0.
 // This is the first sector in the partition, known as the VBR, "volume boot record"
-void VolumeBootRecordGet(uint8_t* buffer, uint8_t seg) { // fabricate an MBR structure in the RAM buffer
-  memset(buffer, 0, MSD_OUT_EP_SIZE);                    // clear buffer
-  if(seg == 0) {                                         // segment from 000 to 0x03f
-    buffer[0x000] = 0xEB;                                // (legacy) Jump instruction
+void
+VolumeBootRecordGet(uint8_t* buffer, uint8_t seg) { // fabricate an MBR structure in the RAM buffer
+  memset(buffer, 0, MSD_OUT_EP_SIZE);               // clear buffer
+  if(seg == 0) {                                    // segment from 000 to 0x03f
+    buffer[0x000] = 0xEB;                           // (legacy) Jump instruction
     buffer[0x001] = 0x3C;
     buffer[0x002] = 0x90;
     memcpy((void*)&buffer[3], (void*)"MSDOS5.0", 8);          // OEM Name "MSDOS5.0"
@@ -122,8 +125,9 @@ void VolumeBootRecordGet(uint8_t* buffer, uint8_t seg) { // fabricate an MBR str
     memcpy((void*)&buffer[0x036], (void*)"FAT12   ", 8);     // FAT system ( 8 bytes)
     return;
   }
-  if(seg < 7) return; // segments 1-6 from 0x040 to 0x1c0 are empty
-                      // Operating system boot code
+  if(seg < 7)
+    return; // segments 1-6 from 0x040 to 0x1c0 are empty
+            // Operating system boot code
   // 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
   // ...
   else {

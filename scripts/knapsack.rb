@@ -98,39 +98,39 @@ require 'optparse'
 
                        if @target_value.nil
                      ? @target_value = to_cents(line) raise ArgumentError,
-                 "Target value must be at least 0." if @target_value<
-                     0
+                 "Target value must be at least 0." if
+                 @target_value<0
 
-                     puts "Target value: #{@target_value}" else name,
-                     value = line.split(",") value = to_cents(value) raise ArgumentError,
-                     "Value must be greater than 0." if value <= 0 items << Item.new(name, value) end end
+                               puts "Target value: #{@target_value}" else name,
+                               value = line.split(",") value = to_cents(value) raise ArgumentError,
+                               "Value must be greater than 0." if value <= 0 items << Item.new(name, value) end end
 
-                                                                            @items =
-                         items.sort_by{ | item | item.value}
-                                 .reverse
+                                                                                      @items =
+                                   items.sort_by{ | item | item.value}
+                                           .reverse
 
 #pp @items
-                                     end
+                                               end
 
-                                         def to_cents(dollars)(dollars.delete("$").delete("V").to_f * 100)
-                                 .round(0) end
+                                                   def to_cents(dollars)(dollars.delete("$").delete("V").to_f * 100)
+                                           .round(0) end
 
-                                     def to_amount(cents) cents.to_f /
-                             100 end
+                                               def to_amount(cents) cents.to_f /
+                                       100 end
 
-                             ""
-                             " creates combinations "
-                             "" def create_combinations(0..(@items.count - 1))
-                                 .each do |
-                         index |
-                         find_combinations(@items[index], @items[index..- 1], Combination.new([])) end c = @combinations
-                     @combinations = Set.new c end
+                                       ""
+                                       " creates combinations "
+                                       "" def create_combinations(0..(@items.count - 1))
+                                           .each do |
+                                   index | find_combinations(@items[index], @items[index..- 1], Combination.new([
+                                   ])) end c = @combinations
+                               @combinations = Set.new c end
 
-                                         def find_combinations(next_item, items, combination)
-                                             capacity = @target_value - combination.total_value
+                                                   def find_combinations(next_item, items, combination) capacity =
+                                   @target_value - combination.total_value
 
-                                                                        if capacity ==
-                                                        0 @combinations << combination.items elsif capacity> 0 items =
+                                                   if capacity ==
+                                   0 @combinations << combination.items elsif capacity> 0 items =
                      items
                          .select{ | item | item.value <= capacity}
 
@@ -153,29 +153,29 @@ require 'optparse'
                                                                                                   "--[no-]verbose",
                                                                                                   "Run verbosely") do |
                                                                       v | options
-         [:verbose] = v end opts.on("-x N,N", "--exclude", Array, "Values that mustn't occur") do | o | options
-         [:exclude]
-             .concat o end opts.on("-e N,N", "--occur", Array, "Values that must occur") do | o | options
-         [:expect]
-             .concat o end opts.on("-t N,N", "--target", Array, "Target value") do | t | options
-         [:target]
-             .concat t end
+[:verbose] = v end opts.on("-x N,N", "--exclude", Array, "Values that mustn't occur") do | o | options
+[:exclude]
+    .concat o end opts.on("-e N,N", "--occur", Array, "Values that must occur") do | o | options
+[:expect]
+    .concat o end opts.on("-t N,N", "--target", Array, "Target value") do | t | options
+[:target]
+    .concat t end
 
 #No argument, shows at tail.This will print an options summary.
 #Try it and see !
-                 opts
-             .on_tail("-h", "--help", "Show this message") do puts opts exit end
+        opts
+    .on_tail("-h", "--help", "Show this message") do puts opts exit end
 
-                 end.parse !
+        end.parse !
 
-             p options file = ARGV.shift
+    p options file = ARGV.shift
 
-                                  options
-         [:target]
-             .concat ARGV
+                         options
+[:target]
+    .concat ARGV
 
-                 targets = options
-         [:target]
+        targets = options
+[:target]
 
     menu = Menu.new(file, targets.size > 0 ? targets.first : "", options[:expect], options[:exclude])
                rescue ArgumentError = > error puts "There was an error with your input!" puts "\t#{error.message}" end
@@ -183,16 +183,16 @@ require 'optparse'
 
                                               if targets.size ==
                                           0 then targets.push menu.get_target
-             .to_s end
+    .to_s end
 
                                               targets.map{ | a | a.to_f.round(2)}
-             .each do | t |
+    .each do | t |
 
                                       begin
 
                                           puts "target: #{t}" o = menu.calculate_combinations(t) t =
                                           (t + 0.1)
-             .round(1)
+    .round(1)
 
                                                   end until o != "" or
                                           targets.size > 1 if o != "" then puts o end

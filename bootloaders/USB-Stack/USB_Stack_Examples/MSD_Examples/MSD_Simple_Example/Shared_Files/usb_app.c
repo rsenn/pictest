@@ -69,9 +69,7 @@ USB_InitApp(void) {
 void
 USB_AppTasks(void) {
   switch(TRANSACTION_EP) {
-    case MSD_EP:
-      MSD_AddTask();
-      break;
+    case MSD_EP: MSD_AddTask(); break;
   }
 }
 
@@ -102,7 +100,8 @@ USB_AppClearHalt(uint8_t BDT_Index, uint8_t EP, uint8_t dir) {
 bool
 USB_AppSetInterface(uint8_t AlternateSetting, uint8_t Interface) {
 #if NUM_ALT_INTERFACES != 0
-  if(SetInterfaceData.Interface < NUM_INTERFACES) return false;
+  if(SetInterfaceData.Interface < NUM_INTERFACES)
+    return false;
 #else
   if(AlternateSetting == 0 && Interface == 0) {
     MSD_ClearEndpointToggle();
@@ -126,7 +125,8 @@ USB_AppSetInterface(uint8_t AlternateSetting, uint8_t Interface) {
 bool
 USB_AppGetInterface(uint8_t* AlternateSettingResult, uint8_t Interface) {
 #if NUM_ALT_INTERFACES != 0
-  if(GetInterfaceData.Interface < NUM_INTERFACES) return false;
+  if(GetInterfaceData.Interface < NUM_INTERFACES)
+    return false;
 #endif
   return false;
 }

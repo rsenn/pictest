@@ -192,7 +192,8 @@ _USBHostHID_Parse_Report(uint8_t* hidReportDescriptor,
     item.ItemDetails.val = *currentRptDescPtr;
     /* Data need not be parsed at this point */
     ldataSize = item.ItemDetails.ItemSize;
-    if(item.ItemDetails.ItemSize == 3) ldataSize = 4;
+    if(item.ItemDetails.ItemSize == 3)
+      ldataSize = 4;
 
     currentRptDescPtr += (ldataSize + 1); /* point to next item i.e size of item data + 1(item detail) */
     len_to_be_parsed -= (ldataSize + 1);  /* remaining bytes = current - (length of data + 1)*/
@@ -212,18 +213,13 @@ _USBHostHID_Parse_Report(uint8_t* hidReportDescriptor,
             break;
           case HIDTag_Input:
           case HIDTag_Output:
-          case HIDTag_Feature:
-            deviceRptInfo.reportItems++;
-            break;
-          default:
-            break;
+          case HIDTag_Feature: deviceRptInfo.reportItems++; break;
+          default: break;
         }
         break;
       case HIDType_Global: /* Global Items */
         switch(item.ItemDetails.ItemTag) {
-          case HIDTag_ReportID:
-            deviceRptInfo.reports++;
-            break;
+          case HIDTag_ReportID: deviceRptInfo.reports++; break;
           case HIDTag_Push:
             deviceRptInfo.globalsNesting++;
             if(deviceRptInfo.globalsNesting > deviceRptInfo.maxGlobalsNesting)
@@ -234,39 +230,24 @@ _USBHostHID_Parse_Report(uint8_t* hidReportDescriptor,
             if(deviceRptInfo.globalsNesting > deviceRptInfo.maxGlobalsNesting)
               lhidError = HID_ERR_UnexpectedPop; /* Error: global nesting rolled to negative ... */
             break;
-          default:
-            break;
+          default: break;
         }
         break;
       case HIDType_Local: /* Local Item */
         switch(item.ItemDetails.ItemTag) {
-          case HIDTag_Usage:
-            deviceRptInfo.usages++;
-            break;
+          case HIDTag_Usage: deviceRptInfo.usages++; break;
           case HIDTag_UsageMinimum:
-          case HIDTag_UsageMaximum:
-            deviceRptInfo.usageRanges++;
-            break;
-          case HIDTag_StringIndex:
-            deviceRptInfo.strings++;
-            break;
+          case HIDTag_UsageMaximum: deviceRptInfo.usageRanges++; break;
+          case HIDTag_StringIndex: deviceRptInfo.strings++; break;
           case HIDTag_StringMinimum:
-          case HIDTag_StringMaximum:
-            deviceRptInfo.stringRanges++;
-            break;
-          case HIDTag_DesignatorIndex:
-            deviceRptInfo.designators++;
-            break;
+          case HIDTag_StringMaximum: deviceRptInfo.stringRanges++; break;
+          case HIDTag_DesignatorIndex: deviceRptInfo.designators++; break;
           case HIDTag_DesignatorMinimum:
-          case HIDTag_DesignatorMaximum:
-            deviceRptInfo.designatorRanges++;
-            break;
-          default:
-            break;
+          case HIDTag_DesignatorMaximum: deviceRptInfo.designatorRanges++; break;
+          default: break;
         }
         break;
-      default:
-        break;
+      default: break;
     }
   }
 
@@ -274,15 +255,20 @@ _USBHostHID_Parse_Report(uint8_t* hidReportDescriptor,
     return (lhidError);
   }
 
-  if(deviceRptInfo.collectionNesting != 0) return (HID_ERR_MissingEndCollection) /* HID_RPT_DESC_FORMAT_IMPROPER */;
+  if(deviceRptInfo.collectionNesting != 0)
+    return (HID_ERR_MissingEndCollection) /* HID_RPT_DESC_FORMAT_IMPROPER */;
 
-  if(deviceRptInfo.collections == 1) return (HID_ERR_MissingTopLevelCollection) /* HID_RPT_DESC_FORMAT_IMPROPER */;
+  if(deviceRptInfo.collections == 1)
+    return (HID_ERR_MissingTopLevelCollection) /* HID_RPT_DESC_FORMAT_IMPROPER */;
 
-  if(deviceRptInfo.reportItems == 0) return (HID_ERR_NoReports) /* HID_RPT_DESC_FORMAT_IMPROPER */;
+  if(deviceRptInfo.reportItems == 0)
+    return (HID_ERR_NoReports) /* HID_RPT_DESC_FORMAT_IMPROPER */;
 
-  if((deviceRptInfo.usageRanges & 1) == 1) return (HID_ERR_UnmatchedUsageRange) /* HID_RPT_DESC_FORMAT_IMPROPER */;
+  if((deviceRptInfo.usageRanges & 1) == 1)
+    return (HID_ERR_UnmatchedUsageRange) /* HID_RPT_DESC_FORMAT_IMPROPER */;
 
-  if((deviceRptInfo.stringRanges & 1) == 1) return (HID_ERR_UnmatchedStringRange) /* HID_RPT_DESC_FORMAT_IMPROPER */;
+  if((deviceRptInfo.stringRanges & 1) == 1)
+    return (HID_ERR_UnmatchedStringRange) /* HID_RPT_DESC_FORMAT_IMPROPER */;
 
   if((deviceRptInfo.designatorRanges & 1) == 1)
     return (HID_ERR_UnmatchedDesignatorRange) /* HID_RPT_DESC_FORMAT_IMPROPER */;
@@ -311,7 +297,8 @@ _USBHostHID_Parse_Report(uint8_t* hidReportDescriptor,
   UART2PutHex(sizeRequired);
 #endif
 
-  if(parsedDataMem == NULL) return (HID_ERR_NotEnoughMemory); /* Error: Not enough memory */
+  if(parsedDataMem == NULL)
+    return (HID_ERR_NotEnoughMemory); /* Error: Not enough memory */
   assignMem = (uint8_t*)parsedDataMem;
 
   /* Allocate Space */
@@ -368,7 +355,8 @@ _USBHostHID_Parse_Report(uint8_t* hidReportDescriptor,
     item.Data.uItemData = 0;
 
     ldataSize = item.ItemDetails.ItemSize;
-    if(item.ItemDetails.ItemSize == 3) ldataSize = 4;
+    if(item.ItemDetails.ItemSize == 3)
+      ldataSize = 4;
 
     currentRptDescPtr++; /* ptr points to data */
     for(i = 0; i < ldataSize; i++) {
@@ -383,25 +371,17 @@ _USBHostHID_Parse_Report(uint8_t* hidReportDescriptor,
         switch(item.ItemDetails.ItemTag) {
           case HIDTag_Input:
           case HIDTag_Output:
-          case HIDTag_Feature:
-            lhidError = _USBHostHID_Parse_ReportType(&item);
-            break;
+          case HIDTag_Feature: lhidError = _USBHostHID_Parse_ReportType(&item); break;
 
-          case HIDTag_Collection:
-            _USBHostHID_Parse_Collection(&item);
-            break;
+          case HIDTag_Collection: _USBHostHID_Parse_Collection(&item); break;
 
-          case HIDTag_EndCollection:
-            _USBHostHID_Parse_EndCollection(&item);
-            break;
+          case HIDTag_EndCollection: _USBHostHID_Parse_EndCollection(&item); break;
         }
         break;
 
       case HIDType_Global: /* look for Global Items*/
         switch(item.ItemDetails.ItemTag) {
-          case HIDTag_UsagePage:
-            deviceRptInfo.globals.usagePage = item.Data.uItemData;
-            break;
+          case HIDTag_UsagePage: deviceRptInfo.globals.usagePage = item.Data.uItemData; break;
 
           case HIDTag_LogicalMinimum: /* convert to signed val */
             //  Sign extend one value
@@ -427,13 +407,12 @@ _USBHostHID_Parse_Report(uint8_t* hidReportDescriptor,
             deviceRptInfo.globals.physicalMaximum = item.Data.uItemData;
             break;
 
-          case HIDTag_UnitExponent:
-            deviceRptInfo.globals.unitExponent = item.Data.uItemData;
-            break;
+          case HIDTag_UnitExponent: deviceRptInfo.globals.unitExponent = item.Data.uItemData; break;
 
           case HIDTag_ReportSize:
             deviceRptInfo.globals.reportsize = item.Data.uItemData;
-            if(deviceRptInfo.globals.reportsize == 0) lhidError = HID_ERR_ZeroReportSize;
+            if(deviceRptInfo.globals.reportsize == 0)
+              lhidError = HID_ERR_ZeroReportSize;
             break;
 
           case HIDTag_ReportID:
@@ -473,13 +452,9 @@ _USBHostHID_Parse_Report(uint8_t* hidReportDescriptor,
             }
             break;
 
-          case HIDTag_Push:
-            itemListPtrs.globalsStack[deviceRptInfo.globalsNesting++] = deviceRptInfo.globals;
-            break;
+          case HIDTag_Push: itemListPtrs.globalsStack[deviceRptInfo.globalsNesting++] = deviceRptInfo.globals; break;
 
-          case HIDTag_Pop:
-            deviceRptInfo.globals = itemListPtrs.globalsStack[--deviceRptInfo.globalsNesting];
-            break;
+          case HIDTag_Pop: deviceRptInfo.globals = itemListPtrs.globalsStack[--deviceRptInfo.globalsNesting]; break;
         }
         break;
 
@@ -639,14 +614,12 @@ _USBHostHID_Parse_Report(uint8_t* hidReportDescriptor,
             break;
             break;
 
-          case HIDTag_SetDelimiter:
-            break;
+          case HIDTag_SetDelimiter: break;
         }
 
         break;
 
-      default:
-        break;
+      default: break;
     }
     /* during 2nd parse if any anomaly is found in report format abort parsing and return */
     if(lhidError) {
@@ -661,9 +634,12 @@ _USBHostHID_Parse_Report(uint8_t* hidReportDescriptor,
   //  Remove reports that have just the report id
 
   for(i = 1; i < deviceRptInfo.reports; i++) {
-    if(itemListPtrs.reportList[i].inputBits == 8) itemListPtrs.reportList[i].inputBits = 0;
-    if(itemListPtrs.reportList[i].outputBits == 8) itemListPtrs.reportList[i].outputBits = 0;
-    if(itemListPtrs.reportList[i].featureBits == 8) itemListPtrs.reportList[i].featureBits = 0;
+    if(itemListPtrs.reportList[i].inputBits == 8)
+      itemListPtrs.reportList[i].inputBits = 0;
+    if(itemListPtrs.reportList[i].outputBits == 8)
+      itemListPtrs.reportList[i].outputBits = 0;
+    if(itemListPtrs.reportList[i].featureBits == 8)
+      itemListPtrs.reportList[i].featureBits = 0;
   }
 
   return (lhidError);
@@ -841,7 +817,8 @@ _USBHostHID_Parse_ReportType(HID_ITEM_INFO* item) {
   HID_REPORT* lreport = NULL;
   uint16_t bits = 0;
 
-  if(item == NULL) return (HID_ERR_NullPointer);
+  if(item == NULL)
+    return (HID_ERR_NullPointer);
 
   //  Reality Check on the Report Main Item
 
@@ -851,9 +828,12 @@ _USBHostHID_Parse_ReportType(HID_ITEM_INFO* item) {
     return (HID_ERR_BadLogicalMax);
   // The barcode scanner has this issue.  We'll ignore it.
   // if (deviceRptInfo.globals.logicalMinimum > deviceRptInfo.globals.logicalMaximum)return(HID_ERR_BadLogical);
-  if(deviceRptInfo.haveUsageMin || deviceRptInfo.haveUsageMax) return (HID_ERR_UnmatchedUsageRange);
-  if(deviceRptInfo.haveStringMin || deviceRptInfo.haveStringMax) return (HID_ERR_UnmatchedStringRange);
-  if(deviceRptInfo.haveDesignatorMin || deviceRptInfo.haveDesignatorMax) return (HID_ERR_UnmatchedDesignatorRange);
+  if(deviceRptInfo.haveUsageMin || deviceRptInfo.haveUsageMax)
+    return (HID_ERR_UnmatchedUsageRange);
+  if(deviceRptInfo.haveStringMin || deviceRptInfo.haveStringMax)
+    return (HID_ERR_UnmatchedStringRange);
+  if(deviceRptInfo.haveDesignatorMin || deviceRptInfo.haveDesignatorMax)
+    return (HID_ERR_UnmatchedDesignatorRange);
 
   //  Initialize the new Report Item structure
 
@@ -891,9 +871,7 @@ _USBHostHID_Parse_ReportType(HID_ITEM_INFO* item) {
       lreportItem->startBit = lreport->inputBits;
       lreport->inputBits += bits;
       break;
-    default:
-      lreportItem->reportType = hidReportUnknown;
-      break;
+    default: lreportItem->reportType = hidReportUnknown; break;
   }
 
   return HID_ERR;
@@ -928,7 +906,8 @@ _USBHostHID_ConvertDataToSigned(HID_ITEM_INFO* item) {
   index = item->ItemDetails.ItemSize;
 
   if(index) {
-    if(item->ItemDetails.ItemSize == 3) index = 4;
+    if(item->ItemDetails.ItemSize == 3)
+      index = 4;
 
     dataByte = item->Data.bItemData[index - 1];
     if((dataByte & 0x80) != 0) {
@@ -977,7 +956,8 @@ USBHostHID_HasUsage(HID_REPORTITEM* reportItem, uint16_t usagePage, uint16_t usa
 
   //  Disallow Null Pointers
 
-  if((reportItem == NULL) | (pindex == NULL)) return false;
+  if((reportItem == NULL) | (pindex == NULL))
+    return false;
 
   //  Look through the Usage Items for this Usage
 
@@ -995,7 +975,8 @@ USBHostHID_HasUsage(HID_REPORTITEM* reportItem, uint16_t usagePage, uint16_t usa
       //            Otherwise adjust the index by the size of the range
 
       if((usage >= hidUsageItem->usageMinimum) && (usage <= hidUsageItem->usageMaximum)) {
-        if(pindex != NULL) *pindex = usageIndex + (usage - hidUsageItem->usageMinimum);
+        if(pindex != NULL)
+          *pindex = usageIndex + (usage - hidUsageItem->usageMinimum);
 
         //              If this usage is the last one for this reportItem
         //                then it gets all of the remaining ReportCount
@@ -1010,10 +991,12 @@ USBHostHID_HasUsage(HID_REPORTITEM* reportItem, uint16_t usagePage, uint16_t usa
           } else
             *count = 1;
         }
-        if(onPage) return true;
+        if(onPage)
+          return true;
       }
       usages = hidUsageItem->usageMaximum - hidUsageItem->usageMinimum + 1;
-      if(usages < 0) usages = -usages;
+      if(usages < 0)
+        usages = -usages;
       usageIndex += usages;
     } else {
       //          For Usages
@@ -1022,7 +1005,8 @@ USBHostHID_HasUsage(HID_REPORTITEM* reportItem, uint16_t usagePage, uint16_t usa
       //          Otherwise one less to index through
 
       if(usage == hidUsageItem->usage) {
-        if(pindex != NULL) *pindex = usageIndex;
+        if(pindex != NULL)
+          *pindex = usageIndex;
         if(count != NULL) {
           if((i + 1) == reportItem->usageItems) {
             countsLeft = reportItem->globals.reportCount - usageIndex;
@@ -1033,7 +1017,8 @@ USBHostHID_HasUsage(HID_REPORTITEM* reportItem, uint16_t usagePage, uint16_t usa
           } else
             *count = 1;
         }
-        if(onPage) return true;
+        if(onPage)
+          return true;
       }
       usageIndex++;
     }
@@ -1100,11 +1085,14 @@ USBHID_ReportDecriptor_Dump(void) {
     lreport = &itemListPtrs.reportList[i];
     UART2PrintString("\r\nReportID : ");
     UART2PutHex(lreport->reportID);
-    if(lreport->inputBits > 0) UART2PrintString("\r\nInbits   : ");
+    if(lreport->inputBits > 0)
+      UART2PrintString("\r\nInbits   : ");
     UART2PutHex(lreport->inputBits);
-    if(lreport->outputBits > 0) UART2PrintString("\r\nOutbits  : ");
+    if(lreport->outputBits > 0)
+      UART2PrintString("\r\nOutbits  : ");
     UART2PutHex(lreport->outputBits);
-    if(lreport->featureBits > 0) UART2PrintString("\r\nFeatbits : ");
+    if(lreport->featureBits > 0)
+      UART2PrintString("\r\nFeatbits : ");
     UART2PutHex(lreport->featureBits);
   }
   for(i = 0; i < deviceRptInfo.reportItems; i++) {

@@ -148,12 +148,14 @@ extern void USB_DEVICE_HID_IDLE_RATE_CALLBACK(uint8_t reportId, uint8_t idleRate
 
     Remarks:
         None
- 
+
  *******************************************************************/
 void
 USBCheckHIDRequest(void) {
-  if(SetupPkt.Recipient != USB_SETUP_RECIPIENT_INTERFACE_BITFIELD) return;
-  if(SetupPkt.bIntfID != HID_INTF_ID) return;
+  if(SetupPkt.Recipient != USB_SETUP_RECIPIENT_INTERFACE_BITFIELD)
+    return;
+  if(SetupPkt.bIntfID != HID_INTF_ID)
+    return;
 
   /*
    * There are two standard requests that hid.c may support.
@@ -209,17 +211,13 @@ USBCheckHIDRequest(void) {
       USER_SET_REPORT_HANDLER();
 #endif
       break;
-    case GET_IDLE:
-      USBEP0SendRAMPtr((uint8_t*)&idle_rate, 1, USB_EP0_INCLUDE_ZERO);
-      break;
+    case GET_IDLE: USBEP0SendRAMPtr((uint8_t*)&idle_rate, 1, USB_EP0_INCLUDE_ZERO); break;
     case SET_IDLE:
       USBEP0Transmit(USB_EP0_NO_DATA);
       idle_rate = ((USB_SETUP_SET_IDLE_RATE*)&SetupPkt)->duration;
       USB_DEVICE_HID_IDLE_RATE_CALLBACK(((USB_SETUP_SET_IDLE_RATE*)&SetupPkt)->reportId, idle_rate);
       break;
-    case GET_PROTOCOL:
-      USBEP0SendRAMPtr((uint8_t*)&active_protocol, 1, USB_EP0_NO_OPTIONS);
-      break;
+    case GET_PROTOCOL: USBEP0SendRAMPtr((uint8_t*)&active_protocol, 1, USB_EP0_NO_OPTIONS); break;
     case SET_PROTOCOL:
       USBEP0Transmit(USB_EP0_NO_DATA);
       active_protocol = ((USB_SETUP_SET_PROTOCOL*)&SetupPkt)->protocol;
@@ -231,7 +229,7 @@ USBCheckHIDRequest(void) {
 /********************************************************************
     Function:
         USB_HANDLE HIDTxPacket(uint8_t ep, uint8_t* data, uint16_t len)
-        
+
     Summary:
         Sends the specified data out the specified endpoint
 
@@ -249,32 +247,32 @@ USBCheckHIDRequest(void) {
             USBInHandle = HIDTxPacket(HID_EP,(uint8_t*)&ToSendDataBuffer[0],sizeof(ToSendDataBuffer));
         }
         </code>
-        
+
     PreCondition:
         None
-        
+
     Parameters:
         uint8_t ep    - the endpoint you want to send the data out of
         uint8_t* data - pointer to the data that you wish to send
         uint16_t len   - the length of the data that you wish to send
-        
+
     Return Values:
         USB_HANDLE - a handle for the transfer.  This information
         should be kept to track the status of the transfer
-        
+
     Remarks:
         None
-  
+
  *******************************************************************/
 // Implemented as a macro. See usb_function_hid.h
 
 /********************************************************************
     Function:
         USB_HANDLE HIDRxPacket(uint8_t ep, uint8_t* data, uint16_t len)
-        
+
     Summary:
         Receives the specified data out the specified endpoint
-        
+
     Description:
         Receives the specified data out the specified endpoint.
 
@@ -288,19 +286,19 @@ USBCheckHIDRequest(void) {
 
     PreCondition:
         None
-        
+
     Parameters:
         uint8_t ep    - the endpoint you want to receive the data into
         uint8_t* data - pointer to where the data will go when it arrives
         uint16_t len   - the length of the data that you wish to receive
-        
+
     Return Values:
         USB_HANDLE - a handle for the transfer.  This information
         should be kept to track the status of the transfer
-        
+
     Remarks:
         None
-  
+
  *******************************************************************/
 // Implemented as a macro. See usb_function_hid.h
 

@@ -57,11 +57,13 @@ Flash_ReadBytes(uint16_t start_addr, uint16_t bytes, uint8_t* flash_array) {
 
     *flash_array++ = _EEDATA;
     bytes--;
-    if(bytes == 0) break;
+    if(bytes == 0)
+      break;
 
     *flash_array++ = _EEDATH;
     bytes--;
-    if(bytes == 0) break;
+    if(bytes == 0)
+      break;
 
     start_addr++;
   }
@@ -130,7 +132,8 @@ Flash_WriteBlock(uint16_t start_addr, uint8_t* flash_array) {
     _EEDATA = *flash_array++;
     _EEDATH = *flash_array++;
     word_cnt--;
-    if(word_cnt == 0) break;
+    if(word_cnt == 0)
+      break;
     _EECON2 = 0x55;
     _EECON2 = 0xAA;
     _EECON1bits.WR = 1;
@@ -159,12 +162,14 @@ Flash_ReadBytes(uint24_t start_addr, uint24_t bytes, uint8_t* flash_array) {
     asm("TBLRDPOSTINC");
     *flash_array++ = TABLAT;
     bytes--;
-    if(bytes == 0) break;
+    if(bytes == 0)
+      break;
 
     asm("TBLRDPOSTINC");
     *flash_array++ = TABLAT;
     bytes--;
-    if(bytes == 0) break;
+    if(bytes == 0)
+      break;
 
     start_addr += 2;
   }

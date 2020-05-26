@@ -239,11 +239,13 @@ main(int argc, char* argv[]) {
   bool use16bit = false;
 
   if(argc > 1) {
-    if(!strcasecmp(argv[1], "-h") || !strcasecmp(argv[1], "-help") || !strcasecmp(argv[1], "--help")) usage(argv[0]);
+    if(!strcasecmp(argv[1], "-h") || !strcasecmp(argv[1], "-help") || !strcasecmp(argv[1], "--help"))
+      usage(argv[0]);
     steps = atoi(argv[1]);
   }
   if(argc > 2) {
-    if(!strcmp(argv[2], "1") || !strcasecmp(argv[2], "true")) use16bit = true;
+    if(!strcmp(argv[2], "1") || !strcasecmp(argv[2], "true"))
+      use16bit = true;
   }
   if(argc > 3) {
     sat = atoi(argv[3]);

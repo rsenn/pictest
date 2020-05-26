@@ -231,7 +231,7 @@ uint8_t USBHostAudioV1SetInterfaceFullBandwidth(uint8_t deviceAddress);
     USB_SUCCESS                 - Request started successfully
     USB_AUDIO_DEVICE_NOT_FOUND  - No device with the specified address.
     Others                      - See USBHostIssueDeviceRequest()
-    
+
   Remarks:
     None
   ***************************************************************************/
@@ -257,7 +257,7 @@ uint8_t USBHostAudioV1SetInterfaceZeroBandwidth(uint8_t deviceAddress);
     function USBHostAudioV1SupportedFrequencies() to obtain a pointer to the
     number and list of supported frequencies, and pass a pointer to the desired
     frequency in this list.
-    
+
   Precondition:
     None
 
@@ -288,7 +288,7 @@ uint8_t USBHostAudioV1SetInterfaceZeroBandwidth(uint8_t deviceAddress);
             // Continuous sampling, minimum and maximum are specified.
             uint32_t   minFrequency;
             uint32_t   maxFrequency;
-            
+
             minFrequency = *ptr + (*(ptr+1) << 8) + (*(ptr+2) << 16);
             ptr += 3;
             maxFrequency = *ptr + (*(ptr+1) << 8) + (*(ptr+2) << 16);
@@ -305,7 +305,7 @@ uint8_t USBHostAudioV1SetInterfaceZeroBandwidth(uint8_t deviceAddress);
         {
             // Discrete sampling frequencies are specified.
             uint32_t frequency;
-            
+
             while (numFrequencies)
             {
                 frequency = *ptr + (*(ptr+1) << 8) + (*(ptr+2) << 16);
@@ -324,7 +324,7 @@ uint8_t USBHostAudioV1SetInterfaceZeroBandwidth(uint8_t deviceAddress);
         }
     }
     </code>
-  
+
   Remarks:
     If a global variable is used to old the frequency, it can be declared as
     a uint32_t.  Since PIC Microcontrollers are little endian machines, a
@@ -334,7 +334,7 @@ uint8_t USBHostAudioV1SetInterfaceZeroBandwidth(uint8_t deviceAddress);
 
     rc = USBHostAudioV1SetSamplingFrequency( deviceAddress, (uint8_t *)(&desiredFrequency) );
     </code>
-    
+
   ***************************************************************************/
 
 uint8_t USBHostAudioV1SetSamplingFrequency(uint8_t deviceAddress, uint8_t* frequency);
@@ -342,7 +342,7 @@ uint8_t USBHostAudioV1SetSamplingFrequency(uint8_t deviceAddress, uint8_t* frequ
 /****************************************************************************
   Function:
     uint8_t * USBHostAudioV1SupportedFrequencies( uint8_t deviceAddress )
-    
+
   Summary:
     This function returns a pointer to the list of supported frequencies.
 
@@ -377,7 +377,7 @@ uint8_t USBHostAudioV1SetSamplingFrequency(uint8_t deviceAddress, uint8_t* frequ
             // Continuous sampling, minimum and maximum are specified.
             uint32_t   minFrequency;
             uint32_t   maxFrequency;
-            
+
             minFrequency = *ptr + (*(ptr+1) << 8) + (*(ptr+2) << 16);
             ptr += 3;
             maxFrequency = *ptr + (*(ptr+1) << 8) + (*(ptr+2) << 16);
@@ -394,7 +394,7 @@ uint8_t USBHostAudioV1SetSamplingFrequency(uint8_t deviceAddress, uint8_t* frequ
         {
             // Discrete sampling frequencies are specified.
             uint32_t frequency;
-            
+
             while (numFrequencies)
             {
                 frequency = *ptr + (*(ptr+1) << 8) + (*(ptr+2) << 16);
@@ -413,7 +413,7 @@ uint8_t USBHostAudioV1SetSamplingFrequency(uint8_t deviceAddress, uint8_t* frequ
         }
     }
     </code>
-  
+
   Remarks:
     None
   ***************************************************************************/

@@ -44,9 +44,12 @@ UsageDescriptor::UsageDescriptor(unsigned int id,
 
 bool
 UsageDescriptor::operator==(const string& argument) const {
-  if(argument.size() == 0) return false;
-  if(isEqual(argument, _shortArgument)) return true;
-  if(isEqual(argument, _verboseArgument)) return true;
+  if(argument.size() == 0)
+    return false;
+  if(isEqual(argument, _shortArgument))
+    return true;
+  if(isEqual(argument, _verboseArgument))
+    return true;
   return false;
 }
 

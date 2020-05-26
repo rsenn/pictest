@@ -32,40 +32,38 @@
   Section: Macro Declarations
 */
 
-#define PWM4_INITIALIZE_DUTY_VALUE    0
+#define PWM4_INITIALIZE_DUTY_VALUE 0
 
 /**
   Section: PWM Module APIs
 */
 
-void PWM4_Initialize(void)
-{
-    // Set the PWM4 to the options selected in the User Interface
-	
-	// CCP4M PWM; DC4B 0; 
-	CCP4CON = 0x0C;    
-	
-	// CCPR4L 0; 
-	CCPR4L = 0x00;    
-	
-	// CCPR4H 0; 
-	CCPR4H = 0x00;    
+void
+PWM4_Initialize(void) {
+  // Set the PWM4 to the options selected in the User Interface
 
-	// Selecting Timer 2
-	CCPTMRS0bits.C4TSEL = 0x0;
-    
+  // CCP4M PWM; DC4B 0;
+  CCP4CON = 0x0C;
+
+  // CCPR4L 0;
+  CCPR4L = 0x00;
+
+  // CCPR4H 0;
+  CCPR4H = 0x00;
+
+  // Selecting Timer 2
+  CCPTMRS0bits.C4TSEL = 0x0;
 }
 
-void PWM4_LoadDutyValue(uint16_t dutyValue)
-{
-   // Writing to 8 MSBs of pwm duty cycle in CCPRL register
-    CCPR4L = ((dutyValue & 0x03FC)>>2);
-    
-   // Writing to 2 LSBs of pwm duty cycle in CCPCON register
-    CCP4CON = ((uint8_t)(CCP4CON & 0xCF) | ((dutyValue & 0x0003)<<4));
+void
+PWM4_LoadDutyValue(uint16_t dutyValue) {
+  // Writing to 8 MSBs of pwm duty cycle in CCPRL register
+  CCPR4L = ((dutyValue & 0x03FC) >> 2);
+
+  // Writing to 2 LSBs of pwm duty cycle in CCPCON register
+  CCP4CON = ((uint8_t)(CCP4CON & 0xCF) | ((dutyValue & 0x0003) << 4));
 }
 
 /**
  End of File
 */
-

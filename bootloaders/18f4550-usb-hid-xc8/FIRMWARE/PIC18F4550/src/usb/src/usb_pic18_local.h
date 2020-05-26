@@ -146,46 +146,46 @@ typedef union __BDT {
 /****************************************************************
     Function:
         void USBPowerModule(void)
-        
+
     Description:
         This macro is used to power up the USB module if required<br>
         PIC18: defines as nothing<br>
         PIC24: defines as U1PWRCbits.USBPWR = 1;<br>
-    
+
     Precondition:
         None
-        
+
     Parameters:
         None
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-    
+
   ****************************************************************/
 #define USBPowerModule()
 
 /****************************************************************
     Function:
         USBSetBDTAddress(addr)
-        
+
     Description:
         This macro is used to power up the USB module if required
-        
+
     Precondition:
         None
-        
+
     Parameters:
         None
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-     
+
   ****************************************************************/
 #define USBSetBDTAddress(addr)
 #define USBPingPongBufferReset UCONbits.PPBRST

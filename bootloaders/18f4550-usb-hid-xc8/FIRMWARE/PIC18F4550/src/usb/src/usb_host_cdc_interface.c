@@ -322,11 +322,9 @@ USBHostCDC_Api_ACM_Request(uint8_t requestType, uint8_t size, uint8_t* data) {
                                       0);
       break;
 
-    case USB_CDC_SET_COMM_FEATURE:
-      break;
+    case USB_CDC_SET_COMM_FEATURE: break;
 
-    case USB_CDC_GET_COMM_FEATURE:
-      break;
+    case USB_CDC_GET_COMM_FEATURE: break;
 
     case USB_CDC_SET_LINE_CODING:
       return_val = USBHostCDCTransfer(
@@ -348,11 +346,8 @@ USBHostCDC_Api_ACM_Request(uint8_t requestType, uint8_t size, uint8_t* data) {
                                       0);
       break;
 
-    case USB_CDC_SEND_BREAK:
-      break;
-    default:
-      return USB_CDC_ILLEGAL_REQUEST;
-      break;
+    case USB_CDC_SEND_BREAK: break;
+    default: return USB_CDC_ILLEGAL_REQUEST; break;
   }
   return return_val;
 }

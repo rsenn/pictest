@@ -188,14 +188,16 @@ MSD_ClassRequest(void) {
     USB_RequestError();
   }                                      // Max Logic Unit Number
   else if(SetupData.bRequest == BOMSR) { // Bulk Only Mass Storage Reset
-    if(SetupData.wValue != 0 || SetupData.wIndex != 0 || SetupData.wLength != 0) return false;
+    if(SetupData.wValue != 0 || SetupData.wIndex != 0 || SetupData.wLength != 0)
+      return false;
 #if PINGPONG_MODE == PINGPONG_1_15 || PINGPONG_MODE == PINGPONG_ALL_EP
     if(MSD_EP_OUT_LAST_PPB == ODD && BDT.Array[MSD_BD_OUT_EVEN].STATbits.UOWN == 0)
       MSD_SetupCBW();
     else if(MSD_EP_OUT_LAST_PPB == EVEN && BDT.Array[MSD_BD_OUT_ODD].STATbits.UOWN == 0)
       MSD_SetupCBW();
 #else
-    if(!BDT.Array[MSD_BD_OUT].STATbits.UOWN) MSD_SetupCBW();
+    if(!BDT.Array[MSD_BD_OUT].STATbits.UOWN)
+      MSD_SetupCBW();
 #endif
     MSD_Tcnt = 0;
     MSD_TputIndex = 0;
@@ -271,7 +273,8 @@ void
 MSD_AddTask(void) {
   if(MSD_Tcnt < 4) {
     MSD_Tasks_Buffer.Task[MSD_TputIndex++] = LastUSTAT.BYTE;
-    if(MSD_TputIndex == 4) MSD_TputIndex = 0;
+    if(MSD_TputIndex == 4)
+      MSD_TputIndex = 0;
     MSD_Tcnt++;
   }
 }
@@ -299,12 +302,14 @@ MSD_Tasks(void) {
       switch(MSD_STATE) {
 #ifdef USE_WRITE_10
         case MSD_WRITE_DATA:
-          if(MSD_ServiceWrite10()) MSD_SetupCSW();
+          if(MSD_ServiceWrite10())
+            MSD_SetupCSW();
           break;
 #endif
         case MSD_CBW:
           MSD_STATE = MSD_ServiceCBW();
-          if(MSD_STATE == MSD_NO_DATA_STAGE) MSD_SetupCSW();
+          if(MSD_STATE == MSD_NO_DATA_STAGE)
+            MSD_SetupCSW();
           break;
       }
     } else {
@@ -323,9 +328,7 @@ MSD_Tasks(void) {
           }
           break;
 #if PINGPONG_MODE == PINGPONG_1_15 || PINGPONG_MODE == PINGPONG_ALL_EP
-        case MSD_READ_FINISHED:
-          MSD_STATE = MSD_DATA_SENT;
-          break;
+        case MSD_READ_FINISHED: MSD_STATE = MSD_DATA_SENT; break;
 #endif
         case MSD_DATA_SENT:
           if(EndDataInShort) {
@@ -341,13 +344,12 @@ MSD_Tasks(void) {
           }
           MSD_SetupCSW();
           break;
-        case MSD_CSW:
-          MSD_SetupCBW();
-          break;
+        case MSD_CSW: MSD_SetupCBW(); break;
       }
     }
     MSD_TgetIndex++;
-    if(MSD_TgetIndex == 4) MSD_TgetIndex = 0;
+    if(MSD_TgetIndex == 4)
+      MSD_TgetIndex = 0;
     MSD_Tcnt--;
   } else if(ClearHaltEvent) {
     if(MSD_STATE == MSD_WAIT_IVALID) {
@@ -445,12 +447,14 @@ MSD_ServiceCBW(void) {
 #endif
     case READ_10:
 #ifdef USE_EXTERNAL_MEDIA
-      if(!MSD_CheckForMedia()) goto COMMAND_ERROR;
+      if(!MSD_CheckForMedia())
+        goto COMMAND_ERROR;
 #endif
       R_W_10_Vars.TF_LEN_BYTES[0] = Read_10_Cmd.TF_LEN_BYTES[1];
       R_W_10_Vars.TF_LEN_BYTES[1] = Read_10_Cmd.TF_LEN_BYTES[0];
 
-      if(R_W_10_Vars.TF_LEN == 0) return MSD_NoDataResponse(COMMAND_PASSED);
+      if(R_W_10_Vars.TF_LEN == 0)
+        return MSD_NoDataResponse(COMMAND_PASSED);
 
 #ifdef USE_WRITE_10
       if(CBW_Data.CBWCB0[0] == READ_10)
@@ -541,7 +545,8 @@ MSD_ServiceCBW(void) {
 
     case TEST_UNIT_READY:
 #ifdef USE_EXTERNAL_MEDIA
-      if(!MSD_CheckForMedia()) return MSD_NoDataResponse(COMMAND_FAILED);
+      if(!MSD_CheckForMedia())
+        return MSD_NoDataResponse(COMMAND_FAILED);
 #endif
       MSD_ResetSenseData();
 #ifdef USE_TEST_UNIT_READY
@@ -553,7 +558,8 @@ MSD_ServiceCBW(void) {
 #ifdef USE_PREVENT_ALLOW_MEDIUM_REMOVAL
     case PREVENT_ALLOW_MEDIUM_REMOVAL:
 #ifdef USE_EXTERNAL_MEDIA
-      if(!MSD_CheckForMedia()) return MSD_NoDataResponse(COMMAND_FAILED);
+      if(!MSD_CheckForMedia())
+        return MSD_NoDataResponse(COMMAND_FAILED);
 #endif
       goto COMMAND_ERROR;
       break;
@@ -571,7 +577,8 @@ MSD_ServiceCBW(void) {
       BytesToTransfer.LB = Request_Sense_Cmd.ALLOCATION_LENGTH;
       BytesToTransfer.HB = 0;
       if(BytesToTransfer.val) {
-        if(BytesToTransfer.val > 18) BytesToTransfer.val = 18;
+        if(BytesToTransfer.val > 18)
+          BytesToTransfer.val = 18;
 #if PINGPONG_MODE == PINGPONG_1_15 || PINGPONG_MODE == PINGPONG_ALL_EP
         USB_RAMCopy((uint8_t*)Fixed_Format_Sense_Data.BYTE, IN_EPaddress, BytesToTransfer.val);
 #else
@@ -585,7 +592,8 @@ MSD_ServiceCBW(void) {
       BytesToTransfer.LB = Inquiry_Cmd.ALLOCATION_LENGTH_BYTES[1];
       BytesToTransfer.HB = Inquiry_Cmd.ALLOCATION_LENGTH_BYTES[0];
       if(BytesToTransfer.val) {
-        if(BytesToTransfer.val > 36) BytesToTransfer.val = 36;
+        if(BytesToTransfer.val > 36)
+          BytesToTransfer.val = 36;
 #if PINGPONG_MODE == PINGPONG_1_15 || PINGPONG_MODE == PINGPONG_ALL_EP
         USB_ROMCopy((const uint8_t*)&SCSI_Inquiry_Data, IN_EPaddress, BytesToTransfer.val);
 #else
@@ -597,12 +605,14 @@ MSD_ServiceCBW(void) {
 
     case MODE_SENSE_6:
 #ifdef USE_EXTERNAL_MEDIA
-      if(!MSD_CheckForMedia()) goto COMMAND_ERROR;
+      if(!MSD_CheckForMedia())
+        goto COMMAND_ERROR;
 #endif
       BytesToTransfer.LB = Mode_Sense_6_Cmd.ALLOCATION_LENGTH;
       BytesToTransfer.HB = 0;
       if(BytesToTransfer.val) {
-        if(BytesToTransfer.val > 4) BytesToTransfer.val = 4;
+        if(BytesToTransfer.val > 4)
+          BytesToTransfer.val = 4;
         Mode_Sense_Data.MODE_DATA_LENGTH = 0x03;
         Mode_Sense_Data.MEDIUM_TYPE = 0x00;
         Mode_Sense_Data.DEVICE_SPECIFIC_PARAMETER = 0x00; // 0x00 for R/W, 0x80 for R-only
@@ -617,7 +627,8 @@ MSD_ServiceCBW(void) {
 #ifdef USE_START_STOP_UNIT
     case START_STOP_UNIT:
 #ifdef USE_EXTERNAL_MEDIA
-      if(!MSD_CheckForMedia()) goto COMMAND_ERROR;
+      if(!MSD_CheckForMedia())
+        goto COMMAND_ERROR;
 #endif
 #ifdef USE_START_STOP_UNIT
       return MSD_NoDataResponse(MSD_StartStopUnit());
@@ -628,7 +639,8 @@ MSD_ServiceCBW(void) {
 
     case READ_CAPACITY:
 #ifdef USE_EXTERNAL_MEDIA
-      if(!MSD_CheckForMedia()) goto COMMAND_ERROR;
+      if(!MSD_CheckForMedia())
+        goto COMMAND_ERROR;
 #endif
       if((Read_Capacity_10_Cmd.LOGICAL_BLOCK_ADDRESS != 0) && (Read_Capacity_10_Cmd.PMI == 0)) {
         // CHECK CONDITION status, ILLEGAL REQUEST sense key, INVALID FIELD IN CDB sense code
@@ -662,7 +674,8 @@ MSD_ServiceCBW(void) {
 #ifdef USE_VERIFY_10
     case VERIFY_10:
 #ifdef USE_EXTERNAL_MEDIA
-      if(!MSD_CheckForMedia()) goto COMMAND_ERROR;
+      if(!MSD_CheckForMedia())
+        goto COMMAND_ERROR;
 #endif
       return MSD_NoDataResponse(COMMAND_PASSED);
 #endif
@@ -836,15 +849,20 @@ MSD_CBW_Valid(void) {
   bool valid_sts = true;
 #if PINGPONG_MODE == PINGPONG_1_15 || PINGPONG_MODE == PINGPONG_ALL_EP
   if(MSD_EP_OUT_LAST_PPB == ODD) {
-    if(BDT.Array[MSD_BD_OUT_ODD].CNT != 31) valid_sts = false;
+    if(BDT.Array[MSD_BD_OUT_ODD].CNT != 31)
+      valid_sts = false;
   } else {
-    if(BDT.Array[MSD_BD_OUT_EVEN].CNT != 31) valid_sts = false;
+    if(BDT.Array[MSD_BD_OUT_EVEN].CNT != 31)
+      valid_sts = false;
   }
 #else
-  if(BDT.Array[MSD_BD_OUT].CNT != 31) valid_sts = false;
+  if(BDT.Array[MSD_BD_OUT].CNT != 31)
+    valid_sts = false;
 #endif
-  if(CBW_Data.dCBWSignature != 0x43425355) valid_sts = false;
-  if(!valid_sts) WaitForBOMSR = true;
+  if(CBW_Data.dCBWSignature != 0x43425355)
+    valid_sts = false;
+  if(!valid_sts)
+    WaitForBOMSR = true;
   return valid_sts;
 }
 
@@ -1015,7 +1033,8 @@ MSD_SendDataResponse(uint32_t DeviceBytes) {
     else
       CSW_Data.bCSWStatus = PHASE_ERROR;
 
-    if(CaseResult == CASE_5) EndDataInShort = true;
+    if(CaseResult == CASE_5)
+      EndDataInShort = true;
 
     return return_val;
   } else {

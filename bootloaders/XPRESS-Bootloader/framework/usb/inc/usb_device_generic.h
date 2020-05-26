@@ -38,7 +38,7 @@ please contact mla_licensing@microchip.com
 /********************************************************************
     Function:
         USB_HANDLE USBGenWrite(BYTE ep, BYTE* data, WORD len)
-        
+
     Summary:
         Sends the specified data out the specified endpoint
 
@@ -56,32 +56,32 @@ please contact mla_licensing@microchip.com
             USBGenericInHandle = USBGenWrite(USBGEN_EP_NUM,(BYTE*)&INPacket[0],sizeof(INPacket));
         }
         </code>
-        
+
     PreCondition:
         None
-        
+
     Parameters:
         BYTE ep    - the endpoint you want to send the data out of
         BYTE* data - pointer to the data that you wish to send
         WORD len   - the length of the data that you wish to send
-        
+
     Return Values:
         USB_HANDLE - a handle for the transfer.  This information
         should be kept to track the status of the transfer
-        
+
     Remarks:
         None
-  
+
  *******************************************************************/
 #define USBGenWrite(ep, data, len) USBTxOnePacket(ep, data, len)
 
 /********************************************************************
     Function:
         USB_HANDLE USBGenRead(BYTE ep, BYTE* data, WORD len)
-        
+
     Summary:
         Receives the specified data out the specified endpoint
-        
+
     Description:
         Receives the specified data out the specified endpoint.
 
@@ -98,19 +98,19 @@ please contact mla_licensing@microchip.com
 
     PreCondition:
         None
-        
+
     Parameters:
         BYTE ep - the endpoint you want to receive the data into
         BYTE* data - pointer to where the data will go when it arrives
         WORD len - the length of the data that you wish to receive
-        
+
     Return Values:
         USB_HANDLE - a handle for the transfer.  This information
         should be kept to track the status of the transfer
-        
+
     Remarks:
         None
-  
+
  *******************************************************************/
 #define USBGenRead(ep, data, len) USBRxOnePacket(ep, data, len)
 
@@ -147,7 +147,7 @@ please contact mla_licensing@microchip.com
         Although this function has a void input, this handler function will
         typically need to look at the 8-byte SETUP packet contents that the
         host just sent, which may contain the vendor class specific request.
-        
+
         Therefore, the statically allocated SetupPkt structure may be looked
         at while in the context of this function, and it will contain the most
         recently received 8-byte SETUP packet data.
@@ -163,12 +163,12 @@ please contact mla_licensing@microchip.com
         will be executed in the interrupt context.  If however the USB stack
         is operated in the USB_POLLING mode, then this function executes in the
         main loop context.
-        
+
         In order to respond to class specific control transfer request(s) in
         this handler function, it is suggested to use one or more of the
         USBEP0SendRAMPtr(), USBEP0SendROMPtr(), or USBEP0Receive() API
         functions.
- 
+
  *******************************************************************/
 void USBCheckVendorRequest(void);
 

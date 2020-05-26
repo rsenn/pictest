@@ -320,7 +320,8 @@ ctmu_interrupt(void) {
   }
 
   // clear TMR2 int flag
-  if(PIR1bits.TMR2IF) PIR1bits.TMR2IF = 0;
+  if(PIR1bits.TMR2IF)
+    PIR1bits.TMR2IF = 0;
 }
 
 #endif /* __CTMU_C */

@@ -2,10 +2,10 @@
 Copyright 2016 Microchip Technology Inc. (www.microchip.com)
 
  bsp/buttons.c
- 
+
   Bit-Banged implementation of the PIC16F1 (250K) LVP protocol
   Based on the PIC16F188XX specification
-  
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -59,11 +59,9 @@ limitations under the License.
 bool
 BUTTON_IsPressed(BUTTON button) {
   switch(button) {
-    case BUTTON_S1:
-      return ((S1_PORT == BUTTON_PRESSED) ? true : false);
+    case BUTTON_S1: return ((S1_PORT == BUTTON_PRESSED) ? true : false);
 
-    case BUTTON_NONE:
-      return false;
+    case BUTTON_NONE: return false;
   }
 
   return false;
@@ -93,7 +91,6 @@ BUTTON_Enable(BUTTON button) {
       S1_ANSEL = PIN_DIGITAL;
       break;
 
-    case BUTTON_NONE:
-      break;
+    case BUTTON_NONE: break;
   }
 }

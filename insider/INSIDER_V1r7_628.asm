@@ -1,5 +1,5 @@
 ;
-PROGRAM INSIDER VR.1.7 * ****WORKS*****;
+PROGRAM INSIDER VR .1.7 * ****WORKS*****;
 ATANASIOS MELIMOPOULOS(pic.insider @gmail.com)
 
     list p = 16F628A,

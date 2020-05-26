@@ -5,9 +5,9 @@
           Processor:       PIC18, PIC24, or PIC32
           Compiler:        C18, C30, or C32
           Company:         Microchip Technology, Inc.
-    
+
           Software License Agreement
-    
+
           The software supplied herewith by Microchip Technology Incorporated
           (the “Company”) for its PICmicro® Microcontroller is intended and
           supplied to you, the Company’s customer, for use solely and
@@ -18,35 +18,35 @@
           user to criminal sanctions under applicable laws, as well as to
           civil liability for the breach of the terms and conditions of this
           license.
-    
+
           THIS SOFTWARE IS PROVIDED IN AN “AS IS” CONDITION. NO WARRANTIES,
           WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED
           TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
           PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. THE COMPANY SHALL NOT,
           IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
           CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
-    
+
   Summary:
     This file contains functions, macros, definitions, variables,
     datatypes, etc. that are required for use of CCID class function
     drivers. This file should be included in projects that use CCID class
     \function drivers.
-    
-    
-    
+
+
+
     This file is located in the "\<Install Directory\>\\Microchip\\USB\\CCID Device Driver" directory.
-  
+
     Description:
     USB CCID Class Driver Header File
-    
+
     This file contains functions, macros, definitions, variables,
     datatypes, etc. that are required for use of CCID class function
     drivers. This file should be included in projects that use CCID class
     \function drivers.
-    
+
     This file is located in the "\<Install Directory\>\\Microchip\\USB\\CCID
     Device Driver" directory.
-    
+
     When including this file in a new project, this file can either be
     referenced from the directory in which it was installed or copied
     directly into the user application folder. If the first method is
@@ -56,17 +56,17 @@
     application folder is located in the same folder as the Microchip
     folder (like the current demo folders), then the following include
     paths need to be added to the application's project:
-    
+
     .
-    
+
     ..\\..\\Microchip\\Include
-    
+
     If a different directory structure is used, modify the paths as
     required. An example using absolute paths instead of relative paths
     would be the following:
-    
+
     C:\\Microchip Solutions\\Microchip\\Include
-    
+
     C:\\Microchip Solutions\\My Demo Application
   ******************************************************************************/
 
@@ -110,67 +110,63 @@ void USB_CCID_GET_DATA_RATES_REQUEST_HANDLER(void);
 /******************************************************************************
     Function:
         void USBCheckCCIDRequest(void)
- 
+
     Description:
         This routine checks the setup data packet to see if it
         knows how to handle it
-        
+
     PreCondition:
         None
 
     Parameters:
         None
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-         
+
   *****************************************************************************/
 void
 USBCheckCCIDRequest(void) {
   /*
    * If request recipient is not an interface then return
    */
-  if(SetupPkt.Recipient != USB_SETUP_RECIPIENT_INTERFACE_BITFIELD) return;
+  if(SetupPkt.Recipient != USB_SETUP_RECIPIENT_INTERFACE_BITFIELD)
+    return;
   /*
    * If request type is not class-specific then return
    */
-  if(SetupPkt.RequestType != USB_SETUP_TYPE_CLASS_BITFIELD) return;
+  if(SetupPkt.RequestType != USB_SETUP_TYPE_CLASS_BITFIELD)
+    return;
   /*
    * Interface ID must match interface number associated with
    * CCID class, else return
    */
-  if(SetupPkt.bIntfID != USB_CCID_INTERFACE_ID) return;
+  if(SetupPkt.bIntfID != USB_CCID_INTERFACE_ID)
+    return;
   switch(SetupPkt.bRequest) // checking for the request ID
   {
 #if defined(USB_CCID_SUPPORT_ABORT_REQUEST)
-    case USB_CCID_ABORT:
-      USB_CCID_ABORT_REQUEST_HANDLER();
-      break;
+    case USB_CCID_ABORT: USB_CCID_ABORT_REQUEST_HANDLER(); break;
 #endif
 
 #if defined(USB_CCID_SUPPORT_GET_CLOCK_FREQUENCIES_REQUEST)
-    case USB_CCID_GET_CLOCK_FREQUENCIES:
-      USB_CCID_GET_CLOCK_FREQUENCIES_REQUEST_HANDLER();
-      break;
+    case USB_CCID_GET_CLOCK_FREQUENCIES: USB_CCID_GET_CLOCK_FREQUENCIES_REQUEST_HANDLER(); break;
 #endif
 
 #if defined(USB_CCID_SUPPORT_GET_DATA_RATES_REQUEST)
-    case USB_CCID_GET_DATA_RATES:
-      USB_CCID_GET_DATA_RATES_REQUEST_HANDLER();
-      break;
+    case USB_CCID_GET_DATA_RATES: USB_CCID_GET_DATA_RATES_REQUEST_HANDLER(); break;
 #endif
-    default:
-      break;
+    default: break;
   } // end switch(SetupPkt.bRequest)
 } // end USBCheckCCIDRequest
 
 /**************************************************************************
   Function:
         void USBCCIDInitEP(void)
-    
+
   Summary:
     This function initializes the CCID function driver. This function should
     be called after the SET_CONFIGURATION command.
@@ -179,11 +175,11 @@ USBCheckCCIDRequest(void) {
     the default line coding (baud rate, bit parity, number of data bits,
     and format). This function also enables the endpoints and prepares for
     the first transfer from the host.
-    
+
     This function should be called after the SET_CONFIGURATION command.
     This is most simply done by calling this function from the
     USBCBInitEP() function.
-    
+
     Typical Usage:
     <code>
         void USBCBInitEP(void)
@@ -226,7 +222,7 @@ USBCCIDInitEP(void) {
 /************************************************************************
   Function:
         void USBCCIDBulkInService(void)
-    
+
   Summary:
     USBCCIDBulkInService handles device-to-host transaction(s). This function
     should be called once per Main Program loop after the device reaches
@@ -235,7 +231,7 @@ USBCCIDInitEP(void) {
     USBCCIDBulkInService handles device-to-host transaction(s). This function
     should be called once per Main Program loop after the device reaches
     the configured state.
-    
+
     Typical Usage:
     <code>
     void main(void)
@@ -279,7 +275,8 @@ USBCCIDBulkInService(void) {
     return;
   }
 
-  if(usbCcidBulkInTrfState == USB_CCID_BULK_IN_COMPLETING) usbCcidBulkInTrfState = USB_CCID_BULK_IN_READY;
+  if(usbCcidBulkInTrfState == USB_CCID_BULK_IN_COMPLETING)
+    usbCcidBulkInTrfState = USB_CCID_BULK_IN_READY;
 
   /*
    * If USB_CCID_BULK_IN_READY state, nothing to do, just return.
@@ -339,7 +336,7 @@ USBCCIDBulkInService(void) {
 /******************************************************************************
   Function:
     void USBCCIDSendDataToHost(BYTE *data, WORD length)
-        
+
   Summary:
     USBCCIDSendDataToHost writes an array of data to the USB. Use this version, is
     capable of transfering 0x00 (what is typically a NULL character in any of
@@ -349,8 +346,8 @@ USBCCIDBulkInService(void) {
     USBCCIDSendDataToHost writes an array of data to the USB. Use this version, is
     capable of transfering 0x00 (what is typically a NULL character in any of
     the string transfer functions).
-    
-    
+
+
     The transfer mechanism for device-to-host(put) is more flexible than
     host-to-device(get). It can handle a string of data larger than the
     maximum size of bulk IN endpoint. A state machine is used to transfer a
@@ -358,12 +355,12 @@ USBCCIDBulkInService(void) {
     must be called periodically to keep sending blocks of data to the host.
 
   Conditions:
-    
+
 
   Input:
     BYTE *data - pointer to a RAM array of data to be transfered to the host
     WORD length - the number of bytes to be transfered
-        
+
  *****************************************************************************/
 void
 USBCCIDSendDataToHost(BYTE* pData, WORD len) {

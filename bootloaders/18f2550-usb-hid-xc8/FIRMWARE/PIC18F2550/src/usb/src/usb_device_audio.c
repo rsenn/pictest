@@ -153,16 +153,19 @@ USBCheckAudioRequest(void) {
   /*
    * If request recipient is not an interface then return
    */
-  if(SetupPkt.Recipient != USB_SETUP_RECIPIENT_INTERFACE_BITFIELD) return;
+  if(SetupPkt.Recipient != USB_SETUP_RECIPIENT_INTERFACE_BITFIELD)
+    return;
   /*
    * If request type is not class-specific then return
    */
-  if(SetupPkt.RequestType != USB_SETUP_TYPE_CLASS_BITFIELD) return;
+  if(SetupPkt.RequestType != USB_SETUP_TYPE_CLASS_BITFIELD)
+    return;
   /*
    * Interface ID must match interface numbers associated with
    * Audio class, else return
    */
-  if((SetupPkt.bIntfID != AUDIO_CONTROL_INTERFACE_ID) && (SetupPkt.bIntfID != AUDIO_STREAMING_INTERFACE_ID)) return;
+  if((SetupPkt.bIntfID != AUDIO_CONTROL_INTERFACE_ID) && (SetupPkt.bIntfID != AUDIO_STREAMING_INTERFACE_ID))
+    return;
 
   switch(SetupPkt.wIndex >> 8) // checking for the Entity ID (Entity ID are defined in the config.h file)
   {
@@ -201,8 +204,7 @@ USBCheckAudioRequest(void) {
       USB_AUDIO_EXTENSION_UNIT_CONTROL_REQUESTS_HANDLER();
 #endif
       break;
-    default:
-      break;
+    default: break;
 
   } // end switch(SetupPkt.bRequest
 } // end USBCheckAudioRequest

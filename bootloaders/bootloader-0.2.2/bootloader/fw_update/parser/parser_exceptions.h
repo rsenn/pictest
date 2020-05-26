@@ -35,7 +35,8 @@ public:
 
   virtual ~EParserException() throw() { ; };
 
-  virtual const char* what() const throw() { // return pointer to message string
+  virtual const char*
+  what() const throw() { // return pointer to message string
     return (_message.c_str());
   }
 

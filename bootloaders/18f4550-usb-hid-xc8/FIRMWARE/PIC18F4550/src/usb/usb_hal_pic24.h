@@ -319,21 +319,21 @@ typedef union _POINTER {
 /********************************************************************
 Function:
     bool USBSleepOnSuspend(void)
-    
+
 Summary:
     Places the PIC24F core into sleep and sets up the USB module
     to wake up the device on USB activity.
-    
+
 PreCondition:
     IPL (in the SR register) must be non-zero.
-    
+
 Parameters:
     None
-    
+
 Return Values:
     true  - if entered sleep successfully
     false - if there was an error entering sleep
-    
+
 Remarks:
     Please note that before calling this function that it is the
     responsibility of the application to place all of the other
@@ -346,40 +346,40 @@ bool USBSleepOnSuspend(void);
 /****************************************************************
     Function:
         void USBPowerModule(void)
-        
+
     Description:
         This macro is used to power up the USB module if required<br>
         PIC18: defines as nothing<br>
         PIC24: defines as U1PWRCbits.USBPWR = 1;<br>
-        
+
     Parameters:
         None
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-        
+
   ****************************************************************/
 #define USBPowerModule() U1PWRCbits.USBPWR = 1;
 
 /****************************************************************
     Function:
         void USBModuleDisable(void)
-        
+
     Description:
         This macro is used to disable the USB module
-        
+
     Parameters:
         None
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-        
+
   ****************************************************************/
 #define USBModuleDisable()                                                                                             \
   {                                                                                                                    \
@@ -393,88 +393,88 @@ bool USBSleepOnSuspend(void);
 /****************************************************************
     Function:
         USBSetBDTAddress(addr)
-        
+
     Description:
         This macro is used to power up the USB module if required
-        
+
     Parameters:
         None
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-        
+
   ****************************************************************/
 #define USBSetBDTAddress(addr) U1BDTP1 = (((unsigned int)addr) / 256);
 
 /****************************************************************
     Function:
         void USBClearInterruptRegister(int register)
-        
+
     Description:
         Clears all of the interrupts in the requested register
-        
+
     Parameters:
         register - the regsister that needs to be cleared.
-        
+
     Return Values:
         None
-        
+
     Remarks:
         Note that on these devices to clear an interrupt you must
         write a '1' to the interrupt location.
-        
+
   ****************************************************************/
 #define USBClearInterruptRegister(reg) reg = 0xFFFF;
 
 /********************************************************************
     Function:
         void USBClearInterruptFlag(register, uint8_t if_flag_offset)
-        
+
     Summary:
         Clears the specified USB interrupt flag.
-        
+
     PreCondition:
         None
-        
+
     Parameters:
         register - the register mnemonic for the register holding the interrupt
                    flag to be cleared
         uint8_t if_flag_offset - the bit position offset (for the interrupt flag to
                    clear) from the "right of the register"
-        
+
     Return Values:
         None
-        
+
     Remarks:
         Individual USB interrupt flag bits are cleared by writing '1' to the
         bit, in a word write operation.
- 
+
  *******************************************************************/
 #define USBClearInterruptFlag(reg_name, if_flag_offset) (reg_name = (1 << if_flag_offset))
 
 /********************************************************************
     Function:
         void DisableNonZeroEndpoints(UINT8 last_ep_num)
-        
+
     Summary:
         Clears the control registers for the specified non-zero endpoints
-        
+
     PreCondition:
         None
-        
+
     Parameters:
         UINT8 last_ep_num - the last endpoint number to clear.  This
         number should include all endpoints used in any configuration.
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
- 
+
  *******************************************************************/
 #define DisableNonZeroEndpoints(last_ep_num) memset((void*)&U1EP1, 0x00, (last_ep_num * 2));
 

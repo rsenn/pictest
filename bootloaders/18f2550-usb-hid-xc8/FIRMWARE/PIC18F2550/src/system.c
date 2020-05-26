@@ -86,8 +86,7 @@ SYSTEM_Initialize(SYSTEM_STATE state) {
       initADC();
       break;
 
-    case SYSTEM_STATE_USB_SUSPEND:
-      break;
+    case SYSTEM_STATE_USB_SUSPEND: break;
 
     case SYSTEM_STATE_USB_RESUME:
       //            OSCCON = 0x70;		//Primary clock source selected.

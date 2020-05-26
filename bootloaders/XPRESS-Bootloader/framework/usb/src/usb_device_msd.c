@@ -122,7 +122,7 @@ static void MSDComputeDeviceInAndResidue(uint16_t);
 /******************************************************************************
   Function:
     void USBMSDInit(void)
-    
+
   Summary:
     This routine initializes the MSD class packet handles, prepares to
     receive a MSD packet, and initializes the MSD state machine. This
@@ -132,7 +132,7 @@ static void MSDComputeDeviceInAndResidue(uint16_t);
     This routine initializes the MSD class packet handles, prepares to
     receive a MSD packet, and initializes the MSD state machine. This
     \function should be called once after the device is enumerated.
-    
+
     Typical Usage:
     <code>
     void USBCBInitEP(void)
@@ -144,7 +144,7 @@ static void MSDComputeDeviceInAndResidue(uint16_t);
   Conditions:
     The device should already be enumerated with a configuration that
     supports MSD before calling this function.
-    
+
   Parameters: None
 
   Remarks:
@@ -212,16 +212,16 @@ USBMSDInit(void) {
 
     PreCondition:
         None
-        
+
     Parameters:
         None
-    
+
     Return Values:
         None
-        
+
     Remarks:
         None
- 
+
  *****************************************************************************/
 void
 USBCheckMSDRequest(void) {
@@ -283,7 +283,7 @@ USBCheckMSDRequest(void) {
 /*********************************************************************************
   Function:
         uint8_t MSDTasks(void)
-    
+
   Summary:
     This function runs the MSD class state machines and all of its
     sub-systems. This function should be called periodically once the
@@ -294,7 +294,7 @@ USBCheckMSDRequest(void) {
     sub-systems. This function should be called periodically once the
     device is in the configured state in order to keep the MSD state
     machine going.
-    
+
     Typical Usage:
     <code>
     void main(void)
@@ -314,7 +314,7 @@ USBCheckMSDRequest(void) {
             {
                 //Keep the MSD state machine going
                 MSDTasks();
-    
+
                 //Run application code.
                 UserApplication();
             }
@@ -514,25 +514,25 @@ MSDTasks(void) {
 /******************************************************************************
     Function:
         uint8_t MSDProcessCommand(void)
-        
+
     Description:
         This function processes a command received through the MSD
         class driver
-        
+
     PreCondition:
         None
-        
+
     Parameters:
         None
-        
+
     Return Values:
         uint8_t - the current state of the MSDProcessCommand state
         machine.  The valid values are defined in MSD.h under the
         MSDProcessCommand state machine declaration section
-        
+
     Remarks:
         None
- 
+
  *****************************************************************************/
 uint8_t
 MSDProcessCommand(void) {
@@ -582,30 +582,30 @@ MSDProcessCommand(void) {
 /******************************************************************************
     Function:
         void MSDProcessCommandMediaAbsent(void)
-        
+
     Description:
         This funtion processes a command received through the MSD
         class driver, when the removable MSD media (ex: MMC/SD card) is not
         present, or has been "soft detached" deliberately by the application
         firmware.
-        
+
     PreCondition:
         The MSD function should have already been initialized (the media isn't
         required to be initialized however).  Additionally, a valid MSD Command
         Block Wrapper (CBW) should have been received and partially parsed
         prior to calling this function.
-        
+
     Parameters:
         None
-    
+
     Return Values:
         uint8_t - the current state of the MSDProcessCommand state
         machine.  The valid values are defined in usb_device_msd.h under the
         MSDProcessCommand state machine declaration section
-        
+
     Remarks:
         None
- 
+
   *****************************************************************************/
 void
 MSDProcessCommandMediaAbsent(void) {
@@ -662,25 +662,25 @@ MSDProcessCommandMediaAbsent(void) {
 /******************************************************************************
     Function:
         void MSDProcessCommandMediaPresent(void)
-        
+
     Description:
         This function processes a command received through the MSD
         class driver
-        
+
     PreCondition:
         None
-        
+
     Parameters:
         None
-    
+
     Return Values:
         uint8_t - the current state of the MSDProcessCommand state
         machine.  The valid values are defined in MSD.h under the
         MSDProcessCommand state machine declaration section
-        
+
     Remarks:
         None
- 
+
  *****************************************************************************/
 void
 MSDProcessCommandMediaPresent(void) {
@@ -913,31 +913,31 @@ MSDProcessCommandMediaPresent(void) {
 /******************************************************************************
     Function:
         static void MSDComputeDeviceInAndResidue(uint16_t DiExpected)
-        
+
     Description:
         This is a private function that performs Hi > Di data size checking
         and handling.  This function also computes the proper CSW data residue
         and updates the global variable.
-        
+
     PreCondition:
         Should only be called in the context of the
         MSDProcessCommandMediaPresent() handler function, after receiving a new
         command that needs processing.  Before calling this function, make sure
         the gblCBW.dCBWDataTransferLength and TransferLength.Val variables have
         been pre-loaded with the expected host and device data size values.
-        
+
     Parameters:
         uint16_t DiExpected - Input: Firmware can specify an additional value that
         might be smaller than the TransferLength.Val value.  The function will
         update TransferLength.Val with the smaller of the original value, or
         DiExpected.
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
- 
+
   *****************************************************************************/
 static void
 MSDComputeDeviceInAndResidue(uint16_t DiExpected) {
@@ -1078,25 +1078,25 @@ MSDReadHandler(void) {
 /******************************************************************************
     Function:
         uint8_t MSDWriteHandler(void)
-        
+
     Description:
         This function processes a write command received through
         the MSD class driver
-        
+
     PreCondition:
         None
-        
+
     Parameters:
         None
-        
+
     Return Values:
         uint8_t - the current state of the MSDWriteHandler state
         machine.  The valid values are defined in MSD.h under the
         MSDWriteHandler state machine declaration section
-        
+
     Remarks:
         None
- 
+
  *****************************************************************************/
 uint8_t
 MSDWriteHandler(void) {
@@ -1159,7 +1159,8 @@ MSDWriteHandler(void) {
       // Fall through to MSD_WRITE10_RX_SECTOR
     case MSD_WRITE10_RX_SECTOR: {
       if(msd_csw.dCSWDataResidue > 0) {
-        if(USBHandleBusy(USBMSDOutHandle) == true) break;
+        if(USBHandleBusy(USBMSDOutHandle) == true)
+          break;
         USBMSDOutHandle = USBRxOnePacket(MSD_DATA_OUT_EP, ptrNextData, MSD_OUT_EP_SIZE);
 
         MSDWriteState = MSD_WRITE10_RX_PACKET;
@@ -1184,7 +1185,8 @@ MSDWriteHandler(void) {
     }
     // Fall through to MSD_WRITE10_RX_PACKET
     case MSD_WRITE10_RX_PACKET:
-      if(USBHandleBusy(USBMSDOutHandle) == true) break;
+      if(USBHandleBusy(USBMSDOutHandle) == true)
+        break;
       // immediately write the data to target !!!
       if(msd_csw.bCSWStatus == 0x00) { // notice the LBA.Val+1 !!!
         if(LUNSectorWrite(LBA.Val + 1, (uint8_t*)&msd_buffer[0], segment++) !=
@@ -1234,23 +1236,23 @@ MSDWriteHandler(void) {
 /******************************************************************************
     Function:
         void ResetSenseData(void)
-        
+
     Description:
         This routine resets the Sense Data, initializing the
         structure RequestSenseResponse gblSenseData.
-        
+
     PreCondition:
         None
-        
+
     Parameters:
         None
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-            
+
   *****************************************************************************/
 void
 ResetSenseData(void) {
@@ -1279,7 +1281,7 @@ ResetSenseData(void) {
 /******************************************************************************
     Function:
         uint8_t MSDCheckForErrorCases(uint32_t DeviceBytes)
-        
+
     Description:
        This function can be called to check for various error cases, primarily
        the "Thirteen Cases" errors described in the MSD BOT v1.0 specs.  If an
@@ -1288,7 +1290,7 @@ ResetSenseData(void) {
        based on the error condition.
     PreCondition:
         None
-                
+
     Parameters:
         uint32_t DeviceBytes - Input: This is the total number of bytes the MSD
                     device firmware is expecting in the MSD transfer.
@@ -1306,10 +1308,10 @@ ResetSenseData(void) {
             MSD_ERROR_CASE_11
             MSD_ERROR_CASE_10
             MSD_ERROR_CASE_13
-        
+
     Remarks:
         None
-            
+
   *****************************************************************************/
 uint8_t
 MSDCheckForErrorCases(uint32_t DeviceBytes) {
@@ -1362,7 +1364,8 @@ MSDCheckForErrorCases(uint32_t DeviceBytes) {
   // Check host's expected data direction
   if(MSD_State == MSD_DATA_OUT) {
     // First check for Ho <> Di (Case 10)
-    if((MSDCommandState != MSD_WRITE_10) && (DeviceNoData == false)) MSDErrorCase = MSD_ERROR_CASE_10;
+    if((MSDCommandState != MSD_WRITE_10) && (DeviceNoData == false))
+      MSDErrorCase = MSD_ERROR_CASE_10;
     // Check for Hn < Do  (Case 3)
     else if(MSDHostNoData == true)
       MSDErrorCase = MSD_ERROR_CASE_3;
@@ -1378,7 +1381,8 @@ MSDCheckForErrorCases(uint32_t DeviceBytes) {
   } else // else the MSD_State must be == MSD_DATA_IN
   {
     // First check for Hi <> Do (Case 8)
-    if(MSDCommandState == MSD_WRITE_10) MSDErrorCase = MSD_ERROR_CASE_8;
+    if(MSDCommandState == MSD_WRITE_10)
+      MSDErrorCase = MSD_ERROR_CASE_8;
     // Check for Hn < Di  (Case 2)
     else if(MSDHostNoData == true)
       MSDErrorCase = MSD_ERROR_CASE_2;
@@ -1400,7 +1404,7 @@ MSDCheckForErrorCases(uint32_t DeviceBytes) {
 /******************************************************************************
     Function:
         void MSDErrorHandler(uint8_t ErrorCase)
-        
+
     Description:
         Once an error condition has been detected, this function can be called
         to set the proper states and perform the proper tasks needed to let the
@@ -1408,7 +1412,7 @@ MSDCheckForErrorCases(uint32_t DeviceBytes) {
     PreCondition:
         Firmware should have already determined an error occurred, and it should
         know what the error code was before calling this handler.
-        
+
     Parameters:
         uint8_t ErrorCase - Input: This is the error code that the firmware
                             detected.  This error code will determine how the
@@ -1417,7 +1421,7 @@ MSDCheckForErrorCases(uint32_t DeviceBytes) {
                             The implemented error case possibilities are (suffix
                             numbers correspond to the "Thirteen cases" numbers
                             described in the MSD BOT specs v1.0):
-                            
+
                             MSD_ERROR_CASE_2
                             MSD_ERROR_CASE_3
                             MSD_ERROR_CASE_4
@@ -1432,10 +1436,10 @@ MSDCheckForErrorCases(uint32_t DeviceBytes) {
 
     Return Values:
         None
-        
+
     Remarks:
         None
-            
+
   *****************************************************************************/
 void
 MSDErrorHandler(uint8_t ErrorCase) {

@@ -98,10 +98,12 @@ ascii_2_key(uint8_t val) {
           KeyResult.Modifier = MOD_KEY_LEFTSHIFT;
         KeyResult.KeyCode = symbol_lookup_1[val - ' '];
       } else if(IS_SYMBOL_AREA_2) {
-        if((val != ';') && (val != '=')) KeyResult.Modifier = MOD_KEY_LEFTSHIFT;
+        if((val != ';') && (val != '='))
+          KeyResult.Modifier = MOD_KEY_LEFTSHIFT;
         KeyResult.KeyCode = symbol_lookup_2[val - ':'];
       } else if(IS_SYMBOL_AREA_3) {
-        if((val == '^') || (val == '_')) KeyResult.Modifier = MOD_KEY_LEFTSHIFT;
+        if((val == '^') || (val == '_'))
+          KeyResult.Modifier = MOD_KEY_LEFTSHIFT;
         KeyResult.KeyCode = symbol_lookup_3[val - '['];
       } else if(IS_SYMBOL_AREA_4) {
         KeyResult.Modifier = MOD_KEY_LEFTSHIFT;
@@ -113,12 +115,8 @@ ascii_2_key(uint8_t val) {
       case ELC: // End of Line Character set in header file.
         KeyResult.KeyCode = KEY_ENTER;
         break;
-      case '\t':
-        KeyResult.KeyCode = KEY_TAB;
-        break;
-      case '\b':
-        KeyResult.KeyCode = KEY_BACKSPACE;
-        break;
+      case '\t': KeyResult.KeyCode = KEY_TAB; break;
+      case '\b': KeyResult.KeyCode = KEY_BACKSPACE; break;
     }
   }
 }

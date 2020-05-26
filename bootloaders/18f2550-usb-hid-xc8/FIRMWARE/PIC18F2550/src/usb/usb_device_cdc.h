@@ -146,7 +146,7 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 /******************************************************************************
     Function:
         void CDCSetBaudRate(uint32_t baudRate)
-        
+
     Summary:
         This macro is used set the baud rate reported back to the host during
         a get line coding request. (optional)
@@ -162,19 +162,19 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 
         This function is optional for CDC devices that do not actually convert
         the USB traffic to a hardware UART.
-        
+
     PreCondition:
         None
-        
+
     Parameters:
         uint32_t baudRate - The desired baudrate
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-  
+
  *****************************************************************************/
 #define CDCSetBaudRate(baudRate)                                                                                       \
   { line_coding.dwDTERate = baudRate; }
@@ -182,7 +182,7 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 /******************************************************************************
     Function:
         void CDCSetCharacterFormat(uint8_t charFormat)
-        
+
     Summary:
         This macro is used manually set the character format reported back to
         the host during a get line coding request. (optional)
@@ -195,25 +195,25 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
         <code>
             CDCSetCharacterFormat(NUM_STOP_BITS_1);
         </code>
-        
+
         This function is optional for CDC devices that do not actually convert
         the USB traffic to a hardware UART.
 
     PreCondition:
         None
-        
+
     Parameters:
         uint8_t charFormat - number of stop bits.  Available options are:
          * NUM_STOP_BITS_1 - 1 Stop bit
          * NUM_STOP_BITS_1_5 - 1.5 Stop bits
          * NUM_STOP_BITS_2 - 2 Stop bits
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-  
+
  *****************************************************************************/
 #define CDCSetCharacterFormat(charFormat)                                                                              \
   { line_coding.bCharFormat = charFormat; }
@@ -224,7 +224,7 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 /******************************************************************************
     Function:
         void CDCSetParity(uint8_t parityType)
-        
+
     Summary:
         This function is used manually set the parity format reported back to
         the host during a get line coding request. (optional)
@@ -237,13 +237,13 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
         <code>
             CDCSetParity(PARITY_NONE);
         </code>
-        
+
         This function is optional for CDC devices that do not actually convert
         the USB traffic to a hardware UART.
 
     PreCondition:
         None
-        
+
     Parameters:
         uint8_t parityType - Type of parity.  The options are the following:
             * PARITY_NONE
@@ -251,13 +251,13 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
             * PARITY_EVEN
             * PARITY_MARK
             * PARITY_SPACE
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-  
+
  *****************************************************************************/
 #define CDCSetParity(parityType)                                                                                       \
   { line_coding.bParityType = parityType; }
@@ -270,7 +270,7 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 /******************************************************************************
     Function:
         void CDCSetDataSize(uint8_t dataBits)
-        
+
     Summary:
         This function is used manually set the number of data bits reported back
         to the host during a get line coding request. (optional)
@@ -283,22 +283,22 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
         <code>
             CDCSetDataSize(8);
         </code>
-        
+
         This function is optional for CDC devices that do not actually convert
         the USB traffic to a hardware UART.
 
     PreCondition:
         None
-        
+
     Parameters:
         uint8_t dataBits - number of data bits.  The options are 5, 6, 7, 8, or 16.
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-  
+
  *****************************************************************************/
 #define CDCSetDataSize(dataBits)                                                                                       \
   { line_coding.bDataBits = dataBits; }
@@ -306,7 +306,7 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 /******************************************************************************
     Function:
         void CDCSetLineCoding(uint32_t baud, uint8_t format, uint8_t parity, uint8_t dataSize)
-        
+
     Summary:
         This function is used to manually set the data reported back
         to the host during a get line coding request. (optional)
@@ -319,13 +319,13 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
         <code>
             CDCSetLineCoding(19200, NUM_STOP_BITS_1, PARITY_NONE, 8);
         </code>
-        
+
         This function is optional for CDC devices that do not actually convert
         the USB traffic to a hardware UART.
 
     PreCondition:
         None
-        
+
     Parameters:
         uint32_t baud - The desired baudrate
         uint8_t format - number of stop bits.  Available options are:
@@ -339,13 +339,13 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
             * PARITY_MARK
             * PARITY_SPACE
         uint8_t dataSize - number of data bits.  The options are 5, 6, 7, 8, or 16.
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-  
+
  *****************************************************************************/
 #define CDCSetLineCoding(baud, format, parity, dataSize)                                                               \
   {                                                                                                                    \
@@ -358,7 +358,7 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 /******************************************************************************
     Function:
         bool USBUSARTIsTxTrfReady(void)
-        
+
     Summary:
         This macro is used to check if the CDC class is ready
         to send more data.
@@ -374,14 +374,14 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
                 putrsUSBUSART("Hello World");
             }
         </code>
-        
+
     PreCondition:
         The return value of this function is only valid if the device is in a
         configured state (i.e. - USBDeviceGetState() returns CONFIGURED_STATE)
-        
+
     Parameters:
         None
-        
+
     Return Values:
         Returns a boolean value indicating if the CDC class handler firmware
         is ready to receive new data to send to the host over the bulk data IN
@@ -391,19 +391,19 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
         value of false implies that the firmware is still busy sending the
         last data, or is otherwise not ready to process any new data at
         this time.
-        
+
     Remarks:
         Make sure the application periodically calls the CDCTxService()
         handler, or pending USB IN transfers will not be able to advance
         and complete.
-  
+
  *****************************************************************************/
 #define USBUSARTIsTxTrfReady() (cdc_trf_state == CDC_TX_READY)
 
 /******************************************************************************
     Function:
         void mUSBUSARTTxRam(uint8_t *pData, uint8_t len)
-    
+
     Description:
         Depricated in MCHPFSUSB v2.3.  This macro has been replaced by
         USBUSARTIsTxTrfReady().
@@ -413,7 +413,7 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 /******************************************************************************
     Function:
         void mUSBUSARTTxRam(uint8_t *pData, uint8_t len)
-        
+
     Description:
         Use this macro to transfer data located in data memory.
         Use this macro when:
@@ -423,7 +423,7 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
         Unlike putsUSBUSART, there is not code double checking
         the transfer state. Unexpected behavior will occur if
         this function is called when cdc_trf_state != CDC_TX_READY
- 
+
          Typical Usage:
         <code>
             if(USBUSARTIsTxTrfReady())
@@ -431,20 +431,20 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
                 mUSBUSARTTxRam(&UserDataBuffer[0], 200);
             }
         </code>
-        
+
     PreCondition:
         cdc_trf_state must be in the CDC_TX_READY state.
         Value of 'len' must be equal to or smaller than 255 bytes.
         The USB stack should have reached the CONFIGURED_STATE prior
         to calling this API function for the first time.
-        
+
     Paramters:
         pDdata  : Pointer to the starting location of data bytes
         len     : Number of bytes to be transferred
-        
+
     Return Values:
         None
-        
+
     Remarks:
         This macro only handles the setup of the transfer. The
         actual transfer is handled by CDCTxService().  This macro
@@ -453,8 +453,8 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
         of the data has been sent, as indicated by the
         USBUSARTIsTxTrfReady() function returning true, subsequent to
         calling mUSBUSARTTxRam().
-        
-  
+
+
  *****************************************************************************/
 #define mUSBUSARTTxRam(pData, len)                                                                                     \
   {                                                                                                                    \
@@ -467,18 +467,18 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 /******************************************************************************
     Function:
         void mUSBUSARTTxRom(rom uint8_t *pData, uint8_t len)
-        
+
     Description:
         Use this macro to transfer data located in program memory.
         Use this macro when:
             1. Data stream is not null-terminated
             2. Transfer length is known
- 
+
         Remember: cdc_trf_state must == CDC_TX_READY
         Unlike putrsUSBUSART, there is not code double checking
         the transfer state. Unexpected behavior will occur if
         this function is called when cdc_trf_state != CDC_TX_READY
- 
+
           Typical Usage:
         <code>
             if(USBUSARTIsTxTrfReady())
@@ -486,22 +486,22 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
                 mUSBUSARTTxRom(&SomeRomString[0], 200);
             }
         </code>
-       
+
     PreCondition:
         cdc_trf_state must be in the CDC_TX_READY state.
         Value of 'len' must be equal to or smaller than 255 bytes.
-        
+
     Parameters:
         pDdata  : Pointer to the starting location of data bytes
         len     : Number of bytes to be transferred
-        
+
     Return Values:
         None
-        
+
     Remarks:
         This macro only handles the setup of the transfer. The
         actual transfer is handled by CDCTxService().
-                    
+
  *****************************************************************************/
 #define mUSBUSARTTxRom(pData, len)                                                                                     \
   {                                                                                                                    \
@@ -514,7 +514,7 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 /**************************************************************************
   Function:
         void CDCInitEP(void)
-    
+
   Summary:
     This function initializes the CDC function driver. This function should
     be called after the SET_CONFIGURATION command (ex: within the context of
@@ -524,11 +524,11 @@ CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
     the default line coding (baud rate, bit parity, number of data bits,
     and format). This function also enables the endpoints and prepares for
     the first transfer from the host.
-    
+
     This function should be called after the SET_CONFIGURATION command.
     This is most simply done by calling this function from the
     USBCBInitEP() function.
-    
+
     Typical Usage:
     <code>
         void USBCBInitEP(void)
@@ -546,23 +546,23 @@ void CDCInitEP(void);
 /******************************************************************************
     Function:
         void USBCheckCDCRequest(void)
- 
+
     Description:
         This routine checks the most recently received SETUP data packet to
         see if the request is specific to the CDC class.  If the request was
         a CDC specific request, this function will take care of handling the
         request and responding appropriately.
-        
+
     PreCondition:
         This function should only be called after a control transfer SETUP
         packet has arrived from the host.
 
     Parameters:
         None
-        
+
     Return Values:
         None
-        
+
     Remarks:
         This function does not change status or do anything if the SETUP packet
         did not contain a CDC class specific request.
@@ -589,7 +589,7 @@ void CDCNotificationHandler(void);
 /**********************************************************************************
   Function:
     bool USBCDCEventHandler(USB_EVENT event, void *pdata, uint16_t size)
-    
+
   Summary:
     Handles events from the USB stack, which may have an effect on the CDC
     endpoint(s).
@@ -597,7 +597,7 @@ void CDCNotificationHandler(void);
   Description:
     Handles events from the USB stack.  This function should be called when
     there is a USB event that needs to be processed by the CDC driver.
-    
+
   Conditions:
     Value of input argument 'len' should be smaller than the maximum
     endpoint size responsible for receiving bulk data from USB host for CDC
@@ -607,14 +607,14 @@ void CDCNotificationHandler(void);
     event - the type of event that occured
     pdata - pointer to the data that caused the event
     size - the size of the data that is pointed to by pdata
-                                                                                   
+
   **********************************************************************************/
 bool USBCDCEventHandler(USB_EVENT event, void* pdata, uint16_t size);
 
 /**********************************************************************************
   Function:
         uint8_t getsUSBUSART(char *buffer, uint8_t len)
-    
+
   Summary:
     getsUSBUSART copies a string of BYTEs received through USB CDC Bulk OUT
     endpoint to a user's specified location. It is a non-blocking function.
@@ -626,12 +626,12 @@ bool USBCDCEventHandler(USB_EVENT event, void* pdata, uint16_t size);
     endpoint to a user's specified location. It is a non-blocking function.
     It does not wait for data if there is no data available. Instead it
     returns '0' to notify the caller that there is no data available.
-    
+
     Typical Usage:
     <code>
         uint8_t numBytes;
         uint8_t buffer[64]
-    
+
         numBytes = getsUSBUSART(buffer,sizeof(buffer)); //until the buffer is free.
         if(numBytes \> 0)
         {
@@ -653,14 +653,14 @@ bool USBCDCEventHandler(USB_EVENT event, void* pdata, uint16_t size);
               received and copied into the specified buffer.  The returned value
               can be anything from 0 up to the len input value.  A return value of 0
               indicates that no new CDC bulk OUT endpoint data was available.
-                                                                                   
+
   **********************************************************************************/
 uint8_t getsUSBUSART(uint8_t* buffer, uint8_t len);
 
 /******************************************************************************
   Function:
     void putUSBUSART(char *data, uint8_t length)
-        
+
   Summary:
     putUSBUSART writes an array of data to the USB. Use this version, is
     capable of transfering 0x00 (what is typically a NULL character in any of
@@ -670,7 +670,7 @@ uint8_t getsUSBUSART(uint8_t* buffer, uint8_t len);
     putUSBUSART writes an array of data to the USB. Use this version, is
     capable of transfering 0x00 (what is typically a NULL character in any of
     the string transfer functions).
-    
+
     Typical Usage:
     <code>
         if(USBUSARTIsTxTrfReady())
@@ -679,7 +679,7 @@ uint8_t getsUSBUSART(uint8_t* buffer, uint8_t len);
             putUSBUSART(data,5);
         }
     </code>
-    
+
     The transfer mechanism for device-to-host(put) is more flexible than
     host-to-device(get). It can handle a string of data larger than the
     maximum size of bulk IN endpoint. A state machine is used to transfer a
@@ -695,14 +695,14 @@ uint8_t getsUSBUSART(uint8_t* buffer, uint8_t len);
   Input:
     char *data - pointer to a RAM array of data to be transfered to the host
     uint8_t length - the number of bytes to be transfered (must be less than 255).
-        
+
  *****************************************************************************/
 void putUSBUSART(uint8_t* data, uint8_t Length);
 
 /******************************************************************************
     Function:
         void putsUSBUSART(char *data)
-        
+
   Summary:
     putsUSBUSART writes a string of data to the USB including the null
     character. Use this version, 'puts', to transfer data from a RAM buffer.
@@ -710,7 +710,7 @@ void putUSBUSART(uint8_t* data, uint8_t Length);
   Description:
     putsUSBUSART writes a string of data to the USB including the null
     character. Use this version, 'puts', to transfer data from a RAM buffer.
-    
+
     Typical Usage:
     <code>
         if(USBUSARTIsTxTrfReady())
@@ -719,7 +719,7 @@ void putUSBUSART(uint8_t* data, uint8_t Length);
             putsUSBUSART(data);
         }
     </code>
-    
+
     The transfer mechanism for device-to-host(put) is more flexible than
     host-to-device(get). It can handle a string of data larger than the
     maximum size of bulk IN endpoint. A state machine is used to transfer a
@@ -736,14 +736,14 @@ void putUSBUSART(uint8_t* data, uint8_t Length);
     char *data -  null\-terminated string of constant data. If a
                             null character is not found, 255 BYTEs of data
                             will be transferred to the host.
-        
+
  *****************************************************************************/
 void putsUSBUSART(char* data);
 
 /**************************************************************************
   Function:
         void putrsUSBUSART(const const char *data)
-    
+
   Summary:
     putrsUSBUSART writes a string of data to the USB including the null
     character. Use this version, 'putrs', to transfer data literals and
@@ -753,7 +753,7 @@ void putsUSBUSART(char* data);
     putrsUSBUSART writes a string of data to the USB including the null
     character. Use this version, 'putrs', to transfer data literals and
     data located in program memory.
-    
+
     Typical Usage:
     <code>
         if(USBUSARTIsTxTrfReady())
@@ -761,7 +761,7 @@ void putsUSBUSART(char* data);
             putrsUSBUSART("Hello World");
         }
     </code>
-    
+
     The transfer mechanism for device-to-host(put) is more flexible than
     host-to-device(get). It can handle a string of data larger than the
     maximum size of bulk IN endpoint. A state machine is used to transfer a
@@ -778,14 +778,14 @@ void putsUSBUSART(char* data);
     const const char *data -  null\-terminated string of constant data. If a
                             null character is not found, 255 BYTEs of data
                             will be transferred to the host.
-                                                                           
+
   **************************************************************************/
 void putrsUSBUSART(const const char* data);
 
 /************************************************************************
   Function:
         void CDCTxService(void)
-    
+
   Summary:
     CDCTxService handles device-to-host transaction(s). This function
     should be called once per Main Program loop after the device reaches
@@ -799,7 +799,7 @@ void putrsUSBUSART(const const char* data);
     data to the host, associated with CDC serial data.  Failure to call
     CDCTxService() perioidcally will prevent data from being sent to the
     USB host, over the CDC serial data interface.
-    
+
     Typical Usage:
     <code>
     void main(void)
@@ -819,7 +819,7 @@ void putrsUSBUSART(const const char* data);
             {
                 //Keep trying to send data to the PC as required
                 CDCTxService();
-    
+
                 //Run application code.
                 UserApplication();
             }

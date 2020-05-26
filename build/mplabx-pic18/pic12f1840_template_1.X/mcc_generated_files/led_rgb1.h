@@ -51,4 +51,4 @@ void LED_RGB1_On(void);
 void LED_RGB1_Off(void);
 void LED_RGB1_Toggle(void);
 
-#endif	/* LED_RGB1_H */
+#endif /* LED_RGB1_H */

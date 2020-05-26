@@ -72,7 +72,8 @@ void USBStdFeatureReqHandler(void);
  *****************************************************************************/
 void
 USBCheckStdRequest(void) {
-  if(SetupPkt.RequestType != STANDARD) return;
+  if(SetupPkt.RequestType != STANDARD)
+    return;
 
   switch(SetupPkt.bRequest) {
     case SET_ADR:
@@ -80,25 +81,17 @@ USBCheckStdRequest(void) {
       usb_device_state = ADR_PENDING_STATE; // Update state only
       /* See USBCtrlTrfInHandler() in usbctrltrf.c for the next step */
       break;
-    case GET_DSC:
-      USBStdGetDscHandler();
-      break;
-    case SET_CFG:
-      USBStdSetCfgHandler();
-      break;
+    case GET_DSC: USBStdGetDscHandler(); break;
+    case SET_CFG: USBStdSetCfgHandler(); break;
     case GET_CFG:
       ctrl_trf_session_owner = MUID_USB9;
       pSrc.bRam = (byte*)&usb_active_cfg; // Set Source
       usb_stat.ctrl_trf_mem = _RAM;       // Set memory type
       LSB(wCount) = 1;                    // Set data count
       break;
-    case GET_STATUS:
-      USBStdGetStatusHandler();
-      break;
+    case GET_STATUS: USBStdGetStatusHandler(); break;
     case CLR_FEATURE:
-    case SET_FEATURE:
-      USBStdFeatureReqHandler();
-      break;
+    case SET_FEATURE: USBStdFeatureReqHandler(); break;
     case GET_INTF:
       ctrl_trf_session_owner = MUID_USB9;
       pSrc.bRam = (byte*)&usb_alt_intf + SetupPkt.bIntfID; // Set source
@@ -111,8 +104,7 @@ USBCheckStdRequest(void) {
       break;
     case SET_DSC:
     case SYNCH_FRAME:
-    default:
-      break;
+    default: break;
   } // end switch
 
 } // end USBCheckStdRequest
@@ -146,13 +138,15 @@ USBStdGetDscHandler(void) {
         wCount._word = sizeof(device_dsc); // Set data count
         break;
       case DSC_CFG:
-        if(SetupPkt.bDscIndex >= MAX_CD) break;
+        if(SetupPkt.bDscIndex >= MAX_CD)
+          break;
         ctrl_trf_session_owner = MUID_USB9;
         pSrc.bRom = *(USB_CD_Ptr + SetupPkt.bDscIndex);
         wCount._word = *(pSrc.wRom + 1); // Set data count
         break;
       case DSC_STR:
-        if(SetupPkt.bDscIndex >= MAX_SD) break;
+        if(SetupPkt.bDscIndex >= MAX_SD)
+          break;
         ctrl_trf_session_owner = MUID_USB9;
         pSrc.bRom = *(USB_SD_Ptr + SetupPkt.bDscIndex);
         wCount._word = *pSrc.bRom; // Set data count

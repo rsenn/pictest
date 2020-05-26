@@ -167,7 +167,8 @@ new_hid_device(void) {
 
 static void
 free_hid_device(hid_device* dev) {
-  if(!dev) return;
+  if(!dev)
+    return;
 
   /* Delete any input reports still left over. */
   struct input_report* rpt = dev->input_reports;
@@ -181,8 +182,10 @@ free_hid_device(hid_device* dev) {
   /* Free the string and the report buffer. The check for NULL
      is necessary here as CFRelease() doesn't handle NULL like
      free() and others do. */
-  if(dev->run_loop_mode) CFRelease(dev->run_loop_mode);
-  if(dev->source) CFRelease(dev->source);
+  if(dev->run_loop_mode)
+    CFRelease(dev->run_loop_mode);
+  if(dev->source)
+    CFRelease(dev->source);
   free(dev->input_report_buf);
 
   /* Clean up the thread objects */
@@ -322,7 +325,8 @@ make_path(IOHIDDeviceRef device, char* buf, size_t len) {
 
   res = get_string_property_utf8(device, CFSTR(kIOHIDTransportKey), transport, sizeof(transport));
 
-  if(!res) return -1;
+  if(!res)
+    return -1;
 
   vid = get_vendor_id(device);
   pid = get_product_id(device);
@@ -723,7 +727,8 @@ set_report(hid_device* dev, IOHIDReportType type, const unsigned char* data, siz
   IOReturn res;
 
   /* Return if the device has been disconnected. */
-  if(dev->disconnected) return -1;
+  if(dev->disconnected)
+    return -1;
 
   if(data[0] == 0x0) {
     /* Not using numbered Reports.
@@ -776,7 +781,8 @@ static int
 cond_wait(const hid_device* dev, pthread_cond_t* cond, pthread_mutex_t* mutex) {
   while(!dev->input_reports) {
     int res = pthread_cond_wait(cond, mutex);
-    if(res != 0) return res;
+    if(res != 0)
+      return res;
 
     /* A res of 0 means we may have been signaled or it may
        be a spurious wakeup. Check to see that there's acutally
@@ -784,7 +790,8 @@ cond_wait(const hid_device* dev, pthread_cond_t* cond, pthread_mutex_t* mutex) {
        to sleep. See the pthread_cond_timedwait() man page for
        details. */
 
-    if(dev->shutdown_thread || dev->disconnected) return -1;
+    if(dev->shutdown_thread || dev->disconnected)
+      return -1;
   }
 
   return 0;
@@ -794,7 +801,8 @@ static int
 cond_timedwait(const hid_device* dev, pthread_cond_t* cond, pthread_mutex_t* mutex, const struct timespec* abstime) {
   while(!dev->input_reports) {
     int res = pthread_cond_timedwait(cond, mutex, abstime);
-    if(res != 0) return res;
+    if(res != 0)
+      return res;
 
     /* A res of 0 means we may have been signaled or it may
        be a spurious wakeup. Check to see that there's acutally
@@ -802,7 +810,8 @@ cond_timedwait(const hid_device* dev, pthread_cond_t* cond, pthread_mutex_t* mut
        to sleep. See the pthread_cond_timedwait() man page for
        details. */
 
-    if(dev->shutdown_thread || dev->disconnected) return -1;
+    if(dev->shutdown_thread || dev->disconnected)
+      return -1;
   }
 
   return 0;
@@ -904,7 +913,8 @@ hid_get_feature_report(hid_device* dev, unsigned char* data, size_t length) {
   IOReturn res;
 
   /* Return if the device has been unplugged. */
-  if(dev->disconnected) return -1;
+  if(dev->disconnected)
+    return -1;
 
   res = IOHIDDeviceGetReport(dev->device_handle,
                              kIOHIDReportTypeFeature,
@@ -919,7 +929,8 @@ hid_get_feature_report(hid_device* dev, unsigned char* data, size_t length) {
 
 void HID_API_EXPORT
 hid_close(hid_device* dev) {
-  if(!dev) return;
+  if(!dev)
+    return;
 
   /* Disconnect the report callback before close. */
   if(!dev->disconnected) {

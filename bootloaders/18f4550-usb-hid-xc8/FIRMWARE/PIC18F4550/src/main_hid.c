@@ -2,11 +2,11 @@
  FileName:      app_hid.c
  Dependencies:  See INCLUDES section
  Processor:     PIC18F14K50 USB Microcontrollers
- 
+
  Hardware:	This firmware is made based on Microchip USB demo
         board board code supported by the MCHPFSUSB stack.
         (*** Device - HID - Custom Demos ***)
-        
+
  Complier:      Microchip C18 / XC8 (for PIC18)
  Company:	HS-Ulm
 
@@ -153,9 +153,7 @@ USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void* pdata, uint16_t size) {
       //            APP_USBCBCheckOtherReq();
       USBCheckHIDRequest();
       break;
-    case EVENT_BUS_ERROR:
-      APP_USBCBErrorHandler();
-      break;
+    case EVENT_BUS_ERROR: APP_USBCBErrorHandler(); break;
     case EVENT_TRANSFER_TERMINATED:
       // Add application specific callback task or callback function here if desired.
       // The EVENT_TRANSFER_TERMINATED event occurs when the host performs a CLEAR
@@ -166,8 +164,7 @@ USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void* pdata, uint16_t size) {
       // 2.  Re-arm the endpoint if desired (typically would be the case for OUT
       //      endpoints).
       break;
-    default:
-      break;
+    default: break;
   }
   return true;
 }

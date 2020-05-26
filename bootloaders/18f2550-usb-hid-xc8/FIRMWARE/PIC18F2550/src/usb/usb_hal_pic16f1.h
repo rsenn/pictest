@@ -350,40 +350,40 @@ typedef union _POINTER {
 /****************************************************************
     Function:
         void USBPowerModule(void)
-        
+
     Description:
         This macro is used to power up the USB module if required<br>
         PIC18: defines as nothing<br>
         PIC24: defines as U1PWRCbits.USBPWR = 1;<br>
-        
+
     Parameters:
         None
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-        
+
   ****************************************************************/
 #define USBPowerModule()
 
 /****************************************************************
     Function:
         void USBModuleDisable(void)
-        
+
     Description:
         This macro is used to disable the USB module
-        
+
     Parameters:
         None
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-        
+
   ****************************************************************/
 #define USBModuleDisable()                                                                                             \
   {                                                                                                                    \
@@ -395,19 +395,19 @@ typedef union _POINTER {
 /****************************************************************
     Function:
         USBSetBDTAddress(addr)
-        
+
     Description:
         This macro is used to power up the USB module if required
-        
+
     Parameters:
         None
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-        
+
   ****************************************************************/
 #define USBSetBDTAddress(addr)
 
@@ -435,22 +435,22 @@ typedef union _POINTER {
 /********************************************************************
     Function:
         void USBClearInterruptRegister(uint16_t reg)
-        
+
     Summary:
         Clears the specified interrupt register
-        
+
     PreCondition:
         None
-        
+
     Parameters:
         uint16_t reg - the register name that needs to be cleared
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
- 
+
  *******************************************************************/
 #define USBClearInterruptRegister(reg)                                                                                 \
   { reg = 0; }
@@ -458,20 +458,20 @@ typedef union _POINTER {
 /********************************************************************
     Function:
         void DisableNonZeroEndpoints(UINT8 last_ep_num)
-        
+
     Summary:
         Clears the control registers for the specified non-zero endpoints
-        
+
     PreCondition:
         None
-        
+
     Parameters:
         UINT8 last_ep_num - the last endpoint number to clear.  This
         number should include all endpoints used in any configuration.
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
   *******************************************************************/

@@ -427,26 +427,26 @@ stalled (ie. bit 0 = EP0, bit 1 = EP1, etc.)
         identified by the "event" parameter and may have associated
         data.  If the higher layer was able to handle the event, it
         should return true.  If not, it should return false.
-        
+
     Preconditions:
         USBInitialize must have been called to initialize the USB SW
         Stack.
-        
+
     Parameters:
         USB_EVENT event   - Identifies the bus event that occurred
         void *data        - Pointer to event-specific data
         unsigned int size - Size of the event-specific data
-        
+
     Return Values:
         None
-        
+
     Remarks:
         The function is name is defined by the layer that implements
         it.  A pointer to the function will be placed by into a table
         that the lower-layer will use to call it.  This requires the
         function to use a specific call "signature" (return data type
         and values and data parameter types and values).
- 
+
 *******************************************************************************/
 
 typedef bool (*USB_EVENT_HANDLER)(USB_EVENT event, void* data, unsigned int size);
@@ -480,7 +480,7 @@ typedef bool (*USB_EVENT_HANDLER)(USB_EVENT event, void* data, unsigned int size
     Remarks:
         This interface is implemented as a macro that can be defined by the
         application or by default is defined correctly for the stack mode.
-        
+
   ***************************************************************************/
 
 #ifndef USBInitialize
@@ -526,7 +526,7 @@ typedef bool (*USB_EVENT_HANDLER)(USB_EVENT event, void* data, unsigned int size
     Remarks:
         This interface is implemented as a macro that can be defined by the
         application or by default is defined correctly for the stack mode.
-        
+
   ***************************************************************************/
 
 #ifndef USBTasks // Implemented as a macro that can be overridden.

@@ -2,7 +2,7 @@
 Copyright 2016 Microchip Technology Inc. (www.microchip.com)
 
  bsp/leds.c
- 
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -58,16 +58,11 @@ limitations under the License.
 void
 LED_On(LED led) {
   switch(led) {
-    case LED_D1:
-      LED_D1_LAT = LED_ON;
-      break;
+    case LED_D1: LED_D1_LAT = LED_ON; break;
 
-    case LED_D2:
-      LED_D2_LAT = LED_ON;
-      break;
+    case LED_D2: LED_D2_LAT = LED_ON; break;
 
-    case LED_NONE:
-      break;
+    case LED_NONE: break;
   }
 }
 
@@ -90,16 +85,11 @@ LED_On(LED led) {
 void
 LED_Off(LED led) {
   switch(led) {
-    case LED_D1:
-      LED_D1_LAT = LED_OFF;
-      break;
+    case LED_D1: LED_D1_LAT = LED_OFF; break;
 
-    case LED_D2:
-      LED_D2_LAT = LED_OFF;
-      break;
+    case LED_D2: LED_D2_LAT = LED_OFF; break;
 
-    case LED_NONE:
-      break;
+    case LED_NONE: break;
   }
 }
 
@@ -122,16 +112,11 @@ LED_Off(LED led) {
 void
 LED_Toggle(LED led) {
   switch(led) {
-    case LED_D1:
-      LED_D1_LAT ^= 1;
-      break;
+    case LED_D1: LED_D1_LAT ^= 1; break;
 
-    case LED_D2:
-      LED_D2_LAT ^= 1;
-      break;
+    case LED_D2: LED_D2_LAT ^= 1; break;
 
-    case LED_NONE:
-      break;
+    case LED_NONE: break;
   }
 }
 
@@ -154,14 +139,11 @@ LED_Toggle(LED led) {
 bool
 LED_Get(LED led) {
   switch(led) {
-    case LED_D1:
-      return ((LED_D1_LAT == LED_ON) ? true : false);
+    case LED_D1: return ((LED_D1_LAT == LED_ON) ? true : false);
 
-    case LED_D2:
-      return ((LED_D2_LAT == LED_ON) ? true : false);
+    case LED_D2: return ((LED_D2_LAT == LED_ON) ? true : false);
 
-    case LED_NONE:
-      return false;
+    case LED_NONE: return false;
   }
 
   return false;
@@ -195,7 +177,6 @@ LED_Enable(LED led) {
       LED_D1_ANSEL = PIN_DIGITAL;
       break;
 
-    case LED_NONE:
-      break;
+    case LED_NONE: break;
   }
 }

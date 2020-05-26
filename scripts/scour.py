@@ -257,7 +257,7 @@ from __future__ import division
         }
 
     default_attributes = {
-      #excluded all attributes with 'auto' as default
+#excluded all attributes with 'auto' as default
 #SVG 1.1 presentation attributes
       'baseline-shift' : 'baseline',
       'clip-path' : 'none',
@@ -356,13 +356,11 @@ from __future__ import division
       IN : 'in',
     }
 
-#@staticmethod
-          def get(unitstr)
+          #@ staticmethod def get(unitstr)
         : if unitstr is None : return Unit.NONE try:
       return Unit.s2u[unitstr] except KeyError : return Unit.INVALID
 
-#@staticmethod
-                                                     def str(unitint)
+                                                 #@ staticmethod def str(unitint)
           : try:
         return Unit.u2s[unitint] except KeyError : return 'INVALID'
 
@@ -821,7 +819,7 @@ def removeNestedGroups(node):
 	num = 0
 	
 	groupsToRemove = []
-#Only consider < g > elements for promotion if this element isn't a <switch>.
+#Only consider < g> elements for promotion if this element isn't a <switch>.
 #(partial fix for bug 594930, required by the SVG spec however)
 	if not (node.nodeType == 1 and node.nodeName == 'switch'):
 		for child in node.childNodes:
@@ -990,20 +988,20 @@ def createGroupsForCommonAttributes(elem):
 					
 					runLength = runEnd - runStart + 1
 					if runLength == elem.childNodes.length: # Every child has this
-#If the current parent is a < g > already,
+#If the current parent is a < g> already,
 						if elem.nodeName == 'g' and elem.namespaceURI == NS['SVG']:
 #do not act altogether on this attribute; all the
 #children have it in common.
 #Let moveCommonAttributesToParentGroup do it.
 							curChild = -1
 							continue
-#otherwise, it might be an < svg > element, and
+#otherwise, it might be an < svg> element, and
 #even if all children have the same attribute value,
 #it's going to be worth making the <g> since
 # <svg> doesn 't support attributes like ' stroke'.
 #Fall through.
 
-#Create a < g > element from scratch.
+#Create a < g> element from scratch.
 #We need the Document for this.
 					document = elem.ownerDocument
 					group = document.createElementNS(NS['SVG'], 'g')
@@ -1394,7 +1392,7 @@ def repairStyle(node, options):
 				del styleMap['overflow']
 				num += 1
 #it is a marker, pattern or svg
-#as long as this node is not the document < svg >, then only
+#as long as this node is not the document < svg>, then only
 #remove overflow = 'hidden'.See
 #http: // www.w3.org/TR/2010/WD-SVG11-20100622/masking.html#OverflowProperty
 			elif node != node.ownerDocument.documentElement:
@@ -2368,7 +2366,7 @@ def optimizeTransform(transform):
 		 and -B1 == A2 and -1 <= B1 <= 1 and B3 == 0
 #as cos² A + sin² A == 1 and as decimal trig is approximate:
 #FIXME : the "epsilon" term here should really be some function
-#of the precision of the(sin | cos) _A terms, not1e-15:
+#of the precision of the(sin | cos) _A terms, not1e - 15:
 		 and  abs((B1 ** 2) + (A1 ** 2) - 1) < Decimal("1e-15")):
 			sin_A, cos_A = B1, A1
 #while asin(A) and acos(A) both only have an 180° range
@@ -2849,7 +2847,7 @@ def scourString(in_string, options=None):
 	if options.simple_colors:
 		numBytesSavedInColors = convertColors(doc.documentElement)
 
-#remove < metadata > if the user wants to
+#remove < metadata> if the user wants to
 	if options.remove_metadata:
 		removeMetadataElements(doc)
 
@@ -2893,15 +2891,15 @@ def scourString(in_string, options=None):
 	while removeDuplicateGradients(doc) > 0:
 		pass
 
-#create < g > elements if there are runs of elements with the same attributes.
+#create < g> elements if there are runs of elements with the same attributes.
 #this MUST be before moveCommonAttributesToParentGroup.
 	if options.group_create:
 		createGroupsForCommonAttributes(doc.documentElement)
 
 #move common attributes to parent group
-#NOTE : the if the < svg > element's immediate children
+#NOTE : the if the < svg> element's immediate children
 #all have the same value for an attribute, it must not
-#get moved to the < svg > element.The < svg > element
+#get moved to the < svg> element.The < svg> element
 #doesn't accept fill=, stroke= etc.!
 	referencedIds = findReferencedElements(doc.documentElement)
 	for child in doc.documentElement.childNodes:
@@ -2911,7 +2909,7 @@ def scourString(in_string, options=None):
 	numAttrsRemoved += removeUnusedAttributesOnParent(doc.documentElement)
 
 #Collapse groups LAST, because we've created groups. If done before
-#moveAttributesToParentGroup, empty < g >'s may remain.
+#moveAttributesToParentGroup, empty < g>'s may remain.
 	if options.group_collapse:
 		while removeNestedGroups(doc.documentElement) > 0:
 			pass

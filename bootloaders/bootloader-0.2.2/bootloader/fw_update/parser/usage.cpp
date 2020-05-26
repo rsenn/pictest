@@ -44,14 +44,16 @@ const UsageDescriptor& Usage::operator[](const unsigned int& id) const {
   list<UsageDescriptor>::const_iterator pc;
   pc = std::find(_descriptors.begin(), _descriptors.end(), id);
   assert(pc != _descriptors.end());
-  if(pc == _descriptors.end()) throw invalid_argument("Invalid descriptor ID");
+  if(pc == _descriptors.end())
+    throw invalid_argument("Invalid descriptor ID");
   return (*pc);
 }
 
 const UsageDescriptor& Usage::operator[](const string& argument) const {
   list<UsageDescriptor>::const_iterator pc;
   pc = std::find(_descriptors.begin(), _descriptors.end(), argument);
-  if(pc == _descriptors.end()) throw EBadArgument(argument);
+  if(pc == _descriptors.end())
+    throw EBadArgument(argument);
   return (*pc);
 }
 
@@ -95,7 +97,8 @@ Usage::print(const list<UsageUpdate>& update, UsageDescriptor::Type type) {
     if(pc->type() == type) {
       list<UsageUpdate>::const_iterator i;
       i = find(update.begin(), update.end(), pc->id());
-      if(i == update.end()) continue;
+      if(i == update.end())
+        continue;
       string valueAlias, description;
       if(i->valueAlias().size() != 0)
         valueAlias = i->valueAlias();
@@ -105,20 +108,18 @@ Usage::print(const list<UsageUpdate>& update, UsageDescriptor::Type type) {
         description = i->description();
       else
         description = pc->description();
-      if(pc->shortArgument().size() != 0) cout << "-" << pc->shortArgument() << " ";
-      if(pc->verboseArgument().size() != 0) cout << "-" << pc->verboseArgument() << " ";
+      if(pc->shortArgument().size() != 0)
+        cout << "-" << pc->shortArgument() << " ";
+      if(pc->verboseArgument().size() != 0)
+        cout << "-" << pc->verboseArgument() << " ";
       switch(i->valueRelevance()) {
-        case UsageDescriptor::absent:
-          break;
-        case UsageDescriptor::possible:
-          cout << " [" << valueAlias << "]";
-          break;
-        case UsageDescriptor::required:
-          cout << " <" << valueAlias << ">";
-          break;
+        case UsageDescriptor::absent: break;
+        case UsageDescriptor::possible: cout << " [" << valueAlias << "]"; break;
+        case UsageDescriptor::required: cout << " <" << valueAlias << ">"; break;
       }
       cout << "\n\t" << description << endl;
-      if(pc->defaultValue().size() != 0) cout << "\tDefault: " << pc->defaultValue() << endl;
+      if(pc->defaultValue().size() != 0)
+        cout << "\tDefault: " << pc->defaultValue() << endl;
     }
   }
 }

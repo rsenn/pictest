@@ -156,7 +156,8 @@ static void register_error(hid_device *device, const char *op)
 static uint32_t
 get_bytes(uint8_t* rpt, size_t len, size_t num_bytes, size_t cur) {
   /* Return if there aren't enough bytes. */
-  if(cur + num_bytes >= len) return 0;
+  if(cur + num_bytes >= len)
+    return 0;
 
   if(num_bytes == 0)
     return 0;
@@ -208,12 +209,8 @@ get_usage(uint8_t* report_descriptor, size_t size, unsigned short* usage_page, u
       switch(size_code) {
         case 0:
         case 1:
-        case 2:
-          data_len = size_code;
-          break;
-        case 3:
-          data_len = 4;
-          break;
+        case 2: data_len = size_code; break;
+        case 3: data_len = 4; break;
         default:
           /* Can't ever happen since size_code is & 0x3 */
           data_len = 0;
@@ -233,7 +230,8 @@ get_usage(uint8_t* report_descriptor, size_t size, unsigned short* usage_page, u
       // printf("Usage: %x\n", (uint32_t)*usage);
     }
 
-    if(usage_page_found && usage_found) return 0; /* success */
+    if(usage_page_found && usage_found)
+      return 0; /* success */
 
     /* Skip over this key and it's associated data */
     i += data_len + key_size;
@@ -256,7 +254,8 @@ get_first_language(libusb_device_handle* dev) {
                                      0x0, /* Language */
                                      (unsigned char*)buf,
                                      sizeof(buf));
-  if(len < 4) return 0x0;
+  if(len < 4)
+    return 0x0;
 
   return buf[1]; // First two bytes are len and descriptor type.
 }
@@ -273,12 +272,14 @@ is_language_supported(libusb_device_handle* dev, uint16_t lang) {
                                      0x0, /* Language */
                                      (unsigned char*)buf,
                                      sizeof(buf));
-  if(len < 4) return 0x0;
+  if(len < 4)
+    return 0x0;
 
   len /= 2; /* language IDs are two-bytes each. */
   /* Start at index 1 because there are two bytes of protocol data. */
   for(i = 1; i < len; i++) {
-    if(buf[i] == lang) return 1;
+    if(buf[i] == lang)
+      return 1;
   }
 
   return 0;
@@ -305,19 +306,23 @@ get_usb_string(libusb_device_handle* dev, uint8_t idx) {
   /* Determine which language to use. */
   uint16_t lang;
   lang = get_usb_code_for_current_locale();
-  if(!is_language_supported(dev, lang)) lang = get_first_language(dev);
+  if(!is_language_supported(dev, lang))
+    lang = get_first_language(dev);
 
   /* Get the string from libusb. */
   len = libusb_get_string_descriptor(dev, idx, lang, (unsigned char*)buf, sizeof(buf));
-  if(len < 0) return NULL;
+  if(len < 0)
+    return NULL;
 
   buf[sizeof(buf) - 1] = '\0';
 
-  if(len + 1 < sizeof(buf)) buf[len + 1] = '\0';
+  if(len + 1 < sizeof(buf))
+    buf[len + 1] = '\0';
 
   /* Initialize iconv. */
   ic = iconv_open("UTF-32", "UTF-16");
-  if(ic == (iconv_t)-1) return NULL;
+  if(ic == (iconv_t)-1)
+    return NULL;
 
   /* Convert to UTF-32 (wchar_t on glibc systems).
      Skip the first character (2-bytes). */
@@ -326,11 +331,13 @@ get_usb_string(libusb_device_handle* dev, uint8_t idx) {
   outptr = (char*)wbuf;
   outbytes = sizeof(wbuf);
   res = iconv(ic, &inptr, &inbytes, &outptr, &outbytes);
-  if(res == (size_t)-1) goto err;
+  if(res == (size_t)-1)
+    goto err;
 
   /* Write the terminating NULL. */
   wbuf[sizeof(wbuf) / sizeof(wbuf[0]) - 1] = 0x00000000;
-  if(outbytes >= sizeof(wbuf[0])) *((wchar_t*)outptr) = 0x00000000;
+  if(outbytes >= sizeof(wbuf[0]))
+    *((wchar_t*)outptr) = 0x00000000;
 
   /* Allocate and copy the string. */
   str = wcsdup(wbuf + 1);
@@ -354,7 +361,8 @@ make_path(libusb_device* dev, int interface_number) {
 int HID_API_EXPORT
 hid_init(void) {
   if(!initialized) {
-    if(libusb_init(NULL)) return -1;
+    if(libusb_init(NULL))
+      return -1;
     initialized = 1;
   }
 
@@ -384,10 +392,12 @@ hid_enumerate(unsigned short vendor_id, unsigned short product_id) {
 
   setlocale(LC_ALL, "");
 
-  if(!initialized) hid_init();
+  if(!initialized)
+    hid_init();
 
   num_devs = libusb_get_device_list(NULL, &devs);
-  if(num_devs < 0) return NULL;
+  if(num_devs < 0)
+    return NULL;
   while((dev = devs[i++]) != NULL) {
     struct libusb_device_descriptor desc;
     struct libusb_config_descriptor* conf_desc = NULL;
@@ -399,10 +409,12 @@ hid_enumerate(unsigned short vendor_id, unsigned short product_id) {
     unsigned short dev_pid = desc.idProduct;
 
     /* HID's are defined at the interface level. */
-    if(desc.bDeviceClass != LIBUSB_CLASS_PER_INTERFACE) continue;
+    if(desc.bDeviceClass != LIBUSB_CLASS_PER_INTERFACE)
+      continue;
 
     res = libusb_get_active_config_descriptor(dev, &conf_desc);
-    if(res < 0) libusb_get_config_descriptor(dev, 0, &conf_desc);
+    if(res < 0)
+      libusb_get_config_descriptor(dev, 0, &conf_desc);
     if(conf_desc) {
       for(j = 0; j < conf_desc->bNumInterfaces; j++) {
         const struct libusb_interface* intf = &conf_desc->interface[j];
@@ -433,11 +445,14 @@ hid_enumerate(unsigned short vendor_id, unsigned short product_id) {
 
               if(res >= 0) {
                 /* Serial Number */
-                if(desc.iSerialNumber > 0) cur_dev->serial_number = get_usb_string(handle, desc.iSerialNumber);
+                if(desc.iSerialNumber > 0)
+                  cur_dev->serial_number = get_usb_string(handle, desc.iSerialNumber);
 
                 /* Manufacturer and Product strings */
-                if(desc.iManufacturer > 0) cur_dev->manufacturer_string = get_usb_string(handle, desc.iManufacturer);
-                if(desc.iProduct > 0) cur_dev->product_string = get_usb_string(handle, desc.iProduct);
+                if(desc.iManufacturer > 0)
+                  cur_dev->manufacturer_string = get_usb_string(handle, desc.iManufacturer);
+                if(desc.iProduct > 0)
+                  cur_dev->product_string = get_usb_string(handle, desc.iProduct);
 
 #ifdef INVASIVE_GET_USAGE
                 /*
@@ -490,14 +505,16 @@ hid_enumerate(unsigned short vendor_id, unsigned short product_id) {
 
                   /* Release the interface */
                   res = libusb_release_interface(handle, interface_num);
-                  if(res < 0) LOG("Can't release the interface.\n");
+                  if(res < 0)
+                    LOG("Can't release the interface.\n");
                 } else
                   LOG("Can't claim interface %d\n", res);
 
                 /* Re-attach kernel driver if necessary. */
                 if(detached) {
                   res = libusb_attach_kernel_driver(handle, interface_num);
-                  if(res < 0) LOG("Couldn't re-attach kernel driver.\n");
+                  if(res < 0)
+                    LOG("Couldn't re-attach kernel driver.\n");
                 }
 #endif /*******************/
 
@@ -696,7 +713,8 @@ hid_open_path(const char* path) {
 
   setlocale(LC_ALL, "");
 
-  if(!initialized) hid_init();
+  if(!initialized)
+    hid_init();
 
   num_devs = libusb_get_device_list(NULL, &devs);
   while((usb_dev = devs[d++]) != NULL) {
@@ -705,7 +723,8 @@ hid_open_path(const char* path) {
     int i, j, k;
     libusb_get_device_descriptor(usb_dev, &desc);
 
-    if(libusb_get_active_config_descriptor(usb_dev, &conf_desc) < 0) continue;
+    if(libusb_get_active_config_descriptor(usb_dev, &conf_desc) < 0)
+      continue;
     for(j = 0; j < conf_desc->bNumInterfaces; j++) {
       const struct libusb_interface* intf = &conf_desc->interface[j];
       for(k = 0; k < intf->num_altsetting; k++) {
@@ -825,9 +844,11 @@ hid_write(hid_device* dev, const unsigned char* data, size_t length) {
                                   length,
                                   1000 /*timeout millis*/);
 
-    if(res < 0) return -1;
+    if(res < 0)
+      return -1;
 
-    if(skipped_report_id) length++;
+    if(skipped_report_id)
+      length++;
 
     return length;
   } else {
@@ -836,9 +857,11 @@ hid_write(hid_device* dev, const unsigned char* data, size_t length) {
     res = libusb_interrupt_transfer(
         dev->device_handle, dev->output_endpoint, (unsigned char*)data, length, &actual_length, 1000);
 
-    if(res < 0) return -1;
+    if(res < 0)
+      return -1;
 
-    if(skipped_report_id) actual_length++;
+    if(skipped_report_id)
+      actual_length++;
 
     return actual_length;
   }
@@ -852,7 +875,8 @@ return_data(hid_device* dev, unsigned char* data, size_t length) {
      return buffer (data), and delete the liked list item. */
   struct input_report* rpt = dev->input_reports;
   size_t len = (length < rpt->len) ? length : rpt->len;
-  if(len > 0) memcpy(data, rpt->data, len);
+  if(len > 0)
+    memcpy(data, rpt->data, len);
   dev->input_reports = rpt->next;
   free(rpt->data);
   free(rpt);
@@ -979,10 +1003,12 @@ hid_send_feature_report(hid_device* dev, const unsigned char* data, size_t lengt
                                 length,
                                 1000 /*timeout millis*/);
 
-  if(res < 0) return -1;
+  if(res < 0)
+    return -1;
 
   /* Account for the report ID */
-  if(skipped_report_id) length++;
+  if(skipped_report_id)
+    length++;
 
   return length;
 }
@@ -1009,16 +1035,19 @@ hid_get_feature_report(hid_device* dev, unsigned char* data, size_t length) {
                                 length,
                                 1000 /*timeout millis*/);
 
-  if(res < 0) return -1;
+  if(res < 0)
+    return -1;
 
-  if(skipped_report_id) res++;
+  if(skipped_report_id)
+    res++;
 
   return res;
 }
 
 void HID_API_EXPORT
 hid_close(hid_device* dev) {
-  if(!dev) return;
+  if(!dev)
+    return;
 
   /* Cause read_thread() to stop. */
   dev->shutdown_thread = 1;
@@ -1234,7 +1263,8 @@ get_usb_code_for_current_locale(void) {
 
   /* Get the current locale. */
   locale = setlocale(0, NULL);
-  if(!locale) return 0x0;
+  if(!locale)
+    return 0x0;
 
   /* Make a copy of the current locale string. */
   strncpy(search_string, locale, sizeof(search_string));

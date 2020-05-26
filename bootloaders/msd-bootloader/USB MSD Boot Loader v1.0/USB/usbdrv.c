@@ -216,18 +216,21 @@ USBDriverService(void) {
   /*
    * Pointless to continue servicing if USB cable is not even attached.
    */
-  if(usb_device_state == DETACHED_STATE) return;
+  if(usb_device_state == DETACHED_STATE)
+    return;
 
   /*
    * Task A: Service USB Activity Interrupt
    */
 
-  if(UIRbits.ACTVIF && UIEbits.ACTVIE) USBWakeFromSuspend();
+  if(UIRbits.ACTVIF && UIEbits.ACTVIE)
+    USBWakeFromSuspend();
 
   /*
    * Pointless to continue servicing if the device is in suspend mode.
    */
-  if(UCONbits.SUSPND == 1) return;
+  if(UCONbits.SUSPND == 1)
+    return;
 
   /*
    * Task B: Service USB Bus Reset Interrupt.
@@ -235,22 +238,28 @@ USBDriverService(void) {
    * once the UCONbits.SUSPND is clear, then the URSTIF bit will be asserted.
    * This is why URSTIF is checked after ACTVIF.
    */
-  if(UIRbits.URSTIF && UIEbits.URSTIE) USBProtocolResetHandler();
+  if(UIRbits.URSTIF && UIEbits.URSTIE)
+    USBProtocolResetHandler();
 
   /*
    * Task C: Service other USB interrupts
    */
-  if(UIRbits.IDLEIF && UIEbits.IDLEIE) USBSuspend();
-  if(UIRbits.SOFIF && UIEbits.SOFIE) USB_SOF_Handler();
-  if(UIRbits.STALLIF && UIEbits.STALLIE) USBStallHandler();
-  if(UIRbits.UERRIF && UIEbits.UERRIE) USBErrorHandler();
+  if(UIRbits.IDLEIF && UIEbits.IDLEIE)
+    USBSuspend();
+  if(UIRbits.SOFIF && UIEbits.SOFIE)
+    USB_SOF_Handler();
+  if(UIRbits.STALLIF && UIEbits.STALLIE)
+    USBStallHandler();
+  if(UIRbits.UERRIF && UIEbits.UERRIE)
+    USBErrorHandler();
 
   /*
    * Pointless to continue servicing if the host has not sent a bus reset.
    * Once bus reset is received, the device transitions into the DEFAULT
    * state and is ready for communication.
    */
-  if(usb_device_state < DEFAULT_STATE) return;
+  if(usb_device_state < DEFAULT_STATE)
+    return;
 
   /*
    * Task D: Servicing USB Transaction Complete Interrupt

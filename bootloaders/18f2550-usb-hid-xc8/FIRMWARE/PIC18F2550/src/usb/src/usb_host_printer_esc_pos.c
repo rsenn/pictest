@@ -432,30 +432,14 @@ USBHostPrinterLanguageESCPOS(
       }
 
       switch((uint8_t)size) {
-        case USB_PRINTER_FONT_POS_18x36:
-          size = 0x00;
-          break;
-        case USB_PRINTER_FONT_POS_18x72:
-          size = 0x10;
-          break;
-        case USB_PRINTER_FONT_POS_36x36:
-          size = 0x20;
-          break;
-        case USB_PRINTER_FONT_POS_36x72:
-          size = 0x30;
-          break;
-        case USB_PRINTER_FONT_POS_12x24:
-          size = 0x01;
-          break;
-        case USB_PRINTER_FONT_POS_12x48:
-          size = 0x11;
-          break;
-        case USB_PRINTER_FONT_POS_24x24:
-          size = 0x21;
-          break;
-        case USB_PRINTER_FONT_POS_24x48:
-          size = 0x31;
-          break;
+        case USB_PRINTER_FONT_POS_18x36: size = 0x00; break;
+        case USB_PRINTER_FONT_POS_18x72: size = 0x10; break;
+        case USB_PRINTER_FONT_POS_36x36: size = 0x20; break;
+        case USB_PRINTER_FONT_POS_36x72: size = 0x30; break;
+        case USB_PRINTER_FONT_POS_12x24: size = 0x01; break;
+        case USB_PRINTER_FONT_POS_12x48: size = 0x11; break;
+        case USB_PRINTER_FONT_POS_24x24: size = 0x21; break;
+        case USB_PRINTER_FONT_POS_24x48: size = 0x31; break;
       }
 
       printerListESCPOS[printer].fontName = (uint8_t)size;
@@ -822,16 +806,12 @@ USBHostPrinterLanguageESCPOS(
 
 //---------------------------------------------------------------------
 #ifdef USB_PRINTER_POS_TWO_COLOR_SUPPORT
-    case USB_PRINTER_POS_COLOR_BLACK:
-      return _PrintStaticCommand(printer, COMMAND_COLOR_BLACK, transferFlags);
-      break;
+    case USB_PRINTER_POS_COLOR_BLACK: return _PrintStaticCommand(printer, COMMAND_COLOR_BLACK, transferFlags); break;
 #endif
 
 //---------------------------------------------------------------------
 #ifdef USB_PRINTER_POS_TWO_COLOR_SUPPORT
-    case USB_PRINTER_POS_COLOR_RED:
-      return _PrintStaticCommand(printer, COMMAND_COLOR_RED, transferFlags);
-      break;
+    case USB_PRINTER_POS_COLOR_RED: return _PrintStaticCommand(printer, COMMAND_COLOR_RED, transferFlags); break;
 #endif
 
 //---------------------------------------------------------------------
@@ -1050,9 +1030,7 @@ USBHostPrinterLanguageESCPOS(
 #endif
 
     //---------------------------------------------------------------------
-    default:
-      return USB_PRINTER_UNKNOWN_COMMAND;
-      break;
+    default: return USB_PRINTER_UNKNOWN_COMMAND; break;
   }
   return USB_PRINTER_UNKNOWN_COMMAND;
 }
@@ -1277,17 +1255,12 @@ USBHostPrinterPOSImageDataFormat(USB_DATA_POINTER image,
 
   maskHorizontal = 0x80;
   switch(imageLocation) {
-    case USB_PRINTER_TRANSFER_FROM_ROM:
-      ptrROM = ((USB_DATA_POINTER)image).pointerROM;
-      break;
+    case USB_PRINTER_TRANSFER_FROM_ROM: ptrROM = ((USB_DATA_POINTER)image).pointerROM; break;
 
-    case USB_PRINTER_TRANSFER_FROM_RAM:
-      ptrRAM = ((USB_DATA_POINTER)image).pointerRAM;
-      break;
+    case USB_PRINTER_TRANSFER_FROM_RAM: ptrRAM = ((USB_DATA_POINTER)image).pointerRAM; break;
 
     // case USB_PRINTER_TRANSFER_FROM_EXTERNAL:
-    default:
-      return USB_NULL;
+    default: return USB_NULL;
   }
 
   widthBytes = (imageWidth + 7) / 8;
@@ -1303,9 +1276,7 @@ USBHostPrinterPOSImageDataFormat(USB_DATA_POINTER image,
       for(k = 0; k < 8; k++) {
         if((*currentRow + (m * 8) + k) < imageHeight) {
           switch(imageLocation) {
-            case USB_PRINTER_TRANSFER_FROM_ROM:
-              currentByte = ptrROM[(widthBytes * (m * 8 + k)) + (j / 8)];
-              break;
+            case USB_PRINTER_TRANSFER_FROM_ROM: currentByte = ptrROM[(widthBytes * (m * 8 + k)) + (j / 8)]; break;
 
             case USB_PRINTER_TRANSFER_FROM_RAM:
               currentByte = ptrRAM[(widthBytes * (m * 8 + k)) + (j / 8)];
@@ -1329,17 +1300,12 @@ USBHostPrinterPOSImageDataFormat(USB_DATA_POINTER image,
 
   *currentRow += 8 * byteDepth;
   switch(imageLocation) {
-    case USB_PRINTER_TRANSFER_FROM_ROM:
-      return (USB_DATA_POINTER)(image.pointerROM + (imageWidth * byteDepth));
-      break;
+    case USB_PRINTER_TRANSFER_FROM_ROM: return (USB_DATA_POINTER)(image.pointerROM + (imageWidth * byteDepth)); break;
 
-    case USB_PRINTER_TRANSFER_FROM_RAM:
-      return (USB_DATA_POINTER)(image.pointerRAM + (imageWidth * byteDepth));
-      break;
+    case USB_PRINTER_TRANSFER_FROM_RAM: return (USB_DATA_POINTER)(image.pointerRAM + (imageWidth * byteDepth)); break;
 
     // case USB_PRINTER_TRANSFER_FROM_EXTERNAL:
-    default:
-      return USB_NULL;
+    default: return USB_NULL;
   }
 }
 

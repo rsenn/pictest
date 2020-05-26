@@ -248,12 +248,8 @@ AndroidAppWrite(void* handle, uint8_t* data, uint32_t size) {
 
   switch(errorCode) {
     case USB_ENDPOINT_BUSY:
-    case USB_SUCCESS:
-      device->status.TXBusy = 1;
-      break;
-    default:
-      device->status.TXBusy = 0;
-      break;
+    case USB_SUCCESS: device->status.TXBusy = 1; break;
+    default: device->status.TXBusy = 0; break;
   }
 
   return errorCode;
@@ -395,12 +391,8 @@ AndroidAppRead(void* handle, uint8_t* data, uint32_t size) {
 
   switch(errorCode) {
     case USB_SUCCESS:
-    case USB_ENDPOINT_BUSY:
-      device->status.RXBusy = 1;
-      break;
-    default:
-      device->status.RXBusy = 0;
-      break;
+    case USB_ENDPOINT_BUSY: device->status.RXBusy = 1; break;
+    default: device->status.RXBusy = 0; break;
   }
 
   return errorCode;
@@ -712,8 +704,7 @@ AndroidTasks(void) {
         }
         break;
 
-      case WAITING_FOR_ACCESSORY_RETURN:
-        break;
+      case WAITING_FOR_ACCESSORY_RETURN: break;
 
       case RETURN_OF_THE_ACCESSORY:
         // The accessory has returned and has been initialialized.  It is now ready to use.
@@ -721,8 +712,7 @@ AndroidTasks(void) {
         USB_HOST_APP_EVENT_HANDLER(device->address, EVENT_ANDROID_ATTACH, device, sizeof(ANDROID_DEVICE_DATA*));
         break;
 
-      case READY:
-        break;
+      case READY: break;
 
       case REGISTERING_HID:
         if(device->status.EP0TransferPending == 0) {
@@ -993,8 +983,7 @@ AndroidAppDataEventHandler(uint8_t address, USB_EVENT event, void* data, uint32_
         }
       }
       return true;
-    default:
-      break;
+    default: break;
   }
   return false;
 }
@@ -1106,8 +1095,7 @@ AndroidAppEventHandler(uint8_t address, USB_EVENT event, void* data, uint32_t si
     case EVENT_BUS_ERROR: // BUS error has occurred
       return true;
 
-    default:
-      break;
+    default: break;
   }
   return false;
 }

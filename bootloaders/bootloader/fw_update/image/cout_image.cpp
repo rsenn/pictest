@@ -32,7 +32,8 @@ CoutImage::~CoutImage() {}
 
 void
 CoutImage::open(bool read) {
-  if(read) throw DEImageAbsent();
+  if(read)
+    throw DEImageAbsent();
 }
 
 void

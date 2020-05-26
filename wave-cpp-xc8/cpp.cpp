@@ -189,7 +189,8 @@ public:
   // Function which validates additional tokens from command line.
   static void
   validate(boost::any& v, vector<std::string> const& tokens) {
-    if(v.empty()) v = boost::any(include_paths());
+    if(v.empty())
+      v = boost::any(include_paths());
 
     include_paths* p = boost::any_cast<include_paths>(&v);
 
@@ -231,7 +232,8 @@ read_config_file_options(std::string const& filename,
   while(std::getline(ifs, line)) {
     // skip empty lines
     std::string::size_type pos = line.find_first_not_of(" \t");
-    if(pos == std::string::npos) continue;
+    if(pos == std::string::npos)
+      continue;
 
     // skip comment lines
     if('#' != line[pos]) {
@@ -382,8 +384,7 @@ report_error_message(Context& ctx, boost::wave::cpp_exception const& e) {
       }
     } break;
 
-    default:
-      break;
+    default: break;
   }
 
   return result;
@@ -397,10 +398,12 @@ read_a_line(std::istream& instream, std::string& instring) {
   do {
     std::string line;
     std::getline(instream, line);
-    if(instream.rdstate() & std::ios::failbit) return false; // nothing to do
+    if(instream.rdstate() & std::ios::failbit)
+      return false; // nothing to do
 
     eol = true;
-    if(line.find_last_of('\\') == line.size() - 1) eol = false;
+    if(line.find_last_of('\\') == line.size() - 1)
+      eol = false;
 
     instring += line + '\n';
   } while(!eol);
@@ -416,7 +419,8 @@ load_state(po::variables_map const& vm, Context& ctx) {
   try {
     if(vm.count("state") > 0) {
       fs::path state_file(boost::wave::util::create_path(vm["state"].as<std::string>()));
-      if(state_file == "-") state_file = boost::wave::util::create_path("wave.state");
+      if(state_file == "-")
+        state_file = boost::wave::util::create_path("wave.state");
 
       std::ios::openmode mode = std::ios::in;
 
@@ -454,7 +458,8 @@ save_state(po::variables_map const& vm, Context const& ctx) {
   try {
     if(vm.count("state") > 0) {
       fs::path state_file(boost::wave::util::create_path(vm["state"].as<std::string>()));
-      if(state_file == "-") state_file = boost::wave::util::create_path("wave.state");
+      if(state_file == "-")
+        state_file = boost::wave::util::create_path("wave.state");
 
       std::ios::openmode mode = std::ios::out;
 
@@ -521,7 +526,8 @@ list_macro_names(context_type const& ctx, std::string filename) {
         parameters_type::const_iterator pend = pars.end();
         for(parameters_type::const_iterator pit = pars.begin(); pit != pend; /**/) {
           macronames_out << (*pit).get_value();
-          if(++pit != pend) macronames_out << ", ";
+          if(++pit != pend)
+            macronames_out << ", ";
         }
         macronames_out << ")";
       }
@@ -603,7 +609,8 @@ do_actual_work(std::string file_name, std::istream& instream, po::variables_map 
     std::string instring;
 
     instream.unsetf(std::ios::skipws);
-    if(!input_is_stdin) instring = read_entire_file(instream);
+    if(!input_is_stdin)
+      instring = read_entire_file(instream);
 
     // The preprocessing of the input stream is done on the fly behind the
     // scenes during iteration over the context_type::iterator_type stream.
@@ -688,9 +695,8 @@ do_actual_work(std::string file_name, std::istream& instream, po::variables_map 
       int preserve = vm["preserve"].as<int>();
 
       switch(preserve) {
-        case 0:
-          break; // preserve no whitespace
-        case 3:  // preserve all whitespace
+        case 0: break; // preserve no whitespace
+        case 3:        // preserve all whitespace
           preserve_whitespace = true;
           preserve_comments = true;
           preserve_bol_whitespace = true;
@@ -715,7 +721,8 @@ do_actual_work(std::string file_name, std::istream& instream, po::variables_map 
     // threat, it has to be enabled explicitly by --extended or -x
     bool enable_system_command = false;
 
-    if(vm.count("extended")) enable_system_command = true;
+    if(vm.count("extended"))
+      enable_system_command = true;
 
     // This this the central piece of the Wave library, it provides you with
     // the iterators to get the preprocessed tokens and allows to configure
@@ -734,7 +741,8 @@ do_actual_work(std::string file_name, std::istream& instream, po::variables_map 
                                             default_outfile);
 
     // enable macro invocation count, if appropriate
-    if(vm.count("macrocounts")) hooks.enable_macro_counting();
+    if(vm.count("macrocounts"))
+      hooks.enable_macro_counting();
 
     // check, if we have a license file to prepend
     std::string license;
@@ -827,7 +835,8 @@ do_actual_work(std::string file_name, std::istream& instream, po::variables_map 
       }
       ctx.set_language(boost::wave::enable_emit_line_directives(ctx.get_language(), lineopt != 0));
 
-      if(2 == lineopt) ctx.get_hooks().enable_relative_names_in_line_directives(true);
+      if(2 == lineopt)
+        ctx.get_hooks().enable_relative_names_in_line_directives(true);
     }
 
     // control whether whitespace should be inserted to disambiguate output
@@ -860,7 +869,8 @@ do_actual_work(std::string file_name, std::istream& instream, po::variables_map 
       }
 
       // if -I- was given on the command line, this has to be propagated
-      if(ip.seen_separator) ctx.set_sysinclude_delimiter();
+      if(ip.seen_separator)
+        ctx.set_sysinclude_delimiter();
 
       // add system include directories to the include path
       vector<std::string>::const_iterator sysend = ip.syspaths.end();
@@ -933,7 +943,8 @@ do_actual_work(std::string file_name, std::istream& instream, po::variables_map 
           cerr << "wave: could not open output file: " << out_file.string() << endl;
           return -1;
         }
-        if(!license.empty()) output << license;
+        if(!license.empty())
+          output << license;
         default_outfile = out_file.string();
       }
     } else if(!input_is_stdin && vm.count("autooutput")) {
@@ -942,7 +953,8 @@ do_actual_work(std::string file_name, std::istream& instream, po::variables_map 
       std::string basename(boost::wave::util::leaf(out_file));
       std::string::size_type pos = basename.find_last_of(".");
 
-      if(std::string::npos != pos) basename = basename.substr(0, pos);
+      if(std::string::npos != pos)
+        basename = basename.substr(0, pos);
       out_file = boost::wave::util::branch_path(out_file) / (basename + ".i");
 
       boost::wave::util::create_directories(boost::wave::util::branch_path(out_file));
@@ -951,7 +963,8 @@ do_actual_work(std::string file_name, std::istream& instream, po::variables_map 
         cerr << "wave: could not open output file: " << out_file.string() << endl;
         return -1;
       }
-      if(!license.empty()) output << license;
+      if(!license.empty())
+        output << license;
       default_outfile = out_file.string();
     }
 
@@ -999,11 +1012,13 @@ do_actual_work(std::string file_name, std::istream& instream, po::variables_map 
       bool finished = false;
 
       if(input_is_stdin) {
-        if(is_interactive) cout << ">>> "; // prompt if is interactive
+        if(is_interactive)
+          cout << ">>> "; // prompt if is interactive
 
         // read next line and continue
         instring.clear();
-        if(!read_a_line(instream, instring)) break; // end of input reached
+        if(!read_a_line(instream, instring))
+          break; // end of input reached
         first = ctx.begin(instring.begin(), instring.end());
       }
 
@@ -1058,14 +1073,17 @@ do_actual_work(std::string file_name, std::istream& instream, po::variables_map 
       } while(!finished);
     } while(input_is_stdin);
 
-    if(is_interactive) save_state(vm, ctx); // write the internal tables to disc
+    if(is_interactive)
+      save_state(vm, ctx); // write the internal tables to disc
 
     // list all defined macros at the end of the preprocessing
     if(vm.count("macronames")) {
-      if(!list_macro_names(ctx, vm["macronames"].as<std::string>())) return -1;
+      if(!list_macro_names(ctx, vm["macronames"].as<std::string>()))
+        return -1;
     }
     if(vm.count("macrocounts")) {
-      if(!list_macro_counts(ctx, vm["macrocounts"].as<std::string>())) return -1;
+      if(!list_macro_counts(ctx, vm["macrocounts"].as<std::string>()))
+        return -1;
     }
   } catch(boost::wave::cpp_exception const& e) {
     // some preprocessing error

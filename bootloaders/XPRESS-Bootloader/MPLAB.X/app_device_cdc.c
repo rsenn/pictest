@@ -2,7 +2,7 @@
 Copyright 2016 Microchip Technology Inc. (www.microchip.com)
 
  CDC Device Implementation
-  
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -139,7 +139,8 @@ APP_DeviceCDCEmulatorInitialize() {
 void
 APP_DeviceCDCEmulatorTasks() {
 
-  if((USBDeviceState < CONFIGURED_STATE) || (USBSuspendControl == 1)) return;
+  if((USBDeviceState < CONFIGURED_STATE) || (USBSuspendControl == 1))
+    return;
 
   if(RS232_Out_Data_Rdy == 0)                        // only check for new USB buffer if the old RS232 buffer is
   {                                                  // empty.  This will cause additional USB packets to be NAK'd
@@ -159,13 +160,15 @@ APP_DeviceCDCEmulatorTasks() {
     if(UART_CTS == USB_CDC_CTS_ACTIVE_LEVEL) {
       USART_putcUSART(RS232_Out_Data[RS232cp]);
       ++RS232cp;
-      if(RS232cp == LastRS232Out) RS232_Out_Data_Rdy = 0;
+      if(RS232cp == LastRS232Out)
+        RS232_Out_Data_Rdy = 0;
     }
 #else
     // Hardware flow control not being used.  Just send the data.
     UART_putch(RS232_Out_Data[RS232cp]);
     ++RS232cp;
-    if(RS232cp == LastRS232Out) RS232_Out_Data_Rdy = 0;
+    if(RS232cp == LastRS232Out)
+      RS232_Out_Data_Rdy = 0;
 #endif
   }
 

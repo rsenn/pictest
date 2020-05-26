@@ -308,7 +308,8 @@ TMR2ON = 1;       // Enable timer 2.
       wait = msecs < tmp_msecs;
       INTERRUPT_ENABLE();
 
-      if(!wait) break;
+      if(!wait)
+        break;
     }
 #if 0
 
@@ -566,10 +567,12 @@ INTERRUPT_HANDLER() {
     if(blinktime >= 100) {
       blinktime -= 100;
       led_state = !led_state;
-      if(led_enabled) SET_LED2(led_state);
+      if(led_enabled)
+        SET_LED2(led_state);
     }
 
-    if(led_enabled) SET_LED(seconds & 1);
+    if(led_enabled)
+      SET_LED(seconds & 1);
 
     // Clear timer interrupt bit
     TMR0IF = 0;
@@ -615,7 +618,8 @@ INTERRUPT_HANDLER() {
   if(INTF) {
 //  BUTTON_INT();
 #ifdef USE_7SEGMENT
-    if(button_state & (1 << display_multiplex) == 0) button_flags |= (1 << display_multiplex);
+    if(button_state & (1 << display_multiplex) == 0)
+      button_flags |= (1 << display_multiplex);
     button_state |= (1 << display_multiplex);
 #endif
     INTF = 0;
@@ -634,7 +638,8 @@ INTERRUPT_HANDLER() {
     if(serial_in == ' ') {
       led_enabled = !led_enabled;
     }
-    if(serial_in > 'Z') serial_in -= 0x20;
+    if(serial_in > 'Z')
+      serial_in -= 0x20;
 
     if(serial_in >= 'A' && serial_in <= 'Z') {
       in_word[in_word_ptr] = serial_in;

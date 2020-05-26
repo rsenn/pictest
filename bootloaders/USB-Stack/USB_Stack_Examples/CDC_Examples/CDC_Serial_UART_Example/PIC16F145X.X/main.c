@@ -234,7 +234,8 @@ VCP_Tasks(void) {
     CDC_Arm_DAT_EP_IN(RxIndex);
     RxIndex = 0;
 #ifdef USE_RTS
-    if(USB_HAS_SET_RTS && (RTS != RTS_ACTIVE)) RTS = RTS_ACTIVE;
+    if(USB_HAS_SET_RTS && (RTS != RTS_ACTIVE))
+      RTS = RTS_ACTIVE;
     RxBufferFull = false;
 #endif
   }

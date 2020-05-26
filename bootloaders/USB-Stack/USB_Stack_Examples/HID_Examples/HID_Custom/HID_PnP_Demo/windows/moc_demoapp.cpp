@@ -103,17 +103,13 @@ DemoApp::qt_static_metacall(QObject* _o, QMetaObject::Call _c, int _id, void** _
     auto* _t = static_cast<DemoApp*>(_o);
     Q_UNUSED(_t)
     switch(_id) {
-      case 0:
-        _t->toggle_leds_button_pressed();
-        break;
+      case 0: _t->toggle_leds_button_pressed(); break;
       case 1:
         _t->update_gui((*reinterpret_cast<bool(*)>(_a[1])),
                        (*reinterpret_cast<bool(*)>(_a[2])),
                        (*reinterpret_cast<int(*)>(_a[3])));
         break;
-      case 2:
-        _t->on_pushButton_clicked();
-        break;
+      case 2: _t->on_pushButton_clicked(); break;
       default:;
     }
   } else if(_c == QMetaObject::IndexOfMethod) {
@@ -142,20 +138,25 @@ DemoApp::metaObject() const {
 
 void*
 DemoApp::qt_metacast(const char* _clname) {
-  if(!_clname) return nullptr;
-  if(!strcmp(_clname, qt_meta_stringdata_DemoApp.stringdata0)) return static_cast<void*>(this);
+  if(!_clname)
+    return nullptr;
+  if(!strcmp(_clname, qt_meta_stringdata_DemoApp.stringdata0))
+    return static_cast<void*>(this);
   return QMainWindow::qt_metacast(_clname);
 }
 
 int
 DemoApp::qt_metacall(QMetaObject::Call _c, int _id, void** _a) {
   _id = QMainWindow::qt_metacall(_c, _id, _a);
-  if(_id < 0) return _id;
+  if(_id < 0)
+    return _id;
   if(_c == QMetaObject::InvokeMetaMethod) {
-    if(_id < 3) qt_static_metacall(this, _c, _id, _a);
+    if(_id < 3)
+      qt_static_metacall(this, _c, _id, _a);
     _id -= 3;
   } else if(_c == QMetaObject::RegisterMethodArgumentMetaType) {
-    if(_id < 3) *reinterpret_cast<int*>(_a[0]) = -1;
+    if(_id < 3)
+      *reinterpret_cast<int*>(_a[0]) = -1;
     _id -= 3;
   }
   return _id;

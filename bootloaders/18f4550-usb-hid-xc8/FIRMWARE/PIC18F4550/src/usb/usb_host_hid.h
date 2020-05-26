@@ -316,7 +316,7 @@ uint8_t USBHostHIDResetDevice(uint8_t deviceAddress);
                                     and error codes that can be returned
                                     in the errorCode parameter of
                                     USBHostHIDTransferIsComplete();
-                                    
+
   Remarks:
     None
   ***************************************************************************/
@@ -369,11 +369,11 @@ void USBHostHIDTasks(void);
                             * 1 = In (Read)
                             * 0 = Out (Write)
     uint8_t interfaceNum   - Interface number
-                            
+
   Return Values:
     USB_SUCCESS                 - Transfer terminated
     USB_HID_DEVICE_NOT_FOUND    - No device with specified address
-    
+
   Remarks:
     None
 *******************************************************************************/
@@ -471,7 +471,7 @@ bool USBHostHIDTransferIsComplete(uint8_t deviceAddress, uint8_t* errorCode, uin
                                   performing a transfer
     Others                      - Return values from USBHostIssueDeviceRequest(),
                                     and USBHostWrite()
-                                    
+
   Remarks:
     None
 *******************************************************************************/

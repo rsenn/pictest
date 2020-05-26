@@ -29,7 +29,8 @@ str_cmp(const std::string& s1, const std::string& s2) {
   std::string::const_iterator p1 = s1.begin();
   std::string::const_iterator p2 = s2.begin();
   for(p1 = s1.begin(), p2 = s2.begin(); p1 != s1.end() && p2 != s2.end(); p1++, p2++)
-    if(toupper(*p1) != toupper(*p2)) return (toupper(*p1) < toupper(*p2)) ? -1 : 1;
+    if(toupper(*p1) != toupper(*p2))
+      return (toupper(*p1) < toupper(*p2)) ? -1 : 1;
   return (s1.size() == s2.size()) ? 0 : (s1.size() < s2.size()) ? -1 : 1;
 }
 inline bool

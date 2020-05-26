@@ -61,18 +61,13 @@ inline void
 show_progress(string operation, string device, string memory, unsigned int progress) {
   cout << "\r" << device << " ";
 
-  if(memory != "") cout << memory << " ";
+  if(memory != "")
+    cout << memory << " ";
   cout << operation << ": ";
   switch(progress) {
-    case OPERATION_DONE:
-      cout << "DONE.\n";
-      break;
-    case OPERATION_FAILED:
-      cout << "FAILED.\n";
-      break;
-    default:
-      eAssert(progress <= 100);
-      cout << progress << "%";
+    case OPERATION_DONE: cout << "DONE.\n"; break;
+    case OPERATION_FAILED: cout << "FAILED.\n"; break;
+    default: eAssert(progress <= 100); cout << progress << "%";
   }
 }
 

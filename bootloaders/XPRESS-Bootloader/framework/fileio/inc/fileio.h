@@ -585,7 +585,7 @@ bool FILEIO_MediaDetect(const FILEIO_DRIVE_CONFIG* driveConfig, void* mediaParam
   Function:
       FILEIO_ERROR_TYPE FILEIO_DriveMount (char driveId,
           const FILEIO_DRIVE_CONFIG * driveConfig, void * mediaParameters);
-    
+
   Summary:
     Initializes a drive and loads its configuration information.
   Description:
@@ -656,7 +656,7 @@ int FILEIO_Format(
 /***********************************************************************
   Function:
       int FILEIO_DriveUnmount (const char driveID)
-    
+
   Summary:
     Unmounts a drive.
   Description:
@@ -675,7 +675,7 @@ int FILEIO_DriveUnmount(const char driveId);
 /******************************************************************************
   Function:
       int FILEIO_Remove (const char * pathName)
-    
+
   Summary:
     Deletes a file.
   Description:
@@ -687,7 +687,7 @@ int FILEIO_DriveUnmount(const char driveId);
   Return:
       * If Success: FILEIO_RESULT_SUCCESS
       * If Failure: FILEIO_RESULT_FAILURE
-    
+
       * Sets error code which can be retrieved with FILEIO_ErrorGet. Note
         that if the path cannot be resolved, the error will be returned for the
         current working directory.
@@ -711,7 +711,7 @@ int FILEIO_Remove(const char* pathName);
 /*******************************************************************************
   Function:
       int FILEIO_Rename (const char * oldPathname, const char * newFilename)
-    
+
   Summary:
     Renames a file.
   Description:
@@ -726,7 +726,7 @@ int FILEIO_Remove(const char* pathName);
   Return:
       * If Success: FILEIO_RESULT_SUCCESS
       * If Failure: FILEIO_RESULT_FAILURE
-    
+
       * Sets error code which can be retrieved with FILEIO_ErrorGet Note
         that if the path cannot be resolved, the error will be returned for the
         current working directory.
@@ -757,19 +757,19 @@ int FILEIO_Rename(const char* oldPathName, const char* newFileName);
 /************************************************************
   Function:
       int FILEIO_DirectoryMake (const char * path)
-    
+
   Summary:
     Creates the directory/directories specified by 'path.'
-    
+
   Description:
     Creates the directory/directories specified by 'path.'
-    
+
   Conditions:
     The specified drive must be mounted.
-    
+
   Input:
     path -  Path string containing all directories to create.
-    
+
   Return:
       * If Success: FILEIO_RESULT_SUCCESS
       * If Failure: FILEIO_RESULT_FAILURE
@@ -779,21 +779,21 @@ int FILEIO_DirectoryMake(const char* path);
 /*************************************************************************
   Function:
       int FILEIO_DirectoryChange (const char * path)
-    
+
   Summary:
     Changes the current working directory.
-    
+
   Description:
     Changes the current working directory to the directory specified by
     'path.'
-    
+
   Conditions:
     The specified drive must be mounted and the directory being changed to
     should exist.
-    
+
   Input:
     path -  The path of the directory to change to.
-    
+
   Return:
       * If Success: FILEIO_RESULT_SUCCESS
       * If Failure: FILEIO_RESULT_FAILURE
@@ -803,7 +803,7 @@ int FILEIO_DirectoryChange(const char* path);
 /******************************************************************************
   Function:
       uint16_t FILEIO_DirectoryGetCurrent (char * buffer, uint16_t size)
-    
+
   Summary:
     Gets the name of the current working directory.
   Description:
@@ -832,7 +832,7 @@ uint16_t FILEIO_DirectoryGetCurrent(char* buffer, uint16_t size);
 /************************************************************************
   Function:
       int FILEIO_DirectoryRemove (const char * pathName)
-    
+
   Summary:
     Deletes a directory.
   Description:
@@ -892,7 +892,7 @@ void FILEIO_ErrorClear(char driveId);
 /***************************************************************************************
   Function:
         int FILEIO_Open (FILEIO_OBJECT * filePtr, const char * pathName, uint16_t mode)
-    
+
   Summary:
     Opens a file for access.
   Description:
@@ -908,7 +908,7 @@ void FILEIO_ErrorClear(char driveId);
   Return:
       * If Success: FILEIO_RESULT_SUCCESS
       * If Failure: FILEIO_RESULT_FAILURE
-    
+
       * Sets error code which can be retrieved with FILEIO_ErrorGet Note
         that if the path cannot be resolved, the error will be returned for the
         current working directory.
@@ -961,7 +961,7 @@ int FILEIO_Open(FILEIO_OBJECT* filePtr, const char* pathName, uint16_t mode);
     Returns:
       * If Success: FILEIO_RESULT_SUCCESS
       * If Failure: FILEIO_RESULT_FAILURE
-    
+
       * Sets error code which can be retrieved with FILEIO_ErrorGet
         * FILEIO_ERROR_WRITE - Data could not be written to the device.
         * FILEIO_ERROR_BAD_CACHE_READ - The file's directory entry
@@ -1020,7 +1020,7 @@ int FILEIO_Flush(FILEIO_OBJECT* handle);
     Returns:
       * If Success: The character that was read (cast to an int).
       * If Failure: FILEIO_RESULT_FAILURE
-    
+
       * Sets error code which can be retrieved with FILEIO_ErrorGet
         * FILEIO_ERROR_WRITE_ONLY - The file is not opened in read
           mode.
@@ -1056,7 +1056,7 @@ int FILEIO_GetChar(FILEIO_OBJECT* handle);
     Returns:
       * If Success: FILEIO_RESULT_SUCCESS
       * If Failure: FILEIO_RESULT_FAILURE
-    
+
       * Sets error code which can be retrieved with FILEIO_ErrorGet
         * FILEIO_ERROR_READ_ONLY - The file was not opened in write
           mode.
@@ -1099,7 +1099,7 @@ int FILEIO_PutChar(char c, FILEIO_OBJECT* handle);
     The number of data objects that were read. This value will match
     'count' if the read was successful, or be less than count if it was
     not.
-    
+
     Sets error code which can be retrieved with FILEIO_ErrorGet:
       * FILEIO_ERROR_WRITE_ONLY - The file is not opened in read mode.
       * FILEIO_ERROR_BAD_SECTOR_READ - There was an error reading the
@@ -1138,7 +1138,7 @@ size_t FILEIO_Read(void* buffer, size_t size, size_t count, FILEIO_OBJECT* handl
     The number of data objects that were written. This value will match
     'count' if the write was successful, or be less than count if it was
     not.
-    
+
     Sets error code which can be retrieved with FILEIO_ErrorGet:
       * FILEIO_ERROR_READ_ONLY - The file was not opened in write mode.
       * FILEIO_ERROR_WRITE_PROTECTED - The media is write-protected.
@@ -1179,7 +1179,7 @@ size_t FILEIO_Write(const void* buffer, size_t size, size_t count, FILEIO_OBJECT
     Returns:
       * If Success: FILEIO_RESULT_SUCCESS
       * If Failure: FILEIO_RESULT_FAILURE
-    
+
       * Sets error code which can be retrieved with FILEIO_ErrorGet
         * FILEIO_ERROR_WRITE - Cached data could not be written to the
           device.
@@ -1251,7 +1251,7 @@ long FILEIO_Tell(FILEIO_OBJECT* handle);
   Function:
       int FILEIO_Find (const char * fileName, unsigned int attr,
           FILEIO_SEARCH_RECORD * record, bool newSearch)
-    
+
   Summary:
     Searches for a file in the current working directory.
   Description:
@@ -1280,7 +1280,7 @@ long FILEIO_Tell(FILEIO_OBJECT* handle);
       * If Success: FILEIO_RESULT_SUCCESS
       * If Failure: FILEIO_RESULT_FAILURE
       * Returns file information in the record parameter.
-    
+
       * Sets error code which can be retrieved with FILEIO_ErrorGet Note
         that if the path cannot be resolved, the error will be returned for the
         current working directory.
@@ -1320,7 +1320,7 @@ int FILEIO_Find(const char* fileName, unsigned int attr, FILEIO_SEARCH_RECORD* r
     Returns:
       * If Success: FILEIO_RESULT_SUCCESS
       * If Failure: FILEIO_RESULT_FAILURE
-    
+
       * Sets error code which can be retrieved with FILEIO_ErrorGet Note
         that if the path cannot be resolved, the error will be returned for the
         current working directory.
@@ -1340,7 +1340,7 @@ int FILEIO_LongFileNameGet(FILEIO_SEARCH_RECORD* record, uint16_t* buffer, uint1
 /********************************************************************
   Function:
       FILEIO_FILE_SYSTEM_TYPE FILEIO_FileSystemTypeGet (char driveId)
-    
+
   Summary:
     Describes the file system type of a file system.
   Description:

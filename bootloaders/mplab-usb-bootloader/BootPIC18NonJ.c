@@ -53,7 +53,7 @@
 #define MaxPageToErase 511  // Last 64 byte page of flash on the PIC18F4550
 #define ProgramMemStop                                                                                                 \
   0x008000 //**MUST BE WORD ALIGNED (EVEN) ADDRESS.  This address does not get updated, but the one just below it does:
-           //IE: If AddressToStopPopulating = 0x200, 0x1FF is the last programmed address (0x200 not programmed)**
+           // IE: If AddressToStopPopulating = 0x200, 0x1FF is the last programmed address (0x200 not programmed)**
 #define ConfigWordsStartAddress 0x300000 // 0x300000 is CONFIG space for PIC18F4550/PIC18F4553/PIC18F4450 family devices
 #define ConfigWordsSectionLength                                                                                       \
   14 // 14 bytes worth of Configuration words on the PIC18F4550/PIC18F4553/PIC18F4450 family devices
@@ -68,7 +68,7 @@
 #define MaxPageToErase 511  // Last 64 byte page of flash on the PIC18F4550
 #define ProgramMemStop                                                                                                 \
   0x008000 //**MUST BE WORD ALIGNED (EVEN) ADDRESS.  This address does not get updated, but the one just below it does:
-           //IE: If AddressToStopPopulating = 0x200, 0x1FF is the last programmed address (0x200 not programmed)**
+           // IE: If AddressToStopPopulating = 0x200, 0x1FF is the last programmed address (0x200 not programmed)**
 #define ConfigWordsStartAddress 0x300000 // 0x300000 is CONFIG space for PIC18F4550/PIC18F4553/PIC18F4450 family devices
 #define ConfigWordsSectionLength                                                                                       \
   14 // 14 bytes worth of Configuration words on the PIC18F4550/PIC18F4553/PIC18F4450 family devices
@@ -83,7 +83,7 @@
 #define MaxPageToErase 383  // Last 64 byte page of flash on the PIC18F4455
 #define ProgramMemStop                                                                                                 \
   0x006000 //**MUST BE WORD ALIGNED (EVEN) ADDRESS.  This address does not get updated, but the one just below it does:
-           //IE: If AddressToStopPopulating = 0x200, 0x1FF is the last programmed address (0x200 not programmed)**
+           // IE: If AddressToStopPopulating = 0x200, 0x1FF is the last programmed address (0x200 not programmed)**
 #define ConfigWordsStartAddress 0x300000 // 0x300000 is CONFIG space for PIC18F4550/PIC18F4553/PIC18F4450 family devices
 #define ConfigWordsSectionLength                                                                                       \
   14 // 14 bytes worth of Configuration words on the PIC18F4550/PIC18F4553/PIC18F4450 family devices
@@ -98,7 +98,7 @@
 #define MaxPageToErase 383  // Last 64 byte page of flash on the PIC18F4455
 #define ProgramMemStop                                                                                                 \
   0x006000 //**MUST BE WORD ALIGNED (EVEN) ADDRESS.  This address does not get updated, but the one just below it does:
-           //IE: If AddressToStopPopulating = 0x200, 0x1FF is the last programmed address (0x200 not programmed)**
+           // IE: If AddressToStopPopulating = 0x200, 0x1FF is the last programmed address (0x200 not programmed)**
 #define ConfigWordsStartAddress 0x300000 // 0x300000 is CONFIG space for PIC18F4550/PIC18F4553/PIC18F4450 family devices
 #define ConfigWordsSectionLength                                                                                       \
   14 // 14 bytes worth of Configuration words on the PIC18F4550/PIC18F4553/PIC18F4450 family devices
@@ -114,7 +114,7 @@
 #define MaxPageToErase 255  // Last 64 byte page of flash on the PIC18F4450
 #define ProgramMemStop                                                                                                 \
   0x004000 //**MUST BE WORD ALIGNED (EVEN) ADDRESS.  This address does not get updated, but the one just below it does:
-           //IE: If AddressToStopPopulating = 0x200, 0x1FF is the last programmed address (0x200 not programmed)**
+           // IE: If AddressToStopPopulating = 0x200, 0x1FF is the last programmed address (0x200 not programmed)**
 #define ConfigWordsStartAddress 0x300000 // 0x300000 is CONFIG space for PIC18F4550/PIC18F4553/PIC18F4450 family devices
 #define ConfigWordsSectionLength                                                                                       \
   14 // 14 bytes worth of Configuration words on the PIC18F4550/PIC18F4553/PIC18F4450 family devices
@@ -127,7 +127,7 @@
 #define MaxPageToErase 255  // Last 64 byte page of flash on the PIC18F4455
 #define ProgramMemStop                                                                                                 \
   0x004000 //**MUST BE WORD ALIGNED (EVEN) ADDRESS.  This address does not get updated, but the one just below it does:
-           //IE: If AddressToStopPopulating = 0x200, 0x1FF is the last programmed address (0x200 not programmed)**
+           // IE: If AddressToStopPopulating = 0x200, 0x1FF is the last programmed address (0x200 not programmed)**
 #define ConfigWordsStartAddress 0x300000 // 0x300000 is CONFIG space for PIC18F4550/PIC18F4553/PIC18F4450 family devices
 #define ConfigWordsSectionLength                                                                                       \
   14 // 14 bytes worth of Configuration words on the PIC18F4550/PIC18F4553/PIC18F4450 family devices
@@ -142,7 +142,7 @@
 #define MaxPageToErase 127  // Last 64 byte page of flash on the PIC18F4455
 #define ProgramMemStop                                                                                                 \
   0x002000 //**MUST BE WORD ALIGNED (EVEN) ADDRESS.  This address does not get updated, but the one just below it does:
-           //IE: If AddressToStopPopulating = 0x200, 0x1FF is the last programmed address (0x200 not programmed)**
+           // IE: If AddressToStopPopulating = 0x200, 0x1FF is the last programmed address (0x200 not programmed)**
 #define ConfigWordsStartAddress 0x300000 // 0x300000 is CONFIG space for PIC18F4550/PIC18F4553/PIC18F4450 family devices
 #define ConfigWordsSectionLength                                                                                       \
   14 // 14 bytes worth of Configuration words on the PIC18F4550/PIC18F4553/PIC18F4450 family devices
@@ -223,7 +223,7 @@ typedef union {
     unsigned long Address;
     unsigned char Size;
     //			unsigned char PadBytes[58-RequestDataBlockSize];	//Uncomment this if using a smaller than 0x3A
-    //RequestDataBlockSize.  Compiler doesn't like 0 byte array when using 58 byte data block size.
+    // RequestDataBlockSize.  Compiler doesn't like 0 byte array when using 58 byte data block size.
     unsigned char Data[RequestDataBlockSize];
   };
 
@@ -385,7 +385,7 @@ ProcessIO(void) {
           EEDATA = 0xFF;
           EECON1 = 0b00000100; // EEPROM Write mode
           USBDriverService();  // Call USBDriverService() periodically to prevent falling off the bus if any SETUP
-                              // packets should happen to arrive.
+                               // packets should happen to arrive.
           UnlockAndActivate();
         } while(i++ < ((EEPROMSize - 1) + (EEPROMEffectiveAddress & (EEPROMSize - 1))));
 #endif
@@ -535,11 +535,11 @@ WriteFlashBlock(void) // Use to write blocks of data to flash.
 #elif(ProgramBlockSize == 0x10)
   CorrectionFactor = (TBLPTRL & 0b00001111); // Correctionfactor = number of bytes tblptr must go back to find the
                                              // immediate preceeding 16 byte boundary
-  TBLPTRL &= 0b11110000; // Move the table pointer back to the immediately preceeding 16 byte boundary
+  TBLPTRL &= 0b11110000;                     // Move the table pointer back to the immediately preceeding 16 byte boundary
 #elif(ProgramBlockSize == 0x8)
   CorrectionFactor = (TBLPTRL & 0b00000111); // Correctionfactor = number of bytes tblptr must go back to find the
                                              // immediate preceeding 16 byte boundary
-  TBLPTRL &= 0b11111000; // Move the table pointer back to the immediately preceeding 16 byte boundary
+  TBLPTRL &= 0b11111000;                     // Move the table pointer back to the immediately preceeding 16 byte boundary
 #else
 #error Double click this error message and fix this section for your microcontroller type.
 #endif
@@ -564,7 +564,7 @@ WriteFlashBlock(void) // Use to write blocks of data to flash.
   }
 
   //	TBLPTR--;		//Need to make table pointer point to the region which will be programmed before initiating the
-  //programming operation
+  // programming operation
   _asm tblrdpostdec _endasm // Do this instead of TBLPTR--; since it takes less code space.
 
       EECON1 = 0b10100100; // flash programming mode

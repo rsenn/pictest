@@ -273,25 +273,25 @@ static void USBStallHandler(void);
 /**************************************************************************
     Function:
         void USBDeviceInit(void)
-    
+
     Description:
         This function initializes the device stack it in the default state. The
         USB module will be completely reset including all of the internal
         variables, registers, and interrupt flags.
-                
+
     Precondition:
         This function must be called before any of the other USB Device
         functions can be called, including USBDeviceTasks().
-        
+
     Parameters:
         None
-     
+
     Return Values:
         None
-        
+
     Remarks:
         None
-                                                          
+
   ***************************************************************************/
 void
 USBDeviceInit(void) {
@@ -382,7 +382,7 @@ USBDeviceInit(void) {
 /**************************************************************************
   Function:
         void USBDeviceTasks(void)
-    
+
   Summary:
     This function is the main state machine/transaction handler of the USB
     device side stack.  When the USB stack is operated in "USB_POLLING" mode
@@ -400,7 +400,7 @@ USBDeviceInit(void) {
     called, or, once/1.8ms, whichever is faster.  See the inline code comments
     near the top of usb_device.c for more details about minimum timing
     requirements when calling USBDeviceTasks().
-    
+
     When the USB stack is operated in "USB_INTERRUPT" mode, it is not necessary
     to call USBDeviceTasks() from the main loop context.  In the USB_INTERRUPT
     mode, the USBDeviceTasks() handler only needs to execute when a USB
@@ -424,7 +424,7 @@ USBDeviceInit(void) {
     called, or, once/1.8ms, whichever is faster.  See the inline code comments
     near the top of usb_device.c for more details about minimum timing
     requirements when calling USBDeviceTasks().
-    
+
     When the USB stack is operated in "USB_INTERRUPT" mode, it is not necessary
     to call USBDeviceTasks() from the main loop context.  In the USB_INTERRUPT
     mode, the USBDeviceTasks() handler only needs to execute when a USB
@@ -470,7 +470,7 @@ USBDeviceInit(void) {
     ensure the 10ms resume recovery interval USB specification is met.  Assuming
     a worst case primary oscillator and PLL start up time of less than 5ms, then
     USBDeviceTasks() should be called once every 5ms in this scenario.
-   
+
     When the USB cable is detached, or the USB host is not actively powering
     the VBUS line to +5V nominal, the application firmware does not always have
     to call USBDeviceTasks() frequently, as no USB activity will be taking
@@ -794,14 +794,14 @@ USBDeviceTasks(void) {
 /*******************************************************************************
   Function:
         void USBEnableEndpoint(uint8_t ep, uint8_t options)
-    
+
   Summary:
     This function will enable the specified endpoint with the specified
     options
   Description:
     This function will enable the specified endpoint with the specified
     options.
-    
+
     Typical Usage:
     <code>
     void USBCBInitEP(void)
@@ -810,7 +810,7 @@ USBDeviceTasks(void) {
         USBMSDInit();
     }
     </code>
-    
+
     In the above example endpoint number MSD_DATA_IN_EP is being configured
     for both IN and OUT traffic with handshaking enabled. Also since
     MSD_DATA_IN_EP is not endpoint 0 (MSD does not allow this), then we can
@@ -867,7 +867,7 @@ USBEnableEndpoint(uint8_t ep, uint8_t options) {
 /*************************************************************************
   Function:
     USB_HANDLE USBTransferOnePacket(uint8_t ep, uint8_t dir, uint8_t* data, uint8_t len)
-    
+
   Summary:
     Transfers a single packet (one transaction) of data on the USB bus.
 
@@ -906,7 +906,7 @@ USBEnableEndpoint(uint8_t ep, uint8_t options) {
             INPacket[0] = USEFUL_APPLICATION_VALUE1;
             INPacket[1] = USEFUL_APPLICATION_VALUE2;
             //INPacket[2] = ... (fill in the rest of the packet data)
-          
+
             //Send the data contained in the INPacket[] array through endpoint "EP_NUM"
             USBInHandle = USBTransferOnePacket(EP_NUM,IN_TO_HOST,(uint8_t*)&INPacket[0],sizeof(INPacket));
         }
@@ -924,7 +924,7 @@ USBEnableEndpoint(uint8_t ep, uint8_t options) {
         This can be checked by verifying that the USBGetDeviceState()
         macro returns "CONFIGURED_STATE", prior to calling
         USBTransferOnePacket().
-                    
+
   Input:
     uint8_t ep - The endpoint number that the data will be transmitted or
               received on
@@ -952,7 +952,7 @@ USBEnableEndpoint(uint8_t ep, uint8_t options) {
     the USBTransferOnePacket() may still be called, but make sure that the
     endpoint has been enabled and initialized by the USBEnableEndpoint()
     function first.
-    
+
   *************************************************************************/
 USB_HANDLE
 USBTransferOnePacket(uint8_t ep, uint8_t dir, uint8_t* data, uint8_t len) {
@@ -1003,22 +1003,22 @@ USBTransferOnePacket(uint8_t ep, uint8_t dir, uint8_t* data, uint8_t len) {
 /********************************************************************
     Function:
         void USBStallEndpoint(uint8_t ep, uint8_t dir)
-        
+
     Summary:
          Configures the specified endpoint to send STALL to the host, the next
          time the host tries to access the endpoint.
-    
+
     PreCondition:
         None
-        
+
     Parameters:
         uint8_t ep - The endpoint number that should be configured to send STALL.
         uint8_t dir - The direction of the endpoint to STALL, either
                    IN_TO_HOST or OUT_FROM_HOST.
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
 
@@ -1056,7 +1056,7 @@ USBStallEndpoint(uint8_t ep, uint8_t dir) {
 /**************************************************************************
     Function:
         void USBCancelIO(uint8_t endpoint)
-    
+
     Description:
         This function cancels the transfers pending on the specified endpoint.
         This function can only be used after a SETUP packet is received and
@@ -1065,16 +1065,16 @@ USBStallEndpoint(uint8_t ep, uint8_t dir) {
         returns to the stack.
 
     Precondition:
-  
+
     Parameters:
         uint8_t endpoint - the endpoint number you wish to cancel the transfers for
-     
+
     Return Values:
         None
-        
+
     Remarks:
         None
-                                                          
+
   **************************************************************************/
 void
 USBCancelIO(uint8_t endpoint) {
@@ -1102,11 +1102,11 @@ USBCancelIO(uint8_t endpoint) {
 /**************************************************************************
     Function:
         void USBDeviceDetach(void)
-   
+
     Summary:
         This function configures the USB module to "soft detach" itself from
         the USB host.
-        
+
     Description:
         This function configures the USB module to perform a "soft detach"
         operation, by disabling the D+ (or D-) ~1.5k pull up resistor, which
@@ -1115,7 +1115,7 @@ USBCancelIO(uint8_t endpoint) {
         useful, as it allows the USB device to force the host to re-enumerate
         the device (on the firmware has re-enabled the USB module/pull up, by
         calling USBDeviceAttach(), to "soft re-attach" to the host).
-        
+
     Precondition:
         Should only be called when USB_INTERRUPT is defined.  See remarks
         section if USB_POLLING mode option is being used (usb_config.h option).
@@ -1123,13 +1123,13 @@ USBCancelIO(uint8_t endpoint) {
         Additionally, this function should only be called from the main() loop
         context.  Do not call this function from within an interrupt handler, as
         this function may modify global interrupt enable bits and settings.
-        
+
     Parameters:
         None
-     
+
     Return Values:
         None
-        
+
     Remarks:
         If the application firmware calls USBDeviceDetach(), it is strongly
         recommended that the firmware wait at least >= 80ms before calling
@@ -1143,12 +1143,12 @@ USBCancelIO(uint8_t endpoint) {
         detached long enough to mimic a real human controlled USB
         unplug/re-attach event (ex: after calling USBDeviceDetach(), do not
         call USBDeviceAttach() for at least 80+ms, preferrably longer.
-        
+
         Neither the USBDeviceDetach() or USBDeviceAttach() functions are blocking
         or take long to execute.  It is the application firmware's
         responsibility for adding the 80+ms delay, when using these API
         functions.
-        
+
         Note: The Windows plug and play event handler processing is fairly
         slow, especially in certain versions of Windows, and for certain USB
         device classes.  It has been observed that some device classes need to
@@ -1158,7 +1158,7 @@ USBCancelIO(uint8_t endpoint) {
         at least 1.5 seconds or longer, before soft re-attaching to the host,
         to provide the plug and play event handler enough time to finish
         processing the removal event, before the re-attach occurs.
-        
+
         If the application is using the USB_POLLING mode option, then the
         USBDeviceDetach() and USBDeviceAttach() functions are not available.
         In this mode, the USB stack relies on the "#define USE_USB_BUS_SENSE_IO"
@@ -1192,7 +1192,7 @@ USBCancelIO(uint8_t endpoint) {
         defined by the #define USB_BUS_SENSE is in a logic high state, then it
         will automatically enable the USB module, if it has not already been
         enabled.
-                                                          
+
   **************************************************************************/
 #if defined(USB_INTERRUPT)
 void
@@ -1262,7 +1262,7 @@ USBDeviceDetach(void) {
 /**************************************************************************
     Function:
         void USBDeviceAttach(void)
-    
+
     Summary:
         Checks if VBUS is present, and that the USB module is not already
         initalized, and if so, enables the USB module so as to signal device
@@ -1272,7 +1272,7 @@ USBDeviceDetach(void) {
         This function indicates to the USB host that the USB device has been
         attached to the bus.  This function needs to be called in order for the
         device to start to enumerate on the bus.
-                
+
     Precondition:
         Should only be called when USB_INTERRUPT is defined.  Also, should only
         be called from the main() loop context.  Do not call USBDeviceAttach()
@@ -1289,10 +1289,10 @@ USBDeviceDetach(void) {
         of glitch and ignore the event altogether.
     Parameters:
         None
-     
+
     Return Values:
         None
-    
+
     Remarks:
         See also the USBDeviceDetach() API function documentation.
 ****************************************************************************/
@@ -1402,7 +1402,7 @@ USBCtrlEPAllowStatusStage(void) {
 
 /*******************************************************************************
   Function: void USBCtrlEPAllowDataStage(void);
-    
+
   Summary: This function allows the data stage of either a host-to-device or
             device-to-host control transfer (with data stage) to complete.
             This function is meant to be used in conjunction with either the
@@ -1411,9 +1411,9 @@ USBCtrlEPAllowStatusStage(void) {
             then the firmware does not need to manually call
             USBCtrlEPAllowDataStage(), as the USB stack will call this function
             instead.
-     
+
   Description:
-    
+
   Conditions: A control transfer (with data stage) should already be pending,
                 if the firmware calls this function.  Additionally, the firmware
                 should have called either USBDeferOUTDataStage() or
@@ -1993,9 +1993,7 @@ USBStdGetDscHandler(void) {
           inPipes[0].info.Val = 0;
         }
         break;
-      default:
-        inPipes[0].info.Val = 0;
-        break;
+      default: inPipes[0].info.Val = 0; break;
     } // end switch
   }   // end if
 } // end USBStdGetDscHandler
@@ -2053,7 +2051,8 @@ USBStdGetStatusHandler(void) {
           p = (BDT_ENTRY*)pBDTEntryIn[SetupPkt.EPNum];
         }
 
-        if((p->STAT.UOWN == 1) && (p->STAT.BSTALL == 1)) CtrlTrfData[0] = 0x01; // Set bit0
+        if((p->STAT.UOWN == 1) && (p->STAT.BSTALL == 1))
+          CtrlTrfData[0] = 0x01; // Set bit0
         break;
       }
   } // end switch
@@ -2414,8 +2413,8 @@ USBCtrlTrfOutHandler(void) {
   if(controlTransferState == CTRL_TRF_RX) {
     USBCtrlTrfRxService(); // Copies the newly received data into the appropriate buffer and configures EP0 OUT for next
                            // transaction.
-  } else // In this case the last OUT transaction must have been a status stage of a CTRL_TRF_TX
-         // (<setup><in><in>...<OUT>  <-- this last OUT just occurred as the status stage)
+  } else                   // In this case the last OUT transaction must have been a status stage of a CTRL_TRF_TX
+                           // (<setup><in><in>...<OUT>  <-- this last OUT just occurred as the status stage)
   {
     // If the status stage is complete, this means we are done with the
     // control transfer.  Go back to the idle "WAIT_SETUP" state.
@@ -2540,7 +2539,8 @@ USBCtrlTrfInHandler(void) {
  *******************************************************************/
 static void
 USBCheckStdRequest(void) {
-  if(SetupPkt.RequestType != USB_SETUP_TYPE_STANDARD_BITFIELD) return;
+  if(SetupPkt.RequestType != USB_SETUP_TYPE_STANDARD_BITFIELD)
+    return;
 
   switch(SetupPkt.bRequest) {
     case USB_REQUEST_SET_ADDRESS:
@@ -2548,25 +2548,17 @@ USBCheckStdRequest(void) {
       USBDeviceState = ADR_PENDING_STATE; // Update state only
       /* See USBCtrlTrfInHandler() for the next step */
       break;
-    case USB_REQUEST_GET_DESCRIPTOR:
-      USBStdGetDscHandler();
-      break;
-    case USB_REQUEST_SET_CONFIGURATION:
-      USBStdSetCfgHandler();
-      break;
+    case USB_REQUEST_GET_DESCRIPTOR: USBStdGetDscHandler(); break;
+    case USB_REQUEST_SET_CONFIGURATION: USBStdSetCfgHandler(); break;
     case USB_REQUEST_GET_CONFIGURATION:
       inPipes[0].pSrc.bRam = (uint8_t*)&USBActiveConfiguration; // Set Source
       inPipes[0].info.bits.ctrl_trf_mem = USB_EP0_RAM;          // Set memory type
       inPipes[0].wCount.v[0] = 1;                               // Set data count
       inPipes[0].info.bits.busy = 1;
       break;
-    case USB_REQUEST_GET_STATUS:
-      USBStdGetStatusHandler();
-      break;
+    case USB_REQUEST_GET_STATUS: USBStdGetStatusHandler(); break;
     case USB_REQUEST_CLEAR_FEATURE:
-    case USB_REQUEST_SET_FEATURE:
-      USBStdFeatureReqHandler();
-      break;
+    case USB_REQUEST_SET_FEATURE: USBStdFeatureReqHandler(); break;
     case USB_REQUEST_GET_INTERFACE:
       inPipes[0].pSrc.bRam = (uint8_t*)&USBAlternateInterface[SetupPkt.bIntfID]; // Set source
       inPipes[0].info.bits.ctrl_trf_mem = USB_EP0_RAM;                           // Set memory type
@@ -2577,12 +2569,9 @@ USBCheckStdRequest(void) {
       inPipes[0].info.bits.busy = 1;
       USBAlternateInterface[SetupPkt.bIntfID] = SetupPkt.bAltID;
       break;
-    case USB_REQUEST_SET_DESCRIPTOR:
-      USB_SET_DESCRIPTOR_HANDLER(EVENT_SET_DESCRIPTOR, 0, 0);
-      break;
+    case USB_REQUEST_SET_DESCRIPTOR: USB_SET_DESCRIPTOR_HANDLER(EVENT_SET_DESCRIPTOR, 0, 0); break;
     case USB_REQUEST_SYNCH_FRAME:
-    default:
-      break;
+    default: break;
   } // end switch
 } // end USBCheckStdRequest
 

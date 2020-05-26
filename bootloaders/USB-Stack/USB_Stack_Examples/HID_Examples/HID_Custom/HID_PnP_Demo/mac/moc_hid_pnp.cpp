@@ -108,12 +108,8 @@ HID_PnP::qt_static_metacall(QObject* _o, QMetaObject::Call _c, int _id, void** _
                             (*reinterpret_cast<bool(*)>(_a[2])),
                             (*reinterpret_cast<int(*)>(_a[3])));
         break;
-      case 1:
-        _t->toggle_leds();
-        break;
-      case 2:
-        _t->PollUSB();
-        break;
+      case 1: _t->toggle_leds(); break;
+      case 2: _t->PollUSB(); break;
       default:;
     }
   } else if(_c == QMetaObject::IndexOfMethod) {
@@ -142,20 +138,25 @@ HID_PnP::metaObject() const {
 
 void*
 HID_PnP::qt_metacast(const char* _clname) {
-  if(!_clname) return nullptr;
-  if(!strcmp(_clname, qt_meta_stringdata_HID_PnP.stringdata0)) return static_cast<void*>(this);
+  if(!_clname)
+    return nullptr;
+  if(!strcmp(_clname, qt_meta_stringdata_HID_PnP.stringdata0))
+    return static_cast<void*>(this);
   return QObject::qt_metacast(_clname);
 }
 
 int
 HID_PnP::qt_metacall(QMetaObject::Call _c, int _id, void** _a) {
   _id = QObject::qt_metacall(_c, _id, _a);
-  if(_id < 0) return _id;
+  if(_id < 0)
+    return _id;
   if(_c == QMetaObject::InvokeMetaMethod) {
-    if(_id < 3) qt_static_metacall(this, _c, _id, _a);
+    if(_id < 3)
+      qt_static_metacall(this, _c, _id, _a);
     _id -= 3;
   } else if(_c == QMetaObject::RegisterMethodArgumentMetaType) {
-    if(_id < 3) *reinterpret_cast<int*>(_a[0]) = -1;
+    if(_id < 3)
+      *reinterpret_cast<int*>(_a[0]) = -1;
     _id -= 3;
   }
   return _id;

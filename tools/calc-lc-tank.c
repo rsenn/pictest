@@ -16,20 +16,11 @@ parse_num(const char* num) {
   double mul = 1;
   double ret = strtod(num, &end);
   switch(*end) {
-    case 'p':
-      mul = PICO;
-      break;
-    case 'n':
-      mul = NANO;
-      break;
-    case 'u':
-      mul = MICRO;
-      break;
-    case 'm':
-      mul = MILLI;
-      break;
-    default:
-      break;
+    case 'p': mul = PICO; break;
+    case 'n': mul = NANO; break;
+    case 'u': mul = MICRO; break;
+    case 'm': mul = MILLI; break;
+    default: break;
   }
   return ret * mul;
 }
@@ -73,7 +64,8 @@ ask(const char* prompt) {
   char linebuf[256];
   fprintf(stderr, "%s: ", prompt);
   fflush(stderr);
-  if(fgets(linebuf, sizeof(linebuf), stdin)) return parse_num(linebuf);
+  if(fgets(linebuf, sizeof(linebuf), stdin))
+    return parse_num(linebuf);
   return NAN;
 }
 

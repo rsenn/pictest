@@ -380,49 +380,29 @@ USBHostCDCDeviceStatus(uint8_t deviceAddress) {
 // The device is attached and done enumerating.  We can get more specific now.
 #ifndef USB_ENABLE_TRANSFER_EVENT
     switch(deviceInfoCDC[i].state & STATE_MASK) {
-      case STATE_INITIALIZE_DEVICE:
-        return USB_CDC_INITIALIZING;
-        break;
+      case STATE_INITIALIZE_DEVICE: return USB_CDC_INITIALIZING; break;
 
-      case STATE_RUNNING:
-        return USB_CDC_NORMAL_RUNNING;
-        break;
-      case STATE_HOLDING:
-        return USB_CDC_DEVICE_HOLDING;
-        break;
+      case STATE_RUNNING: return USB_CDC_NORMAL_RUNNING; break;
+      case STATE_HOLDING: return USB_CDC_DEVICE_HOLDING; break;
 
-      case STATE_CDC_RESET_RECOVERY:
-        return USB_CDC_RESETTING_DEVICE;
-        break;
+      case STATE_CDC_RESET_RECOVERY: return USB_CDC_RESETTING_DEVICE; break;
 
-      default:
-        return USB_CDC_DEVICE_DETACHED;
-        break;
+      default: return USB_CDC_DEVICE_DETACHED; break;
     }
 #else
     switch(deviceInfoCDC[i].state) {
-      case STATE_INITIALIZE_DEVICE:
-        return USB_CDC_INITIALIZING;
-        break;
+      case STATE_INITIALIZE_DEVICE: return USB_CDC_INITIALIZING; break;
 
       case STATE_RUNNING:
       case STATE_READ_REQ_WAIT:
-      case STATE_WRITE_REQ_WAIT:
-        return USB_CDC_NORMAL_RUNNING;
-        break;
+      case STATE_WRITE_REQ_WAIT: return USB_CDC_NORMAL_RUNNING; break;
 
-      case STATE_HOLDING:
-        return USB_CDC_DEVICE_HOLDING;
-        break;
+      case STATE_HOLDING: return USB_CDC_DEVICE_HOLDING; break;
 
       case STATE_WAIT_FOR_RESET:
-      case STATE_RESET_COMPLETE:
-        return USB_CDC_RESETTING_DEVICE;
-        break;
+      case STATE_RESET_COMPLETE: return USB_CDC_RESETTING_DEVICE; break;
 
-      default:
-        return USB_CDC_DEVICE_DETACHED;
-        break;
+      default: return USB_CDC_DEVICE_DETACHED; break;
     }
 #endif
   }
@@ -643,8 +623,7 @@ USBHostCDCTasks(void) {
             }
             break;
 
-          default:
-            break;
+          default: break;
         }
         break;
 
@@ -794,8 +773,7 @@ USBHostCDCTasks(void) {
 
             break;
 
-          default:
-            break;
+          default: break;
         }
         break;
 
@@ -844,17 +822,13 @@ USBHostCDCTasks(void) {
             }
             break;
 
-          case SUBSTATE_RESET_COMPLETE:
-            _USBHostCDC_ResetStateJump(i);
-            break;
+          case SUBSTATE_RESET_COMPLETE: _USBHostCDC_ResetStateJump(i); break;
         }
         break;
 
-      case STATE_HOLDING:
-        break;
+      case STATE_HOLDING: break;
 
-      default:
-        break;
+      default: break;
     }
   }
 #endif
@@ -1294,8 +1268,7 @@ USBHostCDCEventHandler(uint8_t address, USB_EVENT event, void* data, uint32_t si
 #endif
           break;
 
-        default:
-          return false;
+        default: return false;
       }
 #endif
     case EVENT_SOF:     // Start of frame - NOT NEEDED
@@ -1318,9 +1291,7 @@ USBHostCDCEventHandler(uint8_t address, USB_EVENT event, void* data, uint32_t si
       }
       break;
 
-    default:
-      return false;
-      break;
+    default: return false; break;
   }
   return false;
 }
@@ -1377,7 +1348,8 @@ USBHostCDCInitialize(uint8_t address, uint32_t flags, uint8_t clientDriverID) {
   UART2PrintString("CDC: Selecting configuration...\r\n");
 #endif
   for(device = 0; (device < USB_MAX_CDC_DEVICES); device++) {
-    if(deviceInfoCDC[device].deviceAddress == address) return true;
+    if(deviceInfoCDC[device].deviceAddress == address)
+      return true;
   }
 
   for(device = 0; (device < USB_MAX_CDC_DEVICES) && (deviceInfoCDC[device].deviceAddress != 0); device++)
@@ -1635,10 +1607,10 @@ _USBHostCDC_ResetStateJump(uint8_t i) {
   Precondition:
     Configuration macros should be defined in file usb_config.h. USBConfig tool
     can be used to configure the CDC in ACM mode.
-  
+
   Parameters:
     None
-  
+
   Returns:
     None
 

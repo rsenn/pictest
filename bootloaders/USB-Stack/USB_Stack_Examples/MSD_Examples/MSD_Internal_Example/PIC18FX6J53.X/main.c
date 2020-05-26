@@ -210,7 +210,8 @@ MSD_TxSector(void) {
   uint32_t addr;
   addr = LBA2FlashAddr(R_W_10_Vars.LBA); // Convert from LBA address space to flash address space.
   if(addr < END_OF_FLASH) {              // If address is in flash space.
-    if(ByteOfSect == 0) Flash_Erase(addr, addr + _FLASH_ERASE_SIZE);
+    if(ByteOfSect == 0)
+      Flash_Erase(addr, addr + _FLASH_ERASE_SIZE);
 #if PINGPONG_MODE == PINGPONG_1_15 || PINGPONG_MODE == PINGPONG_ALL_EP
     if(MSD_EP_OUT_LAST_PPB == ODD)
       Flash_WriteBlock((uint24_t)(addr + ByteOfSect), MSD_EP_OUT_ODD);

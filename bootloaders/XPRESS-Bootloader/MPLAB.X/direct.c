@@ -166,7 +166,7 @@ DIRECT_WriteProtectStateGet(void* config) {
 
 /*******************************************************************************
  Direct Hex File Parsing and Programming State Machine
- 
+
  This is a simple state machine that parses an input stream to detect and decode
  the INTEL Hex file format produced by the MPLAB XC8 compiler
  Bytes are assembled in Words
@@ -202,10 +202,13 @@ DIRECT_ProgrammingInProgress(void) {
 
 bool
 isDigit(char* c) {
-  if(*c < '0') return false;
+  if(*c < '0')
+    return false;
   *c -= '0';
-  if(*c > 9) *c -= 7;
-  if(*c > 0xf) return false;
+  if(*c > 9)
+    *c -= 7;
+  if(*c > 0xf)
+    return false;
   return true;
 }
 
@@ -237,9 +240,12 @@ ParseHex(char c) {
 
   switch(state) {
     case SOL:
-      if(c == '\r') break;
-      if(c == '\n') break;
-      if(c != ':') return false;
+      if(c == '\r')
+        break;
+      if(c == '\n')
+        break;
+      if(c != ':')
+        return false;
       state = BYTE_COUNT;
       bc = 0;
       address = 0;
@@ -251,7 +257,8 @@ ParseHex(char c) {
         return false;
       }
       bc++;
-      if(bc == 1) data_count = c;
+      if(bc == 1)
+        data_count = c;
       if(bc == 2) {
         data_count = (data_count << 4) + c;
         checksum += data_count;
@@ -298,12 +305,14 @@ ParseHex(char c) {
         state = DATA; // default
         data_index = 0;
         memset(data, 0xff, sizeof(data));
-        if(record_type == 0) break; // data record
+        if(record_type == 0)
+          break; // data record
         if(record_type == 1) {
           state = CHKSUM;
           break;
-        }                           // EOF record
-        if(record_type == 4) break; // extended address record
+        } // EOF record
+        if(record_type == 4)
+          break; // extended address record
         state = SOL;
         return false;
       }
@@ -314,7 +323,8 @@ ParseHex(char c) {
         return false;
       }
       bc++;
-      if(bc == 1) data[data_index] = (c << 4);
+      if(bc == 1)
+        data[data_index] = (c << 4);
       if(bc == 2) {
         bc = 0;
         data[data_index] += c;
@@ -331,7 +341,8 @@ ParseHex(char c) {
         return false;
       }
       bc++;
-      if(bc == 1) checksum += (c << 4);
+      if(bc == 1)
+        checksum += (c << 4);
       if(bc == 2) {
         bc = 0;
         checksum += c;
@@ -352,8 +363,7 @@ ParseHex(char c) {
           return false;
       }
       break;
-    default:
-      break;
+    default: break;
   }
   return true;
 }

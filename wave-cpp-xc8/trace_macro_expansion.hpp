@@ -105,8 +105,7 @@ public:
         return "the directive '#pragma wave system()' was not enabled, use the "
                "-x command line argument to enable the execution of";
 
-      case pragma_mismatched_push_pop:
-        return "unbalanced #pragma push/pop in input file(s) for option";
+      case pragma_mismatched_push_pop: return "unbalanced #pragma push/pop in input file(s) for option";
     }
     return "Unknown exception";
   }
@@ -114,11 +113,9 @@ public:
   static boost::wave::util::severity
   severity_level(int code) {
     switch(code) {
-      case pragma_system_not_enabled:
-        return boost::wave::util::severity_remark;
+      case pragma_system_not_enabled: return boost::wave::util::severity_remark;
 
-      case pragma_mismatched_push_pop:
-        return boost::wave::util::severity_error;
+      case pragma_mismatched_push_pop: return boost::wave::util::severity_error;
     }
     return boost::wave::util::severity_fatal;
   }
@@ -261,9 +258,11 @@ public:
                                 ContainerT const& definition,
                                 TokenT const& macrocall,
                                 std::vector<ContainerT> const& arguments) {
-    if(enabled_macro_counting()) count_invocation(macrodef.get_value().c_str());
+    if(enabled_macro_counting())
+      count_invocation(macrodef.get_value().c_str());
 
-    if(!enabled_macro_tracing()) return;
+    if(!enabled_macro_tracing())
+      return;
 #else
   // new signature
 
@@ -280,12 +279,15 @@ public:
     if(enabled_macro_counting() || !noexpandmacros.empty()) {
       std::string name(macrodef.get_value().c_str());
 
-      if(noexpandmacros.find(name.c_str()) != noexpandmacros.end()) return true; // do not expand this macro
+      if(noexpandmacros.find(name.c_str()) != noexpandmacros.end())
+        return true; // do not expand this macro
 
-      if(enabled_macro_counting()) count_invocation(name.c_str());
+      if(enabled_macro_counting())
+        count_invocation(name.c_str());
     }
 
-    if(!enabled_macro_tracing()) return false;
+    if(!enabled_macro_tracing())
+      return false;
 #endif
     if(0 == get_level()) {
       // output header line
@@ -296,7 +298,8 @@ public:
       // argument list
       for(typename ContainerT::size_type i = 0; i < arguments.size(); ++i) {
         stream << boost::wave::util::impl::as_string(arguments[i]);
-        if(i < arguments.size() - 1) stream << ", ";
+        if(i < arguments.size() - 1)
+          stream << ", ";
       }
       stream << ")" << std::endl;
       output(BOOST_WAVE_GETSTRING(stream));
@@ -312,7 +315,8 @@ public:
       // formal argument list
       for(typename std::vector<TokenT>::size_type i = 0; i < formal_args.size(); ++i) {
         stream << formal_args[i].get_value();
-        if(i < formal_args.size() - 1) stream << ", ";
+        if(i < formal_args.size() - 1)
+          stream << ", ";
       }
       stream << ")" << std::endl;
       output(BOOST_WAVE_GETSTRING(stream));
@@ -331,7 +335,8 @@ public:
           // ellipsis
           for(typename ContainerT::size_type k = j; k < arguments.size(); ++k) {
             stream << boost::wave::util::impl::as_string(arguments[k]);
-            if(k < arguments.size() - 1) stream << ", ";
+            if(k < arguments.size() - 1)
+              stream << ", ";
           }
         } else
 #endif
@@ -373,9 +378,11 @@ public:
   template <typename ContainerT>
   void
   expanding_object_like_macro(TokenT const& macrodef, ContainerT const& definition, TokenT const& macrocall) {
-    if(enabled_macro_counting()) count_invocation(macrodef.get_value().c_str());
+    if(enabled_macro_counting())
+      count_invocation(macrodef.get_value().c_str());
 
-    if(!enabled_macro_tracing()) return;
+    if(!enabled_macro_tracing())
+      return;
 #else
   // new signature
 
@@ -388,12 +395,15 @@ public:
     if(enabled_macro_counting() || !noexpandmacros.empty()) {
       std::string name(macrodef.get_value().c_str());
 
-      if(noexpandmacros.find(name.c_str()) != noexpandmacros.end()) return true; // do not expand this macro
+      if(noexpandmacros.find(name.c_str()) != noexpandmacros.end())
+        return true; // do not expand this macro
 
-      if(enabled_macro_counting()) count_invocation(name.c_str());
+      if(enabled_macro_counting())
+        count_invocation(name.c_str());
     }
 
-    if(!enabled_macro_tracing()) return false;
+    if(!enabled_macro_tracing())
+      return false;
 #endif
     if(0 == get_level()) {
       // output header line
@@ -443,7 +453,8 @@ public:
   expanded_macro(ContextT const& ctx, ContainerT const& result)
 #endif
   {
-    if(!enabled_macro_tracing()) return;
+    if(!enabled_macro_tracing())
+      return;
 
     BOOST_WAVE_OSSTREAM stream;
     stream << boost::wave::util::impl::as_string(result) << std::endl;
@@ -477,7 +488,8 @@ public:
   rescanned_macro(ContextT const& ctx, ContainerT const& result)
 #endif
   {
-    if(!enabled_macro_tracing() || get_level() == 0) return;
+    if(!enabled_macro_tracing() || get_level() == 0)
+      return;
 
     BOOST_WAVE_OSSTREAM stream;
     stream << boost::wave::util::impl::as_string(result) << std::endl;
@@ -485,7 +497,8 @@ public:
     close_trace_body();
     close_trace_body();
 
-    if(1 == get_level()) decrement_level();
+    if(1 == get_level())
+      decrement_level();
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -796,7 +809,8 @@ public:
   void
   throw_exception(ContextT const& ctx, boost::wave::preprocess_exception const& e) {
 #if BOOST_WAVE_SUPPORT_MS_EXTENSIONS != 0
-    if(!is_import_directive_error(e)) boost::throw_exception(e);
+    if(!is_import_directive_error(e))
+      boost::throw_exception(e);
 #else
     boost::throw_exception(e);
 #endif
@@ -811,7 +825,8 @@ protected:
   bool
   is_import_directive_error(boost::wave::preprocess_exception const& e) {
     using namespace boost::wave;
-    if(e.get_errorcode() != preprocess_exception::ill_formed_directive) return false;
+    if(e.get_errorcode() != preprocess_exception::ill_formed_directive)
+      return false;
 
     // the error string is formatted as 'severity: error: directive'
     std::string error(e.description());
@@ -901,8 +916,7 @@ protected:
         ctx.set_language(enable_preserve_comments(ctx.get_language()), false);
         break;
 
-      default:
-        return false;
+      default: return false;
     }
     return true;
   }
@@ -916,7 +930,8 @@ protected:
     using namespace boost::wave;
 
     token_id id = util::impl::skip_whitespace(it, end);
-    if(T_COLON == id) id = util::impl::skip_whitespace(it, end);
+    if(T_COLON == id)
+      id = util::impl::skip_whitespace(it, end);
 
     // implement push/pop
     if(T_IDENTIFIER == id) {
@@ -951,7 +966,8 @@ protected:
       return false;
     }
 
-    if(T_PP_NUMBER != id) return false;
+    if(T_PP_NUMBER != id)
+      return false;
 
     using namespace std; // some platforms have atoi in namespace std
     return interpret_pragma_option_preserve_set(atoi((*it).get_value().c_str()),
@@ -971,7 +987,8 @@ protected:
     using namespace boost::wave;
 
     token_id id = util::impl::skip_whitespace(it, end);
-    if(T_COLON == id) id = util::impl::skip_whitespace(it, end);
+    if(T_COLON == id)
+      id = util::impl::skip_whitespace(it, end);
 
     // implement push/pop
     if(T_IDENTIFIER == id) {
@@ -980,7 +997,8 @@ protected:
         int mode = 0;
         if(need_emit_line_directives(ctx.get_language())) {
           mode = 1;
-          if(enable_relative_names_in_line_directives()) mode = 2;
+          if(enable_relative_names_in_line_directives())
+            mode = 2;
         }
         line_options.push(mode);
         return true;
@@ -999,7 +1017,8 @@ protected:
       return false;
     }
 
-    if(T_PP_NUMBER != id) return false;
+    if(T_PP_NUMBER != id)
+      return false;
 
     using namespace std; // some platforms have atoi in namespace std
     int emit_lines = atoi((*it).get_value().c_str());
@@ -1033,7 +1052,8 @@ protected:
     written_by_us.insert(fpath);
 
     // close the current file
-    if(outputstrm.is_open()) outputstrm.close();
+    if(outputstrm.is_open())
+      outputstrm.close();
 
     // open the new file
     outputstrm.open(fpath.string().c_str(), mode);
@@ -1047,7 +1067,8 @@ protected:
     }
 
     // write license text, if file was created and if requested
-    if(mode == std::ios::out && !license_info.empty()) outputstrm << license_info;
+    if(mode == std::ios::out && !license_info.empty())
+      outputstrm << license_info;
 
     generate_output = true;
     current_outfile = fpath;
@@ -1056,7 +1077,8 @@ protected:
 
   bool
   interpret_pragma_option_output_close(bool generate) {
-    if(outputstrm.is_open()) outputstrm.close();
+    if(outputstrm.is_open())
+      outputstrm.close();
     current_outfile = boost::filesystem::path();
     generate_output = generate;
     return true;
@@ -1075,7 +1097,8 @@ protected:
     typedef typename token_type::string_type string_type;
 
     token_id id = util::impl::skip_whitespace(it, end);
-    if(T_COLON == id) id = util::impl::skip_whitespace(it, end);
+    if(T_COLON == id)
+      id = util::impl::skip_whitespace(it, end);
 
     bool result = false;
     if(T_STRINGLIT == id) {
@@ -1245,7 +1268,8 @@ protected:
       }
 
       token_id id = util::impl::skip_whitespace(it, end);
-      if(id == T_COMMA) util::impl::skip_whitespace(it, end);
+      if(id == T_COMMA)
+        util::impl::skip_whitespace(it, end);
     }
     return true;
   }
@@ -1262,7 +1286,8 @@ protected:
     typedef typename ContextT::token_type token_type;
     typedef typename token_type::string_type string_type;
 
-    if(0 == values.size()) return false; // ill_formed_pragma_option
+    if(0 == values.size())
+      return false; // ill_formed_pragma_option
 
     string_type stdout_file(std::tmpnam(0));
     string_type stderr_file(std::tmpnam(0));
@@ -1324,7 +1349,8 @@ protected:
 
   void
   open_trace_body(char const* label = 0) {
-    if(label) output(label);
+    if(label)
+      output(label);
     output("[\n");
     increment_level();
   }
@@ -1394,10 +1420,12 @@ protected:
     iterator it = counts.find(name);
     if(it == counts.end()) {
       std::pair<iterator, bool> p = counts.insert(value_type(name, 0));
-      if(p.second) it = p.first;
+      if(p.second)
+        it = p.first;
     }
 
-    if(it != counts.end()) ++(*it).second;
+    if(it != counts.end())
+      ++(*it).second;
   }
 
   void

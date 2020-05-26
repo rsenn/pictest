@@ -46,7 +46,7 @@ limitations under the License.
 
 //#define mInitRTSPin() {TRISAbits.TRISA2 = 0;}   //Configure RTS as a digital output.
 //#define mInitCTSPin() {TRISAbits.TRISA3 = 1;}   //Configure CTS as a digital input.  (Make sure pin is digital if ANxx
-//functions is present on the pin) #define mInitDTSPin() {TRISBbits.TRISB4 = 1;}   //Configure DTS as a digital input.
+// functions is present on the pin) #define mInitDTSPin() {TRISBbits.TRISB4 = 1;}   //Configure DTS as a digital input.
 //(Make sure pin is digital if ANxx functions is present on the pin) #define mInitDTRPin() {TRISDbits.TRISD3 = 0;}
 ////Configure DTR as a digital output.
 

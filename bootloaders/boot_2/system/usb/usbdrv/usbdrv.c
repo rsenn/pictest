@@ -157,7 +157,8 @@ USBDriverService(void) {
    * DETACHED_STATE or ATTACHED_STATE, and therefore cannot
    * cause a USB reset event during these two states.
    */
-  if(UIRbits.URSTIF && UIEbits.URSTIE) USBProtocolResetHandler();
+  if(UIRbits.URSTIF && UIEbits.URSTIE)
+    USBProtocolResetHandler();
 
   /*
    * Task C: Service other USB interrupts
@@ -203,7 +204,8 @@ USBDriverService(void) {
    * Once bus reset is received, the device transitions into the DEFAULT
    * state and is ready for communication.
    */
-  if(usb_device_state < DEFAULT_STATE) return;
+  if(usb_device_state < DEFAULT_STATE)
+    return;
 
   /*
    * Task D: Servicing USB Transaction Complete Interrupt

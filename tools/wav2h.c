@@ -114,8 +114,10 @@ main(int argc, char* argv[]) {
     return -1;
   }
   // Parse the basic arguments
-  if(argc >= 2 && *argv[1] != '-') wavName = argv[1];
-  if(argc >= 3 && *argv[2] != '-') headerName = argv[2];
+  if(argc >= 2 && *argv[1] != '-')
+    wavName = argv[1];
+  if(argc >= 3 && *argv[2] != '-')
+    headerName = argv[2];
   // Parse the options
   for(i = 1; i < argc; i++) {
     if(strcmp(argv[i], "-m") == 0)
@@ -138,7 +140,8 @@ main(int argc, char* argv[]) {
   // Process the audio data
   memset(&waveform, 0, sizeof(WAV));
   wavRead(wavFile, &waveform);
-  if(toMono) wavMixMono(&waveform);
+  if(toMono)
+    wavMixMono(&waveform);
   hWriteProto(headerFile, &waveform, dataName);
   for(i = 0; i < waveform.channels; i++) {
     hWriteSamples(headerFile, &waveform, i, dataName);
@@ -163,13 +166,15 @@ wavRead(FILE* file, WAV* wav) {
   // Find the RIFF chunk
   size_t size = findChunk(file, riffID, 0);
   fread(&rifffmt, 4, 1, file);
-  if(rifffmt != riffWAVE) return 0;
+  if(rifffmt != riffWAVE)
+    return 0;
   long pos = ftell(file);
   // Find the format chunk
   fseek(file, pos, SEEK_SET);
   findChunk(file, fmtID, size);
   fread(&wavFormat, sizeof(WAVEFORMATEX), 1, file);
-  if(wavFormat.nChannels > MAX_CHANNELS) return 0;
+  if(wavFormat.nChannels > MAX_CHANNELS)
+    return 0;
   // Find the data chunk
   fseek(file, pos, SEEK_SET);
   size = findChunk(file, dataID, size);
@@ -270,10 +275,12 @@ findChunk(FILE* file, uint32_t ID, size_t length) {
   RIFFCHUNK chunk;
   while(pos < length || !length) {
     fread(&chunk, sizeof(RIFFCHUNK), 1, file);
-    if(chunk.ID == ID) return chunk.size;
+    if(chunk.ID == ID)
+      return chunk.size;
     fseek(file, chunk.size, SEEK_CUR);
     pos += sizeof(RIFFCHUNK) + chunk.size;
-    if(feof(file)) break;
+    if(feof(file))
+      break;
   }
   return 0;
 }
@@ -282,7 +289,8 @@ void
 lowercase(char* text) {
   char* p = text;
   while(*p) {
-    if(*p >= 'A' && *p <= 'Z') *p += 'a' - 'A';
+    if(*p >= 'A' && *p <= 'Z')
+      *p += 'a' - 'A';
     p++;
   }
 }

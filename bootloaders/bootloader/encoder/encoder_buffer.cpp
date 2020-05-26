@@ -40,7 +40,8 @@ EncoderBuffer::encode(XTEA_KEY_T key[4]) {
     address = this->address(it);
     address &= 0xFFFFFFF8U;
 
-    if(read((unsigned char*)&data[0], 8, address, true) == 0) continue;
+    if(read((unsigned char*)&data[0], 8, address, true) == 0)
+      continue;
     sum = 0;
     for(XTEA_KEY_T i = 0; i < XTEA_ITER; i++) {
 
@@ -65,7 +66,8 @@ EncoderBuffer::decode(XTEA_KEY_T key[4]) {
     address = this->address(it);
     address &= 0xFFFFFFF8U;
 
-    if(read((unsigned char*)&data[0], 8, address, true) == 0) continue;
+    if(read((unsigned char*)&data[0], 8, address, true) == 0)
+      continue;
 
     sum = DELTA * XTEA_ITER;
     for(XTEA_KEY_T i = 0; i < XTEA_ITER; i++) {

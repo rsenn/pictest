@@ -39,7 +39,8 @@ FragBuffer::fill(unsigned char val) {
 
 unsigned char& FragBuffer::operator[](size_t k) {
   FragBuffer::iterator it = find(k);
-  if(it != end()) return (*it).second;
+  if(it != end())
+    return (*it).second;
   std::map<size_t, unsigned char>::operator[](k) = _fillVal;
   return std::map<size_t, unsigned char>::operator[](k);
 }
@@ -50,13 +51,16 @@ FragBuffer::read_data(unsigned char* buf, size_t buf_size, size_t addr) {
   size_t maxaddr = addr + buf_size - 1;
 
   /* Check for any data exists for requested chunk */
-  if(!exists(addr, size)) return 0;
+  if(!exists(addr, size))
+    return 0;
 
   FragBuffer::iterator it = lower_bound(maxaddr);
   /* Check if requested more data then currently in buffer */
-  if(it == end()) it--;
+  if(it == end())
+    it--;
   /* Check if there is a chunk size less then requested */
-  if(address(it) > maxaddr) it--;
+  if(address(it) > maxaddr)
+    it--;
   size = address(it) - addr + 1;
   for(size_t i = 0; i < size; i++) buf[i] = (*this)[i + addr];
   return size;
@@ -65,9 +69,11 @@ FragBuffer::read_data(unsigned char* buf, size_t buf_size, size_t addr) {
 size_t
 FragBuffer::read(unsigned char* buf, size_t buf_size, size_t addr, bool padding) {
   size_t size;
-  if(padding) memset(buf, _fillVal, buf_size);
+  if(padding)
+    memset(buf, _fillVal, buf_size);
   size = read_data(buf, buf_size, addr);
-  if(padding && (size > 0)) size = buf_size;
+  if(padding && (size > 0))
+    size = buf_size;
   return size;
 }
 
@@ -114,7 +120,8 @@ FragBuffer::exists(size_t addr) {
 bool
 FragBuffer::exists(size_t from_addr, size_t size) {
   for(size_t i = from_addr; i < (from_addr + size); i++) {
-    if(exists(i)) return true;
+    if(exists(i))
+      return true;
   }
   return false;
 }

@@ -178,19 +178,16 @@ HID_Arm_EP_IN(uint16_t cnt) {
 bool
 HID_ClassRequest(void) {
   switch(SetupData.bRequest) {
-    case GET_REPORT:
-      return HID_GET_REPORT();
+    case GET_REPORT: return HID_GET_REPORT();
 #ifdef USE_SET_REPORT
     case SET_REPORT:
 #endif /* SET_REPORT */
       return HID_SET_REPORT();
 #ifdef USE_GET_IDLE
-    case GET_IDLE:
-      return HID_GET_IDLE();
+    case GET_IDLE: return HID_GET_IDLE();
 #endif /* USE_GET_IDLE */
 #ifdef USE_SET_IDLE
-    case SET_IDLE:
-      return HID_SET_IDLE();
+    case SET_IDLE: return HID_SET_IDLE();
 #endif /* USE_SET_IDLE */
 #ifdef USE_GET_PROTOCOL
     case GET_PROTOCOL:
@@ -198,8 +195,7 @@ HID_ClassRequest(void) {
 #ifdef USE_SET_PROTOCOL
     case SET_PROTOCOL:
 #endif /* USE_SET_PROTOCOL */
-    default:
-      return false;
+    default: return false;
   }
 }
 
@@ -221,8 +217,7 @@ HID_GetClassDescriptor(void) {
       ROMptr = HID_Report_Descriptor;
       bytes_available = sizeof(HID_Report_Descriptor);
       return true;
-    default:
-      return false;
+    default: return false;
   }
 }
 
@@ -374,7 +369,8 @@ HID_ClearHalt(uint8_t BDT_Index, uint8_t EP, uint8_t dir) {
     BDT.Array[++BDT_Index].STAT = 0;
 #endif
   }
-  if(dir == IN) HID_SetSentReportFlag();
+  if(dir == IN)
+    HID_SetSentReportFlag();
 }
 
 #define REPORT_INPUT 1
@@ -397,12 +393,15 @@ HID_GET_REPORT(void) {
     return false;
 #else
 #if HID_NUM_REPORT_IDS == 0
-    if(GetSetReportData.Report_ID != 0) return false;
+    if(GetSetReportData.Report_ID != 0)
+      return false;
     RAMptr = (uint8_t*)In_Report_Ptr[0];
     bytes_available = In_Report_Size[0];
 #else
-    if(GetSetReportData.Report_ID > HID_NUM_REPORT_IDS) return false;
-    if(GetSetReportData.Report_ID == 0) return false;
+    if(GetSetReportData.Report_ID > HID_NUM_REPORT_IDS)
+      return false;
+    if(GetSetReportData.Report_ID == 0)
+      return false;
     RAMptr = (uint8_t*)In_Report_Ptr[GetSetReportData.Report_ID - 1u];
     bytes_available = In_Report_Size[GetSetReportData.Report_ID - 1u];
 #endif
@@ -412,12 +411,15 @@ HID_GET_REPORT(void) {
     return false;
 #else
 #if HID_NUM_REPORT_IDS == 0
-    if(GetSetReportData.Report_ID != 0) return false;
+    if(GetSetReportData.Report_ID != 0)
+      return false;
     RAMptr = (uint8_t*)Feature_Report_Ptr[0];
     bytes_available = Feature_Report_Size[0];
 #else
-    if(GetSetReportData.Report_ID > HID_NUM_REPORT_IDS) return false;
-    if(GetSetReportData.Report_ID == 0) return false;
+    if(GetSetReportData.Report_ID > HID_NUM_REPORT_IDS)
+      return false;
+    if(GetSetReportData.Report_ID == 0)
+      return false;
     RAMptr = (uint8_t*)Feature_Report_Ptr[GetSetReportData.Report_ID - 1];
     bytes_available = Feature_Report_Size[GetSetReportData.Report_ID - 1];
 #endif
@@ -460,12 +462,15 @@ HID_SET_REPORT(void) {
     return false;
 #else
 #if HID_NUM_REPORT_IDS == 0
-    if(GetSetReportData.Report_ID != 0) return false;
+    if(GetSetReportData.Report_ID != 0)
+      return false;
     RAMptr = (uint8_t*)Out_Report_Ptr[0];
     bytes_available = Out_Report_Size[0];
 #else
-    if(GetSetReportData.Report_ID > HID_NUM_REPORT_IDS) return false;
-    if(GetSetReportData.Report_ID == 0) return false;
+    if(GetSetReportData.Report_ID > HID_NUM_REPORT_IDS)
+      return false;
+    if(GetSetReportData.Report_ID == 0)
+      return false;
     RAMptr = (uint8_t*)Out_Report_Ptr[GetSetReportData.Report_ID - 1u];
     bytes_available = Out_Report_Size[GetSetReportData.Report_ID - 1u];
 #endif
@@ -475,12 +480,15 @@ HID_SET_REPORT(void) {
     return false;
 #else
 #if HID_NUM_REPORT_IDS == 0
-    if(GetSetReportData.Report_ID != 0) return false;
+    if(GetSetReportData.Report_ID != 0)
+      return false;
     RAMptr = (uint8_t*)Feature_Report_Ptr[0];
     bytes_available = Feature_Report_Size[0];
 #else
-    if(GetSetReportData.Report_ID > HID_NUM_REPORT_IDS) return false;
-    if(GetSetReportData.Report_ID == 0) return false;
+    if(GetSetReportData.Report_ID > HID_NUM_REPORT_IDS)
+      return false;
+    if(GetSetReportData.Report_ID == 0)
+      return false;
     RAMptr = (uint8_t*)Feature_Report_Ptr[GetSetReportData.Report_ID - 1];
     bytes_available = Feature_Report_Size[GetSetReportData.Report_ID - 1];
 #endif
@@ -488,7 +496,8 @@ HID_SET_REPORT(void) {
   } else
     return false;
 #if HID_NUM_OUT_REPORTS != 0 || HID_NUM_FEATURE_REPORTS != 0
-  if(GetSetReportData.Report_Length > bytes_available) return false;
+  if(GetSetReportData.Report_Length > bytes_available)
+    return false;
   bytes_2_recv = GetSetReportData.Report_Length;
   ControlStage = DATA_OUT_STAGE;
   return true;
@@ -512,14 +521,18 @@ HID_GET_IDLE(void) {
   return false;
 #else
 #if HID_NUM_REPORT_IDS == 0
-  if(GetIdleData.Report_ID != 0) return false;
+  if(GetIdleData.Report_ID != 0)
+    return false;
   RAMptr = (uint8_t*)&In_Report_Settings[0].Idle_Duration_4ms;
 #else
-  if(GetIdleData.Report_ID > HID_NUM_REPORT_IDS) return false;
-  if(GetIdleData.Report_ID == 0) return false;
+  if(GetIdleData.Report_ID > HID_NUM_REPORT_IDS)
+    return false;
+  if(GetIdleData.Report_ID == 0)
+    return false;
   RAMptr = (uint8_t*)&In_Report_Settings[GetIdleData.Report_ID - 1u].Idle_Duration_4ms;
 #endif
-  if(GetIdleData.wLength != 1) return false;
+  if(GetIdleData.wLength != 1)
+    return false;
   send_short = false;
   bytes_2_send = 1;
   SendingFrom = RAM;
@@ -554,13 +567,15 @@ HID_SET_IDLE(void) {
   return false;
 #else
 #if HID_NUM_REPORT_IDS == 0
-  if(SetIdleData.Report_ID != 0) return false;
+  if(SetIdleData.Report_ID != 0)
+    return false;
   In_Report_Settings[0].Idle_Count_Overflow = false;
   In_Report_Settings[0].Idle_Count = 0;
   In_Report_Settings[0].Idle_Duration_4ms = SetIdleData.Duration;
   In_Report_Settings[0].Idle_Duration_1ms = ((uint16_t)SetIdleData.Duration) << 2;
 #else
-  if(SetIdleData.Report_ID > HID_NUM_REPORT_IDS) return false;
+  if(SetIdleData.Report_ID > HID_NUM_REPORT_IDS)
+    return false;
   if(SetIdleData.Report_ID == 0) { // All idles are set
     for(uint8_t i = 0; i < HID_NUM_IN_REPORTS; i++) {
       In_Report_Settings[i].Idle_Count_Overflow = false;

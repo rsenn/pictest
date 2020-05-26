@@ -1,7 +1,7 @@
 /*=============================================================================
     Boost.Wave: A Standard compliant C++ preprocessor library
     Global application configuration of the Wave driver command
-    
+
     http://www.boost.org/
 
     Copyright (c) 2001-2012 Hartmut Kaiser. Distributed under the Boost

@@ -74,7 +74,7 @@ Change History:
               transfer events are enabled.
 
   2.7a        No change
-  
+
   2.9         Small change to allow certain types of subclass 0x05 flash drives
               to work (in addition to normal 0x06 drives).
 
@@ -400,55 +400,35 @@ USBHostMSDDeviceStatus(uint8_t deviceAddress) {
 
 #ifndef USB_ENABLE_TRANSFER_EVENT
     switch(deviceInfoMSD[i].state & STATE_MASK) {
-      case STATE_INITIALIZE_DEVICE:
-        return USB_MSD_INITIALIZING;
-        break;
+      case STATE_INITIALIZE_DEVICE: return USB_MSD_INITIALIZING; break;
 
-      case STATE_RUNNING:
-        return USB_MSD_NORMAL_RUNNING;
-        break;
+      case STATE_RUNNING: return USB_MSD_NORMAL_RUNNING; break;
 
-      case STATE_HOLDING:
-        return USB_MSD_ERROR_STATE;
-        break;
+      case STATE_HOLDING: return USB_MSD_ERROR_STATE; break;
 
       case STATE_MSD_RESET_RECOVERY:
       case STATE_MSD_CLEAR_DATA_IN:
-      case STATE_MSD_CLEAR_DATA_OUT:
-        return USB_MSD_RESETTING_DEVICE;
-        break;
+      case STATE_MSD_CLEAR_DATA_OUT: return USB_MSD_RESETTING_DEVICE; break;
 
-      default:
-        return USB_MSD_DEVICE_DETACHED;
-        break;
+      default: return USB_MSD_DEVICE_DETACHED; break;
     }
 #else
     switch(deviceInfoMSD[i].state) {
-      case STATE_WAIT_FOR_MAX_LUN:
-        return USB_MSD_INITIALIZING;
-        break;
+      case STATE_WAIT_FOR_MAX_LUN: return USB_MSD_INITIALIZING; break;
 
       case STATE_RUNNING:
       case STATE_CBW_WAIT:
       case STATE_TRANSFER_WAIT:
       case STATE_CSW_WAIT:
-      case STATE_REQUEST_CSW:
-        return USB_MSD_NORMAL_RUNNING;
-        break;
+      case STATE_REQUEST_CSW: return USB_MSD_NORMAL_RUNNING; break;
 
-      case STATE_HOLDING:
-        return USB_MSD_ERROR_STATE;
-        break;
+      case STATE_HOLDING: return USB_MSD_ERROR_STATE; break;
 
       case STATE_WAIT_FOR_RESET:
       case STATE_WAIT_FOR_CLEAR_IN:
-      case STATE_WAIT_FOR_CLEAR_OUT:
-        return USB_MSD_RESETTING_DEVICE;
-        break;
+      case STATE_WAIT_FOR_CLEAR_OUT: return USB_MSD_RESETTING_DEVICE; break;
 
-      default:
-        return USB_MSD_DEVICE_DETACHED;
-        break;
+      default: return USB_MSD_DEVICE_DETACHED; break;
     }
 #endif
   }
@@ -572,7 +552,8 @@ USBHostMSDTasks(void) {
 
             case SUBSTATE_SEND_GET_MAX_LUN:
               // If we are currently sending a token, we cannot do anything.
-              if(U1CONbits.TOKBUSY) break;
+              if(U1CONbits.TOKBUSY)
+                break;
 
               if(!USBHostIssueDeviceRequest(deviceInfoMSD[i].deviceAddress,
                                             USB_SETUP_DEVICE_TO_HOST | USB_SETUP_TYPE_CLASS |
@@ -628,8 +609,7 @@ USBHostMSDTasks(void) {
 
         case STATE_RUNNING:
           switch(deviceInfoMSD[i].state & SUBSTATE_MASK) {
-            case SUBSTATE_HOLDING:
-              break;
+            case SUBSTATE_HOLDING: break;
 
             case SUBSTATE_SEND_CBW:
 #ifdef DEBUG_MODE
@@ -796,8 +776,7 @@ USBHostMSDTasks(void) {
               }
               break;
 
-            case SUBSTATE_TRANSFER_DONE:
-              deviceInfoMSD[i].state = STATE_RUNNING | SUBSTATE_HOLDING;
+            case SUBSTATE_TRANSFER_DONE: deviceInfoMSD[i].state = STATE_RUNNING | SUBSTATE_HOLDING;
 #ifdef USB_MSD_ENABLE_TRANSFER_EVENT
               usbMediaInterfaceTable.EventHandler(deviceInfoMSD[i].deviceAddress, EVENT_MSD_TRANSFER, NULL, 0);
 #endif
@@ -839,9 +818,7 @@ USBHostMSDTasks(void) {
               }
               break;
 
-            case SUBSTATE_RESET_COMPLETE:
-              _USBHostMSD_ResetStateJump(i);
-              break;
+            case SUBSTATE_RESET_COMPLETE: _USBHostMSD_ResetStateJump(i); break;
           }
           break;
 
@@ -879,9 +856,7 @@ USBHostMSDTasks(void) {
               }
               break;
 
-            case SUBSTATE_CLEAR_IN_COMPLETE:
-              _USBHostMSD_ResetStateJump(i);
-              break;
+            case SUBSTATE_CLEAR_IN_COMPLETE: _USBHostMSD_ResetStateJump(i); break;
           }
           break;
 
@@ -919,14 +894,11 @@ USBHostMSDTasks(void) {
               }
               break;
 
-            case SUBSTATE_CLEAR_OUT_COMPLETE:
-              _USBHostMSD_ResetStateJump(i);
-              break;
+            case SUBSTATE_CLEAR_OUT_COMPLETE: _USBHostMSD_ResetStateJump(i); break;
           }
           break;
 
-        case STATE_HOLDING:
-          break;
+        case STATE_HOLDING: break;
       }
     }
   }
@@ -1638,8 +1610,7 @@ USBHostMSDEventHandler(uint8_t address, USB_EVENT event, void* data, uint32_t si
           }
           break;
 
-        case STATE_HOLDING:
-          break;
+        case STATE_HOLDING: break;
       }
 #endif
 
@@ -1774,14 +1745,11 @@ USBHostMSDEventHandler(uint8_t address, USB_EVENT event, void* data, uint32_t si
           _USBHostMSD_TerminateTransfer(USB_MSD_RESET_ERROR);
           break;
 
-        case STATE_HOLDING:
-          break;
+        case STATE_HOLDING: break;
       }
       return true;
 #endif
-    default:
-      return false;
-      break;
+    default: return false; break;
   }
 
   return false;

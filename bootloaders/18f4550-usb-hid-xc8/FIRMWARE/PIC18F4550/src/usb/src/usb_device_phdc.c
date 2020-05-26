@@ -31,28 +31,28 @@
     PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. THE COMPANY SHALL NOT,
     IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
     CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
-    
+
   Summary:
     This file contains all of functions, macros, definitions, variables,
     datatypes, etc. that are required for usage with the PHDC function
     driver. This file should be included in projects that use the PHDC
     \function driver.
-    
-    
-    
+
+
+
     This file is located in the "\<Install Directory\>\\Microchip\\USB\\PHDC
     Device Driver" directory.
   Description:
     USB PHDC Function Driver File
-    
+
     This file contains all of functions, macros, definitions, variables,
     datatypes, etc. that are required for usage with the PHDC function
     driver. This file should be included in projects that use the PHDC
     \function driver.
-    
+
     This file is located in the "\<Install Directory\>\\Microchip\\USB\\PHDC
     Device Driver" directory.
-    
+
     When including this file in a new project, this file can either be
     referenced from the directory in which it was installed or copied
     directly into the user application folder. If the first method is
@@ -62,17 +62,17 @@
     application folder is located in the same folder as the Microchip
     folder (like the current demo folders), then the following include
     paths need to be added to the application's project:
-    
+
     ..\\..\\Include
-    
+
     .
-        
+
     If a different directory structure is used, modify the paths as
     required. An example using absolute paths instead of relative paths
     would be the following:
-    
+
     C:\\Microchip Solutions\\Microchip\\Include
-    
+
     C:\\Microchip Solutions\\My Demo Application
   ********************************************************************************/
 
@@ -140,41 +140,44 @@ extern BYTE_VAL* pDst;
 /******************************************************************************
     Function:
         void USBDevicePHDCCheckRequest(void)
- 
+
     Description:
         This routine checks the setup data packet to see if it
         knows how to handle it
-        
+
     PreCondition:
         None
 
     Parameters:
         None
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-         
+
   *****************************************************************************/
 void
 USBDevicePHDCCheckRequest(void) {
   /*
    * If request recipient is not an interface then return
    */
-  if(SetupPkt.Recipient != USB_SETUP_RECIPIENT_INTERFACE_BITFIELD) return;
+  if(SetupPkt.Recipient != USB_SETUP_RECIPIENT_INTERFACE_BITFIELD)
+    return;
 
   /*
    * If request type is not class-specific then return
    */
-  if(SetupPkt.RequestType != USB_SETUP_TYPE_CLASS_BITFIELD) return;
+  if(SetupPkt.RequestType != USB_SETUP_TYPE_CLASS_BITFIELD)
+    return;
 
   /*
    * Interface ID must match interface numbers associated with
    * PHDC class, else return
    */
-  if(SetupPkt.bIntfID != PHDC_INTF_ID) return;
+  if(SetupPkt.bIntfID != PHDC_INTF_ID)
+    return;
 
   switch(SetupPkt.bRequest) {
     //****** These commands are required ******//
@@ -186,8 +189,7 @@ USBDevicePHDCCheckRequest(void) {
       }
 
       break;
-    default:
-      break;
+    default: break;
   } // end switch(SetupPkt.bRequest)
 
 } // end USBDevicePHDCCheckRequest
@@ -197,7 +199,7 @@ USBDevicePHDCCheckRequest(void) {
 /**************************************************************************
   Function:
         void USBDevicePHDCInit(USB_PHDC_CB callback)
-    
+
   Summary:
     This function initializes the PHDC function driver. This function should
     be called during the init process.
@@ -205,8 +207,8 @@ USBDevicePHDCCheckRequest(void) {
     This function initializes the PHDC function driver. This function initializes
    the end point data structures. A call back function from the upper layer is also
     registered.
-    
-       
+
+
     Typical Usage:
     <code>
      void PHDCAppInit(PHDC_APP_CB callback)
@@ -253,7 +255,7 @@ USBDevicePHDCInit(USB_PHDC_CB callback) {
 /**********************************************************************************
   Function:
         UINT8 USBDevicePHDCReceiveData(UINT8 qos, UINT8 *buffer, UINT16 len)
-    
+
   Summary:
     USBDevicePHDCReceiveData copies a string of BYTEs received through USB PHDC Bulk OUT
     endpoint to a user's specified location. It is a non-blocking function.
@@ -265,10 +267,10 @@ USBDevicePHDCInit(USB_PHDC_CB callback) {
     endpoint to a user's specified location. It is a non-blocking function.
     It does not wait for data if there is no data available. Instead it
     returns '0' to notify the caller that there is no data available.
-    
+
     Typical Usage:
     <code>
-     
+
     </code>
   Conditions:
     Value of input argument 'len' should be smaller than the maximum
@@ -279,7 +281,7 @@ USBDevicePHDCInit(USB_PHDC_CB callback) {
     qos - quality of service
     buffer -  Pointer to where received BYTEs are to be stored
     len -     The number of BYTEs expected.
-                                                                                   
+
   **********************************************************************************/
 UINT8
 USBDevicePHDCReceiveData(UINT8 qos, UINT8* buffer, UINT16 len) {
@@ -288,7 +290,8 @@ USBDevicePHDCReceiveData(UINT8 qos, UINT8* buffer, UINT16 len) {
   UINT8 phdc_rx_len = 0;
 
   for(index = 0; index < PHDC_RX_ENDPOINTS; index++) {
-    if((PhdcRXEP[index].qos & qos) != 0) break;
+    if((PhdcRXEP[index].qos & qos) != 0)
+      break;
   }
 
   if(index == PHDC_RX_ENDPOINTS) {
@@ -310,18 +313,18 @@ USBDevicePHDCReceiveData(UINT8 qos, UINT8* buffer, UINT16 len) {
 /******************************************************************************
   Function:
     void USBDevicePHDCSendData(UINT8 qos, UINT8 *data, UINT8 Length)
-        
+
   Summary:
     USBDevicePHDCSendData writes an array of data to the USB.
 
   Description:
     USBDevicePHDCSendData writes an array of data to the USB.
-    
+
     Typical Usage:
     <code>
-       
+
     </code>
-    
+
     The transfer mechanism for device-to-host(put) is more flexible than
     host-to-device(get). It can handle a string of data larger than the
     maximum size of bulk IN endpoint. A state machine is used to transfer a
@@ -336,7 +339,7 @@ USBDevicePHDCReceiveData(UINT8 qos, UINT8* buffer, UINT16 len) {
     *data - pointer to a RAM/ROM array of data to be transfered to the host
     length - the number of bytes to be transfered.
     memtype - Indicates whether the data array is in ROM or RAM
-        
+
  *****************************************************************************/
 void
 USBDevicePHDCSendData(UINT8 qos, UINT8* data, UINT16 length, BOOL memtype) {
@@ -345,7 +348,8 @@ USBDevicePHDCSendData(UINT8 qos, UINT8* data, UINT16 length, BOOL memtype) {
   UINT8 i;
 
   for(index = 0; index < PHDC_TX_ENDPOINTS; index++) {
-    if((PhdcTXEP[index].qos & qos) != 0) break;
+    if((PhdcTXEP[index].qos & qos) != 0)
+      break;
   }
   if(index == PHDC_TX_ENDPOINTS) {
     return; // no endpoint supports the qos
@@ -397,15 +401,15 @@ USBDevicePHDCSendData(UINT8 qos, UINT8* data, UINT16 length, BOOL memtype) {
 /************************************************************************
   Function:
         void USBDevicePHDCTxRXService(PTR_USTAT_STRUCT val)
-    
+
   Summary:
     USBDevicePHDCTxRXService handles device-to-host transaction(s) and host-to-device transaction(s).
     This function is automatically called when a transfer event occurs.Device should be in configured state.
-  
+
 Description:
     USBDevicePHDCTxRXService handles device-to-host transaction(s) and host-to-device transaction(s).
     This function is automatically called when a transfer event occurs.Device should be in configured state.
-    
+
     Typical Usage:
     <code>
     BOOL USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void *pdata, WORD size)
@@ -461,7 +465,8 @@ USBDevicePHDCTxRXService(USTAT_FIELDS* pdata) {
   if(USBHALGetLastDirection(val) == DIR_IN) {
     /* Find which Endpoint needs to send data based on the qos value  */
     for(index = 0; index < PHDC_TX_ENDPOINTS; index++) {
-      if(PhdcTXEP[index].ep_num == USBHALGetLastEndpoint(val)) break;
+      if(PhdcTXEP[index].ep_num == USBHALGetLastEndpoint(val))
+        break;
     }
 
     tx_endpoint = &PhdcTXEP[index];
@@ -532,7 +537,8 @@ USBDevicePHDCTxRXService(USTAT_FIELDS* pdata) {
   {
 
     for(index = 0; index < PHDC_RX_ENDPOINTS; index++) {
-      if(PhdcRXEP[index].ep_num == USBHALGetLastEndpoint(val)) break;
+      if(PhdcRXEP[index].ep_num == USBHALGetLastEndpoint(val))
+        break;
     }
     recv_endpoint = &PhdcRXEP[index];
     recv_endpoint->len = USBHandleGetLength(recv_endpoint->PHDCDataOutHandle);
@@ -574,22 +580,22 @@ USBDevicePHDCTxRXService(USTAT_FIELDS* pdata) {
 /******************************************************************************
     Function:
         void USBDevicePHDCUpdateStatus (WORD EndpointNo, BIT Status)
- 
+
     Description:
         This routine handles the Get Data Status request received from the PHDC Host.
-        
+
     PreCondition:
         None
 
     Parameters:
         None
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-         
+
  *****************************************************************************/
 void
 USBDevicePHDCUpdateStatus(WORD EndpointNo, BIT Status) {

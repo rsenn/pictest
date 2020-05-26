@@ -350,51 +350,25 @@ main() {
       /* Process Sharps */
 
       switch(Melody[pointer]) {
-        case 'a':
-          note = 10726;
-          break;
-        case 'c':
-          note = 9019;
-          break;
-        case 'd':
-          note = 8035;
-          break;
-        case 'f':
-          note = 6757;
-          break;
-        case 'g':
-          note = 6024;
-          break;
+        case 'a': note = 10726; break;
+        case 'c': note = 9019; break;
+        case 'd': note = 8035; break;
+        case 'f': note = 6757; break;
+        case 'g': note = 6024; break;
       }
       pointer += 2;
 
     } else {
 
       switch(Melody[pointer]) {
-        case 'a':
-          note = 11364;
-          break;
-        case 'b':
-          note = 10123;
-          break;
-        case 'c':
-          note = 9555;
-          break;
-        case 'd':
-          note = 8513;
-          break;
-        case 'e':
-          note = 7584;
-          break;
-        case 'f':
-          note = 7158;
-          break;
-        case 'g':
-          note = 6378;
-          break;
-        case 'p':
-          note = 0;
-          break;
+        case 'a': note = 11364; break;
+        case 'b': note = 10123; break;
+        case 'c': note = 9555; break;
+        case 'd': note = 8513; break;
+        case 'e': note = 7584; break;
+        case 'f': note = 7158; break;
+        case 'g': note = 6378; break;
+        case 'p': note = 0; break;
       }
       pointer++;
     }
@@ -444,17 +418,10 @@ PlayNote(unsigned short note, unsigned char octave, unsigned int duration) {
 
   /* Process octave */
   switch(octave) {
-    case 4: /* Do noting */
-      break;
-    case 5: /* %2 */
-      note = note >> 1;
-      break;
-    case 6: /* %4 */
-      note = note >> 2;
-      break;
-    case 7: /* %8 */
-      note = note >> 4;
-      break;
+    case 4: /* Do noting */ break;
+    case 5: /* %2 */ note = note >> 1; break;
+    case 6: /* %4 */ note = note >> 2; break;
+    case 7: /* %8 */ note = note >> 4; break;
   }
 
   /* Wait until last note has played */
@@ -473,9 +440,11 @@ PlayNote(unsigned short note, unsigned char octave, unsigned int duration) {
   TMR0Count = 255 / (duration & 0x7F);
 
   /* If duration is 1.5x add .5 to duration */
-  if(duration & 0x80) TMR0Count = (TMR0Count + (TMR0Count >> 1));
+  if(duration & 0x80)
+    TMR0Count = (TMR0Count + (TMR0Count >> 1));
 
-  if(note) beep = 1;
+  if(note)
+    beep = 1;
 }
 
 // void InitTimer(void) {
@@ -494,7 +463,8 @@ void interrupt
 interr(void) {
   if(TIMER0_INTERRUPT_FLAG) {
     TMR0 = beat_speed;
-    if(TMR0Count) TMR0Count--;
+    if(TMR0Count)
+      TMR0Count--;
     TIMER0_INTERRUPT_CLEAR();
   }
   if(TMR1IF) {

@@ -36,37 +36,45 @@ CIntelHexRec::InitFromString(string str) {
   start = str.find_first_not_of(' ');
   end = str.find_last_not_of(' ');
   str = str.substr(start, end);
-  if((str.size() < 10) || (str[0] != ':')) return false;
+  if((str.size() < 10) || (str[0] != ':'))
+    return false;
   errno = 0;
   // extract size
   strVal = str.substr(1, 2);
   uVal = strtoul(strVal.c_str(), &pEnds, 16);
-  if((*pEnds) || errno || (uVal > 255)) return false;
+  if((*pEnds) || errno || (uVal > 255))
+    return false;
   m_Size = (unsigned char)uVal;
   strLen = m_Size * 2 + 11;
-  if(str.size() != strLen) return false;
+  if(str.size() != strLen)
+    return false;
   // extract address
   strVal = str.substr(3, 4);
   uVal = strtoul(strVal.c_str(), &pEnds, 16);
-  if((*pEnds) || errno || (uVal > 0xFFFF)) return false;
+  if((*pEnds) || errno || (uVal > 0xFFFF))
+    return false;
   m_Addr = (unsigned short)uVal;
   // extract type
   strVal = str.substr(7, 2);
   uVal = strtoul(strVal.c_str(), &pEnds, 16);
-  if((*pEnds) || errno || (uVal > 4)) return false;
+  if((*pEnds) || errno || (uVal > 4))
+    return false;
   m_Type = (unsigned char)uVal;
   // extract data
   for(i = 0; i < m_Size; i++) {
     strVal = str.substr(9 + i * 2, 2);
     uVal = strtoul(strVal.c_str(), &pEnds, 16);
-    if((*pEnds) || errno || (uVal > 0xFF)) return false;
+    if((*pEnds) || errno || (uVal > 0xFF))
+      return false;
     m_Data[i] = (unsigned char)uVal;
   }
   // compare crc
   strVal = str.substr(9 + m_Size * 2, 2);
   uVal = strtoul(strVal.c_str(), &pEnds, 16);
-  if((*pEnds) || errno || (uVal > 0xFF)) return false;
-  if(CalcCrc() != (unsigned char)uVal) return false;
+  if((*pEnds) || errno || (uVal > 0xFF))
+    return false;
+  if(CalcCrc() != (unsigned char)uVal)
+    return false;
   return true;
 }
 
@@ -137,8 +145,6 @@ CIntelHexRec::GetExtAddr() {
       pc |= m_Data[0] << 12;
       pc |= m_Data[1] << 4;
       return pc;
-    default:
-      eTrace1("m_Type = %d", m_Type);
-      throw DEFileInvalidHexFormat();
+    default: eTrace1("m_Type = %d", m_Type); throw DEFileInvalidHexFormat();
   }
 }

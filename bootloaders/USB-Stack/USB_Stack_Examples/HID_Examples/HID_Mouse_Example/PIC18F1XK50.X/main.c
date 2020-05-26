@@ -126,7 +126,8 @@ main(void) {
     // Uncomment out the following for polling method.
     // USB_Tasks();
 
-    if(USB_STATE != Configured) continue;
+    if(USB_STATE != Configured)
+      continue;
 
     ServiceReportsToSend();
 

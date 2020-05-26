@@ -108,7 +108,8 @@ CDC_ClassRequest(void) {
 #ifdef USE_SET_LINE_CODING
     case SET_LINE_CODING:
       RAMptr = (uint8_t*)&SetLineCodingData;
-      if(SetGetLineCodingData.Size_of_Structure > 7) return false;
+      if(SetGetLineCodingData.Size_of_Structure > 7)
+        return false;
       bytes_2_recv = SetGetLineCodingData.Size_of_Structure;
       setLineCodingWait = true;
       ControlStage = DATA_OUT_STAGE;
@@ -116,14 +117,16 @@ CDC_ClassRequest(void) {
 #endif
 #ifdef USE_SET_CONTROL_LINE_STATE
     case SET_CONTROL_LINE_STATE:
-      if(SetupData.wIndex != 0) return false;
+      if(SetupData.wIndex != 0)
+        return false;
       CDC_SetControlLineState();
       USB_ArmINStatus();
       return true;
 #endif
     case SEND_ENCAPSULATED_COMMAND:
       RAMptr = (uint8_t*)DummyBuffer;
-      if(SetupData.wLength > 8) return false;
+      if(SetupData.wLength > 8)
+        return false;
       bytes_2_recv = SetupData.wLength;
       ControlStage = DATA_OUT_STAGE;
       return true;
@@ -144,8 +147,7 @@ CDC_ClassRequest(void) {
       USB_InControlTransfer();
       ControlStage = DATA_IN_STAGE;
       return true;
-    default:
-      return false;
+    default: return false;
   }
 }
 
@@ -243,9 +245,12 @@ CDC_OutControlTasks(void) {
 #ifdef USE_GET_LINE_CODING
   if(setLineCodingWait) {
     setLineCodingWait = false;
-    if(SetLineCodingData.bCharFormat != 0) return false;
-    if(SetLineCodingData.bParityType != 0) return false;
-    if(SetLineCodingData.bDataBits != 8) return false;
+    if(SetLineCodingData.bCharFormat != 0)
+      return false;
+    if(SetLineCodingData.bParityType != 0)
+      return false;
+    if(SetLineCodingData.bDataBits != 8)
+      return false;
 
     GetLineCodingReturnedData.dwDTERate = SetLineCodingData.dwDTERate;
     GetLineCodingReturnedData.bCharFormat = SetLineCodingData.bCharFormat;

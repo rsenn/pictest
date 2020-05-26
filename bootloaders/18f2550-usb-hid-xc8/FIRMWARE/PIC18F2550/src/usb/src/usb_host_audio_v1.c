@@ -373,7 +373,7 @@ USBHostAudioV1SetInterfaceFullBandwidth(uint8_t deviceAddress) {
     USB_SUCCESS                 - Request started successfully
     USB_AUDIO_DEVICE_NOT_FOUND  - No device with the specified address.
     Others                      - See USBHostIssueDeviceRequest()
-    
+
   Remarks:
     None
   ***************************************************************************/
@@ -436,7 +436,7 @@ USBHostAudioV1SetInterfaceZeroBandwidth(uint8_t deviceAddress) {
     function USBHostAudioV1SupportedFrequencies() to obtain a pointer to the
     number and list of supported frequencies, and pass a pointer to the desired
     frequency in this list.
-    
+
   Precondition:
     None
 
@@ -467,7 +467,7 @@ USBHostAudioV1SetInterfaceZeroBandwidth(uint8_t deviceAddress) {
             // Continuous sampling, minimum and maximum are specified.
             uint32_t   minFrequency;
             uint32_t   maxFrequency;
-            
+
             minFrequency = *ptr + (*(ptr+1) << 8) + (*(ptr+2) << 16);
             ptr += 3;
             maxFrequency = *ptr + (*(ptr+1) << 8) + (*(ptr+2) << 16);
@@ -484,7 +484,7 @@ USBHostAudioV1SetInterfaceZeroBandwidth(uint8_t deviceAddress) {
         {
             // Discrete sampling frequencies are specified.
             uint32_t frequency;
-            
+
             while (numFrequencies)
             {
                 frequency = *ptr + (*(ptr+1) << 8) + (*(ptr+2) << 16);
@@ -503,7 +503,7 @@ USBHostAudioV1SetInterfaceZeroBandwidth(uint8_t deviceAddress) {
         }
     }
     </code>
-  
+
   Remarks:
     If a global variable is used to old the frequency, it can be declared as
     a uint32_t.  Since PIC Microcontrollers are little endian machines, a
@@ -513,7 +513,7 @@ USBHostAudioV1SetInterfaceZeroBandwidth(uint8_t deviceAddress) {
 
     rc = USBHostAudioV1SetSamplingFrequency( deviceAddress, (uint8_t *)(&desiredFrequency) );
     </code>
-    
+
   ***************************************************************************/
 
 uint8_t
@@ -550,7 +550,7 @@ USBHostAudioV1SetSamplingFrequency(uint8_t deviceAddress, uint8_t* frequency) {
 /****************************************************************************
   Function:
     uint8_t * USBHostAudioV1SupportedFrequencies( uint8_t deviceAddress )
-    
+
   Summary:
     This function returns a pointer to the list of supported frequencies.
 
@@ -585,7 +585,7 @@ USBHostAudioV1SetSamplingFrequency(uint8_t deviceAddress, uint8_t* frequency) {
             // Continuous sampling, minimum and maximum are specified.
             uint32_t   minFrequency;
             uint32_t   maxFrequency;
-            
+
             minFrequency = *ptr + (*(ptr+1) << 8) + (*(ptr+2) << 16);
             ptr += 3;
             maxFrequency = *ptr + (*(ptr+1) << 8) + (*(ptr+2) << 16);
@@ -602,7 +602,7 @@ USBHostAudioV1SetSamplingFrequency(uint8_t deviceAddress, uint8_t* frequency) {
         {
             // Discrete sampling frequencies are specified.
             uint32_t frequency;
-            
+
             while (numFrequencies)
             {
                 frequency = *ptr + (*(ptr+1) << 8) + (*(ptr+2) << 16);
@@ -621,7 +621,7 @@ USBHostAudioV1SetSamplingFrequency(uint8_t deviceAddress, uint8_t* frequency) {
         }
     }
     </code>
-  
+
   Remarks:
     None
   ***************************************************************************/
@@ -656,7 +656,7 @@ USBHostAudioV1SupportedFrequencies(uint8_t deviceAddress) {
     selected interface.  The application may wish to call
     USBHostAudioV1SetInterfaceZeroBandwidth() after this function to set
     the device to the zero bandwidth interface.
-    
+
     Between terminating one audio stream and starting another, the application
     should call USBHostIsochronousBuffersReset() to reset the data buffers.
     This is done from the application layer rather than from this function, so
@@ -1007,9 +1007,7 @@ USBHostAudioV1EventHandler(uint8_t address, USB_EVENT event, void* data, uint32_
       return true;
       break;
 
-    default:
-      return false;
-      break;
+    default: return false; break;
   }
   return false;
 }

@@ -99,7 +99,7 @@
                   value="__18f25k50=1;XTAL_FREQ=20000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=1;USE_SOFTPWM=1;USE_SOFTSER=1;HAVE_COMPARATOR=1;DEBUG=1"/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
-                  value="../../..;../../../lib;../../../src"/>
+                  value="../../..;../../../lib;../../../src;../../../"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="garbage-collect-data" value="true"/>
         <property key="garbage-collect-functions" value="true"/>

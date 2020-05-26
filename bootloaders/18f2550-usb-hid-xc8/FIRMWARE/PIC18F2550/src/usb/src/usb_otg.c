@@ -745,7 +745,7 @@ USBOTGRequestSession() {
 /****************************************************************************
   Function:
    BOOL USBOTGGetSessionStatus()
-   
+
   Description:
     This function gets a session status.  The function will return
     TRUE if VBUS > Session Valid Voltage or FALSE if VBUS < Session Valid Voltage.
@@ -760,7 +760,7 @@ USBOTGRequestSession() {
     TRUE or FALSE
 
   Remarks:
-    
+
   ***************************************************************************/
 // DOM-IGNORE-END
 BOOL
@@ -779,7 +779,7 @@ USBOTGGetSessionStatus() {
 /****************************************************************************
   Function:
    void USBOTGDischargeVBus()
-   
+
   Description:
     This function discharges VBUS.
 
@@ -793,7 +793,7 @@ USBOTGGetSessionStatus() {
     None
 
   Remarks:
-    
+
   ***************************************************************************/
 // DOM-IGNORE-END
 void
@@ -813,7 +813,7 @@ USBOTGDischargeVBus() {
 /****************************************************************************
   Function:
   void USBOTGSession(BYTE Value)
-   
+
   Description:
     This function starts, ends, or toggles a VBUS session.
 
@@ -913,7 +913,7 @@ USBOTGSession(BYTE Value) {
 /****************************************************************************
   Function:
   void USB_OTGEventHandler ( BYTE address, BYTE event, void *data, DWORD size )
-   
+
   Description:
     This function is the event handler used by both the Host and Device stacks for calling the OTG layer
     when SRP and HNP events occur
@@ -931,7 +931,7 @@ USBOTGSession(BYTE Value) {
                  OTG_EVENT_CONNECT
                  OTG_EVENT_HNP_ABORT
                  OTG_EVENT_HNP_FAILED
-                        
+
   Return Values:
     None
 
@@ -1187,7 +1187,7 @@ USB_OTGEventHandler(BYTE address, BYTE event, void* data, DWORD size) {
     This is the interrupt service routine for the Change Notice interrupt.  The
     following cases are serviced:
          * Overcurrent Detection (PGOOD Goes Low After VBUS Is Enabled)
-         
+
   Precondition:
     MCP1253 Is Enabled and Activated => VBUS = 5V
 
@@ -1256,17 +1256,17 @@ _CNInterrupt(void)
 /****************************************************************************
   Function:
  BOOL USBOTGRoleSwitch()
-   
+
   Description:
     This function returns whether a role switch occurred or not.  This is used by the main application function
     to determine when to reinitialize the system (InitializeSystem())
-    
+
   Precondition:
     None
 
   Parameters:
     None
-                        
+
   Return Values:
     BOOL - TRUE or FALSE
 
@@ -1283,17 +1283,17 @@ USBOTGRoleSwitch() {
 /****************************************************************************
   Function:
  void USBOTGClearRoleSwitch()
-   
+
   Description:
     This function clears the RoleSwitch variable.  After the main function detects the RoleSwitch
     and re-initializes the system, this function should be called to clear the RoleSwitch flag
-    
+
   Precondition:
     None
 
   Parameters:
     None
-                        
+
   Return Values:
     None
 
@@ -1310,7 +1310,7 @@ USBOTGClearRoleSwitch() {
 /****************************************************************************
   Function:
   BYTE USBOTGCurrentRoleIs()
-   
+
   Description:
     This function returns whether the current role is ROLE_HOST or ROLE_DEVICE
 
@@ -1319,7 +1319,7 @@ USBOTGClearRoleSwitch() {
 
   Parameters:
     None
-                        
+
   Return Values:
     BYTE  - ROLE_HOST or ROLE_DEVICE
 
@@ -1336,7 +1336,7 @@ USBOTGCurrentRoleIs() {
 /****************************************************************************
   Function:
   BYTE USBOTGDefaultRoleIs()
-   
+
   Description:
     This function returns whether the default role is ROLE_HOST or ROLE_DEVICE
 
@@ -1345,7 +1345,7 @@ USBOTGCurrentRoleIs() {
 
   Parameters:
     None
-                        
+
   Return Values:
     BYTE  - ROLE_HOST or ROLE_DEVICE
 
@@ -1362,7 +1362,7 @@ USBOTGDefaultRoleIs() {
 /****************************************************************************
   Function:
   void USBOTGEnableHnp()
-   
+
   Description:
     This function enables HNP
 
@@ -1371,7 +1371,7 @@ USBOTGDefaultRoleIs() {
 
   Parameters:
     None
-                        
+
   Return Values:
     None
 
@@ -1388,7 +1388,7 @@ USBOTGEnableHnp() {
 /****************************************************************************
   Function:
   void USBOTGDisableHnp()
-   
+
   Description:
     This function disables HNP
 
@@ -1397,7 +1397,7 @@ USBOTGEnableHnp() {
 
   Parameters:
     None
-                        
+
   Return Values:
     None
 
@@ -1414,7 +1414,7 @@ USBOTGDisableHnp() {
 /****************************************************************************
   Function:
   void void USBOTGEnableAltHnp()
-   
+
   Description:
     This function enables Alt HNP
 
@@ -1423,7 +1423,7 @@ USBOTGDisableHnp() {
 
   Parameters:
     None
-                        
+
   Return Values:
     None
 
@@ -1440,7 +1440,7 @@ USBOTGEnableAltHnp() {
 /****************************************************************************
   Function:
   void USBOTGDisableAltHnp()
-   
+
   Description:
     This function disables Alt HNP
 
@@ -1449,7 +1449,7 @@ USBOTGEnableAltHnp() {
 
   Parameters:
     None
-                        
+
   Return Values:
     None
 
@@ -1466,7 +1466,7 @@ USBOTGDisableAltHnp() {
 /****************************************************************************
   Function:
   void USBOTGEnableSupportHnp()
-   
+
   Description:
     This function enables HNP Support
 
@@ -1475,7 +1475,7 @@ USBOTGDisableAltHnp() {
 
   Parameters:
     None
-                        
+
   Return Values:
     None
 
@@ -1492,7 +1492,7 @@ USBOTGEnableSupportHnp() {
 /****************************************************************************
   Function:
   void USBOTGDisableSupportHnp()
-   
+
   Description:
     This function disables HNP Support
 
@@ -1501,7 +1501,7 @@ USBOTGEnableSupportHnp() {
 
   Parameters:
     None
-                        
+
   Return Values:
     None
 
@@ -1518,7 +1518,7 @@ USBOTGDisableSupportHnp() {
 /****************************************************************************
   Function:
   BOOL USBOTGHnpIsEnabled()
-   
+
   Description:
     This function returns TRUE if HNP is enabled, FALSE otherwise
 
@@ -1527,7 +1527,7 @@ USBOTGDisableSupportHnp() {
 
   Parameters:
     BOOL - TRUE or FALSE
-                        
+
   Return Values:
     None
 
@@ -1544,7 +1544,7 @@ USBOTGHnpIsEnabled() {
 /****************************************************************************
   Function:
   BOOL USBOTGHnpIsActive()
-   
+
   Description:
     This function returns TRUE if HNP is active, FALSE otherwise
 
@@ -1553,7 +1553,7 @@ USBOTGHnpIsEnabled() {
 
   Parameters:
     BOOL - TRUE or FALSE
-                        
+
   Return Values:
     None
 
@@ -1570,7 +1570,7 @@ USBOTGHnpIsActive() {
 /****************************************************************************
   Function:
   BOOL USBOTGSrpIsActive()
-   
+
   Description:
     This function returns TRUE if SRP is active, FALSE otherwise
 
@@ -1579,7 +1579,7 @@ USBOTGHnpIsActive() {
 
   Parameters:
     BOOL - TRUE or FALSE
-                        
+
   Return Values:
     None
 
@@ -1596,7 +1596,7 @@ USBOTGSrpIsActive() {
 /****************************************************************************
   Function:
   void USBOTGActivateSrp()
-   
+
   Description:
     This function activates SRP
 
@@ -1605,7 +1605,7 @@ USBOTGSrpIsActive() {
 
   Parameters:
     None
-                        
+
   Return Values:
     None
 
@@ -1622,7 +1622,7 @@ USBOTGActivateSrp() {
 /****************************************************************************
   Function:
   void USBOTGDeactivateSrp()
-   
+
   Description:
     This function Deactivates SRP
 
@@ -1631,7 +1631,7 @@ USBOTGActivateSrp() {
 
   Parameters:
     None
-                        
+
   Return Values:
     None
 
@@ -1648,7 +1648,7 @@ USBOTGDeactivateSrp() {
 /****************************************************************************
   Function:
   void USBOTGActivateHnp()
-   
+
   Description:
     This function activates HNP
 
@@ -1657,7 +1657,7 @@ USBOTGDeactivateSrp() {
 
   Parameters:
     None
-                        
+
   Return Values:
     None
 
@@ -1674,7 +1674,7 @@ USBOTGActivateHnp() {
 /****************************************************************************
   Function:
   void USBOTGDeactivateHnp()
-   
+
   Description:
     This function deactivates HNP
 
@@ -1683,7 +1683,7 @@ USBOTGActivateHnp() {
 
   Parameters:
     None
-                        
+
   Return Values:
     None
 
@@ -1700,17 +1700,17 @@ USBOTGDeactivateHnp() {
 /****************************************************************************
   Function:
   BOOL USBOTGGetHNPTimeOutFlag()
-   
+
   Description:
     This function returns the HNPTimeOutFlag.  This flag is used for timing the TB_ASE0_BRST USB OTG
     Timing parameter.  This flag is checked in the 1ms Timer interrupt handler.
-    
+
   Precondition:
     None
 
   Parameters:
     None
-                        
+
   Return Values:
     BOOL - TRUE or FALSE
 
@@ -1727,17 +1727,17 @@ USBOTGGetHNPTimeOutFlag() {
 /****************************************************************************
   Function:
   BOOL USBOTGIsHNPTimeOutExpired()
-  
+
   Description:
     This function decrements HNPTimeOut and checks to see if HNPTimeOut has expired.  This function
     returns TRUE if HNPTimeOut has expired, FALSE otherwise.
-    
+
   Precondition:
     None
 
   Parameters:
     None
-                        
+
   Return Values:
     BOOL - TRUE - Time Expired
                 FALSE - Time Not Expired
@@ -1770,17 +1770,17 @@ USBOTGIsHNPTimeOutExpired() {
 /****************************************************************************
   Function:
   BOOL USBOTGIsSRPTimeOutExpired()
-  
+
   Description:
     This function decrements SRPTimeOut and checks to see if SRPTimeOut has expired.  This function
     returns TRUE if SRPTimeOut has expired, FALSE otherwise.
-    
+
   Precondition:
     None
 
   Parameters:
     None
-                        
+
   Return Values:
     BOOL - TRUE - Time Expired
                 FALSE - Time Not Expired
@@ -1813,17 +1813,17 @@ USBOTGIsSRPTimeOutExpired() {
 /****************************************************************************
   Function:
   BOOL USBOTGGetSRPTimeOutFlag()
-   
+
   Description:
     This function returns the SRPTimeOutFlag.  This flag is used for timing the TA_WAIT_BCON USB OTG
     Timing parameter.  This flag is checked in the 1ms Timer interrupt handler.
-    
+
   Precondition:
     None
 
   Parameters:
     None
-                        
+
   Return Values:
     BOOL - TRUE or FALSE
 
@@ -1840,17 +1840,17 @@ USBOTGGetSRPTimeOutFlag() {
 /****************************************************************************
   Function:
   BOOL USBOTGSRPIsReady()
-   
+
   Description:
     This function returns the value of SRPReady.  This flag is set after the B-device finishes SRP
      and the A-device is ready for the B-device to connect
-    
+
   Precondition:
     None
 
   Parameters:
     None
-                        
+
   Return Values:
     BOOL - TRUE or FALSE
 
@@ -1867,17 +1867,17 @@ USBOTGSRPIsReady() {
 /****************************************************************************
   Function:
   void USBOTGClearSRPTimeOutFlag()
-   
+
   Description:
     This function clears the SRPTimeOutFlag.  This flag is checked in the 1ms
     Timer interrupt handler.
-    
+
   Precondition:
     None
 
   Parameters:
     None
-                        
+
   Return Values:
     None
 
@@ -1894,16 +1894,16 @@ USBOTGClearSRPTimeOutFlag() {
 /****************************************************************************
   Function:
   void USBOTGClearSRPReady()
-   
+
   Description:
     This function clears SRPReady.
-    
+
   Precondition:
     None
 
   Parameters:
     None
-                        
+
   Return Values:
     None
 
@@ -1920,17 +1920,17 @@ USBOTGClearSRPReady() {
 /****************************************************************************
   Function:
   void USBOTGDelayMs(WORD time)
-  
+
   Description:
     This function will delay a given amount of time in milliseconds determined by the time parameter
     passed to this function.  The function uses the hardware based 1 millisecond timer.
-    
+
   Precondition:
     USB Module Must Be Enabled Prior To Calling This Function (U1PWRCbits.USBPWR = 1)
 
   Parameters:
     WORD time - The time to delay in milliseconds
-                        
+
   Return Values:
     BOOL - TRUE  - Time Not Expired
                 FALSE - Time Expired

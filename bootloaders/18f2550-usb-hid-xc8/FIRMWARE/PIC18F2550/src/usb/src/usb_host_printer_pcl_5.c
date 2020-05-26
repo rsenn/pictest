@@ -1505,9 +1505,7 @@ USBHostPrinterLanguagePCL5(
       break;
 
     //---------------------------------------------------------------------
-    default:
-      return USB_PRINTER_UNKNOWN_COMMAND;
-      break;
+    default: return USB_PRINTER_UNKNOWN_COMMAND; break;
   }
   return USB_PRINTER_UNKNOWN_COMMAND;
 }

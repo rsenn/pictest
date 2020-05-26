@@ -146,7 +146,8 @@ button_pressed(uint8_t b) {
 
 static uint8_t
 tmr0_get_psbit() {
-  if(PSA) return 0;
+  if(PSA)
+    return 0;
   return OPTION_REGbits.PS + 1;
 }
 
@@ -339,7 +340,8 @@ main() {
     delay_ms(100);
   }
 
-  if(!ow_reset()) ow_search();
+  if(!ow_reset())
+    ow_search();
 
   {
     double voltage;
@@ -358,13 +360,16 @@ main() {
       } else {
         freq = 0;
       }
-      if(counter > 10000) freq = 0;
+      if(counter > 10000)
+        freq = 0;
 
       ledsense_charge();
       reading = ledsense_read();
-      if(prev == 0) prev = reading;
+      if(prev == 0)
+        prev = reading;
 
-      if(prev - reading > 100) ledon = !ledon;
+      if(prev - reading > 100)
+        ledon = !ledon;
 
       prev = reading;
 

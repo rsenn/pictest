@@ -2,10 +2,10 @@
 Copyright 2016 Microchip Technology Inc. (www.microchip.com)
 
  Low Voltage Programming Interface
- 
+
   Bit-Banged implementation of the PIC16F1 (200K) LVP protocol
   Based on the PIC16F171X specification
-  
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at

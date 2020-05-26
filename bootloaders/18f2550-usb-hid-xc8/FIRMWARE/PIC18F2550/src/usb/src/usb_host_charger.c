@@ -128,7 +128,8 @@ USBHostChargerInitialize(BYTE address, DWORD flags, BYTE clientDriverID) {
 
   // Find a new entry
   for(currentChargingRecord = 0; currentChargingRecord < USB_MAX_CHARGING_DEVICES; currentChargingRecord++) {
-    if(!usbChargingDevices[currentChargingRecord].flags.inUse) break;
+    if(!usbChargingDevices[currentChargingRecord].flags.inUse)
+      break;
   }
   if(currentChargingRecord == USB_MAX_CHARGING_DEVICES) {
 #ifdef DEBUG_MODE
@@ -238,8 +239,7 @@ USBHostChargerEventHandler(BYTE address, USB_EVENT event, void* data, DWORD size
     case EVENT_SUSPEND:
     case EVENT_RESUME:
     case EVENT_BUS_ERROR:
-    default:
-      break;
+    default: break;
   }
 
   return FALSE;

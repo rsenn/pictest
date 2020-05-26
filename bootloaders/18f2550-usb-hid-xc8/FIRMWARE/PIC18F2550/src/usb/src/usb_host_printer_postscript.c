@@ -431,9 +431,7 @@ USBHostPrinterLanguagePostScript(
       break;
 
     //---------------------------------------------------------------------
-    case USB_PRINTER_TEXT_START:
-      return _PrintStaticCommand(address, COMMAND_TEXT_START, transferFlags);
-      break;
+    case USB_PRINTER_TEXT_START: return _PrintStaticCommand(address, COMMAND_TEXT_START, transferFlags); break;
 
     //---------------------------------------------------------------------
     case USB_PRINTER_TEXT:
@@ -478,9 +476,7 @@ USBHostPrinterLanguagePostScript(
       break;
 
     //---------------------------------------------------------------------
-    case USB_PRINTER_TEXT_STOP:
-      return _PrintStaticCommand(address, COMMAND_TEXT_STOP, transferFlags);
-      break;
+    case USB_PRINTER_TEXT_STOP: return _PrintStaticCommand(address, COMMAND_TEXT_STOP, transferFlags); break;
 
     //---------------------------------------------------------------------
     case USB_PRINTER_GRAPHICS_MOVE_TO:
@@ -544,9 +540,7 @@ USBHostPrinterLanguagePostScript(
       break;
 
     //---------------------------------------------------------------------
-    case USB_PRINTER_IMAGE_DATA_HEADER:
-      return USB_PRINTER_SUCCESS;
-      break;
+    case USB_PRINTER_IMAGE_DATA_HEADER: return USB_PRINTER_SUCCESS; break;
 
     //---------------------------------------------------------------------
     case USB_PRINTER_IMAGE_DATA:
@@ -622,9 +616,7 @@ USBHostPrinterLanguagePostScript(
       break;
 
     //---------------------------------------------------------------------
-    case USB_PRINTER_IMAGE_STOP:
-      return _PrintStaticCommand(address, COMMAND_IMAGE_STOP, transferFlags);
-      break;
+    case USB_PRINTER_IMAGE_STOP: return _PrintStaticCommand(address, COMMAND_IMAGE_STOP, transferFlags); break;
 
     //---------------------------------------------------------------------
     case USB_PRINTER_GRAPHICS_LINE_TYPE:
@@ -1177,9 +1169,7 @@ USBHostPrinterLanguagePostScript(
       break;
 
     //---------------------------------------------------------------------
-    default:
-      return USB_PRINTER_UNKNOWN_COMMAND;
-      break;
+    default: return USB_PRINTER_UNKNOWN_COMMAND; break;
   }
   return USB_PRINTER_UNKNOWN_COMMAND;
 }
@@ -1363,8 +1353,10 @@ _SetFontString(uint8_t font, uint8_t printerFlags, char* ptr) {
   }
 
   i = 0;
-  if(FONT_IS_BOLD(printerFlags)) i |= 0x01;
-  if(FONT_IS_ITALIC(printerFlags)) i |= 0x02;
+  if(FONT_IS_BOLD(printerFlags))
+    i |= 0x01;
+  if(FONT_IS_ITALIC(printerFlags))
+    i |= 0x02;
 
   strcpy(ptr, &(_psFontNames[font][i][0]));
 }

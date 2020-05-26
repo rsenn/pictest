@@ -38,7 +38,8 @@ Buffer::Iterator::~Iterator() {}
 
 void
 Buffer::Iterator::address(size_t addr) {
-  if((addr < _begin) || (addr > _end)) throw out_of_range("Address doesn't fit boundaries.");
+  if((addr < _begin) || (addr > _end))
+    throw out_of_range("Address doesn't fit boundaries.");
   _address = addr;
 }
 
@@ -51,21 +52,25 @@ Buffer::Iterator::address() {
 
 size_t
 Buffer::Iterator::blockSize() {
-  if(address() >= end()) return 0;
+  if(address() >= end())
+    return 0;
   size_t next;
   if(page() == 0)
     next = end();
   else
     next = (address() / page() + 1) * page();
-  if(next > end()) next = end();
+  if(next > end())
+    next = end();
   return next - address();
 }
 
 size_t
 Buffer::Iterator::read(unsigned char* buf, size_t bufSize, size_t* addr) {
   size_t size = blockSize();
-  if(size > bufSize) size = bufSize;
-  if(size == 0) return size;
+  if(size > bufSize)
+    size = bufSize;
+  if(size == 0)
+    return size;
   size_t pc = _buffer->read(buf, size, address());
   *addr = address();
   address(address() + pc);
@@ -74,7 +79,8 @@ Buffer::Iterator::read(unsigned char* buf, size_t bufSize, size_t* addr) {
 
 void
 Buffer::Iterator::write(unsigned char* buf, size_t bufSize) {
-  if(address() + bufSize > end()) throw out_of_range("Buffer is full.");
+  if(address() + bufSize > end())
+    throw out_of_range("Buffer is full.");
   _buffer->write(buf, bufSize, address());
   address(address() + bufSize);
 }
@@ -82,7 +88,8 @@ Buffer::Iterator::write(unsigned char* buf, size_t bufSize) {
 void
 Buffer::Iterator::begin(size_t address) {
   eAssert(_buffer != NULL);
-  if(address > _buffer->size()) throw out_of_range("Begin address exceeds buffer size.");
+  if(address > _buffer->size())
+    throw out_of_range("Begin address exceeds buffer size.");
   _begin = address;
   _address = address;
 }
@@ -90,7 +97,8 @@ Buffer::Iterator::begin(size_t address) {
 void
 Buffer::Iterator::end(size_t address) {
   eAssert(_buffer != NULL);
-  if(address > _buffer->size()) throw out_of_range("End address exceeds buffer size.");
+  if(address > _buffer->size())
+    throw out_of_range("End address exceeds buffer size.");
   _end = address;
 }
 

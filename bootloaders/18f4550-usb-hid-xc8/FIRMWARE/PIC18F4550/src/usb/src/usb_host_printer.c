@@ -298,7 +298,8 @@ USBHostPrinterInitialize(uint8_t address, uint32_t flags, uint8_t clientDriverID
 #endif
 
   for(currentPrinterRecord = 0; currentPrinterRecord < USB_MAX_PRINTER_DEVICES; currentPrinterRecord++) {
-    if(!usbPrinters[currentPrinterRecord].flags.inUse) break;
+    if(!usbPrinters[currentPrinterRecord].flags.inUse)
+      break;
   }
   if(currentPrinterRecord == USB_MAX_PRINTER_DEVICES) {
 #ifdef DEBUG_MODE
@@ -695,8 +696,7 @@ USBHostPrinterEventHandler(uint8_t address, USB_EVENT event, void* data, uint32_
 
     case EVENT_SUSPEND:
     case EVENT_RESUME:
-    default:
-      break;
+    default: break;
   }
 
   return false;

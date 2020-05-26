@@ -60,9 +60,7 @@ APP_CustomHIDTasks() {
 
     // Check the received command from host (PC)
     switch(ReceivedDataBuffer[0]) {
-      case COMMAND_TOGGLE_LED:
-        mLED_3_Toggle();
-        break;
+      case COMMAND_TOGGLE_LED: mLED_3_Toggle(); break;
       case COMMAND_GET_BUTTON_STATUS:
         ToSendDataBuffer[0] = COMMAND_GET_BUTTON_STATUS;
         ToSendDataBuffer[1] = mGetSwitch();
@@ -184,8 +182,8 @@ APP_USBCBSuspend(void) {
   // Sleep();
   // RestoreStateOfAllPreviouslySavedInterruptEnableBits();	//Preferrably, this should be done in the
   // USBCBWakeFromSuspend() function instead.
-  // RestoreIOPinsToNormal();									//Preferrably, this should be done in the USBCBWakeFromSuspend()
-  // function instead.
+  // RestoreIOPinsToNormal();									//Preferrably, this should be done in the
+  // USBCBWakeFromSuspend() function instead.
 
   // IMPORTANT NOTE: Do not clear the USBActivityIF (ACTVIF) bit here.  This bit is
   // cleared inside the usb_device.c file.  Clearing USBActivityIF here will cause

@@ -1,5 +1,5 @@
 /******************************************************************************
- 
+
   USB Host Generic Client Driver
 
 Description:
@@ -339,8 +339,7 @@ USBHostGenericEventHandler(BYTE address, USB_EVENT event, void* data, DWORD size
     case EVENT_SUSPEND:
     case EVENT_RESUME:
     case EVENT_BUS_ERROR:
-    default:
-      break;
+    default: break;
   }
 
   return FALSE;
@@ -425,7 +424,8 @@ USBHostGenericEventHandler(BYTE address, USB_EVENT event, void* data, DWORD size
 
 BOOL
 USBHostGenericGetDeviceAddress(GENERIC_DEVICE_ID* pDevID) {
-  if(!gc_DevData.flags.initialized) return FALSE;
+  if(!gc_DevData.flags.initialized)
+    return FALSE;
 
   if(gc_DevData.ID.deviceAddress != 0 && pDevID != NULL) {
     if(pDevID->vid == gc_DevData.ID.vid && pDevID->pid == gc_DevData.ID.pid) {
@@ -505,8 +505,10 @@ USBHostGenericRead(BYTE deviceAddress, void* buffer, DWORD length) {
   BYTE RetVal;
 
   // Validate the call
-  if(!API_VALID(deviceAddress)) return USB_INVALID_STATE;
-  if(gc_DevData.flags.rxBusy) return USB_BUSY;
+  if(!API_VALID(deviceAddress))
+    return USB_INVALID_STATE;
+  if(gc_DevData.flags.rxBusy)
+    return USB_BUSY;
 
   // Set the busy flag, clear the count and start a new IN transfer.
   gc_DevData.flags.rxBusy = 1;
@@ -795,8 +797,10 @@ USBHostGenericWrite(BYTE deviceAddress, void* buffer, DWORD length) {
   BYTE RetVal;
 
   // Validate the call
-  if(!API_VALID(deviceAddress)) return USB_INVALID_STATE;
-  if(gc_DevData.flags.txBusy) return USB_BUSY;
+  if(!API_VALID(deviceAddress))
+    return USB_INVALID_STATE;
+  if(gc_DevData.flags.txBusy)
+    return USB_BUSY;
 
   // Set the busy flag and start a new OUT transfer.
   gc_DevData.flags.txBusy = 1;

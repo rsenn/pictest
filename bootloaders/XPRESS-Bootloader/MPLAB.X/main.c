@@ -2,7 +2,7 @@
 Copyright 2016 Microchip Technology Inc. (www.microchip.com)
 
  MSD Loader and CDC Interface for the MPLAB XPRESS Evaluation Board
-   
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -14,7 +14,7 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
- 
+
 *******************************************************************************/
 
 /** INCLUDES *******************************************************/
@@ -114,14 +114,11 @@ USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void* pdata, uint16_t size) {
       // Add application specific callback task or callback function here if desired.
       break;
 
-    case EVENT_SOF:
-      break;
+    case EVENT_SOF: break;
 
-    case EVENT_SUSPEND:
-      break;
+    case EVENT_SUSPEND: break;
 
-    case EVENT_RESUME:
-      break;
+    case EVENT_RESUME: break;
 
     case EVENT_CONFIGURED:
       /* When the device is configured, we can (re)initialize the demo
@@ -131,8 +128,7 @@ USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void* pdata, uint16_t size) {
 
       break;
 
-    case EVENT_SET_DESCRIPTOR:
-      break;
+    case EVENT_SET_DESCRIPTOR: break;
 
     case EVENT_EP0_REQUEST:
       /* We have received a non-standard USB request.  The MSD driver
@@ -142,8 +138,7 @@ USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void* pdata, uint16_t size) {
 
       break;
 
-    case EVENT_BUS_ERROR:
-      break;
+    case EVENT_BUS_ERROR: break;
 
     case EVENT_TRANSFER_TERMINATED:
       // Add application specific callback task or callback function here if desired.
@@ -175,8 +170,7 @@ USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void* pdata, uint16_t size) {
       }
       break;
 
-    default:
-      break;
+    default: break;
   }
   return true;
 }

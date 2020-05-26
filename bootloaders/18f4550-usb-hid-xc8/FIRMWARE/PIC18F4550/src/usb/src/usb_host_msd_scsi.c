@@ -215,9 +215,7 @@ USBHostMSDSCSIEventHandler(uint8_t address, USB_EVENT event, void* data, uint32_
       return true;
       break;
 
-    default:
-      return false;
-      break;
+    default: return false; break;
   }
   return false;
 }

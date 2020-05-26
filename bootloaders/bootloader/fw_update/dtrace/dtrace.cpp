@@ -34,11 +34,8 @@ AddTraceType(char* pMessage, const ETraceType TraceType) {
       strncpy(TraceMessage, "!!! Err: ", TRACE_MESSAGE_SIZE);
       //		assert(false);
       break;
-    case ttDebug:
-      break;
-    default:
-      assert(false);
-      break;
+    case ttDebug: break;
+    default: assert(false); break;
   }
   strncat(TraceMessage, pMessage, TRACE_MESSAGE_SIZE);
   strncpy(pMessage, TraceMessage, TRACE_MESSAGE_SIZE);
@@ -87,7 +84,8 @@ FileTrace(const ETraceType TraceType, const char* FileName, const int LineNumber
   strncat(TraceMessage, "\n", TRACE_MESSAGE_SIZE);
 
   HANDLE hFile = CreateFileA("log.txt", GENERIC_WRITE, FILE_SHARE_READ, 0, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);
-  if(hFile == INVALID_HANDLE_VALUE) return;
+  if(hFile == INVALID_HANDLE_VALUE)
+    return;
   SetFilePointer(hFile, 0, 0, FILE_END);
   unsigned long Written;
   WriteFile(hFile, TraceMessage, (unsigned long)(strlen(TraceMessage)), &Written, NULL);
@@ -101,15 +99,9 @@ OutputTrace(const ETraceType TraceType,
             const int LineNumber,
             char* TraceMessage) {
   switch(TraceOutput) {
-    case toDebugger:
-      DebuggerTrace(TraceType, FileName, LineNumber, TraceMessage);
-      break;
-    case toFile:
-      FileTrace(TraceType, FileName, LineNumber, TraceMessage);
-      break;
-    default:
-      assert(false);
-      break;
+    case toDebugger: DebuggerTrace(TraceType, FileName, LineNumber, TraceMessage); break;
+    case toFile: FileTrace(TraceType, FileName, LineNumber, TraceMessage); break;
+    default: assert(false); break;
   }
 }
 
@@ -120,7 +112,8 @@ imp_Trace(const ETraceType TraceType,
           const int LineNumber,
           const char* Str,
           ...) {
-  if(TraceOutput == toNowhere) return;
+  if(TraceOutput == toNowhere)
+    return;
 
   char TraceMessage[TRACE_MESSAGE_SIZE];
   va_list params;

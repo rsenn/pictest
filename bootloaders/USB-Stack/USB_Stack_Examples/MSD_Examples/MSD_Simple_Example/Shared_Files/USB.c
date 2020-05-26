@@ -242,9 +242,11 @@ USB_Tasks(void) {
 
     while(ActivityDetectFlag) ActivityDetectFlag = 0;
   }
-  if(USB_STATE == Suspended) return;
+  if(USB_STATE == Suspended)
+    return;
   if(ResetConditionFlag) {
-    if(USB_STATE != Powered) USB_Init();
+    if(USB_STATE != Powered)
+      USB_Init();
     USB_STATE = Default;
 #ifdef USE_RESET
     USB_Reset();
@@ -274,7 +276,8 @@ USB_Tasks(void) {
     ErrorConditionFlag = 0;
   }
 #endif
-  if(USB_STATE < Default) return;
+  if(USB_STATE < Default)
+    return;
   while(TransactionCompleteFlag) {
     NOP();
     NOP();
@@ -527,43 +530,19 @@ USB_ProcessSetup(void) {
   if(SetupData.bmRequestType_bits.Type == Standard) {
     switch(SetupData.bRequest) {
       // Most common requests are checked first for speed.
-      case GET_DESCRIPTOR:
-        USB_GET_DESCRIPTOR();
-        break;
-      case CLEAR_FEATURE:
-        USB_SET_CLEAR_FEATURE();
-        break;
-      case SET_ADDRESS:
-        USB_SET_ADDRESS();
-        break;
-      case SET_CONFIGURATION:
-        USB_SET_CONFIGURATION();
-        break;
+      case GET_DESCRIPTOR: USB_GET_DESCRIPTOR(); break;
+      case CLEAR_FEATURE: USB_SET_CLEAR_FEATURE(); break;
+      case SET_ADDRESS: USB_SET_ADDRESS(); break;
+      case SET_CONFIGURATION: USB_SET_CONFIGURATION(); break;
 
-      case GET_STATUS:
-        USB_GET_STATUS();
-        break;
-      case SET_FEATURE:
-        USB_SET_CLEAR_FEATURE();
-        break;
-      case SET_DESCRIPTOR:
-        USB_SET_DESCRIPTOR();
-        break;
-      case GET_CONFIGURATION:
-        USB_GET_CONFIGURATION();
-        break;
-      case GET_INTERFACE:
-        USB_GET_INTERFACE();
-        break;
-      case SET_INTERFACE:
-        USB_SET_INTERFACE();
-        break;
-      case SYNC_FRAME:
-        USB_SYNC_FRAME();
-        break;
-      default:
-        USB_RequestError();
-        break;
+      case GET_STATUS: USB_GET_STATUS(); break;
+      case SET_FEATURE: USB_SET_CLEAR_FEATURE(); break;
+      case SET_DESCRIPTOR: USB_SET_DESCRIPTOR(); break;
+      case GET_CONFIGURATION: USB_GET_CONFIGURATION(); break;
+      case GET_INTERFACE: USB_GET_INTERFACE(); break;
+      case SET_INTERFACE: USB_SET_INTERFACE(); break;
+      case SYNC_FRAME: USB_SYNC_FRAME(); break;
+      default: USB_RequestError(); break;
     }
   } else {
     if(USB_ServiceClassRequest() == false) {
@@ -771,9 +750,7 @@ USB_GET_STATUS(void) {
         GetStatusReturnedData.RemoteWakeup = DEVS.Remote_Wakeup;
         Perform_Request_Error = false;
         break;
-      case Interface:
-        Perform_Request_Error = false;
-        break;
+      case Interface: Perform_Request_Error = false; break;
       case Endpoint:
         if(USB_STATE == Address) {
           if(GetStatusData.ZeroInterfaceEndpoint_bits.Endpoint_bits.EndpointNumber == EP0)
@@ -937,8 +914,7 @@ USB_GET_DESCRIPTOR(void) {
       bytes_available = sizeof(Device_Descriptor);
       Perform_Request_Error = false;
       break;
-    case DEVICE_QUALIFIER_DESC:
-      break;
+    case DEVICE_QUALIFIER_DESC: break;
     case CONFIGURATION_DESC:
       if(GetDescriptorData.DescriptorIndex < NUM_CONFIGURATIONS) {
         ROMptr = (const uint8_t*)CD_Ptr[GetDescriptorData.DescriptorIndex];
@@ -955,7 +931,8 @@ USB_GET_DESCRIPTOR(void) {
       }
       break;
     default:
-      if(USB_GetClassDescriptor()) Perform_Request_Error = false;
+      if(USB_GetClassDescriptor())
+        Perform_Request_Error = false;
       break;
   }
   if(Perform_Request_Error) {

@@ -1,3 +1,4 @@
+
 #include "lib/comparator.h"
 #include "lib/const.h"
 #include "lib/device.h"
@@ -327,7 +328,8 @@ main() {
       wait = msecs < tmp_msecs;
       INTERRUPT_ENABLE();
 
-      if(!wait) break;
+      if(!wait)
+        break;
     }
   }
 }

@@ -40,12 +40,14 @@ IntelHexImage::open(bool read) {
   if(read) {
     /* NOTE: "t" mode do nothing on non-Windows platform!!! See also  IntelHexImage::read() */
     _file = fopen(_name.c_str(), "rt");
-    if(_file == NULL) throw DEFileOpenFailed(_name, read);
+    if(_file == NULL)
+      throw DEFileOpenFailed(_name, read);
     _size = calcSize();
   } else {
     /* NOTE: "t" mode do nothing on non-Windows platform!!! See also  IntelHexImage::write() */
     _file = fopen(_name.c_str(), "wt");
-    if(_file == NULL) throw DEFileOpenFailed(_name, read);
+    if(_file == NULL)
+      throw DEFileOpenFailed(_name, read);
     _size = 0;
   }
   _read = read;
@@ -63,7 +65,8 @@ IntelHexImage::close() {
     string str = _record.GetString();
 #ifdef NEED_CRLF_TRANSLATION
     /* NOTE: Because in most cases HEX files created on Windows with MPLAB we need CRLF */
-    if((str[str.size() - 1] == '\n') && (str[str.size() - 2] != '\r')) str.insert(str.size() - 1, "\r");
+    if((str[str.size() - 1] == '\n') && (str[str.size() - 2] != '\r'))
+      str.insert(str.size() - 1, "\r");
 #endif
     int tmp = fputs(str.c_str(), _file);
     if(tmp < 0) {
@@ -71,7 +74,8 @@ IntelHexImage::close() {
       throw DEFileWriteFailed();
     }
   }
-  if(fclose(_file) != 0) throw DEFileCloseFailed(_name);
+  if(fclose(_file) != 0)
+    throw DEFileCloseFailed(_name);
   _file = NULL;
 }
 
@@ -82,7 +86,8 @@ IntelHexImage::calcSize() {
   unsigned char buffer[buf_size];
   size_t size, address;
   while(0 != (size = read(buffer, buf_size, &address))) {
-    if(address + size > max) max = address + size;
+    if(address + size > max)
+      max = address + size;
   }
   fseek(_file, 0, SEEK_SET);
   return max;
@@ -114,20 +119,14 @@ IntelHexImage::read(unsigned char* buffer, size_t bufSize, size_t* addr) {
 #endif
     _record.InitFromString(f_buffer);
     switch(_record.m_Type) {
-      case cHexTypeData:
-        _readCurrent = 0;
-        break;
+      case cHexTypeData: _readCurrent = 0; break;
       case cHexTypeExtLinearAddr:
       case cHexTypeExtSegmentAddr:
         _readAddr = _record.GetExtAddr();
         _record.clear();
         break;
-      case cHexTypeEndOfData:
-        _record.clear();
-        break;
-      default:
-        eTrace1("_record.m_Type = %d", _record.m_Type);
-        throw DEFileReadFailed();
+      case cHexTypeEndOfData: _record.clear(); break;
+      default: eTrace1("_record.m_Type = %d", _record.m_Type); throw DEFileReadFailed();
     }
   }
   if(bufSize > _record.m_Size - _readCurrent)
@@ -158,7 +157,8 @@ IntelHexImage::write(unsigned char* buffer, size_t bufSize) {
       str = record.GetString();
 #ifdef NEED_CRLF_TRANSLATION
       /* NOTE: Because in most cases HEX files created on Windows with MPLAB we need CRLF */
-      if((str[str.size() - 1] == '\n') && (str[str.size() - 2] != '\r')) str.insert(str.size() - 1, "\r");
+      if((str[str.size() - 1] == '\n') && (str[str.size() - 2] != '\r'))
+        str.insert(str.size() - 1, "\r");
 #endif
       int tmp = fputs(str.c_str(), _file);
       if(tmp < 0) {
@@ -172,13 +172,15 @@ IntelHexImage::write(unsigned char* buffer, size_t bufSize) {
     else
       current = 0x10;
 
-    if(address / 0x10000 != (address + current) / 0x10000) current = 0x10000 - (address % 0x10000);
+    if(address / 0x10000 != (address + current) / 0x10000)
+      current = 0x10000 - (address % 0x10000);
     if(current != 0) {
       record.InitData((unsigned char)current, LOWORD(address), buffer + offset);
       str = record.GetString();
 #ifdef NEED_CRLF_TRANSLATION
       /* NOTE: Because in most cases HEX files created on Windows with MPLAB we need CRLF */
-      if((str[str.size() - 1] == '\n') && (str[str.size() - 2] != '\r')) str.insert(str.size() - 1, "\r");
+      if((str[str.size() - 1] == '\n') && (str[str.size() - 2] != '\r'))
+        str.insert(str.size() - 1, "\r");
 #endif
       int tmp = fputs(str.c_str(), _file);
       if(tmp < 0) {

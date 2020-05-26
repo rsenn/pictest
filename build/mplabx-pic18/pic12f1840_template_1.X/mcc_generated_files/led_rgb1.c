@@ -46,24 +46,24 @@
 #include "mcc.h"
 #include "led_rgb1.h"
 
-void LED_RGB1_On(void)
-{
-    // One of the color LED is not loaded
+void
+LED_RGB1_On(void) {
+  // One of the color LED is not loaded
 }
 
-void LED_RGB1_Off(void)
-{
-    // One of the color LED is not loaded
+void
+LED_RGB1_Off(void) {
+  // One of the color LED is not loaded
 }
 
-void LED_RGB1_Toggle(void)
-{
-    // One of the color LED is not loaded
+void
+LED_RGB1_Toggle(void) {
+  // One of the color LED is not loaded
 }
 
-void LED_RGB1_ColorSet(uint16_t red, uint16_t green, uint16_t blue)
-{
-    // One of the color LED is not loaded
+void
+LED_RGB1_ColorSet(uint16_t red, uint16_t green, uint16_t blue) {
+  // One of the color LED is not loaded
 }
 
 /**

@@ -87,14 +87,10 @@ PicBootloader::memory_type(std::string memory) {
 std::string
 PicBootloader::memory_str(MemoryType memory) {
   switch(memory) {
-    case MEM_FLASH:
-      return std::string("flash");
-    case MEM_EEPROM:
-      return std::string("eeprom");
-    case MEM_ID:
-      return std::string("id");
-    case MEM_ALL:
-      return std::string("all");
+    case MEM_FLASH: return std::string("flash");
+    case MEM_EEPROM: return std::string("eeprom");
+    case MEM_ID: return std::string("id");
+    case MEM_ALL: return std::string("all");
   }
   return std::string("");
 }
@@ -114,9 +110,7 @@ PicBootloader::mem_range(MemoryType memory, size_t* start, size_t* size) {
       *start = BOOT_ID_ADDR;
       *size = BOOT_ID_SIZE;
       return;
-    default:
-      *start = 0;
-      *size = 0;
+    default: *start = 0; *size = 0;
   }
 }
 
@@ -130,7 +124,8 @@ PicBootloader::mem_border(PicBootloader::MemoryType memory,
   /* Adjust start address to point to start of current memory type */
   *start = 0;
   *end = max_size;
-  if(memory == MEM_FLASH) *start = BOOT_DEFAULT_ADDR;
+  if(memory == MEM_FLASH)
+    *start = BOOT_DEFAULT_ADDR;
 
   /* Check if user provide non-default addtress and size
      Ignore if memory type is ALL
@@ -138,35 +133,36 @@ PicBootloader::mem_border(PicBootloader::MemoryType memory,
   if(memory != MEM_ALL) {
     if(params.contain(ARG_ADDR)) {
       *start = params[ARG_ADDR].ulongValue();
-      if(*start >= max_size) throw DEBadValue(params[ARG_ADDR].argument(), 0, max_size);
+      if(*start >= max_size)
+        throw DEBadValue(params[ARG_ADDR].argument(), 0, max_size);
       /* Adjust address to 8 byte boundary */
       *start &= ~7UL;
     }
     if(params.contain(ARG_DATA_SIZE)) {
       *size = params[ARG_DATA_SIZE].ulongValue();
-      if(*size == 0) throw DEBadValue(params[ARG_DATA_SIZE].argument(), 8, max_size);
+      if(*size == 0)
+        throw DEBadValue(params[ARG_DATA_SIZE].argument(), 8, max_size);
       /* Adjust size to 8 byte boundary */
       *end = *size & 7;
       *size &= ~7UL;
-      if(*end & 7) *size += 8;
+      if(*end & 7)
+        *size += 8;
     }
   }
   *end = *start + *size;
-  if(*end > max_size) *end = max_size;
-  if(*end <= *start) throw DEBadValue(params[ARG_DATA_SIZE].argument(), 0, max_size - *start);
+  if(*end > max_size)
+    *end = max_size;
+  if(*end <= *start)
+    throw DEBadValue(params[ARG_DATA_SIZE].argument(), 0, max_size - *start);
 }
 
 size_t
 PicBootloader::page_size(PicBootloader::MemoryType memory) {
   switch(memory) {
-    case MEM_FLASH:
-      return 32;
-    case MEM_EEPROM:
-      return 8;
-    case MEM_ID:
-      return BOOT_ID_LEN;
-    default:
-      return 8;
+    case MEM_FLASH: return 32;
+    case MEM_EEPROM: return 8;
+    case MEM_ID: return BOOT_ID_LEN;
+    default: return 8;
   }
 }
 
@@ -175,7 +171,8 @@ PicBootloader::erase(string memory, const Parameters& params) {
   PicBootloader::MemoryType mem = memory_type(memory);
   // EEPROM an ID eraising not supported
   // Use programm() with Buffer filled by 0xFF for EEPROM and ID
-  if(mem != MEM_FLASH) return;
+  if(mem != MEM_FLASH)
+    return;
 
   boot_cmd command;
   boot_rsp response;
@@ -237,21 +234,25 @@ PicBootloader::verify(Buffer::Iterator* buffer, string memory, const Parameters&
         eTrace2("address = %d memory = %s", address, memory.c_str());
         continue;
       }
-      if(address >= def_size) continue;
+      if(address >= def_size)
+        continue;
 
       command.header.cmd = cmd;
       command.read_flash.echo = ++command_id;
       command.read_flash.addr_hi = (unsigned char)((address >> 8) & 0xFF);
       command.read_flash.addr_lo = (unsigned char)(address & 0xFF);
       // size must be 8 dividable
-      if(size % 8 != 0) size = (size / 8 + 1) * 8;
+      if(size % 8 != 0)
+        size = (size / 8 + 1) * 8;
       eAssert(size <= page_size(mem));
       command.read_flash.size8 = (unsigned char)size;
       for(int retry = 0; true; retry++) {
         transaction(&command, &response);
-        if(memcmp(response.read_flash.data, reference.write_flash.data, size) == 0) break;
+        if(memcmp(response.read_flash.data, reference.write_flash.data, size) == 0)
+          break;
         printf("retry = %d\n\n", retry);
-        if(retry == MAX_HID_RETRY) throw DEVerificationFailed();
+        if(retry == MAX_HID_RETRY)
+          throw DEVerificationFailed();
       }
       show_progress(OP_VERIFYING, type(), memory, buffer->progress());
       memset(&reference, 0xFF, sizeof(boot_cmd));
@@ -282,14 +283,16 @@ PicBootloader::read(Buffer::Iterator* buffer, string memory, const Parameters& p
     open(params);
     while(0 != (size = buffer->blockSize())) {
       address = buffer->address();
-      if(address >= def_size) continue;
+      if(address >= def_size)
+        continue;
 
       command.header.cmd = cmd;
       command.read_flash.echo = ++command_id;
       command.read_flash.addr_hi = (unsigned char)((address >> 8) & 0xFF);
       command.read_flash.addr_lo = (unsigned char)(address & 0xFF);
       // size must be 8 dividable
-      if(size % 8 != 0) size = (size / 8 + 1) * 8;
+      if(size % 8 != 0)
+        size = (size / 8 + 1) * 8;
       eAssert(size <= page_size(mem));
       command.read_flash.size8 = (unsigned char)size;
 
@@ -327,7 +330,8 @@ PicBootloader::program(Buffer::Iterator* buffer, string memory, const Parameters
         eTrace2("address = %d memory = %s", address, memory.c_str());
         continue;
       }
-      if(address >= def_size) continue;
+      if(address >= def_size)
+        continue;
 
       command.header.cmd = cmd;
       command.write_flash.echo = ++command_id;
@@ -376,7 +380,8 @@ PicBootloader::PicBootloader() : m_hDevice(INVALID_HANDLE_VALUE), command_id(0) 
 
 PicBootloader::~PicBootloader() {
   eAssert(m_hDevice == INVALID_HANDLE_VALUE);
-  if(m_hDevice != INVALID_HANDLE_VALUE) CloseHandle(m_hDevice);
+  if(m_hDevice != INVALID_HANDLE_VALUE)
+    CloseHandle(m_hDevice);
 }
 
 void
@@ -396,7 +401,8 @@ PicBootloader::open(const Parameters& params) {
     DevInterfaceData.cbSize = sizeof(SP_DEVICE_INTERFACE_DATA);
 
     for(unsigned long DevIndex = 0; true; DevIndex++) {
-      if(!SetupDiEnumDeviceInterfaces(hDevInfo, NULL, &HidGuid, DevIndex, &DevInterfaceData)) break;
+      if(!SetupDiEnumDeviceInterfaces(hDevInfo, NULL, &HidGuid, DevIndex, &DevInterfaceData))
+        break;
       unsigned long DetailsSize;
       SetupDiGetDeviceInterfaceDetail(hDevInfo, &DevInterfaceData, NULL, 0, &DetailsSize, NULL);
       PSP_INTERFACE_DEVICE_DETAIL_DATA pDetails = (PSP_INTERFACE_DEVICE_DETAIL_DATA)malloc(DetailsSize);
@@ -451,7 +457,8 @@ PicBootloader::open(const Parameters& params) {
           // Valid device found
           found = true;
           devHandle = usb_open(dev);
-          if(devHandle == NULL) break;
+          if(devHandle == NULL)
+            break;
           if(usb_claim_interface(devHandle, 0) < 0) {
             usb_close(devHandle);
             break;
@@ -461,14 +468,16 @@ PicBootloader::open(const Parameters& params) {
           break;
         }
       }
-      if(found) break;
+      if(found)
+        break;
     }
 #endif /* BUILD_WIN32 */
   } catch(...) {
     // toDo: add clean up
     throw;
   }
-  if(m_hDevice == INVALID_HANDLE_VALUE) throw DEDeviceAbsent();
+  if(m_hDevice == INVALID_HANDLE_VALUE)
+    throw DEDeviceAbsent();
 }
 
 void
@@ -495,7 +504,8 @@ PicBootloader::isValidDevice(string DevicePath, const Parameters& params) {
                                  0,             // no special attributes
                                  NULL);         // no template file
 
-  if(hHidDevice == INVALID_HANDLE_VALUE) return NULL;
+  if(hHidDevice == INVALID_HANDLE_VALUE)
+    return NULL;
 
   HIDD_ATTRIBUTES Attr;
   if(!HidD_GetAttributes(hHidDevice, &Attr)) {
@@ -676,7 +686,8 @@ PicBootloader::transaction(boot_cmd* pOut, boot_rsp* pIn) {
         else
           continue;
       }
-      if(retval >= 0) break;
+      if(retval >= 0)
+        break;
     }
   } catch(...) {
     throw;
@@ -719,8 +730,7 @@ PicBootloader::prepare_cmd(PicBootloader::MemoryType memory,
       else
         *cmd = BOOT_WRITE_ID;
       break;
-    default:
-      throw DEBadMemoryType("BootLoader", memory_str(memory));
+    default: throw DEBadMemoryType("BootLoader", memory_str(memory));
   }
 }
 

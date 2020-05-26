@@ -76,14 +76,9 @@ CreateFileA(char* name, int flags, int, int, int crmode, int, int) {
   char m[4] = {0, 0, 0, 0};
 
   switch(flags & 0x03) {
-    case 0:
-      break;
-    case GENERIC_READ:
-      m[0] = 'r';
-      break;
-    case GENERIC_WRITE:
-      m[0] = 'w';
-      break;
+    case 0: break;
+    case GENERIC_READ: m[0] = 'r'; break;
+    case GENERIC_WRITE: m[0] = 'w'; break;
     default:
       m[0] = 'w';
       m[1] = '+';
@@ -95,13 +90,15 @@ CreateFileA(char* name, int flags, int, int, int crmode, int, int) {
     struct stat st;
     int retval;
     retval = stat(name, &st);
-    if(retval < 0) return INVALID_HANDLE_VALUE;
+    if(retval < 0)
+      return INVALID_HANDLE_VALUE;
   }
 #endif
 
   f = fopen(name, m);
 
-  if(f == NULL) return INVALID_HANDLE_VALUE;
+  if(f == NULL)
+    return INVALID_HANDLE_VALUE;
 
   return f;
 }
@@ -110,7 +107,8 @@ static inline bool
 SetFilePointer(HANDLE hFile, int posl, int, int whence) {
   FILE* f = (FILE*)(hFile);
 
-  if(fseek(f, posl, whence)) return false;
+  if(fseek(f, posl, whence))
+    return false;
 
   return true;
 }

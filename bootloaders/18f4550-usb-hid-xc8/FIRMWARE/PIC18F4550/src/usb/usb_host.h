@@ -317,7 +317,7 @@ typedef bool (*USB_CLIENT_EVENT_HANDLER)(uint8_t address, USB_EVENT event, void*
     uint32_t flags         - Initialization flags
     uint8_t clientDriverID - ID to send when issuing a Device Request via
                             USBHostIssueDeviceRequest() or USBHostSetDeviceConfiguration().
-                            
+
   Return Values:
     true    - Successful
     false   - Not successful
@@ -696,7 +696,7 @@ uint8_t USBHostDeviceStatus(uint8_t deviceAddress);
     *stringDescriptor   - Pointer to where to store the string.
     stringLength        - Maximum length of the returned string.
     clientDriverID      - Client driver to return the completion event to.
-    
+
   Return Values:
     USB_SUCCESS             - The request was started successfully.
     USB_UNKNOWN_DEVICE      - Device not found
@@ -759,7 +759,7 @@ bool USBHostInit(unsigned long flags);
   Function:
     bool USBHostIsochronousBuffersCreate( ISOCHRONOUS_DATA * isocData,
             uint8_t numberOfBuffers, uint16_t bufferSize )
-    
+
   Description:
     This function initializes the isochronous data buffer information and
     allocates memory for each buffer.  This function will not allocate memory
@@ -788,7 +788,7 @@ bool USBHostIsochronousBuffersCreate(ISOCHRONOUS_DATA* isocData, uint8_t numberO
 /****************************************************************************
   Function:
     void USBHostIsochronousBuffersDestroy( ISOCHRONOUS_DATA * isocData, uint8_t numberOfBuffers )
-    
+
   Description:
     This function releases all of the memory allocated for the isochronous
     data buffers.  It also resets all other information about the buffers.
@@ -814,7 +814,7 @@ void USBHostIsochronousBuffersDestroy(ISOCHRONOUS_DATA* isocData, uint8_t number
 /****************************************************************************
   Function:
     void USBHostIsochronousBuffersReset( ISOCHRONOUS_DATA * isocData, uint8_t numberOfBuffers )
-    
+
   Description:
     This function resets all the isochronous data buffers.  It does not do
     anything with the space allocated for the buffers.
@@ -1087,7 +1087,7 @@ uint8_t USBHostResumeDevice(uint8_t deviceAddress);
   Parameters:
     uint8_t deviceAddress  - Device address
     uint8_t configuration  - Index of the new configuration
-    
+
   Return Values:
     USB_SUCCESS         - Process of changing the configuration was started
                             successfully.

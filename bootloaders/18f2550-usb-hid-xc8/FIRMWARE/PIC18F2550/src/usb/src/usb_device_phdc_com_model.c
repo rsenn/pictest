@@ -274,8 +274,7 @@ UsbToPHDComCB(UINT8 USB_Event, void* val) {
       // PhdAppBufferOffset = 0;
       break;
 
-    default:
-      break;
+    default: break;
   } // End of switch(USB_Event)
 }
 
@@ -306,29 +305,17 @@ PHDAppDataRxHandler(BYTE* apdu) {
   apduChoiceLength.byte.LB = apdu[3];
 
   switch(apduChoiceType.Val) {
-    case PHD_ASSOCIATION_REQUEST:
-      PHDAssocRequestHandler(apdu);
-      break;
+    case PHD_ASSOCIATION_REQUEST: PHDAssocRequestHandler(apdu); break;
 
-    case PHD_ASSOCIATION_RESPONSE:
-      PHDAssocResponseHandler(apdu);
-      break;
+    case PHD_ASSOCIATION_RESPONSE: PHDAssocResponseHandler(apdu); break;
 
-    case PHD_RELEASE_REQUEST:
-      PHDReleaseRequestHandler(apdu);
-      break;
+    case PHD_RELEASE_REQUEST: PHDReleaseRequestHandler(apdu); break;
 
-    case PHD_RELEASE_RESPONSE:
-      PHDReleaseResponseHandler(apdu);
-      break;
+    case PHD_RELEASE_RESPONSE: PHDReleaseResponseHandler(apdu); break;
 
-    case PHD_ABORT_REQUEST:
-      PHDAbortRequestHandler(apdu);
-      break;
+    case PHD_ABORT_REQUEST: PHDAbortRequestHandler(apdu); break;
 
-    case PHD_PRESET_APDU:
-      PHDPrstApduHandler(apdu);
-      break;
+    case PHD_PRESET_APDU: PHDPrstApduHandler(apdu); break;
 
     default:
       if((PhdComState == PHD_COM_STATE_ASSOCIATING) || (PhdComState == PHD_COM_STATE_ASSOC_CFG_WAITING_APPROVAL) ||

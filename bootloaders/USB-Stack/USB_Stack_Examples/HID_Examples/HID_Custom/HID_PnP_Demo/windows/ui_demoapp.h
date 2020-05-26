@@ -36,7 +36,8 @@ public:
 
   void
   setupUi(QMainWindow* DemoApp) {
-    if(DemoApp->objectName().isEmpty()) DemoApp->setObjectName(QString::fromUtf8("DemoApp"));
+    if(DemoApp->objectName().isEmpty())
+      DemoApp->setObjectName(QString::fromUtf8("DemoApp"));
     DemoApp->resize(461, 165);
     centralWidget = new QWidget(DemoApp);
     centralWidget->setObjectName(QString::fromUtf8("centralWidget"));

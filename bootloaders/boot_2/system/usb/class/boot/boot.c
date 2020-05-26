@@ -222,7 +222,8 @@ WriteConfig(void) // TESTED: Passed
 void
 BootService(void) {
   // BlinkUSBStatus();
-  if((usb_device_state < CONFIGURED_STATE) || (UCONbits.SUSPND == 1)) return;
+  if((usb_device_state < CONFIGURED_STATE) || (UCONbits.SUSPND == 1))
+    return;
 
   if(trf_state == SENDING_RESP) {
     if(!mBootTxIsBusy()) {
@@ -283,12 +284,9 @@ BootService(void) {
         Reset();
         break;
 
-      case UPDATE_LED:
-        counter = 0x01;
-        break;
+      case UPDATE_LED: counter = 0x01; break;
 
-      default:
-        break;
+      default: break;
     } // end switch()
     trf_state = SENDING_RESP;
     if(counter != 0) {
@@ -320,7 +318,7 @@ BootService(void) {
 void BlinkUSBStatus(void)
 {
     static word led_count=0;
-    
+
     if(led_count == 0)led_count = 20000U;
     led_count--;
 

@@ -129,9 +129,7 @@ main(void) {
   while(1) {
     if(OutEvent) {
       switch(Out_Report1.Array[0]) {
-        case COMMAND_TOGGLE_LED:
-          LED ^= 1;
-          break;
+        case COMMAND_TOGGLE_LED: LED ^= 1; break;
         case COMMAND_GET_BUTTON_STATUS:
           if(ReportSent == true) {
             In_Report1.Array[0] = COMMAND_GET_BUTTON_STATUS;

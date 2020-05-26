@@ -30,7 +30,8 @@ ArgumentImage::ArgumentImage(const unsigned int argument, const Parameters& para
     char buffer[3], *end;
     string data = params[argument].value();
     size_t current;
-    if(data.size() & 0x01) throw DEBadValue(params[argument].argument());
+    if(data.size() & 0x01)
+      throw DEBadValue(params[argument].argument());
     _size = data.size() / 2;
     _data = new(unsigned char[_size]);
     for(current = 0; current < _size; current++) {
@@ -38,7 +39,8 @@ ArgumentImage::ArgumentImage(const unsigned int argument, const Parameters& para
       buffer[1] = data[current * 2 + 1];
       buffer[2] = 0;
       _data[current] = (unsigned char)(strtoul(buffer, &end, 16));
-      if(*end) throw DEBadValue(params[argument].argument());
+      if(*end)
+        throw DEBadValue(params[argument].argument());
     }
 
   } catch(...) {
@@ -67,7 +69,8 @@ ArgumentImage::close() {}
 
 size_t
 ArgumentImage::read(unsigned char* buffer, size_t bufSize, size_t* address) {
-  if(_readAddress == _size) return 0;
+  if(_readAddress == _size)
+    return 0;
   size_t pc;
   if(_readAddress + bufSize > _size)
     pc = _size - _readAddress;

@@ -23,32 +23,31 @@
 
 #include "mcc.h"
 
+void
+SYSTEM_Initialize(void) {
 
-void SYSTEM_Initialize(void)
-{
-
-    PIN_MANAGER_Initialize();
-    OSCILLATOR_Initialize();
-    WDT_Initialize();
-    EPWM1_Initialize();
-    PWM4_Initialize();
-    PWM5_Initialize();
+  PIN_MANAGER_Initialize();
+  OSCILLATOR_Initialize();
+  WDT_Initialize();
+  EPWM1_Initialize();
+  PWM4_Initialize();
+  PWM5_Initialize();
 }
 
-void OSCILLATOR_Initialize(void)
-{
-    // SCS FOSC; SPLLEN disabled; IRCF 500KHz_MF; 
-    OSCCON = 0x38;
-    // TUN 0; 
-    OSCTUNE = 0x00;
-    // SBOREN disabled; 
-    BORCON = 0x00;
+void
+OSCILLATOR_Initialize(void) {
+  // SCS FOSC; SPLLEN disabled; IRCF 500KHz_MF;
+  OSCCON = 0x38;
+  // TUN 0;
+  OSCTUNE = 0x00;
+  // SBOREN disabled;
+  BORCON = 0x00;
 }
 
-void WDT_Initialize(void)
-{
-    // WDTPS 1:65536; SWDTEN OFF; 
-    WDTCON = 0x16;
+void
+WDT_Initialize(void) {
+  // WDTPS 1:65536; SWDTEN OFF;
+  WDTCON = 0x16;
 }
 
 /**

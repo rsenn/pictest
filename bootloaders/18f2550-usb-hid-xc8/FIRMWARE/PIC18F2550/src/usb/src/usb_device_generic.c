@@ -4,12 +4,12 @@
       Dependencies:   See INCLUDES section below
       Processor:      Microchip USB Microcontrollers
       Hardware:       See "<install directory>\Microchip\Help" for details.
-                      
+
       Compiler:       C18, C30, or C32
       Company:        Microchip Technology, Inc.
-    
+
       Software License Agreement:
-    
+
       The software supplied herewith by Microchip Technology Incorporated
       (the "Company") for its PIC(R) Microcontroller is intended and
       supplied to you, the Company's customer, for use solely and
@@ -20,39 +20,39 @@
       user to criminal sanctions under applicable laws, as well as to
       civil liability for the breach of the terms and conditions of this
       license.
-    
+
       THIS SOFTWARE IS PROVIDED IN AN "AS IS" CONDITION. NO WARRANTIES,
       WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED
       TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
       PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. THE COMPANY SHALL NOT,
       IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
       CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
-    
+
        Change History:
        Rev         Description
-    
+
   Summary:
     This file contains all of functions, macros, definitions, variables,
     datatypes, etc. that are required for usage with vendor class function
     drivers. This file should be included in projects that use vendor class
     \function drivers. Vendor class function drivers include MCHPUSB
     (Microchip's custom class driver), WinUSB, and LibUSB.
-    
-    
-    
+
+
+
     This file is located in the "\<Install Directory\>\\Microchip\\USB\\Generic
     Device Driver" directory.
   Description:
     USB Vender Class Custom Driver Header File
-    
+
     This file contains functions, macros, definitions, variables,
     datatypes, etc. that are required for use of vendor class function
     drivers. This file should be included in projects that use vendor class
     \function drivers.
-    
+
     This file is located in the "\<Install Directory\>\\Microchip\\USB\\Generic
     Device Driver" directory.
-    
+
     When including this file in a new project, this file can either be
     referenced from the directory in which it was installed or copied
     directly into the user application folder. If the first method is
@@ -62,16 +62,16 @@
     application folder is located in the same folder as the Microchip
     folder (like the current demo folders), then the following include
     paths need to be added to the application's project:
-    
+
     ..\\..\\Microchip\\Include
     .
-    
+
     If a different directory structure is used, modify the paths as
     required. An example using absolute paths instead of relative paths
     would be the following:
-    
+
     C:\\Microchip Solutions\\Microchip\\Include
-    
+
     C:\\Microchip Solutions\\My Demo Application
   ******************************************************************************/
 
@@ -111,7 +111,7 @@ extern volatile CTRL_TRF_SETUP SetupPkt; // Common buffer that receives the
 /********************************************************************
     Function:
         USB_HANDLE USBGenWrite(uint8_t ep, uint8_t* data, uint16_t len)
-        
+
     Summary:
         Sends the specified data out the specified endpoint
 
@@ -129,32 +129,32 @@ extern volatile CTRL_TRF_SETUP SetupPkt; // Common buffer that receives the
             USBGenericInHandle = USBGenWrite(USBGEN_EP_NUM,(uint8_t*)&INPacket[0],sizeof(INPacket));
         }
         </code>
-        
+
     PreCondition:
         None
-        
+
     Parameters:
         uint8_t ep    - the endpoint you want to send the data out of
         uint8_t* data - pointer to the data that you wish to send
         uint16_t len   - the length of the data that you wish to send
-        
+
     Return Values:
         USB_HANDLE - a handle for the transfer.  This information
         should be kept to track the status of the transfer
-        
+
     Remarks:
         None
-  
+
  *******************************************************************/
 // Implemented as a macro. See usb_function_generic.h
 
 /********************************************************************
     Function:
         USB_HANDLE USBGenRead(uint8_t ep, uint8_t* data, uint16_t len)
-        
+
     Summary:
         Receives the specified data out the specified endpoint
-        
+
     Description:
         Receives the specified data out the specified endpoint.
 
@@ -171,19 +171,19 @@ extern volatile CTRL_TRF_SETUP SetupPkt; // Common buffer that receives the
 
     PreCondition:
         None
-        
+
     Parameters:
         uint8_t ep - the endpoint you want to receive the data into
         uint8_t* data - pointer to where the data will go when it arrives
         uint16_t len - the length of the data that you wish to receive
-        
+
     Return Values:
         USB_HANDLE - a handle for the transfer.  This information
         should be kept to track the status of the transfer
-        
+
     Remarks:
         None
-  
+
  *******************************************************************/
 // Implemented as a macro. See usb_function_generic.h
 
@@ -220,7 +220,7 @@ extern volatile CTRL_TRF_SETUP SetupPkt; // Common buffer that receives the
         Although this function has a void input, this handler function will
         typically need to look at the 8-byte SETUP packet contents that the
         host just sent, which may contain the vendor class specific request.
-        
+
         Therefore, the statically allocated SetupPkt structure may be looked
         at while in the context of this function, and it will contain the most
         recently received 8-byte SETUP packet data.
@@ -236,12 +236,12 @@ extern volatile CTRL_TRF_SETUP SetupPkt; // Common buffer that receives the
         will be executed in the interrupt context.  If however the USB stack
         is operated in the USB_POLLING mode, then this function executes in the
         main loop context.
-        
+
         In order to respond to class specific control transfer request(s) in
         this handler function, it is suggested to use one or more of the
         USBEP0SendRAMPtr(), USBEP0SendROMPtr(), or USBEP0Receive() API
         functions.
- 
+
  *******************************************************************/
 void
 USBCheckVendorRequest(void) {

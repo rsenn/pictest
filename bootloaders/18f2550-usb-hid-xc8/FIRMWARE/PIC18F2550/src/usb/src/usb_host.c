@@ -404,7 +404,7 @@ USBHostInit(unsigned long flags) {
   Function:
     bool USBHostIsochronousBuffersCreate( ISOCHRONOUS_DATA * isocData,
             uint8_t numberOfBuffers, uint16_t bufferSize )
-    
+
   Description:
     This function initializes the isochronous data buffer information and
     allocates memory for each buffer.  This function will not allocate memory
@@ -457,7 +457,7 @@ USBHostIsochronousBuffersCreate(ISOCHRONOUS_DATA* isocData, uint8_t numberOfBuff
 /****************************************************************************
   Function:
     void USBHostIsochronousBuffersDestroy( ISOCHRONOUS_DATA * isocData, uint8_t numberOfBuffers )
-    
+
   Description:
     This function releases all of the memory allocated for the isochronous
     data buffers.  It also resets all other information about the buffers.
@@ -493,7 +493,7 @@ USBHostIsochronousBuffersDestroy(ISOCHRONOUS_DATA* isocData, uint8_t numberOfBuf
 /****************************************************************************
   Function:
     void USBHostIsochronousBuffersReset( ISOCHRONOUS_DATA * isocData, uint8_t numberOfBuffers )
-    
+
   Description:
     This function resets all the isochronous data buffers.  It does not do
     anything with the space allocated for the buffers.
@@ -661,11 +661,8 @@ USBHostIssueDeviceRequest(uint8_t deviceAddress,
     switch(bmRequestType) {
       case 0x00:
       case 0x01:
-      case 0x02:
-        _USB_ResetDATA0((uint8_t)wIndex);
-        break;
-      default:
-        break;
+      case 0x02: _USB_ResetDATA0((uint8_t)wIndex); break;
+      default: break;
     }
   }
 
@@ -1225,8 +1222,7 @@ USBHostTasks(void) {
         case EVENT_BUS_ERROR:
           _USB_NotifyClients(usbDeviceInfo.deviceAddress, item->event, &item->TransferData, sizeof(HOST_TRANSFER_DATA));
           break;
-        default:
-          break;
+        default: break;
       }
 
       // Guard against USB interrupts
@@ -1429,9 +1425,7 @@ USBHostTasks(void) {
               // Wait for the timer to finish in the background.
               break;
 
-            case SUBSUBSTATE_SETTLING_DONE:
-              _USB_SetNextSubState();
-              break;
+            case SUBSUBSTATE_SETTLING_DONE: _USB_SetNextSubState(); break;
 
             default:
               // We shouldn't get here.
@@ -1653,8 +1647,7 @@ USBHostTasks(void) {
               _USB_SetNextSubState();
               break;
 
-            default:
-              break;
+            default: break;
           }
           break;
 
@@ -1702,8 +1695,7 @@ USBHostTasks(void) {
               _USB_SetNextSubState();
               break;
 
-            default:
-              break;
+            default: break;
           }
           break;
 
@@ -1779,8 +1771,7 @@ USBHostTasks(void) {
               _USB_SetNextState();
               break;
 
-            default:
-              break;
+            default: break;
           }
           break;
       }
@@ -1878,8 +1869,7 @@ USBHostTasks(void) {
               _USB_SetNextSubState();
               break;
 
-            default:
-              break;
+            default: break;
           }
           break;
 
@@ -1937,8 +1927,7 @@ USBHostTasks(void) {
               }
               break;
 
-            default:
-              break;
+            default: break;
           }
           break;
 
@@ -2079,8 +2068,7 @@ USBHostTasks(void) {
               }
               break;
 
-            default:
-              break;
+            default: break;
           }
           break;
 
@@ -2180,8 +2168,7 @@ USBHostTasks(void) {
 
               break;
 
-            default:
-              break;
+            default: break;
           }
           break;
       }
@@ -2189,8 +2176,7 @@ USBHostTasks(void) {
 
     case STATE_RUNNING:
       switch(usbHostState & SUBSTATE_MASK) {
-        case SUBSTATE_NORMAL_RUN:
-          break;
+        case SUBSTATE_NORMAL_RUN: break;
 
         case SUBSTATE_SUSPEND_AND_RESUME:
           switch(usbHostState & SUBSUBSTATE_MASK) {
@@ -2267,12 +2253,9 @@ USBHostTasks(void) {
 #endif
 
           switch(usbDeviceInfo.errorCode) {
-            case USB_HOLDING_UNSUPPORTED_HUB:
-              temp = EVENT_HUB_ATTACH;
-              break;
+            case USB_HOLDING_UNSUPPORTED_HUB: temp = EVENT_HUB_ATTACH; break;
 
-            case USB_HOLDING_UNSUPPORTED_DEVICE:
-              temp = EVENT_UNSUPPORTED_DEVICE;
+            case USB_HOLDING_UNSUPPORTED_DEVICE: temp = EVENT_UNSUPPORTED_DEVICE;
 
 #ifdef USB_SUPPORT_OTG
               // Abort HNP
@@ -2281,17 +2264,11 @@ USBHostTasks(void) {
 
               break;
 
-            case USB_CANNOT_ENUMERATE:
-              temp = EVENT_CANNOT_ENUMERATE;
-              break;
+            case USB_CANNOT_ENUMERATE: temp = EVENT_CANNOT_ENUMERATE; break;
 
-            case USB_HOLDING_CLIENT_INIT_ERROR:
-              temp = EVENT_CLIENT_INIT_ERROR;
-              break;
+            case USB_HOLDING_CLIENT_INIT_ERROR: temp = EVENT_CLIENT_INIT_ERROR; break;
 
-            case USB_HOLDING_OUT_OF_MEMORY:
-              temp = EVENT_OUT_OF_MEMORY;
-              break;
+            case USB_HOLDING_OUT_OF_MEMORY: temp = EVENT_OUT_OF_MEMORY; break;
 
             default:
               temp = EVENT_UNSPECIFIED_ERROR; // This should never occur
@@ -2308,8 +2285,7 @@ USBHostTasks(void) {
           // Hold here until a DETACH interrupt frees us.
           break;
 
-        default:
-          break;
+        default: break;
       }
       break;
   }
@@ -3069,9 +3045,7 @@ _USB_FindNextToken(void) {
 #endif
               break;
 
-            default:
-              illegalState = true;
-              break;
+            default: illegalState = true; break;
           }
           break;
 
@@ -3149,9 +3123,7 @@ _USB_FindNextToken(void) {
 #endif
               break;
 
-            default:
-              illegalState = true;
-              break;
+            default: illegalState = true; break;
           }
           break;
 
@@ -3229,14 +3201,11 @@ _USB_FindNextToken(void) {
 #endif
               break;
 
-            default:
-              illegalState = true;
-              break;
+            default: illegalState = true; break;
           }
           break;
 
-        default:
-          illegalState = true;
+        default: illegalState = true;
       }
 
       if(illegalState) {
@@ -3377,9 +3346,7 @@ _USB_FindNextToken(void) {
 #endif
               break;
 
-            default:
-              illegalState = true;
-              break;
+            default: illegalState = true; break;
           }
           break;
 
@@ -3482,15 +3449,11 @@ _USB_FindNextToken(void) {
 #endif
               break;
 
-            default:
-              illegalState = true;
-              break;
+            default: illegalState = true; break;
           }
           break;
 
-        default:
-          illegalState = true;
-          break;
+        default: illegalState = true; break;
       }
 
       if(illegalState) {
@@ -3564,9 +3527,7 @@ _USB_FindNextToken(void) {
 #endif
               break;
 
-            default:
-              illegalState = true;
-              break;
+            default: illegalState = true; break;
           }
           break;
 
@@ -3622,15 +3583,11 @@ _USB_FindNextToken(void) {
 #endif
               break;
 
-            default:
-              illegalState = true;
-              break;
+            default: illegalState = true; break;
           }
           break;
 
-        default:
-          illegalState = true;
-          break;
+        default: illegalState = true; break;
       }
 
       if(illegalState) {
@@ -3712,9 +3669,7 @@ TryBulk:
 #endif
               break;
 
-            default:
-              illegalState = true;
-              break;
+            default: illegalState = true; break;
           }
           break;
 
@@ -3768,15 +3723,11 @@ TryBulk:
 #endif
               break;
 
-            default:
-              illegalState = true;
-              break;
+            default: illegalState = true; break;
           }
           break;
 
-        default:
-          illegalState = true;
-          break;
+        default: illegalState = true; break;
       }
 
       if(illegalState) {
@@ -4622,8 +4573,10 @@ _USB_ParseConfigurationDescriptor(void) {
             if(newEndpointInfo->bmAttributes.bfTransferType == USB_TRANSFER_TYPE_ISOCHRONOUS) {
               // Validate and convert the interval to the number of frames.  The value must
               // be between 1 and 16, and the frames is 2^(bInterval-1).
-              if(newEndpointInfo->wInterval == 0) newEndpointInfo->wInterval = 1;
-              if(newEndpointInfo->wInterval > 16) newEndpointInfo->wInterval = 16;
+              if(newEndpointInfo->wInterval == 0)
+                newEndpointInfo->wInterval = 1;
+              if(newEndpointInfo->wInterval > 16)
+                newEndpointInfo->wInterval = 16;
               newEndpointInfo->wInterval = 1 << (newEndpointInfo->wInterval - 1);
 
               // Disable DTS
@@ -5544,15 +5497,23 @@ USB_HostInterruptHandler(void) {
         // We have too many errors.
 
         // Check U1EIR for the appropriate error codes to return
-        if(U1EIRbits.BTSEF) pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_BIT_STUFF;
-        if(U1EIRbits.DMAEF) pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_DMA;
-        if(U1EIRbits.BTOEF) pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_TIMEOUT;
-        if(U1EIRbits.DFN8EF) pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_DATA_FIELD;
-        if(U1EIRbits.CRC16EF) pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_CRC16;
-        if(U1EIRbits.EOFEF) pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_END_OF_FRAME;
-        if(U1EIRbits.PIDEF) pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_PID_CHECK;
+        if(U1EIRbits.BTSEF)
+          pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_BIT_STUFF;
+        if(U1EIRbits.DMAEF)
+          pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_DMA;
+        if(U1EIRbits.BTOEF)
+          pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_TIMEOUT;
+        if(U1EIRbits.DFN8EF)
+          pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_DATA_FIELD;
+        if(U1EIRbits.CRC16EF)
+          pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_CRC16;
+        if(U1EIRbits.EOFEF)
+          pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_END_OF_FRAME;
+        if(U1EIRbits.PIDEF)
+          pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_PID_CHECK;
 #if defined(__PIC32MX__)
-        if(U1EIRbits.BMXEF) pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_BMX;
+        if(U1EIRbits.BMXEF)
+          pCurrentEndpoint->bErrorCode = USB_ENDPOINT_ERROR_BMX;
 #endif
 
         pCurrentEndpoint->status.bfError = 1;

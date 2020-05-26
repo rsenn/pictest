@@ -132,12 +132,8 @@ uses_numbered_reports(__u8* report_descriptor, __u32 size) {
       switch(size_code) {
         case 0:
         case 1:
-        case 2:
-          data_len = size_code;
-          break;
-        case 3:
-          data_len = 4;
-          break;
+        case 2: data_len = size_code; break;
+        case 3: data_len = 4; break;
         default:
           /* Can't ever happen since size_code is & 0x3 */
           data_len = 0;
@@ -413,7 +409,8 @@ hid_open_path(const char* path) {
 
     /* Get Report Descriptor Size */
     res = ioctl(dev->device_handle, HIDIOCGRDESCSIZE, &desc_size);
-    if(res < 0) perror("HIDIOCGRDESCSIZE");
+    if(res < 0)
+      perror("HIDIOCGRDESCSIZE");
 
     /* Get Report Descriptor */
     rpt_desc.size = desc_size;
@@ -462,7 +459,8 @@ hid_read_timeout(hid_device* dev, unsigned char* data, size_t length, int millis
   }
 
   bytes_read = read(dev->device_handle, data, length);
-  if(bytes_read < 0 && errno == EAGAIN) bytes_read = 0;
+  if(bytes_read < 0 && errno == EAGAIN)
+    bytes_read = 0;
 
   if(bytes_read >= 0 && kernel_version < KERNEL_VERSION(2, 6, 34) && dev->uses_numbered_reports) {
     /* Work around a kernel bug. Chop off the first byte. */
@@ -504,7 +502,8 @@ hid_send_feature_report(hid_device* dev, const unsigned char* data, size_t lengt
   int res;
 
   res = ioctl(dev->device_handle, HIDIOCSFEATURE(length), data);
-  if(res < 0) perror("ioctl (SFEATURE)");
+  if(res < 0)
+    perror("ioctl (SFEATURE)");
 
   return res;
 }
@@ -514,14 +513,16 @@ hid_get_feature_report(hid_device* dev, unsigned char* data, size_t length) {
   int res;
 
   res = ioctl(dev->device_handle, HIDIOCGFEATURE(length), data);
-  if(res < 0) perror("ioctl (GFEATURE)");
+  if(res < 0)
+    perror("ioctl (GFEATURE)");
 
   return res;
 }
 
 void HID_API_EXPORT
 hid_close(hid_device* dev) {
-  if(!dev) return;
+  if(!dev)
+    return;
   close(dev->device_handle);
   free(dev);
 }

@@ -447,7 +447,7 @@ typedef union __attribute__((packed)) {
     LUN_FUNCTIONS is a structure of function pointers that tells the stack
     where to find each of the physical layer functions it is looking for.
     This structure needs to be defined for any project for PIC24F or PIC32.
-    
+
     Typical Usage:
     <code>
         LUN_FUNCTIONS LUN[MAX_LUN + 1] =
@@ -463,7 +463,7 @@ typedef union __attribute__((packed)) {
             }
         };
     </code>
-    
+
     In the above code we are passing the address of the SDSPI functions to
     the corresponding member of the LUN_FUNCTIONS structure. In the above
     case we have created an array of LUN_FUNCTIONS structures so that it is
@@ -472,7 +472,7 @@ typedef union __attribute__((packed)) {
     Please take caution to insure that each function is in the the correct
     location in the structure. Incorrect alignment will cause the USB stack
     to call the incorrect function for a given command.
-    
+
     See the MDD File System Library for additional information about the
     available physical media, their requirements, and how to use their
     associated functions.
@@ -526,13 +526,13 @@ void USBMSDInit(void);
 
 /**************************************************************************
     Function: bool MSDWasLastCBWValid(void)
-    
+
     Summary:
         Returns the BOOLean status of the most recently received command block
         wrapper (CBW).  If the last CBW passed the MSD "is valid" tests, then
         this function will return true.  If the last received CBW was
         not valid, then the return value will be false.
-    
+
     Description:
         Returns the BOOLean status of the most recently received command block
         wrapper (CBW).  If the last CBW passed the "is valid" tests, then
@@ -548,10 +548,10 @@ void USBMSDInit(void);
         The host must issue an MSD reset command over EP0, prior to clear
         endpoint halt, in order to clear the stall condition in this special
         scenario.
-            
+
     Parameters:
         None
-    
+
     Return Values:
         bool:  true - if last received CBW was valid
                false - if the last received CBW was not valid
@@ -559,49 +559,49 @@ void USBMSDInit(void);
     Remarks:
         None
 
-                    
+
   **************************************************************************/
 #define MSDWasLastCBWValid() (MSDCBWValid)
 
 /**************************************************************************
     Function:
     void LUNSoftDetach(uint8_t LUN)
-    
+
     Summary:
-    
+
     Description:
-    
+
     Parameters:
         LUN - logical unit number to detach
-    
+
     Return Values:
         None
 
     Remarks:
         Once a soft detached is initiated a soft attached, LUNSoftAttach(),
         on the same LUN must be performed before the device will re-attach
-                    
+
   **************************************************************************/
 #define LUNSoftDetach(LUN) SoftDetach[LUN] = true;
 
 /**************************************************************************
     Function:
     void LUNSoftAttach(uint8_t LUN)
-    
+
     Summary:
-    
+
     Description:
-    
+
     Parameters:
         LUN - logical unit number to detach
-    
+
     Return Values:
         None
 
     Remarks:
         Once a soft detached is initiated a soft attached, LUNSoftAttach(),
         on the same LUN must be performed before the device will re-attach
-                    
+
   **************************************************************************/
 #define LUNSoftAttach(LUN) SoftDetach[LUN] = false;
 

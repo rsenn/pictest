@@ -183,7 +183,8 @@ lookup_functions() {
   if(lib_handle) {
 #define RESOLVE(x)                                                                                                     \
   x = (x##_)GetProcAddress(lib_handle, #x);                                                                            \
-  if(!x) return -1;
+  if(!x)                                                                                                               \
+    return -1;
     RESOLVE(HidD_GetAttributes);
     RESOLVE(HidD_GetSerialNumberString);
     RESOLVE(HidD_GetManufacturerString);
@@ -250,7 +251,8 @@ hid_init(void) {
 int HID_API_EXPORT
 hid_exit(void) {
 #ifndef HIDAPI_USE_DDK
-  if(lib_handle) FreeLibrary(lib_handle);
+  if(lib_handle)
+    FreeLibrary(lib_handle);
   lib_handle = NULL;
   initialized = FALSE;
 #endif
@@ -271,7 +273,8 @@ hid_enumerate(unsigned short vendor_id, unsigned short product_id) {
   HDEVINFO device_info_set = INVALID_HANDLE_VALUE;
   int device_index = 0;
 
-  if(hid_init() < 0) return NULL;
+  if(hid_init() < 0)
+    return NULL;
 
   // Initialize the Windows objects.
   devinfo_data.cbSize = sizeof(SP_DEVINFO_DATA);
@@ -699,7 +702,8 @@ hid_get_feature_report(hid_device* dev, unsigned char* data, size_t length) {
 
 void HID_API_EXPORT HID_API_CALL
 hid_close(hid_device* dev) {
-  if(!dev) return;
+  if(!dev)
+    return;
   CancelIo(dev->device_handle);
   CloseHandle(dev->ol.hEvent);
   CloseHandle(dev->device_handle);

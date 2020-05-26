@@ -37,12 +37,15 @@ Parser::parse(int argc, char* argv[], Parameters* params) {
   for(i = 1; i < argc; i++) {
     argument.erase();
     value.erase();
-    if(argv[i][0] != '-') throw EBadArgument(argv[i]);
+    if(argv[i][0] != '-')
+      throw EBadArgument(argv[i]);
     // Search argument in usage descriptors
     argument = &argv[i][1];
-    if(argument.find_first_of('=') != string::npos) argument.erase(argument.find_first_of('='));
+    if(argument.find_first_of('=') != string::npos)
+      argument.erase(argument.find_first_of('='));
     j = argument.size() + 1; // If there is value in form -x=VALUE it will start immediately after string
-    if((argv[i][j] != 0) && (argv[i][j] != '=')) throw EBadArgument(argv[i]);
+    if((argv[i][j] != 0) && (argv[i][j] != '='))
+      throw EBadArgument(argv[i]);
 
     // Determine option value
     if(argv[i][j] == '=')

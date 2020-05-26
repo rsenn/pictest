@@ -174,27 +174,27 @@ extern volatile uint8_t CtrlTrfData[USB_EP0_BUFF_SIZE];
 /********************************************************************
     Function:
         void USBCheckAudioRequest(void)
-        
+
     Summary:
         This routine checks the setup data packet to see if it
         knows how to handle it
-        
+
     Description:
         This routine checks the setup data packet to see if it
         knows how to handle it
 
     PreCondition:
         None
-        
+
     Parameters:
         None
-        
+
     Return Values:
         None
-        
+
     Remarks:
         None
-  
+
  *******************************************************************/
 void USBCheckAudioRequest(void);
 #endif // AUDIO_H

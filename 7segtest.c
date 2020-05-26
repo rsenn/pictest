@@ -249,7 +249,8 @@ main() {
 
         set_number(number);
         number++;
-        if(number >= 10000) number = 0;
+        if(number >= 10000)
+          number = 0;
 
         led_state = !led_state;
         if(led_state) {

@@ -32,9 +32,12 @@
 
 Image*
 createInputImage(const Parameters& params) {
-  if(params.contain(ARG_INPUT_BIN)) return new BinImage(params[ARG_INPUT_BIN].value());
-  if(params.contain(ARG_INPUT_DATA)) return new ArgumentImage(ARG_INPUT_DATA, params);
-  if(params.contain(ARG_INPUT_HEX)) return new IntelHexImage(params[ARG_INPUT_HEX].value());
+  if(params.contain(ARG_INPUT_BIN))
+    return new BinImage(params[ARG_INPUT_BIN].value());
+  if(params.contain(ARG_INPUT_DATA))
+    return new ArgumentImage(ARG_INPUT_DATA, params);
+  if(params.contain(ARG_INPUT_HEX))
+    return new IntelHexImage(params[ARG_INPUT_HEX].value());
 
   throw DEImageAbsent();
   //	return new CoutImage();
@@ -42,8 +45,10 @@ createInputImage(const Parameters& params) {
 
 Image*
 createOutputImage(const Parameters& params) {
-  if(params.contain(ARG_OUTPUT_BIN)) return new BinImage(params[ARG_OUTPUT_BIN].value());
-  if(params.contain(ARG_OUTPUT_HEX)) return new IntelHexImage(params[ARG_OUTPUT_HEX].value());
+  if(params.contain(ARG_OUTPUT_BIN))
+    return new BinImage(params[ARG_OUTPUT_BIN].value());
+  if(params.contain(ARG_OUTPUT_HEX))
+    return new IntelHexImage(params[ARG_OUTPUT_HEX].value());
 
   return new CoutImage();
 }
@@ -72,7 +77,8 @@ save(FragBuffer* buffer, const Parameters& params) {
     delete image;
     image = NULL;
   } catch(...) {
-    if(image != NULL) delete image;
+    if(image != NULL)
+      delete image;
     throw;
   }
 }
@@ -94,13 +100,16 @@ load(FragBuffer* buffer, const Parameters& params, size_t* start, size_t* end) {
     while(0 != (size = image->read(data, dataSize, &address))) {
       // 			printf("%08X : %08X\n", address, size);
       buffer->write(data, size, address);
-      if(*end < address + size) *end = address + size;
-      if(*start > address) *start = address;
+      if(*end < address + size)
+        *end = address + size;
+      if(*start > address)
+        *start = address;
     }
     image->close();
     delete image;
   } catch(...) {
-    if(image != NULL) delete image;
+    if(image != NULL)
+      delete image;
     throw;
   }
 }
@@ -112,9 +121,11 @@ getKey(const Parameters& params, const unsigned int argument, XTEA_KEY_T key[4])
   try {
     image = new ArgumentImage(argument, params);
     image->open(true);
-    if(image->getSize() != 16) throw DEBadArgument(params[argument].argument());
+    if(image->getSize() != 16)
+      throw DEBadArgument(params[argument].argument());
     size = image->read((unsigned char*)key, 16, &address);
-    if(size != 16) throw DEBadArgument(params[argument].argument());
+    if(size != 16)
+      throw DEBadArgument(params[argument].argument());
     image->close();
     delete image;
   } catch(...) {
@@ -151,10 +162,8 @@ main(int argc, char* argv[]) {
         getKey(params, ARG_CMD_DECODE, key);
         buffer.decode(key);
         break;
-      case ARG_CMD_CONVERT:
-        break;
-      default:
-        throw DEBadArgument(params[command].argument());
+      case ARG_CMD_CONVERT: break;
+      default: throw DEBadArgument(params[command].argument());
     }
 
     save(&buffer, params);

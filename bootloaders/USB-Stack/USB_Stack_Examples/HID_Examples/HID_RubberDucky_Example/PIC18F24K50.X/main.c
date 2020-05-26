@@ -178,7 +178,8 @@ PrintKeys(const uint8_t* str) {
     ascii_2_key(str[i]);
     SendKey(KeyResult.Modifier, KeyResult.KeyCode);
     i++;
-    if(str[i] == str[i - 1]) SendKey(0, 0); // Repeated letters need to be released first.
+    if(str[i] == str[i - 1])
+      SendKey(0, 0); // Repeated letters need to be released first.
   }
   SendKey(0, 0);
 }

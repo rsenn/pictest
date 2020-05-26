@@ -381,7 +381,8 @@ processUsbCommands(void) {
 
         for(bufferPointer = 0; bufferPointer < 64; bufferPointer++) {
           // If the data isn't what we expected, turn on the failure light
-          if(ReceivedDataBuffer[bufferPointer] != expectedData) failureIndicatorFlag = FLAG_TRUE;
+          if(ReceivedDataBuffer[bufferPointer] != expectedData)
+            failureIndicatorFlag = FLAG_TRUE;
         }
 
         bulkReceivePacketCounter++;
@@ -416,7 +417,8 @@ processUsbCommands(void) {
           expectedData = 0;
           dataReceivedOk = FLAG_TRUE;
           for(bufferPointer = 1; bufferPointer < 64; bufferPointer++) {
-            if(ReceivedDataBuffer[bufferPointer] != expectedData) dataReceivedOk = FLAG_FALSE;
+            if(ReceivedDataBuffer[bufferPointer] != expectedData)
+              dataReceivedOk = FLAG_FALSE;
 
             expectedData++;
           }
@@ -441,7 +443,8 @@ processUsbCommands(void) {
           expectedData = 0;
           dataReceivedOk = FLAG_TRUE;
           for(bufferPointer = 1; bufferPointer < 64; bufferPointer++) {
-            if(ReceivedDataBuffer[bufferPointer] != expectedData) dataReceivedOk = FLAG_FALSE;
+            if(ReceivedDataBuffer[bufferPointer] != expectedData)
+              dataReceivedOk = FLAG_FALSE;
 
             expectedData++;
           }
@@ -486,7 +489,8 @@ processUsbCommands(void) {
           expectedData = 0;
           dataReceivedOk = FLAG_TRUE;
           for(bufferPointer = 1; bufferPointer < 64; bufferPointer++) {
-            if(ReceivedDataBuffer[bufferPointer] != expectedData) dataReceivedOk = FLAG_FALSE;
+            if(ReceivedDataBuffer[bufferPointer] != expectedData)
+              dataReceivedOk = FLAG_FALSE;
 
             expectedData++;
           }
@@ -516,7 +520,8 @@ processUsbCommands(void) {
           expectedData = 0;
           dataReceivedOk = FLAG_TRUE;
           for(bufferPointer = 1; bufferPointer < 64; bufferPointer++) {
-            if(ReceivedDataBuffer[bufferPointer] != expectedData) dataReceivedOk = FLAG_FALSE;
+            if(ReceivedDataBuffer[bufferPointer] != expectedData)
+              dataReceivedOk = FLAG_FALSE;
 
             expectedData++;
           }
@@ -546,7 +551,8 @@ processUsbCommands(void) {
           expectedData = 0;
           dataReceivedOk = FLAG_TRUE;
           for(bufferPointer = 1; bufferPointer < 64; bufferPointer++) {
-            if(ReceivedDataBuffer[bufferPointer] != expectedData) dataReceivedOk = FLAG_FALSE;
+            if(ReceivedDataBuffer[bufferPointer] != expectedData)
+              dataReceivedOk = FLAG_FALSE;
 
             expectedData++;
           }
@@ -666,29 +672,14 @@ USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void* pdata, WORD size) {
     case EVENT_TRANSFER:
       // Application callback tasks and functions go here
       break;
-    case EVENT_SOF:
-      USBCB_SOF_Handler();
-      break;
-    case EVENT_SUSPEND:
-      USBCBSuspend();
-      break;
-    case EVENT_RESUME:
-      USBCBWakeFromSuspend();
-      break;
-    case EVENT_CONFIGURED:
-      USBCBInitEP();
-      break;
-    case EVENT_SET_DESCRIPTOR:
-      USBCBStdSetDscHandler();
-      break;
-    case EVENT_EP0_REQUEST:
-      USBCBCheckOtherReq();
-      break;
-    case EVENT_BUS_ERROR:
-      USBCBErrorHandler();
-      break;
-    default:
-      break;
+    case EVENT_SOF: USBCB_SOF_Handler(); break;
+    case EVENT_SUSPEND: USBCBSuspend(); break;
+    case EVENT_RESUME: USBCBWakeFromSuspend(); break;
+    case EVENT_CONFIGURED: USBCBInitEP(); break;
+    case EVENT_SET_DESCRIPTOR: USBCBStdSetDscHandler(); break;
+    case EVENT_EP0_REQUEST: USBCBCheckOtherReq(); break;
+    case EVENT_BUS_ERROR: USBCBErrorHandler(); break;
+    default: break;
   }
   return FLAG_TRUE;
 }

@@ -423,53 +423,31 @@ USBHostHIDDeviceStatus(uint8_t deviceAddress) {
 // The device is attached and done enumerating.  We can get more specific now.
 #ifndef USB_ENABLE_TRANSFER_EVENT
     switch(deviceInfoHID[i].state & STATE_MASK) {
-      case STATE_INITIALIZE_DEVICE:
-        return USB_HID_INITIALIZING;
-        break;
-      case STATE_GET_REPORT_DSC:
-        return USB_PROCESSING_REPORT_DESCRIPTOR;
-        break;
+      case STATE_INITIALIZE_DEVICE: return USB_HID_INITIALIZING; break;
+      case STATE_GET_REPORT_DSC: return USB_PROCESSING_REPORT_DESCRIPTOR; break;
 
-      case STATE_RUNNING:
-        return USB_HID_NORMAL_RUNNING;
-        break;
-      case STATE_HOLDING:
-        return USB_HID_DEVICE_HOLDING;
-        break;
+      case STATE_RUNNING: return USB_HID_NORMAL_RUNNING; break;
+      case STATE_HOLDING: return USB_HID_DEVICE_HOLDING; break;
 
-      case STATE_HID_RESET_RECOVERY:
-        return USB_HID_RESETTING_DEVICE;
-        break;
+      case STATE_HID_RESET_RECOVERY: return USB_HID_RESETTING_DEVICE; break;
 
-      default:
-        return USB_HID_DEVICE_DETACHED;
-        break;
+      default: return USB_HID_DEVICE_DETACHED; break;
     }
 #else
     switch(deviceInfoHID[i].state) {
       case STATE_INITIALIZE_DEVICE:
-      case STATE_PARSING_COMPLETE:
-        return USB_HID_INITIALIZING;
-        break;
+      case STATE_PARSING_COMPLETE: return USB_HID_INITIALIZING; break;
 
       case STATE_RUNNING:
       case STATE_READ_REQ_WAIT:
-      case STATE_WRITE_REQ_WAIT:
-        return USB_HID_NORMAL_RUNNING;
-        break;
+      case STATE_WRITE_REQ_WAIT: return USB_HID_NORMAL_RUNNING; break;
 
-      case STATE_HOLDING:
-        return USB_HID_DEVICE_HOLDING;
-        break;
+      case STATE_HOLDING: return USB_HID_DEVICE_HOLDING; break;
 
       case STATE_WAIT_FOR_RESET:
-      case STATE_RESET_COMPLETE:
-        return USB_HID_RESETTING_DEVICE;
-        break;
+      case STATE_RESET_COMPLETE: return USB_HID_RESETTING_DEVICE; break;
 
-      default:
-        return USB_HID_DEVICE_DETACHED;
-        break;
+      default: return USB_HID_DEVICE_DETACHED; break;
     }
 #endif
   }
@@ -584,7 +562,7 @@ USBHostHIDResetDevice(uint8_t deviceAddress) {
                                     and error codes that can be returned
                                     in the errorCode parameter of
                                     USBHostHIDTransferIsComplete();
-                                    
+
   Remarks:
     None
   ***************************************************************************/
@@ -668,8 +646,7 @@ USBHostHIDTasks(void) {
             _USBHostHID_SetNextState(); /* need to add sub states to Set Config, Get LANGID & String Descriptors */
             break;
 
-          default:
-            break;
+          default: break;
         }
         break;
 
@@ -677,7 +654,8 @@ USBHostHIDTasks(void) {
         switch(deviceInfoHID[i].state & SUBSTATE_MASK) {
           case SUBSTATE_SEND_GET_REPORT_DSC:
             // If we are currently sending a token, we cannot do anything.
-            if(U1CONbits.TOKBUSY) break;
+            if(U1CONbits.TOKBUSY)
+              break;
 
             if(pCurrInterfaceDetails != NULL) // end of interface list
             {
@@ -722,9 +700,7 @@ USBHostHIDTasks(void) {
             }
             break;
 
-          case SUBSTATE_GET_REPORT_DSC_COMPLETE:
-            _USBHostHID_SetNextSubState();
-            break;
+          case SUBSTATE_GET_REPORT_DSC_COMPLETE: _USBHostHID_SetNextSubState(); break;
 
           case SUBSTATE_PARSE_REPORT_DSC:
             /* Invoke HID Parser ,, validate for all the errors in report Descriptor */
@@ -772,8 +748,7 @@ USBHostHIDTasks(void) {
             }
             break;
 
-          default:
-            break;
+          default: break;
         }
         break;
 
@@ -865,8 +840,7 @@ USBHostHIDTasks(void) {
             }
             break;
 
-          case SUBSTATE_WRITE_REQ_DONE:
-            deviceInfoHID[i].state = STATE_RUNNING | SUBSTATE_WAITING_FOR_REQ;
+          case SUBSTATE_WRITE_REQ_DONE: deviceInfoHID[i].state = STATE_RUNNING | SUBSTATE_WAITING_FOR_REQ;
 #ifdef USB_HID_ENABLE_TRANSFER_EVENT
             USB_HOST_APP_EVENT_HANDLER(deviceInfoHID[i].ID.deviceAddress, EVENT_HID_WRITE_DONE, NULL, 0);
 #endif
@@ -898,11 +872,9 @@ USBHostHIDTasks(void) {
         }
         break;
 
-      case STATE_HOLDING:
-        break;
+      case STATE_HOLDING: break;
 
-      default:
-        break;
+      default: break;
     }
   }
 #endif
@@ -927,11 +899,11 @@ USBHostHIDTasks(void) {
                             * 1 = In (Read)
                             * 0 = Out (Write)
     uint8_t interfaceNum   - Interface number
-                            
+
   Return Values:
     USB_SUCCESS                 - Transfer terminated
     USB_HID_DEVICE_NOT_FOUND    - No device with specified address
-    
+
   Remarks:
     None
 *******************************************************************************/
@@ -1178,7 +1150,7 @@ USBHostHIDTransferIsComplete(uint8_t deviceAddress, uint8_t* errorCode, uint8_t*
                                   performing a transfer
     Others                      - Return values from USBHostIssueDeviceRequest(),
                                     and USBHostWrite()
-                                    
+
   Remarks:
     None
 *******************************************************************************/
@@ -1234,7 +1206,8 @@ USBHostHID_ApiFindBit(uint16_t usagePage,
 
   //  Disallow Null Pointers
 
-  if((Report_ID == NULL) | (Report_Length == NULL) | (Start_Bit == NULL)) return false;
+  if((Report_ID == NULL) | (Report_Length == NULL) | (Start_Bit == NULL))
+    return false;
 
   //  Search through all the report items
 
@@ -1314,7 +1287,8 @@ USBHostHID_ApiFindValue(uint16_t usagePage,
 
   //  Disallow Null Pointers
 
-  if((Report_ID == NULL) | (Report_Length == NULL) | (Start_Bit == NULL) | (Bit_Length == NULL)) return false;
+  if((Report_ID == NULL) | (Report_Length == NULL) | (Start_Bit == NULL) | (Bit_Length == NULL))
+    return false;
 
   //  Search through all the report items
 
@@ -1456,17 +1430,21 @@ USBHostHID_ApiImportData(uint8_t* report,
 
   //  Report must be ok
 
-  if(report == NULL) return false;
+  if(report == NULL)
+    return false;
 
   //  Must be the right report
 
-  if((pDataDetails->reportID != 0) && (pDataDetails->reportID != report[0])) return false;
+  if((pDataDetails->reportID != 0) && (pDataDetails->reportID != report[0]))
+    return false;
 
   //  Length must be ok
 
-  if(pDataDetails->reportLength != reportLength) return false;
+  if(pDataDetails->reportLength != reportLength)
+    return false;
   lastByte = (pDataDetails->bitOffset + (pDataDetails->bitLength * pDataDetails->count) - 1) / 8;
-  if(lastByte > reportLength) return false;
+  if(lastByte > reportLength)
+    return false;
 
   //  Extract data one count at a time
 
@@ -1486,7 +1464,8 @@ USBHostHID_ApiImportData(uint8_t* report,
 
     //      Shift to the right to byte align the least significant bit
 
-    if(startBit > 0) data >>= startBit;
+    if(startBit > 0)
+      data >>= startBit;
 
     //      Done if 16 bits long
 
@@ -1502,7 +1481,8 @@ USBHostHID_ApiImportData(uint8_t* report,
 
       if(pDataDetails->signExtend) {
         signBit = 1;
-        if(pDataDetails->bitLength > 1) signBit <<= (pDataDetails->bitLength - 1);
+        if(pDataDetails->bitLength > 1)
+          signBit <<= (pDataDetails->bitLength - 1);
         extendMask = (signBit << 1) - 1;
         if((data & signBit) == 0)
           data &= extendMask;
@@ -1805,12 +1785,9 @@ USBHostHIDEventHandler(uint8_t address, USB_EVENT event, void* data, uint32_t si
           return true;
           break;
 
-        case STATE_HOLDING:
-          return true;
-          break;
+        case STATE_HOLDING: return true; break;
 
-        default:
-          return false;
+        default: return false;
       }
 #endif
 
@@ -1852,9 +1829,7 @@ USBHostHIDEventHandler(uint8_t address, USB_EVENT event, void* data, uint32_t si
       return true;
       break;
 
-    default:
-      return false;
-      break;
+    default: return false; break;
   }
   return false;
 }
@@ -1902,7 +1877,8 @@ USBHostHIDInitialize(uint8_t address, uint32_t flags, uint8_t clientDriverID) {
 
   // Find the device in the table.  If it's there, we have already initialized this device.
   for(device = 0; (device < USB_MAX_HID_DEVICES); device++) {
-    if(deviceInfoHID[device].ID.deviceAddress == address) return true;
+    if(deviceInfoHID[device].ID.deviceAddress == address)
+      return true;
   }
 
   // See if we have room for another device

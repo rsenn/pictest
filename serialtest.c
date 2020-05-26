@@ -216,7 +216,8 @@ loop() {
 
     update_com = 1;
 
-    if(c == 0x1b || c == '\t') echo_mode = !echo_mode;
+    if(c == 0x1b || c == '\t')
+      echo_mode = !echo_mode;
   }
 #endif
 
@@ -238,11 +239,13 @@ loop() {
     softser_recv();
     ser_putch(softser_rdata);
 
-    if(softser_rdata == 0x1b || softser_rdata == '\t') echo_mode = !echo_mode;
+    if(softser_rdata == 0x1b || softser_rdata == '\t')
+      echo_mode = !echo_mode;
 
     update_midi = 1;
 
-    if(++c == 3) break;
+    if(++c == 3)
+      break;
   }
 #endif
 

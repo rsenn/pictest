@@ -59,7 +59,7 @@
 #define BSTRB_TRIS TRISB0
 #define BSTRB_PIN RB0
 
-#elif defined(__18f252) || defined(__18f2550) || defined(__18f25k50)
+#elif defined(__18f252) || defined(__18f2455) || defined(__18f2550) || defined(__18f25k50) || defined(__18f25k22)
 
 #define LED_PIN LATA4
 #define LED_ON() LATA4 = 1;

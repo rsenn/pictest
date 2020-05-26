@@ -1,5 +1,5 @@
 /******************************************************************************
- 
+
   USB Host MIDI Client Driver
 
 Description:
@@ -375,8 +375,7 @@ USBHostMIDIEventHandler(BYTE address, USB_EVENT event, void* data, DWORD size) {
     case EVENT_SUSPEND:
     case EVENT_RESUME:
     case EVENT_BUS_ERROR:
-    default:
-      break;
+    default: break;
   }
 
   return FALSE;

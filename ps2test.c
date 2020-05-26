@@ -41,10 +41,13 @@ main() {
     // If any special character received
 
     {
-      if(KeyVal == 0x0e) printf("`");
+      if(KeyVal == 0x0e)
+        printf("`");
       if(KeyVal == 0x5d || KeyVal == 0x5b) {
-        if(KeyVal == 0x5b) printf("]");
-        if(KeyVal == 0x5d) printf("\\");
+        if(KeyVal == 0x5b)
+          printf("]");
+        if(KeyVal == 0x5d)
+          printf("\\");
       }
     } else
       uart_putch(Key[KeyVal]); // Else If the character rcv is a Number or Letter then print the letter or number

@@ -78,7 +78,8 @@ void USBStdFeatureReqHandler(void);
  *****************************************************************************/
 void
 USBCheckStdRequest(void) {
-  if(SetupPkt.RequestType != STANDARD) return;
+  if(SetupPkt.RequestType != STANDARD)
+    return;
 
   switch(SetupPkt.bRequest) {
     case SET_ADR:
@@ -104,9 +105,7 @@ USBCheckStdRequest(void) {
         ctrl_trf_session_owner = MUID_NULL;
       usb_stat.ctrl_trf_mem = _ROM; // Set memory type
       break;
-    case SET_CFG:
-      USBStdSetCfgHandler();
-      break;
+    case SET_CFG: USBStdSetCfgHandler(); break;
     case GET_CFG:
       ctrl_trf_session_owner = MUID_USB9;
       pSrc.bRam = (byte*)&usb_active_cfg; // Set Source
@@ -132,8 +131,7 @@ USBCheckStdRequest(void) {
     //    break;
     // case SET_DSC:
     // case SYNCH_FRAME:
-    default:
-      break;
+    default: break;
   } // end switch
 
 } // end USBCheckStdRequest

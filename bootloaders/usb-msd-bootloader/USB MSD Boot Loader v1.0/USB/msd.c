@@ -184,7 +184,8 @@ ProcessIO(void) {
     /* Receive data from Host*/
     if(gblCBW.dCBWDataTransferLength == 0) {
       /* Finished receiving the data prepare and send the status */
-      if((msd_csw.bCSWStatus == 0x00) && (msd_csw.dCSWDataResidue != 0)) msd_csw.bCSWStatus = 0x02;
+      if((msd_csw.bCSWStatus == 0x00) && (msd_csw.dCSWDataResidue != 0))
+        msd_csw.bCSWStatus = 0x02;
       SendCSW(); // sends the csw and sets the state to wait
     }
     /*
@@ -338,39 +339,17 @@ MSDCommandHandler(void) // In reality it is to read from EP1
 {
   switch(gblCBW.CBWCB[0]) {
 
-    case INQUIRY:
-      MSDInquiryHandler();
-      break;
-    case READ_CAPACITY:
-      MSDReadCapacityHandler();
-      break;
-    case READ_10:
-      MSDReadHandler();
-      break;
-    case WRITE_10:
-      MSDWriteHandler();
-      break;
-    case REQUEST_SENSE:
-      MSDRequestSenseHandler();
-      break;
-    case MODE_SENSE:
-      MSDModeSenseHandler();
-      break;
-    case PREVENT_ALLOW_MEDIUM_REMOVAL:
-      MSDMediumRemovalHandler();
-      break;
-    case TEST_UNIT_READY:
-      MSDTestUnitReadyHandler();
-      break;
-    case VERIFY:
-      MSDVerifyHandler();
-      break;
-    case STOP_START:
-      MSDStopStartHandler();
-      break;
-    case READ_FORMAT_CAPACITY:
-      MSDReadFormatCapacityHandler();
-      break;
+    case INQUIRY: MSDInquiryHandler(); break;
+    case READ_CAPACITY: MSDReadCapacityHandler(); break;
+    case READ_10: MSDReadHandler(); break;
+    case WRITE_10: MSDWriteHandler(); break;
+    case REQUEST_SENSE: MSDRequestSenseHandler(); break;
+    case MODE_SENSE: MSDModeSenseHandler(); break;
+    case PREVENT_ALLOW_MEDIUM_REMOVAL: MSDMediumRemovalHandler(); break;
+    case TEST_UNIT_READY: MSDTestUnitReadyHandler(); break;
+    case VERIFY: MSDVerifyHandler(); break;
+    case STOP_START: MSDStopStartHandler(); break;
+    case READ_FORMAT_CAPACITY: MSDReadFormatCapacityHandler(); break;
     default:
       ResetSenseData();
       gblSenseData.SenseKey = S_ILLEGAL_REQUEST;

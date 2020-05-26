@@ -175,7 +175,8 @@ USBCtrlTrfSetupHandler(void) {
   CPU after if it was stalled previously. The short_pkt_status flag
   is also re-initialized.
   ********************************************************************/
-  if(ep0Bi.Stat.UOWN != 0) ep0Bi.Stat._byte = _UCPU; // Compensate for after a STALL
+  if(ep0Bi.Stat.UOWN != 0)
+    ep0Bi.Stat._byte = _UCPU; // Compensate for after a STALL
   short_pkt_status = SHORT_PKT_NOT_USED;
   /*******************************************************************/
 
@@ -189,7 +190,8 @@ USBCtrlTrfSetupHandler(void) {
 
   /* Modifiable Section */
   for(i = 0; i < (sizeof(ClassReqHandler) / sizeof(pFunc)); i++) {
-    if(ctrl_trf_session_owner != MUID_NULL) break;
+    if(ctrl_trf_session_owner != MUID_NULL)
+      break;
     ClassReqHandler[i](); // See autofiles\usbdsc.c
   }                       // end while
 
@@ -499,7 +501,8 @@ USBCtrlEPServiceComplete(void) {
   } else // A module has claimed ownership of the control transfer session.
   {
     if(SetupPkt.DataDir == DEV_TO_HOST) {
-      if(SetupPkt.wLength < wCount._word) wCount._word = SetupPkt.wLength;
+      if(SetupPkt.wLength < wCount._word)
+        wCount._word = SetupPkt.wLength;
       USBCtrlTrfTxService();
       ctrl_trf_state = CTRL_TRF_TX;
       /*

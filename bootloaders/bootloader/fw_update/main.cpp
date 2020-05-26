@@ -38,18 +38,24 @@
 
 Image*
 createInputImage(const Parameters& params) {
-  if(params.contain(ARG_INPUT_BIN)) return new BinImage(params[ARG_INPUT_BIN].value());
-  if(params.contain(ARG_IMAGE_DATA)) return new ArgumentImage(ARG_IMAGE_DATA, params);
-  if(params.contain(ARG_INPUT_HEX)) return new IntelHexImage(params[ARG_INPUT_HEX].value());
+  if(params.contain(ARG_INPUT_BIN))
+    return new BinImage(params[ARG_INPUT_BIN].value());
+  if(params.contain(ARG_IMAGE_DATA))
+    return new ArgumentImage(ARG_IMAGE_DATA, params);
+  if(params.contain(ARG_INPUT_HEX))
+    return new IntelHexImage(params[ARG_INPUT_HEX].value());
 
   throw DEImageAbsent();
 }
 
 Image*
 createOutputImage(const Parameters& params) {
-  if(params.contain(ARG_OUTPUT_BIN)) return new BinImage(params[ARG_OUTPUT_BIN].value());
-  if(params.contain(ARG_IMAGE_DATA)) return new CoutImage();
-  if(params.contain(ARG_OUTPUT_HEX)) return new IntelHexImage(params[ARG_OUTPUT_HEX].value());
+  if(params.contain(ARG_OUTPUT_BIN))
+    return new BinImage(params[ARG_OUTPUT_BIN].value());
+  if(params.contain(ARG_IMAGE_DATA))
+    return new CoutImage();
+  if(params.contain(ARG_OUTPUT_HEX))
+    return new IntelHexImage(params[ARG_OUTPUT_HEX].value());
 
   throw DEImageAbsent();
 }
@@ -98,10 +104,12 @@ load(Buffer* buffer, PicBootloader* device, const PicBootloader::MemoryType memo
     delete image;
     image = NULL;
     // buffer size have to be devidable by 8
-    if(max % 8 != 0) max = (max / 8 + 1) * 8;
+    if(max % 8 != 0)
+      max = (max / 8 + 1) * 8;
     return max;
   } catch(...) {
-    if(image != NULL) delete image;
+    if(image != NULL)
+      delete image;
     throw;
   }
 }
@@ -191,7 +199,8 @@ read(PicBootloader* device, const Parameters& params) {
     delete image;
     image = NULL;
   } catch(...) {
-    if(image != NULL) delete image;
+    if(image != NULL)
+      delete image;
   }
 }
 
@@ -289,11 +298,16 @@ main(int argc, char* argv[]) {
 
     int commands = 0;
 
-    if(params.contain(ARG_READ)) commands |= 1 << ARG_READ;
-    if(params.contain(ARG_WRITE)) commands |= 1 << ARG_WRITE;
-    if(params.contain(ARG_VERIFY)) commands |= 1 << ARG_VERIFY;
-    if(params.contain(ARG_ERASE)) commands |= 1 << ARG_ERASE;
-    if(params.contain(ARG_RESET)) reset = params[ARG_RESET].boolValue();
+    if(params.contain(ARG_READ))
+      commands |= 1 << ARG_READ;
+    if(params.contain(ARG_WRITE))
+      commands |= 1 << ARG_WRITE;
+    if(params.contain(ARG_VERIFY))
+      commands |= 1 << ARG_VERIFY;
+    if(params.contain(ARG_ERASE))
+      commands |= 1 << ARG_ERASE;
+    if(params.contain(ARG_RESET))
+      reset = params[ARG_RESET].boolValue();
 
     if(commands == 0) {
       cout << "At least one command must be specified.\n";
@@ -301,20 +315,30 @@ main(int argc, char* argv[]) {
     }
 
     /* First check if we have VID/PID values */
-    if(!params.contain(ARG_VID)) throw DEArgumentAbsent(usage[ARG_VID].shortArgument());
-    if(!params.contain(ARG_PID)) throw DEArgumentAbsent(usage[ARG_PID].shortArgument());
+    if(!params.contain(ARG_VID))
+      throw DEArgumentAbsent(usage[ARG_VID].shortArgument());
+    if(!params.contain(ARG_PID))
+      throw DEArgumentAbsent(usage[ARG_PID].shortArgument());
 
     int img_args = 0;
-    if(params.contain(ARG_INPUT_BIN)) img_args++;
-    if(params.contain(ARG_IMAGE_DATA)) img_args++;
-    if(params.contain(ARG_INPUT_HEX)) img_args++;
-    if(img_args > 1) throw DEArgumentMultipleUsage("input image");
+    if(params.contain(ARG_INPUT_BIN))
+      img_args++;
+    if(params.contain(ARG_IMAGE_DATA))
+      img_args++;
+    if(params.contain(ARG_INPUT_HEX))
+      img_args++;
+    if(img_args > 1)
+      throw DEArgumentMultipleUsage("input image");
 
     img_args = 0;
-    if(params.contain(ARG_OUTPUT_BIN)) img_args++;
-    if(params.contain(ARG_IMAGE_DATA)) img_args++;
-    if(params.contain(ARG_OUTPUT_HEX)) img_args++;
-    if(img_args > 1) throw DEArgumentMultipleUsage("output image");
+    if(params.contain(ARG_OUTPUT_BIN))
+      img_args++;
+    if(params.contain(ARG_IMAGE_DATA))
+      img_args++;
+    if(params.contain(ARG_OUTPUT_HEX))
+      img_args++;
+    if(img_args > 1)
+      throw DEArgumentMultipleUsage("output image");
 
     PicBootloader device;
     /* Check if memory type is valid */
@@ -327,8 +351,10 @@ main(int argc, char* argv[]) {
       if(commands & (1 << ARG_WRITE)) {
         if(!params.contain(ARG_INPUT_HEX)) {
           string img;
-          if(params.contain(ARG_INPUT_BIN)) img = params[ARG_INPUT_BIN].argument();
-          if(params.contain(ARG_IMAGE_DATA)) img = params[ARG_IMAGE_DATA].argument();
+          if(params.contain(ARG_INPUT_BIN))
+            img = params[ARG_INPUT_BIN].argument();
+          if(params.contain(ARG_IMAGE_DATA))
+            img = params[ARG_IMAGE_DATA].argument();
           cerr << "Write to memory type ALL supported on HEX images only." << endl;
           throw DEBadArgument(img);
         }
