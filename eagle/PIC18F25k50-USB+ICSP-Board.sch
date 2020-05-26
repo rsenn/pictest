@@ -307,7 +307,7 @@
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="PIC18F2550-I/SP">
+<deviceset name="PIC18F2550-I/SP" prefix="U">
 <gates>
 <gate name="G$1" symbol="PIC18F2550-I/SP" x="-15.24" y="0"/>
 </gates>
@@ -473,21 +473,21 @@
 <text x="7.62" y="-1.524" size="0.8128" layer="27" align="top-right">&gt;VALUE</text>
 </package>
 <package name="CONN-8P">
-<pad name="6" x="3.81" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
-<pad name="5" x="1.27" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
-<pad name="4" x="-1.27" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
-<pad name="3" x="-3.81" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
-<pad name="2" x="-6.35" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
-<pad name="1" x="-8.89" y="0" drill="0.9" diameter="1.4224" shape="square" rot="R180"/>
-<wire x1="-9.906" y1="1.27" x2="-9.906" y2="-1.27" width="0.127" layer="21"/>
-<wire x1="-9.906" y1="-1.27" x2="9.906" y2="-1.27" width="0.127" layer="21"/>
-<wire x1="9.906" y1="-1.27" x2="9.906" y2="1.27" width="0.127" layer="21"/>
-<wire x1="9.906" y1="1.27" x2="-9.906" y2="1.27" width="0.127" layer="21"/>
-<text x="-10.414" y="-1.27" size="0.8128" layer="20" rot="R90">1</text>
-<text x="-9.906" y="-1.524" size="0.8128" layer="25" align="top-left">&gt;NAME</text>
-<text x="9.906" y="-1.524" size="0.8128" layer="27" align="top-right">&gt;VALUE</text>
-<pad name="7" x="6.35" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
-<pad name="8" x="8.89" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="6" x="12.7" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="5" x="10.16" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="4" x="7.62" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="3" x="5.08" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="2" x="2.54" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="1" x="0" y="0" drill="0.9" diameter="1.4224" shape="square" rot="R180"/>
+<wire x1="-1.016" y1="1.27" x2="-1.016" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="-1.016" y1="-1.27" x2="18.796" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="18.796" y1="-1.27" x2="18.796" y2="1.27" width="0.127" layer="21"/>
+<wire x1="18.796" y1="1.27" x2="-1.016" y2="1.27" width="0.127" layer="21"/>
+<text x="-1.524" y="-1.27" size="0.8128" layer="20" rot="R90">1</text>
+<text x="-1.016" y="1.524" size="0.8128" layer="25" rot="R180" align="top-right">&gt;NAME</text>
+<text x="18.796" y="1.524" size="0.8128" layer="27" rot="R180" align="top-left">&gt;VALUE</text>
+<pad name="7" x="15.24" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
+<pad name="8" x="17.78" y="0" drill="0.9" diameter="1.4224" shape="octagon" rot="R180"/>
 </package>
 <package name="CONN-5P">
 <pad name="5" x="10.16" y="0" drill="0.9" diameter="1.6764" shape="octagon" rot="R180"/>
@@ -515,6 +515,23 @@
 <text x="-6.604" y="-1.27" size="0.8128" layer="20" rot="R90">1</text>
 <text x="-6.35" y="-1.524" size="0.8128" layer="25" align="top-left">&gt;NAME</text>
 <text x="6.35" y="-1.524" size="0.8128" layer="27" align="top-right">&gt;VALUE</text>
+</package>
+<package name="PIC-PK3">
+<pad name="4" x="2.54" y="0" drill="0.8" diameter="1.778" shape="octagon" rot="R180"/>
+<pad name="1" x="-5.08" y="0" drill="0.8" diameter="1.778" shape="square" rot="R180"/>
+<pad name="2" x="-2.54" y="0" drill="0.8" diameter="1.778" shape="octagon" rot="R180"/>
+<pad name="3" x="0" y="0" drill="0.8" diameter="1.778" shape="octagon" rot="R180"/>
+<wire x1="6.35" y1="1.27" x2="6.35" y2="-1.27" width="0.127" layer="22"/>
+<wire x1="6.35" y1="-1.27" x2="-6.35" y2="-1.27" width="0.127" layer="22"/>
+<wire x1="-6.35" y1="-1.27" x2="-6.35" y2="1.27" width="0.127" layer="22"/>
+<wire x1="-6.35" y1="1.27" x2="6.35" y2="1.27" width="0.127" layer="22"/>
+<text x="-7.62" y="0" size="0.6096" layer="23" align="top-left">1</text>
+<text x="2.54" y="1.905" size="0.6096" layer="51" font="vector" align="center">PGD</text>
+<text x="5.08" y="1.905" size="0.6096" layer="51" font="vector" align="center">PGC</text>
+<text x="0" y="1.905" size="0.6096" layer="51" font="vector" align="center">VSS</text>
+<text x="-2.54" y="1.905" size="0.6096" layer="51" font="vector" align="center">VDD</text>
+<pad name="5" x="5.08" y="0" drill="0.8" diameter="1.778" shape="octagon" rot="R180"/>
+<text x="-5.08" y="1.905" size="0.6096" layer="51" font="vector" align="center">VPP</text>
 </package>
 </packages>
 <symbols>
@@ -658,6 +675,18 @@
 <connect gate="G$1" pin="PGD" pad="5"/>
 <connect gate="G$1" pin="VDD" pad="2"/>
 <connect gate="G$1" pin="VSS" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-PK3" package="PIC-PK3">
+<connects>
+<connect gate="G$1" pin="MCLR" pad="1"/>
+<connect gate="G$1" pin="PGC" pad="5"/>
+<connect gate="G$1" pin="PGD" pad="4"/>
+<connect gate="G$1" pin="VDD" pad="2"/>
+<connect gate="G$1" pin="VSS" pad="3"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -3186,26 +3215,31 @@
 </packages>
 <symbols>
 <symbol name="C">
-<wire x1="0" y1="0" x2="0" y2="-0.508" width="0.1524" layer="94"/>
-<wire x1="0" y1="-2.54" x2="0" y2="-2.032" width="0.1524" layer="94"/>
-<text x="1.524" y="0.381" size="1.778" layer="95">&gt;NAME</text>
-<text x="1.524" y="-4.699" size="1.778" layer="96">&gt;VALUE</text>
-<rectangle x1="-2.032" y1="-2.032" x2="2.032" y2="-1.524" layer="94"/>
-<rectangle x1="-2.032" y1="-1.016" x2="2.032" y2="-0.508" layer="94"/>
-<pin name="1" x="0" y="2.54" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
-<pin name="2" x="0" y="-5.08" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
+<wire x1="0" y1="1.27" x2="0" y2="0.762" width="0.1524" layer="94"/>
+<text x="1.524" y="1.651" size="1.778" layer="95">&gt;NAME</text>
+<text x="1.524" y="-3.429" size="1.778" layer="96">&gt;VALUE</text>
+<rectangle x1="-2.032" y1="0.254" x2="2.032" y2="0.762" layer="94"/>
+<pin name="1" x="0" y="5.08" visible="off" length="point" direction="pas" swaplevel="1" rot="R270"/>
+<pin name="2" x="0" y="-5.08" visible="off" length="point" direction="pas" swaplevel="1" rot="R90"/>
+<rectangle x1="-2.159" y1="-1.27" x2="2.159" y2="-0.381" layer="94"/>
+<rectangle x1="-2.159" y1="0.381" x2="2.159" y2="1.27" layer="94" rot="R180"/>
+<wire x1="0" y1="5.08" x2="0" y2="1.27" width="0.1524" layer="94"/>
+<wire x1="0" y1="-5.08" x2="0" y2="-1.27" width="0.1524" layer="94"/>
 </symbol>
 <symbol name="CPOL">
-<wire x1="-1.524" y1="0.381" x2="1.524" y2="0.381" width="0.254" layer="94"/>
-<wire x1="1.524" y1="0.381" x2="1.524" y2="1.27" width="0.254" layer="94"/>
-<wire x1="-1.524" y1="1.27" x2="-1.524" y2="0.381" width="0.254" layer="94"/>
-<wire x1="-1.524" y1="1.27" x2="1.524" y2="1.27" width="0.254" layer="94"/>
+<wire x1="-2.032" y1="0.381" x2="2.032" y2="0.381" width="0.254" layer="94"/>
+<wire x1="2.032" y1="0.381" x2="2.032" y2="1.27" width="0.254" layer="94"/>
+<wire x1="-2.032" y1="1.27" x2="-2.032" y2="0.381" width="0.254" layer="94"/>
+<wire x1="-2.032" y1="1.27" x2="0" y2="1.27" width="0.254" layer="94"/>
 <text x="1.143" y="1.7526" size="1.778" layer="95">&gt;NAME</text>
 <text x="-0.5842" y="1.6764" size="1.27" layer="94" rot="R90">+</text>
 <text x="1.143" y="-3.3274" size="1.778" layer="96">&gt;VALUE</text>
-<rectangle x1="-1.651" y1="-1.27" x2="1.651" y2="-0.381" layer="94"/>
-<pin name="-" x="0" y="-3.81" visible="off" length="short" direction="pas" rot="R90"/>
-<pin name="+" x="0" y="3.81" visible="off" length="short" direction="pas" rot="R270"/>
+<rectangle x1="-2.159" y1="-1.27" x2="2.159" y2="-0.381" layer="94"/>
+<pin name="-" x="0" y="-5.08" visible="off" length="point" direction="pas" rot="R90"/>
+<pin name="+" x="0" y="5.08" visible="off" length="point" direction="pas" rot="R270"/>
+<wire x1="0" y1="1.27" x2="2.032" y2="1.27" width="0.254" layer="94"/>
+<wire x1="0" y1="-1.27" x2="0" y2="-5.08" width="0.1524" layer="94"/>
+<wire x1="0" y1="5.08" x2="0" y2="1.27" width="0.1524" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -3880,7 +3914,7 @@
 <symbol name="VDD">
 <wire x1="1.27" y1="0.635" x2="0" y2="2.54" width="0.254" layer="94"/>
 <wire x1="0" y1="2.54" x2="-1.27" y2="0.635" width="0.254" layer="94"/>
-<text x="0" y="3.81" size="1.778" layer="96" align="bottom-center">&gt;VALUE</text>
+<text x="0" y="3.81" size="1.27" layer="96" align="center">&gt;VALUE</text>
 <pin name="VCC" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
 </symbol>
 </symbols>
@@ -7240,7 +7274,7 @@ Source: www.kingbright.com</description>
 <segment>
 <pinref part="C5" gate="G$1" pin="-"/>
 <pinref part="U$7" gate="1" pin="GND"/>
-<wire x1="187.96" y1="0" x2="187.96" y2="5.08" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="0" x2="187.96" y2="3.81" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="J1" gate="G$1" pin="VSS"/>
@@ -7280,7 +7314,6 @@ Source: www.kingbright.com</description>
 <segment>
 <pinref part="C1" gate="G$1" pin="1"/>
 <wire x1="35.56" y1="20.32" x2="12.7" y2="20.32" width="0.1524" layer="91"/>
-<wire x1="12.7" y1="20.32" x2="12.7" y2="17.78" width="0.1524" layer="91"/>
 <pinref part="J4" gate="G$1" pin="4"/>
 <wire x1="7.62" y1="20.32" x2="12.7" y2="20.32" width="0.1524" layer="91"/>
 <junction x="12.7" y="20.32"/>
@@ -7453,12 +7486,12 @@ Source: www.kingbright.com</description>
 <net name="VCC" class="0">
 <segment>
 <pinref part="C2" gate="G$1" pin="1"/>
-<wire x1="180.34" y1="38.1" x2="180.34" y2="31.75" width="0.1524" layer="91"/>
+<wire x1="180.34" y1="38.1" x2="180.34" y2="34.29" width="0.1524" layer="91"/>
 <pinref part="U$13" gate="G$1" pin="VCC"/>
 </segment>
 <segment>
 <pinref part="C5" gate="G$1" pin="+"/>
-<wire x1="187.96" y1="17.78" x2="187.96" y2="12.7" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="17.78" x2="187.96" y2="13.97" width="0.1524" layer="91"/>
 <pinref part="U$14" gate="G$1" pin="VCC"/>
 </segment>
 <segment>
