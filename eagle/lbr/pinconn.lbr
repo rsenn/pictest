@@ -20,10 +20,10 @@
 <layer number="22" name="bPlace" color="14" fill="1" visible="yes" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
@@ -1455,6 +1455,20 @@ Breakout</text>
 <wire x1="-2.54" y1="10.16" x2="-1.27" y2="10.16" width="0.127" layer="94"/>
 <wire x1="-2.54" y1="12.7" x2="-1.27" y2="12.7" width="0.127" layer="94"/>
 </symbol>
+<symbol name="PIC-ICSP-PK3">
+<pin name="VDD" x="-7.62" y="2.54" length="short" direction="pas"/>
+<pin name="VSS" x="-7.62" y="0" length="short" direction="pas"/>
+<pin name="PGC" x="-7.62" y="-2.54" length="short" direction="pas"/>
+<pin name="PGD" x="-7.62" y="-5.08" length="short" direction="pas"/>
+<wire x1="5.08" y1="7.62" x2="-5.08" y2="7.62" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="7.62" x2="-5.08" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-7.62" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-7.62" x2="5.08" y2="7.62" width="0.254" layer="94"/>
+<text x="-5.08" y="10.16" size="1.778" layer="95" align="top-left">&gt;NAME</text>
+<text x="-5.08" y="-10.16" size="1.778" layer="96">&gt;VALUE</text>
+<text x="3.048" y="0" size="1.27" layer="97" font="fixed" rot="R270" align="center">PICKIT3 ICSP</text>
+<pin name="VPP" x="-7.62" y="5.08" length="short" direction="pas"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="FTDI232-BO" prefix="J">
@@ -2170,6 +2184,61 @@ Breakout</text>
 <connect gate="G$1" pin="7" pad="7"/>
 <connect gate="G$1" pin="8" pad="8"/>
 <connect gate="G$1" pin="9" pad="9"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="PICKIT3-ICSP" prefix="J">
+<gates>
+<gate name="G$1" symbol="PIC-ICSP-PK3" x="0" y="0"/>
+</gates>
+<devices>
+<device name="-PK3" package="PIC-PK3">
+<connects>
+<connect gate="G$1" pin="PGC" pad="5"/>
+<connect gate="G$1" pin="PGD" pad="4"/>
+<connect gate="G$1" pin="VDD" pad="2"/>
+<connect gate="G$1" pin="VPP" pad="1"/>
+<connect gate="G$1" pin="VSS" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-ICSP" package="PIC-ICSP">
+<connects>
+<connect gate="G$1" pin="PGC" pad="4"/>
+<connect gate="G$1" pin="PGD" pad="5"/>
+<connect gate="G$1" pin="VDD" pad="2"/>
+<connect gate="G$1" pin="VPP" pad="3"/>
+<connect gate="G$1" pin="VSS" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="" package="CONN-5P">
+<connects>
+<connect gate="G$1" pin="PGC" pad="4"/>
+<connect gate="G$1" pin="PGD" pad="5"/>
+<connect gate="G$1" pin="VDD" pad="2"/>
+<connect gate="G$1" pin="VPP" pad="3"/>
+<connect gate="G$1" pin="VSS" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-PK3-5P" package="CONN-5P">
+<connects>
+<connect gate="G$1" pin="PGC" pad="5"/>
+<connect gate="G$1" pin="PGD" pad="4"/>
+<connect gate="G$1" pin="VDD" pad="2"/>
+<connect gate="G$1" pin="VPP" pad="1"/>
+<connect gate="G$1" pin="VSS" pad="3"/>
 </connects>
 <technologies>
 <technology name=""/>
