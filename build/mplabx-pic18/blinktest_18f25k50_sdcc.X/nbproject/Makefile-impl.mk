@@ -27,11 +27,11 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 PROJECTNAME=blinktest_18f25k50_sdcc.X
 
 # Active Configuration
-DEFAULTCONF=debug
+DEFAULTCONF=release
 CONF=${DEFAULTCONF}
 
 # All Configurations
-ALLCONFS=debug 
+ALLCONFS=debug release 
 
 
 # build
@@ -46,12 +46,14 @@ ALLCONFS=debug
 # clobber
 .clobber-impl: .clobber-pre .depcheck-impl
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=debug clean
+	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=release clean
 
 
 
 # all
 .all-impl: .all-pre .depcheck-impl
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=debug build
+	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=release build
 
 
 
