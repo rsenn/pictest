@@ -11,7 +11,7 @@
 
 #pragma config BOREN = ON, BORV = 285
 #pragma config WDTEN = OFF
-#pragma config STVREN = OFF, LVP = ON
+#pragma config STVREN = OFF, LVP = OFF
 #pragma config CP0 = OFF, CP1 = OFF, CP2 = OFF, CP3 = OFF
 #pragma config CPB = OFF, CPD = OFF
 #pragma config WRT0 = OFF, WRT1 = OFF, WRT2 = OFF, WRT3 = OFF
