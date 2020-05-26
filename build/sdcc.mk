@@ -44,7 +44,12 @@ CPPFLAGS += $(DEFINES:%=-D%)
 
 CPPFLAGS += $($(PROGRAM)_DEFS)
 SOURCES = $($(PROGRAM)_SOURCES) $(COMMON_SOURCES)
-OBJECTS = $(SOURCES:%.c=$(OBJDIR)%.o)
+OBJECTS = $(patsubst %.c,$(OBJDIR)%.o,$(notdir $(SOURCES)))
+
+
+ifeq ($(DEBUG),1)
+	CFLAGS += --debug
+endif
 
 $(info OBJDIR: $(OBJDIR))
 $(info BUILD_TYPE: $(BUILD_TYPE))
@@ -60,17 +65,36 @@ endif
 
 all: $(BUILDDIR) $(OBJDIR)  $(HEXFILE)
 
-$(OBJDIR)%.o: %.c
+
+$(OBJDIR)7segment.o $(OBJDIR)adc.o $(OBJDIR)buffer.o $(OBJDIR)comparator.o $(OBJDIR)delay.o $(OBJDIR)ds18b20.o $(OBJDIR)format.o $(OBJDIR)lcd44780.o $(OBJDIR)lcd5110.o $(OBJDIR)onewire.o $(OBJDIR)pwm.o $(OBJDIR)queue.o $(OBJDIR)random.o $(OBJDIR)ser.o $(OBJDIR)softpwm.o $(OBJDIR)softser.o $(OBJDIR)timer.o $(OBJDIR)uart.o: $(OBJDIR)%.o: lib/%.c
 	$(SDCC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
-$(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps.e: %.c
+
+$(OBJDIR)ser.o: CPPFLAGS += -DUSE_SER=1
+$(OBJDIR)softser.o: CPPFLAGS += -DUSE_SOFTSER=1
+$(OBJDIR)softpwm.o: CPPFLAGS += -DUSE_SOFTPWM=1
+
+
+
+$(OBJDIR)7segtest.o $(OBJDIR)blinktest.o $(OBJDIR)pictest.o $(OBJDIR)serialtest.o: $(OBJDIR)%.o: %.c
+	$(SDCC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+
+$(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps.cof: $(OBJDIR)%.o
 	$(SDCC) $(CFLAGS) $(CPPFLAGS) -o $@ -E $<
+
 $(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps.asm: %.c
 	$(SDCC) $(CFLAGS) $(CPPFLAGS) -o $@ -S $<
 
 $(HEXFILE): $(OBJECTS)
 	(cd $(BUILDDIR); $(SDCC) $(CFLAGS) -o $(notdir $(HEXFILE)) $(^:%=../../%))
 
+$(ELFFILE): $(OBJECTS)
+	(cd $(BUILDDIR); $(SDCC) $(CFLAGS)  -o $(notdir $(ELFFILE)) $(^:%=../../%))
+
+$(COFFILE): $(OBJECTS)
+	(cd $(BUILDDIR); $(SDCC) $(CFLAGS) -o $(notdir $(COFFILE)) $(^:%=../../%))
+
+.PHONY: clean
 clean:
 ifeq ($(BUILDDIR),)
 	$(RM) *.asm *.cod *.hex *.map *.o *.lst *.asm *.as *.obj *.rlf *.dep *.p1 *.pre

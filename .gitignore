@@ -15,3 +15,5 @@ bin*
 /build/mplabx-pic18/blinktest_18f25k22_xc8.X/dist/
 /build/mplabx-pic18/blinktest_18f2455_xc8.X/build/
 /build/mplabx-pic18/blinktest_18f2455_xc8.X/dist/
+/build/mplabx-pic18/blinktest_18f2550_sdcc.X/build/
+/build/mplabx-pic18/blinktest_18f2550_sdcc.X/dist/

@@ -117,6 +117,8 @@ is-list = $(if $(subst 1,,$(subst 0,,$(words $(call get-list,$(1))))),$(call get
 
 
 HEXFILE = $(BUILDDIR)$(PROGRAM)_$(BUILD_ID).hex
+COFFILE = $(BUILDDIR)$(PROGRAM)_$(BUILD_ID).cof
+ELFFILE = $(BUILDDIR)$(PROGRAM)_$(BUILD_ID).elf
 
 COMMON_SOURCES = #lib/queue.c
 

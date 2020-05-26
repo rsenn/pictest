@@ -61,8 +61,9 @@ endif
 chip-header:
 	@find $(CCDIR)/include -iname "p*$(chipl).h"
 
-clean:
-	-$(RM) $(BUILDDIR)*.hex $(OBJDIR)*.as $(BUILDDIR)*.cof $(BUILDDIR)*.hex $(BUILDDIR)*.hxl $(BUILDDIR)*.lst $(BUILDDIR)*.map $(OBJDIR)*.obj $(OBJDIR)*.rlf $(OBJDIR)*.sdb $(OBJDIR)*.sym \
-	$(OBJDIR)*.lst $(OBJDIR)*.p1 $(OBJDIR)*.pre
+# .PHONY: clean
+# clean:
+# 	-$(RM) $(BUILDDIR)*.hex $(OBJDIR)*.as $(BUILDDIR)*.cof $(BUILDDIR)*.hex $(BUILDDIR)*.hxl $(BUILDDIR)*.lst $(BUILDDIR)*.map $(OBJDIR)*.obj $(OBJDIR)*.rlf $(OBJDIR)*.sdb $(OBJDIR)*.sym \
+# 	$(OBJDIR)*.lst $(OBJDIR)*.p1 $(OBJDIR)*.pre
 
 -include $(OBJDIR)*.d
