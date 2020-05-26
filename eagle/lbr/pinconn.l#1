@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="0.005" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -1458,8 +1458,8 @@ Breakout</text>
 <symbol name="PIC-ICSP-PK3">
 <pin name="VDD" x="-7.62" y="2.54" length="short" direction="pas"/>
 <pin name="VSS" x="-7.62" y="0" length="short" direction="pas"/>
-<pin name="PGC" x="-7.62" y="-2.54" length="short" direction="pas"/>
-<pin name="PGD" x="-7.62" y="-5.08" length="short" direction="pas"/>
+<pin name="PGC" x="-7.62" y="-5.08" length="short" direction="pas"/>
+<pin name="PGD" x="-7.62" y="-2.54" length="short" direction="pas"/>
 <wire x1="5.08" y1="7.62" x2="-5.08" y2="7.62" width="0.254" layer="94"/>
 <wire x1="-5.08" y1="7.62" x2="-5.08" y2="-7.62" width="0.254" layer="94"/>
 <wire x1="-5.08" y1="-7.62" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
@@ -2215,6 +2215,30 @@ Breakout</text>
 <connect gate="G$1" pin="VDD" pad="2"/>
 <connect gate="G$1" pin="VPP" pad="3"/>
 <connect gate="G$1" pin="VSS" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="" package="CONN-5P">
+<connects>
+<connect gate="G$1" pin="PGC" pad="4"/>
+<connect gate="G$1" pin="PGD" pad="5"/>
+<connect gate="G$1" pin="VDD" pad="2"/>
+<connect gate="G$1" pin="VPP" pad="3"/>
+<connect gate="G$1" pin="VSS" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-PK3-5P" package="CONN-5P">
+<connects>
+<connect gate="G$1" pin="PGC" pad="5"/>
+<connect gate="G$1" pin="PGD" pad="4"/>
+<connect gate="G$1" pin="VDD" pad="2"/>
+<connect gate="G$1" pin="VPP" pad="1"/>
+<connect gate="G$1" pin="VSS" pad="3"/>
 </connects>
 <technologies>
 <technology name=""/>

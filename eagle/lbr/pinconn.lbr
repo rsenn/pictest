@@ -1458,8 +1458,8 @@ Breakout</text>
 <symbol name="PIC-ICSP-PK3">
 <pin name="VDD" x="-7.62" y="2.54" length="short" direction="pas"/>
 <pin name="VSS" x="-7.62" y="0" length="short" direction="pas"/>
-<pin name="PGC" x="-7.62" y="-2.54" length="short" direction="pas"/>
-<pin name="PGD" x="-7.62" y="-5.08" length="short" direction="pas"/>
+<pin name="PGC" x="-7.62" y="-5.08" length="short" direction="pas"/>
+<pin name="PGD" x="-7.62" y="-2.54" length="short" direction="pas"/>
 <wire x1="5.08" y1="7.62" x2="-5.08" y2="7.62" width="0.254" layer="94"/>
 <wire x1="-5.08" y1="7.62" x2="-5.08" y2="-7.62" width="0.254" layer="94"/>
 <wire x1="-5.08" y1="-7.62" x2="5.08" y2="-7.62" width="0.254" layer="94"/>

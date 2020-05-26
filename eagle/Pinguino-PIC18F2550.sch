@@ -5708,6 +5708,7 @@
 <pinref part="J6" gate="G$1" pin="PGC"/>
 <wire x1="68.58" y1="68.58" x2="66.04" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="66.04" y1="71.12" x2="66.04" y2="78.74" width="0.1524" layer="91"/>
+<label x="66.04" y="76.2" size="1.27" layer="95" rot="R270"/>
 </segment>
 </net>
 <net name="RB7" class="0">
@@ -5726,6 +5727,7 @@
 <pinref part="J6" gate="G$1" pin="PGD"/>
 <wire x1="71.12" y1="68.58" x2="68.58" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="68.58" y1="71.12" x2="68.58" y2="78.74" width="0.1524" layer="91"/>
+<label x="68.58" y="76.2" size="1.27" layer="95" rot="R270"/>
 </segment>
 </net>
 <net name="RC7" class="0">
