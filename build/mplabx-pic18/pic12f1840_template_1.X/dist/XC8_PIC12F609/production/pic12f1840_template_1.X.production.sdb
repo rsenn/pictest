@@ -1,0 +1,131 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12LF1840 ]
+[d frameptr 6 ]
+"62 /opt/microchip/xc8/v1.45/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 /opt/microchip/xc8/v1.45/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 /opt/microchip/xc8/v1.45/sources/pic/eeprom.c
+[v _eecpymem eecpymem `(v  1 e 1 0 ]
+"39
+[v _memcpyee memcpyee `(v  1 e 1 0 ]
+"24 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic12f1840_template_1.X/interrupts.c
+[v _isr isr `II(v  1 e 1 0 ]
+"28 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic12f1840_template_1.X/main.c
+[v _main main `(v  1 e 1 0 ]
+"65 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic12f1840_template_1.X/mcc_generated_files/epwm.c
+[v _EPWM_Initialize EPWM_Initialize `(v  1 e 1 0 ]
+"60 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic12f1840_template_1.X/mcc_generated_files/mcc.c
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+"70
+[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
+"52 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic12f1840_template_1.X/mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"63 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic12f1840_template_1.X/mcc_generated_files/tmr2.c
+[v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
+"19 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic12f1840_template_1.X/system.c
+[v _ConfigureOscillator ConfigureOscillator `(v  1 e 1 0 ]
+"23 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic12f1840_template_1.X/user.c
+[v _InitApp InitApp `(v  1 e 1 0 ]
+[s S30 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSP1IF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+"494 /opt/microchip/xc8/v1.45/include/pic12lf1840.h
+[u S39 . 1 `S30 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES39  1 e 1 @17 ]
+"795
+[v _TMR2 TMR2 `VEuc  1 e 1 @26 ]
+"815
+[v _PR2 PR2 `VEuc  1 e 1 @27 ]
+"835
+[v _T2CON T2CON `VEuc  1 e 1 @28 ]
+[s S52 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 T2OUTPS0 1 0 :1:3 
+`uc 1 T2OUTPS1 1 0 :1:4 
+`uc 1 T2OUTPS2 1 0 :1:5 
+`uc 1 T2OUTPS3 1 0 :1:6 
+]
+"856
+[s S60 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 T2OUTPS 1 0 :4:3 
+]
+[u S64 . 1 `S52 1 . 1 0 `S60 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES64  1 e 1 @28 ]
+"1000
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+[s S140 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 TMR0SE 1 0 :1:4 
+`uc 1 TMR0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nWPUEN 1 0 :1:7 
+]
+"1175
+[s S149 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 . 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+]
+[u S154 . 1 `S140 1 . 1 0 `S149 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES154  1 e 1 @149 ]
+"1286
+[v _WDTCON WDTCON `VEuc  1 e 1 @151 ]
+"1345
+[v _OSCTUNE OSCTUNE `VEuc  1 e 1 @152 ]
+"1403
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"1730
+[v _LATA LATA `VEuc  1 e 1 @268 ]
+"1912
+[v _BORCON BORCON `VEuc  1 e 1 @278 ]
+"2251
+[v _APFCON APFCON `VEuc  1 e 1 @285 ]
+"2393
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"2949
+[v _WPUA WPUA `VEuc  1 e 1 @524 ]
+"3698
+[v _CCPR1L CCPR1L `VEuc  1 e 1 @657 ]
+"3718
+[v _CCPR1H CCPR1H `VEuc  1 e 1 @658 ]
+"3738
+[v _CCP1CON CCP1CON `VEuc  1 e 1 @659 ]
+"3820
+[v _PWM1CON PWM1CON `VEuc  1 e 1 @660 ]
+"3895
+[v _ECCP1AS ECCP1AS `VEuc  1 e 1 @661 ]
+"4052
+[v _PSTR1CON PSTR1CON `VEuc  1 e 1 @662 ]
+"28 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic12f1840_template_1.X/main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"38
+} 0
+"23 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic12f1840_template_1.X/user.c
+[v _InitApp InitApp `(v  1 e 1 0 ]
+{
+"31
+} 0
+"19 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic12f1840_template_1.X/system.c
+[v _ConfigureOscillator ConfigureOscillator `(v  1 e 1 0 ]
+{
+"39
+} 0
+"24 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic12f1840_template_1.X/interrupts.c
+[v _isr isr `II(v  1 e 1 0 ]
+{
+"49
+} 0

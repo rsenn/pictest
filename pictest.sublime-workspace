@@ -12,12 +12,11 @@
 	"buffers":
 	[
 		{
-			"file": "lib/queue.c",
+			"file": "blinktest.c",
 			"settings":
 			{
-				"buffer_size": 529,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"buffer_size": 8310,
+				"line_ending": "Windows"
 			}
 		},
 		{
@@ -29,7 +28,51 @@
 			}
 		},
 		{
-			"file": "lib/typedef.h",
+			"file": "lib/softpwm.c",
+			"settings":
+			{
+				"buffer_size": 1030,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/pictest.h",
+			"settings":
+			{
+				"buffer_size": 3044,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 1060 files for \"define.*LED2_ANODE\" (regex, case sensitive)\n\n/home/roman/Sources/pictest/src/pictest.h:\n   14  #define LED2_CATHODE GP2\n   15  #define LED2_CATHODE_TRIS TRISGP2\n   16: #define LED2_ANODE RA2\n   17: #define LED2_ANODE_TRIS TRISGP3\n   18  #define BSTRB_TRIS TRISGP1\n   19  #define BSTRB_PIN GP1\n   ..\n   27  #define LED2_CATHODE LATA2\n   28  #define LED2_CATHODE_TRIS ANSA2 = TRISA2\n   29: #define LED2_ANODE RA3\n   30: #define LED2_ANODE_TRIS TRISA3\n   31  \n   32  #elif defined(__16f628a)\n   ..\n   38  #define LED2_CATHODE RA2\n   39  #define LED2_CATHODE_TRIS TRISA2\n   40: #define LED2_ANODE RA3\n   41: #define LED2_ANODE_TRIS TRISA3\n   42  #define BSTRB_TRIS TRISA1\n   43  #define BSTRB_PIN RA1\n   ..\n   53  \n   54  //# ifdef TRISC3\n   55: #define LED2_ANODE RC3\n   56: #define LED2_ANODE_TRIS TRISC3\n   57  //# endif\n   58  \n   ..\n   68  #define LED2_CATHODE LATA2\n   69  #define LED2_CATHODE_TRIS TRISA2\n   70: #define LED2_ANODE LATA3\n   71: #define LED2_ANODE_TRIS TRISA3\n   72  #define BSTRB_TRIS TRISC0\n   73  #define BSTRB_PIN LATC0\n\n10 matches in 1 file\n",
+			"settings":
+			{
+				"buffer_size": 1090,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "lib/device.h",
+			"settings":
+			{
+				"buffer_size": 15298,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/config-18f25k50.h",
+			"settings":
+			{
+				"buffer_size": 1217,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/config-18f25k22.h",
 			"settings":
 			{
 				"buffer_size": 1624,
@@ -38,63 +81,13 @@
 			}
 		},
 		{
-			"file": "blinktest.c",
+			"file": "src/config-18f14k50.h",
 			"settings":
 			{
-				"buffer_size": 8262,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "lib/device.h",
-			"settings":
-			{
-				"buffer_size": 14293,
+				"buffer_size": 1624,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "build/sdcc.mk",
-			"settings":
-			{
-				"buffer_size": 2671,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "build/common.mk",
-			"settings":
-			{
-				"buffer_size": 1719,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "build/vars.mk",
-			"settings":
-			{
-				"buffer_size": 5066,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/home/roman/Dokumente/Sources/pictest/build/sdcc.mk",
-			"settings":
-			{
-				"buffer_size": 2671,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/opt/microchip/xc8/v1.45/include/stdint.h",
-			"settings":
-			{
-				"buffer_size": 4866,
-				"line_ending": "Unix"
+				"line_ending": "Unix",
+				"name": "#ifndef CONFIG_18F14K50_H"
 			}
 		}
 	],
@@ -204,10 +197,24 @@
 	},
 	"expanded_folders":
 	[
-		"/home/roman/Sources/pictest"
+		"/home/roman/Sources/pictest",
+		"/home/roman/Sources/pictest/lib"
 	],
 	"file_history":
 	[
+		"/home/roman/Sources/pictest/lib/softser.c",
+		"/opt/microchip/xc8/v1.45/include/stdint.h",
+		"/home/roman/Sources/pictest/src/pictest.h",
+		"/home/roman/Sources/pictest/lib/queue.c",
+		"/home/roman/Sources/pictest/lib/softpwm.h",
+		"/home/roman/Sources/pictest/lib/typedef.h",
+		"/home/roman/Sources/pictest/blinktest.c",
+		"/home/roman/Sources/pictest/lib/device.h",
+		"/home/roman/Sources/pictest/build/sdcc.mk",
+		"/home/roman/Sources/pictest/build/common.mk",
+		"/home/roman/Sources/pictest/build/vars.mk",
+		"/home/roman/Dokumente/Sources/pictest/build/sdcc.mk",
+		"/home/roman/Sources/pictest/lib/softser.h",
 		"/home/roman/Sources/pictest/blinktest.pp.c",
 		"/home/roman/Dokumente/Sources/pictest/test-18f25k50.c",
 		"/home/roman/Dokumente/Sources/pictest/lib/onewire.h",
@@ -322,30 +329,18 @@
 		"/C/Users/roman/Documents/dirlist/lib/buffer_skip_until.c",
 		"/C/Users/roman/Documents/dirlist/lib/buffer.h",
 		"/C/Users/roman/Documents/dirlist/lib/buffer_prefetch.c",
-		"/C/Users/roman/Documents/dirlist/lib/stralloc_zero.c",
-		"/C/Users/roman/Documents/dirlist/lib/buffer_getc.c",
-		"/C/Users/roman/Documents/dirlist/lib/buffer_get_token_sa_pred.c",
-		"/C/Users/roman/Documents/dirlist/lib/buffer_get_token_pred.c",
-		"/C/Users/roman/Documents/dirlist/lib/buffer_get.c",
-		"/C/Users/roman/Documents/dirlist/lib/buffer_feed.c",
-		"/C/Users/roman/Documents/dirlist/lib/buffer_get_token.c",
-		"/C/Users/roman/Documents/dirlist/byte.h",
-		"/C/Users/roman/Documents/dirlist/buffer_1.c",
-		"/D/Programs/Sublime Text 3/Data/Packages/Package Control/Package Control.sublime-settings",
-		"/C/Users/roman/Documents/pictest/lib/tsmdelay.h",
-		"/F/Sources/PIC/Pyralis/t45/softpwm.c",
-		"/F/Sources/PIC/Pyralis/t84/softpwm.c",
-		"/F/Sources/PIC/picworks/soft_pwm_simple.X/soft_pwm_simple_main.c"
+		"/C/Users/roman/Documents/dirlist/lib/stralloc_zero.c"
 	],
 	"find":
 	{
-		"height": 41.0
+		"height": 50.0
 	},
 	"find_in_files":
 	{
 		"height": 142.0,
 		"where_history":
 		[
+			"/home/roman/Sources/pictest,*.c,*.h",
 			""
 		]
 	},
@@ -354,6 +349,20 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"TRISA3",
+			"LATBbits",
+			"LATA",
+			"SDCC",
+			"LATA3",
+			"define LATA4",
+			"define LATA",
+			" && !defined(__18f25k22)",
+			"18f25k22",
+			"LATA4",
+			"define.*LED2_ANODE",
+			"LED2_ANODE",
+			"OERR",
+			"RCIF",
 			"HEXFILE",
 			"OBJDIR",
 			"RBPU",
@@ -511,37 +520,38 @@
 	"groups":
 	[
 		{
-			"selected": 8,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "lib/queue.c",
+					"file": "blinktest.c",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 529,
+						"buffer_size": 8310,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								529,
-								529
+								3306,
+								3306
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Dayle Rees Color Schemes/sublime/contrast/stark-contrast.tmTheme",
 							"syntax": "Packages/C11/C11.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 5512.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -557,12 +567,13 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								280,
+								280
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Dayle Rees Color Schemes/sublime/contrast/stark-contrast.tmTheme",
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
@@ -571,12 +582,214 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "lib/typedef.h",
+					"file": "lib/softpwm.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1030,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/Dayle Rees Color Schemes/sublime/contrast/stark-contrast.tmTheme",
+							"syntax": "Packages/C11/C11.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/pictest.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3044,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1563,
+								1563
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/Dayle Rees Color Schemes/sublime/contrast/stark-contrast.tmTheme",
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 933.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1090,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										195,
+										212
+									],
+									[
+										225,
+										242
+									],
+									[
+										415,
+										432
+									],
+									[
+										445,
+										462
+									],
+									[
+										601,
+										618
+									],
+									[
+										631,
+										648
+									],
+									[
+										769,
+										786
+									],
+									[
+										799,
+										816
+									],
+									[
+										942,
+										959
+									],
+									[
+										974,
+										991
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								965,
+								965
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/Dayle Rees Color Schemes/sublime/contrast/stark-contrast.tmTheme",
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 326.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "lib/device.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15298,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7448,
+								7448
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/Dayle Rees Color Schemes/sublime/contrast/stark-contrast.tmTheme",
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 6899.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/config-18f25k50.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1217,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								452,
+								452
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/Dayle Rees Color Schemes/sublime/contrast/stark-contrast.tmTheme",
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/config-18f25k22.h",
 					"semi_transient": false,
 					"settings":
 					{
@@ -587,226 +800,54 @@
 						"selection":
 						[
 							[
-								683,
-								683
+								1624,
+								1624
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/User/SchemeEditorTemp/Next Roman.tmTheme",
+							"color_scheme": "Packages/Dayle Rees Color Schemes/sublime/contrast/stark-contrast.tmTheme",
 							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "blinktest.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8262,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2958,
-								2958
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/SchemeEditorTemp/Next Roman.tmTheme",
-							"syntax": "Packages/C11/C11.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3674.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "lib/device.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 14293,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13658,
-								13658
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/SchemeEditorTemp/Next Roman.tmTheme",
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 17425.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "build/sdcc.mk",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2671,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2219,
-								2219
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/SchemeEditorTemp/Next Roman.tmTheme",
-							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1458.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "build/common.mk",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1719,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1695,
-								1695
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/SchemeEditorTemp/Next Roman.tmTheme",
-							"syntax": "Packages/Makefile/Makefile.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 392.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "build/vars.mk",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5066,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3059,
-								3059
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/SchemeEditorTemp/Next Roman.tmTheme",
-							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2654.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
 					"buffer": 8,
-					"file": "/home/roman/Dokumente/Sources/pictest/build/sdcc.mk",
+					"file": "src/config-18f14k50.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2671,
+						"buffer_size": 1624,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1299,
-								1299
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/SchemeEditorTemp/Next Roman.tmTheme",
-							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1323.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "/opt/microchip/xc8/v1.45/include/stdint.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4866,
-						"regions":
-						{
-						},
-						"selection":
-						[
+								921,
+								921
+							],
 							[
-								0,
-								0
+								1624,
+								1624
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/Rainglow/rainglow/Tron Contrast (rainglow).tmTheme",
+							"auto_name": "#ifndef CONFIG_18F14K50_H",
+							"color_scheme": "Packages/Dayle Rees Color Schemes/sublime/contrast/stark-contrast.tmTheme",
 							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 3720.0,
+						"translation.y": 134.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -869,6 +910,38 @@
 		"selected_items":
 		[
 			[
+				"pictest.h",
+				"src/pictest.h"
+			],
+			[
+				"config-14k",
+				"src/config-18f14k50.h"
+			],
+			[
+				"blink",
+				"blinktest.c"
+			],
+			[
+				"config-18f25k2",
+				"src/config-18f25k22.h"
+			],
+			[
+				"config-18",
+				"src/config-18f25k50.h"
+			],
+			[
+				"device.h",
+				"lib/device.h"
+			],
+			[
+				"softser.c",
+				"lib/softser.c"
+			],
+			[
+				"softser.h",
+				"lib/softser.h"
+			],
+			[
 				"vars",
 				"build/vars.mk"
 			],
@@ -881,16 +954,8 @@
 				"build/sdcc.mk"
 			],
 			[
-				"device.h",
-				"lib/device.h"
-			],
-			[
 				"blinktest",
 				"blinktest.c"
-			],
-			[
-				"blink",
-				"blinktest.pp.c"
 			],
 			[
 				"que",

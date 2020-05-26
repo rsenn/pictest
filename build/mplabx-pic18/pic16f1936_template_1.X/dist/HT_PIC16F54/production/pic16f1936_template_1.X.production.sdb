@@ -1,0 +1,53 @@
+[p PRO_MODE GLOBOPT AUTOSTATIC PIC14 PIC14E SPACEOPT ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1936 ]
+[d frameptr 6 ]
+"62 /opt/microchip/xc8/v1.45/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 /opt/microchip/xc8/v1.45/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 /opt/microchip/xc8/v1.45/sources/pic/eeprom.c
+[v _eecpymem eecpymem `(v  1 e 1 0 ]
+"39
+[v _memcpyee memcpyee `(v  1 e 1 0 ]
+"24 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/interrupts.c
+[v _isr isr `II(v  1 e 1 0 ]
+"27 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/main.c
+[v _main main `(v  1 e 1 0 ]
+"42 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/mcc_generated_files/epwm1.c
+[v _EPWM1_Initialize EPWM1_Initialize `(v  1 e 1 0 ]
+"38 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/mcc_generated_files/mcc.c
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+"48
+[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
+"29 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"42 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/mcc_generated_files/pwm4.c
+[v _PWM4_Initialize PWM4_Initialize `(v  1 e 1 0 ]
+"42 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/mcc_generated_files/pwm5.c
+[v _PWM5_Initialize PWM5_Initialize `(v  1 e 1 0 ]
+"19 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/system.c
+[v _ConfigureOscillator ConfigureOscillator `(v  1 e 1 0 ]
+"23 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/user.c
+[v _InitApp InitApp `(v  1 e 1 0 ]
+"27 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"37
+} 0
+"23 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/user.c
+[v _InitApp InitApp `(v  1 e 1 0 ]
+{
+"31
+} 0
+"19 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/system.c
+[v _ConfigureOscillator ConfigureOscillator `(v  1 e 1 0 ]
+{
+"25
+} 0
+"24 /home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/interrupts.c
+[v _isr isr `II(v  1 e 1 0 ]
+{
+"49
+} 0
