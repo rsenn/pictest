@@ -1,0 +1,8 @@
+Warning[2103] ../../../blinktest.c 116 : default startup code expects main function declared as 'void main (void)'
+Warning[2066] ../../../blinktest.c 204 : type qualifier mismatch in assignment
+Warning[2066] ../../../blinktest.c 296 : type qualifier mismatch in assignment
+Warning[2066] ../../../blinktest.c 298 : type qualifier mismatch in assignment
+Warning[2066] ../../../blinktest.c 300 : type qualifier mismatch in assignment
+Warning[2066] ../../../blinktest.c 302 : type qualifier mismatch in assignment
+Warning[2066] ../../../blinktest.c 304 : type qualifier mismatch in assignment
+Warning[2065] ../../../blinktest.c 380 : static function 'dummy_putch' never referenced

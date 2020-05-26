@@ -6,5 +6,14 @@
             <file>file:/home/roman/Dokumente/Sources/pictest/blinktest.c</file>
             <file>file:/home/roman/Dokumente/Sources/pictest/src/config-18f25k50.h</file>
         </group>
+        <group name="htc">
+            <file>file:/home/roman/Dokumente/Sources/pictest/lib/device.h</file>
+            <file>file:/home/roman/Dokumente/Sources/pictest/lib/interrupt.h</file>
+            <file>file:/home/roman/Dokumente/Sources/pictest/blinktest.c</file>
+            <file>file:/home/roman/Dokumente/Sources/pictest/lib/softpwm.c</file>
+            <file>file:/home/roman/Dokumente/Sources/pictest/lib/timer.c</file>
+            <file>file:/home/roman/Dokumente/Sources/pictest/lib/timer.h</file>
+            <file>file:/home/roman/Dokumente/Sources/pictest/lib/ser.c</file>
+        </group>
     </open-files>
 </project-private>
