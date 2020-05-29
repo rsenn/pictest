@@ -143,10 +143,11 @@ blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1
 #blinktest_DEFS += -DUSE_UART=1
 
 seg7test_SOURCES = 7segtest.c  lib/timer.c lib/random.c lib/ser.c lib/uart.c
+seg7test_DEFS += -DUSE_7SEGMENT=1
 seg7test_DEFS += -DUSE_TIMER0=1
-seg7test_DEFS += -DUSE_TIMER1=1
-seg7test_DEFS += -DUSE_TIMER2=1
-seg7test_DEFS += -DUSE_UART=1
+#seg7test_DEFS += -DUSE_TIMER1=1
+#seg7test_DEFS += -DUSE_TIMER2=1
+seg7test_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=0
 ifeq ($(CHIP),$(subst 18f,,$(CHIP)))
 
 seg7test_CCVER = 9.83
