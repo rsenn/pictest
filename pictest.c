@@ -52,11 +52,11 @@ static const char buttons[6] = { ' ', '-', 'D', '+', 'U', '!' };
 #endif
 
 #if NO_PORTB
-#define BUTTON_PORT PORTA
+#define BUTTON_PORT LATA
 #define BUTTON_SHIFT 0
 #define BUTTON_MASK 0b11110000
 #else
-#define BUTTON_PORT PORTB
+#define BUTTON_PORT LATB
 #define BUTTON_SHIFT 4
 #define BUTTON_MASK 0b00001111
 #endif
@@ -116,7 +116,7 @@ main() {
   in_word[4] = 0;
 
 #if 0 // def HAVE_COMPARATOR
-  CMCONbits.CM = 0b111;          //Disable PORTA Comparators
+  CMCONbits.CM = 0b111;          //Disable LATA Comparators
 #endif
 #if !NO_PORTB
 #ifndef nRBPU
@@ -527,7 +527,7 @@ buttons_get() {
 
   delay_ms(BSTRB_DELAY);
 
-  bits = ~PORTB;
+  bits = ~LATB;
   bits >>= BUTTON_SHIFT;
   bits &= BUTTON_MASK;
 
@@ -627,7 +627,7 @@ INTERRUPT_HANDLER() {
 
 #if 0 // def PORTB_BUTTONS
   if(RBIF) {
-    button_state |= (~PORTB)& (BUTTON_A | BUTTON_B | BUTTON_C | BUTTON_D);
+    button_state |= (~LATB)& (BUTTON_A | BUTTON_B | BUTTON_C | BUTTON_D);
     RBIF = 0;
   }
 #endif

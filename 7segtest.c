@@ -1,3 +1,4 @@
+#include "lib/device.h"
 #include "lib/adc.h"
 #include "lib/comparator.h"
 #include "lib/const.h"
@@ -177,9 +178,11 @@ main() {
   TRISC4 = TRISC5 = INPUT;
 #endif
 
+#if !NO_PORTC
   TRISC &= 0b11110000;
   PORTC |= 0b1111;
-
+#endif
+  
 #if !NO_PORTB
   // nRBPU = 0; // enable portb pull-ups
 
@@ -196,9 +199,10 @@ main() {
   TIMER0_INTERRUPT_ENABLE();
 #endif
 
-  TRISA &= ~0b00101000;
-  PORTA |= 0b00101000;
+ // TRISA &= ~0b00101000;
+ // PORTA |= 0b00101000;
 
+ INIT_LED();
   LED_TRIS();
 
   LED_OFF();

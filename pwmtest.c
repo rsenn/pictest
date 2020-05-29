@@ -56,7 +56,7 @@ void
 main(void) {
   ticks = 0xff;
   index = 0;
-  CMCON = 0b111; /** Disable comparators.  NEEDED FOR NORMAL PORTA
+  CMCON = 0b111; /** Disable comparators.  NEEDED FOR NORMAL LATA
                   *  BEHAVIOR ON PIC16f628a!
                   */
   TRISC2 = OUTPUT;

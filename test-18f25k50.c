@@ -21,7 +21,7 @@
 #pragma config WDTEN = OFF   // WDT disabled in hardware (SWDTEN ignored)
 #pragma config WDTPS = 32768 // Watchdog Timer Postscaler 1:32768
 #pragma config CCP2MX = RB3  // CCP2 input/output is multiplexed with RB3
-#pragma config PBADEN = OFF  // PORTB<5:0> pins are configured as digital I/O on Reset
+#pragma config PBADEN = OFF  // LATB<5:0> pins are configured as digital I/O on Reset
 #pragma config T3CMX = RC0   // T3CKI function is on RC0
 #pragma config SDOMX = RC7   // SDO function is on RC7
 #pragma config MCLRE = ON    // MCLR pin enabled; RE3 input disabled

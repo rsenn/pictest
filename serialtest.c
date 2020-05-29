@@ -109,9 +109,9 @@ main() {
 #if !NO_PORTB
   nRBPU = 1;
 // TRISB &= 0;
-// PORTB |= 0xff;
+// LATB |= 0xff;
 #endif
-  PORTA = 0;
+  LATA = 0;
 
 #if HAVE_ADC
   ADON = 1;

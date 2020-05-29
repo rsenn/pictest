@@ -30,7 +30,7 @@ main(void) {
   OSCCON = 0x7f;
   TRISC = 0x0000;
 
-  PORTC = 0x55;
+  LATC = 0x55;
   delay_some(30);
 
   TRISA = 0x000f;      // USE A3-A0 for ADC input
@@ -53,9 +53,9 @@ main(void) {
   CTMUCONH = 0b00000000;   // CTMU not enabled
   CTMUCONHbits.CTMUEN = 1; // Enable the CTMU
 
-  PORTC = 0xaa;
+  LATC = 0xaa;
   delay_some(30);
-  PORTC = 0xff;
+  LATC = 0xff;
   delay_some(30);
   // ******* Check touch off value **********
   touchoff_value[0] = ReadCTMU(0) / 4; // dummy read
@@ -74,7 +74,7 @@ main(void) {
         led |= 0x10;
       }
     }
-    PORTC = ~led;
+    LATC = ~led;
   }
 }
 

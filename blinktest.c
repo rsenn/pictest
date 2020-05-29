@@ -22,10 +22,10 @@
 #include <math.h>
 
 #if NO_PORTB
-#define BUTTON_PORT PORTA
+#define BUTTON_PORT LATA
 #define BUTTON_SHIFT 0
 #else
-#define BUTTON_PORT PORTB
+#define BUTTON_PORT LATB
 #define BUTTON_SHIFT 4
 #endif
 
@@ -156,7 +156,7 @@ main() {
 #if HAVE_COMPARATOR
   comparator_disable();
 // CMCONbits.CON = 0;
-//  CMCON = 0b111;          //Disable PORTA Comparators
+//  CMCON = 0b111;          //Disable LATA Comparators
 #endif
 
 #if !NO_PORTB

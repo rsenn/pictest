@@ -34,10 +34,10 @@ __CONFIG(CONFIG_WORD);
 volatile uint8_t button_state = 0;
 
 #if NO_PORTB
-#define BUTTON_PORT PORTA
+#define BUTTON_PORT LATA
 #define BUTTON_SHIFT 0
 #else
-#define BUTTON_PORT PORTB
+#define BUTTON_PORT LATB
 #define BUTTON_SHIFT 4
 #endif
 #endif
@@ -64,7 +64,7 @@ buttons_get() {
 
   delay_ms(BSTRB_DELAY);
 
-  bits = ~PORTB;
+  bits = ~LATB;
   bits >>= BUTTON_SHIFT;
   bits &= BUTTON_MASK;
 
@@ -113,7 +113,7 @@ INTERRUPT_HANDLER() {
   }*/
 #if 0 // def PORTB_BUTTONS
   if(RBIF) {
-    button_state |= (~PORTB) & (BUTTON_A | BUTTON_B | BUTTON_C | BUTTON_D);
+    button_state |= (~LATB) & (BUTTON_A | BUTTON_B | BUTTON_C | BUTTON_D);
     RBIF = 0;
   }
 #endif
@@ -215,7 +215,7 @@ main() {
   LED_TRIS();
   LED_ON();
 
-  CMCON = 0b111; // Disable PORTA Comparators
+  CMCON = 0b111; // Disable LATA Comparators
 
   nRBPU = 1; // pull-ups
 
@@ -316,7 +316,7 @@ main() {
   RC0 = LOW;
   RC1 = HIGH;
   /*  TRISC &= ~0b1011;
-    PORTC &= ~0b1011;
+    LATC &= ~0b1011;
     TRISC |= 0b0100;
   */
 

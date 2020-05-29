@@ -28,7 +28,7 @@ putch(uint8_t ch) {
 
 void
 main() {
-  PORTC = 0xff; // Pull up the inputs to High
+  LATC = 0xff; // Pull up the inputs to High
   uart_init();
   DelayMs(50);
   Capture_init(); // Input capture utility in Pic micro Enabled
