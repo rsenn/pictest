@@ -70,9 +70,9 @@ $(OBJDIR)7segment.o $(OBJDIR)adc.o $(OBJDIR)buffer.o $(OBJDIR)comparator.o $(OBJ
 	$(SDCC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 
-$(OBJDIR)ser.o: CPPFLAGS += -DUSE_SER=1
-$(OBJDIR)softser.o: CPPFLAGS += -DUSE_SOFTSER=1
-$(OBJDIR)softpwm.o: CPPFLAGS += -DUSE_SOFTPWM=1
+#$(OBJDIR)ser.o: CPPFLAGS += -DUSE_SER=1
+#$(OBJDIR)softser.o: CPPFLAGS += -DUSE_SOFTSER=1
+#$(OBJDIR)softpwm.o: CPPFLAGS += -DUSE_SOFTPWM=1
 
 
 
