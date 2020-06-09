@@ -7,7 +7,6 @@ Desktop="Desktop"
 
 [Globals]
 AutoSaveProject=1
-UsedLibrary="/home/roman/Sources/an-tronics/eagle/lbr/d.lbr"
 UsedLibrary="/home/roman/eagle/an-tronics/lbr/2n918.lbr"
 UsedLibrary="/home/roman/eagle/an-tronics/lbr/ECM.lbr"
 UsedLibrary="/home/roman/eagle/an-tronics/lbr/battery.lbr"
@@ -23,11 +22,12 @@ UsedLibrary="/home/roman/eagle/an-tronics/lbr/pinconn.lbr"
 UsedLibrary="/home/roman/eagle/an-tronics/lbr/r.lbr"
 UsedLibrary="/home/roman/eagle/an-tronics/lbr/sw.lbr"
 UsedLibrary="/home/roman/eagle/an-tronics/lbr/t.lbr"
+UsedLibrary="/home/roman/Sources/an-tronics/eagle/lbr/d.lbr"
 
 [Win_1]
 Type="Board Editor"
-Loc="-3 0 1916 991"
-State=3
+Loc="0 0 1919 991"
+State=1
 Number=1
 File="/home/roman/eagle/an-tronics/Headphone-Amplifier-ClassAB-alt.brd"
 View="10.8442 -3.08626 41.5712 29.3"
@@ -72,8 +72,8 @@ Layer=16
 
 [Win_2]
 Type="Schematic Editor"
-Loc="56 152 1709 1033"
-State=0
+Loc="56 134 1709 1015"
+State=2
 Number=3
 File="/home/roman/eagle/an-tronics/Headphone-Amplifier-ClassAB-alt.sch"
 View="-8.07801 21.4537 117 101.186"
@@ -115,6 +115,7 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=91
+Views=" 1: -8.07801 21.4537 117 101.186"
 Sheet="1"
 
 [Win_3]
