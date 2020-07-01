@@ -39,7 +39,7 @@
         <itemPath>../../../lib/timer.c</itemPath>
         <itemPath>../../../lib/uart.c</itemPath>
       </logicalFolder>
-      <itemPath>../../../blinktest.c</itemPath>
+      <itemPath>../../../7segtest.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -55,7 +55,7 @@
     <conf name="debug" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>PIC18F25K22</targetDevice>
+        <targetDevice>PIC18F25K50</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
@@ -75,7 +75,7 @@
         </archiverTool>
         <loading>
           <useAlternateLoadableFile>false</useAlternateLoadableFile>
-          <parseOnProdLoad>true</parseOnProdLoad>
+          <parseOnProdLoad>false</parseOnProdLoad>
           <alternateLoadableFile></alternateLoadableFile>
         </loading>
         <subordinates>
@@ -96,7 +96,7 @@
         <property key="default-bitfield-type" value="true"/>
         <property key="default-char-type" value="true"/>
         <property key="define-macros"
-                  value="__18f25k22=1;XTAL_FREQ=20000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=1;USE_SOFTPWM=1;USE_SOFTSER=1;HAVE_COMPARATOR=1;DEBUG=1;__DEBUG=1"/>
+                  value="__18f25k50=1;XTAL_FREQ=20000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=1;USE_SOFTPWM=1;USE_SOFTSER=1;HAVE_COMPARATOR=1;DEBUG=1"/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
                   value="../../..;../../../lib;../../../src;../../../"/>
@@ -122,8 +122,9 @@
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
         <property key="verbose" value="true"/>
-        <property key="warning-level" value="3"/>
+        <property key="warning-level" value="-3"/>
         <property key="what-to-do" value="ignore"/>
+        <appendMe value="-G"/>
       </HI-TECH-COMP>
       <HI-TECH-LINK>
         <property key="additional-options-checksum" value=""/>
@@ -262,7 +263,7 @@
     <conf name="release" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>PIC18F25K22</targetDevice>
+        <targetDevice>PIC18F14K50</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
@@ -303,7 +304,7 @@
         <property key="default-bitfield-type" value="true"/>
         <property key="default-char-type" value="true"/>
         <property key="define-macros"
-                  value="__18f25k22=1;XTAL_FREQ=20000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=1;USE_SOFTPWM=1;USE_SOFTSER=1;HAVE_COMPARATOR=1;NDEBUG=1"/>
+                  value="__18f14k50=1;XTAL_FREQ=20000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=1;USE_SOFTPWM=1;USE_SOFTSER=1;HAVE_COMPARATOR=1;NDEBUG=1;USE_7SEGMENT=1"/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
                   value="../../..;../../../lib;../../../src"/>

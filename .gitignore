@@ -41,3 +41,5 @@ bin*
 /build/mplabx-pic18/seg7test_18f25k50_sdcc.X/dist/
 /build/mplabx-pic18/seg7test_18f25k50_xc8.X/build/
 /build/mplabx-pic18/seg7test_18f25k50_xc8.X/dist/
+/build/mplabx-pic18/seg7test_18f14k50_xc8.X/build/
+/build/mplabx-pic18/seg7test_18f14k50_xc8.X/dist/
