@@ -19,7 +19,7 @@
 #include "lib/softser.h"
 #endif
 
-#include "config-bits.h"
+#include "src/config-bits.h"
 
 #include <math.h>
 
@@ -119,7 +119,7 @@ set_number(uint16_t n) {
 //-----------------------------------------------------------------------------
 // Interrupt handling routine
 //-----------------------------------------------------------------------------
-INTERRUPT_HANDLER() {
+void interrupt isr() {
   // SOFTPWM_ISR();
   /*
     if(TMR1IF) {
@@ -192,12 +192,10 @@ main() {
 
 #endif
 
-#if 1 // HAVE_TIMER_0 && USE_TIMER0
   timer0_init(PRESCALE_1_4);
 
   TIMER0_INTERRUPT_CLEAR();
   TIMER0_INTERRUPT_ENABLE();
-#endif
 
  // TRISA &= ~0b00101000;
  // PORTA |= 0b00101000;
