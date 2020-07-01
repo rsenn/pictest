@@ -7,6 +7,8 @@
 #include "lib/random.h"
 #include "lib/softpwm.h"
 #include "lib/timer.h"
+#include "lib/7segment.h"
+#include "lib/format.h"
 #include "src/pictest.h"
 
 #if USE_UART
@@ -23,12 +25,12 @@
 
 #include <math.h>
 
-#if NO_PORTB
-#define BUTTON_PORT PORTA
-#define BUTTON_SHIFT 0
-#else
-#define BUTTON_PORT PORTB
+#if 1
+#define BUTTON_PORT PORTC
 #define BUTTON_SHIFT 4
+#else
+#define BUTTON_PORT PORTC
+#define BUTTON_SHIFT 0
 #endif
 
 #define BUTTON_GET() ((~(BUTTON_PORT)) >> BUTTON_SHIFT)
@@ -73,6 +75,7 @@ volatile char display_index = 0;
 
 extern const uint16_t rainbow[64];
 extern const uint8_t rainbow8[64][3];
+volatile uint8_t button_state;
 
 static void
 dummy_putch(char c) {}
@@ -148,6 +151,7 @@ isr() {
 
   if(TIMER0_INTERRUPT_FLAG) {
     bres += 256 * 4;
+    uint8_t display_bit = 1 << display_index;
 
     if(bres >= 5000) {
       bres -= 5000;
@@ -156,7 +160,14 @@ isr() {
 
       PORTC |= 0b1111;
       PORTB = display_bits[display_index];
-      PORTC = ~(1 << display_index);
+      PORTC = ~display_bit;
+
+      {
+        uint8_t button_bit = (!BUTTON_PIN) << display_index;
+        if(button_bit)
+          button_state |= button_bit;
+      }
+
       ++display_index;
       display_index &= 3;
     }
@@ -177,7 +188,6 @@ main() {
   uint8_t index, seconds;
   static BOOL led_state = 0;
   // static uint8_t prev_index = 0, prev_seconds = 0;
-  char input;
   uint32_t interval = 1000;
   uint16_t number = 0;
 
@@ -214,6 +224,7 @@ main() {
 
   // TRISA &= ~0b00101000;
   // PORTA |= 0b00101000;
+  //
 
   INIT_LED();
   LED_TRIS();
@@ -223,6 +234,9 @@ main() {
 #if USE_SER
   ser_init();
 #endif
+
+  TRISC |= 1 << BUTTON_SHIFT;
+//  BUTTON_TRIS = 1;
 
   INTERRUPT_ENABLE();
 
@@ -234,42 +248,56 @@ main() {
   display_bits[3] = digits[4];
   for(;;) {
 
-    /*static float hue = 0;
-    static int i = 0;*/
-
-    INTERRUPT_DISABLE();
-    tmp_msecs = msecs;
-    INTERRUPT_ENABLE();
-
-    /*
-     if(tmp_msecs > last_button + 200) {
-
-          uint8_t b = BUTTON_GET();
-
-          if(b & B_PLUS)
-            input = '+';
-          else if(b & B_MINUS)
-            input = '-';
-          else if(b & B_LEFT)
-            input = ' ';
-          else if(b & B_RIGHT)
-            input = '\n';
-
-          if(b & 0b1111) {
-            last_button = tmp_msecs;
-          }
-        }
-    */
-
-    if(ser_isrx()) {
-      uint16_t num;
-      char n = scan_ushort(&ser_getch, &num);
-
-      number = num;
-      set_number(num);
-    }
-
     if(run) {
+
+      /*static float hue = 0;
+      static int i = 0;*/
+
+      INTERRUPT_DISABLE();
+      tmp_msecs = msecs;
+      INTERRUPT_ENABLE();
+
+      if(tmp_msecs > last_button + 300) {
+
+        uint8_t b;
+          char input=0;
+
+        INTERRUPT_DISABLE();
+        b = button_state;
+        INTERRUPT_ENABLE();
+
+        if(b & B_PLUS) {
+          input = '+';
+        } else if(b & B_MINUS) {
+          input = '-';
+        } else if(b & B_LEFT) {
+          input = ' ';
+        } else if(b & B_RIGHT) {
+          input = '\n';
+        }
+
+
+        if(input) {
+         // ser_puts("input = ");
+          ser_puthex(input);
+           ser_puts("@");
+          format_number(&ser_putch, tmp_msecs,10,0);
+          ser_puts("\r\n");
+        }
+           INTERRUPT_DISABLE();
+        button_state&= ~b;
+        INTERRUPT_ENABLE();
+        last_button = tmp_msecs;
+
+      }
+
+      if(ser_isrx()) {
+        uint16_t num;
+        char n = scan_ushort(&ser_getch, &num);
+
+        number = num;
+        set_number(num);
+      }
 
       if(tmp_msecs >= prev_hsecs + interval) {
 
