@@ -78,6 +78,7 @@ static void
 dummy_putch(char c) {}
 
 typedef void(putch_fn)(char);
+typedef uint8_t(getch_fn)(void);
 
 putch_fn* put_char =
 #if USE_UART
@@ -91,10 +92,23 @@ putch_fn* put_char =
 // void put_number(putch_fn* putc, uint16_t n, uint8_t base, int8_t pad/*, int8_t pointpos*/);
 
 void
-put_str(putch_fn* putc, const char* s)
-{
-  while (*s)
-    putc(*s++);
+put_str(putch_fn* putc, const char* s) {
+  while(*s) putc(*s++);
+}
+
+unsigned
+scan_ushort(getch_fn* getc, uint16_t* dest) {
+  char cur;
+  uint16_t l;
+  for(cur = getc(), l = 0; cur >= '0' && cur <= '9'; cur = getc()) {
+
+    uint32_t tmp = l * 10ul + cur - '0';
+    if((uint16_t)tmp != tmp)
+      break;
+    l = tmp;
+  }
+  *dest = l;
+  return cur;
 }
 
 volatile BOOL run = 0;
@@ -119,7 +133,8 @@ set_number(uint16_t n) {
 //-----------------------------------------------------------------------------
 // Interrupt handling routine
 //-----------------------------------------------------------------------------
-void interrupt isr() {
+void interrupt
+isr() {
   // SOFTPWM_ISR();
   /*
     if(TMR1IF) {
@@ -141,7 +156,7 @@ void interrupt isr() {
 
       PORTC |= 0b1111;
       PORTB = display_bits[display_index];
-      PORTC = ~(0b1000 >> display_index);
+      PORTC = ~(1 << display_index);
       ++display_index;
       display_index &= 3;
     }
@@ -163,7 +178,7 @@ main() {
   static BOOL led_state = 0;
   // static uint8_t prev_index = 0, prev_seconds = 0;
   char input;
-  uint32_t interval = 100;
+  uint32_t interval = 1000;
   uint16_t number = 0;
 
   msec_count = msecs = 0;
@@ -172,7 +187,7 @@ main() {
   run = 1;
 
   TRISA = 0b11111111;
-  //ADC_OFF();
+  // ADC_OFF();
 
 #if defined(__16f876a) || defined(__18f252)
   TRISC4 = TRISC5 = INPUT;
@@ -182,7 +197,7 @@ main() {
   TRISC &= 0b11110000;
   PORTC |= 0b1111;
 #endif
-  
+
 #if !NO_PORTB
   // nRBPU = 0; // enable portb pull-ups
 
@@ -197,10 +212,10 @@ main() {
   TIMER0_INTERRUPT_CLEAR();
   TIMER0_INTERRUPT_ENABLE();
 
- // TRISA &= ~0b00101000;
- // PORTA |= 0b00101000;
+  // TRISA &= ~0b00101000;
+  // PORTA |= 0b00101000;
 
- INIT_LED();
+  INIT_LED();
   LED_TRIS();
 
   LED_OFF();
@@ -245,6 +260,14 @@ main() {
           }
         }
     */
+
+    if(ser_isrx()) {
+      uint16_t num;
+      char n = scan_ushort(&ser_getch, &num);
+
+      number = num;
+      set_number(num);
+    }
 
     if(run) {
 
