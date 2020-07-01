@@ -89,13 +89,13 @@ putch_fn* put_char =
 #endif
     ;
 // void put_number(putch_fn* putc, uint16_t n, uint8_t base, int8_t pad/*, int8_t pointpos*/);
-/*
+
 void
 put_str(putch_fn* putc, const char* s)
 {
   while (*s)
     putc(*s++);
-}*/
+}
 
 volatile BOOL run = 0;
 volatile uint8_t msec_count = 0;
@@ -205,12 +205,13 @@ main() {
 
   LED_OFF();
 
-#ifdef PEIE
-  PEIE = 1;
+#if USE_SER
+  ser_init();
 #endif
+
   INTERRUPT_ENABLE();
 
-  //  put_str(put_char, "blinktest\r\n");
+  put_str(ser_putch, "blinktest\r\n");
 
   display_bits[0] = digits[1];
   display_bits[1] = digits[2];
