@@ -3,7 +3,7 @@
 
 #if defined(__XC) || defined(MCHP_XC8) || defined(SDCC)
 
-#pragma config FOSC = INTIO67 
+#pragma config FOSC = INTIO67
 #pragma config PLLCFG = OFF  // Oscillator used directly
 #pragma config PRICLKEN = ON // Primary clock enabled
 #pragma config FCMEN = OFF   // Fail-Safe Clock Monitor disabled
@@ -22,8 +22,8 @@
 #pragma config EBTRB = OFF
 #pragma config MCLRE = EXTMCLR
 
-#pragma config XINST=OFF
-    
+#pragma config XINST = OFF
+
 #ifdef _DEBUG
 #pragma config DEBUG = ON
 #endif

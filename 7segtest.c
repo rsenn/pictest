@@ -235,7 +235,7 @@ main() {
 #endif
 
   TRISC |= 1 << BUTTON_SHIFT;
-//  BUTTON_TRIS = 1;
+  //  BUTTON_TRIS = 1;
 
   INTERRUPT_ENABLE();
 
@@ -259,7 +259,7 @@ main() {
       if(tmp_msecs > last_button + 300) {
 
         uint8_t b;
-          char input=0;
+        char input = 0;
 
         INTERRUPT_DISABLE();
         b = button_state;
@@ -275,19 +275,17 @@ main() {
           input = '\n';
         }
 
-
         if(input) {
-         // ser_puts("input = ");
+          // ser_puts("input = ");
           ser_puthex(input);
-           ser_puts("@");
-          format_number(&ser_putch, tmp_msecs,10,0);
+          ser_puts("@");
+          format_number(&ser_putch, tmp_msecs, 10, 0);
           ser_puts("\r\n");
         }
-           INTERRUPT_DISABLE();
-        button_state&= ~b;
+        INTERRUPT_DISABLE();
+        button_state &= ~b;
         INTERRUPT_ENABLE();
         last_button = tmp_msecs;
-
       }
 
       if(ser_isrx()) {
