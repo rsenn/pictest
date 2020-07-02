@@ -12,95 +12,70 @@
 	"buffers":
 	[
 		{
-			"file": "7segtest.c",
+			"file": "lib/lcd44780.h",
 			"settings":
 			{
-				"buffer_size": 6867,
+				"buffer_size": 2235,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/roman/Dokumente/Sources/lc-meter/LC-meter.c",
+			"settings":
+			{
+				"buffer_size": 6069,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/roman/Dokumente/Sources/lc-meter/build/vars.mk",
+			"settings":
+			{
+				"buffer_size": 3630,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "xc8.mk",
+			"settings":
+			{
+				"buffer_size": 6728,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 1205 files for \"_DEFS\" (regex, case sensitive)\n\n/home/roman/Sources/pictest/bootloaders/msd-bootloader/Sample Application v1.0/Config/GenericTypeDefs.h:\n   21   ********************************************************************/\n   22  \n   23: #ifndef __GENERIC_TYPE_DEFS_H_\n   24: #define __GENERIC_TYPE_DEFS_H_\n   25  \n   26  typedef enum _BOOL { FALSE = 0, TRUE } BOOL;\n   ..\n  172  #define NULL 0\n  173  \n  174: #endif //__GENERIC_TYPE_DEFS_H_\n  175  \n\n/home/roman/Sources/pictest/bootloaders/msd-bootloader/USB MSD Boot Loader v1.0/Config/GenericTypeDefs.h:\n   21   ********************************************************************/\n   22  \n   23: #ifndef __GENERIC_TYPE_DEFS_H_\n   24: #define __GENERIC_TYPE_DEFS_H_\n   25  \n   26  typedef enum _BOOL { FALSE = 0, TRUE } BOOL;\n   ..\n  172  #define NULL 0\n  173  \n  174: #endif //__GENERIC_TYPE_DEFS_H_\n  175  \n\n/home/roman/Sources/pictest/bootloaders/usb-msd-bootloader/Sample Application v1.0/Config/GenericTypeDefs.h:\n   21   ********************************************************************/\n   22  \n   23: #ifndef __GENERIC_TYPE_DEFS_H_\n   24: #define __GENERIC_TYPE_DEFS_H_\n   25  \n   26  typedef enum _BOOL { FALSE = 0, TRUE } BOOL;\n   ..\n  172  #define NULL 0\n  173  \n  174: #endif //__GENERIC_TYPE_DEFS_H_\n  175  \n\n/home/roman/Sources/pictest/bootloaders/usb-msd-bootloader/USB MSD Boot Loader v1.0/Config/GenericTypeDefs.h:\n   21   ********************************************************************/\n   22  \n   23: #ifndef __GENERIC_TYPE_DEFS_H_\n   24: #define __GENERIC_TYPE_DEFS_H_\n   25  \n   26  typedef enum _BOOL { FALSE = 0, TRUE } BOOL;\n   ..\n  172  #define NULL 0\n  173  \n  174: #endif //__GENERIC_TYPE_DEFS_H_\n  175  \n\n12 matches across 4 files\n\n\nSearching 1792 files for \"_DEFS\" (regex, case sensitive)\n\n/home/roman/Sources/pictest/bootloaders/msd-bootloader/Sample Application v1.0/Config/GenericTypeDefs.h:\n   21   ********************************************************************/\n   22  \n   23: #ifndef __GENERIC_TYPE_DEFS_H_\n   24: #define __GENERIC_TYPE_DEFS_H_\n   25  \n   26  typedef enum _BOOL { FALSE = 0, TRUE } BOOL;\n   ..\n  172  #define NULL 0\n  173  \n  174: #endif //__GENERIC_TYPE_DEFS_H_\n  175  \n\n/home/roman/Sources/pictest/bootloaders/msd-bootloader/USB MSD Boot Loader v1.0/Config/GenericTypeDefs.h:\n   21   ********************************************************************/\n   22  \n   23: #ifndef __GENERIC_TYPE_DEFS_H_\n   24: #define __GENERIC_TYPE_DEFS_H_\n   25  \n   26  typedef enum _BOOL { FALSE = 0, TRUE } BOOL;\n   ..\n  172  #define NULL 0\n  173  \n  174: #endif //__GENERIC_TYPE_DEFS_H_\n  175  \n\n/home/roman/Sources/pictest/bootloaders/usb-msd-bootloader/Sample Application v1.0/Config/GenericTypeDefs.h:\n   21   ********************************************************************/\n   22  \n   23: #ifndef __GENERIC_TYPE_DEFS_H_\n   24: #define __GENERIC_TYPE_DEFS_H_\n   25  \n   26  typedef enum _BOOL { FALSE = 0, TRUE } BOOL;\n   ..\n  172  #define NULL 0\n  173  \n  174: #endif //__GENERIC_TYPE_DEFS_H_\n  175  \n\n/home/roman/Sources/pictest/bootloaders/usb-msd-bootloader/USB MSD Boot Loader v1.0/Config/GenericTypeDefs.h:\n   21   ********************************************************************/\n   22  \n   23: #ifndef __GENERIC_TYPE_DEFS_H_\n   24: #define __GENERIC_TYPE_DEFS_H_\n   25  \n   26  typedef enum _BOOL { FALSE = 0, TRUE } BOOL;\n   ..\n  172  #define NULL 0\n  173  \n  174: #endif //__GENERIC_TYPE_DEFS_H_\n  175  \n\n/home/roman/Sources/pictest/build/htc.mk:\n   89  \n   90  SOURCES := $(sort $($(subst -,_,$(PROGRAM))_SOURCES) $(COMMON_SOURCES))\n   91: COMMON_FLAGS += $($(subst -,_,$(PROGRAM))_DEFS)\n   92  DEPENDS := $(patsubst %.c,$(OBJDIR)%.dep,$(notdir $(SOURCES)))\n   93  P1OBJS := $(patsubst %.c,$(OBJDIR)%.p1,$(notdir $(SOURCES)))\n\n/home/roman/Sources/pictest/build/sdcc.mk:\n   43  CPPFLAGS += $(DEFINES:%=-D%)\n   44  \n   45: CPPFLAGS += $($(PROGRAM)_DEFS)\n   46  SOURCES = $($(PROGRAM)_SOURCES) $(COMMON_SOURCES)\n   47  OBJECTS = $(patsubst %.c,$(OBJDIR)%.o,$(notdir $(SOURCES)))\n\n/home/roman/Sources/pictest/build/vars.mk:\n  125  \n  126  pictest_SOURCES = pictest.c lib/delay.c lib/lcd44780.c lib/ser.c lib/softser.c  lib/uart.c lib/adc.c ledsense.c lib/timer.c lib/7segment.c #lib/onewire.c lib/ds18b20.c midi.c lib/softser.c #shell.c\n  127: pictest_DEFS +=  -DUSE_TIMER0=1 #-DUSE_UART=1\n  128  \n  129  ifneq ($(chipl),12f1840)\n  130: pictest_DEFS += -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400\n  131  endif\n  132  \n  133  pictest2_SOURCES = pictest2.c lib/adc.c lib/delay.c lib/lcd44780.c lib/ser.c lib/pwm.c lib/onewire.c lib/ds18b20.c ledsense.c  lib/timer.c\n  134: pictest2_DEFS += -DUSE_TIMER0=1\n  135  \n  136  ps2test_SOURCES = ps2test.c lib/uart.c lib/timer.c\n  137: ps2test_DEFS += -DUSE_TIMER0=1\n  138  \n  139  blinktest_SOURCES = blinktest.c lib/comparator.c lib/random.c lib/ser.c lib/softpwm.c lib/softser.c lib/timer.c lib/uart.c\n  140: blinktest_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_SOFTPWM=1\n  141: blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1\n  142: #blinktest_DEFS += -DUSE_SER=1\n  143: #blinktest_DEFS += -DUSE_UART=1\n  144  \n  145  seg7test_SOURCES = 7segtest.c  lib/7segment.c lib/timer.c lib/buffer.c lib/format.c lib/random.c lib/softser.c lib/ser.c lib/uart.c\n  146: seg7test_DEFS = -DUSE_7SEGMENT=1 -DUSE_SER=1 -DUSE_UART=1\n  147: seg7test_DEFS += -DUSE_TIMER0=1\n  148: #seg7test_DEFS += -DUSE_TIMER1=1\n  149: #seg7test_DEFS += -DUSE_TIMER2=1\n  150: #seg7test_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=0\n  151  ifeq ($(CHIP),$(subst 18f,,$(CHIP)))\n  152  \n  ...\n  155  seg7test_CCVER = 9.80\n  156  endif\n  157: #seg7test_DEFS += -DUSE_TIMER2=1 #-DUSE_TIMER1=1\n  158: #seg7test_DEFS += -DUSE_UART=1\n  159  \n  160  serialtest_SOURCES = serialtest.c lib/ser.c lib/uart.c lib/softser.c lib/lcd44780.c lib/timer.c\n  161  ifeq ($(filter 10f%,$(chipl)),)\n  162: serialtest_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_SER=1\n  163  endif\n  164  ifeq ($(filter 10f% 12f%,$(chipl)),)\n  165: serialtest_DEFS +=  -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400\n  166  endif\n  167  \n  168  pwmtest_SOURCES = pwmtest.c lib/timer.c lib/adc.c lib/pwm.c\n  169: pwmtest_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_ADCONVERTER=1 -DUSE_PWM=1\n  170  \n  171  ctmutest_SOURCES = ctmutest.c lib/timer.c\n  172: ctmutest_DEFS += -DUSE_TIMER0=1\n  173  \n  174  ctmutest2_SOURCES = ctmutest2.c lib/timer.c\n  175: ctmutest2_DEFS += -DUSE_TIMER0=1\n  176  \n  177  ringtone_SOURCES = ringtone.c lib/timer.c lib/random.c\n  178: ringtone_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1  -DAxelF=1\n  179  \n  180  \n\n/home/roman/Sources/pictest/build/xc8.mk:\n   82  \n   83  SOURCES = $($(PROGRAM)_SOURCES) $(COMMON_SOURCES)\n   84: COMMON_FLAGS += $($(PROGRAM)_DEFS)\n   85  DEPENDS := $(patsubst %.c,$(OBJDIR)%.dep,$(notdir $(SOURCES)))\n   86  P1OBJS := $(patsubst %.c,$(OBJDIR)%.p1,$(notdir $(SOURCES)))\n\n36 matches across 8 files\n\n\nSearching 1792 files for \"_DEFS =\" (regex, case sensitive)\n\n/home/roman/Sources/pictest/build/vars.mk:\n  144  \n  145  seg7test_SOURCES = 7segtest.c  lib/7segment.c lib/timer.c lib/buffer.c lib/format.c lib/random.c lib/softser.c lib/ser.c lib/uart.c\n  146: seg7test_DEFS = -DUSE_7SEGMENT=1 -DUSE_SER=1 -DUSE_UART=1\n  147  seg7test_DEFS += -DUSE_TIMER0=1\n  148  #seg7test_DEFS += -DUSE_TIMER1=1\n\n1 match in 1 file\n\n\nSearching 1792 files for \"_DEFS\\)\" (regex, case sensitive)\n\n/home/roman/Sources/pictest/build/htc.mk:\n   89  \n   90  SOURCES := $(sort $($(subst -,_,$(PROGRAM))_SOURCES) $(COMMON_SOURCES))\n   91: COMMON_FLAGS += $($(subst -,_,$(PROGRAM))_DEFS)\n   92  DEPENDS := $(patsubst %.c,$(OBJDIR)%.dep,$(notdir $(SOURCES)))\n   93  P1OBJS := $(patsubst %.c,$(OBJDIR)%.p1,$(notdir $(SOURCES)))\n\n/home/roman/Sources/pictest/build/sdcc.mk:\n   43  CPPFLAGS += $(DEFINES:%=-D%)\n   44  \n   45: CPPFLAGS += $($(PROGRAM)_DEFS)\n   46  SOURCES = $($(PROGRAM)_SOURCES) $(COMMON_SOURCES)\n   47  OBJECTS = $(patsubst %.c,$(OBJDIR)%.o,$(notdir $(SOURCES)))\n\n/home/roman/Sources/pictest/build/xc8.mk:\n   82  \n   83  SOURCES = $($(PROGRAM)_SOURCES) $(COMMON_SOURCES)\n   84: COMMON_FLAGS += $($(PROGRAM)_DEFS)\n   85  DEPENDS := $(patsubst %.c,$(OBJDIR)%.dep,$(notdir $(SOURCES)))\n   86  P1OBJS := $(patsubst %.c,$(OBJDIR)%.p1,$(notdir $(SOURCES)))\n\n3 matches across 3 files\n\n\nSearching 1792 files for \"_DEFS\\)\" (regex, case sensitive)\n\n/home/roman/Sources/pictest/build/htc.mk:\n   89  \n   90  SOURCES := $(sort $($(subst -,_,$(PROGRAM))_SOURCES) $(COMMON_SOURCES))\n   91: COMMON_FLAGS += $($(subst -,_,$(PROGRAM))_DEFS)\n   92  DEPENDS := $(patsubst %.c,$(OBJDIR)%.dep,$(notdir $(SOURCES)))\n   93  P1OBJS := $(patsubst %.c,$(OBJDIR)%.p1,$(notdir $(SOURCES)))\n\n/home/roman/Sources/pictest/build/sdcc.mk:\n   43  CPPFLAGS += $(DEFINES:%=-D%)\n   44  \n   45: CPPFLAGS += $($(PROGRAM)_DEFS)\n   46  SOURCES = $($(PROGRAM)_SOURCES) $(COMMON_SOURCES)\n   47  OBJECTS = $(patsubst %.c,$(OBJDIR)%.o,$(notdir $(SOURCES)))\n\n/home/roman/Sources/pictest/build/xc8.mk:\n   82  \n   83  SOURCES = $($(PROGRAM)_SOURCES) $(COMMON_SOURCES)\n   84: COMMON_FLAGS += $($(PROGRAM)_DEFS)\n   85  DEPENDS := $(patsubst %.c,$(OBJDIR)%.dep,$(notdir $(SOURCES)))\n   86  P1OBJS := $(patsubst %.c,$(OBJDIR)%.p1,$(notdir $(SOURCES)))\n\n3 matches across 3 files\n",
+			"settings":
+			{
+				"buffer_size": 9227,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "/home/roman/Sources/pictest/build/xc8.mk",
+			"settings":
+			{
+				"buffer_size": 5489,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "lib/7segment.h",
+			"file": "/home/roman/Sources/pictest/build/sdcc.mk",
 			"settings":
 			{
-				"buffer_size": 5910,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "bootloaders/XPRESS-Bootloader/bsp/xpress/buttons.h",
-			"settings":
-			{
-				"buffer_size": 2400,
+				"buffer_size": 2674,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "lib/buffer.h",
+			"file": "pictest.sublime-project",
 			"settings":
 			{
-				"buffer_size": 965,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "lib/ser.c",
-			"settings":
-			{
-				"buffer_size": 2746,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "lib/format.c",
-			"settings":
-			{
-				"buffer_size": 2056,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "lib/format.h",
-			"settings":
-			{
-				"buffer_size": 293,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "lib/ser.h",
-			"settings":
-			{
-				"buffer_size": 3353,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "lib/interrupt.h",
-			"settings":
-			{
-				"buffer_size": 2279,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "lib/timer.h",
-			"settings":
-			{
-				"buffer_size": 3879,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/pictest.h",
-			"settings":
-			{
-				"buffer_size": 3044,
+				"buffer_size": 1078,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -221,11 +196,22 @@
 	],
 	"file_history":
 	[
+		"/home/roman/Dokumente/Sources/pictest/7segtest.c",
+		"/home/roman/Dokumente/Sources/lc-meter/Cap-meter.c",
+		"/home/roman/Dokumente/Sources/lc-meter/build/vars.mk",
+		"/home/roman/Dokumente/Sources/lc-meter/LC-meter.c",
+		"/home/roman/Dokumente/Sources/pictest/lib/lcd44780.c",
 		"/home/roman/Dokumente/Sources/pictest/lib/7segment.h",
+		"/home/roman/Dokumente/Sources/pictest/bootloaders/XPRESS-Bootloader/bsp/xpress/buttons.h",
+		"/home/roman/Dokumente/Sources/pictest/lib/ser.c",
+		"/home/roman/Dokumente/Sources/pictest/lib/format.c",
+		"/home/roman/Dokumente/Sources/pictest/lib/format.h",
 		"/home/roman/Dokumente/Sources/pictest/lib/ser.h",
+		"/home/roman/Dokumente/Sources/pictest/lib/interrupt.h",
+		"/home/roman/Dokumente/Sources/pictest/lib/timer.h",
+		"/home/roman/Dokumente/Sources/pictest/src/pictest.h",
 		"/home/roman/Dokumente/Sources/pictest/pictest.c",
 		"/home/roman/Dokumente/Sources/pictest/blinktest.c",
-		"/home/roman/Dokumente/Sources/pictest/src/pictest.h",
 		"/home/roman/Dokumente/Sources/pictest/build/xc8.mk",
 		"/home/roman/Dokumente/Sources/plot-cv/schematic.svg",
 		"/home/roman/Sources/pictest/blinktest.c",
@@ -261,8 +247,6 @@
 		"/opt/microchip/xc8/v1.45/include/pic16f876a.h",
 		"/home/roman/Dokumente/Sources/pictest/lib/queue.c",
 		"/home/roman/Dokumente/Sources/pictest/blinktest.pp.c",
-		"/home/roman/Dokumente/Sources/pictest/lib/interrupt.h",
-		"/home/roman/Dokumente/Sources/pictest/lib/timer.h",
 		"/home/roman/Dokumente/Sources/pictest/pictest.sublime-project",
 		"/home/roman/Dokumente/Sources/pictest/scripts/eagle2svg.sh",
 		"/home/roman/Dokumente/Sources/pictest/lib/htc.ninja",
@@ -272,7 +256,6 @@
 		"/home/roman/Dokumente/Sources/pictest/Makefile",
 		"/home/roman/Dokumente/Sources/pictest/lib/timer.c",
 		"/home/roman/Dokumente/Sources/pictest/lib/ports.h",
-		"/home/roman/Dokumente/Sources/pictest/7segtest.c",
 		"/home/roman/Dokumente/Sources/pic-softser/SoftUART_PIC16F/Software_UART.h",
 		"/home/roman/Dokumente/Sources/pic-softser/16f-softuart--20MHZ/main.c",
 		"/home/roman/Dokumente/Sources/pic-softser/SoftUART_PIC16F/Software_UART.c",
@@ -340,25 +323,18 @@
 		"/C/Users/roman/Documents/dirlist/lib/strlist_dump.c",
 		"/C/Users/roman/Documents/dirlist/lib/strlist_pushb.c",
 		"/C/Users/roman/Documents/dirlist/lib/strlist_at.c",
-		"/C/Users/roman/Documents/dirlist/lib/strlist.h",
-		"/C/Users/roman/Documents/dirlist/lib/stralloc_init.c",
-		"/C/Users/roman/Documents/dirlist/lib/strlist_push_sa.c",
-		"/C/Users/roman/Documents/dirlist/lib/strlist_push.c",
-		"/C/Users/roman/Documents/dirlist/lib/strlist_pushsa.c",
-		"/C/Users/roman/Documents/dirlist/lib/strlist_index_of.c",
-		"/C/Users/roman/Documents/dirlist/lib/strlist_count.c",
-		"/C/Users/roman/Documents/dirlist/lib/strlist_append.c",
-		"/C/Users/roman/Documents/dirlist/lib/buffer_dump.c"
+		"/C/Users/roman/Documents/dirlist/lib/strlist.h"
 	],
 	"find":
 	{
-		"height": 47.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
 		"height": 142.0,
 		"where_history":
 		[
+			"/home/roman/Sources/pictest,*.c,*.h,*.mk",
 			"/home/roman/Sources/pictest,*.c,*.h",
 			""
 		]
@@ -368,6 +344,11 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"_DEFS\\)",
+			"_DEFS =",
+			"_DEFS",
+			"-\n",
+			"--",
 			"BUTTON_TRIST",
 			"input",
 			"200",
@@ -490,12 +471,7 @@
 			"number",
 			"USE_HD44780_LCD",
 			"TRISA",
-			"RA",
-			"def",
-			"chipl",
-			":65",
-			"BUILDDIR",
-			"-I"
+			"RA"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -545,32 +521,116 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "7segtest.c",
+					"file": "lib/lcd44780.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6867,
+						"buffer_size": 2235,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1763,
+								1763
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/User/SchemeEditorTemp/Horizon Contrast (rainglow).tmTheme",
+							"syntax": "Packages/C99/C99.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1350.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/roman/Dokumente/Sources/lc-meter/LC-meter.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6069,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								150,
+								150
+							]
+						],
+						"settings":
+						{
 							"syntax": "Packages/C99/C99.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/roman/Dokumente/Sources/lc-meter/build/vars.mk",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3630,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3630,
+								3630
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2359.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "xc8.mk",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6728,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								299,
+								299
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -580,293 +640,354 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "lib/7segment.h",
+					"buffer": 4,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5910,
+						"buffer_size": 9227,
 						"regions":
 						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										278,
+										283
+									],
+									[
+										316,
+										321
+									],
+									[
+										451,
+										456
+									],
+									[
+										690,
+										695
+									],
+									[
+										728,
+										733
+									],
+									[
+										863,
+										868
+									],
+									[
+										1105,
+										1110
+									],
+									[
+										1143,
+										1148
+									],
+									[
+										1278,
+										1283
+									],
+									[
+										1521,
+										1526
+									],
+									[
+										1559,
+										1564
+									],
+									[
+										1694,
+										1699
+									],
+									[
+										2018,
+										2023
+									],
+									[
+										2056,
+										2061
+									],
+									[
+										2191,
+										2196
+									],
+									[
+										2430,
+										2435
+									],
+									[
+										2468,
+										2473
+									],
+									[
+										2603,
+										2608
+									],
+									[
+										2845,
+										2850
+									],
+									[
+										2883,
+										2888
+									],
+									[
+										3018,
+										3023
+									],
+									[
+										3261,
+										3266
+									],
+									[
+										3299,
+										3304
+									],
+									[
+										3434,
+										3439
+									],
+									[
+										3629,
+										3634
+									],
+									[
+										3893,
+										3898
+									],
+									[
+										4295,
+										4300
+									],
+									[
+										4388,
+										4393
+									],
+									[
+										4636,
+										4641
+									],
+									[
+										4740,
+										4745
+									],
+									[
+										4918,
+										4923
+									],
+									[
+										4989,
+										4994
+									],
+									[
+										5064,
+										5069
+									],
+									[
+										5102,
+										5107
+									],
+									[
+										5286,
+										5291
+									],
+									[
+										5351,
+										5356
+									],
+									[
+										5391,
+										5396
+									],
+									[
+										5431,
+										5436
+									],
+									[
+										5471,
+										5476
+									],
+									[
+										5630,
+										5635
+									],
+									[
+										5686,
+										5691
+									],
+									[
+										5875,
+										5880
+									],
+									[
+										6000,
+										6005
+									],
+									[
+										6169,
+										6174
+									],
+									[
+										6327,
+										6332
+									],
+									[
+										6426,
+										6431
+									],
+									[
+										6535,
+										6540
+									],
+									[
+										6744,
+										6749
+									],
+									[
+										7183,
+										7190
+									],
+									[
+										7570,
+										7576
+									],
+									[
+										7834,
+										7840
+									],
+									[
+										8108,
+										8114
+									],
+									[
+										8518,
+										8524
+									],
+									[
+										8782,
+										8788
+									],
+									[
+										9056,
+										9062
+									]
+								],
+								"scope": ""
+							}
 						},
 						"selection":
 						[
 							[
-								3011,
-								3011
+								9052,
+								9052
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C99/C99.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 5,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2200.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "bootloaders/XPRESS-Bootloader/bsp/xpress/buttons.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2400,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C99/C99.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 961.0,
+						"translation.y": 5725.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "lib/buffer.h",
-					"semi_transient": true,
+					"buffer": 5,
+					"file": "/home/roman/Sources/pictest/build/xc8.mk",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 965,
+						"buffer_size": 5489,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								847,
-								847
+								1334,
+								1334
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C99/C99.tmLanguage"
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 280.0,
+						"translation.y": 1641.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/home/roman/Sources/pictest/build/sdcc.mk",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2674,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								769,
+								769
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 666.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "lib/ser.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2746,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1426,
-								1426
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C99/C99.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3009.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "lib/format.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2056,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2034,
-								2034
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C99/C99.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "lib/format.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 293,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								245,
-								245
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C99/C99.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
 					"buffer": 7,
-					"file": "lib/ser.h",
+					"file": "pictest.sublime-project",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3353,
+						"buffer_size": 1078,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3036,
-								3036
+								897,
+								897
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C99/C99.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/sublime-better-javascript/JSON.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1720.0,
+						"translation.y": 26.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "lib/interrupt.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2279,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								160,
-								160
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C99/C99.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "lib/timer.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3879,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2874,
-								2874
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C99/C99.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 3637.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "src/pictest.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3044,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1087,
-								1087
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C99/C99.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1400.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
 					"type": "text"
 				}
 			]
@@ -928,6 +1049,18 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"xc8",
+				"xc8.mk"
+			],
+			[
+				"lcd44",
+				"lib/lcd44780.h"
+			],
+			[
+				"44780",
+				"lib/lcd44780.c"
+			],
 			[
 				"format.h",
 				"lib/format.h"
