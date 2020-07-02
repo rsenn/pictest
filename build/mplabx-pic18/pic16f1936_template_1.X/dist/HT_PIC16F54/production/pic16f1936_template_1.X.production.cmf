@@ -11,13 +11,13 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
-cinit CODE 0 A A A 2
-intentry CODE 0 4 4 4 2
-$/tmp/xcXOwSfda.obj
+$/tmp/xcXVT7WLY.obj
 reset_vec CODE 0 0 0 2 2
 end_init CODE 0 8 8 2 2
 config CONFIG 0 8007 8007 2 2
+$dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
+cinit CODE 0 A A A 2
+intentry CODE 0 4 4 4 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -99,12 +99,12 @@ STRING 14-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
-A cinit CODE >3374:/tmp/xcXv3Us69
-A cinit CODE >3377:/tmp/xcXv3Us69
-A cinit CODE >3383:/tmp/xcXv3Us69
-A cinit CODE >3385:/tmp/xcXv3Us69
-B cinit CODE >3386:/tmp/xcXv3Us69
-C cinit CODE >3387:/tmp/xcXv3Us69
+A cinit CODE >3374:/tmp/xcXyNZCKu
+A cinit CODE >3377:/tmp/xcXyNZCKu
+A cinit CODE >3383:/tmp/xcXyNZCKu
+A cinit CODE >3385:/tmp/xcXyNZCKu
+B cinit CODE >3386:/tmp/xcXyNZCKu
+C cinit CODE >3387:/tmp/xcXyNZCKu
 D cinit CODE >27:/home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/main.c
 D cinit CODE >29:/home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/main.c
 F cinit CODE >32:/home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic16f1936_template_1.X/main.c
@@ -136,19 +136,19 @@ __Hspace_3 0 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __CFG_MCLRE$ON 0 0 ABS 0 - dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack /tmp/xcXOwSfda.obj
+___sp 0 0 STACK 2 stack /tmp/xcXVT7WLY.obj
 _main 1A 0 CODE 0 cinit dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
 btemp 7E 0 ABS 0 - dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
-start 10 0 CODE 0 init /tmp/xcXOwSfda.obj
+start 10 0 CODE 0 init /tmp/xcXVT7WLY.obj
 __size_of_main 0 0 ABS 0 - dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
 __Hpowerup 0 0 CODE 0 powerup -
 __end_of_ConfigureOscillator 26 0 CODE 0 cinit dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
-intlevel0 0 0 ENTRY 0 functab /tmp/xcXOwSfda.obj
-intlevel1 0 0 ENTRY 0 functab /tmp/xcXOwSfda.obj
-intlevel2 0 0 ENTRY 0 functab /tmp/xcXOwSfda.obj
-intlevel3 0 0 ENTRY 0 functab /tmp/xcXOwSfda.obj
-intlevel4 0 0 ENTRY 0 functab /tmp/xcXOwSfda.obj
-intlevel5 0 0 ENTRY 0 functab /tmp/xcXOwSfda.obj
+intlevel0 0 0 ENTRY 0 functab /tmp/xcXVT7WLY.obj
+intlevel1 0 0 ENTRY 0 functab /tmp/xcXVT7WLY.obj
+intlevel2 0 0 ENTRY 0 functab /tmp/xcXVT7WLY.obj
+intlevel3 0 0 ENTRY 0 functab /tmp/xcXVT7WLY.obj
+intlevel4 0 0 ENTRY 0 functab /tmp/xcXVT7WLY.obj
+intlevel5 0 0 ENTRY 0 functab /tmp/xcXVT7WLY.obj
 _InitApp 26 0 CODE 0 cinit dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
 wtemp0 7E 0 ABS 0 - dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -157,7 +157,7 @@ __Hpa_nodes0 0 0 ABS 0 pa_nodes0 -
 __Lmaintext 0 0 ABS 0 maintext -
 __Lpa_nodes0 0 0 ABS 0 pa_nodes0 -
 start_initialization 14 0 CODE 0 cinit dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
-___int_sp 0 0 STACK 2 stack /tmp/xcXOwSfda.obj
+___int_sp 0 0 STACK 2 stack /tmp/xcXVT7WLY.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -293,7 +293,7 @@ _isr 8 0 CODE 0 intentry dist/HT_PIC16F54/production/pic16f1936_template_1.X.pro
 __end_of_isr 10 0 CODE 0 intentry dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
 __CFG_BOREN$ON 0 0 ABS 0 - dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec /tmp/xcXOwSfda.obj
+reset_vec 0 0 CODE 0 reset_vec /tmp/xcXVT7WLY.obj
 __CFG_FCMEN$ON 0 0 ABS 0 - dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
 __size_of_InitApp 0 0 ABS 0 - dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
 __Lbank10 0 0 BANK10 1 bank10 -
@@ -327,8 +327,8 @@ __CFG_CP$OFF 0 0 ABS 0 - dist/HT_PIC16F54/production/pic16f1936_template_1.X.pro
 __CFG_IESO$ON 0 0 ABS 0 - dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
 __CFG_VCAPEN$OFF 0 0 ABS 0 - dist/HT_PIC16F54/production/pic16f1936_template_1.X.production.obj
-stackhi 21EF 0 ABS 0 - /tmp/xcXOwSfda.obj
-stacklo 2000 0 ABS 0 - /tmp/xcXOwSfda.obj
+stackhi 21EF 0 ABS 0 - /tmp/xcXVT7WLY.obj
+stacklo 2000 0 ABS 0 - /tmp/xcXVT7WLY.obj
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -

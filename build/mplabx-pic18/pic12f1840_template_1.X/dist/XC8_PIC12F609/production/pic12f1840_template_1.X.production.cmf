@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$/tmp/xcXTVLRVA.obj
+$/tmp/xcXtWb4S7.obj
 reset_vec CODE 0 0 0 2 2
 end_init CODE 0 D D 2 2
 config CONFIG 0 8007 8007 2 2
@@ -95,12 +95,12 @@ STRING 1C-FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
-F cinit CODE >2434:/tmp/xcXSXaKbQ
-F cinit CODE >2437:/tmp/xcXSXaKbQ
-F cinit CODE >2443:/tmp/xcXSXaKbQ
-F cinit CODE >2445:/tmp/xcXSXaKbQ
-10 cinit CODE >2446:/tmp/xcXSXaKbQ
-11 cinit CODE >2447:/tmp/xcXSXaKbQ
+F cinit CODE >2434:/tmp/xcXQJbeuN
+F cinit CODE >2437:/tmp/xcXQJbeuN
+F cinit CODE >2443:/tmp/xcXQJbeuN
+F cinit CODE >2445:/tmp/xcXQJbeuN
+10 cinit CODE >2446:/tmp/xcXQJbeuN
+11 cinit CODE >2447:/tmp/xcXQJbeuN
 4 intentry CODE >24:/home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic12f1840_template_1.X/interrupts.c
 9 intentry CODE >49:/home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic12f1840_template_1.X/interrupts.c
 1B text2 CODE >19:/home/roman/Dokumente/Sources/pictest/build/mplabx-pic18/pic12f1840_template_1.X/system.c
@@ -135,20 +135,20 @@ __Hstrings 0 0 ABS 0 strings -
 _LATA 10C 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 _TMR2 1A 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 _WPUA 20C 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
-___sp 0 0 STACK 2 stack /tmp/xcXTVLRVA.obj
+___sp 0 0 STACK 2 stack /tmp/xcXtWb4S7.obj
 _main 26 0 CODE 0 maintext dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 btemp 7E 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
-start 1A 0 CODE 0 init /tmp/xcXTVLRVA.obj
+start 1A 0 CODE 0 init /tmp/xcXtWb4S7.obj
 __size_of_main 0 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 _OPTION_REGbits 95 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 __Hpowerup 0 0 CODE 0 powerup -
 __end_of_ConfigureOscillator 38 0 CODE 0 text2 dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
-intlevel0 0 0 ENTRY 0 functab /tmp/xcXTVLRVA.obj
-intlevel1 0 0 ENTRY 0 functab /tmp/xcXTVLRVA.obj
-intlevel2 0 0 ENTRY 0 functab /tmp/xcXTVLRVA.obj
-intlevel3 0 0 ENTRY 0 functab /tmp/xcXTVLRVA.obj
-intlevel4 0 0 ENTRY 0 functab /tmp/xcXTVLRVA.obj
-intlevel5 0 0 ENTRY 0 functab /tmp/xcXTVLRVA.obj
+intlevel0 0 0 ENTRY 0 functab /tmp/xcXtWb4S7.obj
+intlevel1 0 0 ENTRY 0 functab /tmp/xcXtWb4S7.obj
+intlevel2 0 0 ENTRY 0 functab /tmp/xcXtWb4S7.obj
+intlevel3 0 0 ENTRY 0 functab /tmp/xcXtWb4S7.obj
+intlevel4 0 0 ENTRY 0 functab /tmp/xcXtWb4S7.obj
+intlevel5 0 0 ENTRY 0 functab /tmp/xcXtWb4S7.obj
 _InitApp 34 0 CODE 0 text1 dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 wtemp0 7E 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -162,7 +162,7 @@ __Lmaintext 0 0 ABS 0 maintext -
 start_initialization 1E 0 CODE 0 cinit dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 _OSCCON 99 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 _WDTCON 97 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
-___int_sp 0 0 STACK 2 stack /tmp/xcXTVLRVA.obj
+___int_sp 0 0 STACK 2 stack /tmp/xcXtWb4S7.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -300,7 +300,7 @@ _ECCP1AS 295 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.pro
 __end_of_isr 1A 0 CODE 0 intentry dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 __CFG_BOREN$ON 0 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec /tmp/xcXTVLRVA.obj
+reset_vec 0 0 CODE 0 reset_vec /tmp/xcXtWb4S7.obj
 __CFG_FCMEN$ON 0 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 __size_of_InitApp 0 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 __Lbank10 0 0 BANK10 1 bank10 -
@@ -333,8 +333,8 @@ __Lconfig 1000E 0 CONFIG 0 config -
 __CFG_CP$OFF 0 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 __CFG_IESO$ON 0 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
-stackhi 20EF 0 ABS 0 - /tmp/xcXTVLRVA.obj
-stacklo 2000 0 ABS 0 - /tmp/xcXTVLRVA.obj
+stackhi 20EF 0 ABS 0 - /tmp/xcXtWb4S7.obj
+stacklo 2000 0 ABS 0 - /tmp/xcXtWb4S7.obj
 _OSCTUNE 98 0 ABS 0 - dist/XC8_PIC12F609/production/pic12f1840_template_1.X.production.obj
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
