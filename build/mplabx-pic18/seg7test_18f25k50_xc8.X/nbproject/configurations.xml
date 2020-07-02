@@ -38,6 +38,8 @@
         <itemPath>../../../lib/softser.c</itemPath>
         <itemPath>../../../lib/timer.c</itemPath>
         <itemPath>../../../lib/uart.c</itemPath>
+        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/buffer.c</itemPath>
+        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/format.c</itemPath>
       </logicalFolder>
       <itemPath>../../../7segtest.c</itemPath>
     </logicalFolder>
@@ -304,7 +306,7 @@
         <property key="default-bitfield-type" value="true"/>
         <property key="default-char-type" value="true"/>
         <property key="define-macros"
-                  value="__18f25k50=1;XTAL_FREQ=20000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=1;USE_SOFTPWM=1;USE_SOFTSER=1;HAVE_COMPARATOR=1;NDEBUG=1;USE_7SEGMENT=1"/>
+                  value="__18f25k50=1;XTAL_FREQ=20000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=1;USE_SER=1;USE_SOFTPWM=1;HAVE_COMPARATOR=1;NDEBUG=1;USE_7SEGMENT=1"/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
                   value="../../..;../../../lib;../../../src"/>
