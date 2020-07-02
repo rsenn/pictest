@@ -21,7 +21,8 @@ endef
 
 VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
-CCVER = v1.34
+CCVER = v1.45
+#CCVER = v1.34
 
 PROGRAMFILES ?= C:/Program Files (x86)
 
