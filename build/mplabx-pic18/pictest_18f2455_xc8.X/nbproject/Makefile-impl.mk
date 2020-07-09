@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=blinktest_18f2455_xc8.X
+PROJECTNAME=pictest_18f2455_xc8.X
 
 # Active Configuration
 DEFAULTCONF=debug
