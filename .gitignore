@@ -51,3 +51,9 @@ bin*
 /build/mplabx-pic16/pictest_16f876a_xc8.X/dist/
 /build/mplabx-pic18/pictest_18f2455_xc8.X/build/
 /build/mplabx-pic18/pictest_18f2455_xc8.X/dist/
+/build/mplabx-pic16/serialtest_16f876a_xc8.X/dist/
+/build/mplabx-pic16/serialtest_16f876a_xc8.X/build/
+/build/mplabx-pic18/serialtest_18f252_xc8.X/dist/
+/build/mplabx-pic18/serialtest_18f252_xc8.X/build/
+/build/mplabx-pic18/serialtest_18f2455_xc8.X/build/
+/build/mplabx-pic18/serialtest_18f2455_xc8.X/dist/
