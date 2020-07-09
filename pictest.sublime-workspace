@@ -1,1 +1,762 @@
-{}
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "pictest.c",
+			"settings":
+			{
+				"buffer_size": 15305,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "CHIPS = 16f876a 18f2550 \n#CHIPS += 16f628a 18f252 18f252  18f25k50\n#CHIPS += 10f206\n#CHIPS += 12f1840\nCOMPILERS = htc xc8\n#CHIP = 16F876A\n\nifeq ($(XTAL),)\n#XTAL = 24000000\nXTAL = 20000000\nendif\n\nifeq ($(BAUD),)\n#BAUD = 19200\n#BAUD = 31250\nBAUD = 38400\nendif\n\nifeq ($(CHIP),)\nCHIP := 16F876A\nendif\n\n#ifeq ($(CODE_OFFSET),)\n#CODE_OFFSET := 0x0\n#endif\n\n#CODE_OFFSET := $(CODE_OFFSET:0x%=%)\n#CODE_OFFSET = 0x2000\n\nifeq ($(CODE_OFFSET),0x0)\n\tCODE_OFFSET := \nendif\nifeq ($(CODE_OFFSET),0x0000)\n\tCODE_OFFSET := \nendif\nifeq ($(CODE_OFFSET),0)\n\tCODE_OFFSET := \nendif\n\n\n\n#CODE_OFFSET := $(CODE_OFFSET:0x%=%)\n#CODE_OFFSET = 0x200\n\nchipu = $(subst a,A,$(subst b,B,$(subst c,C,$(subst d,D,$(subst e,E,$(subst f,F,$(subst g,G,$(subst h,H,$(subst i,I,$(subst j,J,$(subst k,K,$(subst l,L,$(subst m,M,$(subst n,N,$(subst o,O,$(subst p,P,$(subst q,Q,$(subst r,R,$(subst s,S,$(subst t,T,$(subst u,U,$(subst v,V,$(subst w,W,$(subst x,X,$(subst y,Y,$(subst z,Z,$(CHIP)))))))))))))))))))))))))))\nchipl = $(subst A,a,$(subst B,b,$(subst C,c,$(subst D,d,$(subst E,e,$(subst F,f,$(subst G,g,$(subst H,h,$(subst I,i,$(subst J,j,$(subst K,k,$(subst L,l,$(subst M,m,$(subst N,n,$(subst O,o,$(subst P,p,$(subst Q,q,$(subst R,r,$(subst S,s,$(subst T,t,$(subst U,u,$(subst V,v,$(subst W,w,$(subst X,x,$(subst Y,y,$(subst Z,z,$(CHIP)))))))))))))))))))))))))))\n\n\n#MHZ := $(shell echo \"$(XTAL) / 1000000\" | bc -l | sed \"s|0*$$|| ;; s|\\.$$|| ;; s|\\.|,|g\")\nMHZ := $(shell echo $$(($(XTAL) / 1000000)))\nKBPS := $(shell echo $$(($(BAUD) / 1000)))\n\nifeq ($(PROGRAM)$(PROGRAMS),)\nPROGRAMS := pictest blinktest serialtest ringtone seg7test\nendif\n\nifneq ($(CODE_OFFSET),)\nBUILD_ID := $(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_at$(CODE_OFFSET)\nelse\nBUILD_ID := $(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps\nendif\n\nifeq ($(BUILD_TYPE),debug)\nDEBUG = 1\nelse\nDEBUG = 0\nendif\n\n#ifeq ($(DEBUG),1)\n#BUILD_TYPE = debug\n#else\n#BUILD_TYPE = release\n#endif\nifeq ($(COMPILER),)\nCOMPILER := htc xc8\nendif\nifeq ($(BUILDDIR),)\nBUILDDIR := bin/$(COMPILER)-$(chipl)/\nendif\nifeq ($(OBJDIR),)\nOBJDIR := obj/$(COMPILER)-$(chipl)/$(BUILD_ID)/$(PROGRAM)/\n#OBJDIR := $(BUILDDIR)$(BUILD_ID)/\nendif\n\nvpath lib lib/extra src $(OBJDIR) $(BUILDDIR)\nVPATH = lib lib/extra src $(OBJDIR) $(BUILDDIR)\n\nDEFINES += PIC$(chipu)=1 __$(chipl)=1\n##DEFINES +=  USE_ADC=1\n#DEFINES +=  USE_HD44780_LCD=1\n##DEFINES +=  USE_7SEGMENT=1\n#DEFINES +=  USE_UART=1\n#DEFINES += USE_SOFTSER=1\n##DEFINES +=  USE_SER=1\n#\n##DEFINES +=  USE_PWM=1\nifeq ($(BUILD_TYPE),debug)\nDEFINES += __DEBUG=1 _DEBUG=1\nelse\nDEFINES += NDEBUG=1 __NDEBUG=1\nendif\n\nifneq ($(XTAL),)\nDEFINES += _XTAL_FREQ=$(XTAL)\nendif\n\nifneq ($(BAUD),)\nDEFINES += UART_BAUD=$(BAUD)\nendif\n\nINCLUDE_DIRS += . lib src\n#CPPFLAGS += $(addprefix -I../,$(INCLUDE_DIRS))\nCPPFLAGS += $(addprefix -I,$(INCLUDE_DIRS))\n\nget-list = $(sort $(if $(value $(1)S),$(value $(1)S),$(value $(1))))\nis-list = $(if $(subst 1,,$(subst 0,,$(words $(call get-list,$(1))))),$(call get-list,$(1)),)\n\n\nHEXFILE = $(BUILDDIR)$(PROGRAM)_$(BUILD_ID).hex\nCOFFILE = $(BUILDDIR)$(PROGRAM)_$(BUILD_ID).cof\nELFFILE = $(BUILDDIR)$(PROGRAM)_$(BUILD_ID).elf\n\nCOMMON_SOURCES = #lib/queue.c\n\n\npictest_SOURCES = pictest.c lib/delay.c lib/lcd44780.c lib/ser.c lib/softser.c  lib/uart.c lib/adc.c ledsense.c lib/timer.c lib/7segment.c #lib/onewire.c lib/ds18b20.c midi.c lib/softser.c #shell.c\npictest_DEFS +=  -DUSE_TIMER0=1 #-DUSE_UART=1\n\nifneq ($(chipl),12f1840)\npictest_DEFS += -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400\nendif\n\npictest2_SOURCES = pictest2.c lib/adc.c lib/delay.c lib/lcd44780.c lib/ser.c lib/pwm.c lib/onewire.c lib/ds18b20.c ledsense.c  lib/timer.c\npictest2_DEFS += -DUSE_TIMER0=1\n\nps2test_SOURCES = ps2test.c lib/uart.c lib/timer.c\nps2test_DEFS += -DUSE_TIMER0=1\n\nblinktest_SOURCES = blinktest.c lib/comparator.c lib/random.c lib/ser.c lib/softpwm.c lib/softser.c lib/timer.c lib/uart.c\nblinktest_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_SOFTPWM=1\nblinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1\n#blinktest_DEFS += -DUSE_SER=1\n#blinktest_DEFS += -DUSE_UART=1\n\nseg7test_SOURCES = 7segtest.c  lib/7segment.c lib/timer.c lib/buffer.c lib/format.c lib/random.c lib/softser.c lib/ser.c lib/uart.c\nseg7test_DEFS = -DUSE_7SEGMENT=1 -DUSE_SER=1 -DUSE_UART=1\nseg7test_DEFS += -DUSE_TIMER0=1\n#seg7test_DEFS += -DUSE_TIMER1=1\n#seg7test_DEFS += -DUSE_TIMER2=1\n#seg7test_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=0\nifeq ($(CHIP),$(subst 18f,,$(CHIP)))\n\nseg7test_CCVER = 9.83\nelse\nseg7test_CCVER = 9.80\nendif\n#seg7test_DEFS += -DUSE_TIMER2=1 #-DUSE_TIMER1=1\n#seg7test_DEFS += -DUSE_UART=1\n\nserialtest_SOURCES = serialtest.c lib/ser.c lib/uart.c lib/softser.c lib/lcd44780.c lib/timer.c\nifeq ($(filter 10f%,$(chipl)),)\nserialtest_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_SER=1\nendif\nifeq ($(filter 10f% 12f%,$(chipl)),)\nserialtest_DEFS +=  -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400\nendif\n\npwmtest_SOURCES = pwmtest.c lib/timer.c lib/adc.c lib/pwm.c\npwmtest_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_ADCONVERTER=1 -DUSE_PWM=1\n\nctmutest_SOURCES = ctmutest.c lib/timer.c\nctmutest_DEFS += -DUSE_TIMER0=1\n\nctmutest2_SOURCES = ctmutest2.c lib/timer.c\nctmutest2_DEFS += -DUSE_TIMER0=1\n\nringtone_SOURCES = ringtone.c lib/timer.c lib/random.c\nringtone_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1  -DAxelF=1\n\n",
+			"file": "build/vars.mk",
+			"file_size": 5455,
+			"file_write_time": 132381800275498887,
+			"settings":
+			{
+				"buffer_size": 5276,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Preferences: Package Control Settings – Default"
+			],
+			[
+				"package",
+				"Preferences: Browse Packages"
+			],
+			[
+				"cscope",
+				"Cscope: Rebuild database"
+			],
+			[
+				"schemeed",
+				"SchemeEditor: Edit Current Scheme"
+			],
+			[
+				"out",
+				"Browse Mode: Outline (Right)"
+			],
+			[
+				"advan",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			],
+			[
+				"outline",
+				"Browse Mode: Outline (Right)"
+			],
+			[
+				"add re",
+				"Package Control: Add Repository"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 205.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/roman/Dokumente/Sources/pictest"
+	],
+	"file_history":
+	[
+		"/home/roman/Dokumente/Sources/plot-cv/lib/deep.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/tosource.js",
+		"/home/roman/Dokumente/Sources/plot-cv/test-xml.js",
+		"/home/roman/Dokumente/Sources/plot-cv/HoerMalWerDaHaemmert.json2",
+		"/home/roman/Dokumente/Sources/plot-cv/HoerMalWerDaHaemmert.json",
+		"/home/roman/Sources/plot-cv/lib/eagle/common.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/xml.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/xml/util.js",
+		"/home/roman/Dokumente/Sources/plot-cv/main.js",
+		"/home/roman/Sources/plot-cv/lib/json/treeObserver.js",
+		"/home/roman/Dokumente/Sources/plot-cv/test-eagle.js",
+		"/home/roman/Sources/plot-cv/lib/dom/preactComponent.js",
+		"/home/roman/Dokumente/Sources/plot-cv/server.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/eagle/schematicRenderer.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/eagle/svgRenderer.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/eagle/renderUtils.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/json/path.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/iterator.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/eagle/common.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/xml/xpath.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/eagle/element.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/dom/element.js",
+		"/home/roman/Sources/plot-cv/lib/eagle/schematicRenderer.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/util.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/dom/preactComponent.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/eagle/renderer.js",
+		"/home/roman/Dokumente/Sources/plot-cv/components.js",
+		"/home/roman/Dokumente/Sources/plot-cv/style.css",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/eagle/document.js",
+		"/home/roman/Dokumente/Sources/an-tronics/eagle/Headphone-Amplifier-ClassAB-alt2.brd",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/geom/line.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/geom/point.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/geom/rect.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/dom/node.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/crosstab.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/autoStore.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/dom/reactComponent.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/dom/keysim.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/dom/svg.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/dom/event.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/dom/container.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/dom.js",
+		"/home/roman/Dokumente/Sources/plot-cv/tmp/Super-Regenerative-VHF-2Transistor-RickAndersen-October2006.brd",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/eagle/project.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/eagle/boardRenderer.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/eagle/nodeList.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/eagle/ref.js",
+		"/home/roman/Sources/plot-cv/main.js",
+		"/home/roman/Sources/plot-cv/lib/eagle.js",
+		"/home/roman/Sources/plot-cv/lib/eagle/project.js",
+		"/home/roman/Dokumente/Sources/plot-cv/tmp/VCF-LM324-Mono.brd",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/eagle/nodeMap.js",
+		"/home/roman/Sources/plot-cv/lib/eagle/document.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/eagle/node.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/eagle.js",
+		"/home/roman/Sources/plot-cv/lib/eagle/node.js",
+		"/home/roman/Sources/plot-cv/lib/eagle/nodeMap.js",
+		"/home/roman/Sources/plot-cv/lib/eagle/element.js",
+		"/home/roman/Sources/plot-cv/lib/eagle/nodeList.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/geom/lineList.js",
+		"/home/roman/Dokumente/Sources/plot-cv/test-line.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/geom/pointList.js",
+		"/home/roman/Sources/plot-cv/lib/geom/point.js",
+		"/home/roman/Sources/plot-cv/lib/util.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/geom/bbox.js",
+		"/home/roman/Dokumente/Sources/an-tronics/eagle/VCF-LM358-Stereo.sch",
+		"/home/roman/Dokumente/Sources/an-tronics/eagle/VCF-LM358-Stereo.brd",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/color/rgba.js",
+		"/home/roman/Dokumente/Sources/plot-cv/index.html",
+		"/home/roman/Sources/plot-cv/lib/devtools.js",
+		"/home/roman/Dokumente/Sources/plot-cv/test-color.js",
+		"/home/roman/Dokumente/Sources/plot-cv/test.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/draw/colorMap.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/devpane.js",
+		"/home/roman/Dokumente/Sources/plot-cv/test-kolorwheel.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/devtools.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/colorscheme.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/eagle/components.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/dom/hsla.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/dom/rgba.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/json/pathMapper.js",
+		"/home/roman/Dokumente/Sources/plot-cv/node_modules/@babel/parser/lib/index.js",
+		"/home/roman/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/json.js",
+		"/home/roman/Dokumente/Sources/plot-cv/test-membrane.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/proxy/observableMembrane.js",
+		"/home/roman/Dokumente/Sources/plot-cv/tmp/5V-to-12V-Converter-ManyDiodes.sch",
+		"/home/roman/Sources/plot-cv/lib/tXml.js",
+		"/home/roman/Sources/plot-cv/lib/eagle/ref.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/json/util.js",
+		"/home/roman/Sources/plot-cv/lib/geom/bbox.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/geom/transformation.js",
+		"/home/roman/Dokumente/Sources/plot-cv/lib/geom/matrix.js",
+		"/static/tmp/5V-to-12V-Converter-ManyDiodes.sch",
+		"/home/roman/Dokumente/Sources/c-utils/cfg.sh"
+	],
+	"find":
+	{
+		"height": 48.0
+	},
+	"find_in_files":
+	{
+		"height": 137.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"pictest"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "pictest.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15305,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C Improved/C Improved.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "build/vars.mk",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5276,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3407,
+								3407
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2969.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 36.0
+	},
+	"input":
+	{
+		"height": 41.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "pictest.sublime-project",
+	"replace":
+	{
+		"height": 68.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"vars.mk",
+				"build/vars.mk"
+			],
+			[
+				"pictest",
+				"pictest.c"
+			],
+			[
+				"deep",
+				"lib/deep.js"
+			],
+			[
+				"iterat",
+				"lib/iterator.js"
+			],
+			[
+				"util",
+				"lib/util.js"
+			],
+			[
+				"Hoer",
+				"HoerMalWerDaHaemmert.html"
+			],
+			[
+				"tosou",
+				"lib/tosource.js"
+			],
+			[
+				"test-xml",
+				"test-xml.js"
+			],
+			[
+				"tosour",
+				"lib/tosource.js"
+			],
+			[
+				"util.j",
+				"lib/util.js"
+			],
+			[
+				"test-x",
+				"test-xml.js"
+			],
+			[
+				"xml.j",
+				"lib/xml.js"
+			],
+			[
+				"test-ea",
+				"test-eagle.js"
+			],
+			[
+				"test-",
+				"test-cli.js"
+			],
+			[
+				"preact",
+				"lib/dom/preactComponent.js"
+			],
+			[
+				"svgRE",
+				"lib/eagle/svgRenderer.js"
+			],
+			[
+				"elemen",
+				"lib/eagle/element.js"
+			],
+			[
+				"test-eagle",
+				"test-eagle.js"
+			],
+			[
+				"mai",
+				"main.js"
+			],
+			[
+				"iterator",
+				"lib/iterator.js"
+			],
+			[
+				"main.j",
+				"main.js"
+			],
+			[
+				"itera",
+				"lib/iterator.js"
+			],
+			[
+				"main",
+				"main.js"
+			],
+			[
+				"server",
+				"server.js"
+			],
+			[
+				"svgRe",
+				"lib/eagle/svgRenderer.js"
+			],
+			[
+				"path.",
+				"lib/json/path.js"
+			],
+			[
+				"comm",
+				"lib/eagle/common.js"
+			],
+			[
+				"xpath",
+				"lib/xml/xpath.js"
+			],
+			[
+				"preactCom",
+				"lib/dom/preactComponent.js"
+			],
+			[
+				"node",
+				"lib/dom/node.js"
+			],
+			[
+				"element.",
+				"lib/eagle/element.js"
+			],
+			[
+				"document",
+				"lib/eagle/document.js"
+			],
+			[
+				"point.",
+				"lib/geom/point.js"
+			],
+			[
+				"line",
+				"lib/geom/line.js"
+			],
+			[
+				"eleme",
+				"lib/eagle/element.js"
+			],
+			[
+				"common",
+				"lib/eagle/common.js"
+			],
+			[
+				"rect.",
+				"lib/geom/rect.js"
+			],
+			[
+				"line.",
+				"lib/geom/line.js"
+			],
+			[
+				"point.j",
+				"lib/geom/point.js"
+			],
+			[
+				"autoS",
+				"lib/autoStore.js"
+			],
+			[
+				"cross",
+				"lib/crosstab.js"
+			],
+			[
+				"autoSt",
+				"lib/autoStore.js"
+			],
+			[
+				"element",
+				"lib/eagle/element.js"
+			],
+			[
+				"style.cs",
+				"style.css"
+			],
+			[
+				"util.js",
+				"lib/util.js"
+			],
+			[
+				"c",
+				"components.js"
+			],
+			[
+				"copon",
+				"components.js"
+			],
+			[
+				"keysim",
+				"lib/dom/keysim.js"
+			],
+			[
+				"svg.j",
+				"lib/dom/svg.js"
+			],
+			[
+				"dom.js",
+				"lib/dom.js"
+			],
+			[
+				"style",
+				"style.css"
+			],
+			[
+				"compon",
+				"components.js"
+			],
+			[
+				"main.js",
+				"main.js"
+			],
+			[
+				"rect.j",
+				"lib/geom/rect.js"
+			],
+			[
+				"reactCom",
+				"lib/dom/reactComponent.js"
+			],
+			[
+				"rect.js",
+				"lib/geom/rect.js"
+			],
+			[
+				"compo",
+				"components.js"
+			],
+			[
+				"comp",
+				"components.js"
+			],
+			[
+				"schema",
+				"lib/eagle/schematicRenderer.js"
+			],
+			[
+				"renderer",
+				"lib/eagle/renderer.js"
+			],
+			[
+				"project",
+				"lib/eagle/project.js"
+			],
+			[
+				"main.",
+				"main.js"
+			],
+			[
+				"ref.",
+				"lib/eagle/ref.js"
+			],
+			[
+				"test-eag",
+				"test-eagle.js"
+			],
+			[
+				"eagle.js",
+				"lib/eagle.js"
+			],
+			[
+				"util.",
+				"lib/util.js"
+			],
+			[
+				"line.j",
+				"lib/geom/line.js"
+			],
+			[
+				"point",
+				"lib/geom/point.js"
+			],
+			[
+				"pointLis",
+				"lib/geom/pointList.js"
+			],
+			[
+				"lineLi",
+				"lib/geom/lineList.js"
+			],
+			[
+				"bbox",
+				"lib/geom/bbox.js"
+			],
+			[
+				"path.js",
+				"lib/json/path.js"
+			],
+			[
+				"rgba",
+				"lib/color/rgba.js"
+			],
+			[
+				"dom.",
+				"lib/dom.js"
+			],
+			[
+				"inde.",
+				"index.html"
+			],
+			[
+				"hsla",
+				"lib/dom/hsla.js"
+			],
+			[
+				"nodeList",
+				"lib/eagle/nodeList.js"
+			],
+			[
+				"obser",
+				"lib/proxy/observableMembrane.js"
+			],
+			[
+				"test-mem",
+				"test-membrane.js"
+			],
+			[
+				"json.j",
+				"lib/json.js"
+			],
+			[
+				"index.html",
+				"index.html"
+			],
+			[
+				"node.j",
+				"lib/eagle/node.js"
+			],
+			[
+				"json",
+				"lib/json.js"
+			],
+			[
+				"matrix",
+				"lib/geom/matrix.js"
+			],
+			[
+				"transform",
+				"lib/geom/transformation.js"
+			],
+			[
+				"xmljs",
+				"lib/xml.js"
+			],
+			[
+				"serevr.j",
+				"server.js"
+			],
+			[
+				"board",
+				"lib/eagle/boardRenderer.js"
+			],
+			[
+				"schemt",
+				"lib/eagle/schematicRenderer.js"
+			],
+			[
+				"render",
+				"lib/eagle/svgRenderer.js"
+			],
+			[
+				"freq",
+				"Freq-meter.c"
+			],
+			[
+				"cap-me",
+				"Cap-meter.c"
+			],
+			[
+				"lc-me",
+				"LC-meter.c"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 306.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
