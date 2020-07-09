@@ -39,7 +39,7 @@ volatile static uint8_t index;
 volatile static uint8_t ticks;
 volatile static uint16_t poti;
 
-INTERRUPT_HANDLER() {
+INTERRUPT_FN() {
   if(TIMER0_INTERRUPT_FLAG) { // Did we get a timer0 interrupt?
 
     PWM_setduty(1, sine_table[index % ARRAY_SIZE(sine_table)]);

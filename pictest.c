@@ -170,8 +170,8 @@ TMR2ON = 1;       // Enable timer 2.
   TMR1IF = 0;
 #endif
 
-#if HAVE_TIMER_0 && USE_TIMER0
-  timer0_init(PRESCALE_1_4);
+#if /*HAVE_TIMER_0 &&*/ USE_TIMER0
+  timer0_init(PRESCALE_1_4 |TIMER0_FLAGS_INTR);
 
   TIMER0_INTERRUPT_CLEAR();
   T0IE = 1;
@@ -550,7 +550,7 @@ buttons_get() {
 }
 #endif
 
-INTERRUPT_HANDLER() {
+INTERRUPT_FN() {
   if(TIMER0_INTERRUPT_FLAG) {
     bres += 256;
 
