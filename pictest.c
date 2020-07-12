@@ -121,7 +121,7 @@ main() {
 #if !NO_PORTB
 #ifndef nRBPU
 #ifdef PIC18
-  INTCON2bits |= 0b10000000;
+  INTCON2 |= 0b10000000;
 #else
   OPTION_REG |= 0b00100000;
 #endif
@@ -514,7 +514,7 @@ buttons_get() {
 
 #ifndef nRBPU
 #ifdef PIC18
-  INTCON2bits &= ~0b10000000;
+  INTCON2 &= ~0b10000000;
 #else
   OPTION_REG &= ~0b00100000;
 #endif
@@ -535,7 +535,7 @@ buttons_get() {
 
 #ifndef nRBPU
 #ifdef PIC18
-  INTCON2bits |= 0b10000000;
+  INTCON2 |= 0b10000000;
 #else
   OPTION_REG |= 0b00100000;
 #endif

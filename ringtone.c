@@ -10,14 +10,15 @@
 #include "lib/interrupt.h"
 #include "lib/random.h"
 #include "lib/timer.h"
+#include "lib/eeprom.h"
 #include "pictest.h"
 
 #if NO_PORTB
-#define TONE RA0
-#define TONE_TRIS TRISA0
+#define TONE RA4
+#define TONE_TRIS TRISA4
 #else
-#define TONE RB0
-#define TONE_TRIS TRISB0
+#define TONE RB4
+#define TONE_TRIS TRISB4
 #endif
 
 #include "config-bits.h"
@@ -303,11 +304,11 @@ main() {
 
   beep = 0;
 
-  random_init(eeprom_read(0), eeprom_read(1), eeprom_read(2));
+  random_init(ee_read(0), ee_read(1), ee_read(2));
 
-  eeprom_write(0, random());
-  eeprom_write(1, random());
-  eeprom_write(2, random());
+  ee_write(0, random());
+  ee_write(1, random());
+  ee_write(2, random());
 
   rt_p = &ringtones[random() % NUM_RINGTONES];
 
