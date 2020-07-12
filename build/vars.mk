@@ -123,14 +123,14 @@ ELFFILE = $(BUILDDIR)$(PROGRAM)_$(BUILD_ID).elf
 COMMON_SOURCES = #lib/queue.c
 
 
-pictest_SOURCES = pictest.c lib/delay.c lib/lcd44780.c lib/ser.c lib/softser.c  lib/uart.c lib/adc.c ledsense.c lib/timer.c lib/7segment.c #lib/onewire.c lib/ds18b20.c midi.c lib/softser.c #shell.c
+pictest_SOURCES = pictest.c lib/delay.c lib/lcd44780.c lib/ser.c lib/softser.c  lib/uart.c lib/adc.c lib/timer.c lib/7segment.c #lib/onewire.c lib/ds18b20.c midi.c lib/softser.c #shell.c
 pictest_DEFS +=  -DUSE_TIMER0=1 #-DUSE_UART=1
 
 ifneq ($(chipl),12f1840)
 pictest_DEFS += -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
 endif
 
-pictest2_SOURCES = pictest2.c lib/adc.c lib/delay.c lib/lcd44780.c lib/ser.c lib/pwm.c lib/onewire.c lib/ds18b20.c ledsense.c  lib/timer.c
+pictest2_SOURCES = pictest2.c lib/adc.c lib/delay.c lib/lcd44780.c lib/ser.c lib/pwm.c lib/onewire.c lib/ds18b20.c  lib/timer.c
 pictest2_DEFS += -DUSE_TIMER0=1
 
 ps2test_SOURCES = ps2test.c lib/uart.c lib/timer.c
