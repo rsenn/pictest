@@ -1,105 +1,199 @@
-PROGRAM ?= pictest
-
-serialport = /dev/ttyS0
-
-prefix ?= /usr
-libdir = ${prefix}/lib
-datadir = ${prefix}/share
+VERSION_MAJOR = 0
+VERSION_MINOR = 9
+VERSION_PATCH = 1
 
 COMPILER = sdcc
 
 -include build/vars.mk
+-include build/targets.mk
 
-ifneq ($(CHIP),$(CHIP:18%=%))
-target = pic16
+TIMER_DEFS := -DUSE_TIMER0=1
+
+
+ifeq ($(PROGRAM),)
+PROGRAM := pictest
+endif
+
+
+
+define nl = 
+$(empty)
+$(empty)
+endef
+
+#BUILDDIR = build/sdcc-$(chipl)/
+#OBJDIR = $(BUILDDIR)$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps/
+
+VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
+
+CCVER = 3.6.0
+
+PROGRAMFILES = C:/Program\ Files
+
+OS = $(shell uname -o)
+
+SDCC = $(shell which sdcc 2>/dev/null)
+
+ifeq ($(SDCC),)
+ifeq ($(OS),GNU/Linux)
+CCDIR = /usr
 else
-target = pic14
+CCDIR = $(PROGRAMFILES)/SDCC
+endif
 endif
 
-#SDCC = /usr/bin/sdcc
-SDCC = sdcc
-AS = gpasm
-LD = gplink
-PICPROG = picprog
-#CFLAGS =  -S -V -m${target} -pp$(chipl)
-CFLAGS =  -m${target} -pp$(chipl)
-#CFLAGS += --code-loc $(CODE_OFFSET)
 
-#LDFLAGS = -m -s ${prefix}/share/gputils/lkr/$(chipl).lkr
-#LIBS = $(targetlibdir)/pic$(chipl).lib
-#LIBS = $(targetlibdir)/pic$(chipl).lib $(sdcclibdir)/libsdcc.lib
-
-CFLAGS += --opt-code-size
-#CFLAGS += --stack-auto
-
--include build/vars.mk
-
-ifneq ($(CHIP),$(CHIP:18%=%))
-
-endif
-#DEFINES += NO_BIT_DEFINES=1
-#DEFINES += __SDCC=1
-
-CPPFLAGS += $(DEFINES:%=-D%)
-
-CPPFLAGS += $($(PROGRAM)_DEFS)
-SOURCES = $($(PROGRAM)_SOURCES) $(COMMON_SOURCES)
-OBJECTS = $(patsubst %.c,$(OBJDIR)%.o,$(notdir $(SOURCES)))
-
-
-ifeq ($(DEBUG),1)
-	CFLAGS += --debug
-endif
-
-$(info OBJDIR: $(OBJDIR))
-$(info BUILD_TYPE: $(BUILD_TYPE))
-
-ifeq ($(SDCC),/usr/bin/sdcc)
- sdcclibdir = $(datadir)/sdcc/lib/pic
- targetlibdir = $(datadir)/sdcc/lib/pic
+ifeq ($(COMPILER),sdcc)
+#ifneq ($(CHIP),$(subst 18f,,$(CHIP)))
+#COMPILER_NAME = picc18
+#else
+COMPILER_NAME = sdcc
+#endif
 else
- sdcclibdir = $(datadir)/sdcc/lib/$(target)
- targetlibdir = $(datadir)/sdcc/non-free/lib/$(target)
- CFLAGS += --use-non-free
+COMPILER_NAME = picc
 endif
 
-all: $(BUILDDIR) $(OBJDIR)  $(HEXFILE)
+#ifneq ($(CCDIR),)
+#SDCC = "$(CCDIR)/bin/$(COMPILER_NAME)"
+#else
+SDCC = $(COMPILER_NAME)
+#endif
+
+ifeq ($(strip $(SDCC)),)
+SDCC = picc
+endif
+
+CPP = $(CCDIR)/bin/cpp
+INCDIR = $(CCDIR)/include
+#INCDIR := $(dir $(dir $(shell which picc)))/include
+
+LD = $(SDCC)
+#RM = del /f
+DISTFILES = Makefile build/sdcc.mk build/sdcc.mk
+
+OPT = speed
+
+DEFINES += __SDCC__=1
+
+SOURCES =  $(COMMON_SOURCES) $($(subst -,_,$(PROGRAM))_SOURCES)
+COMMON_FLAGS += $($(subst -,_,$(PROGRAM))_DEFS) $(DEFINES:%=-D%)
+OBJECTS = $(patsubst %,$(OBJDIR)%,$(notdir $(patsubst %.c,%.o,$(SOURCES))))
+ASSRCS = $(SOURCES:%.c=$(OBJDIR)%.s)
+PREPROCESSED = $(SOURCES:%.c=$(OBJDIR)%.e)
+
+ifneq ($(CODE_OFFSET),0x0000)
+ifneq ($(CODE_OFFSET),0)
+ifneq ($(CODE_OFFSET),)
+#LDFLAGS += --code-loc=$$(($(CODE_OFFSET)))
+endif
+endif
+endif
+#
+ifeq ($(OPT),speed)
+OPT_SPEED = --opt-code-speed
+endif
+ifeq ($(OPT),space)
+OPT_SPEED = --opt-code-size
+endif
+
+ifeq ($(BUILD_TYPE),debug)
+COMMON_FLAGS += --debug
+#COMMON_FLAGS += -D_DEBUG=1
+else
+COMMON_FLAGS += 
+COMMON_FLAGS +=  -DNDEBUG=1
+endif
+
+#CPPFLAGS += $($(subst -,_,$(PROGRAM))_DEFS)
+#CPPFLAGS += $(DEFINES:%=-D%)
+CPPFLAGS += $(sort $(COMMON_FLAGS))
+
+_CPPFLAGS += \
+	-DVERSION_MAJOR=$(VERSION_MAJOR) \
+	-DVERSION_MINOR=$(VERSION_MINOR) \
+	-DVERSION_PATCH=$(VERSION_PATCH)
+
+CFLAGS = --use-non-free
+CFLAGS += $(EXTRA_CFLAGS)
 
 
-$(OBJDIR)7segment.o $(OBJDIR)adc.o $(OBJDIR)buffer.o $(OBJDIR)comparator.o $(OBJDIR)delay.o $(OBJDIR)ds18b20.o $(OBJDIR)format.o $(OBJDIR)lcd44780.o $(OBJDIR)lcd5110.o $(OBJDIR)onewire.o $(OBJDIR)pwm.o $(OBJDIR)queue.o $(OBJDIR)random.o $(OBJDIR)ser.o $(OBJDIR)softpwm.o $(OBJDIR)softser.o $(OBJDIR)timer.o $(OBJDIR)uart.o: $(OBJDIR)%.o: lib/%.c
-	$(SDCC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+ifneq ($(chipl),$(chipl:16f%=%))
+CFLAGS +=
+else
+CFLAGS +=
+endif
+
+PIC_TYPE := $(shell echo $(chipl) | head -c 3)
+ifeq ($(PIC_TYPE),16f)
+CFLAGS += -mpic14
+LIBS += -llibm.lib
+endif
+ifeq ($(PIC_TYPE),18f)
+CFLAGS += -mpic16
+LIBS += -llibm18f.lib
+endif
 
 
-#$(OBJDIR)ser.o: CPPFLAGS += -DUSE_SER=1
-#$(OBJDIR)softser.o: CPPFLAGS += -DUSE_SOFTSER=1
-#$(OBJDIR)softpwm.o: CPPFLAGS += -DUSE_SOFTPWM=1
+$(info LIBS: $(LIBS))
+CFLAGS += -p$(chipl)
 
+#LDFLAGS += --summary="default,-psect,-class,+mem,-hex,-file"
+#
+#LDFLAGS += --runtime="default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,+download,+clib"
+#LDFLAGS += --output="-mcof,+elf"
+#LDFLAGS += --stack=compiled
+#
+#
+#LDFLAGS += --output="default,-inhx032"
+#LDFLAGS += --chip=$(chipl)
+#LDFLAGS +=  --asmlist
 
+PM3CMD = "$$PROGRAMFILES"/Microchip/MPLAB\ IDE/Programmer\ Utilities/PM3Cmd/PM3Cmd
 
-$(OBJDIR)7segtest.o $(OBJDIR)blinktest.o $(OBJDIR)pictest.o $(OBJDIR)serialtest.o: $(OBJDIR)%.o: %.c
-	$(SDCC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+COFFILE = $(subst .hex,.cof,$(HEXFILE))
 
-$(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps.cof: $(OBJDIR)%.o
-	$(SDCC) $(CFLAGS) $(CPPFLAGS) -o $@ -E $<
+#-include build/vars.mk
 
-$(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps.asm: %.c
-	$(SDCC) $(CFLAGS) $(CPPFLAGS) -o $@ -S $<
+.PHONY: all dist prototypes
+#CPP_CONFIG = obj/sdcc-cpp.config
+
+all: $(BUILDDIR) $(OBJDIR) $(CPP_CONFIG) output
+
+output: $(HEXFILE) #$(COFFILE)
+	@for F in $(HEXFILE) $(COFFILE); do \
+	  echo "Output file '$(C_RED)$$F$(C_OFF)' built..." 1>&2; \
+	 done
+
+dist:
+	mkdir -p $(PROGRAM)-$(VERSION)
+	cp -rvf $(DISTFILES) $(PROGRAM)-$(VERSION)
+	tar -cvzf $(PROGRAM)-$(VERSION).tar.gz $(PROGRAM)-$(VERSION)
 
 $(HEXFILE): $(OBJECTS)
-	(cd $(BUILDDIR); $(SDCC) $(CFLAGS) -o $(notdir $(HEXFILE)) $(^:%=../../%))
+	@-$(RM) $(HEXFILE) $(COFFILE)
+	$(SDCC) $(LDFLAGS) $(CFLAGS) -o $@ $^ $(LIBS)
+	#sed -i 's/^:02400E00\(....\)\(..\)/:02400E0072FF32/' $(HEXFILE)
+	@-(type cygpath 2>/dev/null >/dev/null && PATHTOOL="cygpath -w"; \
+	 test -f "$$PWD/$(HEXFILE)" && { echo; echo "Got HEX file: `$${PATHTOOL:-echo} $$PWD/$(HEXFILE)`"; })
 
-$(ELFFILE): $(OBJECTS)
-	(cd $(BUILDDIR); $(SDCC) $(CFLAGS)  -o $(notdir $(ELFFILE)) $(^:%=../../%))
+#$(OBJECTS): $(OBJDIR)%.o: lib/%.c
+#	$(SDCC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
-$(COFFILE): $(OBJECTS)
-	(cd $(BUILDDIR); $(SDCC) $(CFLAGS) -o $(notdir $(COFFILE)) $(^:%=../../%))
+$(OBJECTS): $(OBJDIR)%.o: %.c
+	$(SDCC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
-.PHONY: clean
-clean:
-ifeq ($(BUILDDIR),)
-	$(RM) *.asm *.cod *.hex *.map *.o *.lst *.asm *.as *.obj *.rlf *.dep *.p1 *.pre
-else
-	$(RM) -r $(BUILDDIR)
+$(ASSRCS): $(OBJDIR)%.s: %.c
+	$(SDCC) $(CFLAGS) $(CPPFLAGS) -S -o $@ $<
+		$(SDCC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+
+$(PREPROCESSED): $(OBJDIR)%.e: %.c
+	$(SDCC) $(CFLAGS) $(CPPFLAGS) -E -o $@ $<
+
+prototypes:
+	cproto -DHI_TECH_C=1 -E '$(CPP)' $(CPPFLAGS) $(SOURCES) 2>/dev/null
+ifneq ($(CCDIR),)
+prototypes: CPPFLAGS += -I'$(CCDIR)/include'
 endif
 
-include build/common.mk
+
+-include build/common.mk

@@ -1,15 +1,39 @@
 #serialport = $(wildcard /dev/ttyS0)
 #serialport =
 
+define NEWLINE
+
+
+endef
+
+SPACE := $(EMPTY) $(EMPTY)
+COMMA := ,
+
+#make_list = $(subst $(NEWLINE)$(NEWLINE),$(NEWLINE),$(subst $(SPACE),$(NEWLINE),$(1)))
+make_list = $(subst $(NEWLINE),$(SPACE),$(1))
+
+define set_var
+$(1) := $(2)
+endef
+
+define write_rsp
+$(file >$(OBJDIR)cppflags.rsp,$(call make_list,$(CPPFLAGS)))$(eval $(call set_var,CPPFLAGS,@$$(OBJDIR)cppflags.rsp))
+endef
+
+define write_config
+$(file >$(OBJDIR)$(3),$(call make_list,$(1)))$(eval $(call set_var,$(2),$$(OBJDIR)$(3)))
+endef
+
 C_RED = [1;31m
 C_OFF = [0m
 
+DEBUGGER ?= pickit3
 
 ifneq ($(shell which picprog 2>/dev/null),)
-PICPROG = picprog
+PICPROG := picprog
 endif
 ifneq ($(shell which picpgm 2>/dev/null),)
-PICPGM = picpgm
+PICPGM := picpgm
 endif
 
 ifeq ($(BUILD_TYPE),)
@@ -24,7 +48,8 @@ PICPROG_FLAGS += --jdm
 
 PICPGM_FLAGS = -if JDM
 .PHONY: all clean dist output prototypes
-all:
+all: 
+dirs: $(BUILDDIR) $(OBJDIR)
 
 $(BUILDDIR):
 	-mkdir -p $(BUILDDIR) || md $(subst /,\,$(BUILDDIR)) || true
@@ -35,35 +60,34 @@ $(OBJDIR): $(BUILDDIR)
 	-mkdir -p $(dir $(OBJDIR)) || md $(dir $(subst /,\,$(OBJDIR))) || true
 	-mkdir -p $(OBJDIR) || md $(subst /,\,$(OBJDIR)) || true
 
-
-program: $(OBJDIR) $(BUILDDIR) $(HEXFILE)
+program: $(BUILDDIR) $(OBJDIR) $(HEXFILE)
 ifneq ($(PICPGM),)
-	$(PICPGM) $(PICPGM_FLAGS) -pic PIC$(chipu) -e -p $(HEXFILE)
+	$(PICPGM) $(PICPGM_FLAGS) -p PIC$(chipu) -e -p $(HEXFILE)
 else
+ifneq ($(PICPROG),)
 	$(PICPROG) $(PICPROG_FLAGS) --device="pic$(CHIP)" --input-hexfile="$<" --erase --burn
 endif
+endif
 
-
-verify: $(HEXFILE)
+verify: #$(HEXFILE)
 ifneq ($(PICPGM),)
-	$(PICPGM) $(PICPGM_FLAGS) -pic PIC$(chipu) -v $(HEXFILE)
-#else
-#	$(PICPROG) $(PICPROG_FLAGS) --device="pic$(CHIP)" --input-hexfile="$<" --erase --burn
+	$(PICPGM) $(PICPGM_FLAGS) -p PIC$(chipu) -v $(HEXFILE)
 endif
 
 report:
 ifneq ($(PICPROG),)
 	$(PICPROG) $(PICPROG_FLAGS) --device="pic$(CHIP)" --input-hexfile="$<" --erase --burn
 else
-	picpgm $(PICPGM_FLAGS) -p PIC$(chipu) -blank -r
+ifneq ($(PICPGM),)
+	$(PICPGM) $(PICPGM_FLAGS) -p PIC$(chipu) -blank -r
+endif
 endif
 
 chip-header:
 	@find $(CCDIR)/include -iname "p*$(chipl).h"
 
-# .PHONY: clean
-# clean:
-# 	-$(RM) $(BUILDDIR)*.hex $(OBJDIR)*.as $(BUILDDIR)*.cof $(BUILDDIR)*.hex $(BUILDDIR)*.hxl $(BUILDDIR)*.lst $(BUILDDIR)*.map $(OBJDIR)*.obj $(OBJDIR)*.rlf $(OBJDIR)*.sdb $(OBJDIR)*.sym \
-# 	$(OBJDIR)*.lst $(OBJDIR)*.p1 $(OBJDIR)*.pre
+clean:
+	$(RM) $(BUILDDIR)*.hex $(BUILDDIR)*.as $(BUILDDIR)*.cof $(BUILDDIR)*.hex $(BUILDDIR)*.hxl $(BUILDDIR)*.lst $(BUILDDIR)*.map $(BUILDDIR)*.obj $(BUILDDIR)*.rlf $(BUILDDIR)*.sdb $(BUILDDIR)*.sym \
+	$(OBJDIR)*.lst $(OBJDIR)*.p1 $(OBJDIR)*.pre
 
 -include $(OBJDIR)*.d
