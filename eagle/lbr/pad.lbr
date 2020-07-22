@@ -70,6 +70,7 @@
 <layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
 </layers>
 <library>
+<description>Pads for common signals and inter-board connectors</description>
 <packages>
 <package name="SPAD">
 <pad name="1" x="0" y="0" drill="1" diameter="1.778" stop="no"/>
