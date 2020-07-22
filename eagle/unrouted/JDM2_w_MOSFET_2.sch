@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<<<<<<< HEAD
 <eagle version="7.7.0">
-=======
-<eagle version="7.6.0">
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<<<<<<< HEAD
 <grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
-=======
-<grid distance="50" unitdist="mil" unit="inch" style="dots" multiple="2" display="yes" altdistance="10" altunitdist="mil" altunit="inch"/>
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -12306,11 +12298,7 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <part name="R5" library="rcl" deviceset="R-EU_" device="0204/5" value="15K"/>
 <part name="D7" library="JDM2" deviceset="2N4148" device="5" value="2N4148"/>
 <part name="SV3" library="con-lstb" deviceset="MA03-1" device=""/>
-<<<<<<< HEAD
 <part name="V1" library="supply2" deviceset="GND" device="" value="GND"/>
-=======
-<part name="V1" library="supply2" deviceset="GND" device="" value="VSS"/>
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 </parts>
 <sheets>
 <sheet>
@@ -12606,15 +12594,12 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <pinref part="VSS1" gate="1" pin="GND"/>
 <junction x="77.47" y="76.2"/>
 </segment>
-<<<<<<< HEAD
 <segment>
 <pinref part="R5" gate="G$1" pin="1"/>
 <pinref part="V1" gate="GND" pin="GND"/>
 <wire x1="21.59" y1="121.92" x2="21.59" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="21.59" y1="124.46" x2="24.13" y2="124.46" width="0.1524" layer="91"/>
 </segment>
-=======
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 </net>
 <net name="MCLR" class="0">
 <segment>
@@ -12637,17 +12622,6 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <wire x1="36.83" y1="139.7" x2="36.83" y2="137.16" width="0.1524" layer="91"/>
 </segment>
 </net>
-<<<<<<< HEAD
-=======
-<net name="VSS" class="0">
-<segment>
-<pinref part="R5" gate="G$1" pin="1"/>
-<pinref part="V1" gate="GND" pin="GND"/>
-<wire x1="21.59" y1="121.92" x2="21.59" y2="124.46" width="0.1524" layer="91"/>
-<wire x1="21.59" y1="124.46" x2="24.13" y2="124.46" width="0.1524" layer="91"/>
-</segment>
-</net>
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 <net name="N$10" class="0">
 <segment>
 <wire x1="36.83" y1="127" x2="36.83" y2="124.46" width="0.1524" layer="91"/>
