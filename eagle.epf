@@ -7,30 +7,29 @@ Desktop="Desktop"
 
 [Globals]
 AutoSaveProject=1
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/boards.lbr"
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/mcu.lbr"
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/pinconn.lbr"
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/pad.lbr"
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/sw.lbr"
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/lcd.lbr"
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/r.lbr"
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/c.lbr"
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/d.lbr"
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/ic.lbr"
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/o.lbr"
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/q.lbr"
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/s.lbr"
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/t.lbr"
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/usb.lbr"
+UsedLibrary="eagle/lbr/pinconn.lbr"
+UsedLibrary="eagle/lbr/r.lbr"
+UsedLibrary="eagle/lbr/boards.lbr"
+UsedLibrary="eagle/lbr/mcu.lbr"
+UsedLibrary="eagle/lbr/pad.lbr"
+UsedLibrary="eagle/lbr/sw.lbr"
+UsedLibrary="eagle/lbr/lcd.lbr"
+UsedLibrary="eagle/lbr/c.lbr"
+UsedLibrary="eagle/lbr/d.lbr"
+UsedLibrary="eagle/lbr/ic.lbr"
+UsedLibrary="eagle/lbr/o.lbr"
+UsedLibrary="eagle/lbr/q.lbr"
 UsedLibrary="eagle/lbr/s.lbr"
-UsedLibrary="/home/roman/Sources/pictest/eagle/lbr/l.lbr"
+UsedLibrary="eagle/lbr/t.lbr"
+UsedLibrary="eagle/lbr/usb.lbr"
+UsedLibrary="eagle/lbr/l.lbr"
 
 [Win_1]
 Type="Control Panel"
-Loc="1299 18 3169 918"
+Loc="656 5 1917 732"
 State=2
 Number=0
 
 [Desktop]
-Screen="3280 1080"
+Screen="1920 1080"
 Window="Win_1"
