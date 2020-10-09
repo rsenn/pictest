@@ -5479,7 +5479,7 @@
 <text x="-1.27" y="1.27" size="0.8128" layer="21" align="bottom-right">&gt;NAME</text>
 <text x="-1.27" y="-1.27" size="0.8128" layer="21" align="top-right">&gt;VALUE</text>
 </package>
-<package name="L-04/7V">
+<package name="L-04/8V">
 <pad name="1" x="1.27" y="-5.08" drill="0.8" rot="R180"/>
 <pad name="2" x="-1.27" y="2.54" drill="0.8" rot="R180"/>
 <wire x1="1.27" y1="1.016" x2="0" y2="2.286" width="0.127" layer="21" curve="90"/>
@@ -5502,7 +5502,7 @@
 <text x="-1.016" y="-5.08" size="0.8128" layer="25" align="center-right">&gt;NAME</text>
 <text x="-1.016" y="-6.35" size="0.8128" layer="27" align="center-right">&gt;VALUE</text>
 </package>
-<package name="L-04/7-M">
+<package name="L-04/10-M">
 <pad name="2" x="0" y="-3.81" drill="0.8"/>
 <pad name="1" x="0" y="6.35" drill="0.8"/>
 <wire x1="-1.27" y1="3.3655" x2="0" y2="4.6355" width="0.127" layer="21" curve="-90"/>
@@ -5525,7 +5525,7 @@
 <wire x1="1.27" y1="5.08" x2="0" y2="6.35" width="0.127" layer="21"/>
 <wire x1="-1.27" y1="-2.2225" x2="0" y2="-3.81" width="0.127" layer="21"/>
 </package>
-<package name="L-09R">
+<package name="L-8R">
 <pad name="P$1" x="-2.54" y="0" drill="1" shape="octagon"/>
 <pad name="P$2" x="2.54" y="0" drill="1" shape="octagon"/>
 <circle x="0" y="0" radius="3.8608" width="0.127" layer="21"/>
@@ -5816,7 +5816,7 @@
 <technology name=""/>
 </technologies>
 </device>
-<device name="04/7" package="L-04/7V">
+<device name="04/7" package="L-04/8V">
 <connects>
 <connect gate="1" pin="1" pad="2"/>
 <connect gate="1" pin="2" pad="1"/>
@@ -5825,7 +5825,7 @@
 <technology name=""/>
 </technologies>
 </device>
-<device name="04/7-M" package="L-04/7-M">
+<device name="04/7-M" package="L-04/10-M">
 <connects>
 <connect gate="1" pin="1" pad="1"/>
 <connect gate="1" pin="2" pad="2"/>
@@ -5834,7 +5834,7 @@
 <technology name=""/>
 </technologies>
 </device>
-<device name="-09R" package="L-09R">
+<device name="-09R" package="L-8R">
 <connects>
 <connect gate="1" pin="1" pad="P$1"/>
 <connect gate="1" pin="2" pad="P$2"/>
@@ -5870,7 +5870,7 @@
 <technology name=""/>
 </technologies>
 </device>
-<device name="L-04-5/5V" package="L-04-2/5V">
+<device name="L-04-5/6V" package="L-04-2/5V">
 <connects>
 <connect gate="1" pin="1" pad="1"/>
 <connect gate="1" pin="2" pad="2"/>

@@ -745,7 +745,7 @@
 <package name="0202/5-V">
 <pad name="1" x="0" y="2.54" drill="0.8" rot="R270"/>
 <pad name="2" x="0" y="-2.54" drill="0.8" rot="R270"/>
-<text x="0" y="0" size="0.6096" layer="27" ratio="10" align="center">&gt;VALUE</text>
+<text x="0" y="0" size="0.4064" layer="27" ratio="10" rot="R270" align="center">&gt;VALUE</text>
 <wire x1="0" y1="-2.1336" x2="0" y2="-1.651" width="0.254" layer="21"/>
 <wire x1="0" y1="2.1336" x2="0" y2="1.651" width="0.254" layer="21"/>
 <wire x1="-0.381" y1="1.27" x2="-0.635" y2="1.016" width="0.127" layer="21" curve="90"/>
