@@ -5268,11 +5268,11 @@ high speed (Philips)</description>
 <parts>
 <part name="T1" library="transistor" deviceset="*-NPN-" device="TO92-CBE" technology="BC547"/>
 <part name="T2" library="transistor" deviceset="*-NPN-" device="TO92-CBE" technology="BC547"/>
-<part name="R1" library="resistor" deviceset="R-EU_" device="0207/2V" value="1k"/>
-<part name="R2" library="resistor" deviceset="R-EU_" device="0207/7" value="10k"/>
-<part name="R3" library="resistor" deviceset="R-EU_" device="0207/10" value="10k"/>
-<part name="R4" library="resistor" deviceset="R-EU_" device="0207/10" value="15k"/>
-<part name="R5" library="resistor" deviceset="R-EU_" device="0207/2V" value="4.7k"/>
+<part name="R1" library="resistor" deviceset="R-EU_" device="0207/2V" value="1kΩ"/>
+<part name="R2" library="resistor" deviceset="R-EU_" device="0207/7" value="10kΩ"/>
+<part name="R3" library="resistor" deviceset="R-EU_" device="0207/10" value="10kΩ"/>
+<part name="R4" library="resistor" deviceset="R-EU_" device="0207/10" value="15kΩ"/>
+<part name="R5" library="resistor" deviceset="R-EU_" device="0207/2V" value="4.7kΩ"/>
 <part name="D1" library="diode" deviceset="1N4148" device="DO35-7" value="1N4148"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>

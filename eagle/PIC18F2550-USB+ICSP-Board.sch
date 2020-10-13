@@ -6664,12 +6664,12 @@ Source: www.kingbright.com</description>
 <part name="J2" library="usb" deviceset="USB" device="-PRINT"/>
 <part name="U$3" library="pad" deviceset="GND" device=""/>
 <part name="U$5" library="pad" deviceset="GND" device=""/>
-<part name="R1" library="r" deviceset="R" device="0204/10" value="330"/>
+<part name="R1" library="r" deviceset="R" device="0204/10" value="330Ω"/>
 <part name="LED1" library="led" deviceset="LED" device="5MM"/>
 <part name="C3" library="c" deviceset="C" device="025-015X024" value="15p"/>
 <part name="C4" library="c" deviceset="C" device="025-015X024" value="15p"/>
 <part name="U$6" library="pad" deviceset="GND" device=""/>
-<part name="C5" library="c" deviceset="CPOL" device="E2.5-5" value="100uF"/>
+<part name="C5" library="c" deviceset="CPOL" device="E2.5-5" value="100μF"/>
 <part name="U$7" library="pad" deviceset="GND" device=""/>
 <part name="Q1" library="q" deviceset="CRYSTAL" device="HC49" value="20MHz"/>
 <part name="VDD4" library="supply1" deviceset="VDD" device=""/>
@@ -6682,8 +6682,8 @@ Source: www.kingbright.com</description>
 <part name="J5" library="pinconn" deviceset="CONN-6P" device="" value="PWR+SCI+USB"/>
 <part name="J6" library="pinconn" deviceset="CONN-8P" device="" value="RB[0..7]"/>
 <part name="J3" library="pinconn" deviceset="CONN-5P" device="" value="RA[0..4]"/>
-<part name="R2" library="r" deviceset="R" device="0204/7-V" value="100"/>
-<part name="R3" library="r" deviceset="R" device="0204/7-V" value="100"/>
+<part name="R2" library="r" deviceset="R" device="0204/7-V" value="100Ω"/>
+<part name="R3" library="r" deviceset="R" device="0204/7-V" value="100Ω"/>
 <part name="U$1" library="mcu" deviceset="PIC18F2550-I/SP" device="LABEL" value="PIC18F2550-I/SPLABEL"/>
 <part name="U$12" library="pad" deviceset="VDD" device=""/>
 <part name="U$13" library="pad" deviceset="VDD" device=""/>

@@ -3846,14 +3846,14 @@ Breakout</text>
 <parts>
 <part name="U$2" library="pinconn" deviceset="FTDI232-BO" device="-6P" value="FTDI232-BO-6P"/>
 <part name="U$3" library="pinconn" deviceset="PIC-UART" device="-4P"/>
-<part name="R1" library="resistor" deviceset="R-EU_" device="0207/10" value="330"/>
-<part name="R2" library="resistor" deviceset="R-EU_" device="0204/7" value="330"/>
+<part name="R1" library="resistor" deviceset="R-EU_" device="0207/10" value="330Ω"/>
+<part name="R2" library="resistor" deviceset="R-EU_" device="0204/7" value="330Ω"/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
-<part name="R3" library="resistor" deviceset="R-EU_" device="0204/7" value="4.7k"/>
+<part name="R3" library="resistor" deviceset="R-EU_" device="0204/7" value="4.7kΩ"/>
 <part name="P+1" library="supply1" deviceset="VCC" device=""/>
 <part name="P+2" library="supply1" deviceset="VCC" device=""/>
-<part name="R4" library="resistor" deviceset="R-EU_" device="0204/7" value="4.7k"/>
+<part name="R4" library="resistor" deviceset="R-EU_" device="0204/7" value="4.7kΩ"/>
 <part name="P+3" library="supply1" deviceset="VCC" device=""/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="SUPPLY1" library="supply2" deviceset="AGND" device="" value="VSS"/>

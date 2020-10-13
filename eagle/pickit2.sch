@@ -8915,8 +8915,8 @@ Source: http://ww1.microchip.com/downloads/en/DeviceDoc/21314g.pdf</description>
 <part name="C3" library="capacitor-wima" deviceset="C" device="2.5/2" value="22pF"/>
 <part name="X1" library="q" deviceset="CRYSTAL" device="HC49" value="20Mhz"/>
 <part name="P+9" library="supply1" deviceset="+5V" device=""/>
-<part name="L1" library="inductors" deviceset="82114R" device="M" value="680uH"/>
-<part name="R8" library="r" deviceset="R" device="0204/10" value="4.7K"/>
+<part name="L1" library="inductors" deviceset="82114R" device="M" value="680μH"/>
+<part name="R8" library="r" deviceset="R" device="0204/10" value="4.7kΩ" />
 <part name="D2" library="diode" deviceset="BAT42" device="M" value="BAT85"/>
 <part name="Q3" library="t" deviceset="2N7000" device="" value="2N7000"/>
 <part name="Q5" library="t" deviceset="2N7000" device="" value="2N7000"/>
@@ -8926,12 +8926,12 @@ Source: http://ww1.microchip.com/downloads/en/DeviceDoc/21314g.pdf</description>
 <part name="Q7" library="t" deviceset="2N7000" device="" value="2N7000"/>
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
 <part name="GND8" library="supply1" deviceset="GND" device=""/>
-<part name="R4" library="r" deviceset="R-H" device="0204/10" value="10K"/>
-<part name="R1" library="r" deviceset="R-H" device="0204/10" value="10K"/>
+<part name="R4" library="r" deviceset="R-H" device="0204/10" value="10kΩ" />
+<part name="R1" library="r" deviceset="R-H" device="0204/10" value="10kΩ" />
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
 <part name="GND11" library="supply1" deviceset="GND" device=""/>
-<part name="R16" library="r" deviceset="R-H" device="0204/10" value="10K"/>
+<part name="R16" library="r" deviceset="R-H" device="0204/10" value="10kΩ" />
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
 <part name="GND14" library="supply1" deviceset="GND" device=""/>
 <part name="P+2" library="supply1" deviceset="+5V" device=""/>
@@ -8940,20 +8940,20 @@ Source: http://ww1.microchip.com/downloads/en/DeviceDoc/21314g.pdf</description>
 <part name="D5" library="led" deviceset="LED" device="5MM"/>
 <part name="GND16" library="supply1" deviceset="GND" device=""/>
 <part name="IC2" library="linear" deviceset="MCP601" device="M" value="MCP601P"/>
-<part name="R10" library="r" deviceset="R" device="0204/10" value="10K"/>
-<part name="R9" library="r" deviceset="R" device="0204/10" value="2.7K"/>
-<part name="R11" library="r" deviceset="R" device="0204/10" value="100"/>
-<part name="R12" library="r" deviceset="R" device="0204/10" value="1K"/>
-<part name="R15" library="r" deviceset="R-H" device="0204/10" value="43"/>
-<part name="R14" library="r" deviceset="R-H" device="0204/10" value="43"/>
-<part name="R13" library="r" deviceset="R-H" device="0204/10" value="4.7K"/>
-<part name="R17" library="r" deviceset="R" device="0204/10" value="4.7K"/>
-<part name="R18" library="r" deviceset="R" device="0204/10" value="4.7K"/>
-<part name="R3" library="r" deviceset="R" device="0204/10" value="10K"/>
-<part name="R7" library="r" deviceset="R" device="0204/10" value="470"/>
-<part name="R6" library="r" deviceset="R" device="0204/10" value="470"/>
-<part name="R2" library="r" deviceset="R" device="0204/10" value="470"/>
-<part name="R5" library="r" deviceset="R" device="0204/10" value="10K"/>
+<part name="R10" library="r" deviceset="R" device="0204/10" value="10kΩ" />
+<part name="R9" library="r" deviceset="R" device="0204/10" value="2.7kΩ" />
+<part name="R11" library="r" deviceset="R" device="0204/10" value="100Ω"/>
+<part name="R12" library="r" deviceset="R" device="0204/10" value="1kΩ" />
+<part name="R15" library="r" deviceset="R-H" device="0204/10" value="43Ω"/>
+<part name="R14" library="r" deviceset="R-H" device="0204/10" value="43Ω"/>
+<part name="R13" library="r" deviceset="R-H" device="0204/10" value="4.7kΩ" />
+<part name="R17" library="r" deviceset="R" device="0204/10" value="4.7kΩ" />
+<part name="R18" library="r" deviceset="R" device="0204/10" value="4.7kΩ" />
+<part name="R3" library="r" deviceset="R" device="0204/10" value="10kΩ" />
+<part name="R7" library="r" deviceset="R" device="0204/10" value="470Ω"/>
+<part name="R6" library="r" deviceset="R" device="0204/10" value="470Ω"/>
+<part name="R2" library="r" deviceset="R" device="0204/10" value="470Ω"/>
+<part name="R5" library="r" deviceset="R" device="0204/10" value="10kΩ" />
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="J1" library="con-berg" deviceset="PN61729-S" device="" value=""/>
 <part name="S1" library="sw" deviceset="PB-1P-1T" device=""/>
@@ -8973,9 +8973,9 @@ Source: http://ww1.microchip.com/downloads/en/DeviceDoc/21314g.pdf</description>
 <part name="C11" library="c" deviceset="C" device="050-025X075/V" value="100nF"/>
 <part name="C4" library="c" deviceset="C" device="050-025X075/V" value="100nF"/>
 <part name="J3" library="pinconn" deviceset="PIC-ICSP" device="-ICSP"/>
-<part name="C8" library="c" deviceset="CPOL" device="E2.5-5" value="10uF"/>
-<part name="C9" library="c" deviceset="CPOL" device="E2.5-5" value="47uF"/>
-<part name="C5" library="c" deviceset="CPOL" device="E2.5-5" value="10uF"/>
+<part name="C8" library="c" deviceset="CPOL" device="E2.5-5" value="10μF"/>
+<part name="C9" library="c" deviceset="CPOL" device="E2.5-5" value="47μF"/>
+<part name="C5" library="c" deviceset="CPOL" device="E2.5-5" value="10μF"/>
 <part name="C6" library="c" deviceset="C" device="050-025X075/V" value="470nF"/>
 </parts>
 <sheets>

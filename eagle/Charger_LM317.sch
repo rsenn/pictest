@@ -10542,18 +10542,18 @@ Source: www.kingbright.com</description>
 <parts>
 <part name="IC1" library="v-reg" deviceset="LM317TL" device="" value="LM317"/>
 <part name="T1" library="t" deviceset="BC547" device="CBE" value="BC547"/>
-<part name="R2" library="r" deviceset="R" device="0202/5" value="2.2k"/>
+<part name="R2" library="r" deviceset="R" device="0202/5" value="2.2kΩ"/>
 <part name="R1" library="r" deviceset="R" device="0207/7"/>
 <part name="D1" library="d" deviceset="1N4148" device="34-7" value="1N414834-7"/>
-<part name="R6" library="r" deviceset="R" device="0202/7" value="47"/>
+<part name="R6" library="r" deviceset="R" device="0202/7" value="47Ω"/>
 <part name="T2" library="t" deviceset="BC547" device="CBE" value="BC547CBE"/>
-<part name="R7" library="r" deviceset="R" device="0202/7" value="470"/>
-<part name="R5" library="r" deviceset="R" device="0202/7" value="470"/>
+<part name="R7" library="r" deviceset="R" device="0202/7" value="470Ω"/>
+<part name="R5" library="r" deviceset="R" device="0202/7" value="470Ω"/>
 <part name="LED1" library="led" deviceset="LED" device="5MM"/>
 <part name="P1" library="pad" deviceset="SPAD" device="" value="+"/>
 <part name="P2" library="pad" deviceset="SPAD" device="" value="-"/>
-<part name="R3" library="r" deviceset="R" device="0202/7" value="470"/>
-<part name="R4" library="pot" deviceset="TRIM_EU-" device="B25P" value="1k"/>
+<part name="R3" library="r" deviceset="R" device="0202/7" value="470Ω"/>
+<part name="R4" library="pot" deviceset="TRIM_EU-" device="B25P" value="1kΩ"/>
 <part name="U$1" library="print-conn" deviceset="PCON2" device=""/>
 <part name="C2" library="c" deviceset="C" device="050-020X036"/>
 <part name="C1" library="c" deviceset="C" device="050-020X036"/>

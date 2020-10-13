@@ -2761,10 +2761,10 @@ http://www.techmeology.co.uk/rpipic/</description>
 <parts>
 <part name="T1" library="t" deviceset="2N3904" device=""/>
 <part name="T3" library="t" deviceset="2N3906" device=""/>
-<part name="R1" library="r" deviceset="R-H" device="0204/10" value="100k"/>
-<part name="R2" library="r" deviceset="R" device="0204/10-V" value="100k"/>
-<part name="R3" library="r" deviceset="R" device="0204/10-V" value="100k"/>
-<part name="R4" library="r" deviceset="R" device="0204/10-V" value="10k"/>
+<part name="R1" library="r" deviceset="R-H" device="0204/10" value="100kΩ"/>
+<part name="R2" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
+<part name="R3" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
+<part name="R4" library="r" deviceset="R" device="0204/10-V" value="10kΩ"/>
 <part name="GPIO4" library="pad" deviceset="VPORT" device=""/>
 <part name="U$1" library="pad" deviceset="+5V" device=""/>
 <part name="S1" library="pad" deviceset="GND" device=""/>
@@ -2772,24 +2772,24 @@ http://www.techmeology.co.uk/rpipic/</description>
 <part name="PGC" library="pad" deviceset="VPORT" device=""/>
 <part name="T2" library="t" deviceset="2N3904" device=""/>
 <part name="T4" library="t" deviceset="2N3906" device=""/>
-<part name="R5" library="r" deviceset="R-H" device="0204/10" value="100k"/>
-<part name="R6" library="r" deviceset="R" device="0204/10-V" value="100k"/>
-<part name="R7" library="r" deviceset="R" device="0204/10-V" value="100k"/>
+<part name="R5" library="r" deviceset="R-H" device="0204/10" value="100kΩ"/>
+<part name="R6" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
+<part name="R7" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
 <part name="GPIO7" library="pad" deviceset="VPORT" device=""/>
 <part name="U$2" library="pad" deviceset="+5V" device=""/>
 <part name="S3" library="pad" deviceset="GND" device=""/>
 <part name="S4" library="pad" deviceset="GND" device=""/>
 <part name="PGD" library="pad" deviceset="VPORT" device=""/>
-<part name="R8" library="r" deviceset="R-H" device="0204/10" value="10k"/>
-<part name="R9" library="r" deviceset="R" device="0204/10-V" value="68k"/>
-<part name="R10" library="r" deviceset="R" device="0204/10-V" value="100k"/>
+<part name="R8" library="r" deviceset="R-H" device="0204/10" value="10kΩ"/>
+<part name="R9" library="r" deviceset="R" device="0204/10-V" value="68kΩ"/>
+<part name="R10" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
 <part name="GPIO8" library="pad" deviceset="VPORT" device=""/>
 <part name="T5" library="t" deviceset="2N3904" device=""/>
 <part name="T6" library="t" deviceset="2N3906" device=""/>
-<part name="R11" library="r" deviceset="R-H" device="0204/10" value="100k"/>
-<part name="R12" library="r" deviceset="R" device="0204/10-V" value="100k"/>
-<part name="R13" library="r" deviceset="R" device="0204/10-V" value="100k"/>
-<part name="R14" library="r" deviceset="R" device="0204/10-V" value="10k"/>
+<part name="R11" library="r" deviceset="R-H" device="0204/10" value="100kΩ"/>
+<part name="R12" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
+<part name="R13" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
+<part name="R14" library="r" deviceset="R" device="0204/10-V" value="10kΩ"/>
 <part name="GPIO9" library="pad" deviceset="VPORT" device=""/>
 <part name="S5" library="pad" deviceset="GND" device=""/>
 <part name="S6" library="pad" deviceset="GND" device=""/>

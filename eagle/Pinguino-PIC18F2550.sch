@@ -5414,7 +5414,7 @@
 <parts>
 <part name="SW1" library="sw" deviceset="PB-1P-1T" device=""/>
 <part name="U$2" library="pad" deviceset="GND" device=""/>
-<part name="R1" library="r" deviceset="R" device="0204/10" value="10k"/>
+<part name="R1" library="r" deviceset="R" device="0204/10" value="10kΩ"/>
 <part name="Q1" library="q" deviceset="CRYSTAL" device="HC49" value="20MHz"/>
 <part name="C1" library="c" deviceset="C" device="025-015X024" value="15pF"/>
 <part name="C2" library="c" deviceset="C" device="025-015X024" value="15pF"/>
@@ -5425,7 +5425,7 @@
 <part name="U$6" library="pad" deviceset="VCC" device=""/>
 <part name="GND" library="pad" deviceset="GND" device=""/>
 <part name="C4" library="c" deviceset="C" device="025-015X024" value="100nF"/>
-<part name="C5" library="c" deviceset="CPOL" device="E2,5-4" value="100uF"/>
+<part name="C5" library="c" deviceset="CPOL" device="E2,5-4" value="100μF"/>
 <part name="U$1" library="pad" deviceset="VCC" device=""/>
 <part name="U$10" library="pad" deviceset="GND" device=""/>
 <part name="J2" library="pinconn" deviceset="CONN-8P" device=""/>

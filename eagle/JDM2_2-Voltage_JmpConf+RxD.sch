@@ -8015,15 +8015,15 @@
 <part name="D2" library="d" deviceset="1N4148" device="34-5" value="1N4148"/>
 <part name="D6" library="d" deviceset="1N4148" device="34-5V" value="1N4148"/>
 <part name="D7" library="d" deviceset="1N4148" device="34-7V" value="1N4148"/>
-<part name="R2" library="r" deviceset="R" device="0202/7-V" value="1.5k"/>
-<part name="R1" library="r" deviceset="R" device="0202/7-V" value="10k"/>
+<part name="R2" library="r" deviceset="R" device="0202/7-V" value="1.5kΩ"/>
+<part name="R1" library="r" deviceset="R" device="0202/7-V" value="10kΩ"/>
 <part name="T1" library="t" deviceset="BC547" device="CBE" value="BC547"/>
 <part name="T2" library="t" deviceset="BC547" device="CBE" value="BC547"/>
-<part name="C1" library="c" deviceset="CPOL" device="E2,5-5/V" value="100uF"/>
-<part name="C2" library="c" deviceset="CPOL" device="E2,5-4/V" value="22uF"/>
+<part name="C1" library="c" deviceset="CPOL" device="E2,5-5/V" value="100μF"/>
+<part name="C2" library="c" deviceset="CPOL" device="E2,5-4/V" value="22μF"/>
 <part name="D6B" library="d" deviceset="Z-DIODE" device="34Z7V" value="Z=5.1V"/>
 <part name="SUPPLY1" library="supply2" deviceset="VPP" device=""/>
-<part name="R3" library="r" deviceset="R" device="0202/7" value="100"/>
+<part name="R3" library="r" deviceset="R" device="0202/7" value="100Ω"/>
 <part name="J2" library="pinconn" deviceset="PIC-ICSP" device="-ICSP" value="PIC-ICSP-ICSP"/>
 <part name="SUPPLY2" library="supply2" deviceset="VPP" device=""/>
 <part name="D6A" library="d" deviceset="Z-DIODE" device="34Z7V" value="Z=3.3V"/>
@@ -8035,9 +8035,9 @@
 <part name="SW1" library="sw" deviceset="SL-SW-1P-2T" device="-JPSW"/>
 <part name="J1" library="pinconn" deviceset="COMPORT-6PIN-NEW" device="-L" value="COM"/>
 <part name="T3" library="t" deviceset="BC557" device="CBE" value="BC557"/>
-<part name="R4" library="r" deviceset="R" device="0202/5-V" value="1k"/>
-<part name="R5" library="r" deviceset="R" device="0202/5" value="4.7k"/>
-<part name="R6" library="r" deviceset="R" device="0202/5" value="10k"/>
+<part name="R4" library="r" deviceset="R" device="0202/5-V" value="1kΩ"/>
+<part name="R5" library="r" deviceset="R" device="0202/5" value="4.7kΩ"/>
+<part name="R6" library="r" deviceset="R" device="0202/5" value="10kΩ"/>
 <part name="P+3" library="supply1" deviceset="VCC" device=""/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="RX" library="pad" deviceset="SPAD" device="" value="RX"/>

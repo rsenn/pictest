@@ -6095,14 +6095,14 @@
 <parts>
 <part name="T1" library="t" deviceset="BC557" device="CBE" value="BC557"/>
 <part name="D1" library="d" deviceset="1N4148" device="34-7" value="1N4148"/>
-<part name="R1" library="r" deviceset="R" device="0202/7" value="10k"/>
+<part name="R1" library="r" deviceset="R" device="0202/7" value="10kΩ"/>
 <part name="T2" library="t" deviceset="BC547" device="CBE" value="BC547"/>
-<part name="R2" library="r" deviceset="R" device="0202/10-V" value="10k"/>
-<part name="R3" library="r" deviceset="R" device="0202/7-V" value="10k"/>
-<part name="R4" library="r" deviceset="R" device="0202/7" value="10k"/>
-<part name="R5" library="r" deviceset="R" device="0202/7" value="10k"/>
+<part name="R2" library="r" deviceset="R" device="0202/10-V" value="10kΩ"/>
+<part name="R3" library="r" deviceset="R" device="0202/7-V" value="10kΩ"/>
+<part name="R4" library="r" deviceset="R" device="0202/7" value="10kΩ"/>
+<part name="R5" library="r" deviceset="R" device="0202/7" value="10kΩ"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
-<part name="C1" library="c" deviceset="CPOL" device="E2,5-3" value="10uF"/>
+<part name="C1" library="c" deviceset="CPOL" device="E2,5-3" value="10μF"/>
 <part name="P+1" library="supply1" deviceset="VCC" device=""/>
 <part name="P+2" library="supply1" deviceset="VCC" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>

@@ -14402,9 +14402,9 @@ Source: www.kingbright.com</description>
 <part name="C1" library="c" deviceset="C" device="025-020X036" value="22p"/>
 <part name="C2" library="c" deviceset="C" device="025-020X036" value="22p"/>
 <part name="R1" library="r" deviceset="R-H" device="0204/10" value="4.7 K"/>
-<part name="R2" library="r" deviceset="R-H" device="0204/10" value="100"/>
-<part name="R3" library="r" deviceset="R-H" device="0204/10" value="100"/>
-<part name="R4" library="r" deviceset="R-H" device="0204/10" value="100"/>
+<part name="R2" library="r" deviceset="R-H" device="0204/10" value="100Ω"/>
+<part name="R3" library="r" deviceset="R-H" device="0204/10" value="100Ω"/>
+<part name="R4" library="r" deviceset="R-H" device="0204/10" value="100Ω"/>
 <part name="R5" library="r" deviceset="R-H" device="0204/10" value="10 K"/>
 <part name="R6" library="r" deviceset="R-H" device="0204/10" value="4.7 K"/>
 <part name="R7" library="r" deviceset="R-H" device="0204/10" value="4.7 K"/>
@@ -14414,7 +14414,7 @@ Source: www.kingbright.com</description>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="VDD1" library="supply1" deviceset="VDD" device=""/>
 <part name="D2" library="d" deviceset="Z-DIODE" device="34Z10" value="1N5817-B"/>
-<part name="L1" library="l" deviceset="L" device="-09R" value="680 uH"/>
+<part name="L1" library="l" deviceset="L" device="-09R" value="680μH"/>
 <part name="SV1" library="con-lsta" deviceset="FE06-1" device=""/>
 <part name="LED1" library="d" deviceset="LED" device="-3MM" value="Red Busy"/>
 <part name="LED2" library="led" deviceset="LED" device="3MM" value="Green Power"/>
@@ -14429,18 +14429,18 @@ Source: www.kingbright.com</description>
 <part name="R11" library="r" deviceset="R-H" device="0204/10" value="10 K"/>
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
 <part name="R12" library="r" deviceset="R" device="0204/10" value="100 K"/>
-<part name="R13" library="r" deviceset="R" device="0204/10" value="100"/>
+<part name="R13" library="r" deviceset="R" device="0204/10" value="100Ω"/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
-<part name="C3" library="rcl" deviceset="CPOL-EU" device="E2,5-6E" value="47 uF"/>
+<part name="C3" library="rcl" deviceset="CPOL-EU" device="E2,5-6E" value="47 μF"/>
 <part name="GND11" library="supply1" deviceset="GND" device=""/>
 <part name="R14" library="r" deviceset="R-H" device="0204/10" value="1 K"/>
 <part name="GND12" library="supply1" deviceset="GND" device=""/>
 <part name="VDD3" library="supply1" deviceset="VDD" device=""/>
-<part name="R15" library="r" deviceset="R" device="0204/10" value="330"/>
+<part name="R15" library="r" deviceset="R" device="0204/10" value="330Ω"/>
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
-<part name="R16" library="r" deviceset="R" device="0204/10" value="330"/>
+<part name="R16" library="r" deviceset="R" device="0204/10" value="330Ω"/>
 <part name="GND14" library="supply1" deviceset="GND" device=""/>
-<part name="C4" library="c" deviceset="C" device="050-030X075" value="0.47 uF"/>
+<part name="C4" library="c" deviceset="C" device="050-030X075" value="0.47 μF"/>
 <part name="GND15" library="supply1" deviceset="GND" device=""/>
 <part name="GND16" library="supply1" deviceset="GND" device=""/>
 <part name="VDD4" library="supply1" deviceset="VDD" device=""/>
@@ -14449,7 +14449,7 @@ Source: www.kingbright.com</description>
 <part name="GND17" library="supply1" deviceset="GND" device=""/>
 <part name="VDD6" library="supply1" deviceset="VDD" device=""/>
 <part name="GND18" library="supply1" deviceset="GND" device=""/>
-<part name="C5" library="c" deviceset="C" device="050-024X044" value="0.1 uF"/>
+<part name="C5" library="c" deviceset="C" device="050-024X044" value="0.1 μF"/>
 <part name="D3" library="d" deviceset="DIODE" device="34-10"/>
 <part name="T1" library="t" deviceset="2N3904" device=""/>
 <part name="T2" library="t" deviceset="2N3904" device=""/>

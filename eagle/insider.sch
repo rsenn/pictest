@@ -5982,37 +5982,37 @@
 <parts>
 <part name="C1" library="c" deviceset="C" device="025-020X036" value="22P"/>
 <part name="C2" library="c" deviceset="C" device="025-020X036" value="22P"/>
-<part name="R1" library="r" deviceset="R" device="0204/10" value="22"/>
-<part name="R4" library="r" deviceset="R" device="0204/15" value="100"/>
+<part name="R1" library="r" deviceset="R" device="0204/10" value="22Ω"/>
+<part name="R4" library="r" deviceset="R" device="0204/15" value="100Ω"/>
 <part name="GND1" library="s" deviceset="GND" device=""/>
 <part name="P+1" library="s" deviceset="VCC" device=""/>
 <part name="GND3" library="AtaLib" deviceset="GND" device=""/>
 <part name="GND4" library="AtaLib" deviceset="GND" device=""/>
 <part name="GND5" library="AtaLib" deviceset="GND" device=""/>
-<part name="R7" library="r" deviceset="R" device="0204/10" value="1K"/>
+<part name="R7" library="r" deviceset="R" device="0204/10" value="1kΩ" />
 <part name="GND6" library="AtaLib" deviceset="GND" device=""/>
 <part name="P+4" library="s" deviceset="VCC" device=""/>
-<part name="R6" library="r" deviceset="R" device="0204/10" value="4K7"/>
-<part name="R5" library="r" deviceset="R" device="0204/10" value="4K7"/>
-<part name="R3" library="r" deviceset="R" device="0204/10" value="10K"/>
-<part name="R2" library="r" deviceset="R" device="0204/10" value="22"/>
+<part name="R6" library="r" deviceset="R" device="0204/10" value="4.7kΩ"/>
+<part name="R5" library="r" deviceset="R" device="0204/10" value="4.7kΩ"/>
+<part name="R3" library="r" deviceset="R" device="0204/10" value="10kΩ" />
+<part name="R2" library="r" deviceset="R" device="0204/10" value="22Ω"/>
 <part name="P+6" library="s" deviceset="VCC" device=""/>
-<part name="R8" library="r" deviceset="R" device="0204/12" value="750"/>
-<part name="R10" library="r" deviceset="R" device="0204/10" value="1K5"/>
-<part name="R9" library="r" deviceset="R" device="0204/12" value="2K"/>
-<part name="R11" library="r" deviceset="R" device="0204/10" value="1K5"/>
+<part name="R8" library="r" deviceset="R" device="0204/12" value="750Ω"/>
+<part name="R10" library="r" deviceset="R" device="0204/10" value="1.5kΩ"/>
+<part name="R9" library="r" deviceset="R" device="0204/12" value="2kΩ" />
+<part name="R11" library="r" deviceset="R" device="0204/10" value="1.5kΩ"/>
 <part name="GND2" library="s" deviceset="GND" device=""/>
-<part name="R12" library="r" deviceset="R" device="0204/10" value="1K5"/>
+<part name="R12" library="r" deviceset="R" device="0204/10" value="1.5kΩ"/>
 <part name="D2" library="d" deviceset="LED" device=""/>
 <part name="D3" library="d" deviceset="LED" device=""/>
 <part name="U$2" library="s" deviceset="VCC" device=""/>
 <part name="XTAL1" library="q" deviceset="CRYSTAL" device="HC49" value="20MHz"/>
-<part name="C5" library="c" deviceset="CPOL" device="E2,5-4/V" value="1uF"/>
-<part name="C3" library="c" deviceset="CPOL" device="E2,5-4/V" value="1uF"/>
+<part name="C5" library="c" deviceset="CPOL" device="E2,5-4/V" value="1μF"/>
+<part name="C3" library="c" deviceset="CPOL" device="E2,5-4/V" value="1μF"/>
 <part name="D1" library="d" deviceset="1N4148" device="34-5V"/>
 <part name="SW1" library="sw" deviceset="PB-1P-1T" device=""/>
 <part name="U$3" library="s" deviceset="VCC" device=""/>
-<part name="C4" library="c" deviceset="CPOL" device="E2,5-4/V" value="1uF"/>
+<part name="C4" library="c" deviceset="CPOL" device="E2,5-4/V" value="1μF"/>
 <part name="J4" library="pinconn" deviceset="COMPORT-6PIN-NEW" device=""/>
 <part name="IC2" library="o" deviceset="ACPL-827" device=""/>
 <part name="IC3" library="o" deviceset="ACPL-827" device=""/>

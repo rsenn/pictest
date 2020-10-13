@@ -6113,41 +6113,41 @@
 <part name="U1" library="mcu" deviceset="PIC18F2550-I/SP" device="-V"/>
 <part name="T3" library="t" deviceset="BC547" device="-A" value="BC547"/>
 <part name="T1" library="t" deviceset="BC557" device="CBE-A" value="BC557"/>
-<part name="R1" library="r" deviceset="R" device="0204/10-V" value="22k"/>
-<part name="R2" library="r" deviceset="R" device="0204/10-V" value="12k"/>
-<part name="R3" library="r" deviceset="R-H" device="0204/10" value="100k"/>
-<part name="R24" library="r" deviceset="R" device="0204/10-V" value="330k"/>
+<part name="R1" library="r" deviceset="R" device="0204/10-V" value="22kΩ"/>
+<part name="R2" library="r" deviceset="R" device="0204/10-V" value="12kΩ"/>
+<part name="R3" library="r" deviceset="R-H" device="0204/10" value="100kΩ"/>
+<part name="R24" library="r" deviceset="R" device="0204/10-V" value="330kΩ"/>
 <part name="U$2" library="pad" deviceset="VDD" device=""/>
 <part name="S1" library="pad" deviceset="GND" device=""/>
 <part name="C8" library="c" deviceset="C" device="050-025X075" value="100nF"/>
-<part name="C1" library="c" deviceset="CPOL" device="E5-5" value="100uF"/>
+<part name="C1" library="c" deviceset="CPOL" device="E5-5" value="100μF"/>
 <part name="D3" library="d" deviceset="1N4148-H" device="DO34-7" value="1N4148"/>
 <part name="T4" library="t" deviceset="BC547" device="-A" value="BC547"/>
-<part name="R6" library="r" deviceset="R-H" device="0204/10" value="100k"/>
-<part name="R5" library="r" deviceset="R-H" device="0204/10" value="100k"/>
-<part name="R10" library="r" deviceset="R-H" device="0204/10" value="100k"/>
+<part name="R6" library="r" deviceset="R-H" device="0204/10" value="100kΩ"/>
+<part name="R5" library="r" deviceset="R-H" device="0204/10" value="100kΩ"/>
+<part name="R10" library="r" deviceset="R-H" device="0204/10" value="100kΩ"/>
 <part name="C2" library="c" deviceset="C-H" device="C025-020X036" value="22pF"/>
 <part name="C3" library="c" deviceset="C-H" device="C025-020X036" value="22pF"/>
 <part name="X1" library="q" deviceset="CRYSTAL" device="HC49" value="12MHz"/>
 <part name="T2" library="t" deviceset="BC557" device="CBE-A" value="BC557"/>
 <part name="S2" library="pad" deviceset="GND" device=""/>
 <part name="C7" library="c" deviceset="C" device="050-025X075" value="100nF"/>
-<part name="R25" library="r" deviceset="R" device="0204/10-V" value="330k"/>
+<part name="R25" library="r" deviceset="R" device="0204/10-V" value="330kΩ"/>
 <part name="S3" library="pad" deviceset="GND" device=""/>
 <part name="J1" library="pinconn" deviceset="CONN-10P" device=""/>
-<part name="R14" library="r" deviceset="R-H" device="0204/10" value="100"/>
-<part name="R15" library="r" deviceset="R-H" device="0204/10" value="100"/>
-<part name="R16" library="r" deviceset="R-H" device="0204/10" value="100"/>
-<part name="R17" library="r" deviceset="R-H" device="0204/10" value="100"/>
-<part name="R18" library="r" deviceset="R-H" device="0204/10" value="100"/>
-<part name="R19" library="r" deviceset="R-H" device="0204/10" value="100"/>
-<part name="R20" library="r" deviceset="R-H" device="0204/10" value="100"/>
-<part name="R21" library="r" deviceset="R-H" device="0204/10" value="100"/>
-<part name="R22" library="r" deviceset="R-H" device="0204/10" value="100"/>
-<part name="R23" library="r" deviceset="R-H" device="0204/10" value="100"/>
+<part name="R14" library="r" deviceset="R-H" device="0204/10" value="100Ω"/>
+<part name="R15" library="r" deviceset="R-H" device="0204/10" value="100Ω"/>
+<part name="R16" library="r" deviceset="R-H" device="0204/10" value="100Ω"/>
+<part name="R17" library="r" deviceset="R-H" device="0204/10" value="100Ω"/>
+<part name="R18" library="r" deviceset="R-H" device="0204/10" value="100Ω"/>
+<part name="R19" library="r" deviceset="R-H" device="0204/10" value="100Ω"/>
+<part name="R20" library="r" deviceset="R-H" device="0204/10" value="100Ω"/>
+<part name="R21" library="r" deviceset="R-H" device="0204/10" value="100Ω"/>
+<part name="R22" library="r" deviceset="R-H" device="0204/10" value="100Ω"/>
+<part name="R23" library="r" deviceset="R-H" device="0204/10" value="100Ω"/>
 <part name="S4" library="pad" deviceset="GND" device=""/>
 <part name="U$5" library="pad" deviceset="VDD" device=""/>
-<part name="C6" library="c" deviceset="CPOL" device="E5-5" value="10uF"/>
+<part name="C6" library="c" deviceset="CPOL" device="E5-5" value="10μF"/>
 <part name="C5" library="c" deviceset="C" device="050-025X075" value="100nF"/>
 <part name="U$6" library="pad" deviceset="VDD" device=""/>
 <part name="S5" library="pad" deviceset="GND" device=""/>
@@ -6158,13 +6158,13 @@
 <part name="S7" library="pad" deviceset="GND" device=""/>
 <part name="C4" library="c" deviceset="C" device="050-030X075" value="330nF"/>
 <part name="S8" library="pad" deviceset="GND" device=""/>
-<part name="R11" library="r" deviceset="R-H" device="0204/10" value="100k"/>
-<part name="R12" library="r" deviceset="R-H" device="0204/10" value="100k"/>
-<part name="R13" library="r" deviceset="R-H" device="0204/10" value="100k"/>
-<part name="R9" library="r" deviceset="R-H" device="0204/10" value="2.2k"/>
-<part name="R8" library="r" deviceset="R-H" device="0204/10" value="2.2k"/>
+<part name="R11" library="r" deviceset="R-H" device="0204/10" value="100kΩ"/>
+<part name="R12" library="r" deviceset="R-H" device="0204/10" value="100kΩ"/>
+<part name="R13" library="r" deviceset="R-H" device="0204/10" value="100kΩ"/>
+<part name="R9" library="r" deviceset="R-H" device="0204/10" value="2.2kΩ"/>
+<part name="R8" library="r" deviceset="R-H" device="0204/10" value="2.2kΩ"/>
 <part name="S9" library="pad" deviceset="GND" device=""/>
-<part name="R7" library="r" deviceset="R-H" device="0204/10" value="1M"/>
+<part name="R7" library="r" deviceset="R-H" device="0204/10" value="1MΩ"/>
 <part name="SW1" library="sw" deviceset="PUSHBUTTON" device="-P1T" value=""/>
 <part name="D1" library="d" deviceset="LED" device="5MM" value="YELLOW"/>
 <part name="D2" library="d" deviceset="LED" device="5MM" value="GREEN"/>

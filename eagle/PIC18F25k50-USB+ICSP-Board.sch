@@ -7146,9 +7146,9 @@ Source: www.kingbright.com</description>
 <part name="J2" library="usb" deviceset="USB" device="-PRINT"/>
 <part name="U$3" library="pad" deviceset="GND" device=""/>
 <part name="U$5" library="pad" deviceset="GND" device=""/>
-<part name="R1" library="r" deviceset="R" device="0204/10" value="330"/>
+<part name="R1" library="r" deviceset="R" device="0204/10" value="330Ω"/>
 <part name="LED1" library="led" deviceset="LED" device="5MM"/>
-<part name="C5" library="c" deviceset="CPOL" device="E2.5-5" value="100uF"/>
+<part name="C5" library="c" deviceset="CPOL" device="E2.5-5" value="100μF"/>
 <part name="U$7" library="pad" deviceset="GND" device=""/>
 <part name="U$2" library="pad" deviceset="GND" device=""/>
 <part name="U$8" library="pad" deviceset="GND" device=""/>
@@ -7157,19 +7157,19 @@ Source: www.kingbright.com</description>
 <part name="J5" library="pinconn" deviceset="CONN-6P" device="" value="PWR+SCI+USB"/>
 <part name="J6" library="pinconn" deviceset="CONN-8P" device="" value="RB[0..7]"/>
 <part name="J3" library="pinconn" deviceset="CONN-5P" device="" value="RA[0..4]"/>
-<part name="R2" library="r" deviceset="R" device="0204/7-V" value="100"/>
-<part name="R3" library="r" deviceset="R" device="0204/7-V" value="100"/>
+<part name="R2" library="r" deviceset="R" device="0204/7-V" value="100Ω"/>
+<part name="R3" library="r" deviceset="R" device="0204/7-V" value="100Ω"/>
 <part name="U$1" library="mcu" deviceset="PIC18F2550-I/SP" device="LABEL" value="PIC18F2550-I/SPLABEL"/>
 <part name="U$12" library="pad" deviceset="VDD" device=""/>
 <part name="U$13" library="pad" deviceset="VDD" device=""/>
 <part name="U$14" library="pad" deviceset="VDD" device=""/>
 <part name="U$15" library="pad" deviceset="VDD" device=""/>
 <part name="U$6" library="pad" deviceset="VDD" device=""/>
-<part name="R4" library="r" deviceset="R-H" device="0204/10" value="10k"/>
+<part name="R4" library="r" deviceset="R-H" device="0204/10" value="10kΩ"/>
 <part name="SW1" library="sw" deviceset="PB-1P-1T" device=""/>
 <part name="U$10" library="pad" deviceset="GND" device=""/>
 <part name="U$11" library="pad" deviceset="VDD" device=""/>
-<part name="R5" library="r" deviceset="R" device="0204/10" value="330"/>
+<part name="R5" library="r" deviceset="R" device="0204/10" value="330Ω"/>
 <part name="LED2" library="led" deviceset="LED" device="5MM"/>
 <part name="U$16" library="pad" deviceset="GND" device=""/>
 <part name="U$17" library="pad" deviceset="VDD" device=""/>

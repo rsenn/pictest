@@ -2764,22 +2764,22 @@
 <parts>
 <part name="T1" library="t" deviceset="BC547" device="CBE" value="BC547"/>
 <part name="D1" library="d" deviceset="1N4148" device="34-7" value="1N4148"/>
-<part name="R1" library="r" deviceset="R" device="0202/7" value="4.7k"/>
+<part name="R1" library="r" deviceset="R" device="0202/7" value="4.7kΩ"/>
 <part name="T2" library="t" deviceset="BC547" device="CBE" value="BC547"/>
-<part name="R4" library="r" deviceset="R" device="0204/7-V" value="10k"/>
+<part name="R4" library="r" deviceset="R" device="0204/7-V" value="10kΩ"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="P+1" library="supply1" deviceset="+5V" device=""/>
 <part name="P+2" library="supply1" deviceset="+5V" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="P+3" library="supply1" deviceset="+5V" device=""/>
-<part name="R6" library="r" deviceset="R" device="0204/7" value="1k"/>
+<part name="R6" library="r" deviceset="R" device="0204/7" value="1kΩ"/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="J2" library="pinconn" deviceset="PIC-UART" device="-X"/>
 <part name="J1" library="pinconn" deviceset="COMPORT-4PIN-NEW" device=""/>
-<part name="R5" library="r" deviceset="R" device="0204/7-V" value="1k"/>
-<part name="C1" library="c" deviceset="C" device="025-015X024" value="0.1uF"/>
+<part name="R5" library="r" deviceset="R" device="0204/7-V" value="1kΩ"/>
+<part name="C1" library="c" deviceset="C" device="025-015X024" value="0.1μF"/>
 </parts>
 <sheets>
 <sheet>

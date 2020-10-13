@@ -9935,14 +9935,14 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <part name="D6" library="JDM2" deviceset="1N4148" device="-2.54A" value="1N4148"/>
 <part name="D4" library="JDM2" deviceset="1N4148" device="-2.54" value="1N4148"/>
 <part name="D5" library="JDM2" deviceset="1N4148" device="-18" value="1N4148"/>
-<part name="R6" library="JDM2" deviceset="RES" device="-0204-7" value="4.7k"/>
-<part name="R7" library="JDM2" deviceset="RES" device="-0204-7" value="1k"/>
-<part name="R2" library="JDM2" deviceset="RES" device="-0204-7" value="1.5k"/>
-<part name="R1" library="JDM2" deviceset="RES" device="-0207-10" value="10k"/>
+<part name="R6" library="JDM2" deviceset="RES" device="-0204-7" value="4.7kΩ"/>
+<part name="R7" library="JDM2" deviceset="RES" device="-0204-7" value="1kΩ"/>
+<part name="R2" library="JDM2" deviceset="RES" device="-0204-7" value="1.5kΩ"/>
+<part name="R1" library="JDM2" deviceset="RES" device="-0207-10" value="10kΩ"/>
 <part name="T1" library="JDM2" deviceset="BC547" device="" value="BC547"/>
 <part name="T2" library="JDM2" deviceset="BC547" device="" value="BC547"/>
-<part name="C1" library="rcl" deviceset="CPOL-EU" device="E2.5-5" value="100uF"/>
-<part name="C2" library="rcl" deviceset="CPOL-EU" device="E2.5-5" value="22uF"/>
+<part name="C1" library="rcl" deviceset="CPOL-EU" device="E2.5-5" value="100μF"/>
+<part name="C2" library="rcl" deviceset="CPOL-EU" device="E2.5-5" value="22μF"/>
 <part name="LED2" library="1dmf" deviceset="LED" device="" value="Vpp"/>
 <part name="LED1" library="1dmf" deviceset="LED" device="" value="Power"/>
 <part name="RS232" library="pinhead" deviceset="PINHD-1X5" device=""/>
@@ -9950,8 +9950,8 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <part name="T3" library="JDM2" deviceset="2N7000" device="" value="2N7000"/>
 <part name="VSS" library="supply1" deviceset="GND" device="" value="VSS"/>
 <part name="VSS1" library="supply1" deviceset="GND" device="" value="VSS"/>
-<part name="R4" library="JDM2" deviceset="RES" device="-0207-10" value="1K"/>
-<part name="R5" library="JDM2" deviceset="RES" device="-0207-10" value="15K"/>
+<part name="R4" library="JDM2" deviceset="RES" device="-0207-10" value="1kΩ" />
+<part name="R5" library="JDM2" deviceset="RES" device="-0207-10" value="15kΩ" />
 <part name="D7" library="JDM2" deviceset="1N4148" device="-2.54A" value="2N4148"/>
 <part name="V1" library="supply2" deviceset="GND" device="" value="VSS"/>
 <part name="D10" library="JDM2" deviceset="1N4148" device="-2.54A" value="1N4148"/>

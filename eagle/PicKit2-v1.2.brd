@@ -1937,9 +1937,9 @@ design rules under a new name.</description>
       <elements>
         <element name="C1" library="c" package="C025-020X036" value="22p" x="19.05" y="48.26" rot="R180" />
         <element name="C2" library="c" package="C025-020X036" value="22p" x="7.62" y="35.56" rot="R90" />
-        <element name="C3" library="rcl" package="E2,5-6E" value="47 uF" x="33.02" y="12.7" rot="R270" />
-        <element name="C4" library="c" package="C050-030X075" value="0.47 uF" x="27.94" y="15.24" rot="R270" />
-        <element name="C5" library="c" package="C050-024X044" value="0.1 uF" x="60.96" y="17.78" />
+        <element name="C3" library="rcl" package="E2,5-6E" value="47 μF" x="33.02" y="12.7" rot="R270" />
+        <element name="C4" library="c" package="C050-030X075" value="0.47 μF" x="27.94" y="15.24" rot="R270" />
+        <element name="C5" library="c" package="C050-024X044" value="0.1 μF" x="60.96" y="17.78" />
         <element name="D2" library="d" package="DO34Z10" value="1N5817-B" x="55.88" y="26.67" rot="R90" />
         <element name="D3" library="d" package="DO34-10" value="" x="60.96" y="7.62" rot="R180" />
         <element name="IC1" library="microchip" package="DIL28-3" value="PIC18F2550_28DIP" x="41.91" y="34.29" rot="R270">
@@ -1948,28 +1948,28 @@ design rules under a new name.</description>
           <attribute name="MF" value="MICROCHIP" x="41.91" y="34.29" size="1.778" layer="27" rot="R270" display="off" />
           <attribute name="OC_FARNELL" value="1523822" x="41.91" y="34.29" size="1.778" layer="27" rot="R270" display="off" />
         </element>
-        <element name="L1" library="l" package="L-8R" value="680 uH" x="55.88" y="12.7" rot="R90" />
+        <element name="L1" library="l" package="L-8R" value="680μH" x="55.88" y="12.7" rot="R90" />
         <element name="LED1" library="d" package="LED_3MM" value="Red Busy" x="-60.96" y="52.07" />
         <element name="LED2" library="led" package="LED3MM" value="Green Power" x="-52.07" y="52.07" />
         <element name="Q1" library="special" package="QS" value="20 MHz" x="43.18" y="71.12" rot="R180" />
         <element name="Q2" library="t" package="TO92" value="2N3906" x="60.96" y="25.4" rot="R180" />
-        <element name="R1" library="r" package="0204/10" value="4.7 K" x="30.48" y="45.72" />
-        <element name="R10" library="r" package="0204/10" value="10 K" x="53.34" y="38.1" rot="R180" />
-        <element name="R11" library="r" package="0204/10" value="10 K" x="96.52" y="20.32" rot="R270" />
-        <element name="R12" library="r" package="0204/10" value="100 K" x="66.04" y="20.32" rot="R90" />
-        <element name="R13" library="r" package="0204/10" value="100" x="66.04" y="35.56" rot="R90" />
-        <element name="R14" library="r" package="0204/10" value="1 K" x="30.48" y="22.86" />
-        <element name="R15" library="r" package="0204/10" value="330" x="60.96" y="50.8" rot="R90" />
-        <element name="R16" library="r" package="0204/10" value="330" x="30.48" y="25.4" rot="R180" />
-        <element name="R17" library="r" package="0204/10" value="22 K" x="53.34" y="45.72" rot="R180" />
-        <element name="R2" library="r" package="0204/10" value="100" x="30.48" y="43.18" />
-        <element name="R3" library="r" package="0204/10" value="100" x="30.48" y="40.64" />
-        <element name="R4" library="r" package="0204/10" value="100" x="38.1" y="66.04" />
-        <element name="R5" library="r" package="0204/10" value="10 K" x="30.48" y="35.56" />
-        <element name="R6" library="r" package="0204/10" value="4.7 K" x="17.78" y="40.64" />
-        <element name="R7" library="r" package="0204/10" value="4.7 K" x="17.78" y="43.18" />
-        <element name="R8" library="r" package="0204/10" value="2.7 K" x="30.48" y="33.02" />
-        <element name="R9" library="r" package="0204/10" value="4.7 K" x="22.86" y="27.94" rot="R90" />
+        <element name="R1" library="r" package="0204/10" value="4.7kΩ" x="30.48" y="45.72" />
+        <element name="R10" library="r" package="0204/10" value="10kΩ" x="53.34" y="38.1" rot="R180" />
+        <element name="R11" library="r" package="0204/10" value="10kΩ" x="96.52" y="20.32" rot="R270" />
+        <element name="R12" library="r" package="0204/10" value="100kΩ" x="66.04" y="20.32" rot="R90" />
+        <element name="R13" library="r" package="0204/10" value="100Ω" x="66.04" y="35.56" rot="R90" />
+        <element name="R14" library="r" package="0204/10" value="1kΩ" x="30.48" y="22.86" />
+        <element name="R15" library="r" package="0204/10" value="330Ω" x="60.96" y="50.8" rot="R90" />
+        <element name="R16" library="r" package="0204/10" value="330Ω" x="30.48" y="25.4" rot="R180" />
+        <element name="R17" library="r" package="0204/10" value="22kΩ" x="53.34" y="45.72" rot="R180" />
+        <element name="R2" library="r" package="0204/10" value="100Ω" x="30.48" y="43.18" />
+        <element name="R3" library="r" package="0204/10" value="100Ω" x="30.48" y="40.64" />
+        <element name="R4" library="r" package="0204/10" value="100Ω" x="38.1" y="66.04" />
+        <element name="R5" library="r" package="0204/10" value="10kΩ" x="30.48" y="35.56" />
+        <element name="R6" library="r" package="0204/10" value="4.7kΩ" x="17.78" y="40.64" />
+        <element name="R7" library="r" package="0204/10" value="4.7kΩ" x="17.78" y="43.18" />
+        <element name="R8" library="r" package="0204/10" value="2.7kΩ" x="30.48" y="33.02" />
+        <element name="R9" library="r" package="0204/10" value="4.7kΩ" x="22.86" y="27.94" rot="R90" />
         <element name="SV1" library="con-lsta" package="FE06" value="" x="25.4" y="69.85" rot="R180">
           <attribute name="OC_NEWARK" value="unknown" x="25.4" y="69.85" size="1.778" layer="27" rot="R180" display="off" />
           <attribute name="MPN" value="" x="25.4" y="69.85" size="1.778" layer="27" rot="R180" display="off" />

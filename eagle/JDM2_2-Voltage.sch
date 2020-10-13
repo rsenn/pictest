@@ -8868,12 +8868,12 @@ Source: www.kingbright.com</description>
 <part name="D2" library="d" deviceset="1N4148" device="34-5" value="1N4148"/>
 <part name="D6" library="d" deviceset="1N4148" device="34-7" value="1N4148"/>
 <part name="D7" library="d" deviceset="1N4148" device="34-7" value="1N4148"/>
-<part name="R2" library="r" deviceset="R" device="0202/7" value="1.5k"/>
-<part name="R1" library="r" deviceset="R" device="0202/7" value="10k"/>
+<part name="R2" library="r" deviceset="R" device="0202/7" value="1.5kΩ"/>
+<part name="R1" library="r" deviceset="R" device="0202/7" value="10kΩ"/>
 <part name="T1" library="t" deviceset="BC547" device="CBE-A" value="BC547CBE-A"/>
 <part name="T2" library="t" deviceset="BC547" device="CBE" value="BC547CBE"/>
-<part name="C1" library="c" deviceset="CPOL" device="E5-4" value="100uF"/>
-<part name="C2" library="c" deviceset="CPOL" device="E2,5-4" value="22uF"/>
+<part name="C1" library="c" deviceset="CPOL" device="E5-4" value="100μF"/>
+<part name="C2" library="c" deviceset="CPOL" device="E2,5-4" value="22μF"/>
 <part name="VSS" library="supply1" deviceset="GND" device="" value="VSS"/>
 <part name="VSS1" library="supply1" deviceset="GND" device="" value="VSS"/>
 <part name="_D5" library="d" deviceset="Z-DIODE" device="34Z5" value="Z=5.1V"/>
@@ -8881,7 +8881,7 @@ Source: www.kingbright.com</description>
 <part name="P+2" library="supply1" deviceset="VCC" device=""/>
 <part name="SUPPLY1" library="supply2" deviceset="VPP" device=""/>
 <part name="D3" library="led" deviceset="LED" device="3MM" value="Vpp"/>
-<part name="R3" library="r" deviceset="R" device="0202/5" value="100"/>
+<part name="R3" library="r" deviceset="R" device="0202/5" value="100Ω"/>
 <part name="J1" library="pinconn" deviceset="COMPORT-6PIN" device=""/>
 <part name="J2" library="pinconn" deviceset="PIC-ICSP" device="ICSP" value="PIC-ICSPICSP"/>
 <part name="SUPPLY2" library="supply2" deviceset="VPP" device=""/>

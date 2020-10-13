@@ -7348,7 +7348,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="GND1" library="LeoStick" deviceset="SUPPLY1_GND" device="" value=""/>
 <part name="GND2" library="LeoStick" deviceset="SUPPLY1_GND" device="" value=""/>
 <part name="R4" library="rcl" deviceset="R-EU_" device="0204/7" value="470R"/>
-<part name="R3" library="rcl" deviceset="R-EU_" device="0204/7" value="10K"/>
+<part name="R3" library="rcl" deviceset="R-EU_" device="0204/7" value="10kΩ" />
 <part name="R2" library="rcl" deviceset="R-EU_" device="0204/7" value="470R"/>
 <part name="GND4" library="LeoStick" deviceset="SUPPLY1_GND" device="" value=""/>
 <part name="GND6" library="LeoStick" deviceset="SUPPLY1_GND" device="" value=""/>
