@@ -172,4 +172,4 @@ PROJECTS := $(patsubst eagle/%,%,$(shell grep -L -E '(layer="19"|<polygon.*layer
 
 	
 include build/extra.mk
-include build/extra.mk
+include build/gerbers.mk
