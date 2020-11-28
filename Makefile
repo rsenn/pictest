@@ -1,3 +1,5 @@
+PROJECT_NAME = pictest
+
 COMPILER ?= htc
 DEBUG ?= 0
 
@@ -108,24 +110,36 @@ ifneq ($(call is-list,PROGRAM),)
 P_MAKE_CMD :=  $(MAKE_CMD) PROGRAM=$$P
 P_MAKE_LOOP := for P in $(call get-list,PROGRAM) ; do $(MAKE_LOOP); done
 
-.PHONY: all clean program verify
-all clean program verify:
+.PHONY: all clean program verify layouts
+all clean program verify layouts:
 	$(subst @MAKE@,(set -x; $(P_MAKE_CMD) $@),$(P_MAKE_LOOP))
 else
-.PHONY: all clean program verify
-all clean program verify:
+.PHONY: all clean program verify layouts
+all clean program verify layouts:
 	$(subst @MAKE@,(set -x; $(MAKE_CMD) PROGRAM=$(call get-list,PROGRAM) $@),$(MAKE_LOOP))
 endif
 
+# STUFF YOU WILL NEED:
+# - git, gerbv and eagle must be installed and must be in path.
+# - Got GitHub account?
+# - GitHub set up with your SSH keys etc.
+# - Put your GitHub username and private API key in the makefile
 
-#	"$(MAKE)" -f build/$(COMPILER).mk $@
-#	for P in $(PROGRAMS); do (set -x; "$(MAKE)" -f build/$(COMPILER).mk DEBUG=$(DEBUG) BUILD_TYPE=$(BUILD_TYPE) XTAL_FREQS="$(XTAL_FREQS)" BAUD_RATES="$(BAUD_RATES)" PROGRAM=$$P $@); done
+# On Mac OSX we will create a link to the Eagle binary:
+# sudo ln -s /Applications/EAGLE/EAGLE.app/Contents/MacOS/EAGLE /usr/bin/eagle
 
-#	for T in $(BUILD_TYPES); do "$(MAKE)" -f build/$$T.mk $@; done
-#BUILD_TYPES = sdcc htc
+.SILENT: _gerbers git github clean
+
+layouts :
+	@for x in $(PROJECTS); do \
+	PROJECT="$${x##*/}"; PROJECT=$${PROJECT%.brd}; \
+	 if [ "eagle/$$PROJECT.brd" -nt "gerbers/$$x.TXT" -o Makefile -nt "gerbers/$$x.zip" ]; then \
+	echo "make project PROJECT_NAME=$$PROJECT" 1>&2 ; \
+	make project PROJECT_NAME=$$PROJECT || { R=$$?; echo "Abort: $$R" 1>&2; exit $$R; }  \
+	fi; \
+	done
+
 $(PROGRAMS):
-#	"$(MAKE)" -f build/$(COMPILER).mk DEBUG=$(DEBUG) BUILD_TYPE=$(BUILD_TYPE) XTAL_FREQS="$(XTAL_FREQS)" BAUD_RATES="$(BAUD_RATES)" PROGRAM=$@
-#	"$(MAKE)" -f build/rates.mk COMPILER=$(COMPILER) BAUD_RATES="$(BAUD_RATES)" XTAL_FREQS="$(XTAL_FREQS)" DEBUG=$(DEBUG) BUILD_TYPE=$(BUILD_TYPE) $$P
 	$(subst @MAKE@,$(MAKE_CMD) PROGRAM=$@,$(MAKE_LOOP))
 
 
@@ -140,13 +154,6 @@ $(PROGRAMS:%=program-%): $(@:program-%=%)
 
 $(PROGRAMS:%=verify-%): $(@:verify-%=%)
 	$(subst @MAKE@,$(MAKE_CMD) PROGRAM=$(call remove-fword,$@) all $(call fword,$@),$(MAKE_LOOP))
-#	@for T in all $(call fword,$@); do \
-#	  cmd=""$(MAKE)" -f build/$(COMPILER).mk DEBUG=$(DEBUG) BUILD_TYPE=$(BUILD_TYPE) PROGRAM=$(call remove-fword,$@) $$T"; echo "Building $$T-$(call remove-fword,$@): $$cmd" 1>&2; \
-#	  eval "$$cmd"; \
-#	done
-#
-#$(BUILD_TYPES):
-#	"$(MAKE)" -f build/$@.mk all
 
 DISTFILES = $(wildcard Makefile*) $(wildcard *.mcw *.mcp *.cbp *.sh) $(pictest_SOURCES)
 
@@ -160,5 +167,8 @@ dist:
 
 clean-all:
 	$(RM) -r bin obj
+
+PROJECTS := $(patsubst eagle/%,%,$(shell grep -L -E '(layer="19"|<polygon.*layer="16")' eagle/*.brd))
+
 	
 include build/extra.mk
