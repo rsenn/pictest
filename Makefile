@@ -1,4 +1,4 @@
-PROJECT_NAME = pictest
+LAYOUT_NAME = pictest
 
 COMPILER ?= htc
 DEBUG ?= 0
@@ -131,11 +131,11 @@ endif
 .SILENT: _gerbers git github clean
 
 layouts :
-	@for x in $(PROJECTS); do \
-	PROJECT="$${x##*/}"; PROJECT=$${PROJECT%.brd}; \
-	 if [ "eagle/$$PROJECT.brd" -nt "gerbers/$$x.TXT" -o Makefile -nt "gerbers/$$x.zip" ]; then \
-	echo "make project PROJECT_NAME=$$PROJECT" 1>&2 ; \
-	make project PROJECT_NAME=$$PROJECT || { R=$$?; echo "Abort: $$R" 1>&2; exit $$R; }  \
+	@for x in $(LAYOUTS); do \
+	LAYOUT="$${x##*/}"; LAYOUT=$${LAYOUT%.brd}; \
+	 if [ "eagle/$$LAYOUT.brd" -nt "gerbers/$$x.TXT" -o Makefile -nt "gerbers/$$x.zip" ]; then \
+	echo "make project LAYOUT_NAME=$$LAYOUT" 1>&2 ; \
+	make project LAYOUT_NAME=$$LAYOUT || { R=$$?; echo "Abort: $$R" 1>&2; exit $$R; }  \
 	fi; \
 	done
 
@@ -168,7 +168,7 @@ dist:
 clean-all:
 	$(RM) -r bin obj
 
-PROJECTS := $(patsubst eagle/%,%,$(shell grep -L -E '(layer="19"|<polygon.*layer="16")' eagle/*.brd))
+LAYOUTS := $(patsubst eagle/%,%,$(shell grep -L -E '(layer="19"|<polygon.*layer="16")' eagle/*.brd))
 
 	
 include build/extra.mk
