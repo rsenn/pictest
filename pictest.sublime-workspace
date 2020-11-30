@@ -20,8 +20,16 @@
 			"file": "Makefile",
 			"settings":
 			{
-				"buffer_size": 4823,
+				"buffer_size": 4942,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "build/gerbers.mk",
+			"settings":
+			{
+				"buffer_size": 2527,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -109,6 +117,7 @@
 	],
 	"file_history":
 	[
+		"/home/roman/Dokumente/Sources/pictest/pictest.sublime-project",
 		"/home/roman/Dokumente/Sources/pictest/pictest_16f876a_xc8.X.production.asm",
 		"/home/roman/Dokumente/Sources/pictest/pictest_16f876a_xc8.X.production.lst",
 		"/home/roman/Dokumente/Sources/pictest/out.h",
@@ -120,7 +129,6 @@
 		"/home/roman/Dokumente/Sources/pictest/pictest.c",
 		"/home/roman/Dokumente/Sources/pictest/lib/timer.h",
 		"/home/roman/Dokumente/Sources/pictest/vacuum-cleaner.sch",
-		"/home/roman/Dokumente/Sources/pictest/pictest.sublime-project",
 		"/home/roman/Dokumente/Sources/plot-cv/lib/deep.js",
 		"/home/roman/Dokumente/Sources/plot-cv/lib/tosource.js",
 		"/home/roman/Dokumente/Sources/plot-cv/test-xml.js",
@@ -219,7 +227,7 @@
 	],
 	"find":
 	{
-		"height": 48.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -235,6 +243,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"\\teagle ",
+			"LAYOUTS",
 			"^INTERRUPT",
 			"tmp",
 			"\",\n",
@@ -248,6 +258,7 @@
 		"regex": true,
 		"replace_history":
 		[
+			"\\t$(EAGLE) "
 		],
 		"reverse": false,
 		"show_context": true,
@@ -258,7 +269,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -280,41 +291,72 @@
 						],
 						"settings":
 						{
+							"function_name_status_row": 127,
 							"syntax": "Packages/C Improved/C Improved.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1674.0,
+						"translation.y": 501.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
 					"file": "Makefile",
-					"semi_transient": true,
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4823,
+						"buffer_size": 4942,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								4060,
+								4060
 							]
 						],
 						"settings":
 						{
+							"function_name_status_row": 0,
 							"syntax": "Packages/Makefile/Makefile.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2193.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "build/gerbers.mk",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2527,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1191,
+								1191
+							]
+						],
+						"settings":
+						{
+							"function_name_status_row": 25,
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 255.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -362,7 +404,7 @@
 	"project": "pictest.sublime-project",
 	"replace":
 	{
-		"height": 68.0
+		"height": 71.0
 	},
 	"save_all_on_build": true,
 	"select_file":

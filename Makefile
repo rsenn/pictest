@@ -1,4 +1,6 @@
-LAYOUT_NAME = pictest
+PROJECT_NAME = pictest
+
+LAYOUTS := $(patsubst eagle/%,%,$(shell grep -L -E '(layer="19"|<polygon.*layer="16")' eagle/*.brd))
 
 COMPILER ?= htc
 DEBUG ?= 0
@@ -106,18 +108,24 @@ MAKE_CMD += BUILD_TYPE=$(call get-list,BUILD_TYPE)
 endif
 endif
 
+.PHONY: all
+all: layouts compile 
+
+
+
 ifneq ($(call is-list,PROGRAM),)
 P_MAKE_CMD :=  $(MAKE_CMD) PROGRAM=$$P
 P_MAKE_LOOP := for P in $(call get-list,PROGRAM) ; do $(MAKE_LOOP); done
 
-.PHONY: all clean program verify layouts
-all clean program verify layouts:
+.PHONY: compile clean program verify 
+compile clean program verify:
 	$(subst @MAKE@,(set -x; $(P_MAKE_CMD) $@),$(P_MAKE_LOOP))
 else
-.PHONY: all clean program verify layouts
-all clean program verify layouts:
+.PHONY: compile clean program verify
+compile clean program verify:
 	$(subst @MAKE@,(set -x; $(MAKE_CMD) PROGRAM=$(call get-list,PROGRAM) $@),$(MAKE_LOOP))
 endif
+
 
 # STUFF YOU WILL NEED:
 # - git, gerbv and eagle must be installed and must be in path.
@@ -129,15 +137,18 @@ endif
 # sudo ln -s /Applications/EAGLE/EAGLE.app/Contents/MacOS/EAGLE /usr/bin/eagle
 
 .SILENT: _gerbers git github clean
+.PHONY: layouts
 
-layouts :
+layouts:
 	@for x in $(LAYOUTS); do \
-	LAYOUT="$${x##*/}"; LAYOUT=$${LAYOUT%.brd}; \
-	 if [ "eagle/$$LAYOUT.brd" -nt "gerbers/$$x.TXT" -o Makefile -nt "gerbers/$$x.zip" ]; then \
-	echo "make project LAYOUT_NAME=$$LAYOUT" 1>&2 ; \
-	make project LAYOUT_NAME=$$LAYOUT || { R=$$?; echo "Abort: $$R" 1>&2; exit $$R; }  \
-	fi; \
+		LAYOUT_NAME="$${x##*/}"; LAYOUT_NAME=$${LAYOUT_NAME%.brd}; \
+		if [ "eagle/$$LAYOUT_NAME.brd" -nt "gerbers/$$LAYOUT_NAME.zip" -o Makefile -nt "gerbers/$$LAYOUT_NAME.zip" ]; then \
+			echo "$(MAKE) layout LAYOUT_NAME=$$LAYOUT_NAME" 1>&2 ; \
+			$(MAKE) layout LAYOUT_NAME=$$LAYOUT_NAME || { R=$$?; echo "Abort: $$R" 1>&2; exit $$R; }	\
+		fi; \
 	done
+	
+include build/gerbers.mk
 
 $(PROGRAMS):
 	$(subst @MAKE@,$(MAKE_CMD) PROGRAM=$@,$(MAKE_LOOP))
@@ -150,10 +161,10 @@ $(PROGRAMS:%=clean-%):
 	$(subst @MAKE@,$(MAKE_CMD) PROGRAM=$(call remove-fword,$@) $(call fword,$@),$(MAKE_LOOP))
 
 $(PROGRAMS:%=program-%): $(@:program-%=%)
-	$(subst @MAKE@,$(MAKE_CMD) PROGRAM=$(call remove-fword,$@) all $(call fword,$@),$(MAKE_LOOP))
+	$(subst @MAKE@,$(MAKE_CMD) PROGRAM=$(call remove-fword,$@) compile $(call fword,$@),$(MAKE_LOOP))
 
 $(PROGRAMS:%=verify-%): $(@:verify-%=%)
-	$(subst @MAKE@,$(MAKE_CMD) PROGRAM=$(call remove-fword,$@) all $(call fword,$@),$(MAKE_LOOP))
+	$(subst @MAKE@,$(MAKE_CMD) PROGRAM=$(call remove-fword,$@) compile $(call fword,$@),$(MAKE_LOOP))
 
 DISTFILES = $(wildcard Makefile*) $(wildcard *.mcw *.mcp *.cbp *.sh) $(pictest_SOURCES)
 
@@ -165,11 +176,7 @@ dist:
 	tar -cvJf $(distdir).txz --exclude="build" $(distdir)/
 	$(RM) -r $(distdir)
 
-clean-all:
+clean-compile:
 	$(RM) -r bin obj
-
-LAYOUTS := $(patsubst eagle/%,%,$(shell grep -L -E '(layer="19"|<polygon.*layer="16")' eagle/*.brd))
-
 	
 include build/extra.mk
-include build/gerbers.mk

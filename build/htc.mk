@@ -154,7 +154,7 @@ endif
 #COMMON_FLAGS +=  -V
 
 ifeq ($(_DEBUG),1)
-COMMON_FLAGS += -G $(if $(DEBUGGER),--debugger="$(DEBUGGER),)"
+COMMON_FLAGS += -G $(if $(DEBUGGER),--debugger="$(DEBUGGER)",)
 COMMON_FLAGS += --opt=default$(OPT_DEBUG)
 else
 COMMON_FLAGS += --opt="default,+asm$(OPT_SPEED)"
@@ -202,9 +202,9 @@ $(info DEPS: $(DEPS))
 
 #-include build/vars.mk
 
-.PHONY: all clean dist prototypes
+.PHONY: compile clean dist prototypes
 
-all: $(BUILDDIR) $(OBJDIR) $(DEPENDS) output
+compile: $(BUILDDIR) $(OBJDIR) $(DEPENDS) output
 
 output: $(HEXFILE) #$(COFFILE)
 	-mkdir -p $(BUILDDIR)
