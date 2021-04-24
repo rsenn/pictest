@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.7.0">
+<eagle version="7.2.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="4" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -70,7 +70,7 @@
 <layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="99" name="SpiceOrder" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
-<schematic xreflabel="%F%N/%S.%C%R" xrefpart="/%S.%C%R">
+<schematic xreflabel="%F%N/%S" xrefpart="/%S.%C%R">
 <description>RS232 Adapter using ACPL-827 Optocouplers
 Powered by PIC</description>
 <libraries>
@@ -3601,14 +3601,14 @@ In this library the device names are the same as the pin names of the symbols, t
 <wire x1="-5.08" y1="2.921" x2="-5.08" y2="1.016" width="0.1524" layer="21"/>
 <wire x1="-5.08" y1="-2.921" x2="-5.08" y2="-1.016" width="0.1524" layer="21"/>
 <wire x1="-5.08" y1="1.016" x2="-5.08" y2="-1.016" width="0.1524" layer="21" curve="-180"/>
-<pad name="1" x="-3.81" y="-3.81" drill="0.8128" shape="offset" rot="R270"/>
-<pad name="2" x="-1.27" y="-3.81" drill="0.8128" shape="offset" rot="R270"/>
-<pad name="7" x="-1.27" y="3.81" drill="0.8128" shape="offset" rot="R90"/>
-<pad name="8" x="-3.81" y="3.81" drill="0.8128" shape="offset" rot="R90"/>
-<pad name="3" x="1.27" y="-3.81" drill="0.8128" shape="offset" rot="R270"/>
-<pad name="4" x="3.81" y="-3.81" drill="0.8128" shape="offset" rot="R270"/>
-<pad name="6" x="1.27" y="3.81" drill="0.8128" shape="offset" rot="R90"/>
-<pad name="5" x="3.81" y="3.81" drill="0.8128" shape="offset" rot="R90"/>
+<pad name="1" x="-3.81" y="-3.81" drill="0.8128" shape="long" rot="R270"/>
+<pad name="2" x="-1.27" y="-3.81" drill="0.8128" shape="long" rot="R270"/>
+<pad name="7" x="-1.27" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="8" x="-3.81" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="3" x="1.27" y="-3.81" drill="0.8128" shape="long" rot="R270"/>
+<pad name="4" x="3.81" y="-3.81" drill="0.8128" shape="long" rot="R270"/>
+<pad name="6" x="1.27" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="5" x="3.81" y="3.81" drill="0.8128" shape="long" rot="R90"/>
 <text x="-5.334" y="-2.921" size="1.27" layer="25" rot="R90">&gt;NAME</text>
 <text x="-3.556" y="-0.635" size="1.27" layer="27">&gt;VALUE</text>
 </package>
@@ -3649,29 +3649,29 @@ In this library the device names are the same as the pin names of the symbols, t
 <text x="-6.985" y="5.715" size="1.778" layer="95">&gt;NAME</text>
 <text x="-6.985" y="-7.62" size="1.778" layer="96">&gt;VALUE</text>
 <rectangle x1="-0.381" y1="-2.54" x2="0.381" y2="2.54" layer="94"/>
-<pin name="A" x="-10.16" y="2.54" visible="pad" length="short" direction="pas"/>
-<pin name="C" x="-10.16" y="-2.54" visible="pad" length="short" direction="pas"/>
-<pin name="EMIT" x="7.62" y="-2.54" visible="pad" length="short" direction="pas" rot="R180"/>
-<pin name="COL" x="7.62" y="2.54" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="A" x="-10.16" y="2.54" visible="pad" length="short" direction="pas" swaplevel="1"/>
+<pin name="C" x="-10.16" y="-2.54" visible="pad" length="short" direction="pas" swaplevel="2"/>
+<pin name="EMIT" x="7.62" y="-2.54" visible="pad" length="short" direction="pas" swaplevel="4" rot="R180"/>
+<pin name="COL" x="7.62" y="2.54" visible="pad" length="short" direction="pas" swaplevel="3" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="ACPL-827">
+<deviceset name="ACPL-827" prefix="IC">
 <gates>
-<gate name="G$1" symbol="OK" x="2.54" y="7.62"/>
-<gate name="G$2" symbol="OK" x="2.54" y="-10.16"/>
+<gate name="A" symbol="OK" x="2.54" y="7.62" swaplevel="1"/>
+<gate name="B" symbol="OK" x="2.54" y="-10.16" swaplevel="1"/>
 </gates>
 <devices>
 <device name="" package="DIL08">
 <connects>
-<connect gate="G$1" pin="A" pad="1"/>
-<connect gate="G$1" pin="C" pad="2"/>
-<connect gate="G$1" pin="COL" pad="8"/>
-<connect gate="G$1" pin="EMIT" pad="7"/>
-<connect gate="G$2" pin="A" pad="3"/>
-<connect gate="G$2" pin="C" pad="4"/>
-<connect gate="G$2" pin="COL" pad="6"/>
-<connect gate="G$2" pin="EMIT" pad="5"/>
+<connect gate="A" pin="A" pad="1"/>
+<connect gate="A" pin="C" pad="2"/>
+<connect gate="A" pin="COL" pad="8"/>
+<connect gate="A" pin="EMIT" pad="7"/>
+<connect gate="B" pin="A" pad="3"/>
+<connect gate="B" pin="C" pad="4"/>
+<connect gate="B" pin="COL" pad="6"/>
+<connect gate="B" pin="EMIT" pad="5"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -3684,19 +3684,32 @@ In this library the device names are the same as the pin names of the symbols, t
 <library name="pinconn">
 <packages>
 <package name="CONN-6P">
-<pad name="6" x="1.905" y="3.81" drill="0.9" diameter="1.778" shape="octagon"/>
-<pad name="5" x="4.445" y="3.81" drill="0.9" diameter="1.778" shape="octagon"/>
-<pad name="4" x="6.985" y="3.81" drill="0.9" diameter="1.778" shape="octagon"/>
-<pad name="3" x="9.525" y="3.81" drill="0.9" diameter="1.778" shape="octagon"/>
-<pad name="2" x="12.065" y="3.81" drill="0.9" diameter="1.778" shape="octagon"/>
-<pad name="1" x="14.605" y="3.81" drill="0.9" diameter="1.778" shape="square"/>
-<wire x1="0" y1="5.715" x2="0" y2="1.905" width="0.127" layer="21"/>
-<wire x1="0" y1="1.905" x2="16.51" y2="1.905" width="0.127" layer="21"/>
-<wire x1="16.51" y1="1.905" x2="16.51" y2="5.715" width="0.127" layer="21"/>
-<wire x1="16.51" y1="5.715" x2="0" y2="5.715" width="0.127" layer="21"/>
-<text x="17.145" y="1.27" size="1.27" layer="21">1</text>
-<text x="0" y="6.35" size="1.27" layer="25">&gt;NAME</text>
-<text x="0" y="0" size="1.27" layer="27">&gt;VALUE</text>
+<pad name="6" x="12.7" y="0" drill="0.9" diameter="1.778" shape="octagon" rot="R180"/>
+<pad name="5" x="10.16" y="0" drill="0.9" diameter="1.778" shape="octagon" rot="R180"/>
+<pad name="4" x="7.62" y="0" drill="0.9" diameter="1.778" shape="octagon" rot="R180"/>
+<pad name="3" x="5.08" y="0" drill="0.9" diameter="1.778" shape="octagon" rot="R180"/>
+<pad name="2" x="2.54" y="0" drill="0.9" diameter="1.778" shape="octagon" rot="R180"/>
+<pad name="1" x="0" y="0" drill="0.9" diameter="1.778" shape="square" rot="R180"/>
+<wire x1="-1.27" y1="1.27" x2="-1.27" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="-1.27" y1="-1.27" x2="13.97" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="13.97" y1="-1.27" x2="13.97" y2="1.27" width="0.127" layer="21"/>
+<wire x1="13.97" y1="1.27" x2="-1.27" y2="1.27" width="0.127" layer="21"/>
+<text x="-1.524" y="-1.27" size="0.8128" layer="20" rot="R90">1</text>
+<text x="13.97" y="-1.524" size="1.016" layer="25" align="top-right">&gt;NAME</text>
+<text x="-1.27" y="-1.524" size="0.8128" layer="27" align="top-left">&gt;VALUE</text>
+</package>
+<package name="CONN-4P">
+<pad name="4" x="7.62" y="0" drill="0.9" diameter="1.6764" shape="octagon" rot="R180"/>
+<pad name="3" x="5.08" y="0" drill="0.9" diameter="1.6764" shape="octagon" rot="R180"/>
+<pad name="2" x="2.54" y="0" drill="0.9" diameter="1.6764" shape="octagon" rot="R180"/>
+<pad name="1" x="0" y="0" drill="0.9" diameter="1.778" shape="square" rot="R180"/>
+<wire x1="-1.27" y1="1.27" x2="-1.27" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="-1.27" y1="-1.27" x2="8.89" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="8.89" y1="-1.27" x2="8.89" y2="1.27" width="0.127" layer="21"/>
+<wire x1="8.89" y1="1.27" x2="-1.27" y2="1.27" width="0.127" layer="21"/>
+<text x="-1.524" y="1.27" size="0.8128" layer="23" rot="R180">1</text>
+<text x="8.89" y="-1.524" size="1.016" layer="25" align="top-right">&gt;NAME</text>
+<text x="-1.27" y="-1.524" size="0.8128" layer="27" align="top-left">&gt;VALUE</text>
 </package>
 <package name="FTDI232-BO">
 <pad name="DTR" x="-6.35" y="0" drill="0.9" diameter="1.778" shape="octagon"/>
@@ -3705,50 +3718,46 @@ In this library the device names are the same as the pin names of the symbols, t
 <pad name="VCC" x="1.27" y="0" drill="0.9" diameter="1.778" shape="octagon"/>
 <pad name="CTS" x="3.81" y="0" drill="0.9" diameter="1.778" shape="octagon"/>
 <pad name="GND" x="6.35" y="0" drill="0.9" diameter="1.778" shape="octagon"/>
-<wire x1="-8.255" y1="1.905" x2="-8.255" y2="-1.905" width="0.127" layer="21"/>
-<wire x1="-8.255" y1="-1.905" x2="8.255" y2="-1.905" width="0.127" layer="21"/>
-<wire x1="8.255" y1="-1.905" x2="8.255" y2="1.905" width="0.127" layer="21"/>
-<wire x1="8.255" y1="1.905" x2="-8.255" y2="1.905" width="0.127" layer="21"/>
-<text x="8.89" y="-2.54" size="1.27" layer="21">1</text>
-<text x="-8.255" y="2.54" size="1.27" layer="25">&gt;NAME</text>
-<text x="-8.255" y="-3.81" size="1.27" layer="27">&gt;VALUE</text>
-</package>
-<package name="CONN-4P">
-<pad name="4" x="1.905" y="3.81" drill="0.9" diameter="1.778" shape="octagon"/>
-<pad name="3" x="4.445" y="3.81" drill="0.9" diameter="1.778" shape="octagon"/>
-<pad name="2" x="6.985" y="3.81" drill="0.9" diameter="1.778" shape="octagon"/>
-<pad name="1" x="9.525" y="3.81" drill="0.9" diameter="1.778" shape="square"/>
-<wire x1="0" y1="5.715" x2="0" y2="1.905" width="0.127" layer="21"/>
-<wire x1="0" y1="1.905" x2="11.43" y2="1.905" width="0.127" layer="21"/>
-<wire x1="11.43" y1="1.905" x2="11.43" y2="5.715" width="0.127" layer="21"/>
-<wire x1="11.43" y1="5.715" x2="0" y2="5.715" width="0.127" layer="21"/>
-<text x="12.065" y="1.27" size="1.27" layer="21">1</text>
-<text x="0" y="6.35" size="1.27" layer="25">&gt;NAME</text>
-<text x="0" y="0" size="1.27" layer="27">&gt;VALUE</text>
+<wire x1="-7.62" y1="1.27" x2="-7.62" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="-7.62" y1="-1.27" x2="7.62" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="7.62" y1="-1.27" x2="7.62" y2="1.27" width="0.127" layer="21"/>
+<wire x1="7.62" y1="1.27" x2="-7.62" y2="1.27" width="0.127" layer="21"/>
+<text x="7.8105" y="1.397" size="0.6096" layer="21">1</text>
+<text x="7.62" y="-2.54" size="1.016" layer="25" align="bottom-right">&gt;NAME</text>
+<text x="-7.62" y="-2.54" size="0.8128" layer="27">&gt;VALUE</text>
+<text x="6.35" y="2.54" size="0.6096" layer="21" font="vector" align="center">GND</text>
+<text x="3.81" y="2.54" size="0.6096" layer="21" font="vector" align="center">CTS</text>
+<text x="1.27" y="2.54" size="0.6096" layer="21" font="vector" align="center">VCC</text>
+<text x="-1.27" y="2.54" size="0.6096" layer="21" font="vector" align="center">TxD</text>
+<text x="-3.81" y="2.54" size="0.6096" layer="21" font="vector" align="center">RxD</text>
+<text x="-6.35" y="2.54" size="0.6096" layer="21" font="vector" align="center">DTR</text>
 </package>
 <package name="PIC-UART">
-<pad name="20" x="8.89" y="1.27" drill="0.8" diameter="1.778" shape="octagon" rot="R180"/>
-<pad name="19" x="6.35" y="1.27" drill="0.8" diameter="1.778" shape="square" rot="R180"/>
-<pad name="18" x="3.81" y="1.27" drill="0.8" diameter="1.778" shape="octagon" rot="R180"/>
-<pad name="17" x="1.27" y="1.27" drill="0.8" diameter="1.778" shape="octagon" rot="R180"/>
-<wire x1="10.16" y1="2.54" x2="10.16" y2="0" width="0.127" layer="22"/>
-<wire x1="10.16" y1="0" x2="0" y2="0" width="0.127" layer="22"/>
-<wire x1="0" y1="0" x2="0" y2="2.54" width="0.127" layer="22"/>
-<wire x1="0" y1="2.54" x2="10.16" y2="2.54" width="0.127" layer="22"/>
-<text x="10.795" y="2.54" size="0.6096" layer="51" align="top-center">20</text>
-<text x="-0.635" y="0" size="0.6096" layer="51" align="bottom-center">17</text>
-<text x="0" y="3.81" size="1.016" layer="25" align="top-left">&gt;NAME</text>
-<text x="0" y="-1.27" size="1.016" layer="27">&gt;VALUE</text>
+<pad name="20" x="0" y="7.62" drill="1" shape="octagon" rot="R270"/>
+<pad name="19" x="0" y="5.08" drill="0.9" shape="square" rot="R270"/>
+<pad name="18" x="0" y="2.54" drill="1" shape="octagon" rot="R270"/>
+<pad name="17" x="0" y="0" drill="1" shape="octagon" rot="R270"/>
+<wire x1="1.27" y1="-1.27" x2="-1.27" y2="-1.27" width="0.127" layer="22"/>
+<wire x1="-1.27" y1="-1.27" x2="-1.27" y2="8.89" width="0.127" layer="22"/>
+<wire x1="-1.27" y1="8.89" x2="1.27" y2="8.89" width="0.127" layer="22"/>
+<wire x1="1.27" y1="8.89" x2="1.27" y2="-1.27" width="0.127" layer="22"/>
+<text x="0.6985" y="-0.635" size="0.3048" layer="23" rot="R270">17</text>
+<text x="-1.651" y="-1.016" size="0.8128" layer="27" rot="R90">&gt;VALUE</text>
+<text x="1.778" y="0" size="0.6096" layer="21" font="fixed" align="center-left">TX</text>
+<text x="1.778" y="2.54" size="0.6096" layer="21" font="fixed" align="center-left">RX</text>
+<text x="1.778" y="5.08" size="0.6096" layer="21" font="fixed" align="center-left">VSS</text>
+<text x="1.778" y="7.62" size="0.6096" layer="21" font="fixed" align="center-left">VDD</text>
+<text x="-2.54" y="-1.016" size="1.016" layer="25" rot="R270" align="top-right">&gt;NAME</text>
 </package>
 </packages>
 <symbols>
 <symbol name="FTDI232-BO">
-<pin name="DTR" x="-6.35" y="-2.54" visible="pin" length="short" rot="R90"/>
-<pin name="RXD" x="-3.81" y="-2.54" visible="pin" length="short" rot="R90"/>
-<pin name="TXD" x="-1.27" y="-2.54" visible="pin" length="short" rot="R90"/>
-<pin name="VCC" x="1.27" y="-2.54" visible="pin" length="short" rot="R90"/>
-<pin name="CTS" x="3.81" y="-2.54" visible="pin" length="short" rot="R90"/>
-<pin name="GND" x="6.35" y="-2.54" visible="pin" length="short" rot="R90"/>
+<pin name="DTR" x="-6.35" y="-2.54" length="short" rot="R90"/>
+<pin name="RXD" x="-3.81" y="-2.54" length="short" rot="R90"/>
+<pin name="TXD" x="-1.27" y="-2.54" length="short" rot="R90"/>
+<pin name="VCC" x="1.27" y="-2.54" length="short" rot="R90"/>
+<pin name="CTS" x="3.81" y="-2.54" length="short" rot="R90"/>
+<pin name="GND" x="6.35" y="-2.54" length="short" rot="R90"/>
 <wire x1="-8.89" y1="0" x2="8.89" y2="0" width="0.254" layer="94"/>
 <wire x1="8.89" y1="0" x2="8.89" y2="15.24" width="0.254" layer="94"/>
 <wire x1="8.89" y1="15.24" x2="-8.89" y2="15.24" width="0.254" layer="94"/>
@@ -3757,32 +3766,34 @@ In this library the device names are the same as the pin names of the symbols, t
 Breakout</text>
 </symbol>
 <symbol name="PIC-UART">
-<pin name="VDD" x="-2.54" y="10.16" length="short" direction="pas"/>
-<pin name="VSS" x="-2.54" y="7.62" length="short" direction="pas"/>
-<pin name="RX" x="-2.54" y="5.08" length="short" direction="pas"/>
-<pin name="TX" x="-2.54" y="2.54" length="short" direction="pas"/>
-<wire x1="11.43" y1="12.7" x2="0" y2="12.7" width="0.254" layer="94"/>
-<wire x1="0" y1="12.7" x2="0" y2="0" width="0.254" layer="94"/>
-<wire x1="0" y1="0" x2="11.43" y2="0" width="0.254" layer="94"/>
-<wire x1="11.43" y1="0" x2="11.43" y2="12.7" width="0.254" layer="94"/>
-<text x="0" y="15.24" size="1.778" layer="95" align="top-left">&gt;NAME</text>
-<text x="0" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="VDD" x="-7.62" y="2.54" length="short" direction="pas"/>
+<pin name="VSS" x="-7.62" y="0" length="short" direction="pas"/>
+<pin name="RX" x="-7.62" y="-2.54" length="short" direction="pas"/>
+<pin name="TX" x="-7.62" y="-5.08" length="short" direction="pas"/>
+<wire x1="5.08" y1="5.08" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="5.08" x2="-5.08" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-7.62" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-7.62" x2="5.08" y2="5.08" width="0.254" layer="94"/>
+<text x="-5.08" y="7.62" size="1.016" layer="95" align="top-left">&gt;NAME</text>
+<text x="-5.08" y="-10.16" size="0.8128" layer="96">&gt;VALUE</text>
+<text x="3.048" y="-1.27" size="1.27" layer="97" font="fixed" rot="R270" align="center">PIC UART</text>
 </symbol>
 </symbols>
 <devicesets>
 <deviceset name="FTDI232-BO">
+<description>&lt;b&gt;Pin connectors&lt;/b&gt;&lt;p&gt;</description>
 <gates>
-<gate name="G$1" symbol="FTDI232-BO" x="0" y="-7.62"/>
+<gate name="1" symbol="FTDI232-BO" x="0" y="-7.62"/>
 </gates>
 <devices>
 <device name="" package="FTDI232-BO">
 <connects>
-<connect gate="G$1" pin="CTS" pad="CTS"/>
-<connect gate="G$1" pin="DTR" pad="DTR"/>
-<connect gate="G$1" pin="GND" pad="GND"/>
-<connect gate="G$1" pin="RXD" pad="RXD"/>
-<connect gate="G$1" pin="TXD" pad="TXD"/>
-<connect gate="G$1" pin="VCC" pad="VCC"/>
+<connect gate="1" pin="CTS" pad="CTS"/>
+<connect gate="1" pin="DTR" pad="DTR"/>
+<connect gate="1" pin="GND" pad="GND"/>
+<connect gate="1" pin="RXD" pad="RXD"/>
+<connect gate="1" pin="TXD" pad="TXD"/>
+<connect gate="1" pin="VCC" pad="VCC"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -3790,12 +3801,12 @@ Breakout</text>
 </device>
 <device name="-6P" package="CONN-6P">
 <connects>
-<connect gate="G$1" pin="CTS" pad="2"/>
-<connect gate="G$1" pin="DTR" pad="6"/>
-<connect gate="G$1" pin="GND" pad="1"/>
-<connect gate="G$1" pin="RXD" pad="5"/>
-<connect gate="G$1" pin="TXD" pad="4"/>
-<connect gate="G$1" pin="VCC" pad="3"/>
+<connect gate="1" pin="CTS" pad="2"/>
+<connect gate="1" pin="DTR" pad="6"/>
+<connect gate="1" pin="GND" pad="1"/>
+<connect gate="1" pin="RXD" pad="5"/>
+<connect gate="1" pin="TXD" pad="4"/>
+<connect gate="1" pin="VCC" pad="3"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -3803,17 +3814,17 @@ Breakout</text>
 </device>
 </devices>
 </deviceset>
-<deviceset name="PIC-UART">
+<deviceset name="PIC-UART" prefix="J">
 <gates>
-<gate name="G$1" symbol="PIC-UART" x="1.27" y="-5.08"/>
+<gate name="1" symbol="PIC-UART" x="1.27" y="-5.08"/>
 </gates>
 <devices>
 <device name="" package="PIC-UART">
 <connects>
-<connect gate="G$1" pin="RX" pad="18"/>
-<connect gate="G$1" pin="TX" pad="17"/>
-<connect gate="G$1" pin="VDD" pad="20"/>
-<connect gate="G$1" pin="VSS" pad="19"/>
+<connect gate="1" pin="RX" pad="18"/>
+<connect gate="1" pin="TX" pad="17"/>
+<connect gate="1" pin="VDD" pad="20"/>
+<connect gate="1" pin="VSS" pad="19"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -3821,10 +3832,10 @@ Breakout</text>
 </device>
 <device name="-4P" package="CONN-4P">
 <connects>
-<connect gate="G$1" pin="RX" pad="2"/>
-<connect gate="G$1" pin="TX" pad="1"/>
-<connect gate="G$1" pin="VDD" pad="4"/>
-<connect gate="G$1" pin="VSS" pad="3"/>
+<connect gate="1" pin="RX" pad="2"/>
+<connect gate="1" pin="TX" pad="1"/>
+<connect gate="1" pin="VDD" pad="4"/>
+<connect gate="1" pin="VSS" pad="3"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -3868,8 +3879,8 @@ Powered by PIC</description>
 <plain>
 </plain>
 <instances>
-<instance part="U$2" gate="G$1" x="114.3" y="-16.51" rot="R270"/>
-<instance part="U$3" gate="G$1" x="25.4" y="15.24" rot="R90"/>
+<instance part="U$2" gate="1" x="114.3" y="-16.51" rot="R270"/>
+<instance part="U$3" gate="1" x="22.86" y="12.7" rot="R180"/>
 <instance part="R1" gate="G$1" x="50.8" y="17.78"/>
 <instance part="R2" gate="G$1" x="96.52" y="-15.24"/>
 <instance part="GND2" gate="1" x="91.44" y="-27.94"/>
@@ -3889,8 +3900,8 @@ Powered by PIC</description>
 <instance part="SUPPLY1" gate="G$1" x="35.56" y="2.54"/>
 <instance part="SUPPLY2" gate="G$1" x="50.8" y="-25.4"/>
 <instance part="SUPPLY3" gate="G$1" x="58.42" y="5.08"/>
-<instance part="IC1" gate="G$1" x="73.66" y="15.24"/>
-<instance part="IC1" gate="G$2" x="71.12" y="-17.78" rot="MR0"/>
+<instance part="IC1" gate="A" x="73.66" y="15.24"/>
+<instance part="IC1" gate="B" x="71.12" y="-17.78" rot="MR0"/>
 </instances>
 <busses>
 </busses>
@@ -3899,27 +3910,27 @@ Powered by PIC</description>
 <segment>
 <pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="55.88" y1="17.78" x2="63.5" y2="17.78" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$1" pin="A"/>
+<pinref part="IC1" gate="A" pin="A"/>
 </segment>
 </net>
 <net name="N$2" class="0">
 <segment>
 <pinref part="R1" gate="G$1" pin="1"/>
-<pinref part="U$3" gate="G$1" pin="TX"/>
-<wire x1="22.86" y1="12.7" x2="45.72" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="1" pin="TX"/>
+<wire x1="30.48" y1="17.78" x2="45.72" y2="17.78" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$3" class="0">
 <segment>
 <pinref part="R2" gate="G$1" pin="1"/>
 <wire x1="91.44" y1="-15.24" x2="81.28" y2="-15.24" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$2" pin="A"/>
+<pinref part="IC1" gate="B" pin="A"/>
 </segment>
 </net>
 <net name="N$4" class="0">
 <segment>
 <pinref part="R2" gate="G$1" pin="2"/>
-<pinref part="U$2" gate="G$1" pin="TXD"/>
+<pinref part="U$2" gate="1" pin="TXD"/>
 <wire x1="111.76" y1="-15.24" x2="101.6" y2="-15.24" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -3928,10 +3939,10 @@ Powered by PIC</description>
 <pinref part="GND2" gate="1" pin="GND"/>
 <wire x1="91.44" y1="-25.4" x2="91.44" y2="-20.32" width="0.1524" layer="91"/>
 <wire x1="81.28" y1="-20.32" x2="91.44" y2="-20.32" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$2" pin="C"/>
+<pinref part="IC1" gate="B" pin="C"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="GND"/>
+<pinref part="U$2" gate="1" pin="GND"/>
 <pinref part="GND3" gate="1" pin="GND"/>
 <wire x1="106.68" y1="-25.4" x2="106.68" y2="-22.86" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="-22.86" x2="111.76" y2="-22.86" width="0.1524" layer="91"/>
@@ -3940,12 +3951,12 @@ Powered by PIC</description>
 <pinref part="GND4" gate="1" pin="GND"/>
 <wire x1="91.44" y1="0" x2="91.44" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="12.7" x2="81.28" y2="12.7" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$1" pin="EMIT"/>
+<pinref part="IC1" gate="A" pin="EMIT"/>
 </segment>
 </net>
 <net name="VCC" class="0">
 <segment>
-<pinref part="U$2" gate="G$1" pin="VCC"/>
+<pinref part="U$2" gate="1" pin="VCC"/>
 <pinref part="P+1" gate="VCC" pin="VCC"/>
 <wire x1="109.22" y1="-17.78" x2="111.76" y2="-17.78" width="0.1524" layer="91"/>
 </segment>
@@ -3966,11 +3977,11 @@ Powered by PIC</description>
 <pinref part="R3" gate="G$1" pin="1"/>
 <wire x1="50.8" y1="-15.24" x2="40.64" y2="-15.24" width="0.1524" layer="91"/>
 <wire x1="40.64" y1="-15.24" x2="40.64" y2="15.24" width="0.1524" layer="91"/>
-<pinref part="U$3" gate="G$1" pin="RX"/>
-<wire x1="40.64" y1="15.24" x2="20.32" y2="12.7" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="1" pin="RX"/>
+<wire x1="40.64" y1="15.24" x2="30.48" y2="15.24" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="-15.24" x2="50.8" y2="-15.24" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="-15.24" x2="50.8" y2="-12.7" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$2" pin="COL"/>
+<pinref part="IC1" gate="B" pin="COL"/>
 <junction x="50.8" y="-15.24"/>
 </segment>
 </net>
@@ -3979,10 +3990,10 @@ Powered by PIC</description>
 <pinref part="R4" gate="G$1" pin="2"/>
 <wire x1="111.76" y1="17.78" x2="106.68" y2="17.78" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="17.78" x2="106.68" y2="-12.7" width="0.1524" layer="91"/>
-<pinref part="U$2" gate="G$1" pin="RXD"/>
+<pinref part="U$2" gate="1" pin="RXD"/>
 <wire x1="106.68" y1="-12.7" x2="111.76" y2="-12.7" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="17.78" x2="81.28" y2="17.78" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$1" pin="COL"/>
+<pinref part="IC1" gate="A" pin="COL"/>
 </segment>
 </net>
 <net name="VSS" class="0">
@@ -3990,19 +4001,19 @@ Powered by PIC</description>
 <wire x1="63.5" y1="-20.32" x2="50.8" y2="-20.32" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="-20.32" x2="50.8" y2="-22.86" width="0.1524" layer="91"/>
 <pinref part="SUPPLY2" gate="G$1" pin="AGND"/>
-<pinref part="IC1" gate="G$2" pin="EMIT"/>
+<pinref part="IC1" gate="B" pin="EMIT"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="VSS"/>
+<pinref part="U$3" gate="1" pin="VSS"/>
 <wire x1="35.56" y1="5.08" x2="35.56" y2="12.7" width="0.1524" layer="91"/>
-<wire x1="35.56" y1="12.7" x2="17.78" y2="12.7" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="12.7" x2="30.48" y2="12.7" width="0.1524" layer="91"/>
 <pinref part="SUPPLY1" gate="G$1" pin="AGND"/>
 </segment>
 <segment>
 <wire x1="58.42" y1="7.62" x2="58.42" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="63.5" y1="12.7" x2="58.42" y2="12.7" width="0.1524" layer="91"/>
 <pinref part="SUPPLY3" gate="G$1" pin="AGND"/>
-<pinref part="IC1" gate="G$1" pin="C"/>
+<pinref part="IC1" gate="A" pin="C"/>
 </segment>
 </net>
 </nets>
