@@ -1,6 +1,6 @@
 PROJECT_NAME = pictest
 
-LAYOUTS := $(patsubst eagle/%,%,$(shell grep -L -E '(layer="19"|<polygon.*layer="16")' eagle/*.brd))
+LAYOUTS := $(patsubst eagle/%,%,$(shell grep -L -E '(layer="19"|<polygon.*layer="16")' eagle/*.brd) $(shell ls -d eagle/picstick*.brd))
 
 COMPILER ?= htc
 DEBUG ?= 0
@@ -140,9 +140,10 @@ endif
 .PHONY: layouts
 
 layouts:
+	echo $(LAYOUTS)
 	@for x in $(LAYOUTS); do \
 		LAYOUT_NAME="$${x##*/}"; LAYOUT_NAME=$${LAYOUT_NAME%.brd}; \
-		if [ "eagle/$$LAYOUT_NAME.brd" -nt "gerbers/$$LAYOUT_NAME.zip" -o Makefile -nt "gerbers/$$LAYOUT_NAME.zip" ]; then \
+		if [ ! -e "gerbers/$$LAYOUT_NAME.zip" -o "eagle/$$LAYOUT_NAME.brd" -nt "gerbers/$$LAYOUT_NAME.zip" -o Makefile -nt "gerbers/$$LAYOUT_NAME.zip" ]; then \
 			echo "$(MAKE) layout LAYOUT_NAME=$$LAYOUT_NAME" 1>&2 ; \
 			$(MAKE) layout LAYOUT_NAME=$$LAYOUT_NAME || { R=$$?; echo "Abort: $$R" 1>&2; exit $$R; }	\
 		fi; \
