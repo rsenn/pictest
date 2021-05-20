@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="2" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="4" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
@@ -7348,7 +7348,7 @@ DIN A4, landscape with location and doc. field</description>
 <part name="GND1" library="LeoStick" deviceset="SUPPLY1_GND" device="" value=""/>
 <part name="GND2" library="LeoStick" deviceset="SUPPLY1_GND" device="" value=""/>
 <part name="R4" library="rcl" deviceset="R-EU_" device="0204/7" value="470R"/>
-<part name="R3" library="rcl" deviceset="R-EU_" device="0204/7" value="10kΩ" />
+<part name="R3" library="rcl" deviceset="R-EU_" device="0204/7" value="10K"/>
 <part name="R2" library="rcl" deviceset="R-EU_" device="0204/7" value="470R"/>
 <part name="GND4" library="LeoStick" deviceset="SUPPLY1_GND" device="" value=""/>
 <part name="GND6" library="LeoStick" deviceset="SUPPLY1_GND" device="" value=""/>
