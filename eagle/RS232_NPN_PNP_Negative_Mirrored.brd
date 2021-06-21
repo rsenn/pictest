@@ -74,10 +74,10 @@
 <board>
 <description>RS232 Adapter using NPN and PNP Transistors</description>
 <plain>
-<wire x1="-31.75" y1="15.24" x2="-6.35" y2="15.24" width="0" layer="47"/>
-<wire x1="-6.35" y1="15.24" x2="-6.35" y2="0" width="0" layer="47"/>
-<wire x1="-6.35" y1="0" x2="-31.75" y2="0" width="0" layer="47"/>
-<wire x1="-31.75" y1="0" x2="-31.75" y2="15.24" width="0" layer="47"/>
+<wire x1="-31.75" y1="15.24" x2="-6.35" y2="15.24" width="0" layer="20"/>
+<wire x1="-6.35" y1="15.24" x2="-6.35" y2="0" width="0" layer="20"/>
+<wire x1="-6.35" y1="0" x2="-31.75" y2="0" width="0" layer="20"/>
+<wire x1="-31.75" y1="0" x2="-31.75" y2="15.24" width="0" layer="20"/>
 </plain>
 <libraries>
 <library name="pinconn">

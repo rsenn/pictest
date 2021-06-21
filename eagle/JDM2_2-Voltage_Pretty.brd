@@ -76,10 +76,10 @@
 <board>
 <description>JDM2 with selectable Dual-Voltage</description>
 <plain>
-<wire x1="-1.27" y1="-1.27" x2="44.45" y2="-1.27" width="0.6096" layer="47"/>
-<wire x1="44.45" y1="-1.27" x2="44.45" y2="24.13" width="0" layer="47"/>
-<wire x1="44.45" y1="24.13" x2="-1.27" y2="24.13" width="0" layer="47"/>
-<wire x1="-1.27" y1="24.13" x2="-1.27" y2="-1.27" width="0" layer="47"/>
+<wire x1="-1.27" y1="-1.27" x2="44.45" y2="-1.27" width="0.6096" layer="20"/>
+<wire x1="44.45" y1="-1.27" x2="44.45" y2="24.13" width="0" layer="20"/>
+<wire x1="44.45" y1="24.13" x2="-1.27" y2="24.13" width="0" layer="20"/>
+<wire x1="-1.27" y1="24.13" x2="-1.27" y2="-1.27" width="0" layer="20"/>
 </plain>
 <libraries>
 <library name="c">

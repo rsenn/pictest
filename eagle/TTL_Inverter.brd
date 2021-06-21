@@ -58,10 +58,10 @@
 </layers>
 <board>
 <plain>
-<wire x1="0" y1="0" x2="100" y2="0" width="0" layer="47"/>
-<wire x1="100" y1="0" x2="100" y2="80" width="0" layer="47"/>
-<wire x1="100" y1="80" x2="0" y2="80" width="0" layer="47"/>
-<wire x1="0" y1="80" x2="0" y2="0" width="0" layer="47"/>
+<wire x1="0" y1="0" x2="100" y2="0" width="0" layer="20"/>
+<wire x1="100" y1="0" x2="100" y2="80" width="0" layer="20"/>
+<wire x1="100" y1="80" x2="0" y2="80" width="0" layer="20"/>
+<wire x1="0" y1="80" x2="0" y2="0" width="0" layer="20"/>
 <text x="57.15" y="27.94" size="1.016" layer="16" align="center-left">RxD</text>
 <text x="57.15" y="30.48" size="1.016" layer="16" align="center-left">TxD</text>
 </plain>

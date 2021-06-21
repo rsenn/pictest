@@ -79,10 +79,10 @@
 </layers>
 <board>
 <plain>
-<wire x1="0" y1="0" x2="40.62" y2="0" width="0" layer="47"/>
-<wire x1="40.62" y1="0" x2="40.64" y2="30.48" width="0" layer="47"/>
-<wire x1="40.64" y1="30.48" x2="0" y2="30.48" width="0" layer="47"/>
-<wire x1="0" y1="30.48" x2="0" y2="0" width="0" layer="47"/>
+<wire x1="0" y1="0" x2="40.62" y2="0" width="0" layer="20"/>
+<wire x1="40.62" y1="0" x2="40.64" y2="30.48" width="0" layer="20"/>
+<wire x1="40.64" y1="30.48" x2="0" y2="30.48" width="0" layer="20"/>
+<wire x1="0" y1="30.48" x2="0" y2="0" width="0" layer="20"/>
 </plain>
 <libraries>
 <library name="rcl">

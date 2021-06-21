@@ -75,10 +75,10 @@
 <description>RS232 Adapter using ACPL-827 Optocouplers
 Powered by PIC</description>
 <plain>
-<wire x1="0" y1="0" x2="47.93" y2="0" width="0" layer="47"/>
-<wire x1="47.93" y1="0" x2="47.93" y2="25.39" width="0" layer="47"/>
-<wire x1="47.93" y1="25.39" x2="0" y2="25.39" width="0" layer="47"/>
-<wire x1="0" y1="25.39" x2="0" y2="0" width="0" layer="47"/>
+<wire x1="0" y1="0" x2="47.93" y2="0" width="0" layer="20"/>
+<wire x1="47.93" y1="0" x2="47.93" y2="25.39" width="0" layer="20"/>
+<wire x1="47.93" y1="25.39" x2="0" y2="25.39" width="0" layer="20"/>
+<wire x1="0" y1="25.39" x2="0" y2="0" width="0" layer="20"/>
 </plain>
 <libraries>
 <library name="rcl">
