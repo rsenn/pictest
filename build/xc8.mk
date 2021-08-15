@@ -21,8 +21,8 @@ endef
 
 VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
-CCVER = v1.45
-#CCVER = v1.34
+#CCVER = v1.45
+CCVER = v1.34
 
 PROGRAMFILES ?= C:/Program Files (x86)
 
@@ -97,6 +97,7 @@ COMMON_FLAGS += --runtime="default,+init,+osccal,+download,+clib"
 ifneq ($(CODE_OFFSET),0)
 ifneq ($(CODE_OFFSET),0x0000)
 ifneq ($(CODE_OFFSET),)
+#COMMON_FLAGS += --codeoffset=$(CODE_OFFSET)
 LDFLAGS += --codeoffset=$(CODE_OFFSET)
 endif
 endif
@@ -152,11 +153,9 @@ CFLAGS = -q --chip=$(chipl) $(COMMON_FLAGS)
 LDFLAGS += --summary=default,-psect,-class,+mem,-hex,-file
 
 LDFLAGS += --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,+download,+clib
-LDFLAGS += --output=-mcof,+elf
 LDFLAGS += --stack=compiled
 
 
-LDFLAGS += --output="default,-inhx032"
 LDFLAGS += --chip=$(chipl)
 LDFLAGS +=  --asmlist
 
@@ -166,7 +165,7 @@ COFFILE = $(subst .hex,.cof,$(HEXFILE))
 
 #-include build/vars.mk
 
-.PHONY: compile dist prototypes
+.PHONY: compile dist prototypes output
 #CPP_CONFIG = obj/xc8-cpp.config
 
 compile: $(BUILDDIR) $(OBJDIR) $(CPP_CONFIG) output
@@ -177,9 +176,9 @@ $(CPP_CONFIG): build/xc8.mk
 	 *\ *[\\/]*) LINE="\"$$LINE\"" ;; esac; echo "$$LINE"; done >"$@"
 endif
 
-output: $(HEXFILE) #$(COFFILE)
+output: $(HEXFILE) $(BINFILE)
 	-mkdir -p $(BUILDDIR)
-	@for F in $(HEXFILE) $(COFFILE); do \
+	@for F in $(HEXFILE) $(COFFILE) $(BINFILE); do \
 	  echo "Output file '$(C_RED)$$F$(C_OFF)' built..." 1>&2; \
 	 done
 
@@ -188,13 +187,21 @@ dist:
 	cp -rvf $(DISTFILES) $(PROGRAM)-$(VERSION)
 	tar -cvzf $(PROGRAM)-$(VERSION).tar.gz $(PROGRAM)-$(VERSION)
 
+$(HEXFILE): LDFLAGS += --output=-mcof,+elf --output="default,-inhx032"
 $(HEXFILE): $(P1OBJS)
 	-mkdir -p $(BUILDDIR)
-	@-$(RM) $(HEXFILE) $(COFFILE)
+	@-$(RM) $(HEXFILE)
 	$(LD) $(LDFLAGS) -m$(BUILDDIR)$(PROGRAM)_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.map -o$@ $^
-	#sed -i 's/^:02400E00\(....\)\(..\)/:02400E0072FF32/' $(HEXFILE)
 	@-(type cygpath 2>/dev/null >/dev/null && PATHTOOL="cygpath -w"; \
 	 test -f "$$PWD/$(HEXFILE)" && { echo; echo "Got HEX file: `$${PATHTOOL:-echo} $$PWD/$(HEXFILE)`"; })
+
+$(BINFILE): LDFLAGS += --output=bin
+$(BINFILE): $(P1OBJS)
+	-mkdir -p $(BUILDDIR)
+	@-$(RM) $(BINFILE)
+	$(LD) $(LDFLAGS) -m$(BUILDDIR)$(PROGRAM)_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.map -o$@ $^
+	@-(type cygpath 2>/dev/null >/dev/null && PATHTOOL="cygpath -w"; \
+	 test -f "$$PWD/$(BINFILE)" && { echo; echo "Got BIN file: `$${PATHTOOL:-echo} $$PWD/$(BINFILE)`"; })
 
 $(P1OBJS): $(OBJDIR)%.p1: %.c
 	-mkdir -p $(OBJDIR)
