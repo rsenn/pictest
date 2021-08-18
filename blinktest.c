@@ -168,6 +168,12 @@ main() {
 
 #endif
 
+#ifdef __18f25k50
+  //TRISE3 = 1;
+  //WPUE3 = 1;
+#endif
+
+
 #if HAVE_TIMER_0 && USE_TIMER0
   timer0_init(PRESCALE_1_4);
 
