@@ -17,10 +17,10 @@ BUILD_TYPES := debug
 #BUILD_TYPE := release
 endif
 
-ifeq ($(XTAL_FREQS),)
+#ifeq ($(XTAL_FREQS),)
 #XTAL_FREQS := 16000000 20000000
-XTAL_FREQS := 20000000 
-endif
+#XTAL_FREQS := 20000000 
+#endif
 
 ifeq ($(BAUD_RATES),)
 #@BAUD_RATES := 19200 38400
@@ -108,22 +108,28 @@ MAKE_CMD += BUILD_TYPE=$(call get-list,BUILD_TYPE)
 endif
 endif
 
-.PHONY: all
-all: layouts compile 
 
+ifeq ($(VERBOSE),)
+REDIR_LOGFILE :=  >$$NAME.log
+else
+REDIR_LOGFILE := | tee $$NAME.log
+endif
+
+.PHONY: all
+all: compile 
 
 
 ifneq ($(call is-list,PROGRAM),)
-P_MAKE_CMD :=  $(MAKE_CMD) PROGRAM=$$P
+P_MAKE_CMD :=  $(MAKE_CMD) PROGRAM=$$P 2>&1
 P_MAKE_LOOP := for P in $(call get-list,PROGRAM) ; do $(MAKE_LOOP); done
 
 .PHONY: compile clean program verify 
 compile clean program verify:
-	$(subst @MAKE@,(set -x; $(P_MAKE_CMD) $@),$(P_MAKE_LOOP))
+	NAME=$@; $(subst @MAKE@,(set -x; $(P_MAKE_CMD) $@); R=$$?;  [ "$$R" = 0 ] || { echo " ($$R)" 1>&2; exit $$R; },$(P_MAKE_LOOP)) $(REDIR_LOGFILE)
 else
 .PHONY: compile clean program verify
 compile clean program verify:
-	$(subst @MAKE@,(set -x; $(MAKE_CMD) PROGRAM=$(call get-list,PROGRAM) $@),$(MAKE_LOOP))
+	NAME=$@; $(subst @MAKE@,(set -x; $(MAKE_CMD) PROGRAM=$(call get-list,PROGRAM) $@),$(MAKE_LOOP)) $(REDIR_LOGFILE)
 endif
 
 

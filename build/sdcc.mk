@@ -171,7 +171,8 @@ dist:
 
 $(HEXFILE): $(OBJECTS)
 	@-$(RM) $(HEXFILE) $(COFFILE)
-	$(SDCC) $(LDFLAGS) $(CFLAGS) -o $@ $^ $(LIBS)
+	@echo Link $< 1>&2
+	@$(SDCC) $(LDFLAGS) $(CFLAGS) -o $@ $^ $(LIBS) 2>/dev/null
 	#sed -i 's/^:02400E00\(....\)\(..\)/:02400E0072FF32/' $(HEXFILE)
 	@-(type cygpath 2>/dev/null >/dev/null && PATHTOOL="cygpath -w"; \
 	 test -f "$$PWD/$(HEXFILE)" && { echo; echo "Got HEX file: `$${PATHTOOL:-echo} $$PWD/$(HEXFILE)`"; })
@@ -180,7 +181,8 @@ $(HEXFILE): $(OBJECTS)
 #	$(SDCC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 $(OBJECTS): $(OBJDIR)%.o: %.c
-	$(SDCC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+	@echo Compile $< 1>&2
+	@$(SDCC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $< 2>/dev/null
 
 $(ASSRCS): $(OBJDIR)%.s: %.c
 	$(SDCC) $(CFLAGS) $(CPPFLAGS) -S -o $@ $<

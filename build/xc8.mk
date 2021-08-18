@@ -177,7 +177,7 @@ $(CPP_CONFIG): build/xc8.mk
 endif
 
 output: $(HEXFILE) $(BINFILE)
-	-mkdir -p $(BUILDDIR)
+	@-mkdir -p $(BUILDDIR)
 	@for F in $(HEXFILE) $(COFFILE) $(BINFILE); do \
 	  echo "Output file '$(C_RED)$$F$(C_OFF)' built..." 1>&2; \
 	 done
@@ -189,24 +189,27 @@ dist:
 
 $(HEXFILE): LDFLAGS += --output=-mcof,+elf --output="default,-inhx032"
 $(HEXFILE): $(P1OBJS)
-	-mkdir -p $(BUILDDIR)
+	@-mkdir -p $(BUILDDIR)
 	@-$(RM) $(HEXFILE)
-	$(LD) $(LDFLAGS) -m$(BUILDDIR)$(PROGRAM)_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.map -o$@ $^
+	@echo Link $@ 1>&2
+	@$(LD) $(LDFLAGS) -m$(BUILDDIR)$(PROGRAM)_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.map -o$@ $^ 2>/dev/null
 	@-(type cygpath 2>/dev/null >/dev/null && PATHTOOL="cygpath -w"; \
 	 test -f "$$PWD/$(HEXFILE)" && { echo; echo "Got HEX file: `$${PATHTOOL:-echo} $$PWD/$(HEXFILE)`"; })
 
 $(BINFILE): LDFLAGS += --output=bin
 $(BINFILE): $(P1OBJS)
-	-mkdir -p $(BUILDDIR)
+	@-mkdir -p $(BUILDDIR)
 	@-$(RM) $(BINFILE)
-	$(LD) $(LDFLAGS) -m$(BUILDDIR)$(PROGRAM)_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.map -o$@ $^
+	@echo Link $@ 1>&2
+	@$(LD) $(LDFLAGS) -m$(BUILDDIR)$(PROGRAM)_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.map -o$@ $^ 2>/dev/null
 	@-(type cygpath 2>/dev/null >/dev/null && PATHTOOL="cygpath -w"; \
 	 test -f "$$PWD/$(BINFILE)" && { echo; echo "Got BIN file: `$${PATHTOOL:-echo} $$PWD/$(BINFILE)`"; })
 
 $(P1OBJS): $(OBJDIR)%.p1: %.c
-	-mkdir -p $(OBJDIR)
+	@-mkdir -p $(OBJDIR)
 #	(cd obj; $(PICC) --pass1 $(CFLAGS) $(CPPFLAGS:-I%=-I../%) --outdir=$(OBJDIR:obj/%/=%)  ../$< #; R=$$?; echo; exit $$R)
-	(cd obj; $(SHELL) ../scripts/xc8.sh -v $(if $(CPP_CONFIG),@$(CPP_CONFIG:obj/%=%),) $(PICC) --pass1 $(CFLAGS) $(CPPFLAGS:-I%=-I../%) --outdir=$(OBJDIR:obj/%/=%)  ../$<)
+	@echo Compile $< 1>&2
+	@(cd obj; $(SHELL) ../scripts/xc8.sh -v $(if $(CPP_CONFIG),@$(CPP_CONFIG:obj/%=%),) $(PICC) --pass1 $(CFLAGS) $(CPPFLAGS:-I%=-I../%) --outdir=$(OBJDIR:obj/%/=%)  ../$<) 2>/dev/null
 #	$(PICC) --pass1 $(CFLAGS) $(CPPFLAGS) -o$(<:%.c=$(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.p1) $<
 
 $(ASSRCS): $(OBJDIR)%.as: %.c
