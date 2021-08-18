@@ -52,13 +52,13 @@ all:
 dirs: $(BUILDDIR) $(OBJDIR)
 
 $(BUILDDIR):
-	-mkdir -p $(BUILDDIR) || md $(subst /,\,$(BUILDDIR)) || true
+	@-mkdir -p $(BUILDDIR) || md $(subst /,\,$(BUILDDIR)) || true
 
 
 $(OBJDIR): $(BUILDDIR)
-	-mkdir -p $(dir $(dir $(OBJDIR))) || md $(dir $(dir $(subst /,\,$(OBJDIR)))) || true
-	-mkdir -p $(dir $(OBJDIR)) || md $(dir $(subst /,\,$(OBJDIR))) || true
-	-mkdir -p $(OBJDIR) || md $(subst /,\,$(OBJDIR)) || true
+	@-mkdir -p $(dir $(dir $(OBJDIR))) || md $(dir $(dir $(subst /,\,$(OBJDIR)))) || true
+	@-mkdir -p $(dir $(OBJDIR)) || md $(dir $(subst /,\,$(OBJDIR))) || true
+	@-mkdir -p $(OBJDIR) || md $(subst /,\,$(OBJDIR)) || true
 
 program: $(BUILDDIR) $(OBJDIR) $(HEXFILE)
 ifneq ($(PICPGM),)

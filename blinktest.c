@@ -26,7 +26,7 @@
 #define BUTTON_SHIFT 0
 #else
 #define BUTTON_PORT LATB
-#define BUTTON_SHIFT 4
+#define BUTTON_SHIFT 0
 #endif
 
 #define BUTTON_GET() ((~(BUTTON_PORT)) >> BUTTON_SHIFT)

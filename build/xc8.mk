@@ -213,7 +213,7 @@ $(P1OBJS): $(OBJDIR)%.p1: %.c
 #	$(PICC) --pass1 $(CFLAGS) $(CPPFLAGS) -o$(<:%.c=$(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.p1) $<
 
 $(ASSRCS): $(OBJDIR)%.as: %.c
-	-mkdir -p $(OBJDIR)
+	@-mkdir -p $(OBJDIR)
 	$(PICC) -S $(CFLAGS) $(CPPFLAGS) --outdir=$(OBJDIR:%/=%) $<
 
 prototypes:
