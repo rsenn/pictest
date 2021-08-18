@@ -5,19 +5,51 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="lib" projectFiles="true">
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/softpwm.h</itemPath>
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/softser.h</itemPath>
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/timer.h</itemPath>
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/typedef.h</itemPath>
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/uart.h</itemPath>
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/comparator.h</itemPath>
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/delay.h</itemPath>
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/device.h</itemPath>
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/pwm.h</itemPath>
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/random.h</itemPath>
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/const.h</itemPath>
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/lcd44780-config.h</itemPath>
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/lcd44780.h</itemPath>
+        <itemPath>../../../lib/7segment.h</itemPath>
+        <itemPath>../../../lib/adc.h</itemPath>
+        <itemPath>../../../lib/buffer.h</itemPath>
+        <itemPath>../../../lib/comparator.h</itemPath>
+        <itemPath>../../../lib/const.h</itemPath>
+        <itemPath>../../../lib/delay.h</itemPath>
+        <itemPath>../../../lib/device.h</itemPath>
+        <itemPath>../../../lib/ds18b20.h</itemPath>
+        <itemPath>../../../lib/eeprom.h</itemPath>
+        <itemPath>../../../lib/format.h</itemPath>
+        <itemPath>../../../lib/hd44780.h</itemPath>
+        <itemPath>../../../lib/interrupt.h</itemPath>
+        <itemPath>../../../lib/lcd44780-config.h</itemPath>
+        <itemPath>../../../lib/lcd44780.h</itemPath>
+        <itemPath>../../../lib/lcd5110.h</itemPath>
+        <itemPath>../../../lib/onewire.h</itemPath>
+        <itemPath>../../../lib/oscillator.h</itemPath>
+        <itemPath>../../../lib/ports.h</itemPath>
+        <itemPath>../../../lib/pwm.h</itemPath>
+        <itemPath>../../../lib/queue.h</itemPath>
+        <itemPath>../../../lib/random.h</itemPath>
+        <itemPath>../../../lib/ser.h</itemPath>
+        <itemPath>../../../lib/softpwm.h</itemPath>
+        <itemPath>../../../lib/softser.h</itemPath>
+        <itemPath>../../../lib/timer.h</itemPath>
+        <itemPath>../../../lib/tsmdelay.h</itemPath>
+        <itemPath>../../../lib/typedef.h</itemPath>
+        <itemPath>../../../lib/uart.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="src" projectFiles="true">
+        <itemPath>../../../src/config-10f206.h</itemPath>
+        <itemPath>../../../src/config-12f1840.h</itemPath>
+        <itemPath>../../../src/config-16f628a.h</itemPath>
+        <itemPath>../../../src/config-16f876a.h</itemPath>
+        <itemPath>../../../src/config-18f14k50.h</itemPath>
+        <itemPath>../../../src/config-18f2450.h</itemPath>
+        <itemPath>../../../src/config-18f2455.h</itemPath>
+        <itemPath>../../../src/config-18f252.h</itemPath>
+        <itemPath>../../../src/config-18f2520.h</itemPath>
+        <itemPath>../../../src/config-18f2550.h</itemPath>
+        <itemPath>../../../src/config-18f25k22.h</itemPath>
+        <itemPath>../../../src/config-18f25k50.h</itemPath>
+        <itemPath>../../../src/config-bits.h</itemPath>
+        <itemPath>../../../src/lcd44780-config.h</itemPath>
+        <itemPath>../../../src/pictest.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -37,9 +69,9 @@
         <itemPath>../../../lib/softser.c</itemPath>
         <itemPath>../../../lib/timer.c</itemPath>
         <itemPath>../../../lib/uart.c</itemPath>
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/lcd44780.c</itemPath>
+        <itemPath>../../../lib/lcd44780.c</itemPath>
       </logicalFolder>
-      <itemPath>/home/roman/Dokumente/Sources/pictest/serialtest.c</itemPath>
+      <itemPath>../../../serialtest.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -85,6 +117,7 @@
       </compileType>
       <makeCustomizationType>
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
+        <makeUseCleanTarget>false</makeUseCleanTarget>
         <makeCustomizationPreStep></makeCustomizationPreStep>
         <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep></makeCustomizationPostStep>
@@ -99,7 +132,7 @@
         <property key="default-bitfield-type" value="true"/>
         <property key="default-char-type" value="true"/>
         <property key="define-macros"
-                  value="__18f25k50=1;XTAL_FREQ=20000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=1;USE_SOFTPWM=1;USE_SOFTSER=1;HAVE_COMPARATOR=1;DEBUG=1"/>
+                  value="__18f25k50=1;_XTAL_FREQ=48000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=1;USE_SOFTPWM=1;USE_SOFTSER=1;HAVE_COMPARATOR=1;DEBUG=1;USE_SER=1"/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
                   value="../../..;../../../lib;../../../src"/>
@@ -118,9 +151,9 @@
         <property key="optimization-level" value="-Os"/>
         <property key="optimization-speed" value="false"/>
         <property key="optimization-stable-enable" value="false"/>
-        <property key="pack-struct" value="true"/>
         <property key="preprocess-assembler" value="true"/>
         <property key="short-enums" value="true"/>
+        <property key="tentative-definitions" value=""/>
         <property key="undefine-macros" value=""/>
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
@@ -130,7 +163,7 @@
       </HI-TECH-COMP>
       <HI-TECH-LINK>
         <property key="additional-options-checksum" value=""/>
-        <property key="additional-options-code-offset" value=""/>
+        <property key="additional-options-code-offset" value="0x2000"/>
         <property key="additional-options-command-line" value=""/>
         <property key="additional-options-errata" value=""/>
         <property key="additional-options-extend-address" value="false"/>
@@ -247,6 +280,7 @@
       </PK3OBPlatformTool>
       <XC8-CO>
         <property key="coverage-enable" value=""/>
+        <property key="stack-guidance" value="false"/>
       </XC8-CO>
       <XC8-config-global>
         <property key="advanced-elf" value="true"/>
@@ -261,6 +295,7 @@
         <property key="stack-size-main" value="auto"/>
         <property key="stack-type" value="hybrid"/>
         <property key="user-pack-device-support" value=""/>
+        <property key="wpo-lto" value="false"/>
       </XC8-config-global>
     </conf>
     <conf name="release" type="2">
@@ -296,6 +331,7 @@
       </compileType>
       <makeCustomizationType>
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
+        <makeUseCleanTarget>false</makeUseCleanTarget>
         <makeCustomizationPreStep></makeCustomizationPreStep>
         <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep></makeCustomizationPostStep>
@@ -310,7 +346,7 @@
         <property key="default-bitfield-type" value="true"/>
         <property key="default-char-type" value="true"/>
         <property key="define-macros"
-                  value="__18f25k50=1;XTAL_FREQ=20000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=1;USE_SER=1;HAVE_COMPARATOR=1;NDEBUG=1;USE_HD44780_LCD=1"/>
+                  value="__18f25k50=1;_XTAL_FREQ=48000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=1;USE_SER=1;HAVE_COMPARATOR=1;NDEBUG=1;USE_HD44780_LCD=1"/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
                   value="../../..;../../../lib;../../../src"/>
@@ -329,19 +365,19 @@
         <property key="optimization-level" value="-Os"/>
         <property key="optimization-speed" value="false"/>
         <property key="optimization-stable-enable" value="false"/>
-        <property key="pack-struct" value="true"/>
         <property key="preprocess-assembler" value="true"/>
         <property key="short-enums" value="true"/>
+        <property key="tentative-definitions" value=""/>
         <property key="undefine-macros" value=""/>
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
-        <property key="verbose" value="true"/>
+        <property key="verbose" value="false"/>
         <property key="warning-level" value="-3"/>
         <property key="what-to-do" value="ignore"/>
       </HI-TECH-COMP>
       <HI-TECH-LINK>
         <property key="additional-options-checksum" value=""/>
-        <property key="additional-options-code-offset" value=""/>
+        <property key="additional-options-code-offset" value="0x2000"/>
         <property key="additional-options-command-line" value=""/>
         <property key="additional-options-errata" value=""/>
         <property key="additional-options-extend-address" value="false"/>
@@ -458,6 +494,7 @@
       </PK3OBPlatformTool>
       <XC8-CO>
         <property key="coverage-enable" value=""/>
+        <property key="stack-guidance" value="false"/>
       </XC8-CO>
       <XC8-config-global>
         <property key="advanced-elf" value="true"/>
@@ -472,6 +509,7 @@
         <property key="stack-size-main" value="auto"/>
         <property key="stack-type" value="hybrid"/>
         <property key="user-pack-device-support" value=""/>
+        <property key="wpo-lto" value="false"/>
       </XC8-config-global>
     </conf>
   </confs>
