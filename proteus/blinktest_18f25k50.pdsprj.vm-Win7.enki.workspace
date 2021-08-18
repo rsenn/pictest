@@ -11,6 +11,7 @@
      <ITEM name="Message Column Width">671</ITEM>
      <ITEM name="ShowGrid">No</ITEM>
      <ITEM name="Source Column Width">100</ITEM>
+     <ITEM name="Time Column Width">120</ITEM>
      <ITEM name="Version">100</ITEM>
     </PROPERTIES>
    </POPUP>
@@ -31,7 +32,7 @@
      <ITEM name="nItems">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="600" x="370" flags="0000802b" y="0" h="400" pid="1" iid="22">
+   <POPUP w="600" x="293" flags="0000802b" y="34" h="400" pid="1" iid="22">
     <PROPERTIES>
      <ITEM name="Breakpoint 0">"",0AE8,0000,E461,FF70,-1
 </ITEM>
@@ -43,7 +44,7 @@
      <ITEM name="DISPOPCODES">No</ITEM>
      <ITEM name="FIXUPBPTS">Yes</ITEM>
      <ITEM name="WordsOnly">No</ITEM>
-     <ITEM name="nBreakpoints">2</ITEM>
+     <ITEM name="nBreakpoints">0</ITEM>
     </PROPERTIES>
    </POPUP>
    <POPUP w="300" x="911" flags="0000000b" y="33" h="300" pid="2" iid="22">
@@ -86,7 +87,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="8" x="178" flags="80000002" y="259" h="16" pid="12" iid="22">
+   <POPUP w="8" x="178" flags="00000002" y="259" h="16" pid="12" iid="22">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -129,7 +130,7 @@
    <POPUP w="142" x="258" flags="00000008" y="339" h="384" pid="10" iid="22">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="8" x="278" flags="80000002" y="359" h="8" pid="13" iid="22">
+   <POPUP w="8" x="278" flags="00000002" y="359" h="8" pid="13" iid="22">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
