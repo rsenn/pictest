@@ -9,5 +9,8 @@
             <file>file:/home/roman/Projects/pictest/lib/ser.c</file>
             <file>file:/home/roman/Projects/pictest/lib/7segment.h</file>
         </group>
+        <group name="pictest">
+            <file>file:/home/roman/Projects/pictest/lib/lcd44780.c</file>
+        </group>
     </open-files>
 </project-private>
