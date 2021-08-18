@@ -22,7 +22,7 @@
       </runprofile>
     </conf>
     <conf name="release" type="2">
-      <platformToolSN></platformToolSN>
+      <platformToolSN>noToolString</platformToolSN>
       <languageToolchainDir>/opt/sdcc-4.1.0-amd64-unknown-linux2.5/bin</languageToolchainDir>
       <mdbdebugger version="1">
         <placeholder1>place holder 1</placeholder1>

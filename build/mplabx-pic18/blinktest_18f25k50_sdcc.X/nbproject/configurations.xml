@@ -261,7 +261,7 @@
         <targetDevice>PIC18F25K50</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>PICkit3PlatformTool</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>SDCC</languageToolchain>
         <languageToolchainVersion>4.1.0</languageToolchainVersion>
         <platform>2</platform>
