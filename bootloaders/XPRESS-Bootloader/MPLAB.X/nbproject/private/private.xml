@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/roman/Projects/pictest/bootloaders/XPRESS-Bootloader/framework/usb/src/usb_device_msd.c</file>
+            <file>file:/home/roman/Projects/pictest/bootloaders/XPRESS-Bootloader/MPLAB.X/app_device_cdc.c</file>
+            <file>file:/home/roman/Projects/pictest/bootloaders/XPRESS-Bootloader/framework/usb/inc/usb_device_msd.h</file>
+            <file>file:/home/roman/Projects/pictest/bootloaders/XPRESS-Bootloader/MPLAB.X/app_device_msd.h</file>
+            <file>file:/home/roman/Projects/pictest/bootloaders/XPRESS-Bootloader/MPLAB.X/usb_descriptors.c</file>
+        </group>
+    </open-files>
+</project-private>
