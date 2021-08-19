@@ -5,5 +5,9 @@
         <group name="htc"/>
         <group/>
         <group name="pictest"/>
+        <group name="18f25k50$"/>
+        <group name="18f25k50">
+            <file>file:/home/roman/Projects/pictest/serialtest.c</file>
+        </group>
     </open-files>
 </project-private>
