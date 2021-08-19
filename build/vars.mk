@@ -6,8 +6,8 @@ CHIPS += 18f25k22 18f25k50
 COMPILERS = htc xc8
 #CHIP = 16F876A
 
-ifeq ($(XTAL_FREQ),)
-XTAL_FREQ := 48000000
+ifeq ($(_XTAL_FREQ),)
+_XTAL_FREQ := 48000000
 endif
 
 ifeq ($(XTAL_USED),)
@@ -51,7 +51,7 @@ chipl = $(subst A,a,$(subst B,b,$(subst C,c,$(subst D,d,$(subst E,e,$(subst F,f,
 
 
 #MHZ := $(shell echo "$(XTAL) / 1000000" | bc -l | sed "s|0*$$|| ;; s|\.$$|| ;; s|\.|,|g")
-MHZ := $(shell echo $$(($(XTAL_FREQ) / 1000000)))
+MHZ := $(shell echo $$(($(_XTAL_FREQ) / 1000000)))
 KBPS := $(shell echo $$(($(BAUD) / 1000)))
 
 ifeq ($(PROGRAM)$(PROGRAMS),)
@@ -105,7 +105,7 @@ DEFINES += NDEBUG=1 __NDEBUG=1
 endif
 
 ifneq ($(XTAL),)
-DEFINES += _XTAL_FREQ=$(XTAL_FREQ) XTAL_USED=$(XTAL_USED)
+DEFINES += _XTAL_FREQ=$(_XTAL_FREQ) XTAL_USED=$(XTAL_USED)
 endif
 
 ifneq ($(BAUD),)

@@ -190,7 +190,7 @@
         <property key="use-crt" value=""/>
         <property key="use-non-free" value="true"/>
         <property key="user-defines"
-                  value="__16f876a=1;XTAL_FREQ=20000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=1;USE_SOFTPWM=1;USE_SOFTSER_=1;HAVE_COMPARATOR_=1;DEBUG=1;_DEBUG=1"/>
+                  value="__16f876a=1;_XTAL_FREQ=20000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=1;USE_SOFTPWM=1;USE_SOFTSER_=1;HAVE_COMPARATOR_=1;DEBUG=1;_DEBUG=1"/>
         <property key="user-includes" value="../../../;../../../lib;../../../src"/>
         <property key="verbose" value="true"/>
         <appendMe value="--debug"/>

@@ -101,7 +101,7 @@
                   value="../../../;../../../lib;../../../src"/>
         <property key="optimization-master" value="Debug friendly"/>
         <property key="preprocessor-macros"
-                  value="__18f25k22=1;DEBUG=1;USE_SOFTPWM=1;USE_TIMER0=1;UART_BAUD=38400;XTAL_FREQ=20000000;MCC18=1;MCC=1;USE_SER=1;USE_TIMER1=1;USE_TIMER2=1"/>
+                  value="__18f25k22=1;DEBUG=1;USE_SOFTPWM=1;USE_TIMER0=1;UART_BAUD=38400;_XTAL_FREQ=20000000;MCC18=1;MCC=1;USE_SER=1;USE_TIMER1=1;USE_TIMER2=1"/>
         <property key="procedural-abstraction-passes" value="4"/>
         <property key="storage-class" value="sca"/>
         <property key="verbose" value="true"/>
