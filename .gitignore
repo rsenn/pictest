@@ -62,3 +62,7 @@ bin*
 /build/mplabx-pic18/serialtest_18f25k50_xc8.X/dist/
 /build/mplabx-pic18/serialtest_18f25k50_xc8.X/build/
 /bootloaders/XPRESS-Bootloader/MPLAB.X/build/
+/build/mplabx-pic18/pic12f1840_template_1.X/build/
+/build/mplabx-pic18/pic12f1840_template_1.X/dist/
+/build/mplabx-pic18/pic16f1936_template_1.X/build/
+/build/mplabx-pic18/pic16f1936_template_1.X/dist/

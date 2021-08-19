@@ -5,7 +5,7 @@
   <confs>
     <conf name="debug" type="2">
       <platformToolSN></platformToolSN>
-      <languageToolchainDir>/opt/sdcc-3.9.0/bin</languageToolchainDir>
+      <languageToolchainDir>/opt/sdcc-4.1.0-amd64-unknown-linux2.5/bin</languageToolchainDir>
       <mdbdebugger version="1">
         <placeholder1>place holder 1</placeholder1>
         <placeholder2>place holder 2</placeholder2>

@@ -102,164 +102,164 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/1386521430/comparator.o: ../../../lib/comparator.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/comparator.o: ../../../lib/comparator.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/comparator.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/comparator.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/comparator.o   ../../../lib/comparator.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/comparator.o   ../../../lib/comparator.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/comparator.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/comparator.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/delay.o: ../../../lib/delay.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/delay.o: ../../../lib/delay.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/delay.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/delay.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/delay.o   ../../../lib/delay.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/delay.o   ../../../lib/delay.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/delay.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/delay.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/pwm.o: ../../../lib/pwm.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/pwm.o: ../../../lib/pwm.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pwm.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pwm.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/pwm.o   ../../../lib/pwm.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/pwm.o   ../../../lib/pwm.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/pwm.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/pwm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/random.o: ../../../lib/random.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/random.o: ../../../lib/random.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/random.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/random.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/random.o   ../../../lib/random.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/random.o   ../../../lib/random.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/random.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/random.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/ser.o: ../../../lib/ser.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/ser.o: ../../../lib/ser.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/ser.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/ser.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/ser.o   ../../../lib/ser.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/ser.o   ../../../lib/ser.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/ser.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/ser.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/softpwm.o: ../../../lib/softpwm.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/softpwm.o: ../../../lib/softpwm.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/softpwm.o   ../../../lib/softpwm.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/softpwm.o   ../../../lib/softpwm.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/softpwm.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/softpwm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/softser.o: ../../../lib/softser.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/softser.o: ../../../lib/softser.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softser.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softser.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/softser.o   ../../../lib/softser.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/softser.o   ../../../lib/softser.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/softser.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/softser.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/timer.o: ../../../lib/timer.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/timer.o: ../../../lib/timer.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/timer.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/timer.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/timer.o   ../../../lib/timer.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/timer.o   ../../../lib/timer.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/timer.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/timer.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/uart.o: ../../../lib/uart.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/uart.o: ../../../lib/uart.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/uart.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/uart.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/uart.o   ../../../lib/uart.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/uart.o   ../../../lib/uart.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/uart.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/uart.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/2124829536/blinktest.o: ../../../blinktest.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/2124829536/blinktest.o: ../../../blinktest.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/2124829536" 
 	@${RM} ${OBJECTDIR}/_ext/2124829536/blinktest.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2124829536/blinktest.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/2124829536/blinktest.o   ../../../blinktest.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG  -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/2124829536/blinktest.o   ../../../blinktest.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/2124829536/blinktest.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/2124829536/blinktest.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
 else
-${OBJECTDIR}/_ext/1386521430/comparator.o: ../../../lib/comparator.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/comparator.o: ../../../lib/comparator.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/comparator.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/comparator.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/comparator.o   ../../../lib/comparator.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/comparator.o   ../../../lib/comparator.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/comparator.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/comparator.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/delay.o: ../../../lib/delay.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/delay.o: ../../../lib/delay.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/delay.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/delay.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/delay.o   ../../../lib/delay.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/delay.o   ../../../lib/delay.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/delay.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/delay.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/pwm.o: ../../../lib/pwm.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/pwm.o: ../../../lib/pwm.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pwm.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pwm.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/pwm.o   ../../../lib/pwm.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/pwm.o   ../../../lib/pwm.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/pwm.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/pwm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/random.o: ../../../lib/random.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/random.o: ../../../lib/random.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/random.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/random.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/random.o   ../../../lib/random.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/random.o   ../../../lib/random.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/random.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/random.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/ser.o: ../../../lib/ser.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/ser.o: ../../../lib/ser.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/ser.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/ser.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/ser.o   ../../../lib/ser.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/ser.o   ../../../lib/ser.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/ser.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/ser.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/softpwm.o: ../../../lib/softpwm.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/softpwm.o: ../../../lib/softpwm.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/softpwm.o   ../../../lib/softpwm.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/softpwm.o   ../../../lib/softpwm.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/softpwm.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/softpwm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/softser.o: ../../../lib/softser.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/softser.o: ../../../lib/softser.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softser.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softser.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/softser.o   ../../../lib/softser.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/softser.o   ../../../lib/softser.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/softser.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/softser.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/timer.o: ../../../lib/timer.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/timer.o: ../../../lib/timer.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/timer.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/timer.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/timer.o   ../../../lib/timer.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/timer.o   ../../../lib/timer.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/timer.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/timer.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/1386521430/uart.o: ../../../lib/uart.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1386521430/uart.o: ../../../lib/uart.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/uart.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/uart.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/uart.o   ../../../lib/uart.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1386521430/uart.o   ../../../lib/uart.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1386521430/uart.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1386521430/uart.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/_ext/2124829536/blinktest.o: ../../../blinktest.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/2124829536/blinktest.o: ../../../blinktest.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/2124829536" 
 	@${RM} ${OBJECTDIR}/_ext/2124829536/blinktest.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2124829536/blinktest.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -DXTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/2124829536/blinktest.o   ../../../blinktest.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -D__18f25k22=1 -DDEBUG=1 -DUSE_SOFTPWM=1 -DUSE_TIMER0=1 -DUART_BAUD=38400 -D_XTAL_FREQ=20000000 -DMCC18=1 -DMCC=1 -DUSE_SER=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -I"../../../" -I"../../../lib" -I"../../../src" -ms -oa- -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/2124829536/blinktest.o   ../../../blinktest.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/2124829536/blinktest.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/2124829536/blinktest.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	

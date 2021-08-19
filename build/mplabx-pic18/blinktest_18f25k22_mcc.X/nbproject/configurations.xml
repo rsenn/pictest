@@ -5,9 +5,6 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="lib" projectFiles="true">
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/device.h</itemPath>
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/timer.h</itemPath>
-        <itemPath>/home/roman/Dokumente/Sources/pictest/lib/interrupt.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -55,6 +52,8 @@
       <packs>
         <pack name="PIC18F-K_DFP" vendor="Microchip" version="1.2.72"/>
       </packs>
+      <ScriptingSettings>
+      </ScriptingSettings>
       <compileType>
         <linkerTool>
           <linkerLibItems>
@@ -72,6 +71,7 @@
       </compileType>
       <makeCustomizationType>
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
+        <makeUseCleanTarget>false</makeUseCleanTarget>
         <makeCustomizationPreStep></makeCustomizationPreStep>
         <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep></makeCustomizationPostStep>
@@ -172,6 +172,11 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="5.0"/>
       </PICkit3PlatformTool>
+      <Tool>
+        <property key="design.file" value="../../../proteus/blinktest_18f2550.DSN"/>
+        <property key="target.ip.address" value="localhost"/>
+        <property key="target.ip.port" value="8001"/>
+      </Tool>
       <VSMViewerPlatformTool>
         <property key="design.file" value="../../../proteus/blinktest_18f2550.DSN"/>
         <property key="target.ip.address" value="localhost"/>

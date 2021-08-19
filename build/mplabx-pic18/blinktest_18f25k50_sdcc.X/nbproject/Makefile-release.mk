@@ -96,103 +96,103 @@ ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 ${OBJECTDIR}/_ext/1386521430/comparator.o: ../../../lib/comparator.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/comparator.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/comparator.c  -o${OBJECTDIR}/_ext/1386521430/comparator.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/comparator.c  -o${OBJECTDIR}/_ext/1386521430/comparator.o
 	
 ${OBJECTDIR}/_ext/1386521430/delay.o: ../../../lib/delay.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/delay.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/delay.c  -o${OBJECTDIR}/_ext/1386521430/delay.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/delay.c  -o${OBJECTDIR}/_ext/1386521430/delay.o
 	
 ${OBJECTDIR}/_ext/1386521430/pwm.o: ../../../lib/pwm.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/pwm.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/pwm.c  -o${OBJECTDIR}/_ext/1386521430/pwm.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/pwm.c  -o${OBJECTDIR}/_ext/1386521430/pwm.o
 	
 ${OBJECTDIR}/_ext/1386521430/random.o: ../../../lib/random.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/random.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/random.c  -o${OBJECTDIR}/_ext/1386521430/random.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/random.c  -o${OBJECTDIR}/_ext/1386521430/random.o
 	
 ${OBJECTDIR}/_ext/1386521430/ser.o: ../../../lib/ser.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/ser.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/ser.c  -o${OBJECTDIR}/_ext/1386521430/ser.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/ser.c  -o${OBJECTDIR}/_ext/1386521430/ser.o
 	
 ${OBJECTDIR}/_ext/1386521430/softpwm.o: ../../../lib/softpwm.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/softpwm.c  -o${OBJECTDIR}/_ext/1386521430/softpwm.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/softpwm.c  -o${OBJECTDIR}/_ext/1386521430/softpwm.o
 	
 ${OBJECTDIR}/_ext/1386521430/softser.o: ../../../lib/softser.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/softser.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/softser.c  -o${OBJECTDIR}/_ext/1386521430/softser.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/softser.c  -o${OBJECTDIR}/_ext/1386521430/softser.o
 	
 ${OBJECTDIR}/_ext/1386521430/timer.o: ../../../lib/timer.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/timer.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/timer.c  -o${OBJECTDIR}/_ext/1386521430/timer.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/timer.c  -o${OBJECTDIR}/_ext/1386521430/timer.o
 	
 ${OBJECTDIR}/_ext/1386521430/uart.o: ../../../lib/uart.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/uart.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/uart.c  -o${OBJECTDIR}/_ext/1386521430/uart.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../lib/uart.c  -o${OBJECTDIR}/_ext/1386521430/uart.o
 	
 ${OBJECTDIR}/_ext/2124829536/blinktest.o: ../../../blinktest.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/2124829536" 
 	${RM} ${OBJECTDIR}/_ext/2124829536/blinktest.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../blinktest.c  -o${OBJECTDIR}/_ext/2124829536/blinktest.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size --debug -c -mpic16 -p18f25k50 ../../../blinktest.c  -o${OBJECTDIR}/_ext/2124829536/blinktest.o
 	
 else
 ${OBJECTDIR}/_ext/1386521430/comparator.o: ../../../lib/comparator.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/comparator.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/comparator.c  -o${OBJECTDIR}/_ext/1386521430/comparator.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/comparator.c  -o${OBJECTDIR}/_ext/1386521430/comparator.o
 	
 ${OBJECTDIR}/_ext/1386521430/delay.o: ../../../lib/delay.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/delay.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/delay.c  -o${OBJECTDIR}/_ext/1386521430/delay.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/delay.c  -o${OBJECTDIR}/_ext/1386521430/delay.o
 	
 ${OBJECTDIR}/_ext/1386521430/pwm.o: ../../../lib/pwm.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/pwm.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/pwm.c  -o${OBJECTDIR}/_ext/1386521430/pwm.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/pwm.c  -o${OBJECTDIR}/_ext/1386521430/pwm.o
 	
 ${OBJECTDIR}/_ext/1386521430/random.o: ../../../lib/random.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/random.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/random.c  -o${OBJECTDIR}/_ext/1386521430/random.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/random.c  -o${OBJECTDIR}/_ext/1386521430/random.o
 	
 ${OBJECTDIR}/_ext/1386521430/ser.o: ../../../lib/ser.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/ser.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/ser.c  -o${OBJECTDIR}/_ext/1386521430/ser.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/ser.c  -o${OBJECTDIR}/_ext/1386521430/ser.o
 	
 ${OBJECTDIR}/_ext/1386521430/softpwm.o: ../../../lib/softpwm.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/softpwm.c  -o${OBJECTDIR}/_ext/1386521430/softpwm.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/softpwm.c  -o${OBJECTDIR}/_ext/1386521430/softpwm.o
 	
 ${OBJECTDIR}/_ext/1386521430/softser.o: ../../../lib/softser.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/softser.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/softser.c  -o${OBJECTDIR}/_ext/1386521430/softser.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/softser.c  -o${OBJECTDIR}/_ext/1386521430/softser.o
 	
 ${OBJECTDIR}/_ext/1386521430/timer.o: ../../../lib/timer.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/timer.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/timer.c  -o${OBJECTDIR}/_ext/1386521430/timer.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/timer.c  -o${OBJECTDIR}/_ext/1386521430/timer.o
 	
 ${OBJECTDIR}/_ext/1386521430/uart.o: ../../../lib/uart.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	${RM} ${OBJECTDIR}/_ext/1386521430/uart.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/uart.c  -o${OBJECTDIR}/_ext/1386521430/uart.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../lib/uart.c  -o${OBJECTDIR}/_ext/1386521430/uart.o
 	
 ${OBJECTDIR}/_ext/2124829536/blinktest.o: ../../../blinktest.c  nbproject/Makefile-${CND_CONF}.mk 
 	${MKDIR} "${OBJECTDIR}/_ext/2124829536" 
 	${RM} ${OBJECTDIR}/_ext/2124829536/blinktest.o 
-	${MP_CC} --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../blinktest.c  -o${OBJECTDIR}/_ext/2124829536/blinktest.o
+	${MP_CC} --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -c -mpic16 -p18f25k50 ../../../blinktest.c  -o${OBJECTDIR}/_ext/2124829536/blinktest.o
 	
 endif
 
@@ -201,11 +201,11 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_sdcc.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} -Wl-c -Wl-m --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -mpic16 -p18f25k50 ${OBJECTFILES_QUOTED_IF_SPACED} -odist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_sdcc.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} 
+	${MP_CC} -Wl-c -Wl-m --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -mpic16 -p18f25k50 ${OBJECTFILES_QUOTED_IF_SPACED} -odist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_sdcc.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} 
 else
 dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_sdcc.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} -Wl-c -Wl-m --use-non-free -D__18f25k50=1 -DXTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -mpic16 -p18f25k50 ${OBJECTFILES_QUOTED_IF_SPACED} -odist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_sdcc.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} 
+	${MP_CC} -Wl-c -Wl-m --use-non-free -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SOFTSER=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__DEBUG=1 -DSDCC=1 -I"../../../" -I"../../../lib" -I"../../../src" --opt-code-size -mpic16 -p18f25k50 ${OBJECTFILES_QUOTED_IF_SPACED} -odist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_sdcc.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} 
 endif
 
 
