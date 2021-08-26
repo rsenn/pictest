@@ -42,6 +42,8 @@
 __code unsigned int __at(_CONFIG) __configword = CONFIG_WORD;
 #endif
 
+#define PLL_STARTUP_DELAY() __delay_ms(3) // Don't modify.
+
 #define SIZE_OF(arr) (sizeof(arr) / sizeof(arr[0]))
 
 extern const uint16_t rainbow[64];
@@ -126,6 +128,21 @@ main() {
   bres = 0;
   run = 1;
 
+#ifdef __18f25k50
+#if XTAL_USED == NO_XTAL
+  OSCCONbits.IRCF = 7;
+#endif
+#if(XTAL_USED != MHz_12)
+  OSCTUNEbits.SPLLMULT = 1;
+#endif
+  OSCCON2bits.PLLEN = 1;
+  PLL_STARTUP_DELAY();
+#if XTAL_USED == NO_XTAL
+  ACTCONbits.ACTSRC = 1;
+  ACTCONbits.ACTEN = 1;
+#endif
+#endif
+
   random_init(128, 79, 209);
 
 #if USE_UART
@@ -169,10 +186,9 @@ main() {
 #endif
 
 #ifdef __18f25k50
-  //TRISE3 = 1;
-  //WPUE3 = 1;
+  // TRISE3 = 1;
+  // WPUE3 = 1;
 #endif
-
 
 #if USE_TIMER0
   timer0_init(PRESCALE_1_4);
