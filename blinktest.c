@@ -174,7 +174,7 @@ main() {
 #endif
 
 
-#if HAVE_TIMER_0 && USE_TIMER0
+#if USE_TIMER0
   timer0_init(PRESCALE_1_4);
 
   TIMER0_INTERRUPT_CLEAR();
