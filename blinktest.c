@@ -100,7 +100,7 @@ INTERRUPT_FN() {
     if(msec_count >= 10) { // if reached 1 decisecond!
       hsecs++;             // update clock, etc
 
-      LED2_ANODE = hsecs & 1;
+      LED_PIN = hsecs & 1;
 
       msec_count -= 10;
     }
@@ -174,7 +174,7 @@ main() {
 #endif
 
 
-#if HAVE_TIMER_0 && USE_TIMER0
+#if USE_TIMER0
   timer0_init(PRESCALE_1_4);
 
   TIMER0_INTERRUPT_CLEAR();
