@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #
 # Generated Makefile - do not edit!
 #
@@ -298,3 +299,5 @@ DEPFILES=$(shell "${PATH_TO_IDE_BIN}"mplabwildcard ${POSSIBLE_DEPFILES})
 ifneq (${DEPFILES},)
 include ${DEPFILES}
 endif
+=======
+>>>>>>> 37f7102f3f181dd934c7376792459ec4df7fde36
