@@ -6,7 +6,7 @@
         <group name="pictest">
             <file>file:/home/roman/Projects/pictest/lib/lcd44780.c</file>
         </group>
-        <group/>
         <group name="18f25k50"/>
+        <group/>
     </open-files>
 </project-private>
