@@ -26,7 +26,9 @@
         <itemPath>../../../lib/uart.c</itemPath>
         <itemPath>/home/roman/Dokumente/Sources/pictest/lib/7segment.c</itemPath>
       </logicalFolder>
-      <itemPath>../../../7segtest.c</itemPath>
+      <logicalFolder name="f2" displayName="src" projectFiles="true">
+        <itemPath>../../../src/7segtest.c</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

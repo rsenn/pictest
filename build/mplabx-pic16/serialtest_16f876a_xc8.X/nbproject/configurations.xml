@@ -26,7 +26,9 @@
         <itemPath>../../../lib/uart.c</itemPath>
         <itemPath>/home/roman/Dokumente/Sources/pictest/lib/lcd44780.c</itemPath>
       </logicalFolder>
-      <itemPath>/home/roman/Dokumente/Sources/pictest/serialtest.c</itemPath>
+      <logicalFolder name="f2" displayName="src" projectFiles="true">
+        <itemPath>../../../src/serialtest.c</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
