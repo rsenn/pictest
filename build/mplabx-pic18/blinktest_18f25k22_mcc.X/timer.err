@@ -1,4 +1,0 @@
-Error[1105] ../../../lib/timer.c 31 : symbol 'TMR0' has not been defined
-Error[1101] ../../../lib/timer.c 31 : lvalue required
-Error[1105] ../../../lib/timer.c 81 : symbol 'TMR0' has not been defined
-Error[1105] ../../../lib/timer.c 101 : symbol 'TMR0' has not been defined
