@@ -107,8 +107,15 @@ main() {
 #endif
 
 #if !NO_PORTB
-  nRBPU = 1;
-// TRISB &= 0;
+#ifndef nRBPU
+#ifdef PIC18
+  INTCON2 |= 0b10000000;
+#else
+  OPTION_REG |= 0b00100000;
+#endif
+#else
+  nRBPU = 1; // pull-ups
+#endif// TRISB &= 0;
 // LATB |= 0xff;
 #endif
   LATA = 0;

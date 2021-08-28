@@ -21,8 +21,8 @@ endef
 
 VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
-#CCVER = v1.45
-CCVER = v1.34
+CCVER = v1.45
+#CCVER = v1.34
 
 PROGRAMFILES ?= C:/Program Files (x86)
 
@@ -43,6 +43,15 @@ CCDIR :=
 endif
 endif
 
+ifeq ($(VERBOSE),1)
+		QUIET_STDERR := 
+	QUIET_STDOUT := 
+	QUIET := 
+else
+	QUIET_STDERR := 2>/dev/null
+	QUIET_STDOUT := >/dev/null
+	QUIET  := @
+endif
 
 ifeq ($(COMPILER),xc8)
 #ifneq ($(CHIP),$(subst 18f,,$(CHIP)))
@@ -192,7 +201,7 @@ $(HEXFILE): $(P1OBJS)
 	@-mkdir -p $(BUILDDIR)
 	@-$(RM) $(HEXFILE)
 	@echo Link $@ 1>&2
-	@$(LD) $(LDFLAGS) -m$(BUILDDIR)$(PROGRAM)_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.map -o$@ $^ 2>/dev/null
+	$(QUIET)$(LD) $(LDFLAGS) -m$(BUILDDIR)$(PROGRAM)_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.map -o$@ $^ $(QUIET_STDERR)
 	@-(type cygpath 2>/dev/null >/dev/null && PATHTOOL="cygpath -w"; \
 	 test -f "$$PWD/$(HEXFILE)" && { echo; echo "Got HEX file: `$${PATHTOOL:-echo} $$PWD/$(HEXFILE)`"; })
 
@@ -201,7 +210,7 @@ $(BINFILE): $(P1OBJS)
 	@-mkdir -p $(BUILDDIR)
 	@-$(RM) $(BINFILE)
 	@echo Link $@ 1>&2
-	@$(LD) $(LDFLAGS) -m$(BUILDDIR)$(PROGRAM)_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.map -o$@ $^ 2>/dev/null
+	$(QUIET)$(LD) $(LDFLAGS) -m$(BUILDDIR)$(PROGRAM)_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.map -o$@ $^ $(QUIET_STDERR)
 	@-(type cygpath 2>/dev/null >/dev/null && PATHTOOL="cygpath -w"; \
 	 test -f "$$PWD/$(BINFILE)" && { echo; echo "Got BIN file: `$${PATHTOOL:-echo} $$PWD/$(BINFILE)`"; })
 
@@ -209,7 +218,7 @@ $(P1OBJS): $(OBJDIR)%.p1: %.c
 	@-mkdir -p $(OBJDIR)
 #	(cd obj; $(PICC) --pass1 $(CFLAGS) $(CPPFLAGS:-I%=-I../%) --outdir=$(OBJDIR:obj/%/=%)  ../$< #; R=$$?; echo; exit $$R)
 	@echo Compile $< 1>&2
-	@(cd obj; $(SHELL) ../scripts/xc8.sh -v $(if $(CPP_CONFIG),@$(CPP_CONFIG:obj/%=%),) $(PICC) --pass1 $(CFLAGS) $(CPPFLAGS:-I%=-I../%) --outdir=$(OBJDIR:obj/%/=%)  ../$<) 2>/dev/null
+	$(QUIET)(cd obj; $(SHELL) ../scripts/xc8.sh -v $(if $(CPP_CONFIG),@$(CPP_CONFIG:obj/%=%),) $(PICC) --pass1 $(CFLAGS) $(CPPFLAGS:-I%=-I../%) --outdir=$(OBJDIR:obj/%/=%)  ../$<) $(QUIET_STDERR)
 #	$(PICC) --pass1 $(CFLAGS) $(CPPFLAGS) -o$(<:%.c=$(BUILDDIR)%_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.p1) $<
 
 $(ASSRCS): $(OBJDIR)%.as: %.c
@@ -217,7 +226,7 @@ $(ASSRCS): $(OBJDIR)%.as: %.c
 	$(PICC) -S $(CFLAGS) $(CPPFLAGS) --outdir=$(OBJDIR:%/=%) $<
 
 prototypes:
-	cproto -DHI_TECH_C=1 -E '$(CPP)' $(CPPFLAGS) $(SOURCES) 2>/dev/null
+	cproto -DHI_TECH_C=1 -E '$(CPP)' $(CPPFLAGS) $(SOURCES) $(QUIET_STDERR)
 ifneq ($(CCDIR),)
 prototypes: CPPFLAGS += -I'$(CCDIR)/include'
 endif

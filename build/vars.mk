@@ -55,7 +55,7 @@ MHZ := $(shell echo $$(($(_XTAL_FREQ) / 1000000)))
 KBPS := $(shell echo $$(($(BAUD) / 1000)))
 
 ifeq ($(PROGRAM)$(PROGRAMS),)
-PROGRAMS := pictest blinktest serialtest ringtone seg7test
+PROGRAMS := pictest blinktest serialtest  seg7test #ringtone
 endif
 
 ifneq ($(CODE_OFFSET),)
