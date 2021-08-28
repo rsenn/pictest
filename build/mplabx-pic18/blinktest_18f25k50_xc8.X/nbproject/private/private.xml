@@ -9,8 +9,6 @@
             <file>file:/C:/Users/enki/Documents/pictest/blinktest.c</file>
             <file>file:/C:/Users/enki/Documents/pictest/lib/timer.h</file>
         </group>
-        <group name="18f25k50">
-            <file>file:/home/roman/Projects/pictest/src/blinktest.c</file>
-        </group>
+        <group name="18f25k50"/>
     </open-files>
 </project-private>

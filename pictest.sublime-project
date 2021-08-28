@@ -7,21 +7,25 @@
     { "name": "Program 18F2550 USB MSD bootloader", "shell_cmd": "ipecmd.sh -tppk3 -p18f2550 -M  -W -F'bootloaders/usb-msd-bootloader-18f2550.hex'" },
     { "name": "Program 18F2550 Current HEX File", "shell_cmd": "ipecmd.sh -tppk3 -p18f2550 -M  -W -F'${file}'" },
     { "name": "Program 18F25K50 Pinguino Bootloader", "shell_cmd": "ipecmd.sh -tppk3 -p18f25k50 -M  -W -F'bootloaders/Bootloader_v4.14_18f25k50_INTOSC.hex'" },
-    { "name": "Program 18F25K50 Current HEX File", "shell_cmd": "ipecmd.sh -tppk3 -p18f25k50 -M  -W -F'${file}'" }
+    { "name": "Program 18F25K50 Current HEX File", "shell_cmd": "ipecmd.sh -tppk3 -p18f25k50 -M  -W -F'${file}'" },
+    { "name": "blinktest_18f25k50_xc8", "shell_cmd": "make -C build/mplabx-pic18/blinktest_18f25k50_xc8.X" },
+    { "name": "pictest_18f25k50_xc8", "shell_cmd": "make -C build/mplabx-pic18/pictest_18f25k50_xc8.X" },
+    { "name": "seg7test_18f25k50_xc8", "shell_cmd": "make -C build/mplabx-pic18/seg7test_18f25k50_xc8.X" },
+    { "name": "serialtest_18f25k50_xc8", "shell_cmd": "make -C build/mplabx-pic18/serialtest_18f25k50_xc8.X" }
   ],
   "folders": [
     {
       "path": ".",
       "folder_exclude_patterns": ["obj", "unused", "bootloaders",
-      "batterycharger-code",
-"bootloaders",
-".cache",
-".config",
-"HI-TECHv2.3",
-"pic18cc",
-"PING2550",
-"programming-pic-microcontrollers-w-xc8"
-],
+        "batterycharger-code",
+        "bootloaders",
+        ".cache",
+        ".config",
+        "HI-TECHv2.3",
+        "pic18cc",
+        "PING2550",
+        "programming-pic-microcontrollers-w-xc8"
+      ],
       "follow_symlinks": true,
       "file_exclude_patterns": [
         "*.stackdump",
