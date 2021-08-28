@@ -1,14 +1,14 @@
 #include "config-bits.h"
-#include "lib/const.h"
-#include "lib/typedef.h"
+#include "../lib/const.h"
+#include "../lib/typedef.h"
 #include "pictest.h"
-//#include "lib/delay.h"
-#include "lib/interrupt.h"
-#include "lib/lcd44780.h"
-#include "lib/ser.h"
-#include "lib/softser.h"
-#include "lib/timer.h"
-#include "lib/uart.h"
+//#include "../lib/delay.h"
+#include "../lib/interrupt.h"
+#include "../lib/lcd44780.h"
+#include "../lib/ser.h"
+#include "../lib/softser.h"
+#include "../lib/timer.h"
+#include "../lib/uart.h"
 #include <ctype.h>
 
 void loop();

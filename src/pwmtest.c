@@ -10,14 +10,14 @@
  * If you hook a LED up to this pin, it should seem to dim and fade.
  */
 
-#include "lib/pwm.h"
-#include "lib/adc.h"
-#include "lib/const.h"
-#include "lib/delay.h"
-#include "lib/device.h"
-#include "lib/interrupt.h"
-#include "lib/lcd44780.h"
-#include "lib/typedef.h"
+#include "../lib/pwm.h"
+#include "../lib/adc.h"
+#include "../lib/const.h"
+#include "../lib/delay.h"
+#include "../lib/device.h"
+#include "../lib/interrupt.h"
+#include "../lib/lcd44780.h"
+#include "../lib/typedef.h"
 
 #include "config-bits.h"
 

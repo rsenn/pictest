@@ -1,6 +1,6 @@
-#include "lib/device.h"
-#include "lib/oscillator.h"
-#include "lib/timer.h"
+#include "../lib/device.h"
+#include "../lib/oscillator.h"
+#include "../lib/timer.h"
 #include <stdio.h>
 
 #ifdef __XC8__
@@ -11,7 +11,7 @@ __CONFIG(0x3f72);
 #define CLOCK RC1
 #define DATA RC0
 
-#include "lib/uart.h"
+#include "../lib/uart.h"
 
 const uint8_t Key[] = {
     "0F FFFFF FFFFt`  as cQ1   ZSAW2  CXDE43   VFTR5  NBHGY6   MJU78  ,KIO09  ./L;P-   ' [=\\"}; // Keyboard Characters

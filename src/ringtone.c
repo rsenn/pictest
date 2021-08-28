@@ -6,11 +6,11 @@
 /*                                                                           */
 /*****************************************************************************/
 
-#include "lib/device.h"
-#include "lib/interrupt.h"
-#include "lib/random.h"
-#include "lib/timer.h"
-#include "lib/eeprom.h"
+#include "../lib/device.h"
+#include "../lib/interrupt.h"
+#include "../lib/random.h"
+#include "../lib/timer.h"
+#include "../lib/eeprom.h"
 #include "pictest.h"
 
 #if NO_PORTB

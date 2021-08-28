@@ -1,26 +1,26 @@
 #include "pictest.h"
 #include "config-bits.h"
-#include "lib/timer.h"
+#include "../lib/timer.h"
 #if USE_UART
-#include "lib/uart.h"
+#include "../lib/uart.h"
 #endif
 #ifdef USE_SER
-#include "lib/ser.h"
+#include "../lib/ser.h"
 #endif
 //#ifdef USE_SOFTSER
-#include "lib/softser.h"
+#include "../lib/softser.h"
 //#endif
-#include "lib/interrupt.h"
+#include "../lib/interrupt.h"
 #if defined(USE_LCD) && !NO_PORTB
-#include "lib/lcd44780.h"
+#include "../lib/lcd44780.h"
 #endif
-#include "lib/7segment.h"
-#include "lib/const.h"
-#include "lib/delay.h"
-#include "lib/device.h"
-#include "lib/ds18b20.h"
-#include "lib/extra/ledsense.h"
-#include "lib/extra/shell.h"
+#include "../lib/7segment.h"
+#include "../lib/const.h"
+#include "../lib/delay.h"
+#include "../lib/device.h"
+#include "../lib/ds18b20.h"
+#include "../lib/extra/ledsense.h"
+#include "../lib/extra/shell.h"
 /*
 #define BUTTON_MINUS 1
 #define BUTTON_PLUS  3

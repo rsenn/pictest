@@ -1,13 +1,13 @@
 #include "pictest2.h"
-#include "lib/adc.h"
-#include "lib/const.h"
-#include "lib/delay.h"
-#include "lib/ds18b20.h"
-#include "lib/interrupt.h"
-#include "lib/lcd44780.h"
-#include "lib/ledsense.h"
-#include "lib/timer.h"
-#include "lib/uart.h"
+#include "../lib/adc.h"
+#include "../lib/const.h"
+#include "../lib/delay.h"
+#include "../lib/ds18b20.h"
+#include "../lib/interrupt.h"
+#include "../lib/lcd44780.h"
+#include "../lib/ledsense.h"
+#include "../lib/timer.h"
+#include "../lib/uart.h"
 
 #ifdef MCHP_XC8
 #pragma config WDTE = OFF, PWRTE = ON, CP = OFF, BOREN = ON, DEBUG = OFF, LVP = OFF, CPD = OFF, WRT = HALF, FOSC = XT

@@ -1,27 +1,27 @@
-#include "lib/device.h"
-#include "lib/adc.h"
-#include "lib/comparator.h"
-#include "lib/const.h"
-#include "lib/interrupt.h"
-#include "lib/ports.h"
-#include "lib/random.h"
-#include "lib/softpwm.h"
-#include "lib/timer.h"
-#include "lib/7segment.h"
-#include "lib/format.h"
-#include "src/pictest.h"
+#include "../lib/device.h"
+#include "../lib/adc.h"
+#include "../lib/comparator.h"
+#include "../lib/const.h"
+#include "../lib/interrupt.h"
+#include "../lib/ports.h"
+#include "../lib/random.h"
+#include "../lib/softpwm.h"
+#include "../lib/timer.h"
+#include "../lib/7segment.h"
+#include "../lib/format.h"
+#include "pictest.h"
 
 #if USE_UART
-#include "lib/uart.h"
+#include "../lib/uart.h"
 #endif
 #if USE_SER
-#include "lib/ser.h"
+#include "../lib/ser.h"
 #endif
 #if USE_SOFTSER
-#include "lib/softser.h"
+#include "../lib/softser.h"
 #endif
 
-#include "src/config-bits.h"
+#include "config-bits.h"
 
 #include <math.h>
 
