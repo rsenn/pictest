@@ -19,7 +19,7 @@ endif
 endif
 
 # Environment
-MKDIR=mkdir -p
+MKDIR=gnumkdir -p
 RM=rm -f 
 MV=mv 
 CP=cp 
@@ -219,98 +219,4 @@ ${OBJECTDIR}/_ext/1386521430/ser.p1: ../../../lib/ser.c  nbproject/Makefile-${CN
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/ser.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/ser.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f2455=1 -D_XTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SER=1 -DHAVE_COMPARATOR=1 -DUSE_HD44780_LCD=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -v --warn=-3 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1386521430/ser.p1 ../../../lib/ser.c 
-	@-${MV} ${OBJECTDIR}/_ext/1386521430/ser.d ${OBJECTDIR}/_ext/1386521430/ser.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/ser.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1386521430/softpwm.p1: ../../../lib/softpwm.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
-	@${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f2455=1 -D_XTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SER=1 -DHAVE_COMPARATOR=1 -DUSE_HD44780_LCD=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -v --warn=-3 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1386521430/softpwm.p1 ../../../lib/softpwm.c 
-	@-${MV} ${OBJECTDIR}/_ext/1386521430/softpwm.d ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1386521430/softser.p1: ../../../lib/softser.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
-	@${RM} ${OBJECTDIR}/_ext/1386521430/softser.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1386521430/softser.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f2455=1 -D_XTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SER=1 -DHAVE_COMPARATOR=1 -DUSE_HD44780_LCD=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -v --warn=-3 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1386521430/softser.p1 ../../../lib/softser.c 
-	@-${MV} ${OBJECTDIR}/_ext/1386521430/softser.d ${OBJECTDIR}/_ext/1386521430/softser.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/softser.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1386521430/timer.p1: ../../../lib/timer.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
-	@${RM} ${OBJECTDIR}/_ext/1386521430/timer.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1386521430/timer.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f2455=1 -D_XTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SER=1 -DHAVE_COMPARATOR=1 -DUSE_HD44780_LCD=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -v --warn=-3 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1386521430/timer.p1 ../../../lib/timer.c 
-	@-${MV} ${OBJECTDIR}/_ext/1386521430/timer.d ${OBJECTDIR}/_ext/1386521430/timer.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/timer.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1386521430/uart.p1: ../../../lib/uart.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
-	@${RM} ${OBJECTDIR}/_ext/1386521430/uart.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1386521430/uart.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f2455=1 -D_XTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SER=1 -DHAVE_COMPARATOR=1 -DUSE_HD44780_LCD=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -v --warn=-3 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1386521430/uart.p1 ../../../lib/uart.c 
-	@-${MV} ${OBJECTDIR}/_ext/1386521430/uart.d ${OBJECTDIR}/_ext/1386521430/uart.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/uart.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/964921973/lcd44780.p1: /home/roman/Dokumente/Sources/pictest/lib/lcd44780.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/964921973" 
-	@${RM} ${OBJECTDIR}/_ext/964921973/lcd44780.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/964921973/lcd44780.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f2455=1 -D_XTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SER=1 -DHAVE_COMPARATOR=1 -DUSE_HD44780_LCD=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -v --warn=-3 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/964921973/lcd44780.p1 /home/roman/Dokumente/Sources/pictest/lib/lcd44780.c 
-	@-${MV} ${OBJECTDIR}/_ext/964921973/lcd44780.d ${OBJECTDIR}/_ext/964921973/lcd44780.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/964921973/lcd44780.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/784234475/pictest.p1: /home/roman/Dokumente/Sources/pictest/pictest.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/784234475" 
-	@${RM} ${OBJECTDIR}/_ext/784234475/pictest.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/784234475/pictest.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f2455=1 -D_XTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SER=1 -DHAVE_COMPARATOR=1 -DUSE_HD44780_LCD=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -v --warn=-3 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/784234475/pictest.p1 /home/roman/Dokumente/Sources/pictest/pictest.c 
-	@-${MV} ${OBJECTDIR}/_ext/784234475/pictest.d ${OBJECTDIR}/_ext/784234475/pictest.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/784234475/pictest.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-endif
-
-# ------------------------------------------------------------------------------------
-# Rules for buildStep: assemble
-ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-else
-endif
-
-# ------------------------------------------------------------------------------------
-# Rules for buildStep: link
-ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-dist/${CND_CONF}/${IMAGE_TYPE}/pictest_18f2455_xc8.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
-	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) --chip=$(MP_PROCESSOR_OPTION) -G -mdist/${CND_CONF}/${IMAGE_TYPE}/pictest_18f2455_xc8.X.${IMAGE_TYPE}.map  -D__DEBUG=1  --debugger=pickit3  -DXPRJ_debug=$(CND_CONF)    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f2455=1 -D_XTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SER=1 -DHAVE_COMPARATOR=1 -DUSE_HD44780_LCD=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -v --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     --rom=default,-5dc0-5fff --ram=default,-3f4-3ff,-f9c-f9c,-fd4-fd4,-fdb-fdf,-fe3-fe7,-feb-fef,-ffd-fff  $(COMPARISON_BUILD) --memorysummary dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -odist/${CND_CONF}/${IMAGE_TYPE}/pictest_18f2455_xc8.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
-	@${RM} dist/${CND_CONF}/${IMAGE_TYPE}/pictest_18f2455_xc8.X.${IMAGE_TYPE}.hex 
-	
-else
-dist/${CND_CONF}/${IMAGE_TYPE}/pictest_18f2455_xc8.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
-	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) --chip=$(MP_PROCESSOR_OPTION) -G -mdist/${CND_CONF}/${IMAGE_TYPE}/pictest_18f2455_xc8.X.${IMAGE_TYPE}.map  -DXPRJ_debug=$(CND_CONF)    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f2455=1 -D_XTAL_FREQ=20000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DUSE_SER=1 -DHAVE_COMPARATOR=1 -DUSE_HD44780_LCD=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -v --warn=-3 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     $(COMPARISON_BUILD) --memorysummary dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -odist/${CND_CONF}/${IMAGE_TYPE}/pictest_18f2455_xc8.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
-	
-endif
-
-
-# Subprojects
-.build-subprojects:
-
-
-# Subprojects
-.clean-subprojects:
-
-# Clean Targets
-.clean-conf: ${CLEAN_SUBPROJECTS}
-	${RM} -r build/debug
-	${RM} -r dist/debug
-
-# Enable dependency checking
-.dep.inc: .depcheck-impl
-
-DEPFILES=$(shell "${PATH_TO_IDE_BIN}"mplabwildcard ${POSSIBLE_DEPFILES})
-ifneq (${DEPFILES},)
-include ${DEPFILES}
-endif
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP
