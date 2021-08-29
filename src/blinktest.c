@@ -1,3 +1,4 @@
+#define USE_MCLRE 1
 
 #include "../lib/comparator.h"
 #include "../lib/const.h"
@@ -79,7 +80,8 @@ volatile uint32_t msecs, hsecs;
 //-----------------------------------------------------------------------------
 // Interrupt handling routine
 //-----------------------------------------------------------------------------
-INTERRUPT_FN() {
+//INTERRUPT_FN() {
+void __interrupt  isr() {
   SOFTPWM_ISR();
   /*
     if(TMR1IF) {
@@ -130,10 +132,10 @@ main() {
 
 #ifdef __18f25k50
 #if XTAL_USED == NO_XTAL
-  OSCCONbits.IRCF = 7;
+  OSCCONbits.IRCF = 7; // 16 MHz
 #endif
 #if(XTAL_USED != MHz_12)
-  OSCTUNEbits.SPLLMULT = 1;
+  OSCTUNEbits.SPLLMULT = 1; // PLL 3x
 #endif
   OSCCON2bits.PLLEN = 1;
   PLL_STARTUP_DELAY();
@@ -191,7 +193,7 @@ main() {
 #endif
 
 #if USE_TIMER0
-  timer0_init(PRESCALE_1_4);
+  timer0_init(PRESCALE_1_4); //PRESCALE_1_256|TIMER0_FLAGS_8BIT);
 
   TIMER0_INTERRUPT_CLEAR();
   T0IE = 1;

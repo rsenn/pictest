@@ -65,7 +65,10 @@
 #pragma config CPD = OFF        // Data EEPROM Code Protect (Data EEPROM is not code-protected)
 
 // CONFIG6L
+
+#ifndef DEBUG
 #pragma config WRT0 = ON        // Block 0 Write Protect (Block 0 (0800-1FFFh) is write-protected)
+#endif
 #pragma config WRT1 = OFF       // Block 1 Write Protect (Block 1 (2000-3FFFh) is not write-protected)
 #if !defined(_18F24K50)
 #pragma config WRT2 = OFF       // Block 2 Write Protect (Block 2 (04000-5FFFh) is not write-protected)
@@ -73,8 +76,10 @@
 #endif
 
 // CONFIG6H
+#ifndef DEBUG
 #pragma config WRTC = ON        // Configuration Registers Write Protect (Configuration registers (300000-3000FFh) are write-protected)
 #pragma config WRTB = ON        // Boot Block Write Protect (Boot block (0000-7FFh) is write-protected)
+#endif
 #pragma config WRTD = OFF       // Data EEPROM Write Protect (Data EEPROM is not write-protected)
 
 // CONFIG7L
