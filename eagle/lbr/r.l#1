@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="0.005" altunitdist="inch" altunit="inch"/>
+<grid distance="0.015" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.005" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -615,8 +615,7 @@
 <pad name="1" x="0" y="2.54" drill="0.8128" diameter="1.4224" rot="R270"/>
 <pad name="2" x="0" y="-2.54" drill="0.8128" diameter="1.4224" rot="R270"/>
 <text x="0" y="0" size="0.6096" layer="27" ratio="10" align="center">&gt;VALUE</text>
-<wire x1="0" y1="-2.54" x2="0" y2="-1.651" width="0.254" layer="51"/>
-<wire x1="0" y1="2.54" x2="0" y2="1.651" width="0.254" layer="51"/>
+<wire x1="0" y1="2.159" x2="0" y2="1.3335" width="0.2032" layer="21"/>
 <wire x1="-0.381" y1="1.27" x2="-0.635" y2="1.016" width="0.127" layer="21" curve="90"/>
 <wire x1="-0.635" y1="-1.016" x2="-0.381" y2="-1.27" width="0.127" layer="21" curve="90"/>
 <text x="-0.5715" y="1.143" size="0.6096" layer="25" ratio="10" align="bottom-right">&gt;NAME</text>
@@ -626,8 +625,7 @@
 <wire x1="0.635" y1="-1.016" x2="0.635" y2="1.016" width="0.127" layer="21"/>
 <wire x1="-0.635" y1="-1.016" x2="-0.635" y2="1.016" width="0.127" layer="21"/>
 <wire x1="-0.381" y1="-1.27" x2="0.381" y2="-1.27" width="0.127" layer="21"/>
-<rectangle x1="-0.1905" y1="-1.5875" x2="0.1905" y2="-1.3335" layer="21" rot="R270"/>
-<rectangle x1="-0.1905" y1="1.3335" x2="0.1905" y2="1.5875" layer="21" rot="R270"/>
+<wire x1="0" y1="-2.159" x2="0" y2="-1.3335" width="0.2032" layer="21"/>
 </package>
 <package name="B64Y">
 <description>&lt;b&gt;POTENTIOMETER&lt;/b&gt;&lt;p&gt;
