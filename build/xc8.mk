@@ -21,7 +21,7 @@ endef
 
 VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
-CCVER = v1.45
+CCVER = v1.43
 #CCVER = v1.34
 
 PROGRAMFILES ?= C:/Program Files (x86)
@@ -136,7 +136,7 @@ COMMON_FLAGS += --double=32 --float=24
 COMMON_FLAGS += --warn=9
 COMMON_FLAGS += --asmlist
 
-COMMON_FLAGS += --mode=pro
+COMMON_FLAGS += --mode=PRO
 
 #COMMON_FLAGS += --errformat="Error   [%n] %f; %l.%c %s"
 #COMMON_FLAGS += --msgformat="Advisory[%n] %s"
@@ -201,7 +201,7 @@ $(HEXFILE): $(P1OBJS)
 	@-mkdir -p $(BUILDDIR)
 	@-$(RM) $(HEXFILE)
 	@echo Link $@ 1>&2
-	$(QUIET)$(LD) $(LDFLAGS) -m$(BUILDDIR)$(PROGRAM)_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.map -o$@ $^ $(QUIET_STDERR)
+	$(QUIET)$(LD) $(LDFLAGS) $(COMMON_FLAGS) -m$(BUILDDIR)$(PROGRAM)_$(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_$(SOFTKBPS)skbps.map -o$@ $^ $(QUIET_STDERR)
 	@-(type cygpath 2>/dev/null >/dev/null && PATHTOOL="cygpath -w"; \
 	 test -f "$$PWD/$(HEXFILE)" && { echo; echo "Got HEX file: `$${PATHTOOL:-echo} $$PWD/$(HEXFILE)`"; })
 
