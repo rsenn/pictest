@@ -7,6 +7,7 @@
 #include "../lib/random.h"
 #include "../lib/softpwm.h"
 #include "../lib/timer.h"
+#include "../lib/delay.h"
 #include "pictest.h"
 #include "config-bits.h"
 
@@ -43,7 +44,7 @@
 __code unsigned int __at(_CONFIG) __configword = CONFIG_WORD;
 #endif
 
-#define PLL_STARTUP_DELAY() __delay_ms(3) // Don't modify.
+#define PLL_STARTUP_DELAY() delay_ms(3) // Don't modify.
 
 #define SIZE_OF(arr) (sizeof(arr) / sizeof(arr[0]))
 
@@ -80,8 +81,8 @@ volatile uint32_t msecs, hsecs;
 //-----------------------------------------------------------------------------
 // Interrupt handling routine
 //-----------------------------------------------------------------------------
-//INTERRUPT_FN() {
-__interrupt(high_priority)   void isr() {
+INTERRUPT_FN() {
+//__interrupt(high_priority)   void isr() {
   SOFTPWM_ISR();
   /*
     if(TMR1IF) {

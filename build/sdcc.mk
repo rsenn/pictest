@@ -152,6 +152,18 @@ PM3CMD = "$$PROGRAMFILES"/Microchip/MPLAB\ IDE/Programmer\ Utilities/PM3Cmd/PM3C
 
 COFFILE = $(subst .hex,.cof,$(HEXFILE))
 
+ifeq ($(VERBOSE),1)
+	QUIET_STDERR := 
+	QUIET_STDOUT := 
+	QUIET := 
+	NO_QUIET := #
+else
+	QUIET_STDERR := 2>/dev/null
+	QUIET_STDOUT := >/dev/null
+	NO_QUIET :=
+	QUIET := @
+endif
+
 #-include build/vars.mk
 
 .PHONY: compile dist prototypes
@@ -171,8 +183,8 @@ dist:
 
 $(HEXFILE): $(OBJECTS)
 	@-$(RM) $(HEXFILE) $(COFFILE)
-	@echo Link $< 1>&2
-	@$(SDCC) $(LDFLAGS) $(CFLAGS) -o $@ $^ $(LIBS) 2>/dev/null >/dev/null
+	$(NO_QUIET)@echo Link $< 1>&2
+	$(QUIET)$(SDCC) $(LDFLAGS) $(CFLAGS) -o $@ $^ $(LIBS) 2>/dev/null >/dev/null
 	#sed -i 's/^:02400E00\(....\)\(..\)/:02400E0072FF32/' $(HEXFILE)
 	@-(type cygpath 2>/dev/null >/dev/null && PATHTOOL="cygpath -w"; \
 	 test -f "$$PWD/$(HEXFILE)" && { echo; echo "Got HEX file: `$${PATHTOOL:-echo} $$PWD/$(HEXFILE)`"; })
@@ -181,8 +193,8 @@ $(HEXFILE): $(OBJECTS)
 #	$(SDCC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 $(OBJECTS): $(OBJDIR)%.o: %.c
-	@echo Compile $< 1>&2
-	@$(SDCC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $< 2>/dev/null >/dev/null
+	$(NO_QUIET)@echo Compile $< 1>&2
+	$(QUIET)$(SDCC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $< 2>/dev/null >/dev/null
 
 $(ASSRCS): $(OBJDIR)%.s: %.c
 	$(SDCC) $(CFLAGS) $(CPPFLAGS) -S -o $@ $<
