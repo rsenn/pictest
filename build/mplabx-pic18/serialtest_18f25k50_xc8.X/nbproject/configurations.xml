@@ -73,7 +73,7 @@
         <itemPath>../../../lib/uart.c</itemPath>
         <itemPath>../../../lib/lcd44780.c</itemPath>
       </logicalFolder>
-      <itemPath>../../../serialtest.c</itemPath>
+      <itemPath>../../../src/serialtest.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

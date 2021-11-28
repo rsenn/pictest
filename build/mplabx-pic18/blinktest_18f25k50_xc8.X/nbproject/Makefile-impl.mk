@@ -27,7 +27,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 PROJECTNAME=blinktest_18f25k50_xc8.X
 
 # Active Configuration
-DEFAULTCONF=debug
+DEFAULTCONF=release
 CONF=${DEFAULTCONF}
 
 # All Configurations

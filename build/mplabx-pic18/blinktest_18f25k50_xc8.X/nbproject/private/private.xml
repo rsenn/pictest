@@ -2,20 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="htc"/>
-        <group name="pictest"/>
-<<<<<<< HEAD
-        <group>
-            <file>file:/C:/Users/enki/Documents/pictest/lib/timer.c</file>
-            <file>file:/C:/Users/enki/Documents/pictest/blinktest.c</file>
-            <file>file:/C:/Users/enki/Documents/pictest/lib/timer.h</file>
-        </group>
         <group name="18f25k50">
+            <file>file:/home/roman/Projects/pictest/lib/softser.c</file>
+            <file>file:/home/roman/Projects/pictest/build/mplabx-pic18/blinktest_18f25k50_xc8.X/main.c</file>
+            <file>file:/home/roman/Projects/pictest/lib/softser.h</file>
             <file>file:/home/roman/Projects/pictest/src/blinktest.c</file>
+            <file>file:/home/roman/Projects/pictest/lib/comparator.c</file>
         </group>
-=======
-        <group name="18f25k50"/>
-        <group/>
->>>>>>> e4ea6b2af8f37b32121ac1807ddf76088f505169
     </open-files>
 </project-private>

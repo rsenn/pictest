@@ -81,7 +81,7 @@ volatile uint32_t msecs, hsecs;
 // Interrupt handling routine
 //-----------------------------------------------------------------------------
 //INTERRUPT_FN() {
-void __interrupt  isr() {
+__interrupt(high_priority)   void isr() {
   SOFTPWM_ISR();
   /*
     if(TMR1IF) {
