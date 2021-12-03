@@ -194,7 +194,7 @@ $(HEXFILE): $(OBJECTS)
 
 $(OBJECTS): $(OBJDIR)%.o: %.c
 	$(NO_QUIET)@echo Compile $< 1>&2
-	$(QUIET)$(SDCC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $< 2>/dev/null >/dev/null
+	$(QUIET)$(SDCC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 $(ASSRCS): $(OBJDIR)%.s: %.c
 	$(SDCC) $(CFLAGS) $(CPPFLAGS) -S -o $@ $<
