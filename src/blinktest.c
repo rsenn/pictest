@@ -20,6 +20,7 @@
 #if USE_SOFTSER
 #include "../lib/softser.h"
 #endif
+#include "../lib/lcd5110.h"
 
 #include <math.h>
 
@@ -223,6 +224,8 @@ main() {
 
   PEIE = 1;
   INTERRUPT_ENABLE();
+
+  lcd_init();
 
   put_str(put_char, "blinktest\r\n");
 
