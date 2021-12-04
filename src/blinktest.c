@@ -78,6 +78,10 @@ volatile BOOL run = 0;
 volatile uint8_t msec_count = 0;
 volatile uint16_t bres;
 volatile uint32_t msecs, hsecs;
+#ifdef USE_ADCONVERTER
+#include "../lib/adc.h"
+volatile unsigned int adc_result = 0;
+#endif
 
 //-----------------------------------------------------------------------------
 // Interrupt handling routine
@@ -113,6 +117,14 @@ INTERRUPT_FN() {
     // Clear timer interrupt bit
     TIMER0_INTERRUPT_CLEAR();
   }
+  #ifdef USE_ADCONVERTER
+  if(ADIF) {
+    adc_result = (ADRESH<<8)|ADRESL;
+    ADIF = 0;
+
+    GO_DONE = 1;
+  }
+#endif
 }
 
 //-----------------------------------------------------------------------------
@@ -226,10 +238,18 @@ main() {
   INTERRUPT_ENABLE();
 
   lcd_init();
-  lcd_clear();
-  lcd_test();
-  lcd_clear();
+  lcd_clear(); 
+  lcd_puts("This is a Test!"); 
 
+
+
+#ifdef USE_ADCONVERTER
+  adc_init();
+
+  ADIE = 1;
+
+  adc_read(0);
+#endif
 
   put_str(put_char, "blinktest\r\n");
 
@@ -298,14 +318,10 @@ main() {
           input = 0;
         }*/
 
-    if(run) {
-
-      if(tmp_msecs >= prev_hsecs + interval) {
+    if(run) {      if(tmp_msecs >= prev_hsecs + interval) {
         index++;
-
         led_state = !led_state;
         SET_LED(led_state);
-
         update_colors = 1;
         prev_hsecs = tmp_msecs;
       }
@@ -367,6 +383,20 @@ main() {
         break;
     }
   }
+}
+
+void read_analog() {
+  static int chan = 0;
+
+  uint16_t result = adc_read(chan);
+
+  lcd_clear_line(chan);
+  lcd_gotoxy(0, chan);
+
+  format_number(lcd_putch, result, 10, 5);
+
+  chan++;
+  chan &= 3;
 }
 
 //-----------------------------------------------------------------------------
