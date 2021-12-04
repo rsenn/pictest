@@ -226,6 +226,10 @@ main() {
   INTERRUPT_ENABLE();
 
   lcd_init();
+  lcd_clear();
+  lcd_test();
+  lcd_clear();
+
 
   put_str(put_char, "blinktest\r\n");
 
