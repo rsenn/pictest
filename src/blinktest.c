@@ -8,6 +8,7 @@
 #include "../lib/softpwm.h"
 #include "../lib/timer.h"
 #include "../lib/delay.h"
+#include "../lib/format.h"
 #include "pictest.h"
 #include "config-bits.h"
 
@@ -127,6 +128,20 @@ INTERRUPT_FN() {
 #endif
 }
 
+void read_analog(void) {
+  static int chan = 0;
+
+  uint16_t result = adc_read(chan);
+
+  lcd_clear_line(chan);
+  lcd_gotoxy(0, chan);
+
+  format_number(lcd_putch, result, 10, 5);
+
+  chan++;
+  chan &= 3;
+}
+
 //-----------------------------------------------------------------------------
 int
 main() {
@@ -239,7 +254,7 @@ main() {
 
   lcd_init();
   lcd_clear(); 
-  lcd_puts("This is a Test!"); 
+  lcd_puts("START"); 
 
 
 
@@ -373,6 +388,11 @@ main() {
     tmp_msecs = msecs + 1000;
     INTERRUPT_ENABLE();
 
+
+#ifdef USE_ADCONVERTER
+    read_analog();
+#endif
+
     for(;;) {
       BOOL wait;
       INTERRUPT_DISABLE();
@@ -383,20 +403,6 @@ main() {
         break;
     }
   }
-}
-
-void read_analog() {
-  static int chan = 0;
-
-  uint16_t result = adc_read(chan);
-
-  lcd_clear_line(chan);
-  lcd_gotoxy(0, chan);
-
-  format_number(lcd_putch, result, 10, 5);
-
-  chan++;
-  chan &= 3;
 }
 
 //-----------------------------------------------------------------------------
