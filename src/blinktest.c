@@ -88,7 +88,7 @@ volatile unsigned int adc_result = 0;
 // Interrupt handling routine
 //-----------------------------------------------------------------------------
 INTERRUPT_FN() {
-//__interrupt(high_priority)   void isr() {
+  //__interrupt(high_priority)   void isr() {
   SOFTPWM_ISR();
   /*
     if(TMR1IF) {
@@ -118,18 +118,20 @@ INTERRUPT_FN() {
     // Clear timer interrupt bit
     TIMER0_INTERRUPT_CLEAR();
   }
-  #ifdef USE_ADCONVERTER
+#ifdef USE_ADCONVERTER
   if(ADIF) {
-    adc_result = (ADRESH<<8)|ADRESL;
+    adc_result = (ADRESH << 8) | ADRESL;
     ADIF = 0;
 
     GO_DONE = 1;
   }
 #endif
 }
-  static int chan = 0;
 
-void read_analog(void) {
+volatile int chan = 0;
+
+void
+read_analog(void) {
 
   uint16_t result = adc_read(chan);
 
@@ -222,7 +224,7 @@ main() {
 #endif
 
 #if USE_TIMER0
-  timer0_init(PRESCALE_1_4); //PRESCALE_1_256|TIMER0_FLAGS_8BIT);
+  timer0_init(PRESCALE_1_4); // PRESCALE_1_256|TIMER0_FLAGS_8BIT);
 
   TIMER0_INTERRUPT_CLEAR();
   T0IE = 1;
@@ -253,10 +255,8 @@ main() {
   INTERRUPT_ENABLE();
 
   lcd_init();
-  lcd_clear(); 
-  lcd_puts("START"); 
-
-
+  lcd_clear();
+  lcd_puts("START");
 
 #ifdef USE_ADCONVERTER
   adc_init();
@@ -333,7 +333,8 @@ main() {
           input = 0;
         }*/
 
-    if(run) {      if(tmp_msecs >= prev_hsecs + interval) {
+    if(run) {
+      if(tmp_msecs >= prev_hsecs + interval) {
         index++;
         led_state = !led_state;
         SET_LED(led_state);
@@ -387,7 +388,6 @@ main() {
     INTERRUPT_DISABLE();
     tmp_msecs = msecs + 1000;
     INTERRUPT_ENABLE();
-
 
 #ifdef USE_ADCONVERTER
     read_analog();

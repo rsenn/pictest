@@ -171,7 +171,7 @@ TMR2ON = 1;       // Enable timer 2.
 #endif
 
 #if /*HAVE_TIMER_0 &&*/ USE_TIMER0
-  timer0_init(PRESCALE_1_4 |TIMER0_FLAGS_INTR);
+  timer0_init(PRESCALE_1_4 | TIMER0_FLAGS_INTR);
 
   TIMER0_INTERRUPT_CLEAR();
   T0IE = 1;

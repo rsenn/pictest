@@ -115,7 +115,7 @@ main() {
 #endif
 #else
   nRBPU = 1; // pull-ups
-#endif// TRISB &= 0;
+#endif // TRISB &= 0;
 // LATB |= 0xff;
 #endif
   LATA = 0;
