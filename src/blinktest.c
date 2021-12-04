@@ -127,9 +127,9 @@ INTERRUPT_FN() {
   }
 #endif
 }
+  static int chan = 0;
 
 void read_analog(void) {
-  static int chan = 0;
 
   uint16_t result = adc_read(chan);
 
