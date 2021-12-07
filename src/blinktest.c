@@ -30,12 +30,17 @@
 #endif
 #include <math.h>
 
+#define BUTTON_PORT PORTE
+#define BUTTON_SHIFT 3
+
+#ifndef BUTTON_PORT
 #if NO_PORTB
-#define BUTTON_PORT LATA
+#define BUTTON_PORT PORTA
 #define BUTTON_SHIFT 0
 #else
-#define BUTTON_PORT LATB
+#define BUTTON_PORT PORTB
 #define BUTTON_SHIFT 0
+#endif
 #endif
 
 #define BUTTON_GET() ((~(BUTTON_PORT)) >> BUTTON_SHIFT)
@@ -293,8 +298,8 @@ main() {
 void
 loop() {
   uint8_t index;
-  static const uint32_t interval = 10;
-  char input;
+  static uint32_t interval = 10;
+  char input = 0;
   /*static float hue = 0;
   static int i = 0;*/
 
@@ -318,7 +323,7 @@ loop() {
     }
     RCIF = 0;
 
-  } /* else if(tmp_msecs > last_button + 200) {
+  } else if(tmp_msecs > last_button + 200) {
 
     uint8_t b = BUTTON_GET();
 
@@ -334,29 +339,30 @@ loop() {
     if(b & 0b1111) {
       last_button = tmp_msecs;
     }
-  } */
+  }
 
-  /*
-      if (input != 0) {
+  if(input != 0) {
 
-        if (input == '+' || input == 'Q' || input == 'q') {
-          if (interval > 10) interval -= 10;
-        } else if (input == '-' || input == 'A' || input == 'a') {
-          if (interval < 4990) interval += 10;
-        } else if (input == ' ') {
-          run = !run;
-        } else if (input == '\n') {
-          index += 8;
-          prev_hsecs = 0;
-          update_colors = 1;
-        }
+    if(input == '+' || input == 'Q' || input == 'q') {
+      if(interval > 10)
+        interval -= 10;
+    } else if(input == '-' || input == 'A' || input == 'a') {
+      if(interval < 4990)
+        interval += 10;
+    } else if(input == ' ') {
+      run = !run;
+    } else if(input == '\n') {
+      index += 8;
+      prev_hsecs = 0;
+      update_colors = 1;
+    }
+    /*
+            put_str(put_char, "CMD: ");
+            put_char(input);
+            put_str(put_char, "\r\n");*/
 
-        put_str(put_char, "CMD: ");
-        put_char(input);
-        put_str(put_char, "\r\n");
-
-        input = 0;
-      }*/
+    input = 0;
+  }
 
   if(run) {
     if(tmp_msecs >= prev_hsecs + interval) {
