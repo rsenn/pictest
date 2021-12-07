@@ -104,6 +104,15 @@ INTERRUPT_FN() {
       TMR1IF = 0;
     }*/
 
+  if(SOFTPWM_INTERRUPT_FLAG) {
+    SOFTPWM_PIN(0, LATC0);
+    SOFTPWM_PIN(1, LATC1);
+    SOFTPWM_PIN(2, LATC2);
+    // SOFTPWM_PIN(3, LATA4);
+    SOFTPWM_TIMER_VALUE = -128;
+    SOFTPWM_INTERRUPT_FLAG = 0;
+  }
+
 #if USE_UART
   uart_isr();
 #endif
@@ -138,12 +147,6 @@ INTERRUPT_FN() {
     GO_DONE = 1;
   }
 #endif
-
-SOFTPWM_PIN(0, LATC0);
-SOFTPWM_PIN(1, LATC1);
-SOFTPWM_PIN(2, LATC2);
-SOFTPWM_PIN(3, LATA4);
-      
 }
 
 volatile int chan = 0;
