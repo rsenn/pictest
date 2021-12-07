@@ -114,3 +114,5 @@
 #endif
 
 #endif
+
+void loop();

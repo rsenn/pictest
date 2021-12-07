@@ -21,8 +21,12 @@
 #if USE_SOFTSER
 #include "../lib/softser.h"
 #endif
+#if USE_NOKIA5110_LCD
 #include "../lib/lcd5110.h"
-
+#endif
+#if USE_PCD8544
+#include "../lib/pcd8544.h"
+#endif
 #include <math.h>
 
 #if NO_PORTB
@@ -52,6 +56,11 @@ __code unsigned int __at(_CONFIG) __configword = CONFIG_WORD;
 
 extern const uint16_t rainbow[64];
 extern const uint8_t rainbow8[64][3];
+
+static BOOL update_colors = TRUE;
+static BOOL led_state = 0;
+static uint32_t tmp_msecs;
+static uint32_t prev_hsecs = 0, last_button = 0;
 
 static void
 dummy_putch(char c) {}
@@ -88,18 +97,19 @@ volatile unsigned int adc_result = 0;
 // Interrupt handling routine
 //-----------------------------------------------------------------------------
 INTERRUPT_FN() {
-  //__interrupt(high_priority)   void isr() {
-  SOFTPWM_ISR();
   /*
     if(TMR1IF) {
       // Clear timer interrupt bit
       TMR1IF = 0;
     }*/
 
+#if USE_UART
+  uart_isr();
+#endif
 #if USE_SER
   ser_int();
 #endif
-
+#if USE_TIMER0
   if(TIMER0_INTERRUPT_FLAG) {
     bres += 256 * 4;
 
@@ -111,13 +121,14 @@ INTERRUPT_FN() {
     if(msec_count >= 10) { // if reached 1 decisecond!
       hsecs++;             // update clock, etc
 
-      LED_PIN = hsecs & 1;
+      // LED_PIN = hsecs & 1;
 
       msec_count -= 10;
     }
     // Clear timer interrupt bit
     TIMER0_INTERRUPT_CLEAR();
   }
+#endif
 #ifdef USE_ADCONVERTER
   if(ADIF) {
     adc_result = (ADRESH << 8) | ADRESL;
@@ -126,6 +137,8 @@ INTERRUPT_FN() {
     GO_DONE = 1;
   }
 #endif
+
+  SOFTPWM_ISR();
 }
 
 volatile int chan = 0;
@@ -135,26 +148,21 @@ read_analog(void) {
 
   uint16_t result = adc_read(chan);
 
-  lcd_clear_line(chan);
-  lcd_gotoxy(0, chan);
+  lcd_clear_line(chan + 1);
+  lcd_gotoxy(0, chan + 1);
 
   format_number(lcd_putch, result, 10, 5);
 
   chan++;
-  chan &= 3;
+  chan %= 3;
 }
 
 //-----------------------------------------------------------------------------
 int
 main() {
-  uint32_t tmp_msecs;
-  static uint32_t prev_hsecs = 0, last_button = 0;
-  uint8_t index, seconds;
-  static BOOL led_state = 0;
+
+  // uint8_t seconds;
   // static uint8_t prev_index = 0, prev_seconds = 0;
-  BOOL update_colors;
-  char input;
-  uint32_t interval = 500;
 
   msec_count = msecs = 0;
   hsecs = 0;
@@ -224,7 +232,7 @@ main() {
 #endif
 
 #if USE_TIMER0
-  timer0_init(PRESCALE_1_4); // PRESCALE_1_256|TIMER0_FLAGS_8BIT);
+  timer0_init(PRESCALE_1_1); // PRESCALE_1_256|TIMER0_FLAGS_8BIT);
 
   TIMER0_INTERRUPT_CLEAR();
   T0IE = 1;
@@ -269,130 +277,139 @@ main() {
   put_str(put_char, "blinktest\r\n");
 
   for(;;) {
+    loop();
+  }
+}
 
-    /*static float hue = 0;
-    static int i = 0;*/
+void
+loop() {
+  uint8_t index;
+  static const uint32_t interval = 10;
+  char input;
+  /*static float hue = 0;
+  static int i = 0;*/
 
-    INTERRUPT_DISABLE();
-    tmp_msecs = msecs;
-    INTERRUPT_ENABLE();
+  INTERRUPT_DISABLE();
+  tmp_msecs = msecs;
+  INTERRUPT_ENABLE();
 
-    update_colors = 0;
-    input = 0;
+  update_colors = 0;
+  input = 0;
 
-    if(RCIF || OERR || FERR) {
-      char dummy = RCREG;
-      input = RCREG;
+  if(RCIF || OERR || FERR) {
+    char dummy = RCREG;
+    input = RCREG;
 
-      if(OERR || FERR) {
-        CREN = 0;
+    if(OERR || FERR) {
+      CREN = 0;
+      input = 0;
+      dummy = 0xff;
+      dummy = 0x00;
+      CREN = 1;
+    }
+    RCIF = 0;
+
+  } /* else if(tmp_msecs > last_button + 200) {
+
+    uint8_t b = BUTTON_GET();
+
+    if(b & B_PLUS)
+      input = '+';
+    else if(b & B_MINUS)
+      input = '-';
+    else if(b & B_LEFT)
+      input = ' ';
+    else if(b & B_RIGHT)
+      input = '\n';
+
+    if(b & 0b1111) {
+      last_button = tmp_msecs;
+    }
+  } */
+
+  /*
+      if (input != 0) {
+
+        if (input == '+' || input == 'Q' || input == 'q') {
+          if (interval > 10) interval -= 10;
+        } else if (input == '-' || input == 'A' || input == 'a') {
+          if (interval < 4990) interval += 10;
+        } else if (input == ' ') {
+          run = !run;
+        } else if (input == '\n') {
+          index += 8;
+          prev_hsecs = 0;
+          update_colors = 1;
+        }
+
+        put_str(put_char, "CMD: ");
+        put_char(input);
+        put_str(put_char, "\r\n");
+
         input = 0;
-        dummy = 0xff;
-        dummy = 0x00;
-        CREN = 1;
-      }
-      RCIF = 0;
+      }*/
 
-    } else if(tmp_msecs > last_button + 200) {
+  if(run) {
+    if(tmp_msecs >= prev_hsecs + interval) {
+      index++;
+      led_state = !led_state;
+      SET_LED(led_state);
+      update_colors = 1;
+      prev_hsecs = tmp_msecs;
 
-      uint8_t b = BUTTON_GET();
-
-      if(b & B_PLUS)
-        input = '+';
-      else if(b & B_MINUS)
-        input = '-';
-      else if(b & B_LEFT)
-        input = ' ';
-      else if(b & B_RIGHT)
-        input = '\n';
-
-      if(b & 0b1111) {
-        last_button = tmp_msecs;
-      }
+#ifdef USE_ADCONVERTER
+      read_analog();
+#endif
     }
+  }
 
-    /*
-        if (input != 0) {
+  if(update_colors) {
+    const uint8_t* rgb;
 
-          if (input == '+' || input == 'Q' || input == 'q') {
-            if (interval > 10) interval -= 10;
-          } else if (input == '-' || input == 'A' || input == 'a') {
-            if (interval < 4990) interval += 10;
-          } else if (input == ' ') {
-            run = !run;
-          } else if (input == '\n') {
-            index += 8;
-            prev_hsecs = 0;
-            update_colors = 1;
-          }
-
-          put_str(put_char, "CMD: ");
-          put_char(input);
-          put_str(put_char, "\r\n");
-
-          input = 0;
-        }*/
-
-    if(run) {
-      if(tmp_msecs >= prev_hsecs + interval) {
-        index++;
-        led_state = !led_state;
-        SET_LED(led_state);
-        update_colors = 1;
-        prev_hsecs = tmp_msecs;
-      }
-    }
-
-    if(update_colors) {
-      const uint8_t* rgb;
-
-      rgb = rainbow8[index];
+    rgb = rainbow8[index];
 
 #ifdef USE_UART
-      uart_enable();
+    uart_enable();
 #endif
 
 #if USE_SER || USE_UART
-      put_char('#');
-      put_number(put_char, index, 10, 0);
-      put_str(put_char, ": R=");
-      put_number(put_char, rgb[0], 10, 0);
-      put_str(put_char, "%, G=");
-      put_number(put_char, rgb[1], 10, 0);
-      put_str(put_char, "%, B=");
-      put_number(put_char, rgb[2], 10, 0);
-      put_str(put_char, "% (T=");
-      put_number(put_char, interval, 10, 0);
-      put_str(put_char, ")\r\n");
+    put_char('#');
+    put_number(put_char, index, 10, 0);
+    put_str(put_char, ": R=");
+    put_number(put_char, rgb[0], 10, 0);
+    put_str(put_char, "%, G=");
+    put_number(put_char, rgb[1], 10, 0);
+    put_str(put_char, "%, B=");
+    put_number(put_char, rgb[2], 10, 0);
+    put_str(put_char, "% (T=");
+    put_number(put_char, interval, 10, 0);
+    put_str(put_char, ")\r\n");
 #endif
 #ifdef USE_SOFTSER
-      put_number(softser_putch, tmp_msecs, 10, 0);
-      put_str(softser_putch, ")\r\n");
+    put_number(softser_putch, tmp_msecs, 10, 0);
+    put_str(softser_putch, ")\r\n");
 #endif
 
-      softpwm_disable();
-      {
-        softpwm_set(0, rgb[0]);
-        softpwm_set(1, rgb[1]);
-        softpwm_set(2, rgb[2]);
-      }
-      softpwm_enable();
-
-      update_colors = 0;
-      //      prev_index = index;
+    softpwm_disable();
+    {
+      softpwm_set(0, rgb[0]);
+      softpwm_set(1, rgb[1]);
+      softpwm_set(2, rgb[2]);
     }
+    softpwm_enable();
+
+    update_colors = 0;
+    //      prev_index = index;
+  }
 #ifdef USE_UART
-    uart_disable();
+  uart_disable();
 #endif
 
-    INTERRUPT_DISABLE();
-    tmp_msecs = msecs + 1000;
-    INTERRUPT_ENABLE();
+  INTERRUPT_DISABLE();
+  tmp_msecs = msecs + 1000;
+  INTERRUPT_ENABLE();
 
-#ifdef USE_ADCONVERTER
-    read_analog();
-#endif
-
+#if 0
     for(;;) {
       BOOL wait;
       INTERRUPT_DISABLE();
@@ -402,7 +419,7 @@ main() {
       if(!wait)
         break;
     }
-  }
+#endif
 }
 
 //-----------------------------------------------------------------------------
