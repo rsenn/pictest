@@ -19,7 +19,7 @@ endif
 endif
 
 # Environment
-MKDIR=mkdir -p
+MKDIR=gnumkdir -p
 RM=rm -f 
 MV=mv 
 CP=cp 
@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../../../lib/comparator.c ../../../lib/delay.c ../../../lib/pwm.c ../../../lib/random.c ../../../lib/ser.c ../../../lib/softpwm.c ../../../lib/softser.c ../../../lib/timer.c ../../../lib/uart.c mcc_generated_files/tmr0.c ../../../src/blinktest.c
+SOURCEFILES_QUOTED_IF_SPACED=../../../lib/comparator.c ../../../lib/delay.c ../../../lib/pwm.c ../../../lib/random.c ../../../lib/ser.c ../../../lib/softpwm.c ../../../lib/softser.c ../../../lib/timer.c ../../../lib/uart.c mcc_generated_files/tmr0.c ../../../src/blinktest.c ../../../lib/lcd5110.c ../../../lib/adc.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1386521430/comparator.p1 ${OBJECTDIR}/_ext/1386521430/delay.p1 ${OBJECTDIR}/_ext/1386521430/pwm.p1 ${OBJECTDIR}/_ext/1386521430/random.p1 ${OBJECTDIR}/_ext/1386521430/ser.p1 ${OBJECTDIR}/_ext/1386521430/softpwm.p1 ${OBJECTDIR}/_ext/1386521430/softser.p1 ${OBJECTDIR}/_ext/1386521430/timer.p1 ${OBJECTDIR}/_ext/1386521430/uart.p1 ${OBJECTDIR}/mcc_generated_files/tmr0.p1 ${OBJECTDIR}/_ext/1386528437/blinktest.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1386521430/comparator.p1.d ${OBJECTDIR}/_ext/1386521430/delay.p1.d ${OBJECTDIR}/_ext/1386521430/pwm.p1.d ${OBJECTDIR}/_ext/1386521430/random.p1.d ${OBJECTDIR}/_ext/1386521430/ser.p1.d ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d ${OBJECTDIR}/_ext/1386521430/softser.p1.d ${OBJECTDIR}/_ext/1386521430/timer.p1.d ${OBJECTDIR}/_ext/1386521430/uart.p1.d ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d ${OBJECTDIR}/_ext/1386528437/blinktest.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1386521430/comparator.p1 ${OBJECTDIR}/_ext/1386521430/delay.p1 ${OBJECTDIR}/_ext/1386521430/pwm.p1 ${OBJECTDIR}/_ext/1386521430/random.p1 ${OBJECTDIR}/_ext/1386521430/ser.p1 ${OBJECTDIR}/_ext/1386521430/softpwm.p1 ${OBJECTDIR}/_ext/1386521430/softser.p1 ${OBJECTDIR}/_ext/1386521430/timer.p1 ${OBJECTDIR}/_ext/1386521430/uart.p1 ${OBJECTDIR}/mcc_generated_files/tmr0.p1 ${OBJECTDIR}/_ext/1386528437/blinktest.p1 ${OBJECTDIR}/_ext/1386521430/lcd5110.p1 ${OBJECTDIR}/_ext/1386521430/adc.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1386521430/comparator.p1.d ${OBJECTDIR}/_ext/1386521430/delay.p1.d ${OBJECTDIR}/_ext/1386521430/pwm.p1.d ${OBJECTDIR}/_ext/1386521430/random.p1.d ${OBJECTDIR}/_ext/1386521430/ser.p1.d ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d ${OBJECTDIR}/_ext/1386521430/softser.p1.d ${OBJECTDIR}/_ext/1386521430/timer.p1.d ${OBJECTDIR}/_ext/1386521430/uart.p1.d ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d ${OBJECTDIR}/_ext/1386528437/blinktest.p1.d ${OBJECTDIR}/_ext/1386521430/lcd5110.p1.d ${OBJECTDIR}/_ext/1386521430/adc.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1386521430/comparator.p1 ${OBJECTDIR}/_ext/1386521430/delay.p1 ${OBJECTDIR}/_ext/1386521430/pwm.p1 ${OBJECTDIR}/_ext/1386521430/random.p1 ${OBJECTDIR}/_ext/1386521430/ser.p1 ${OBJECTDIR}/_ext/1386521430/softpwm.p1 ${OBJECTDIR}/_ext/1386521430/softser.p1 ${OBJECTDIR}/_ext/1386521430/timer.p1 ${OBJECTDIR}/_ext/1386521430/uart.p1 ${OBJECTDIR}/mcc_generated_files/tmr0.p1 ${OBJECTDIR}/_ext/1386528437/blinktest.p1
+OBJECTFILES=${OBJECTDIR}/_ext/1386521430/comparator.p1 ${OBJECTDIR}/_ext/1386521430/delay.p1 ${OBJECTDIR}/_ext/1386521430/pwm.p1 ${OBJECTDIR}/_ext/1386521430/random.p1 ${OBJECTDIR}/_ext/1386521430/ser.p1 ${OBJECTDIR}/_ext/1386521430/softpwm.p1 ${OBJECTDIR}/_ext/1386521430/softser.p1 ${OBJECTDIR}/_ext/1386521430/timer.p1 ${OBJECTDIR}/_ext/1386521430/uart.p1 ${OBJECTDIR}/mcc_generated_files/tmr0.p1 ${OBJECTDIR}/_ext/1386528437/blinktest.p1 ${OBJECTDIR}/_ext/1386521430/lcd5110.p1 ${OBJECTDIR}/_ext/1386521430/adc.p1
 
 # Source Files
-SOURCEFILES=../../../lib/comparator.c ../../../lib/delay.c ../../../lib/pwm.c ../../../lib/random.c ../../../lib/ser.c ../../../lib/softpwm.c ../../../lib/softser.c ../../../lib/timer.c ../../../lib/uart.c mcc_generated_files/tmr0.c ../../../src/blinktest.c
+SOURCEFILES=../../../lib/comparator.c ../../../lib/delay.c ../../../lib/pwm.c ../../../lib/random.c ../../../lib/ser.c ../../../lib/softpwm.c ../../../lib/softser.c ../../../lib/timer.c ../../../lib/uart.c mcc_generated_files/tmr0.c ../../../src/blinktest.c ../../../lib/lcd5110.c ../../../lib/adc.c
 
 
 
@@ -98,7 +98,7 @@ ${OBJECTDIR}/_ext/1386521430/comparator.p1: ../../../lib/comparator.c  nbproject
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/comparator.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/comparator.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/comparator.p1 ../../../lib/comparator.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/comparator.p1 ../../../lib/comparator.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/comparator.d ${OBJECTDIR}/_ext/1386521430/comparator.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/comparator.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -106,7 +106,7 @@ ${OBJECTDIR}/_ext/1386521430/delay.p1: ../../../lib/delay.c  nbproject/Makefile-
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/delay.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/delay.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/delay.p1 ../../../lib/delay.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/delay.p1 ../../../lib/delay.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/delay.d ${OBJECTDIR}/_ext/1386521430/delay.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/delay.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -114,7 +114,7 @@ ${OBJECTDIR}/_ext/1386521430/pwm.p1: ../../../lib/pwm.c  nbproject/Makefile-${CN
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pwm.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pwm.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/pwm.p1 ../../../lib/pwm.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/pwm.p1 ../../../lib/pwm.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/pwm.d ${OBJECTDIR}/_ext/1386521430/pwm.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/pwm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -122,7 +122,7 @@ ${OBJECTDIR}/_ext/1386521430/random.p1: ../../../lib/random.c  nbproject/Makefil
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/random.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/random.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/random.p1 ../../../lib/random.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/random.p1 ../../../lib/random.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/random.d ${OBJECTDIR}/_ext/1386521430/random.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/random.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -130,7 +130,7 @@ ${OBJECTDIR}/_ext/1386521430/ser.p1: ../../../lib/ser.c  nbproject/Makefile-${CN
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/ser.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/ser.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/ser.p1 ../../../lib/ser.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/ser.p1 ../../../lib/ser.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/ser.d ${OBJECTDIR}/_ext/1386521430/ser.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/ser.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -138,7 +138,7 @@ ${OBJECTDIR}/_ext/1386521430/softpwm.p1: ../../../lib/softpwm.c  nbproject/Makef
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/softpwm.p1 ../../../lib/softpwm.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/softpwm.p1 ../../../lib/softpwm.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/softpwm.d ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -146,7 +146,7 @@ ${OBJECTDIR}/_ext/1386521430/softser.p1: ../../../lib/softser.c  nbproject/Makef
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softser.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softser.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/softser.p1 ../../../lib/softser.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/softser.p1 ../../../lib/softser.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/softser.d ${OBJECTDIR}/_ext/1386521430/softser.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/softser.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -154,7 +154,7 @@ ${OBJECTDIR}/_ext/1386521430/timer.p1: ../../../lib/timer.c  nbproject/Makefile-
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/timer.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/timer.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/timer.p1 ../../../lib/timer.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/timer.p1 ../../../lib/timer.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/timer.d ${OBJECTDIR}/_ext/1386521430/timer.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/timer.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -162,7 +162,7 @@ ${OBJECTDIR}/_ext/1386521430/uart.p1: ../../../lib/uart.c  nbproject/Makefile-${
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/uart.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/uart.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/uart.p1 ../../../lib/uart.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/uart.p1 ../../../lib/uart.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/uart.d ${OBJECTDIR}/_ext/1386521430/uart.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/uart.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -170,7 +170,7 @@ ${OBJECTDIR}/mcc_generated_files/tmr0.p1: mcc_generated_files/tmr0.c  nbproject/
 	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
 	@${RM} ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d 
 	@${RM} ${OBJECTDIR}/mcc_generated_files/tmr0.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/mcc_generated_files/tmr0.p1 mcc_generated_files/tmr0.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/mcc_generated_files/tmr0.p1 mcc_generated_files/tmr0.c 
 	@-${MV} ${OBJECTDIR}/mcc_generated_files/tmr0.d ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -178,16 +178,32 @@ ${OBJECTDIR}/_ext/1386528437/blinktest.p1: ../../../src/blinktest.c  nbproject/M
 	@${MKDIR} "${OBJECTDIR}/_ext/1386528437" 
 	@${RM} ${OBJECTDIR}/_ext/1386528437/blinktest.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386528437/blinktest.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386528437/blinktest.p1 ../../../src/blinktest.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386528437/blinktest.p1 ../../../src/blinktest.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386528437/blinktest.d ${OBJECTDIR}/_ext/1386528437/blinktest.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386528437/blinktest.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/_ext/1386521430/lcd5110.p1: ../../../lib/lcd5110.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
+	@${RM} ${OBJECTDIR}/_ext/1386521430/lcd5110.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1386521430/lcd5110.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/lcd5110.p1 ../../../lib/lcd5110.c 
+	@-${MV} ${OBJECTDIR}/_ext/1386521430/lcd5110.d ${OBJECTDIR}/_ext/1386521430/lcd5110.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/lcd5110.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/_ext/1386521430/adc.p1: ../../../lib/adc.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
+	@${RM} ${OBJECTDIR}/_ext/1386521430/adc.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1386521430/adc.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/adc.p1 ../../../lib/adc.c 
+	@-${MV} ${OBJECTDIR}/_ext/1386521430/adc.d ${OBJECTDIR}/_ext/1386521430/adc.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/adc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
 ${OBJECTDIR}/_ext/1386521430/comparator.p1: ../../../lib/comparator.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/comparator.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/comparator.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/comparator.p1 ../../../lib/comparator.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/comparator.p1 ../../../lib/comparator.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/comparator.d ${OBJECTDIR}/_ext/1386521430/comparator.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/comparator.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -195,7 +211,7 @@ ${OBJECTDIR}/_ext/1386521430/delay.p1: ../../../lib/delay.c  nbproject/Makefile-
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/delay.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/delay.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/delay.p1 ../../../lib/delay.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/delay.p1 ../../../lib/delay.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/delay.d ${OBJECTDIR}/_ext/1386521430/delay.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/delay.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -203,7 +219,7 @@ ${OBJECTDIR}/_ext/1386521430/pwm.p1: ../../../lib/pwm.c  nbproject/Makefile-${CN
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pwm.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pwm.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/pwm.p1 ../../../lib/pwm.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/pwm.p1 ../../../lib/pwm.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/pwm.d ${OBJECTDIR}/_ext/1386521430/pwm.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/pwm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -211,7 +227,7 @@ ${OBJECTDIR}/_ext/1386521430/random.p1: ../../../lib/random.c  nbproject/Makefil
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/random.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/random.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/random.p1 ../../../lib/random.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/random.p1 ../../../lib/random.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/random.d ${OBJECTDIR}/_ext/1386521430/random.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/random.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -219,7 +235,7 @@ ${OBJECTDIR}/_ext/1386521430/ser.p1: ../../../lib/ser.c  nbproject/Makefile-${CN
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/ser.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/ser.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/ser.p1 ../../../lib/ser.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/ser.p1 ../../../lib/ser.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/ser.d ${OBJECTDIR}/_ext/1386521430/ser.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/ser.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -227,7 +243,7 @@ ${OBJECTDIR}/_ext/1386521430/softpwm.p1: ../../../lib/softpwm.c  nbproject/Makef
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/softpwm.p1 ../../../lib/softpwm.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/softpwm.p1 ../../../lib/softpwm.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/softpwm.d ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -235,7 +251,7 @@ ${OBJECTDIR}/_ext/1386521430/softser.p1: ../../../lib/softser.c  nbproject/Makef
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softser.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softser.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/softser.p1 ../../../lib/softser.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/softser.p1 ../../../lib/softser.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/softser.d ${OBJECTDIR}/_ext/1386521430/softser.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/softser.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -243,7 +259,7 @@ ${OBJECTDIR}/_ext/1386521430/timer.p1: ../../../lib/timer.c  nbproject/Makefile-
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/timer.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/timer.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/timer.p1 ../../../lib/timer.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/timer.p1 ../../../lib/timer.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/timer.d ${OBJECTDIR}/_ext/1386521430/timer.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/timer.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -251,7 +267,7 @@ ${OBJECTDIR}/_ext/1386521430/uart.p1: ../../../lib/uart.c  nbproject/Makefile-${
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/uart.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/uart.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/uart.p1 ../../../lib/uart.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/uart.p1 ../../../lib/uart.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/uart.d ${OBJECTDIR}/_ext/1386521430/uart.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/uart.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -259,7 +275,7 @@ ${OBJECTDIR}/mcc_generated_files/tmr0.p1: mcc_generated_files/tmr0.c  nbproject/
 	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
 	@${RM} ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d 
 	@${RM} ${OBJECTDIR}/mcc_generated_files/tmr0.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/mcc_generated_files/tmr0.p1 mcc_generated_files/tmr0.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/mcc_generated_files/tmr0.p1 mcc_generated_files/tmr0.c 
 	@-${MV} ${OBJECTDIR}/mcc_generated_files/tmr0.d ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -267,9 +283,25 @@ ${OBJECTDIR}/_ext/1386528437/blinktest.p1: ../../../src/blinktest.c  nbproject/M
 	@${MKDIR} "${OBJECTDIR}/_ext/1386528437" 
 	@${RM} ${OBJECTDIR}/_ext/1386528437/blinktest.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386528437/blinktest.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386528437/blinktest.p1 ../../../src/blinktest.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386528437/blinktest.p1 ../../../src/blinktest.c 
 	@-${MV} ${OBJECTDIR}/_ext/1386528437/blinktest.d ${OBJECTDIR}/_ext/1386528437/blinktest.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386528437/blinktest.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/_ext/1386521430/lcd5110.p1: ../../../lib/lcd5110.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
+	@${RM} ${OBJECTDIR}/_ext/1386521430/lcd5110.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1386521430/lcd5110.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/lcd5110.p1 ../../../lib/lcd5110.c 
+	@-${MV} ${OBJECTDIR}/_ext/1386521430/lcd5110.d ${OBJECTDIR}/_ext/1386521430/lcd5110.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/lcd5110.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/_ext/1386521430/adc.p1: ../../../lib/adc.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
+	@${RM} ${OBJECTDIR}/_ext/1386521430/adc.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1386521430/adc.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -DXPRJ_debug=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits $(COMPARISON_BUILD)  -std=c90 -gcoff -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1386521430/adc.p1 ../../../lib/adc.c 
+	@-${MV} ${OBJECTDIR}/_ext/1386521430/adc.d ${OBJECTDIR}/_ext/1386521430/adc.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/adc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 
@@ -290,13 +322,13 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.map  -D__DEBUG=1  -DXPRJ_debug=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits -std=c99 -gcoff -mstack=compiled:auto:auto:auto        $(COMPARISON_BUILD) -Wl,--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -o dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.map  -D__DEBUG=1  -DXPRJ_debug=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits -std=c90 -gcoff -mstack=compiled:auto:auto:auto        $(COMPARISON_BUILD) -Wl,--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -o dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
 	@${RM} dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.hex 
 	
 else
 dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.map  -DXPRJ_debug=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits -std=c99 -gcoff -mstack=compiled:auto:auto:auto     $(COMPARISON_BUILD) -Wl,--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -o dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.map  -DXPRJ_debug=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -Og -maddrqual=ignore -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=1 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -xassembler-with-cpp -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" -mwarn=-9 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mkeep-startup -mdownload -mdefault-config-bits -std=c90 -gcoff -mstack=compiled:auto:auto:auto     $(COMPARISON_BUILD) -Wl,--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -o dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
 	
 endif
 
@@ -316,7 +348,7 @@ endif
 # Enable dependency checking
 .dep.inc: .depcheck-impl
 
-DEPFILES=$(shell "${PATH_TO_IDE_BIN}"mplabwildcard ${POSSIBLE_DEPFILES})
+DEPFILES=$(shell mplabwildcard ${POSSIBLE_DEPFILES})
 ifneq (${DEPFILES},)
 include ${DEPFILES}
 endif
