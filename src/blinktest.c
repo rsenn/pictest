@@ -5,6 +5,7 @@
 #include "../lib/device.h"
 #include "../lib/interrupt.h"
 #include "../lib/random.h"
+#define SOFTPWM_PIN_COUNT 4
 #include "../lib/softpwm.h"
 #include "../lib/timer.h"
 #include "../lib/delay.h"
@@ -138,7 +139,11 @@ INTERRUPT_FN() {
   }
 #endif
 
-  SOFTPWM_ISR();
+SOFTPWM_PIN(0, LATC0);
+SOFTPWM_PIN(1, LATC1);
+SOFTPWM_PIN(2, LATC2);
+SOFTPWM_PIN(3, LATA4);
+      
 }
 
 volatile int chan = 0;
@@ -258,6 +263,7 @@ main() {
   softpwm_values[0] = 30;
   softpwm_values[1] = 60;
   softpwm_values[2] = 80;
+  softpwm_values[3] = 50;
 
   PEIE = 1;
   INTERRUPT_ENABLE();
