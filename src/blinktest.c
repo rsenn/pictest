@@ -1,5 +1,9 @@
 #define USE_MCLRE 1
-
+#if USE_ADCONVERTER
+#define VREF_PLUS 3.3
+#define VREF_MINUS 0.0
+#include "../lib/adc.h"
+#endif
 #include "../lib/comparator.h"
 #include "../lib/const.h"
 #include "../lib/device.h"
@@ -12,11 +16,7 @@
 #include "../lib/format.h"
 #include "pictest.h"
 #include "config-bits.h"
-#if USE_ADCONVERTER
-#define VREF_PLUS 3.3
-#define VREF_MINUS 0.0
-#include "../lib/adc.h"
-#endif
+
 #if USE_UART
 #include "../lib/uart.h"
 #endif
@@ -289,9 +289,9 @@ main() {
   adc_init();
 
   ANSELA &= ~0b00000111;
-  TRISA |=0b00000111;
+  TRISA |= 0b00000111;
 
-  //ADIE = 1;
+  // ADIE = 1;
 
   adc_read(0);
 #endif
