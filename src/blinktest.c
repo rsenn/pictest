@@ -283,7 +283,10 @@ main() {
 #ifdef USE_ADCONVERTER
   adc_init();
 
-  ADIE = 1;
+  ANSELA &= ~0b00000111;
+  TRISA |=0b00000111;
+
+  //ADIE = 1;
 
   adc_read(0);
 #endif
