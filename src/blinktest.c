@@ -12,7 +12,11 @@
 #include "../lib/format.h"
 #include "pictest.h"
 #include "config-bits.h"
-
+#if USE_ADCONVERTER
+#define VREF_PLUS 3.3
+#define VREF_MINUS 0.0
+#include "../lib/adc.h"
+#endif
 #if USE_UART
 #include "../lib/uart.h"
 #endif
@@ -94,8 +98,7 @@ volatile BOOL run = 0;
 volatile uint8_t msec_count = 0;
 volatile uint16_t bres;
 volatile uint32_t msecs, hsecs;
-#ifdef USE_ADCONVERTER
-#include "../lib/adc.h"
+#if USE_ADCONVERTER
 volatile unsigned int adc_result = 0;
 #endif
 
@@ -160,11 +163,13 @@ void
 read_analog(void) {
 
   uint16_t result = adc_read(chan);
+  float voltage = ADVAL_V(result);
 
   lcd_clear_line(chan + 1);
   lcd_gotoxy(0, chan + 1);
 
-  format_number(lcd_putch, result, 10, 5);
+  format_float(lcd_putch, voltage);
+  /*format_number(lcd_putch, result, 10, 5);*/
 
   chan++;
   chan %= 3;
