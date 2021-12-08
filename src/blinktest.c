@@ -163,12 +163,12 @@ void
 read_analog(void) {
 
   uint16_t result = adc_read(chan);
-  float voltage = ADVAL_V(result);
+  double voltage = ADVAL_V(result);
 
   lcd_clear_line(chan + 1);
   lcd_gotoxy(0, chan + 1);
 
-  format_float(lcd_putch, voltage);
+  format_double(lcd_putch, voltage);
   /*format_number(lcd_putch, result, 10, 5);*/
 
   chan++;
