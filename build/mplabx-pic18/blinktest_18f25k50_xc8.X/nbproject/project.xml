@@ -16,6 +16,8 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>../../..</sourceRootElem>
+                <sourceRootElem>../../../../USB-Stack/USB_Stack/USB</sourceRootElem>
+                <sourceRootElem>../../../../USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

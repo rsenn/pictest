@@ -15,3 +15,7 @@
 	path = hackaday-badge-18f25k50
 	url = https://github.com/rsenn/hackaday-belgrade-badge-MPLABX.git
 	branch = master
+[submodule "usb"]
+	path = usb
+	url = git@github.com:rsenn/USB-Stack.git
+	branch = main

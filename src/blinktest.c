@@ -34,6 +34,15 @@
 #endif
 #include <math.h>
 
+/* #include "../usb/USB_Stack/USB/usb_config.h"
+#include "../usb/USB_Stack/USB/usb.h"
+#include "../usb/USB_Stack/USB/usb_cdc.h"
+//#include "../usb/USB_Stack/USB/usb.c"
+#include "../usb/USB_Stack/USB/usb_cdc_acm.c"
+#include "../usb/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_app.c"
+#include "../usb/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_descriptors.c" */
+
+
 #define BUTTON_PORT PORTE
 #define BUTTON_SHIFT 3
 
