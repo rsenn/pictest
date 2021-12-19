@@ -259,7 +259,7 @@ main() {
 #endif
 
 #if USE_TIMER0
-  timer0_init(PRESCALE_1_1); // PRESCALE_1_256|TIMER0_FLAGS_8BIT);
+  timer0_init(PRESCALE_1_256|TIMER0_FLAGS_8BIT);
 
   TIMER0_INTERRUPT_CLEAR();
   T0IE = 1;
