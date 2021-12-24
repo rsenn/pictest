@@ -5,18 +5,6 @@
         <group name="18f25k50">
             <file>file:/home/roman/Projects/pictest/build/mplabx-pic18/blinktest_18f25k50_xc8.X/main.c</file>
         </group>
-        <group>
-            <file>file:/home/roman/Projects/USB-Stack/USB_Stack/USB/usb_cdc_config.h</file>
-            <file>file:/home/roman/Projects/USB-Stack/USB_Stack/USB/usb_config.h</file>
-            <file>file:/home/roman/Projects/USB-Stack/USB_Stack/USB/usb_cdc_acm.c</file>
-            <file>file:/home/roman/Projects/USB-Stack/USB_Stack/USB/usb_cdc.h</file>
-            <file>file:/home/roman/Projects/USB-Stack/USB_Stack/USB/usb.c</file>
-            <file>file:/home/roman/Projects/USB-Stack/USB_Stack/USB/usb_ch9.h</file>
-            <file>file:/home/roman/Projects/USB-Stack/USB_Stack/USB/usb.h</file>
-            <file>file:/home/roman/Projects/USB-Stack/USB_Stack/USB/usb_hal.h</file>
-            <file>file:/home/roman/Projects/USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_app.c</file>
-            <file>file:/home/roman/Projects/USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_descriptors.c</file>
-            <file>file:/home/roman/Projects/USB-Stack/USB_Stack/USB/usb_app.h</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

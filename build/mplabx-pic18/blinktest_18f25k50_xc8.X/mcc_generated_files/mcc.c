@@ -53,7 +53,9 @@ void SYSTEM_Initialize(void)
     INTERRUPT_Initialize();
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
+    CMP1_Initialize();
     USBDeviceInit();
+    ADC_Initialize();
     TMR0_Initialize();
     USBDeviceAttach();
     EUSART1_Initialize();

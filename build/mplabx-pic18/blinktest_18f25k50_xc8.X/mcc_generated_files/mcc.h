@@ -54,6 +54,8 @@
 #include <conio.h>
 #include "interrupt_manager.h"
 #include "usb/usb.h"
+#include "cmp1.h"
+#include "adc.h"
 #include "tmr0.h"
 #include "eusart1.h"
 
