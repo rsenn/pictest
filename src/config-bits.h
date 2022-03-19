@@ -33,4 +33,8 @@
 #include "config-18f25k50.h"
 #endif // defined __18f25k50
 
+#ifdef __18f16q41
+#include "config-18f16q41.h"
+#endif // defined __18f16q41
+#
 #endif // defined CONFIG_BITS_H

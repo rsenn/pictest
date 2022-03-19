@@ -79,8 +79,8 @@ xc8_driver() {
   while [ $# -gt 1 ]; do
 	case "$1" in
 	  -D_XTAL_FREQ=*) pushv CFLAGS "$1" ;;
-	  -D__18f*) SYSINC="pic18.h" ;;
-	  -D__1?f*) SYSINC="pic.h" ;;
+	  #-D__18f*) SYSINC="pic18.h" ;;
+	  #-D__1?f*) SYSINC="pic.h" ;;
 	esac
 	shift
   done
@@ -109,7 +109,7 @@ esac
 		 --disambiguate=0 \
 		 --c++11 \
 		 -S "$INCDIR" \
-		 -F "$SYSINC"
+		 ${SYSINC:+-F "$SYSINC"}
   case "$EXE" in
   *xc8*) ;;
   *picc*) 
