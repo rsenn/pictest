@@ -73,7 +73,7 @@
 #define BSTRB_PIN LATC0
 
 #elif defined(__18f252) || defined(__18f2455) || defined(__18f2550) || defined(__18f2520) || defined(__18f14k50) ||    \
-    defined(__18f25k50) || defined(__18f25k22)
+    defined(__18f25k50) || defined(__18f25k22)|| defined(__18f16q41)
 
 #define LED_PIN LATA4
 #define LED_ON() LATA4 = 1;

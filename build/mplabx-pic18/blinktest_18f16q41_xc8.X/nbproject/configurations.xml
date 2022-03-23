@@ -146,7 +146,7 @@
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
-    <conf name="debug" type="2">
+    <conf name="release" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
         <targetDevice>PIC18F16Q41</targetDevice>
@@ -154,7 +154,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>noID</platformTool>
         <languageToolchain>XC8</languageToolchain>
-        <languageToolchainVersion>2.32</languageToolchainVersion>
+        <languageToolchainVersion>2.36</languageToolchainVersion>
         <platform>2</platform>
       </toolsSet>
       <packs>
@@ -169,7 +169,7 @@
         </archiverTool>
         <loading>
           <useAlternateLoadableFile>false</useAlternateLoadableFile>
-          <parseOnProdLoad>true</parseOnProdLoad>
+          <parseOnProdLoad>false</parseOnProdLoad>
           <alternateLoadableFile></alternateLoadableFile>
         </loading>
         <subordinates>
@@ -184,6 +184,22 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <item path="../../../../USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_app.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_descriptors.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../USB-Stack/USB_Stack/USB/usb.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../USB-Stack/USB_Stack/USB/usb_cdc_acm.c"
+            ex="true"
+            overriding="false">
+      </item>
       <HI-TECH-COMP>
         <property key="additional-warnings" value="true"/>
         <property key="asmlist" value="true"/>
@@ -191,7 +207,7 @@
         <property key="default-bitfield-type" value="true"/>
         <property key="default-char-type" value="true"/>
         <property key="define-macros"
-                  value="__18f16q41=1;_XTAL_FREQ=48000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=0;USE_SOFTPWM=1;HAVE_COMPARATOR=1;DEBUG=1;__XC8=1;USE_SOFTSER=1;SOFTSER_TIMER=2;USE_NOKIA5110_LCD=1;USE_ADCONVERTER=1;XTAL_USED=NO_XTAL"/>
+                  value="__18f16q41=1;_XTAL_FREQ=48000000;UART_BAUD=38400;_USE_TIMER0=1;_USE_TIMER1=1;_USE_TIMER2=1;_USE_SOFTPWM=1;HAVE_COMPARATOR=1;NDEBUG=1;__XC8=1;_USE_SOFTSER=1;SOFTSER_TIMER=2;USE_NOKIA5110_LCD=1;_USE_ADCONVERTER=1;XTAL_USED=NO_XTAL"/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
                   value="../../..;../../../lib;../../../src;../../../"/>
@@ -204,7 +220,7 @@
         <property key="opt-xc8-compiler-strict_ansi" value="false"/>
         <property key="optimization-assembler" value="true"/>
         <property key="optimization-assembler-files" value="true"/>
-        <property key="optimization-debug" value="true"/>
+        <property key="optimization-debug" value="false"/>
         <property key="optimization-invariant-enable" value="false"/>
         <property key="optimization-invariant-value" value="16"/>
         <property key="optimization-level" value="-Os"/>
@@ -265,7 +281,7 @@
         <property key="opt-xc8-linker-serial" value=""/>
         <property key="program-the-device-with-default-config-words" value="true"/>
         <property key="remove-unused-sections" value="true"/>
-        <appendMe value="--msgdisable=373,752,520"/>
+        <appendMe value="--msgdisable=373,520,752"/>
       </HI-TECH-LINK>
       <PICkit3PlatformTool>
         <property key="AutoSelectMemRanges" value="auto"/>
@@ -407,6 +423,8 @@
         <XC8-config-global>
         </XC8-config-global>
       </item>
+      <item path="mcc_generated_files/tmr0.c" ex="true" overriding="false">
+      </item>
       <item path="mcc_generated_files/usb/example_mcc_usb_cdc.c"
             ex="true"
             overriding="false">
@@ -466,7 +484,7 @@
         </XC8-config-global>
       </item>
     </conf>
-    <conf name="release" type="2">
+    <conf name="debug" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
         <targetDevice>PIC18F16Q41</targetDevice>
@@ -474,7 +492,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>noID</platformTool>
         <languageToolchain>XC8</languageToolchain>
-        <languageToolchainVersion>2.32</languageToolchainVersion>
+        <languageToolchainVersion>2.36</languageToolchainVersion>
         <platform>2</platform>
       </toolsSet>
       <packs>
@@ -489,7 +507,7 @@
         </archiverTool>
         <loading>
           <useAlternateLoadableFile>false</useAlternateLoadableFile>
-          <parseOnProdLoad>false</parseOnProdLoad>
+          <parseOnProdLoad>true</parseOnProdLoad>
           <alternateLoadableFile></alternateLoadableFile>
         </loading>
         <subordinates>
@@ -511,7 +529,7 @@
         <property key="default-bitfield-type" value="true"/>
         <property key="default-char-type" value="true"/>
         <property key="define-macros"
-                  value="__18f16q41=1;_XTAL_FREQ=48000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=1;USE_SOFTPWM=1;HAVE_COMPARATOR=1;NDEBUG=1;__XC8=1;USE_SOFTSER=1;SOFTSER_TIMER=2;USE_NOKIA5110_LCD=1;USE_ADCONVERTER=1;XTAL_USED=NO_XTAL"/>
+                  value="__18f16q41=1;_XTAL_FREQ=48000000;UART_BAUD=38400;_USE_TIMER0=1;_USE_TIMER1=1;_USE_TIMER2=0;_USE_SOFTPWM=1;HAVE_COMPARATOR=1;DEBUG=1;__XC8=1;_USE_SOFTSER=1;SOFTSER_TIMER=2;USE_NOKIA5110_LCD=1;_USE_ADCONVERTER=1;XTAL_USED=NO_XTAL"/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
                   value="../../..;../../../lib;../../../src;../../../"/>
@@ -524,7 +542,7 @@
         <property key="opt-xc8-compiler-strict_ansi" value="false"/>
         <property key="optimization-assembler" value="true"/>
         <property key="optimization-assembler-files" value="true"/>
-        <property key="optimization-debug" value="false"/>
+        <property key="optimization-debug" value="true"/>
         <property key="optimization-invariant-enable" value="false"/>
         <property key="optimization-invariant-value" value="16"/>
         <property key="optimization-level" value="-Os"/>
@@ -585,7 +603,7 @@
         <property key="opt-xc8-linker-serial" value=""/>
         <property key="program-the-device-with-default-config-words" value="true"/>
         <property key="remove-unused-sections" value="true"/>
-        <appendMe value="--msgdisable=373,520,752"/>
+        <appendMe value="--msgdisable=373,752,520"/>
       </HI-TECH-LINK>
       <PICkit3PlatformTool>
         <property key="AutoSelectMemRanges" value="auto"/>
