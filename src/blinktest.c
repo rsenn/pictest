@@ -42,9 +42,13 @@
 #include "../usb/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_app.c"
 #include "../usb/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_descriptors.c" */
 
-
+#ifdef __18f16q41
+#define BUTTON_PORT PORTC
+#define BUTTON_SHIFT 1
+#else
 #define BUTTON_PORT PORTE
 #define BUTTON_SHIFT 3
+#endif
 
 #ifndef BUTTON_PORT
 #if NO_PORTB
@@ -120,7 +124,7 @@ INTERRUPT_FN() {
       // Clear timer interrupt bit
       TMR1IF = 0;
     }*/
-
+#if USE_SOFTPWM
   if(SOFTPWM_INTERRUPT_FLAG) {
     SOFTPWM_PIN(0, LATC0);
     SOFTPWM_PIN(1, LATC1);
@@ -129,7 +133,7 @@ INTERRUPT_FN() {
     SOFTPWM_TIMER_VALUE = -128;
     SOFTPWM_INTERRUPT_FLAG = 0;
   }
-
+#endif
 #if USE_UART
   uart_isr();
 #endif
@@ -225,7 +229,7 @@ main() {
 
 #if HAVE_ADC
   ADON = 0;
-#ifndef __18f14k50
+#if !defined(__18f14k50) && !defined(__18f16q41)
   PCFG = 0b0110;
 #endif
 #endif
@@ -234,7 +238,9 @@ main() {
   TRISC4 = TRISC5 = INPUT;
 #endif
 
+#ifdef LED2_CATHODE
   SET_LED2(0);
+#endif
 
 #if HAVE_COMPARATOR
   comparator_disable();
@@ -244,7 +250,9 @@ main() {
 
 #if !NO_PORTB
 #ifndef __18f14k50
+#ifndef __18f16q41
   nRBPU = 0;
+#endif
 #endif
   //  nRBPU = 0; // enable portb pull-ups
   TRISB |= 0b11110000;
@@ -259,7 +267,7 @@ main() {
 #endif
 
 #if USE_TIMER0
-  timer0_init(PRESCALE_1_256|TIMER0_FLAGS_8BIT);
+  timer0_init(PRESCALE_1_256 | TIMER0_FLAGS_8BIT);
 
   TIMER0_INTERRUPT_CLEAR();
   T0IE = 1;
@@ -275,19 +283,26 @@ main() {
 
   LED_TRIS();
   LED_OFF();
-
+#ifdef LED2_CATHODE
   LED2_CATHODE_TRIS = 0;
   LED2_CATHODE = 0;
+#endif
+#ifdef LED2_ANODE
   LED2_ANODE_TRIS = 0;
   LED2_ANODE = 0;
+#endif
 
+#if USE_SOFTPWM
   softpwm_init();
   softpwm_values[0] = 30;
   softpwm_values[1] = 60;
   softpwm_values[2] = 80;
   softpwm_values[3] = 50;
+#endif
 
+#ifndef __18f16q41
   PEIE = 1;
+#endif
   INTERRUPT_ENABLE();
 
   lcd_init();
@@ -327,6 +342,7 @@ loop() {
   update_colors = 0;
   input = 0;
 
+#if USE_UART
   if(RCIF || OERR || FERR) {
     char dummy = RCREG;
     input = RCREG;
@@ -340,7 +356,9 @@ loop() {
     }
     RCIF = 0;
 
-  } else if(tmp_msecs > last_button + 200) {
+  } else
+#endif
+      if(tmp_msecs > last_button + 200) {
 
     uint8_t b = BUTTON_GET();
 

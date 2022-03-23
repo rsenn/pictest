@@ -4,41 +4,41 @@
 #if defined(__XC) || defined(MCHP_XC8) || defined(SDCC)
 
 // CONFIG1L
-#pragma config PLLSEL = PLL4X    // PLL Selection (4x clock multiplier)
-#pragma config CFGPLLEN = OFF    // PLL Enable Configuration bit (PLL Disabled (firmware controlled))
-#pragma config CPUDIV = NOCLKDIV // CPU System Clock Postscaler (CPU uses system clock (no divide))
-#pragma config LS48MHZ =                                                                                               \
-    SYS48X8 // Low Speed USB mode with 48 MHz system clock (System clock at 48 MHz, USB clock divider is set to 8)
+//#pragma config PLLSEL = PLL4X    // PLL Selection (4x clock multiplier)
+//#pragma config CFGPLLEN = OFF    // PLL Enable Configuration bit (PLL Disabled (firmware controlled))
+//#pragma config CPUDIV = NOCLKDIV // CPU System Clock Postscaler (CPU uses system clock (no divide))
+//#pragma config LS48MHZ = SYS48X8 // Low Speed USB mode with 48 MHz system clock (System clock at 48 MHz, USB clock
+//divider is set to 8)
 
 // CONFIG1H
 #if(XTAL_USED == NO_XTAL)
 #warning NO_XTAL
 
-#pragma config FOSC = INTOSCIO
+//#pragma config FOSC = INTOSCIO
 #else
 #pragma config FOSC = HSH
 #endif
-#pragma config PCLKEN = OFF // Primary Oscillator Shutdown (Primary oscillator shutdown firmware controlled)
-#pragma config FCMEN = OFF  // Fail-Safe Clock Monitor (Fail-Safe Clock Monitor disabled)
-#pragma config IESO = OFF   // Internal/External Oscillator Switchover (Oscillator Switchover mode disabled)
+//#pragma config PCLKEN = OFF // Primary Oscillator Shutdown (Primary oscillator shutdown firmware controlled)
+#pragma config FCMEN = OFF // Fail-Safe Clock Monitor (Fail-Safe Clock Monitor disabled)
+//#pragma config IESO = OFF   // Internal/External Oscillator Switchover (Oscillator Switchover mode disabled)
 
 // CONFIG2L
-#pragma config nPWRTEN = ON // Power-up Timer Enable (Power up timer enabled)
-#pragma config BOREN = ON   // Brown-out Reset Enable (BOR controlled by firmware (SBOREN is enabled))
-#pragma config BORV = 285   // Brown-out Reset Voltage (BOR set to 2.85V nominal)
-#pragma config nLPBOR = ON  // Low-Power Brown-out Reset (Low-Power Brown-out Reset enabled)
+//#pragma config nPWRTEN = ON // Power-up Timer Enable (Power up timer enabled)
+#pragma config BOREN = ON // Brown-out Reset Enable (BOR controlled by firmware (SBOREN is enabled))
+//#pragma config BORV = 285   // Brown-out Reset Voltage (BOR set to 2.85V nominal)
+//#pragma config nLPBOR = ON  // Low-Power Brown-out Reset (Low-Power Brown-out Reset enabled)
 
 // CONFIG2H
-#pragma config WDTEN = SWON // Watchdog Timer Enable bits (WDT controlled by firmware (SWDTEN enabled))
-#pragma config WDTPS = 256  // Watchdog Timer Postscaler (1:256)
+//#pragma config WDTEN = SWON // Watchdog Timer Enable bits (WDT controlled by firmware (SWDTEN enabled))
+//#pragma config WDTPS = 256  // Watchdog Timer Postscaler (1:256)
 
 // CONFIG3H
-#pragma config CCP2MX = RC1 // CCP2 MUX bit (CCP2 input/output is multiplexed with RC1)
-#pragma config PBADEN = OFF // PORTB A/D Enable bit (PORTB<5:0> pins are configured as digital I/O on Reset)
-#pragma config T3CMX = RC0  // Timer3 Clock Input MUX bit (T3CKI function is on RC0)
-#pragma config SDOMX = RB3  // SDO Output MUX bit (SDO function is on RB3)
+//#pragma config CCP2MX = RC1 // CCP2 MUX bit (CCP2 input/output is multiplexed with RC1)
+//#pragma config PBADEN = OFF // PORTB A/D Enable bit (PORTB<5:0> pins are configured as digital I/O on Reset)
+//#pragma config T3CMX = RC0  // Timer3 Clock Input MUX bit (T3CKI function is on RC0)
+//#pragma config SDOMX = RB3  // SDO Output MUX bit (SDO function is on RB3)
 #ifdef USE_MCLRE
-#pragma config MCLRE = ON
+//#pragma config MCLRE = ON
 #else
 #pragma config MCLRE = OFF
 #endif
@@ -50,31 +50,31 @@
 #else
 #pragma config LVP = OFF
 #endif
-#pragma config ICPRT = OFF // Dedicated In-Circuit Debug/Programming Port Enable (ICPORT disabled)
+//#pragma config ICPRT = OFF // Dedicated In-Circuit Debug/Programming Port Enable (ICPORT disabled)
 #pragma config XINST =                                                                                                 \
     OFF // Extended Instruction Set Enable bit (Instruction set extension and Indexed Addressing mode disabled)
 
 // CONFIG5L
-#pragma config CP0 = OFF // Block 0 Code Protect (Block 0 is not code-protected)
-#pragma config CP1 = OFF // Block 1 Code Protect (Block 1 is not code-protected)
+//#pragma config CP0 = OFF // Block 0 Code Protect (Block 0 is not code-protected)
+//#pragma config CP1 = OFF // Block 1 Code Protect (Block 1 is not code-protected)
 #if !defined(_18F24K50)
-#pragma config CP2 = OFF // Block 2 Code Protect (Block 2 is not code-protected)
-#pragma config CP3 = OFF // Block 3 Code Protect (Block 3 is not code-protected)
+//#pragma config CP2 = OFF // Block 2 Code Protect (Block 2 is not code-protected)
+//#pragma config CP3 = OFF // Block 3 Code Protect (Block 3 is not code-protected)
 #endif
 
 // CONFIG5H
-#pragma config CPB = OFF // Boot Block Code Protect (Boot block is not code-protected)
-#pragma config CPD = OFF // Data EEPROM Code Protect (Data EEPROM is not code-protected)
+//#pragma config CPB = OFF // Boot Block Code Protect (Boot block is not code-protected)
+//#pragma config CPD = OFF // Data EEPROM Code Protect (Data EEPROM is not code-protected)
 
 // CONFIG6L
 
 #ifndef DEBUG
-#pragma config WRT0 = ON // Block 0 Write Protect (Block 0 (0800-1FFFh) is write-protected)
+//#pragma config WRT0 = ON // Block 0 Write Protect (Block 0 (0800-1FFFh) is write-protected)
 #endif
-#pragma config WRT1 = OFF // Block 1 Write Protect (Block 1 (2000-3FFFh) is not write-protected)
+//#pragma config WRT1 = OFF // Block 1 Write Protect (Block 1 (2000-3FFFh) is not write-protected)
 #if !defined(_18F24K50)
-#pragma config WRT2 = OFF // Block 2 Write Protect (Block 2 (04000-5FFFh) is not write-protected)
-#pragma config WRT3 = OFF // Block 3 Write Protect (Block 3 (06000-7FFFh) is not write-protected)
+//#pragma config WRT2 = OFF // Block 2 Write Protect (Block 2 (04000-5FFFh) is not write-protected)
+//#pragma config WRT3 = OFF // Block 3 Write Protect (Block 3 (06000-7FFFh) is not write-protected)
 #endif
 
 // CONFIG6H
@@ -86,23 +86,21 @@
 #pragma config WRTD = OFF // Data EEPROM Write Protect (Data EEPROM is not write-protected)
 
 // CONFIG7L
-#pragma config EBTR0 =                                                                                                 \
-    OFF // Block 0 Table Read Protect (Block 0 is not protected from table reads executed in other blocks)
-#pragma config EBTR1 =                                                                                                 \
-    OFF // Block 1 Table Read Protect (Block 1 is not protected from table reads executed in other blocks)
+//#pragma config EBTR0 = OFF // Block 0 Table Read Protect (Block 0 is not protected from table reads executed in other
+//blocks) #pragma config EBTR1 = OFF // Block 1 Table Read Protect (Block 1 is not protected from table reads executed
+//in other blocks)
 #if !defined(_18F24K50)
-#pragma config EBTR2 =                                                                                                 \
-    OFF // Block 2 Table Read Protect (Block 2 is not protected from table reads executed in other blocks)
-#pragma config EBTR3 =                                                                                                 \
-    OFF // Block 3 Table Read Protect (Block 3 is not protected from table reads executed in other blocks)
+//#pragma config EBTR2 = OFF // Block 2 Table Read Protect (Block 2 is not protected from table reads executed in other
+//blocks) #pragma config EBTR3 = OFF // Block 3 Table Read Protect (Block 3 is not protected from table reads executed
+//in other blocks)
 #endif
 
 // CONFIG7H
-#pragma config EBTRB =                                                                                                 \
-    OFF // Boot Block Table Read Protect (Boot block is not protected from table reads executed in other blocks)
+//#pragma config EBTRB = OFF // Boot Block Table Read Protect (Boot block is not protected from table reads executed in
+//other blocks)
 
 #ifndef SDCC
-#pragma config nPWRTEN = ON
+//#pragma config nPWRTEN = ON
 #endif
 
 /*#pragma config BOREN = ON, BORV = 285
