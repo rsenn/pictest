@@ -8,7 +8,7 @@
 //#pragma config CFGPLLEN = OFF    // PLL Enable Configuration bit (PLL Disabled (firmware controlled))
 //#pragma config CPUDIV = NOCLKDIV // CPU System Clock Postscaler (CPU uses system clock (no divide))
 //#pragma config LS48MHZ = SYS48X8 // Low Speed USB mode with 48 MHz system clock (System clock at 48 MHz, USB clock
-//divider is set to 8)
+// divider is set to 8)
 
 // CONFIG1H
 #if(XTAL_USED == NO_XTAL)
@@ -87,17 +87,17 @@
 
 // CONFIG7L
 //#pragma config EBTR0 = OFF // Block 0 Table Read Protect (Block 0 is not protected from table reads executed in other
-//blocks) #pragma config EBTR1 = OFF // Block 1 Table Read Protect (Block 1 is not protected from table reads executed
-//in other blocks)
+// blocks) #pragma config EBTR1 = OFF // Block 1 Table Read Protect (Block 1 is not protected from table reads executed
+// in other blocks)
 #if !defined(_18F24K50)
 //#pragma config EBTR2 = OFF // Block 2 Table Read Protect (Block 2 is not protected from table reads executed in other
-//blocks) #pragma config EBTR3 = OFF // Block 3 Table Read Protect (Block 3 is not protected from table reads executed
-//in other blocks)
+// blocks) #pragma config EBTR3 = OFF // Block 3 Table Read Protect (Block 3 is not protected from table reads executed
+// in other blocks)
 #endif
 
 // CONFIG7H
 //#pragma config EBTRB = OFF // Boot Block Table Read Protect (Boot block is not protected from table reads executed in
-//other blocks)
+// other blocks)
 
 #ifndef SDCC
 //#pragma config nPWRTEN = ON
