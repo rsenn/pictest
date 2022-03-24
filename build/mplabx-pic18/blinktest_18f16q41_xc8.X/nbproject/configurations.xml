@@ -63,6 +63,8 @@
         <itemPath>mcc_generated_files/fvr.h</itemPath>
         <itemPath>mcc_generated_files/dac2.h</itemPath>
         <itemPath>mcc_generated_files/spi1.h</itemPath>
+        <itemPath>mcc_generated_files/ext_int.h</itemPath>
+        <itemPath>mcc_generated_files/ccp1.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="src" projectFiles="true">
         <itemPath>../../../src/config-10f206.h</itemPath>
@@ -135,6 +137,8 @@
         <itemPath>mcc_generated_files/fvr.c</itemPath>
         <itemPath>mcc_generated_files/dac2.c</itemPath>
         <itemPath>mcc_generated_files/spi1.c</itemPath>
+        <itemPath>mcc_generated_files/ccp1.c</itemPath>
+        <itemPath>mcc_generated_files/ext_int.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="src" projectFiles="true">
         <itemPath>../../../src/blinktest.c</itemPath>
@@ -251,10 +255,26 @@
       <item path="/home/roman/Projects/pictest/lib/spi.c"
             ex="true"
             overriding="false">
+        <HI-TECH-COMP>
+        </HI-TECH-COMP>
+        <HI-TECH-LINK>
+        </HI-TECH-LINK>
+        <XC8-CO>
+        </XC8-CO>
+        <XC8-config-global>
+        </XC8-config-global>
       </item>
       <item path="/home/roman/Projects/pictest/lib/spi2.c"
             ex="true"
             overriding="false">
+        <HI-TECH-COMP>
+        </HI-TECH-COMP>
+        <HI-TECH-LINK>
+        </HI-TECH-LINK>
+        <XC8-CO>
+        </XC8-CO>
+        <XC8-config-global>
+        </XC8-config-global>
       </item>
       <HI-TECH-COMP>
         <property key="additional-warnings" value="true"/>
@@ -428,10 +448,34 @@
         <property key="user-pack-device-support" value=""/>
       </XC8-config-global>
       <item path="mcc_generated_files/adcc.c" ex="true" overriding="false">
+        <HI-TECH-COMP>
+        </HI-TECH-COMP>
+        <HI-TECH-LINK>
+        </HI-TECH-LINK>
+        <XC8-CO>
+        </XC8-CO>
+        <XC8-config-global>
+        </XC8-config-global>
       </item>
       <item path="mcc_generated_files/dac1.c" ex="true" overriding="false">
+        <HI-TECH-COMP>
+        </HI-TECH-COMP>
+        <HI-TECH-LINK>
+        </HI-TECH-LINK>
+        <XC8-CO>
+        </XC8-CO>
+        <XC8-config-global>
+        </XC8-config-global>
       </item>
       <item path="mcc_generated_files/dac2.c" ex="true" overriding="false">
+        <HI-TECH-COMP>
+        </HI-TECH-COMP>
+        <HI-TECH-LINK>
+        </HI-TECH-LINK>
+        <XC8-CO>
+        </XC8-CO>
+        <XC8-config-global>
+        </XC8-config-global>
       </item>
       <item path="mcc_generated_files/device_config.c" ex="true" overriding="false">
         <HI-TECH-COMP>
@@ -454,6 +498,14 @@
         </XC8-config-global>
       </item>
       <item path="mcc_generated_files/fvr.c" ex="true" overriding="false">
+        <HI-TECH-COMP>
+        </HI-TECH-COMP>
+        <HI-TECH-LINK>
+        </HI-TECH-LINK>
+        <XC8-CO>
+        </XC8-CO>
+        <XC8-config-global>
+        </XC8-config-global>
       </item>
       <item path="mcc_generated_files/interrupt_manager.c"
             ex="true"
@@ -488,6 +540,14 @@
         </XC8-config-global>
       </item>
       <item path="mcc_generated_files/spi1.c" ex="true" overriding="false">
+        <HI-TECH-COMP>
+        </HI-TECH-COMP>
+        <HI-TECH-LINK>
+        </HI-TECH-LINK>
+        <XC8-CO>
+        </XC8-CO>
+        <XC8-config-global>
+        </XC8-config-global>
       </item>
       <item path="mcc_generated_files/tmr0.c" ex="true" overriding="false">
         <HI-TECH-COMP>
