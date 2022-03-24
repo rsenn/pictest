@@ -42,7 +42,7 @@
 #include "../usb/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_app.c"
 #include "../usb/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_descriptors.c" */
 
-#ifdef __18f16q41
+#if defined(__18f16q41) || !defined(__18f4550)
 #define BUTTON_PORT PORTC
 #define BUTTON_SHIFT 1
 #else
@@ -312,7 +312,10 @@ main() {
 #ifdef USE_ADCONVERTER
   adc_init();
 
+#if defined(__18f2550) || defined(__18f252) || defined(__18f14k22) || defined(__18f14k50)
+#else
   ANSELA &= ~0b00000111;
+#endif
   TRISA |= 0b00000111;
 
   // ADIE = 1;

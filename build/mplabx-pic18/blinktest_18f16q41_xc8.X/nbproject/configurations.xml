@@ -34,6 +34,8 @@
         <itemPath>../../../lib/typedef.h</itemPath>
         <itemPath>../../../lib/uart.h</itemPath>
         <itemPath>../../../lib/pcd8544.h</itemPath>
+        <itemPath>/home/roman/Projects/pictest/lib/spi.h</itemPath>
+        <itemPath>/home/roman/Projects/pictest/lib/compiler.h</itemPath>
       </logicalFolder>
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
@@ -108,6 +110,9 @@
         <itemPath>../../../lib/format.c</itemPath>
         <itemPath>../../../lib/buffer.c</itemPath>
         <itemPath>../../../lib/pcd8544.c</itemPath>
+        <itemPath>/home/roman/Projects/pictest/lib/spi.c</itemPath>
+        <itemPath>/home/roman/Projects/pictest/lib/spi1.c</itemPath>
+        <itemPath>/home/roman/Projects/pictest/lib/spi2.c</itemPath>
       </logicalFolder>
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
@@ -414,6 +419,12 @@
         <property key="stack-type" value="hybrid"/>
         <property key="user-pack-device-support" value=""/>
       </XC8-config-global>
+      <item path="mcc_generated_files/adcc.c" ex="true" overriding="false">
+      </item>
+      <item path="mcc_generated_files/dac1.c" ex="true" overriding="false">
+      </item>
+      <item path="mcc_generated_files/dac2.c" ex="true" overriding="false">
+      </item>
       <item path="mcc_generated_files/device_config.c" ex="true" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
@@ -433,6 +444,8 @@
         </XC8-CO>
         <XC8-config-global>
         </XC8-config-global>
+      </item>
+      <item path="mcc_generated_files/fvr.c" ex="true" overriding="false">
       </item>
       <item path="mcc_generated_files/interrupt_manager.c"
             ex="true"
@@ -465,6 +478,8 @@
         </XC8-CO>
         <XC8-config-global>
         </XC8-config-global>
+      </item>
+      <item path="mcc_generated_files/spi1.c" ex="true" overriding="false">
       </item>
       <item path="mcc_generated_files/tmr0.c" ex="true" overriding="false">
         <HI-TECH-COMP>
