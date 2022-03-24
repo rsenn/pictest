@@ -310,7 +310,7 @@ main() {
   lcd_puts("START");
 
 #ifdef USE_ADCONVERTER
-  adc_init();
+  adc_init(ADCS_FOSC_64, 0);
 
 #if defined(__18f2550) || defined(__18f252) || defined(__18f14k22) || defined(__18f14k50)
 #else
