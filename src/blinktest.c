@@ -32,6 +32,9 @@
 #if USE_PCD8544
 #include "../lib/pcd8544.h"
 #endif
+#if USE_MCP3001
+#include "../lib/mcp3001.h"
+#endif
 #include <math.h>
 
 /* #include "../usb/USB_Stack/USB/usb_config.h"
@@ -118,7 +121,10 @@ volatile unsigned int adc_result = 0;
 //-----------------------------------------------------------------------------
 // Interrupt handling routine
 //-----------------------------------------------------------------------------
+#if defined(USE_SOFTPWM) || defined(USE_UART) || defined(USE_SER) || defined(USE_TIMER0) || defined(USE_ADCONVERTER)
+
 INTERRUPT_FN() {
+  NOP();
   /*
     if(TMR1IF) {
       // Clear timer interrupt bit
@@ -169,6 +175,7 @@ INTERRUPT_FN() {
   }
 #endif
 }
+#endif
 
 volatile int chan = 0;
 
@@ -272,6 +279,11 @@ main() {
   TIMER0_INTERRUPT_CLEAR();
   T0IE = 1;
 #endif
+
+#if USE_MCP3001
+  mcp3001_init();
+#endif
+
   // timer1_init(2);
   LED_TRIS();
   RA3 = RA5 = HIGH;
@@ -305,9 +317,11 @@ main() {
 #endif
   INTERRUPT_ENABLE();
 
+#if defined(USE_NOKIA5110_LCD)
   lcd_init();
   lcd_clear();
   lcd_puts("START");
+#endif
 
 #ifdef USE_ADCONVERTER
   adc_init(ADCS_FOSC_64, 0);
@@ -443,6 +457,7 @@ loop() {
     put_str(softser_putch, ")\r\n");
 #endif
 
+#ifdef USE_SOFTPWM
     softpwm_disable();
     {
       softpwm_set(0, rgb[0]);
@@ -450,7 +465,7 @@ loop() {
       softpwm_set(2, rgb[2]);
     }
     softpwm_enable();
-
+#endif
     update_colors = 0;
     //      prev_index = index;
   }

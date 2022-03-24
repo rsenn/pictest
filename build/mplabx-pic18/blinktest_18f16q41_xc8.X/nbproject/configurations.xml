@@ -115,6 +115,7 @@
         <itemPath>/home/roman/Projects/pictest/lib/spi.c</itemPath>
         <itemPath>/home/roman/Projects/pictest/lib/spi1.c</itemPath>
         <itemPath>/home/roman/Projects/pictest/lib/spi2.c</itemPath>
+        <itemPath>/home/roman/Projects/pictest/lib/mcp3001.c</itemPath>
       </logicalFolder>
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
@@ -172,7 +173,7 @@
         <targetDevice>PIC18F16Q41</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool></platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.36</languageToolchainVersion>
         <platform>2</platform>
@@ -264,6 +265,10 @@
         <XC8-config-global>
         </XC8-config-global>
       </item>
+      <item path="/home/roman/Projects/pictest/lib/spi1.c"
+            ex="true"
+            overriding="false">
+      </item>
       <item path="/home/roman/Projects/pictest/lib/spi2.c"
             ex="true"
             overriding="false">
@@ -283,7 +288,7 @@
         <property key="default-bitfield-type" value="true"/>
         <property key="default-char-type" value="true"/>
         <property key="define-macros"
-                  value="__18f16q41=1;_XTAL_FREQ=48000000;UART_BAUD=38400;USE_TIMER0=1;_USE_TIMER1=1;_USE_TIMER2=1;_USE_SOFTPWM=1;HAVE_COMPARATOR=1;NDEBUG=1;__XC8=1;_USE_SOFTSER=1;SOFTSER_TIMER=2;USE_NOKIA5110_LCD=1;_USE_ADCONVERTER=1;XTAL_USED=NO_XTAL"/>
+                  value="__18f16q41=1;_XTAL_FREQ=48000000;UART_BAUD=38400;_USE_TIMER0=1;_USE_TIMER1=1;_USE_TIMER2=1;_USE_SOFTPWM=1;HAVE_COMPARATOR=1;NDEBUG=1;__XC8=1;_USE_SOFTSER=1;SOFTSER_TIMER=2;USE_NOKIA5110_LCD=1;_USE_ADCONVERTER=1;XTAL_USED=NO_XTAL;USE_MCP3001=1"/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
                   value="../../..;../../../lib;../../../src;../../../"/>
@@ -447,6 +452,8 @@
         <property key="stack-type" value="hybrid"/>
         <property key="user-pack-device-support" value=""/>
       </XC8-config-global>
+      <item path="main.c" ex="true" overriding="false">
+      </item>
       <item path="mcc_generated_files/adcc.c" ex="true" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
@@ -456,6 +463,8 @@
         </XC8-CO>
         <XC8-config-global>
         </XC8-config-global>
+      </item>
+      <item path="mcc_generated_files/ccp1.c" ex="true" overriding="false">
       </item>
       <item path="mcc_generated_files/dac1.c" ex="true" overriding="false">
         <HI-TECH-COMP>
@@ -496,6 +505,8 @@
         </XC8-CO>
         <XC8-config-global>
         </XC8-config-global>
+      </item>
+      <item path="mcc_generated_files/ext_int.c" ex="true" overriding="false">
       </item>
       <item path="mcc_generated_files/fvr.c" ex="true" overriding="false">
         <HI-TECH-COMP>
@@ -663,7 +674,7 @@
         <property key="default-bitfield-type" value="true"/>
         <property key="default-char-type" value="true"/>
         <property key="define-macros"
-                  value="__18f16q41=1;_XTAL_FREQ=48000000;UART_BAUD=38400;_USE_TIMER0=1;_USE_TIMER1=1;_USE_TIMER2=0;_USE_SOFTPWM=1;HAVE_COMPARATOR=1;DEBUG=1;__XC8=1;_USE_SOFTSER=1;SOFTSER_TIMER=2;USE_NOKIA5110_LCD=1;_USE_ADCONVERTER=1;XTAL_USED=NO_XTAL"/>
+                  value="__18f16q41=1;_XTAL_FREQ=48000000;UART_BAUD=38400;_USE_TIMER0=1;_USE_TIMER1=1;_USE_TIMER2=0;_USE_SOFTPWM=1;HAVE_COMPARATOR=1;DEBUG=1;__XC8=1;_USE_SOFTSER=1;SOFTSER_TIMER=2;USE_NOKIA5110_LCD=1;_USE_ADCONVERTER=1;XTAL_USED=NO_XTAL;USE_MCP3001=1"/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
                   value="../../..;../../../lib;../../../src;../../../"/>

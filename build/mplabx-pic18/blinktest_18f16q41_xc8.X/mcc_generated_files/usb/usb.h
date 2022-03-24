@@ -14,11 +14,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-To request to license the code under the MLA license (www.microchip.com/mla_license), 
+To request to license the code under the MLA license (www.microchip.com/mla_license),
 please contact mla_licensing@microchip.com
 *******************************************************************************/
-//DOM-IGNORE-END
-
+// DOM-IGNORE-END
 
 /*******************************************************************************
  Module for Microchip USB Library
@@ -44,24 +43,21 @@ please contact mla_licensing@microchip.com
 
 #include "usb_device_config.h"
 
-#include "usb_common.h"         // Common USB library definitions
-#include "usb_ch9.h"            // USB device framework definitions
+#include "usb_common.h" // Common USB library definitions
+#include "usb_ch9.h"    // USB device framework definitions
 
-#if defined( USB_SUPPORT_DEVICE )
-    #include "usb_device.h"     // USB Device abstraction layer interface
-    #include "usb_device_cdc.h"
+#if defined(USB_SUPPORT_DEVICE)
+#include "usb_device.h" // USB Device abstraction layer interface
+#include "usb_device_cdc.h"
 #endif
 
-#include "usb_hal.h"            // Hardware Abstraction Layer interface
+#include "usb_hal.h" // Hardware Abstraction Layer interface
 
-/* USB Library version number.  This can be used to verify in an application 
+/* USB Library version number.  This can be used to verify in an application
    specific version of the library is being used.
  */
-#define USB_MAJOR_VER   2        // Firmware version, major release number.
-#define USB_MINOR_VER   13       // Firmware version, minor release number.
-#define USB_DOT_VER     1        // Firmware version, dot release number.
+#define USB_MAJOR_VER 2  // Firmware version, major release number.
+#define USB_MINOR_VER 13 // Firmware version, minor release number.
+#define USB_DOT_VER 1    // Firmware version, dot release number.
 
 #endif // _USB_H_
-
-
-

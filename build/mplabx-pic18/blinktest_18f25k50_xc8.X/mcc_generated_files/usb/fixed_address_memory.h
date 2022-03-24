@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-To request to license the code under the MLA license (www.microchip.com/mla_license), 
+To request to license the code under the MLA license (www.microchip.com/mla_license),
 please contact mla_licensing@microchip.com
 *******************************************************************************/
 
@@ -23,15 +23,15 @@ please contact mla_licensing@microchip.com
 #define FIXED_ADDRESS_MEMORY
 
 #if(__XC8_VERSION < 2000)
-    #define IN_DATA_BUFFER_ADDRESS_TAG      @0x500
-    #define OUT_DATA_BUFFER_ADDRESS_TAG     @0x540
-    #define CONTROL_BUFFER_ADDRESS_TAG      @0x580
-    #define DRIVER_DATA_ADDRESS_TAG         @0x588
+#define IN_DATA_BUFFER_ADDRESS_TAG @0x500
+#define OUT_DATA_BUFFER_ADDRESS_TAG @0x540
+#define CONTROL_BUFFER_ADDRESS_TAG @0x580
+#define DRIVER_DATA_ADDRESS_TAG @0x588
 #else
-    #define IN_DATA_BUFFER_ADDRESS_TAG      __at(0x500)
-    #define OUT_DATA_BUFFER_ADDRESS_TAG     __at(0x540)
-    #define CONTROL_BUFFER_ADDRESS_TAG      __at(0x580)
-    #define DRIVER_DATA_ADDRESS_TAG         __at(0x588)
+#define IN_DATA_BUFFER_ADDRESS_TAG __at(0x500)
+#define OUT_DATA_BUFFER_ADDRESS_TAG __at(0x540)
+#define CONTROL_BUFFER_ADDRESS_TAG __at(0x580)
+#define DRIVER_DATA_ADDRESS_TAG __at(0x588)
 #endif
 
-#endif //FIXED_MEMORY_ADDRESS
+#endif // FIXED_MEMORY_ADDRESS

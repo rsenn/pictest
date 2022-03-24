@@ -14,10 +14,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-To request to license the code under the MLA license (www.microchip.com/mla_license), 
+To request to license the code under the MLA license (www.microchip.com/mla_license),
 please contact mla_licensing@microchip.com
 *******************************************************************************/
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
 /** INCLUDES *******************************************************/
 #include <stdbool.h>
@@ -46,54 +46,44 @@ please contact mla_licensing@microchip.com
  *
  * Note:            None
  *******************************************************************/
-bool USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void *pdata, uint16_t size)
-{
-    switch( (int) event )
-    {
-        case EVENT_TRANSFER:
-            break;
+bool
+USER_USB_CALLBACK_EVENT_HANDLER(USB_EVENT event, void* pdata, uint16_t size) {
+  switch((int)event) {
+    case EVENT_TRANSFER: break;
 
-        case EVENT_SOF:
-            break;
+    case EVENT_SOF: break;
 
-        case EVENT_SUSPEND:
-            //Call the hardware platform specific handler for suspend events for
-            //possible further action (like optionally going reconfiguring the application
-            //for lower power states and going to sleep during the suspend event).  This
-            //would normally be done in USB compliant bus powered applications, although
-            //no further processing is needed for purely self powered applications that
-            //don't consume power from the host.
-            break;
+    case EVENT_SUSPEND:
+      // Call the hardware platform specific handler for suspend events for
+      // possible further action (like optionally going reconfiguring the application
+      // for lower power states and going to sleep during the suspend event).  This
+      // would normally be done in USB compliant bus powered applications, although
+      // no further processing is needed for purely self powered applications that
+      // don't consume power from the host.
+      break;
 
-        case EVENT_RESUME:
-            //Call the hardware platform specific resume from suspend handler (ex: to
-            //restore I/O pins to higher power states if they were changed during the 
-            //preceding SYSTEM_Initialize(SYSTEM_STATE_USB_SUSPEND) call at the start
-            //of the suspend condition.
-            break;
+    case EVENT_RESUME:
+      // Call the hardware platform specific resume from suspend handler (ex: to
+      // restore I/O pins to higher power states if they were changed during the
+      // preceding SYSTEM_Initialize(SYSTEM_STATE_USB_SUSPEND) call at the start
+      // of the suspend condition.
+      break;
 
-        case EVENT_CONFIGURED:
-            CDCInitEP();
-            break;
+    case EVENT_CONFIGURED: CDCInitEP(); break;
 
-        case EVENT_SET_DESCRIPTOR:
-            break;
+    case EVENT_SET_DESCRIPTOR: break;
 
-        case EVENT_EP0_REQUEST:
-            /* We have received a non-standard USB request.  The CDC driver
-             * needs to check to see if the request was for it. */
-            USBCheckCDCRequest();
-            break;
+    case EVENT_EP0_REQUEST:
+      /* We have received a non-standard USB request.  The CDC driver
+       * needs to check to see if the request was for it. */
+      USBCheckCDCRequest();
+      break;
 
-        case EVENT_BUS_ERROR:
-            break;
+    case EVENT_BUS_ERROR: break;
 
-        case EVENT_TRANSFER_TERMINATED:
-            break;
+    case EVENT_TRANSFER_TERMINATED: break;
 
-        default:
-            break;
-    }
-    return true;
+    default: break;
+  }
+  return true;
 }
-

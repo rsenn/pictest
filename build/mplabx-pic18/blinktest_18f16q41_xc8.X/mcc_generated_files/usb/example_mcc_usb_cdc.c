@@ -22,7 +22,7 @@
 
 /*
     MCC USB CDC Demo Usage:
- 
+
     Call the MCC_USB_CDC_DemoTasks() function from your main loop.
     It will read data sent from the host and echo it back +1.  If you open
     up a terminal window and type 'a' then 'b' will be echoed back.
@@ -34,47 +34,37 @@
 static uint8_t readBuffer[64];
 static uint8_t writeBuffer[64];
 
-void MCC_USB_CDC_DemoTasks(void)
-{
-    if( USBGetDeviceState() < CONFIGURED_STATE )
-    {
-        return;
+void
+MCC_USB_CDC_DemoTasks(void) {
+  if(USBGetDeviceState() < CONFIGURED_STATE) {
+    return;
+  }
+
+  if(USBIsDeviceSuspended() == true) {
+    return;
+  }
+
+  if(USBUSARTIsTxTrfReady() == true) {
+    uint8_t i;
+    uint8_t numBytesRead;
+
+    numBytesRead = getsUSBUSART(readBuffer, sizeof(readBuffer));
+
+    for(i = 0; i < numBytesRead; i++) {
+      switch(readBuffer[i]) {
+        /* echo line feeds and returns without modification. */
+        case 0x0A:
+        case 0x0D: writeBuffer[i] = readBuffer[i]; break;
+
+        /* all other characters get +1 (e.g. 'a' -> 'b') */
+        default: writeBuffer[i] = readBuffer[i] + 1; break;
+      }
     }
 
-    if( USBIsDeviceSuspended()== true )
-    {
-        return;
+    if(numBytesRead > 0) {
+      putUSBUSART(writeBuffer, numBytesRead);
     }
+  }
 
-    if( USBUSARTIsTxTrfReady() == true)
-    {
-        uint8_t i;
-        uint8_t numBytesRead;
-
-        numBytesRead = getsUSBUSART(readBuffer, sizeof(readBuffer));
-
-        for(i=0; i<numBytesRead; i++)
-        {
-            switch(readBuffer[i])
-            {
-                /* echo line feeds and returns without modification. */
-                case 0x0A:
-                case 0x0D:
-                    writeBuffer[i] = readBuffer[i];
-                    break;
-
-                /* all other characters get +1 (e.g. 'a' -> 'b') */
-                default:
-                    writeBuffer[i] = readBuffer[i] + 1;
-                    break;
-            }
-        }
-
-        if(numBytesRead > 0)
-        {
-            putUSBUSART(writeBuffer,numBytesRead);
-        }
-    }
-
-    CDCTxService();
+  CDCTxService();
 }
