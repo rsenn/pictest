@@ -277,7 +277,7 @@ main() {
   timer0_init(PRESCALE_1_256 | TIMER0_FLAGS_8BIT);
 
   TIMER0_INTERRUPT_CLEAR();
-  T0IE = 1;
+  TMR0IE = 1;
 #endif
 
 #ifdef USE_MCP3001
