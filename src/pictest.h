@@ -8,7 +8,7 @@
 //#define CCPR1 (((uint16_t)CCPR1H << 8)|(CCPR1L))
 //#define TMR1 (((uint16_t)TMR1H << 8)|(TMR1L))
 
-#if defined(__10f206)
+#ifdef __10f206
 #define LED_PIN GP2
 #define LED_TRIS() TRISGP2 = 0;
 #define LED2_CATHODE GP2

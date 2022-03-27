@@ -64,7 +64,7 @@ main(void) {
 
   adc_init();
 
-#if USE_HD44780_LCD
+#ifdef USE_HD44780_LCD
   lcd_init(1);
   lcd_begin(2, 1);
 #endif
@@ -109,7 +109,7 @@ main(void) {
   TRISC0 = 0;
   RC0 = 0;
 
-#if USE_HD44780_LCD
+#ifdef USE_HD44780_LCD
   lcd_clear();
   lcd_print("pictest3");
 #endif
@@ -117,7 +117,7 @@ main(void) {
   for(;;) { // Loop forever
     poti = adc_read(0);
 
-#if USE_HD44780_LCD
+#ifdef USE_HD44780_LCD
     lcd_gotoxy(10, 0);
     lcd_print_number(((double)poti * 5000 / 1024), 10, 4);
     lcd_print("mV");

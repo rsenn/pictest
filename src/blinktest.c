@@ -1,5 +1,5 @@
 #define USE_MCLRE 1
-#if USE_ADCONVERTER
+#ifdef USE_ADCONVERTER
 #define VREF_PLUS 3.3
 #define VREF_MINUS 0.0
 #include "../lib/adc.h"
@@ -7,32 +7,32 @@
 #include "../lib/comparator.h"
 #include "../lib/const.h"
 #include "../lib/device.h"
-#include "../lib/interrupt.h"
+#include "../lib/timer.h"
+	#include "../lib/interrupt.h"
 #include "../lib/random.h"
 #define SOFTPWM_PIN_COUNT 4
 #include "../lib/softpwm.h"
-#include "../lib/timer.h"
 #include "../lib/delay.h"
 #include "../lib/format.h"
 #include "pictest.h"
 #include "config-bits.h"
 
-#if USE_UART
+#ifdef USE_UART
 #include "../lib/uart.h"
 #endif
-#if USE_SER
+#ifdef USE_SER
 #include "../lib/ser.h"
 #endif
-#if USE_SOFTSER
+#ifdef USE_SOFTSER
 #include "../lib/softser.h"
 #endif
-#if USE_NOKIA5110_LCD
+#ifdef USE_NOKIA5110_LCD
 #include "../lib/lcd5110.h"
 #endif
-#if USE_PCD8544
+#ifdef USE_PCD8544
 #include "../lib/pcd8544.h"
 #endif
-#if USE_MCP3001
+#ifdef USE_MCP3001
 #include "../lib/mcp3001.h"
 #endif
 #include <math.h>
@@ -94,7 +94,7 @@ dummy_putch(char c) {}
 typedef void(putch_fn)(char);
 
 putch_fn* put_char =
-#if USE_UART
+#ifdef USE_UART
     uart_putch
 #elif USE_SER
     ser_putch
@@ -114,7 +114,7 @@ volatile BOOL run = 0;
 volatile uint8_t msec_count = 0;
 volatile uint16_t bres;
 volatile uint32_t msecs, hsecs;
-#if USE_ADCONVERTER
+#ifdef USE_ADCONVERTER
 volatile unsigned int adc_result = 0;
 #endif
 
@@ -130,7 +130,7 @@ INTERRUPT_FN() {
       // Clear timer interrupt bit
       TMR1IF = 0;
     }*/
-#if USE_SOFTPWM
+#ifdef USE_SOFTPWM
   if(SOFTPWM_INTERRUPT_FLAG) {
     SOFTPWM_PIN(0, LATC0);
     SOFTPWM_PIN(1, LATC1);
@@ -140,13 +140,13 @@ INTERRUPT_FN() {
     SOFTPWM_INTERRUPT_FLAG = 0;
   }
 #endif
-#if USE_UART
+#ifdef USE_UART
   uart_isr();
 #endif
-#if USE_SER
+#ifdef USE_SER
   ser_int();
 #endif
-#if USE_TIMER0
+#ifdef USE_TIMER0
   if(TIMER0_INTERRUPT_FLAG) {
     bres += 256 * 4;
 
@@ -224,13 +224,13 @@ main() {
 
   random_init(128, 79, 209);
 
-#if USE_UART
+#ifdef USE_UART
   uart_init();
 #endif
-#if USE_SER
+#ifdef USE_SER
   ser_init();
 #endif
-#if USE_SOFTSER
+#ifdef USE_SOFTSER
   softser_init();
 #endif
 
@@ -273,14 +273,14 @@ main() {
   // WPUE3 = 1;
 #endif
 
-#if USE_TIMER0
+#ifdef USE_TIMER0
   timer0_init(PRESCALE_1_256 | TIMER0_FLAGS_8BIT);
 
   TIMER0_INTERRUPT_CLEAR();
   T0IE = 1;
 #endif
 
-#if USE_MCP3001
+#ifdef USE_MCP3001
   mcp3001_init();
 #endif
 
@@ -304,7 +304,7 @@ main() {
   LED2_ANODE = 0;
 #endif
 
-#if USE_SOFTPWM
+#ifdef USE_SOFTPWM
   softpwm_init();
   softpwm_values[0] = 30;
   softpwm_values[1] = 60;
@@ -317,7 +317,7 @@ main() {
 #endif
   INTERRUPT_ENABLE();
 
-#if defined(USE_NOKIA5110_LCD)
+#ifdef USE_NOKIA5110_LCD
   lcd_init();
   lcd_clear();
   lcd_puts("START");
@@ -359,7 +359,7 @@ loop() {
   update_colors = 0;
   input = 0;
 
-#if USE_UART
+#ifdef USE_UART
   if(RCIF || OERR || FERR) {
     char dummy = RCREG;
     input = RCREG;
@@ -439,7 +439,7 @@ loop() {
     uart_enable();
 #endif
 
-#if USE_SER || USE_UART
+#if defined(USE_SER) || defined(USE_UART)
     put_char('#');
     put_number(put_char, index, 10, 0);
     put_str(put_char, ": R=");

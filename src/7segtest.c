@@ -11,13 +11,13 @@
 #include "../lib/format.h"
 #include "pictest.h"
 
-#if USE_UART
+#ifdef USE_UART
 #include "../lib/uart.h"
 #endif
-#if USE_SER
+#ifdef USE_SER
 #include "../lib/ser.h"
 #endif
-#if USE_SOFTSER
+#ifdef USE_SOFTSER
 #include "../lib/softser.h"
 #endif
 
@@ -84,7 +84,7 @@ typedef void(putch_fn)(char);
 typedef uint8_t(getch_fn)(void);
 
 putch_fn* put_char =
-#if USE_UART
+#ifdef USE_UART
     uart_putch
 #elif USE_SER
     ser_putch
@@ -144,7 +144,7 @@ INTERRUPT_FN() {
       TMR1IF = 0;
     }*/
 
-#if USE_SER
+#ifdef USE_SER
   ser_int();
 #endif
 
@@ -230,7 +230,7 @@ main() {
 
   LED_OFF();
 
-#if USE_SER
+#ifdef USE_SER
   ser_init();
 #endif
 

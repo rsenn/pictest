@@ -29,7 +29,7 @@ INTERRUPT_FN() {
 #ifdef USE_SER
   ser_int();
 #endif
-#if USE_UART
+#ifdef USE_UART
   uart_isr();
 #endif
   if(TIMER0_INTERRUPT_FLAG) {
@@ -98,7 +98,7 @@ main() {
   softser_init();
 #endif
 
-#if USE_UART
+#ifdef USE_UART
   uart_init();
 #endif
 
@@ -168,7 +168,7 @@ main() {
 
   //   flash_busy_led(1000);
 
-#if USE_UART
+#ifdef USE_UART
   uart_puts("XXXX\r\n");
 #endif
 #ifdef USE_SER
@@ -193,7 +193,7 @@ loop() {
   static int32_t prev = -1;
 
   if(seconds != prev) {
-#if USE_UART
+#ifdef USE_UART
     put_number(uart_putch, seconds, 10, -5);
     uart_putch('\r');
     uart_putch('\n');

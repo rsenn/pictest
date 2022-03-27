@@ -1,4 +1,3 @@
-
 VERSION_MAJOR = 0
 VERSION_MINOR = 9
 VERSION_PATCH = 1
@@ -21,8 +20,15 @@ endef
 
 VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
+$(info CHIP: $(CHIP))
+
+ifeq ($(CHIP),18f16q41)
+CCVER := v2.36
+else
 CCVER ?= v1.43
-#CCVER = v1.34
+endif
+$(info CCVER: $(CCVER))
+$(info OS: $(OS))
 
 PROGRAMFILES ?= C:/Program Files (x86)
 
@@ -39,9 +45,10 @@ CCDIR = /opt/microchip/xc8/$(CCVER)
 else
 #CCDIR = $(patsubst %/bin,%,$(dir $(PICC)))
 CCDIR = $(PROGRAMFILES)/Microchip/xc8/$(CCVER)
-CCDIR := 
+#CCDIR := 
 endif
 endif
+$(info CCDIR: $(CCDIR))
 
 ifeq ($(VERBOSE),1)
 		QUIET_STDERR := 

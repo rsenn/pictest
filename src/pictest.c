@@ -1,7 +1,7 @@
 #include "pictest.h"
 #include "config-bits.h"
 #include "../lib/timer.h"
-#if USE_UART
+#ifdef USE_UART
 #include "../lib/uart.h"
 #endif
 #ifdef USE_SER
@@ -38,7 +38,7 @@ static const char buttons[6] = { ' ', '-', 'D', '+', 'U', '!' };
 #if defined(HI_TECH_C) || defined(__XC__)
 #endif
 
-#if defined(__IAR_SYSTEMS_ICC__)
+#ifdef __IAR_SYSTEMS_ICC__
 #include <io16f876a.h>
 #endif
 
@@ -204,7 +204,7 @@ TMR2ON = 1;       // Enable timer 2.
     TMR1IE = 1;
   */
 
-#if USE_UART
+#ifdef USE_UART
   uart_init();
 
   RCIF = 0;
@@ -253,7 +253,7 @@ TMR2ON = 1;       // Enable timer 2.
   shell_init(&sh_uart, uart_getch, uart_putch);
 #endif
 
-#if USE_LCD
+#ifdef USE_LCD
   lcd_home();
   lcd_print("count: ");
 #endif
@@ -266,7 +266,7 @@ TMR2ON = 1;       // Enable timer 2.
     INTERRUPT_ENABLE();
 
     if(seconds != prev) {
-#if USE_UART
+#ifdef USE_UART
       putchar = &uart_putch;
 #elif defined(USE_SER)
       putchar = ser_putch;
@@ -275,7 +275,7 @@ TMR2ON = 1;       // Enable timer 2.
       putchar('\r');
       putchar('\n');
 
-#if USE_LCD
+#ifdef USE_LCD
       // lcd_home();lcd_print("     ");
       lcd_gotoxy(7, 0);
       lcd_print_number(seconds, 10, -5);
@@ -285,11 +285,11 @@ TMR2ON = 1;       // Enable timer 2.
 #ifdef USE_7SEGMENT
       display_number(seconds);
 #endif
-#if USE_SOFTSER
+#ifdef USE_SOFTSER
       if(softser_poll(SOFTSER_BAUD)) {
         int c;
         if((c = softser_getch()) != -1) {
-#if USE_LCD
+#ifdef USE_LCD
           lcd_putch(c);
 #endif
         }
@@ -337,7 +337,7 @@ TMR2ON = 1;       // Enable timer 2.
     lcd_print("s");
 #endif
 
-#if USE_UART
+#ifdef USE_UART
 #ifdef NO_MIDI
     putchar = uart_putch;
     put_number(seconds, 10, -5);
@@ -631,7 +631,7 @@ INTERRUPT_FN() {
     RBIF = 0;
   }
 #endif
-#if USE_UART
+#ifdef USE_UART
   if(RCIF) {
     serial_in = RCREG;
 

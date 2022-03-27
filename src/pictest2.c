@@ -117,7 +117,7 @@ INTERRUPT_HANDLER() {
     RBIF = 0;
   }
 #endif
-#if USE_UART
+#ifdef USE_UART
   if(RCIF) {
     serial_in = RCREG;
     RCIF = 0;
@@ -229,7 +229,7 @@ main() {
 
   reset_speed();
 
-#if USE_UART
+#ifdef USE_UART
   uart_init();
 #endif
 
