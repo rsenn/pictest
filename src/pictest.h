@@ -128,4 +128,4 @@
 
 #endif
 
-void loop();
+void loop(void);

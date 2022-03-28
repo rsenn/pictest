@@ -179,9 +179,9 @@ INTERRUPT_FN() {
 
 volatile int chan = 0;
 
+#ifdef USE_ADCONVERTER
 void
 read_analog(void) {
-
   uint16_t result = adc_read(chan);
   double voltage = ADVAL_V(result);
 
@@ -194,6 +194,7 @@ read_analog(void) {
   chan++;
   chan %= 3;
 }
+#endif
 
 //-----------------------------------------------------------------------------
 int
@@ -249,7 +250,7 @@ main() {
   SET_LED2(0);
 #endif
 
-#if HAVE_COMPARATOR
+#ifdef HAVE_COMPARATOR
   comparator_disable();
 // CMCONbits.CON = 0;
 //  CMCON = 0b111;          //Disable LATA Comparators
@@ -345,7 +346,7 @@ main() {
 }
 
 void
-loop() {
+loop(void) {
   uint8_t index;
   static uint32_t interval = 10;
   char input = 0;
