@@ -17,8 +17,8 @@ VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 PROGRAMFILES = C:/Program Files (x86)
 
 OS := $(shell uname -o)
-$(info OS: $(OS))
-$(info CHIP: $(CHIP))
+#$(info OS: $(OS))
+#$(info CHIP: $(CHIP))
 #CC = $(shell which picc 2>/dev/null)
 
 
@@ -66,10 +66,10 @@ else
 CC = $(COMPILER_NAME)
 endif
 
-$(info CC: $(CC))
-$(info CCVER: $(CCVER))
+#$(info CC: $(CC))
+#$(info CCVER: $(CCVER))
 
-$(info COMPILER_NAME: $(COMPILER_NAME))
+#$(info COMPILER_NAME: $(COMPILER_NAME))
 
 #ifeq ($(strip $(CC)),)
 #CC = picc
@@ -112,11 +112,11 @@ endef
 targets = $(foreach SRC,$(SOURCES),$(call target,$(subst .c,.p1,$(notdir $(SRC))),$(SRC),@echo "Target for $(SRC)"$(nl)$(p1cmds)))
 
 
-$(info targets= $(nl)$(targets))
-$(info OBJDIR: $(OBJDIR))
-$(info SOURCES: $(SOURCES))
-$(info P1OBJS: $(P1OBJS))
-$(info ASSRCS: $(ASSRCS))
+#$(info targets= $(nl)$(targets))
+#$(info OBJDIR: $(OBJDIR))
+#$(info SOURCES: $(SOURCES))
+#$(info P1OBJS: $(P1OBJS))
+#$(info ASSRCS: $(ASSRCS))
 
 COMMON_FLAGS += -N127
 #COMMON_FLAGS += --scandep
@@ -198,7 +198,7 @@ COFFILE = $(subst .hex,.cof,$(HEXFILE))
 
 DEPS := $(CC) --scandep $(SOURCES)
 
-$(info DEPS: $(DEPS))
+#$(info DEPS: $(DEPS))
 
 #-include build/vars.mk
 

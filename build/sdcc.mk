@@ -134,7 +134,7 @@ LIBS += -llibm18f.lib
 endif
 
 
-$(info LIBS: $(LIBS))
+#$(info LIBS: $(LIBS))
 CFLAGS += -p$(chipl)
 
 #LDFLAGS += --summary="default,-psect,-class,+mem,-hex,-file"

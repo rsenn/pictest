@@ -20,15 +20,15 @@ endef
 
 VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 
-$(info CHIP: $(CHIP))
+#$(info CHIP: $(CHIP))
 
 ifeq ($(CHIP),18f16q41)
 CCVER := v2.36
 else
 CCVER ?= v1.43
 endif
-$(info CCVER: $(CCVER))
-$(info OS: $(OS))
+#$(info CCVER: $(CCVER))
+#$(info OS: $(OS))
 
 PROGRAMFILES ?= C:/Program Files (x86)
 
@@ -48,7 +48,7 @@ CCDIR = $(PROGRAMFILES)/Microchip/xc8/$(CCVER)
 #CCDIR := 
 endif
 endif
-$(info CCDIR: $(CCDIR))
+#$(info CCDIR: $(CCDIR))
 
 ifeq ($(VERBOSE),1)
 		QUIET_STDERR := 
@@ -98,7 +98,7 @@ OPT = space
 
 SOURCES = $($(PROGRAM)_SOURCES) $(COMMON_SOURCES)
 COMMON_FLAGS += $($(PROGRAM)_DEFS)
-$(info COMMON_FLAGS:$(COMMON_FLAGS))
+#$(info COMMON_FLAGS:$(COMMON_FLAGS))
 DEPENDS := $(patsubst %.c,$(OBJDIR)%.dep,$(notdir $(SOURCES)))
 P1OBJS := $(patsubst %.c,$(OBJDIR)%.p1,$(notdir $(SOURCES)))
 ASSRCS := $(patsubst %.c,$(OBJDIR)%.as,$(notdir $(SOURCES)))
