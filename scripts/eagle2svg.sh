@@ -10,6 +10,14 @@ str_toupper ()
     echo "$@" | tr "[[:lower:]]" "[[:upper:]]"
 }
 
+get_warning_popup() {
+ (ID=$(xwininfo -name "Warning" 2>&1 | sed -n 's,.* id: \([^ ]*\).*,\1,p')
+  test -n "$ID" && echo "$ID")
+}
+
+close_warning_popup() {
+  xdotool windowraise ${1:-$(get_warning_popup)}; sleep 0.1; xdotool keydown Return
+}
 
 find_program() {
   V=$1
@@ -114,7 +122,7 @@ eagle_to_pdf() {
  set-layers() {
    (IFS=" "
    P="$1"; shift
-   [ $# -gt 0 ] || set --  ""{Docu,Finish,Keepout,Map,Names,Place,Restrict,Silk,Stop,Values}
+   [ $# -gt 0 ] || set --  ""{Docu,Finish,Keepout,Map,Names,Origins,Place,Restrict,Silk,Stop,Values}
    set --  $(addprefix "$P" "$@")
    echo "$*")
  }
@@ -123,7 +131,7 @@ eagle_to_pdf() {
   case $INPUT in
      *.brd)
 
-       EAGLE_LAYERS=$(set -- Stop Cream ; set-layers -b "$@"; set-layers -t "$@")
+       EAGLE_LAYERS=$(set -- Origins Stop Cream ; set-layers -b "$@"; set-layers -t "$@")
        EAGLE_LAYERS="$EAGLE_LAYERS -Drills -Holes Document -Reference bValues tValues"
 
        case "$OUTPUT" in
@@ -135,7 +143,7 @@ eagle_to_pdf() {
            ;;
        esac
 
-       #EAGLE_CMD="DISPLAY  -bKeepout -tKeepout -bRestrict -tRestrict -bTest -tTest -bStop -tStop -bCream -tCream bValues tValues; $EAGLE_CMD"
+       #EAGLE_CMD="DISPLAY  -bKeepout -tKeepout -bRestrict -tRestrict -bTest -tTest -bOrigins -tOrigins -bStop -tStop -bCream -tCream bValues tValues; $EAGLE_CMD"
         [ "$RATSNEST" = true ] && EAGLE_CMD="RATSNEST; WRITE; $EAGLE_CMD"
        ;;
    esac
@@ -292,7 +300,7 @@ N=$#
       --verb=FileSave --verb=FileQuit \
       "$(outfile "${BASE}.svg")"
 
-    exec_cmd INKSCAPE --export-area-drawing --export-margin=10 -f "$(outfile "$BASE.svg")" -A "$(outfile "$BASE.pdf")"
+    exec_cmd INKSCAPE --export-area-drawing -f "$(outfile "$BASE.svg")" -A "$(outfile "$BASE.pdf")"
 
    exec_cmd PDF
     exec_cmd PDFTOCAIRO -paper A4 -noshrink -expand -svg  "$(outfile "$BASE.pdf")" "$(outfile "$BASE.svg")" || exit $?
