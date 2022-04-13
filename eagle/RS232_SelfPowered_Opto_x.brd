@@ -6,7 +6,6 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<<<<<<< HEAD
 <grid distance="0.05" unitdist="inch" unit="inch" style="dots" multiple="2" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
@@ -24,11 +23,6 @@
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="yes"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="yes"/>
 <layer number="15" name="Route15" color="4" fill="6" visible="no" active="yes"/>
-=======
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
-<layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
@@ -1216,35 +1210,6 @@ grid 2.54 mm, diameter 5 mm</description>
 </package>
 </packages>
 </library>
-<<<<<<< HEAD
-=======
-<library name="opto-c">
-<description>&lt;b&gt;Opto Couplers&lt;/b&gt;&lt;p&gt;
- Siemens, Hewlett-Packard, Texas Instuments, Sharp, Motorola&lt;p&gt;
- &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="DIL08">
-<description>&lt;b&gt;Dual In Line Package&lt;/b&gt;</description>
-<wire x1="5.08" y1="2.921" x2="-5.08" y2="2.921" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="-2.921" x2="5.08" y2="-2.921" width="0.1524" layer="21"/>
-<wire x1="5.08" y1="2.921" x2="5.08" y2="-2.921" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="2.921" x2="-5.08" y2="1.016" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="-2.921" x2="-5.08" y2="-1.016" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="1.016" x2="-5.08" y2="-1.016" width="0.1524" layer="21" curve="-180"/>
-<pad name="1" x="-3.81" y="-3.81" drill="0.8128" shape="long" rot="R270"/>
-<pad name="2" x="-1.27" y="-3.81" drill="0.8128" shape="long" rot="R270"/>
-<pad name="7" x="-1.27" y="3.81" drill="0.8128" shape="long" rot="R90"/>
-<pad name="8" x="-3.81" y="3.81" drill="0.8128" shape="long" rot="R90"/>
-<pad name="3" x="1.27" y="-3.81" drill="0.8128" shape="long" rot="R270"/>
-<pad name="4" x="3.81" y="-3.81" drill="0.8128" shape="long" rot="R270"/>
-<pad name="6" x="1.27" y="3.81" drill="0.8128" shape="long" rot="R90"/>
-<pad name="5" x="3.81" y="3.81" drill="0.8128" shape="long" rot="R90"/>
-<text x="-5.334" y="-2.921" size="1.27" layer="25" rot="R90">&gt;NAME</text>
-<text x="-3.556" y="-0.635" size="1.27" layer="27">&gt;VALUE</text>
-</package>
-</packages>
-</library>
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 <library name="pinconn">
 <packages>
 <package name="CONN-6P">
@@ -1328,7 +1293,6 @@ grid 2.54 mm, diameter 5 mm</description>
 </package>
 </packages>
 </library>
-<<<<<<< HEAD
 <library name="o">
 <description>&lt;b&gt;Opto Couplers&lt;/b&gt;&lt;p&gt;
  Siemens, Hewlett-Packard, Texas Instuments, Sharp, Motorola&lt;p&gt;
@@ -1355,8 +1319,6 @@ grid 2.54 mm, diameter 5 mm</description>
 </package>
 </packages>
 </library>
-=======
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 </libraries>
 <attributes>
 </attributes>
@@ -1551,20 +1513,13 @@ design rules under a new name.</description>
 <element name="D1" library="d" package="DO34-7V" value="1N914" x="13.97" y="5.08" rot="R90"/>
 <element name="D2" library="d" package="DO34-7" value="1N914" x="11.43" y="10.16" rot="R180"/>
 <element name="D3" library="d" package="DO34-7V" value="1N914" x="11.43" y="7.62" rot="R90"/>
-<<<<<<< HEAD
-=======
-<element name="IC1" library="opto-c" package="DIL08" value="ACPL-827" x="26.67" y="8.89" rot="R90"/>
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 <element name="J1" library="pinconn" package="CONN-6P" value="COMPORT-6PIN-6P" x="4.445" y="0.635" rot="R90"/>
 <element name="J2" library="pinconn" package="CONN-4P" value="PIC-UART-4P" x="41.275" y="14.605" rot="R270"/>
 <element name="R1" library="r" package="0202/7" value="680Ω" x="8.89" y="15.24" rot="R90"/>
 <element name="R2" library="r" package="0202/7" value="1kΩ" x="11.43" y="2.54" rot="R90"/>
 <element name="R3" library="r" package="0202/7" value="470Ω" x="36.83" y="7.62" rot="R90"/>
 <element name="R4" library="r" package="0202/7-V" value="1kΩ" x="36.83" y="5.08" rot="R270"/>
-<<<<<<< HEAD
 <element name="IC1" library="o" package="DIL08" value="ACPL-827" x="26.67" y="8.89" rot="R180"/>
-=======
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 </elements>
 <signals>
 <signal name="N$1">
@@ -1575,15 +1530,10 @@ design rules under a new name.</description>
 <signal name="N$2">
 <contactref element="D1" pad="C"/>
 <contactref element="C1" pad="+"/>
-<<<<<<< HEAD
-=======
-<contactref element="IC1" pad="6"/>
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 <wire x1="20.32" y1="15.24" x2="17.78" y2="15.24" width="1.27" layer="16"/>
 <wire x1="17.78" y1="15.24" x2="17.78" y2="10.16" width="1.27" layer="16"/>
 <wire x1="17.78" y1="10.16" x2="22.86" y2="10.16" width="1.27" layer="16"/>
 <wire x1="17.78" y1="10.16" x2="17.78" y2="5.08" width="1.27" layer="16"/>
-<<<<<<< HEAD
 <contactref element="IC1" pad="6"/>
 </signal>
 <signal name="N$3">
@@ -1591,14 +1541,6 @@ design rules under a new name.</description>
 <wire x1="33.02" y1="7.62" x2="33.02" y2="10.16" width="1.27" layer="16"/>
 <wire x1="33.02" y1="10.16" x2="30.48" y2="10.16" width="1.27" layer="16"/>
 <contactref element="IC1" pad="3"/>
-=======
-</signal>
-<signal name="N$3">
-<contactref element="IC1" pad="3"/>
-<contactref element="R3" pad="1"/>
-<wire x1="33.02" y1="7.62" x2="33.02" y2="10.16" width="1.27" layer="16"/>
-<wire x1="33.02" y1="10.16" x2="30.48" y2="10.16" width="1.27" layer="16"/>
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 </signal>
 <signal name="+5V">
 <contactref element="R3" pad="2"/>
@@ -1610,25 +1552,15 @@ design rules under a new name.</description>
 <wire x1="40.64" y1="5.08" x2="40.64" y2="7.62" width="1.27" layer="16"/>
 </signal>
 <signal name="N$4">
-<<<<<<< HEAD
-=======
-<contactref element="IC1" pad="4"/>
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 <contactref element="J2" pad="1"/>
 <wire x1="43.18" y1="12.7" x2="43.18" y2="17.78" width="1.27" layer="16"/>
 <wire x1="43.18" y1="17.78" x2="30.48" y2="17.78" width="0.4064" layer="1"/>
 <wire x1="30.48" y1="17.78" x2="30.48" y2="12.7" width="1.27" layer="16"/>
 <via x="43.18" y="17.78" extent="1-16" drill="0.6" shape="square"/>
 <via x="30.48" y="17.78" extent="1-16" drill="0.6" shape="square"/>
-<<<<<<< HEAD
 <contactref element="IC1" pad="4"/>
 </signal>
 <signal name="N$5">
-=======
-</signal>
-<signal name="N$5">
-<contactref element="IC1" pad="8"/>
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 <contactref element="J2" pad="2"/>
 <contactref element="R4" pad="1"/>
 <wire x1="22.86" y1="5.08" x2="22.86" y2="0" width="1.27" layer="16"/>
@@ -1640,15 +1572,9 @@ design rules under a new name.</description>
 <via x="33.02" y="5.08" extent="1-16" drill="0.6" shape="square"/>
 <via x="22.86" y="0" extent="1-16" drill="0.6" shape="square"/>
 <via x="35.56" y="0" extent="1-16" drill="0.6" shape="square"/>
-<<<<<<< HEAD
 <contactref element="IC1" pad="8"/>
 </signal>
 <signal name="N$6">
-=======
-</signal>
-<signal name="N$6">
-<contactref element="IC1" pad="1"/>
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 <contactref element="D3" pad="C"/>
 <contactref element="R2" pad="2"/>
 <wire x1="30.48" y1="5.08" x2="30.48" y2="2.54" width="1.27" layer="16"/>
@@ -1657,10 +1583,7 @@ design rules under a new name.</description>
 <wire x1="15.24" y1="7.62" x2="15.24" y2="2.54" width="1.27" layer="16"/>
 <via x="30.48" y="2.54" extent="1-16" drill="0.6" shape="square"/>
 <via x="17.78" y="2.54" extent="1-16" drill="0.6" shape="square"/>
-<<<<<<< HEAD
 <contactref element="IC1" pad="1"/>
-=======
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 </signal>
 <signal name="N$9">
 <contactref element="D2" pad="A"/>
@@ -1672,10 +1595,6 @@ design rules under a new name.</description>
 <signal name="N$10">
 <contactref element="R1" pad="1"/>
 <contactref element="J1" pad="6"/>
-<<<<<<< HEAD
-=======
-<contactref element="IC1" pad="5"/>
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 <wire x1="22.86" y1="12.7" x2="20.32" y2="12.7" width="1.27" layer="16"/>
 <wire x1="20.32" y1="12.7" x2="5.08" y2="12.7" width="0.4064" layer="1"/>
 <wire x1="5.08" y1="12.7" x2="5.08" y2="15.24" width="1.27" layer="16"/>
@@ -1684,18 +1603,11 @@ design rules under a new name.</description>
 <via x="5.08" y="15.24" extent="1-16" drill="0.6" shape="square"/>
 <via x="5.08" y="15.24" extent="1-16" drill="0.6" shape="square"/>
 <via x="5.08" y="12.7" extent="1-16" drill="0.6" shape="square"/>
-<<<<<<< HEAD
 <contactref element="IC1" pad="5"/>
-=======
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 </signal>
 <signal name="GND">
 <contactref element="C1" pad="-"/>
 <contactref element="C2" pad="-"/>
-<<<<<<< HEAD
-=======
-<contactref element="IC1" pad="2"/>
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 <contactref element="D3" pad="A"/>
 <contactref element="J1" pad="3"/>
 <wire x1="15.24" y1="17.78" x2="20.32" y2="17.78" width="1.27" layer="16"/>
@@ -1706,15 +1618,9 @@ design rules under a new name.</description>
 <wire x1="7.62" y1="7.62" x2="10.16" y2="7.62" width="1.27" layer="16"/>
 <wire x1="10.16" y1="7.62" x2="10.16" y2="17.78" width="1.27" layer="16"/>
 <wire x1="10.16" y1="17.78" x2="15.24" y2="17.78" width="1.27" layer="16"/>
-<<<<<<< HEAD
 <contactref element="IC1" pad="2"/>
 </signal>
 <signal name="DGND">
-=======
-</signal>
-<signal name="DGND">
-<contactref element="IC1" pad="7"/>
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
 <contactref element="J2" pad="3"/>
 <wire x1="43.18" y1="7.62" x2="48.26" y2="7.62" width="1.27" layer="16"/>
 <wire x1="48.26" y1="7.62" x2="48.26" y2="15.24" width="1.27" layer="16"/>
@@ -1723,23 +1629,4 @@ design rules under a new name.</description>
 <wire x1="25.4" y1="7.62" x2="22.86" y2="7.62" width="1.27" layer="16"/>
 <via x="48.26" y="15.24" extent="1-16" drill="0.6" shape="square"/>
 <via x="25.4" y="15.24" extent="1-16" drill="0.6" shape="square"/>
-<<<<<<< HEAD
 <contactref element="IC1" pad="7"/>
-=======
->>>>>>> 7b86f1de4eccf763fdfe7cc61cf1be75a8fcc6ae
-</signal>
-<signal name="N$11">
-<contactref element="J1" pad="1"/>
-<contactref element="R2" pad="1"/>
-<contactref element="D2" pad="C"/>
-<wire x1="7.62" y1="10.16" x2="5.08" y2="10.16" width="1.27" layer="16"/>
-<wire x1="5.08" y1="10.16" x2="5.08" y2="2.54" width="0.4064" layer="1"/>
-<wire x1="5.08" y1="2.54" x2="7.62" y2="2.54" width="1.27" layer="16"/>
-<via x="5.08" y="10.16" extent="1-16" drill="0.6" shape="square"/>
-<via x="5.08" y="2.54" extent="1-16" drill="0.6" shape="square"/>
-<wire x1="2.54" y1="2.54" x2="5.08" y2="2.54" width="0" layer="19" extent="1-1"/>
-</signal>
-</signals>
-</board>
-</drawing>
-</eagle>
