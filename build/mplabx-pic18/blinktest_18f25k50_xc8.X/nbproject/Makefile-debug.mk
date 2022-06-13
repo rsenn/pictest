@@ -30,12 +30,12 @@ ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 IMAGE_TYPE=debug
 OUTPUT_SUFFIX=cof
 DEBUGGABLE_SUFFIX=cof
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=${DISTDIR}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 else
 IMAGE_TYPE=production
 OUTPUT_SUFFIX=hex
 DEBUGGABLE_SUFFIX=cof
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=${DISTDIR}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 endif
 
 ifeq ($(COMPARE_BUILD), true)
@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../../../lib/comparator.c ../../../lib/delay.c ../../../lib/pwm.c ../../../lib/random.c ../../../lib/ser.c ../../../lib/softpwm.c ../../../lib/softser.c ../../../lib/timer.c ../../../lib/uart.c ../../../lib/lcd5110.c ../../../lib/adc.c ../../../lib/format.c ../../../lib/buffer.c ../../../lib/pcd8544.c /home/roman/Projects/pictest/lib/mcp3001.c mcc_generated_files/tmr0.c ../../../src/blinktest.c ../../../../USB-Stack/USB_Stack/USB/usb.c ../../../../USB-Stack/USB_Stack/USB/usb_cdc_acm.c ../../../../USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_app.c ../../../../USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_descriptors.c
+SOURCEFILES_QUOTED_IF_SPACED=../../../lib/comparator.c ../../../lib/delay.c ../../../lib/pwm.c ../../../lib/random.c ../../../lib/ser.c ../../../lib/softpwm.c ../../../lib/softser.c ../../../lib/timer.c ../../../lib/uart.c ../../../lib/lcd5110.c ../../../lib/adc.c ../../../lib/format.c ../../../lib/buffer.c ../../../lib/pcd8544.c /home/roman/Projects/pictest/lib/mcp3001.c mcc_generated_files/tmr0.c ../../../../../Sources/pictest/src/blinktest.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1386521430/comparator.p1 ${OBJECTDIR}/_ext/1386521430/delay.p1 ${OBJECTDIR}/_ext/1386521430/pwm.p1 ${OBJECTDIR}/_ext/1386521430/random.p1 ${OBJECTDIR}/_ext/1386521430/ser.p1 ${OBJECTDIR}/_ext/1386521430/softpwm.p1 ${OBJECTDIR}/_ext/1386521430/softser.p1 ${OBJECTDIR}/_ext/1386521430/timer.p1 ${OBJECTDIR}/_ext/1386521430/uart.p1 ${OBJECTDIR}/_ext/1386521430/lcd5110.p1 ${OBJECTDIR}/_ext/1386521430/adc.p1 ${OBJECTDIR}/_ext/1386521430/format.p1 ${OBJECTDIR}/_ext/1386521430/buffer.p1 ${OBJECTDIR}/_ext/1386521430/pcd8544.p1 ${OBJECTDIR}/_ext/1006914320/mcp3001.p1 ${OBJECTDIR}/mcc_generated_files/tmr0.p1 ${OBJECTDIR}/_ext/1386528437/blinktest.p1 ${OBJECTDIR}/_ext/550019182/usb.p1 ${OBJECTDIR}/_ext/550019182/usb_cdc_acm.p1 ${OBJECTDIR}/_ext/1600868494/usb_app.p1 ${OBJECTDIR}/_ext/1600868494/usb_descriptors.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1386521430/comparator.p1.d ${OBJECTDIR}/_ext/1386521430/delay.p1.d ${OBJECTDIR}/_ext/1386521430/pwm.p1.d ${OBJECTDIR}/_ext/1386521430/random.p1.d ${OBJECTDIR}/_ext/1386521430/ser.p1.d ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d ${OBJECTDIR}/_ext/1386521430/softser.p1.d ${OBJECTDIR}/_ext/1386521430/timer.p1.d ${OBJECTDIR}/_ext/1386521430/uart.p1.d ${OBJECTDIR}/_ext/1386521430/lcd5110.p1.d ${OBJECTDIR}/_ext/1386521430/adc.p1.d ${OBJECTDIR}/_ext/1386521430/format.p1.d ${OBJECTDIR}/_ext/1386521430/buffer.p1.d ${OBJECTDIR}/_ext/1386521430/pcd8544.p1.d ${OBJECTDIR}/_ext/1006914320/mcp3001.p1.d ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d ${OBJECTDIR}/_ext/1386528437/blinktest.p1.d ${OBJECTDIR}/_ext/550019182/usb.p1.d ${OBJECTDIR}/_ext/550019182/usb_cdc_acm.p1.d ${OBJECTDIR}/_ext/1600868494/usb_app.p1.d ${OBJECTDIR}/_ext/1600868494/usb_descriptors.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1386521430/comparator.p1 ${OBJECTDIR}/_ext/1386521430/delay.p1 ${OBJECTDIR}/_ext/1386521430/pwm.p1 ${OBJECTDIR}/_ext/1386521430/random.p1 ${OBJECTDIR}/_ext/1386521430/ser.p1 ${OBJECTDIR}/_ext/1386521430/softpwm.p1 ${OBJECTDIR}/_ext/1386521430/softser.p1 ${OBJECTDIR}/_ext/1386521430/timer.p1 ${OBJECTDIR}/_ext/1386521430/uart.p1 ${OBJECTDIR}/_ext/1386521430/lcd5110.p1 ${OBJECTDIR}/_ext/1386521430/adc.p1 ${OBJECTDIR}/_ext/1386521430/format.p1 ${OBJECTDIR}/_ext/1386521430/buffer.p1 ${OBJECTDIR}/_ext/1386521430/pcd8544.p1 ${OBJECTDIR}/_ext/1006914320/mcp3001.p1 ${OBJECTDIR}/mcc_generated_files/tmr0.p1 ${OBJECTDIR}/_ext/1538326805/blinktest.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1386521430/comparator.p1.d ${OBJECTDIR}/_ext/1386521430/delay.p1.d ${OBJECTDIR}/_ext/1386521430/pwm.p1.d ${OBJECTDIR}/_ext/1386521430/random.p1.d ${OBJECTDIR}/_ext/1386521430/ser.p1.d ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d ${OBJECTDIR}/_ext/1386521430/softser.p1.d ${OBJECTDIR}/_ext/1386521430/timer.p1.d ${OBJECTDIR}/_ext/1386521430/uart.p1.d ${OBJECTDIR}/_ext/1386521430/lcd5110.p1.d ${OBJECTDIR}/_ext/1386521430/adc.p1.d ${OBJECTDIR}/_ext/1386521430/format.p1.d ${OBJECTDIR}/_ext/1386521430/buffer.p1.d ${OBJECTDIR}/_ext/1386521430/pcd8544.p1.d ${OBJECTDIR}/_ext/1006914320/mcp3001.p1.d ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d ${OBJECTDIR}/_ext/1538326805/blinktest.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1386521430/comparator.p1 ${OBJECTDIR}/_ext/1386521430/delay.p1 ${OBJECTDIR}/_ext/1386521430/pwm.p1 ${OBJECTDIR}/_ext/1386521430/random.p1 ${OBJECTDIR}/_ext/1386521430/ser.p1 ${OBJECTDIR}/_ext/1386521430/softpwm.p1 ${OBJECTDIR}/_ext/1386521430/softser.p1 ${OBJECTDIR}/_ext/1386521430/timer.p1 ${OBJECTDIR}/_ext/1386521430/uart.p1 ${OBJECTDIR}/_ext/1386521430/lcd5110.p1 ${OBJECTDIR}/_ext/1386521430/adc.p1 ${OBJECTDIR}/_ext/1386521430/format.p1 ${OBJECTDIR}/_ext/1386521430/buffer.p1 ${OBJECTDIR}/_ext/1386521430/pcd8544.p1 ${OBJECTDIR}/_ext/1006914320/mcp3001.p1 ${OBJECTDIR}/mcc_generated_files/tmr0.p1 ${OBJECTDIR}/_ext/1386528437/blinktest.p1 ${OBJECTDIR}/_ext/550019182/usb.p1 ${OBJECTDIR}/_ext/550019182/usb_cdc_acm.p1 ${OBJECTDIR}/_ext/1600868494/usb_app.p1 ${OBJECTDIR}/_ext/1600868494/usb_descriptors.p1
+OBJECTFILES=${OBJECTDIR}/_ext/1386521430/comparator.p1 ${OBJECTDIR}/_ext/1386521430/delay.p1 ${OBJECTDIR}/_ext/1386521430/pwm.p1 ${OBJECTDIR}/_ext/1386521430/random.p1 ${OBJECTDIR}/_ext/1386521430/ser.p1 ${OBJECTDIR}/_ext/1386521430/softpwm.p1 ${OBJECTDIR}/_ext/1386521430/softser.p1 ${OBJECTDIR}/_ext/1386521430/timer.p1 ${OBJECTDIR}/_ext/1386521430/uart.p1 ${OBJECTDIR}/_ext/1386521430/lcd5110.p1 ${OBJECTDIR}/_ext/1386521430/adc.p1 ${OBJECTDIR}/_ext/1386521430/format.p1 ${OBJECTDIR}/_ext/1386521430/buffer.p1 ${OBJECTDIR}/_ext/1386521430/pcd8544.p1 ${OBJECTDIR}/_ext/1006914320/mcp3001.p1 ${OBJECTDIR}/mcc_generated_files/tmr0.p1 ${OBJECTDIR}/_ext/1538326805/blinktest.p1
 
 # Source Files
-SOURCEFILES=../../../lib/comparator.c ../../../lib/delay.c ../../../lib/pwm.c ../../../lib/random.c ../../../lib/ser.c ../../../lib/softpwm.c ../../../lib/softser.c ../../../lib/timer.c ../../../lib/uart.c ../../../lib/lcd5110.c ../../../lib/adc.c ../../../lib/format.c ../../../lib/buffer.c ../../../lib/pcd8544.c /home/roman/Projects/pictest/lib/mcp3001.c mcc_generated_files/tmr0.c ../../../src/blinktest.c ../../../../USB-Stack/USB_Stack/USB/usb.c ../../../../USB-Stack/USB_Stack/USB/usb_cdc_acm.c ../../../../USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_app.c ../../../../USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_descriptors.c
+SOURCEFILES=../../../lib/comparator.c ../../../lib/delay.c ../../../lib/pwm.c ../../../lib/random.c ../../../lib/ser.c ../../../lib/softpwm.c ../../../lib/softser.c ../../../lib/timer.c ../../../lib/uart.c ../../../lib/lcd5110.c ../../../lib/adc.c ../../../lib/format.c ../../../lib/buffer.c ../../../lib/pcd8544.c /home/roman/Projects/pictest/lib/mcp3001.c mcc_generated_files/tmr0.c ../../../../../Sources/pictest/src/blinktest.c
 
 
 
@@ -88,7 +88,7 @@ FIXDEPS=fixDeps
 ifneq ($(INFORMATION_MESSAGE), )
 	@echo $(INFORMATION_MESSAGE)
 endif
-	${MAKE}  -f nbproject/Makefile-debug.mk dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+	${MAKE}  -f nbproject/Makefile-debug.mk ${DISTDIR}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 
 MP_PROCESSOR_OPTION=18F25K50
 # ------------------------------------------------------------------------------------
@@ -222,45 +222,13 @@ ${OBJECTDIR}/mcc_generated_files/tmr0.p1: mcc_generated_files/tmr0.c  nbproject/
 	@-${MV} ${OBJECTDIR}/mcc_generated_files/tmr0.d ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386528437/blinktest.p1: ../../../src/blinktest.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1386528437" 
-	@${RM} ${OBJECTDIR}/_ext/1386528437/blinktest.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1386528437/blinktest.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520     -o${OBJECTDIR}/_ext/1386528437/blinktest.p1 ../../../src/blinktest.c 
-	@-${MV} ${OBJECTDIR}/_ext/1386528437/blinktest.d ${OBJECTDIR}/_ext/1386528437/blinktest.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1386528437/blinktest.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/550019182/usb.p1: ../../../../USB-Stack/USB_Stack/USB/usb.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/550019182" 
-	@${RM} ${OBJECTDIR}/_ext/550019182/usb.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/550019182/usb.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520     -o${OBJECTDIR}/_ext/550019182/usb.p1 ../../../../USB-Stack/USB_Stack/USB/usb.c 
-	@-${MV} ${OBJECTDIR}/_ext/550019182/usb.d ${OBJECTDIR}/_ext/550019182/usb.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/550019182/usb.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/550019182/usb_cdc_acm.p1: ../../../../USB-Stack/USB_Stack/USB/usb_cdc_acm.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/550019182" 
-	@${RM} ${OBJECTDIR}/_ext/550019182/usb_cdc_acm.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/550019182/usb_cdc_acm.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520     -o${OBJECTDIR}/_ext/550019182/usb_cdc_acm.p1 ../../../../USB-Stack/USB_Stack/USB/usb_cdc_acm.c 
-	@-${MV} ${OBJECTDIR}/_ext/550019182/usb_cdc_acm.d ${OBJECTDIR}/_ext/550019182/usb_cdc_acm.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/550019182/usb_cdc_acm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1600868494/usb_app.p1: ../../../../USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_app.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1600868494" 
-	@${RM} ${OBJECTDIR}/_ext/1600868494/usb_app.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1600868494/usb_app.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520     -o${OBJECTDIR}/_ext/1600868494/usb_app.p1 ../../../../USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_app.c 
-	@-${MV} ${OBJECTDIR}/_ext/1600868494/usb_app.d ${OBJECTDIR}/_ext/1600868494/usb_app.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1600868494/usb_app.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1600868494/usb_descriptors.p1: ../../../../USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_descriptors.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1600868494" 
-	@${RM} ${OBJECTDIR}/_ext/1600868494/usb_descriptors.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1600868494/usb_descriptors.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520     -o${OBJECTDIR}/_ext/1600868494/usb_descriptors.p1 ../../../../USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_descriptors.c 
-	@-${MV} ${OBJECTDIR}/_ext/1600868494/usb_descriptors.d ${OBJECTDIR}/_ext/1600868494/usb_descriptors.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1600868494/usb_descriptors.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1538326805/blinktest.p1: ../../../../../Sources/pictest/src/blinktest.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1538326805" 
+	@${RM} ${OBJECTDIR}/_ext/1538326805/blinktest.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1538326805/blinktest.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520     -o${OBJECTDIR}/_ext/1538326805/blinktest.p1 ../../../../../Sources/pictest/src/blinktest.c 
+	@-${MV} ${OBJECTDIR}/_ext/1538326805/blinktest.d ${OBJECTDIR}/_ext/1538326805/blinktest.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1538326805/blinktest.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
 ${OBJECTDIR}/_ext/1386521430/comparator.p1: ../../../lib/comparator.c  nbproject/Makefile-${CND_CONF}.mk 
@@ -391,45 +359,13 @@ ${OBJECTDIR}/mcc_generated_files/tmr0.p1: mcc_generated_files/tmr0.c  nbproject/
 	@-${MV} ${OBJECTDIR}/mcc_generated_files/tmr0.d ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386528437/blinktest.p1: ../../../src/blinktest.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1386528437" 
-	@${RM} ${OBJECTDIR}/_ext/1386528437/blinktest.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1386528437/blinktest.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520     -o${OBJECTDIR}/_ext/1386528437/blinktest.p1 ../../../src/blinktest.c 
-	@-${MV} ${OBJECTDIR}/_ext/1386528437/blinktest.d ${OBJECTDIR}/_ext/1386528437/blinktest.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1386528437/blinktest.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/550019182/usb.p1: ../../../../USB-Stack/USB_Stack/USB/usb.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/550019182" 
-	@${RM} ${OBJECTDIR}/_ext/550019182/usb.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/550019182/usb.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520     -o${OBJECTDIR}/_ext/550019182/usb.p1 ../../../../USB-Stack/USB_Stack/USB/usb.c 
-	@-${MV} ${OBJECTDIR}/_ext/550019182/usb.d ${OBJECTDIR}/_ext/550019182/usb.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/550019182/usb.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/550019182/usb_cdc_acm.p1: ../../../../USB-Stack/USB_Stack/USB/usb_cdc_acm.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/550019182" 
-	@${RM} ${OBJECTDIR}/_ext/550019182/usb_cdc_acm.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/550019182/usb_cdc_acm.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520     -o${OBJECTDIR}/_ext/550019182/usb_cdc_acm.p1 ../../../../USB-Stack/USB_Stack/USB/usb_cdc_acm.c 
-	@-${MV} ${OBJECTDIR}/_ext/550019182/usb_cdc_acm.d ${OBJECTDIR}/_ext/550019182/usb_cdc_acm.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/550019182/usb_cdc_acm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1600868494/usb_app.p1: ../../../../USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_app.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1600868494" 
-	@${RM} ${OBJECTDIR}/_ext/1600868494/usb_app.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1600868494/usb_app.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520     -o${OBJECTDIR}/_ext/1600868494/usb_app.p1 ../../../../USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_app.c 
-	@-${MV} ${OBJECTDIR}/_ext/1600868494/usb_app.d ${OBJECTDIR}/_ext/1600868494/usb_app.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1600868494/usb_app.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1600868494/usb_descriptors.p1: ../../../../USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_descriptors.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1600868494" 
-	@${RM} ${OBJECTDIR}/_ext/1600868494/usb_descriptors.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1600868494/usb_descriptors.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520     -o${OBJECTDIR}/_ext/1600868494/usb_descriptors.p1 ../../../../USB-Stack/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_descriptors.c 
-	@-${MV} ${OBJECTDIR}/_ext/1600868494/usb_descriptors.d ${OBJECTDIR}/_ext/1600868494/usb_descriptors.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1600868494/usb_descriptors.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1538326805/blinktest.p1: ../../../../../Sources/pictest/src/blinktest.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1538326805" 
+	@${RM} ${OBJECTDIR}/_ext/1538326805/blinktest.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1538326805/blinktest.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist -DXPRJ_debug=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520     -o${OBJECTDIR}/_ext/1538326805/blinktest.p1 ../../../../../Sources/pictest/src/blinktest.c 
+	@-${MV} ${OBJECTDIR}/_ext/1538326805/blinktest.d ${OBJECTDIR}/_ext/1538326805/blinktest.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1538326805/blinktest.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 
@@ -442,15 +378,15 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
-	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) --chip=$(MP_PROCESSOR_OPTION) -G -mdist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.map  -D__DEBUG=1  --debugger=none  -DXPRJ_debug=$(CND_CONF)    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520        $(COMPARISON_BUILD) --memorysummary dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -odist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
-	@${RM} dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.hex 
+${DISTDIR}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
+	@${MKDIR} ${DISTDIR} 
+	${MP_CC} $(MP_EXTRA_LD_PRE) --chip=$(MP_PROCESSOR_OPTION) -G -m${DISTDIR}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.map  -D__DEBUG=1  --debugger=none  -DXPRJ_debug=$(CND_CONF)    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520        $(COMPARISON_BUILD) --memorysummary ${DISTDIR}/memoryfile.xml -o${DISTDIR}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	@${RM} ${DISTDIR}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.hex 
 	
 else
-dist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
-	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) --chip=$(MP_PROCESSOR_OPTION) -G -mdist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.map  -DXPRJ_debug=$(CND_CONF)    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520     $(COMPARISON_BUILD) --memorysummary dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -odist/${CND_CONF}/${IMAGE_TYPE}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+${DISTDIR}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
+	@${MKDIR} ${DISTDIR} 
+	${MP_CC} $(MP_EXTRA_LD_PRE) --chip=$(MP_PROCESSOR_OPTION) -G -m${DISTDIR}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.map  -DXPRJ_debug=$(CND_CONF)    --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,+debug,-local --addrqual=ignore --mode=pro -D__18f25k50=1 -D_XTAL_FREQ=48000000 -DUART_BAUD=38400 -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_TIMER2=0 -DUSE_SOFTPWM=1 -DHAVE_COMPARATOR=1 -DDEBUG=1 -D__XC8=1 -DUSE_UART=1 -DSOFTSER_TIMER=2 -DUSE_NOKIA5110_LCD=1 -DUSE_ADCONVERTER=1 -DXTAL_USED=NO_XTAL -DUSE_MCP3001=1 -P -N255 -I"../../.." -I"../../../lib" -I"../../../src" -I"../../../" --warn=-9 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+download,+config,+clib,-plib --output=+mcof,-elf:multilocs --stack=hybrid:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s" --msgdisable=373,752,520     $(COMPARISON_BUILD) --memorysummary ${DISTDIR}/memoryfile.xml -o${DISTDIR}/blinktest_18f25k50_xc8.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
 	
 endif
 
@@ -464,8 +400,8 @@ endif
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
-	${RM} -r build/debug
-	${RM} -r dist/debug
+	${RM} -r ${OBJECTDIR}
+	${RM} -r ${DISTDIR}
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl

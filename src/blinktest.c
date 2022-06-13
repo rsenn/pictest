@@ -102,7 +102,7 @@ putch_fn* put_char =
     dummy_putch
 #endif
     ;
-
+    
 void put_number(putch_fn* putc, uint16_t n, uint8_t base, int8_t pad /*, int8_t pointpos*/);
 
 void
