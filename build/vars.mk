@@ -156,9 +156,9 @@ ps2test_DEFS += -DUSE_TIMER0=1
 
 blinktest_SOURCES = blinktest.c lib/comparator.c lib/format.c lib/buffer.c lib/random.c lib/ser.c lib/softpwm.c lib/softser.c lib/timer.c lib/uart.c lib/delay.c lib/lcd5110.c lib/adc.c lib/pcd8544.c lib/mcp3001.c
 blinktest_DEFS += -DUSE_TIMER0=1
-##blinktest_DEFS += -DUSE_ADCONVERTER=1
+#blinktest_DEFS += -DUSE_ADCONVERTER=1
 blinktest_DEFS += -DUSE_MCP3001=1
-blinktest_DEFS += -DUSE_NOKIA5110_LCD=1
+#blinktest_DEFS += -DUSE_NOKIA5110_LCD=1
 #blinktest_DEFS += -DUSE_SER=1
 #blinktest_DEFS += -DUSE_UART=1
 ifeq ($(CHIP),$(subst q,,$(CHIP)))
