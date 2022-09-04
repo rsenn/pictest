@@ -94,7 +94,7 @@ MP_PROCESSOR_OPTION=18F25K50
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/1386521430/comparator.p1: ../../../lib/comparator.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/comparator.p1: ../../../lib/comparator.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/comparator.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/comparator.p1 
@@ -102,7 +102,7 @@ ${OBJECTDIR}/_ext/1386521430/comparator.p1: ../../../lib/comparator.c  nbproject
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/comparator.d ${OBJECTDIR}/_ext/1386521430/comparator.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/comparator.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/delay.p1: ../../../lib/delay.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/delay.p1: ../../../lib/delay.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/delay.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/delay.p1 
@@ -110,7 +110,7 @@ ${OBJECTDIR}/_ext/1386521430/delay.p1: ../../../lib/delay.c  nbproject/Makefile-
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/delay.d ${OBJECTDIR}/_ext/1386521430/delay.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/delay.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/pwm.p1: ../../../lib/pwm.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/pwm.p1: ../../../lib/pwm.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pwm.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pwm.p1 
@@ -118,7 +118,7 @@ ${OBJECTDIR}/_ext/1386521430/pwm.p1: ../../../lib/pwm.c  nbproject/Makefile-${CN
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/pwm.d ${OBJECTDIR}/_ext/1386521430/pwm.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/pwm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/random.p1: ../../../lib/random.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/random.p1: ../../../lib/random.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/random.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/random.p1 
@@ -126,7 +126,7 @@ ${OBJECTDIR}/_ext/1386521430/random.p1: ../../../lib/random.c  nbproject/Makefil
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/random.d ${OBJECTDIR}/_ext/1386521430/random.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/random.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/ser.p1: ../../../lib/ser.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/ser.p1: ../../../lib/ser.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/ser.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/ser.p1 
@@ -134,7 +134,7 @@ ${OBJECTDIR}/_ext/1386521430/ser.p1: ../../../lib/ser.c  nbproject/Makefile-${CN
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/ser.d ${OBJECTDIR}/_ext/1386521430/ser.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/ser.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/softpwm.p1: ../../../lib/softpwm.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/softpwm.p1: ../../../lib/softpwm.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.p1 
@@ -142,7 +142,7 @@ ${OBJECTDIR}/_ext/1386521430/softpwm.p1: ../../../lib/softpwm.c  nbproject/Makef
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/softpwm.d ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/softser.p1: ../../../lib/softser.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/softser.p1: ../../../lib/softser.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softser.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softser.p1 
@@ -150,7 +150,7 @@ ${OBJECTDIR}/_ext/1386521430/softser.p1: ../../../lib/softser.c  nbproject/Makef
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/softser.d ${OBJECTDIR}/_ext/1386521430/softser.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/softser.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/timer.p1: ../../../lib/timer.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/timer.p1: ../../../lib/timer.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/timer.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/timer.p1 
@@ -158,7 +158,7 @@ ${OBJECTDIR}/_ext/1386521430/timer.p1: ../../../lib/timer.c  nbproject/Makefile-
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/timer.d ${OBJECTDIR}/_ext/1386521430/timer.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/timer.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/uart.p1: ../../../lib/uart.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/uart.p1: ../../../lib/uart.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/uart.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/uart.p1 
@@ -166,7 +166,7 @@ ${OBJECTDIR}/_ext/1386521430/uart.p1: ../../../lib/uart.c  nbproject/Makefile-${
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/uart.d ${OBJECTDIR}/_ext/1386521430/uart.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/uart.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/lcd5110.p1: ../../../lib/lcd5110.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/lcd5110.p1: ../../../lib/lcd5110.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/lcd5110.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/lcd5110.p1 
@@ -174,7 +174,7 @@ ${OBJECTDIR}/_ext/1386521430/lcd5110.p1: ../../../lib/lcd5110.c  nbproject/Makef
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/lcd5110.d ${OBJECTDIR}/_ext/1386521430/lcd5110.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/lcd5110.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/adc.p1: ../../../lib/adc.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/adc.p1: ../../../lib/adc.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/adc.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/adc.p1 
@@ -182,7 +182,7 @@ ${OBJECTDIR}/_ext/1386521430/adc.p1: ../../../lib/adc.c  nbproject/Makefile-${CN
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/adc.d ${OBJECTDIR}/_ext/1386521430/adc.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/adc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/format.p1: ../../../lib/format.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/format.p1: ../../../lib/format.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/format.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/format.p1 
@@ -190,7 +190,7 @@ ${OBJECTDIR}/_ext/1386521430/format.p1: ../../../lib/format.c  nbproject/Makefil
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/format.d ${OBJECTDIR}/_ext/1386521430/format.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/format.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/buffer.p1: ../../../lib/buffer.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/buffer.p1: ../../../lib/buffer.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/buffer.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/buffer.p1 
@@ -198,7 +198,7 @@ ${OBJECTDIR}/_ext/1386521430/buffer.p1: ../../../lib/buffer.c  nbproject/Makefil
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/buffer.d ${OBJECTDIR}/_ext/1386521430/buffer.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/buffer.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/pcd8544.p1: ../../../lib/pcd8544.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/pcd8544.p1: ../../../lib/pcd8544.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pcd8544.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pcd8544.p1 
@@ -206,7 +206,7 @@ ${OBJECTDIR}/_ext/1386521430/pcd8544.p1: ../../../lib/pcd8544.c  nbproject/Makef
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/pcd8544.d ${OBJECTDIR}/_ext/1386521430/pcd8544.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/pcd8544.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1006914320/mcp3001.p1: /home/roman/Projects/pictest/lib/mcp3001.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1006914320/mcp3001.p1: /home/roman/Projects/pictest/lib/mcp3001.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1006914320" 
 	@${RM} ${OBJECTDIR}/_ext/1006914320/mcp3001.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1006914320/mcp3001.p1 
@@ -214,7 +214,7 @@ ${OBJECTDIR}/_ext/1006914320/mcp3001.p1: /home/roman/Projects/pictest/lib/mcp300
 	@-${MV} ${OBJECTDIR}/_ext/1006914320/mcp3001.d ${OBJECTDIR}/_ext/1006914320/mcp3001.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1006914320/mcp3001.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/mcc_generated_files/tmr0.p1: mcc_generated_files/tmr0.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/mcc_generated_files/tmr0.p1: mcc_generated_files/tmr0.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
 	@${RM} ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d 
 	@${RM} ${OBJECTDIR}/mcc_generated_files/tmr0.p1 
@@ -222,7 +222,7 @@ ${OBJECTDIR}/mcc_generated_files/tmr0.p1: mcc_generated_files/tmr0.c  nbproject/
 	@-${MV} ${OBJECTDIR}/mcc_generated_files/tmr0.d ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1538326805/blinktest.p1: ../../../../../Sources/pictest/src/blinktest.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1538326805/blinktest.p1: ../../../../../Sources/pictest/src/blinktest.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1538326805" 
 	@${RM} ${OBJECTDIR}/_ext/1538326805/blinktest.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1538326805/blinktest.p1 
@@ -231,7 +231,7 @@ ${OBJECTDIR}/_ext/1538326805/blinktest.p1: ../../../../../Sources/pictest/src/bl
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1538326805/blinktest.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
-${OBJECTDIR}/_ext/1386521430/comparator.p1: ../../../lib/comparator.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/comparator.p1: ../../../lib/comparator.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/comparator.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/comparator.p1 
@@ -239,7 +239,7 @@ ${OBJECTDIR}/_ext/1386521430/comparator.p1: ../../../lib/comparator.c  nbproject
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/comparator.d ${OBJECTDIR}/_ext/1386521430/comparator.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/comparator.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/delay.p1: ../../../lib/delay.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/delay.p1: ../../../lib/delay.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/delay.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/delay.p1 
@@ -247,7 +247,7 @@ ${OBJECTDIR}/_ext/1386521430/delay.p1: ../../../lib/delay.c  nbproject/Makefile-
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/delay.d ${OBJECTDIR}/_ext/1386521430/delay.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/delay.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/pwm.p1: ../../../lib/pwm.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/pwm.p1: ../../../lib/pwm.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pwm.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pwm.p1 
@@ -255,7 +255,7 @@ ${OBJECTDIR}/_ext/1386521430/pwm.p1: ../../../lib/pwm.c  nbproject/Makefile-${CN
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/pwm.d ${OBJECTDIR}/_ext/1386521430/pwm.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/pwm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/random.p1: ../../../lib/random.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/random.p1: ../../../lib/random.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/random.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/random.p1 
@@ -263,7 +263,7 @@ ${OBJECTDIR}/_ext/1386521430/random.p1: ../../../lib/random.c  nbproject/Makefil
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/random.d ${OBJECTDIR}/_ext/1386521430/random.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/random.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/ser.p1: ../../../lib/ser.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/ser.p1: ../../../lib/ser.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/ser.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/ser.p1 
@@ -271,7 +271,7 @@ ${OBJECTDIR}/_ext/1386521430/ser.p1: ../../../lib/ser.c  nbproject/Makefile-${CN
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/ser.d ${OBJECTDIR}/_ext/1386521430/ser.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/ser.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/softpwm.p1: ../../../lib/softpwm.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/softpwm.p1: ../../../lib/softpwm.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softpwm.p1 
@@ -279,7 +279,7 @@ ${OBJECTDIR}/_ext/1386521430/softpwm.p1: ../../../lib/softpwm.c  nbproject/Makef
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/softpwm.d ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/softpwm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/softser.p1: ../../../lib/softser.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/softser.p1: ../../../lib/softser.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softser.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/softser.p1 
@@ -287,7 +287,7 @@ ${OBJECTDIR}/_ext/1386521430/softser.p1: ../../../lib/softser.c  nbproject/Makef
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/softser.d ${OBJECTDIR}/_ext/1386521430/softser.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/softser.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/timer.p1: ../../../lib/timer.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/timer.p1: ../../../lib/timer.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/timer.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/timer.p1 
@@ -295,7 +295,7 @@ ${OBJECTDIR}/_ext/1386521430/timer.p1: ../../../lib/timer.c  nbproject/Makefile-
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/timer.d ${OBJECTDIR}/_ext/1386521430/timer.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/timer.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/uart.p1: ../../../lib/uart.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/uart.p1: ../../../lib/uart.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/uart.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/uart.p1 
@@ -303,7 +303,7 @@ ${OBJECTDIR}/_ext/1386521430/uart.p1: ../../../lib/uart.c  nbproject/Makefile-${
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/uart.d ${OBJECTDIR}/_ext/1386521430/uart.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/uart.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/lcd5110.p1: ../../../lib/lcd5110.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/lcd5110.p1: ../../../lib/lcd5110.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/lcd5110.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/lcd5110.p1 
@@ -311,7 +311,7 @@ ${OBJECTDIR}/_ext/1386521430/lcd5110.p1: ../../../lib/lcd5110.c  nbproject/Makef
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/lcd5110.d ${OBJECTDIR}/_ext/1386521430/lcd5110.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/lcd5110.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/adc.p1: ../../../lib/adc.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/adc.p1: ../../../lib/adc.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/adc.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/adc.p1 
@@ -319,7 +319,7 @@ ${OBJECTDIR}/_ext/1386521430/adc.p1: ../../../lib/adc.c  nbproject/Makefile-${CN
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/adc.d ${OBJECTDIR}/_ext/1386521430/adc.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/adc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/format.p1: ../../../lib/format.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/format.p1: ../../../lib/format.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/format.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/format.p1 
@@ -327,7 +327,7 @@ ${OBJECTDIR}/_ext/1386521430/format.p1: ../../../lib/format.c  nbproject/Makefil
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/format.d ${OBJECTDIR}/_ext/1386521430/format.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/format.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/buffer.p1: ../../../lib/buffer.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/buffer.p1: ../../../lib/buffer.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/buffer.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/buffer.p1 
@@ -335,7 +335,7 @@ ${OBJECTDIR}/_ext/1386521430/buffer.p1: ../../../lib/buffer.c  nbproject/Makefil
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/buffer.d ${OBJECTDIR}/_ext/1386521430/buffer.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/buffer.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1386521430/pcd8544.p1: ../../../lib/pcd8544.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1386521430/pcd8544.p1: ../../../lib/pcd8544.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1386521430" 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pcd8544.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1386521430/pcd8544.p1 
@@ -343,7 +343,7 @@ ${OBJECTDIR}/_ext/1386521430/pcd8544.p1: ../../../lib/pcd8544.c  nbproject/Makef
 	@-${MV} ${OBJECTDIR}/_ext/1386521430/pcd8544.d ${OBJECTDIR}/_ext/1386521430/pcd8544.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1386521430/pcd8544.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1006914320/mcp3001.p1: /home/roman/Projects/pictest/lib/mcp3001.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1006914320/mcp3001.p1: /home/roman/Projects/pictest/lib/mcp3001.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1006914320" 
 	@${RM} ${OBJECTDIR}/_ext/1006914320/mcp3001.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1006914320/mcp3001.p1 
@@ -351,7 +351,7 @@ ${OBJECTDIR}/_ext/1006914320/mcp3001.p1: /home/roman/Projects/pictest/lib/mcp300
 	@-${MV} ${OBJECTDIR}/_ext/1006914320/mcp3001.d ${OBJECTDIR}/_ext/1006914320/mcp3001.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1006914320/mcp3001.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/mcc_generated_files/tmr0.p1: mcc_generated_files/tmr0.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/mcc_generated_files/tmr0.p1: mcc_generated_files/tmr0.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
 	@${RM} ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d 
 	@${RM} ${OBJECTDIR}/mcc_generated_files/tmr0.p1 
@@ -359,7 +359,7 @@ ${OBJECTDIR}/mcc_generated_files/tmr0.p1: mcc_generated_files/tmr0.c  nbproject/
 	@-${MV} ${OBJECTDIR}/mcc_generated_files/tmr0.d ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/mcc_generated_files/tmr0.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1538326805/blinktest.p1: ../../../../../Sources/pictest/src/blinktest.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/_ext/1538326805/blinktest.p1: ../../../../../Sources/pictest/src/blinktest.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1538326805" 
 	@${RM} ${OBJECTDIR}/_ext/1538326805/blinktest.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1538326805/blinktest.p1 
