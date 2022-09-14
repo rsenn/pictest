@@ -30,7 +30,7 @@ endif
 #$(info CCVER: $(CCVER))
 #$(info OS: $(OS))
 
-PROGRAMFILES ?= C:/Program Files (x86)
+PROGRAMFILES ?= "C:/Program Files (x86)"
 
 OS = $(shell uname -o)
 
