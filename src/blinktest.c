@@ -1,15 +1,3 @@
-/* Number of pins for SoftPWM */
-
-#define SOFTPWM_PIN_COUNT 6
-
-/* First pin number */
-#define SOFTPWM_PIN_FIRST 0
-
-/* Output port */
-#define SOFTPWM_PORT PORTB
-#define SOFTPWM_TRIS TRISB
-
-
 #define USE_MCLRE 1
 #ifdef USE_ADCONVERTER
 #define VREF_PLUS 3.3
@@ -22,6 +10,7 @@
 #include "../lib/timer.h"
 	#include "../lib/interrupt.h"
 #include "../lib/random.h"
+#define SOFTPWM_PIN_COUNT 4
 #include "../lib/softpwm.h"
 #include "../lib/delay.h"
 #include "../lib/format.h"
@@ -48,9 +37,6 @@
 #endif
 #include <math.h>
 
-#ifndef NO_PORTB
-#define NO_PORTB 1
-#endif
 /* #include "../usb/USB_Stack/USB/usb_config.h"
 #include "../usb/USB_Stack/USB/usb.h"
 #include "../usb/USB_Stack/USB/usb_cdc.h"
@@ -146,19 +132,9 @@ INTERRUPT_FN() {
     }*/
 #ifdef USE_SOFTPWM
   if(SOFTPWM_INTERRUPT_FLAG) {
-    uint8_t value=0;
-char i;
-    for(i = 0; i < SOFTPWM_PIN_COUNT; i++) {
-      if(SOFTPWM_VALUE(i))
-        value |= 1 << i;
-    }
-    SOFTPWM_PORT = value;
-    /*SOFTPWM_PIN(0, LATB0);
-    SOFTPWM_PIN(1, LATB1);
-    SOFTPWM_PIN(2, LATB2);
-    SOFTPWM_PIN(3, LATB3);
-    SOFTPWM_PIN(4, LATB4);
-    SOFTPWM_PIN(5, LATB5);*/
+    SOFTPWM_PIN(0, LATC0);
+    SOFTPWM_PIN(1, LATC1);
+    SOFTPWM_PIN(2, LATC2);
     // SOFTPWM_PIN(3, LATA4);
     SOFTPWM_TIMER_VALUE = -128;
     SOFTPWM_INTERRUPT_FLAG = 0;
