@@ -87,6 +87,7 @@ static BOOL update_colors = TRUE;
 static BOOL led_state = 0;
 static uint32_t tmp_msecs;
 static uint32_t prev_hsecs = 0, last_button = 0;
+  static uint8_t index = 0;
 
 static void
 dummy_putch(char c) {}
@@ -138,6 +139,10 @@ INTERRUPT_FN() {
     // SOFTPWM_PIN(3, LATA4);
     SOFTPWM_TIMER_VALUE = -128;
     SOFTPWM_INTERRUPT_FLAG = 0;
+    softpwm_counter++;
+
+    if(softpwm_counter > 100)
+      softpwm_counter=0;
   }
 #endif
 #ifdef USE_UART
@@ -307,10 +312,6 @@ main() {
 
 #ifdef USE_SOFTPWM
   softpwm_init();
-  softpwm_values[0] = 30;
-  softpwm_values[1] = 60;
-  softpwm_values[2] = 80;
-  softpwm_values[3] = 50;
 #endif
 
 #ifndef __18f16q41
@@ -347,7 +348,6 @@ main() {
 
 void
 loop(void) {
-  uint8_t index;
   static uint32_t interval = 10;
   char input = 0;
   /*static float hue = 0;
@@ -434,7 +434,7 @@ loop(void) {
   if(update_colors) {
     const uint8_t* rgb;
 
-    rgb = rainbow8[index];
+    rgb = rainbow8[index % 64];
 
 #ifdef USE_UART
     uart_enable();
