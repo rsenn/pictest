@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.7.0">
+<eagle version="7.2.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="2" display="yes" altdistance="4" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -2766,7 +2766,6 @@ http://www.techmeology.co.uk/rpipic/</description>
 <part name="R3" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
 <part name="R4" library="r" deviceset="R" device="0204/10-V" value="10kΩ"/>
 <part name="GPIO4" library="pad" deviceset="VPORT" device=""/>
-<part name="U$1" library="pad" deviceset="+5V" device=""/>
 <part name="S1" library="pad" deviceset="GND" device=""/>
 <part name="S2" library="pad" deviceset="GND" device=""/>
 <part name="PGC" library="pad" deviceset="VPORT" device=""/>
@@ -2776,7 +2775,6 @@ http://www.techmeology.co.uk/rpipic/</description>
 <part name="R6" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
 <part name="R7" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
 <part name="GPIO7" library="pad" deviceset="VPORT" device=""/>
-<part name="U$2" library="pad" deviceset="+5V" device=""/>
 <part name="S3" library="pad" deviceset="GND" device=""/>
 <part name="S4" library="pad" deviceset="GND" device=""/>
 <part name="PGD" library="pad" deviceset="VPORT" device=""/>
@@ -2818,7 +2816,6 @@ http://www.techmeology.co.uk/rpipic/</description>
 <instance part="R3" gate="1" x="17.78" y="91.44" rot="R90"/>
 <instance part="R4" gate="1" x="30.48" y="68.58" rot="R90"/>
 <instance part="GPIO4" gate="G$1" x="-2.54" y="101.6"/>
-<instance part="U$1" gate="G$1" x="30.48" y="101.6"/>
 <instance part="S1" gate="1" x="17.78" y="55.88"/>
 <instance part="S2" gate="1" x="30.48" y="55.88"/>
 <instance part="PGC" gate="G$1" x="43.18" y="38.1" rot="R180"/>
@@ -2828,7 +2825,6 @@ http://www.techmeology.co.uk/rpipic/</description>
 <instance part="R6" gate="1" x="73.66" y="76.2" rot="R90"/>
 <instance part="R7" gate="1" x="73.66" y="91.44" rot="R90"/>
 <instance part="GPIO7" gate="G$1" x="53.34" y="101.6"/>
-<instance part="U$2" gate="G$1" x="86.36" y="101.6"/>
 <instance part="S3" gate="1" x="73.66" y="55.88"/>
 <instance part="S4" gate="1" x="101.6" y="45.72"/>
 <instance part="PGD" gate="G$1" x="121.92" y="38.1" rot="R180"/>
@@ -2896,26 +2892,6 @@ http://www.techmeology.co.uk/rpipic/</description>
 </segment>
 </net>
 <net name="+12V" class="0">
-<segment>
-<pinref part="T3" gate="1" pin="E"/>
-<pinref part="U$1" gate="G$1" pin="+12V"/>
-<wire x1="30.48" y1="101.6" x2="30.48" y2="99.06" width="0.1524" layer="91"/>
-<pinref part="R3" gate="1" pin="2"/>
-<wire x1="30.48" y1="99.06" x2="30.48" y2="88.9" width="0.1524" layer="91"/>
-<wire x1="30.48" y1="99.06" x2="17.78" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="17.78" y1="99.06" x2="17.78" y2="96.52" width="0.1524" layer="91"/>
-<junction x="30.48" y="99.06"/>
-</segment>
-<segment>
-<pinref part="T4" gate="1" pin="E"/>
-<pinref part="U$2" gate="G$1" pin="+12V"/>
-<wire x1="86.36" y1="101.6" x2="86.36" y2="99.06" width="0.1524" layer="91"/>
-<pinref part="R7" gate="1" pin="2"/>
-<wire x1="86.36" y1="99.06" x2="86.36" y2="88.9" width="0.1524" layer="91"/>
-<wire x1="86.36" y1="99.06" x2="73.66" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="73.66" y1="99.06" x2="73.66" y2="96.52" width="0.1524" layer="91"/>
-<junction x="86.36" y="99.06"/>
-</segment>
 <segment>
 <pinref part="T6" gate="1" pin="E"/>
 <wire x1="165.1" y1="101.6" x2="165.1" y2="96.52" width="0.1524" layer="91"/>
@@ -3122,6 +3098,20 @@ http://www.techmeology.co.uk/rpipic/</description>
 <wire x1="58.42" y1="15.24" x2="58.42" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="15.24" x2="58.42" y2="15.24" width="0.1524" layer="91"/>
 <junction x="58.42" y="15.24"/>
+</segment>
+<segment>
+<pinref part="R7" gate="1" pin="2"/>
+<wire x1="73.66" y1="99.06" x2="73.66" y2="96.52" width="0.1524" layer="91"/>
+<pinref part="T4" gate="1" pin="E"/>
+<wire x1="86.36" y1="88.9" x2="86.36" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="86.36" y1="99.06" x2="73.66" y2="99.06" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R3" gate="1" pin="2"/>
+<wire x1="17.78" y1="96.52" x2="17.78" y2="99.06" width="0.1524" layer="91"/>
+<pinref part="T3" gate="1" pin="E"/>
+<wire x1="17.78" y1="99.06" x2="30.48" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="99.06" x2="30.48" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
