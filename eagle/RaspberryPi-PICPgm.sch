@@ -1626,25 +1626,17 @@ http://www.techmeology.co.uk/rpipic/</description>
 <circle x="0" y="3.81" radius="1.27" width="0.254" layer="94"/>
 <text x="0" y="6.35" size="1.27" layer="95" align="center">&gt;NAME</text>
 </symbol>
-<symbol name="+5V">
-<text x="0" y="3.048" size="1.27" layer="96" align="bottom-center">&gt;VALUE</text>
-<pin name="+12V" x="0" y="0" visible="off" length="point" direction="sup" rot="R90"/>
-<wire x1="0" y1="0" x2="0" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="2.032" y1="2.54" x2="-2.032" y2="2.54" width="0.3048" layer="94"/>
-</symbol>
 <symbol name="GND">
-<wire x1="-1.651" y1="-1.27" x2="0" y2="-1.27" width="0.254" layer="94"/>
-<pin name="GND" x="0" y="0" visible="off" length="point" direction="sup" rot="R270"/>
-<wire x1="0" y1="-1.27" x2="1.651" y2="-1.27" width="0.254" layer="94"/>
-<wire x1="-1.016" y1="-1.778" x2="1.016" y2="-1.778" width="0.254" layer="94"/>
-<wire x1="-0.381" y1="-2.286" x2="0.381" y2="-2.286" width="0.254" layer="94"/>
-<wire x1="0" y1="-1.27" x2="0" y2="0" width="0.1524" layer="94"/>
+<wire x1="-1.651" y1="0" x2="1.651" y2="0" width="0.254" layer="94"/>
+<text x="0" y="-1.778" size="1.27" layer="96" align="top-center">&gt;VALUE</text>
+<pin name="GND" x="0" y="2.54" visible="off" length="short" direction="sup" rot="R270"/>
+<wire x1="-1.016" y1="-0.508" x2="1.016" y2="-0.508" width="0.254" layer="94"/>
+<wire x1="-0.381" y1="-1.016" x2="0.381" y2="-1.016" width="0.254" layer="94"/>
 </symbol>
 <symbol name="+12V">
-<circle x="0" y="2.032" radius="0.762" width="0.254" layer="94"/>
-<text x="0" y="3.048" size="1.27" layer="96" align="bottom-center">&gt;VALUE</text>
-<pin name="+12V" x="0" y="0" visible="off" length="point" direction="sup" rot="R90"/>
-<wire x1="0" y1="0" x2="0" y2="1.27" width="0.254" layer="94"/>
+<circle x="0" y="3.302" radius="0.762" width="0.254" layer="94"/>
+<text x="0" y="4.318" size="1.27" layer="96" align="bottom-center">&gt;VALUE</text>
+<pin name="+12V" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
 </symbol>
 <symbol name="SPAD">
 <pin name="P$1" x="0" y="0" visible="off" length="point" direction="pas" function="dot"/>
@@ -1663,18 +1655,6 @@ http://www.techmeology.co.uk/rpipic/</description>
 <connects>
 <connect gate="G$1" pin="P$1" pad="1"/>
 </connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="+5V">
-<gates>
-<gate name="G$1" symbol="+5V" x="0" y="0"/>
-</gates>
-<devices>
-<device name="">
 <technologies>
 <technology name=""/>
 </technologies>
@@ -2802,7 +2782,6 @@ http://www.techmeology.co.uk/rpipic/</description>
 <part name="C2" library="c" deviceset="C" device="050-025X075" value="100nF"/>
 <part name="S10" library="pad" deviceset="GND" device=""/>
 <part name="U$3" library="pad" deviceset="+12V" device=""/>
-<part name="U$5" library="pad" deviceset="+5V" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -2853,7 +2832,6 @@ http://www.techmeology.co.uk/rpipic/</description>
 <instance part="C2" gate="G$1" x="58.42" y="10.16"/>
 <instance part="S10" gate="1" x="58.42" y="0"/>
 <instance part="U$3" gate="1" x="27.94" y="22.86"/>
-<instance part="U$5" gate="G$1" x="58.42" y="22.86"/>
 </instances>
 <busses>
 </busses>
@@ -2930,53 +2908,49 @@ http://www.techmeology.co.uk/rpipic/</description>
 <segment>
 <pinref part="T1" gate="1" pin="E"/>
 <pinref part="S1" gate="1" pin="GND"/>
-<wire x1="17.78" y1="55.88" x2="17.78" y2="58.42" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R4" gate="1" pin="1"/>
 <pinref part="S2" gate="1" pin="GND"/>
-<wire x1="30.48" y1="55.88" x2="30.48" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="58.42" x2="30.48" y2="63.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="T2" gate="1" pin="E"/>
 <pinref part="S3" gate="1" pin="GND"/>
-<wire x1="73.66" y1="55.88" x2="73.66" y2="58.42" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R10" gate="1" pin="1"/>
 <pinref part="S4" gate="1" pin="GND"/>
-<wire x1="101.6" y1="45.72" x2="101.6" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="T5" gate="1" pin="E"/>
 <pinref part="S5" gate="1" pin="GND"/>
-<wire x1="152.4" y1="53.34" x2="152.4" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R14" gate="1" pin="1"/>
 <pinref part="S6" gate="1" pin="GND"/>
-<wire x1="165.1" y1="53.34" x2="165.1" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="55.88" x2="165.1" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="G$1" pin="GND"/>
 <pinref part="S7" gate="1" pin="GND"/>
-<wire x1="43.18" y1="0" x2="43.18" y2="7.62" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="2.54" x2="43.18" y2="7.62" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="SUPPLY" gate="-" pin="P$1"/>
 <pinref part="S8" gate="1" pin="GND"/>
-<wire x1="17.78" y1="0" x2="17.78" y2="5.08" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="2.54" x2="17.78" y2="5.08" width="0.1524" layer="91"/>
 <wire x1="17.78" y1="5.08" x2="12.7" y2="5.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C1" gate="G$1" pin="2"/>
 <pinref part="S9" gate="1" pin="GND"/>
-<wire x1="27.94" y1="0" x2="27.94" y2="5.08" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="2.54" x2="27.94" y2="5.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C2" gate="G$1" pin="2"/>
 <pinref part="S10" gate="1" pin="GND"/>
-<wire x1="58.42" y1="0" x2="58.42" y2="5.08" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="2.54" x2="58.42" y2="5.08" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$6" class="0">
@@ -3091,7 +3065,6 @@ http://www.techmeology.co.uk/rpipic/</description>
 </net>
 <net name="+5V" class="0">
 <segment>
-<pinref part="U$5" gate="G$1" pin="+12V"/>
 <pinref part="C2" gate="G$1" pin="1"/>
 <wire x1="58.42" y1="22.86" x2="58.42" y2="15.24" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="G$1" pin="OUT"/>
@@ -3112,6 +3085,8 @@ http://www.techmeology.co.uk/rpipic/</description>
 <pinref part="T3" gate="1" pin="E"/>
 <wire x1="17.78" y1="99.06" x2="30.48" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="30.48" y1="99.06" x2="30.48" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="104.14" x2="30.48" y2="99.06" width="0.1524" layer="91"/>
+<junction x="30.48" y="99.06"/>
 </segment>
 </net>
 </nets>
