@@ -487,7 +487,7 @@
         <targetDevice>PIC18F25K50</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool></platformTool>
+        <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>1.43</languageToolchainVersion>
         <platform>2</platform>
@@ -610,8 +610,6 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="debugoptions.debug-startup" value="Use system settings"/>
-        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
