@@ -6883,21 +6883,21 @@
 <wire x1="91.44" y1="76.2" x2="104.14" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$8" class="0">
+<net name="RC0" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="RC0/T1OSO/T1CKI"/>
 <pinref part="R6" gate="1" pin="2"/>
 <wire x1="104.14" y1="68.58" x2="101.6" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$9" class="0">
+<net name="RC1" class="0">
 <segment>
 <pinref part="R5" gate="1" pin="2"/>
 <pinref part="U1" gate="G$1" pin="RC1/T1OSI/CCP2"/>
 <wire x1="101.6" y1="66.04" x2="104.14" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$10" class="0">
+<net name="RC2" class="0">
 <segment>
 <pinref part="R10" gate="1" pin="2"/>
 <pinref part="U1" gate="G$1" pin="RC2/CCP1"/>

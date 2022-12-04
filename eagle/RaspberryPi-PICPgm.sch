@@ -63,6 +63,9 @@
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
+<layer number="57" name="tCAD" color="7" fill="1" visible="no" active="no"/>
+<layer number="59" name="tCarbon" color="7" fill="1" visible="no" active="no"/>
+<layer number="60" name="bCarbon" color="7" fill="1" visible="no" active="no"/>
 <layer number="88" name="SimResults" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="89" name="SimProbes" color="9" fill="1" visible="yes" active="yes"/>
 <layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
@@ -89,8 +92,13 @@
 <layer number="111" name="LPC17xx" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="112" name="tSilk" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="113" name="IDFDebug" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="114" name="Badge_Outline" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="115" name="ReferenceISLANDS" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="116" name="Patch_BOT" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="117" name="PM_Ref" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="118" name="Rect_Pads" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="119" name="PF_Ref" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="120" name="WFL_Ref" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="121" name="_tsilk" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="122" name="_bsilk" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="123" name="tTestmark" color="7" fill="1" visible="yes" active="yes"/>
@@ -99,6 +107,7 @@
 <layer number="126" name="_bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="127" name="_tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="128" name="_bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="129" name="Mask" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="131" name="tAdjust" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="132" name="bAdjust" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="144" name="Drill_legend" color="7" fill="1" visible="yes" active="yes"/>
@@ -134,6 +143,12 @@
 <layer number="222" name="222bmp" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="223" name="223bmp" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="224" name="224bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="225" name="225bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="226" name="226bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="227" name="227bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="228" name="228bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="229" name="229bmp" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="230" name="230bmp" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="231" name="Eagle3D_PG1" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="232" name="Eagle3D_PG2" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="233" name="Eagle3D_PG3" color="7" fill="1" visible="yes" active="yes"/>
@@ -142,6 +157,7 @@
 <layer number="250" name="Descript" color="3" fill="1" visible="yes" active="yes"/>
 <layer number="251" name="SMDround" color="12" fill="11" visible="yes" active="yes"/>
 <layer number="254" name="cooling" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="255" name="routoute" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
 <schematic xreflabel="%F%N/%S" xrefpart="/%S.%C%R">
 <description>PIC Programmer using Raspberry Pi GPIOs
@@ -1592,10 +1608,6 @@ http://www.techmeology.co.uk/rpipic/</description>
 </library>
 <library name="pad">
 <packages>
-<package name="SPAD">
-<pad name="1" x="0" y="0" drill="1" diameter="1.778" stop="no"/>
-<text x="-1.0795" y="0" size="0.6096" layer="21" font="vector" ratio="9" distance="5" rot="R270" align="top-center">&gt;NAME</text>
-</package>
 <package name="SPAD+-">
 <pad name="1" x="0" y="-1.27" drill="1" diameter="1.778" stop="no"/>
 <text x="0" y="-2.794" size="0.8128" layer="21" ratio="9" distance="5" align="top-center">&gt;NAME</text>
@@ -1618,14 +1630,12 @@ http://www.techmeology.co.uk/rpipic/</description>
 <text x="-1.905" y="-1.27" size="1.016" layer="21" rot="R180" align="center">-</text>
 <text x="-1.905" y="1.27" size="1.016" layer="21" rot="R90" align="center">+</text>
 </package>
+<package name="SPAD">
+<pad name="1" x="0" y="0" drill="1" diameter="1.778" stop="no"/>
+<text x="-1.143" y="0" size="0.6096" layer="21" font="vector" ratio="9" distance="5" rot="R270" align="top-center">&gt;NAME</text>
+</package>
 </packages>
 <symbols>
-<symbol name="VPORT">
-<pin name="P$1" x="0" y="0" visible="off" length="point" direction="pas" function="dot" rot="R270"/>
-<wire x1="0" y1="0" x2="0" y2="2.54" width="0.254" layer="94"/>
-<circle x="0" y="3.81" radius="1.27" width="0.254" layer="94"/>
-<text x="0" y="6.35" size="1.27" layer="95" align="center">&gt;NAME</text>
-</symbol>
 <symbol name="GND">
 <wire x1="-1.651" y1="0" x2="1.651" y2="0" width="0.254" layer="94"/>
 <text x="0" y="-1.778" size="1.27" layer="96" align="top-center">&gt;VALUE</text>
@@ -1644,23 +1654,21 @@ http://www.techmeology.co.uk/rpipic/</description>
 <circle x="-3.81" y="0" radius="1.27" width="0.254" layer="94"/>
 <text x="-6.35" y="0" size="1.27" layer="95" align="center-right">&gt;NAME</text>
 </symbol>
+<symbol name="+5V">
+<circle x="0" y="3.302" radius="0.762" width="0.254" layer="94"/>
+<text x="0" y="4.318" size="1.27" layer="96" align="bottom-center">&gt;VALUE</text>
+<pin name="+12V" x="0" y="0" visible="off" length="short" direction="sup" rot="R90"/>
+</symbol>
+<symbol name="VPORT">
+<description>&lt;b&gt;Conrad Connectors&lt;/b&gt;&lt;p&gt;
+ &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<pin name="P$1" x="0" y="0" visible="off" length="point" direction="pas" rot="R270"/>
+<wire x1="0" y1="0" x2="0" y2="2.54" width="0.254" layer="94"/>
+<circle x="0" y="3.81" radius="1.27" width="0.254" layer="94"/>
+<text x="0" y="6.35" size="1.27" layer="95" align="center">&gt;NAME</text>
+</symbol>
 </symbols>
 <devicesets>
-<deviceset name="VPORT" prefix="J">
-<gates>
-<gate name="G$1" symbol="VPORT" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="SPAD">
-<connects>
-<connect gate="G$1" pin="P$1" pad="1"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="GND" prefix="S">
 <gates>
 <gate name="1" symbol="GND" x="0" y="0"/>
@@ -1704,6 +1712,33 @@ http://www.techmeology.co.uk/rpipic/</description>
 <connects>
 <connect gate="+" pin="P$1" pad="2"/>
 <connect gate="-" pin="P$1" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="+5V">
+<gates>
+<gate name="1" symbol="+5V" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="VPORT" prefix="J">
+<gates>
+<gate name="G$1" symbol="VPORT" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SPAD">
+<connects>
+<connect gate="G$1" pin="P$1" pad="1"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -2745,33 +2780,26 @@ http://www.techmeology.co.uk/rpipic/</description>
 <part name="R2" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
 <part name="R3" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
 <part name="R4" library="r" deviceset="R" device="0204/10-V" value="10kΩ"/>
-<part name="GPIO4" library="pad" deviceset="VPORT" device=""/>
 <part name="S1" library="pad" deviceset="GND" device=""/>
 <part name="S2" library="pad" deviceset="GND" device=""/>
-<part name="PGC" library="pad" deviceset="VPORT" device=""/>
 <part name="T2" library="t" deviceset="2N3904" device=""/>
 <part name="T4" library="t" deviceset="2N3906" device=""/>
 <part name="R5" library="r" deviceset="R-H" device="0204/10" value="100kΩ"/>
 <part name="R6" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
 <part name="R7" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
-<part name="GPIO7" library="pad" deviceset="VPORT" device=""/>
 <part name="S3" library="pad" deviceset="GND" device=""/>
 <part name="S4" library="pad" deviceset="GND" device=""/>
-<part name="PGD" library="pad" deviceset="VPORT" device=""/>
 <part name="R8" library="r" deviceset="R-H" device="0204/10" value="10kΩ"/>
 <part name="R9" library="r" deviceset="R" device="0204/10-V" value="68kΩ"/>
 <part name="R10" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
-<part name="GPIO8" library="pad" deviceset="VPORT" device=""/>
 <part name="T5" library="t" deviceset="2N3904" device=""/>
 <part name="T6" library="t" deviceset="2N3906" device=""/>
 <part name="R11" library="r" deviceset="R-H" device="0204/10" value="100kΩ"/>
 <part name="R12" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
 <part name="R13" library="r" deviceset="R" device="0204/10-V" value="100kΩ"/>
 <part name="R14" library="r" deviceset="R" device="0204/10-V" value="10kΩ"/>
-<part name="GPIO9" library="pad" deviceset="VPORT" device=""/>
 <part name="S5" library="pad" deviceset="GND" device=""/>
 <part name="S6" library="pad" deviceset="GND" device=""/>
-<part name="/MCLR" library="pad" deviceset="VPORT" device=""/>
 <part name="U$4" library="pad" deviceset="+12V" device=""/>
 <part name="IC1" library="ic" deviceset="LM78*" device="" value="7805"/>
 <part name="SUPPLY" library="pad" deviceset="SPAD+-" device="-+"/>
@@ -2782,6 +2810,15 @@ http://www.techmeology.co.uk/rpipic/</description>
 <part name="C2" library="c" deviceset="C" device="050-025X075" value="100nF"/>
 <part name="S10" library="pad" deviceset="GND" device=""/>
 <part name="U$3" library="pad" deviceset="+12V" device=""/>
+<part name="U$1" library="pad" deviceset="+5V" device=""/>
+<part name="GPIO4" library="pad" deviceset="VPORT" device=""/>
+<part name="GPIO7" library="pad" deviceset="VPORT" device=""/>
+<part name="GPIO8" library="pad" deviceset="VPORT" device=""/>
+<part name="PGC" library="pad" deviceset="VPORT" device=""/>
+<part name="PGD" library="pad" deviceset="VPORT" device=""/>
+<part name="/MCLR" library="pad" deviceset="VPORT" device=""/>
+<part name="U$2" library="pad" deviceset="+5V" device=""/>
+<part name="GPIO9" library="pad" deviceset="VPORT" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -2794,33 +2831,26 @@ http://www.techmeology.co.uk/rpipic/</description>
 <instance part="R2" gate="1" x="17.78" y="76.2" rot="R90"/>
 <instance part="R3" gate="1" x="17.78" y="91.44" rot="R90"/>
 <instance part="R4" gate="1" x="30.48" y="68.58" rot="R90"/>
-<instance part="GPIO4" gate="G$1" x="-2.54" y="101.6"/>
 <instance part="S1" gate="1" x="17.78" y="55.88"/>
 <instance part="S2" gate="1" x="30.48" y="55.88"/>
-<instance part="PGC" gate="G$1" x="43.18" y="38.1" rot="R180"/>
 <instance part="T2" gate="1" x="71.12" y="63.5"/>
 <instance part="T4" gate="1" x="83.82" y="83.82"/>
 <instance part="R5" gate="1" x="60.96" y="63.5"/>
 <instance part="R6" gate="1" x="73.66" y="76.2" rot="R90"/>
 <instance part="R7" gate="1" x="73.66" y="91.44" rot="R90"/>
-<instance part="GPIO7" gate="G$1" x="53.34" y="101.6"/>
 <instance part="S3" gate="1" x="73.66" y="55.88"/>
 <instance part="S4" gate="1" x="101.6" y="45.72"/>
-<instance part="PGD" gate="G$1" x="121.92" y="38.1" rot="R180"/>
 <instance part="R8" gate="1" x="93.98" y="76.2"/>
 <instance part="R9" gate="1" x="101.6" y="68.58" rot="R90"/>
 <instance part="R10" gate="1" x="101.6" y="53.34" rot="R90"/>
-<instance part="GPIO8" gate="G$1" x="111.76" y="99.06"/>
 <instance part="T5" gate="1" x="149.86" y="60.96"/>
 <instance part="T6" gate="1" x="162.56" y="81.28"/>
 <instance part="R11" gate="1" x="139.7" y="60.96"/>
 <instance part="R12" gate="1" x="152.4" y="73.66" rot="R90"/>
 <instance part="R13" gate="1" x="152.4" y="88.9" rot="R90"/>
 <instance part="R14" gate="1" x="165.1" y="66.04" rot="R90"/>
-<instance part="GPIO9" gate="G$1" x="132.08" y="99.06"/>
 <instance part="S5" gate="1" x="152.4" y="53.34"/>
 <instance part="S6" gate="1" x="165.1" y="53.34"/>
-<instance part="/MCLR" gate="G$1" x="177.8" y="35.56" rot="R180"/>
 <instance part="U$4" gate="1" x="165.1" y="101.6"/>
 <instance part="IC1" gate="G$1" x="43.18" y="15.24"/>
 <instance part="SUPPLY" gate="-" x="12.7" y="5.08"/>
@@ -2832,16 +2862,25 @@ http://www.techmeology.co.uk/rpipic/</description>
 <instance part="C2" gate="G$1" x="58.42" y="10.16"/>
 <instance part="S10" gate="1" x="58.42" y="0"/>
 <instance part="U$3" gate="1" x="27.94" y="22.86"/>
+<instance part="U$1" gate="1" x="58.42" y="22.86"/>
+<instance part="GPIO4" gate="G$1" x="-2.54" y="101.6"/>
+<instance part="GPIO7" gate="G$1" x="53.34" y="101.6"/>
+<instance part="GPIO8" gate="G$1" x="111.76" y="99.06"/>
+<instance part="PGC" gate="G$1" x="43.18" y="38.1" rot="R180"/>
+<instance part="PGD" gate="G$1" x="121.92" y="38.1" rot="R180"/>
+<instance part="/MCLR" gate="G$1" x="177.8" y="35.56" rot="R180"/>
+<instance part="U$2" gate="1" x="30.48" y="104.14"/>
+<instance part="GPIO9" gate="G$1" x="132.08" y="99.06"/>
 </instances>
 <busses>
 </busses>
 <nets>
-<net name="N$1" class="0">
+<net name="GPIO4" class="0">
 <segment>
 <pinref part="R1" gate="1" pin="1"/>
-<pinref part="GPIO4" gate="G$1" pin="P$1"/>
 <wire x1="-2.54" y1="101.6" x2="-2.54" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="-2.54" y1="63.5" x2="0" y2="63.5" width="0.1524" layer="91"/>
+<pinref part="GPIO4" gate="G$1" pin="P$1"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -2892,16 +2931,16 @@ http://www.techmeology.co.uk/rpipic/</description>
 <wire x1="27.94" y1="15.24" x2="27.94" y2="22.86" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$5" class="0">
+<net name="PGC" class="0">
 <segment>
 <pinref part="T3" gate="1" pin="C"/>
 <pinref part="R4" gate="1" pin="2"/>
 <wire x1="30.48" y1="73.66" x2="30.48" y2="76.2" width="0.1524" layer="91"/>
-<pinref part="PGC" gate="G$1" pin="P$1"/>
 <wire x1="30.48" y1="76.2" x2="30.48" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="38.1" x2="43.18" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="76.2" x2="30.48" y2="76.2" width="0.1524" layer="91"/>
 <junction x="30.48" y="76.2"/>
+<pinref part="PGC" gate="G$1" pin="P$1"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -2953,12 +2992,12 @@ http://www.techmeology.co.uk/rpipic/</description>
 <wire x1="58.42" y1="2.54" x2="58.42" y2="5.08" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$6" class="0">
+<net name="GPIO7" class="0">
 <segment>
 <pinref part="R5" gate="1" pin="1"/>
-<pinref part="GPIO7" gate="G$1" pin="P$1"/>
 <wire x1="53.34" y1="101.6" x2="53.34" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="53.34" y1="63.5" x2="55.88" y2="63.5" width="0.1524" layer="91"/>
+<pinref part="GPIO7" gate="G$1" pin="P$1"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -2994,9 +3033,8 @@ http://www.techmeology.co.uk/rpipic/</description>
 <wire x1="88.9" y1="76.2" x2="86.36" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$11" class="0">
+<net name="PGD" class="0">
 <segment>
-<pinref part="PGD" gate="G$1" pin="P$1"/>
 <pinref part="R8" gate="1" pin="2"/>
 <wire x1="99.06" y1="76.2" x2="101.6" y2="76.2" width="0.1524" layer="91"/>
 <pinref part="R9" gate="1" pin="2"/>
@@ -3004,26 +3042,27 @@ http://www.techmeology.co.uk/rpipic/</description>
 <wire x1="121.92" y1="76.2" x2="121.92" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="101.6" y1="73.66" x2="101.6" y2="76.2" width="0.1524" layer="91"/>
 <junction x="101.6" y="76.2"/>
+<pinref part="PGD" gate="G$1" pin="P$1"/>
 </segment>
 </net>
-<net name="N$12" class="0">
+<net name="GPIO8" class="0">
 <segment>
 <pinref part="R9" gate="1" pin="1"/>
 <pinref part="R10" gate="1" pin="2"/>
 <wire x1="101.6" y1="58.42" x2="101.6" y2="60.96" width="0.1524" layer="91"/>
-<pinref part="GPIO8" gate="G$1" pin="P$1"/>
 <wire x1="101.6" y1="60.96" x2="101.6" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="101.6" y1="60.96" x2="111.76" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="60.96" x2="111.76" y2="99.06" width="0.1524" layer="91"/>
 <junction x="101.6" y="60.96"/>
+<pinref part="GPIO8" gate="G$1" pin="P$1"/>
 </segment>
 </net>
-<net name="N$13" class="0">
+<net name="GPIO9" class="0">
 <segment>
 <pinref part="R11" gate="1" pin="1"/>
-<pinref part="GPIO9" gate="G$1" pin="P$1"/>
 <wire x1="132.08" y1="99.06" x2="132.08" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="132.08" y1="60.96" x2="134.62" y2="60.96" width="0.1524" layer="91"/>
+<pinref part="GPIO9" gate="G$1" pin="P$1"/>
 </segment>
 </net>
 <net name="N$14" class="0">
@@ -3051,16 +3090,16 @@ http://www.techmeology.co.uk/rpipic/</description>
 <junction x="152.4" y="81.28"/>
 </segment>
 </net>
-<net name="N$17" class="0">
+<net name="/MCLR" class="0">
 <segment>
 <pinref part="T6" gate="1" pin="C"/>
 <pinref part="R14" gate="1" pin="2"/>
 <wire x1="165.1" y1="71.12" x2="165.1" y2="73.66" width="0.1524" layer="91"/>
-<pinref part="/MCLR" gate="G$1" pin="P$1"/>
 <wire x1="165.1" y1="73.66" x2="165.1" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="35.56" x2="177.8" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="73.66" x2="165.1" y2="73.66" width="0.1524" layer="91"/>
 <junction x="165.1" y="73.66"/>
+<pinref part="/MCLR" gate="G$1" pin="P$1"/>
 </segment>
 </net>
 <net name="+5V" class="0">
@@ -3071,6 +3110,7 @@ http://www.techmeology.co.uk/rpipic/</description>
 <wire x1="58.42" y1="15.24" x2="58.42" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="15.24" x2="58.42" y2="15.24" width="0.1524" layer="91"/>
 <junction x="58.42" y="15.24"/>
+<pinref part="U$1" gate="1" pin="+12V"/>
 </segment>
 <segment>
 <pinref part="R7" gate="1" pin="2"/>
@@ -3087,6 +3127,7 @@ http://www.techmeology.co.uk/rpipic/</description>
 <wire x1="30.48" y1="99.06" x2="30.48" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="30.48" y1="104.14" x2="30.48" y2="99.06" width="0.1524" layer="91"/>
 <junction x="30.48" y="99.06"/>
+<pinref part="U$2" gate="1" pin="+12V"/>
 </segment>
 </net>
 </nets>
