@@ -6630,7 +6630,7 @@
 <part name="S5" library="pad" deviceset="GND" device=""/>
 <part name="J3" library="usb" deviceset="USB-SH" device=""/>
 <part name="S6" library="pad" deviceset="GND" device=""/>
-<part name="L1" library="l" deviceset="L" device="02/10"/>
+<part name="L1" library="l" deviceset="L" device="02/10" value="100µH"/>
 <part name="U$7" library="pad" deviceset="VDD" device=""/>
 <part name="S7" library="pad" deviceset="GND" device=""/>
 <part name="C4" library="c" deviceset="C" device="050-030X075" value="330nF"/>
