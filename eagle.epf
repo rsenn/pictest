@@ -32,7 +32,7 @@ UsedLibrary="eagle/lbr/usb.lbr"
 
 [Win_1]
 Type="Schematic Editor"
-Loc="795 225 1915 988"
+Loc="0 0 1919 988"
 State=2
 Number=1
 File="eagle/RaspberryPi-PICPgm-2.sch"
@@ -79,15 +79,9 @@ Views=" 1: -8.10158 -4.64227 183.362 111.28"
 Sheet="1"
 
 [Win_2]
-Type="Control Panel"
-Loc="324 140 1919 899"
-State=2
-Number=0
-
-[Win_3]
 Type="Board Editor"
-Loc="707 73 1915 984"
-State=2
+Loc="1343 38 2551 949"
+State=0
 Number=2
 File="eagle/RaspberryPi-PICPgm-2.brd"
 View="-1.3208 -1.31064 67.3608 49.232"
@@ -129,6 +123,12 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=16
+
+[Win_3]
+Type="Control Panel"
+Loc="324 140 1919 899"
+State=2
+Number=0
 
 [Desktop]
 Screen="1920 1080"
