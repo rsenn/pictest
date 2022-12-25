@@ -184,7 +184,7 @@ dist:
 $(HEXFILE): $(OBJECTS)
 	@-$(RM) $(HEXFILE) $(COFFILE)
 	$(NO_QUIET)@echo Link $< 1>&2
-	$(QUIET)$(SDCC) $(LDFLAGS) $(CFLAGS) -o $@ $^ $(LIBS) 2>/dev/null >/dev/null
+	$(QUIET)$(SDCC) $(LDFLAGS) $(CFLAGS) -o $@ $^ $(LIBS) $(QUIET_STDERR) $(QUIET_STDOUT)
 	#sed -i 's/^:02400E00\(....\)\(..\)/:02400E0072FF32/' $(HEXFILE)
 	@-(type cygpath 2>/dev/null >/dev/null && PATHTOOL="cygpath -w"; \
 	 test -f "$$PWD/$(HEXFILE)" && { echo; echo "Got HEX file: `$${PATHTOOL:-echo} $$PWD/$(HEXFILE)`"; })
