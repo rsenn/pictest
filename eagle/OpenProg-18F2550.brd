@@ -820,15 +820,6 @@ design rules under a new name.</description>
 <element name="D2" library="d" package="LED_3MM" value="GREEN" x="31.75" y="45.72" rot="R180"/>
 </elements>
 <signals>
-<signal name="N$1">
-<contactref element="R1" pad="1"/>
-<contactref element="D3" pad="C"/>
-<contactref element="C8" pad="1"/>
-<contactref element="C1" pad="+"/>
-<wire x1="20.32" y1="15.24" x2="25.4" y2="15.24" width="0.8128" layer="16"/>
-<wire x1="25.4" y1="15.24" x2="30.48" y2="15.24" width="0.8128" layer="16"/>
-<wire x1="30.48" y1="15.24" x2="38.1" y2="15.24" width="0.8128" layer="16"/>
-</signal>
 <signal name="FB">
 <contactref element="R1" pad="2"/>
 <contactref element="R2" pad="1"/>
@@ -972,6 +963,14 @@ design rules under a new name.</description>
 <contactref element="R3" pad="1"/>
 <contactref element="T1" pad="3"/>
 <wire x1="25.4" y1="38.1" x2="22.86" y2="38.1" width="0.8128" layer="16"/>
+<contactref element="R1" pad="1"/>
+<contactref element="D3" pad="C"/>
+<contactref element="C8" pad="1"/>
+<contactref element="C1" pad="+"/>
+<wire x1="20.32" y1="15.24" x2="25.4" y2="15.24" width="0.8128" layer="16"/>
+<wire x1="25.4" y1="15.24" x2="30.48" y2="15.24" width="0.8128" layer="16"/>
+<wire x1="30.48" y1="15.24" x2="38.1" y2="15.24" width="0.8128" layer="16"/>
+<wire x1="25.4" y1="15.24" x2="25.4" y2="38.1" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$7">
 <contactref element="T3" pad="2"/>
