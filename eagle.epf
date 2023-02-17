@@ -32,8 +32,8 @@ UsedLibrary="eagle/lbr/usb.lbr"
 
 [Win_1]
 Type="Schematic Editor"
-Loc="-3 17 1916 1005"
-State=2
+Loc="0 17 1919 1005"
+State=1
 Number=1
 File="eagle/OpenProg-18F2550-2.sch"
 View="-184.932 -39.321 313.095 244.803"
@@ -81,7 +81,7 @@ Sheet="1"
 [Win_2]
 Type="Board Editor"
 Loc="0 0 1542 984"
-State=2
+State=0
 Number=2
 File="eagle/OpenProg-18F2550-2.brd"
 View="-117.078 -11.4907 108.683 154.071"
