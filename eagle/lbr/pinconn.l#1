@@ -2328,6 +2328,15 @@ Breakout</text>
 <text x="-2.54" y="-12.7" size="0.8128" layer="97" font="vector" align="center">GPIO6</text>
 <text x="-2.54" y="-10.16" size="0.8128" layer="97" font="vector" align="center">GPIO5</text>
 <text x="-2.54" y="-7.62" size="0.8128" layer="97" font="vector" align="center">GPIO0</text>
+<text x="-2.54" y="-5.08" size="0.8128" layer="97" font="vector" align="center">GND</text>
+<text x="-2.54" y="-2.54" size="0.8128" layer="97" font="vector" align="center">GPIO11</text>
+<text x="-2.54" y="0" size="0.8128" layer="97" font="vector" align="center">GPIO9</text>
+<text x="-2.54" y="2.54" size="0.8128" layer="97" font="vector" align="center">GPIO10</text>
+<text x="-2.54" y="5.08" size="0.8128" layer="97" font="vector" align="center">3.3V</text>
+<text x="-2.54" y="7.62" size="0.8128" layer="97" font="vector" align="center">GPIO22</text>
+<text x="-2.54" y="10.16" size="0.8128" layer="97" font="vector" align="center">GPIO27</text>
+<text x="-2.54" y="12.7" size="0.8128" layer="97" font="vector" align="center">GPIO17</text>
+<text x="-2.54" y="15.24" size="0.8128" layer="97" font="vector" align="center">GND</text>
 </symbol>
 </symbols>
 <devicesets>

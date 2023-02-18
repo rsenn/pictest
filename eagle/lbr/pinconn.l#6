@@ -2310,6 +2310,8 @@ Breakout</text>
 <text x="2.54" y="10.16" size="0.8128" layer="97" font="vector" align="center">GND</text>
 <text x="2.54" y="7.62" size="0.8128" layer="97" font="vector" align="center">GPIO23</text>
 <text x="2.54" y="5.08" size="0.8128" layer="97" font="vector" align="center">GPIO24</text>
+<text x="2.54" y="2.54" size="0.8128" layer="97" font="vector" align="center">GND</text>
+<text x="2.54" y="0" size="0.8128" layer="97" font="vector" align="center">GPIO25</text>
 </symbol>
 </symbols>
 <devicesets>
