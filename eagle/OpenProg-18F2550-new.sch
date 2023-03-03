@@ -6760,6 +6760,172 @@
 </deviceset>
 </devicesets>
 </library>
+<library name="ic-package">
+<description>&lt;b&gt;IC Packages an Sockets&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="DIL40">
+<description>&lt;b&gt;Dual In Line Package&lt;/b&gt;</description>
+<wire x1="25.4" y1="6.731" x2="-25.4" y2="6.731" width="0.1524" layer="21"/>
+<wire x1="-25.4" y1="-6.731" x2="25.4" y2="-6.731" width="0.1524" layer="21"/>
+<wire x1="25.4" y1="6.731" x2="25.4" y2="-6.731" width="0.1524" layer="21"/>
+<wire x1="-25.4" y1="6.731" x2="-25.4" y2="0.889" width="0.1524" layer="21"/>
+<wire x1="-25.4" y1="-6.731" x2="-25.4" y2="-1.143" width="0.1524" layer="21"/>
+<wire x1="-25.4" y1="0.889" x2="-25.4" y2="-1.143" width="0.1524" layer="21" curve="-180"/>
+<pad name="1" x="-24.13" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="2" x="-21.59" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="7" x="-8.89" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="8" x="-6.35" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="3" x="-19.05" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="4" x="-16.51" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="6" x="-11.43" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="5" x="-13.97" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="9" x="-3.81" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="10" x="-1.27" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="11" x="1.27" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="12" x="3.81" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="13" x="6.35" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="14" x="8.89" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="15" x="11.43" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="16" x="13.97" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="17" x="16.51" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="18" x="19.05" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="19" x="21.59" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="20" x="24.13" y="-7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="21" x="24.13" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="22" x="21.59" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="23" x="19.05" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="24" x="16.51" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="25" x="13.97" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="26" x="11.43" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="27" x="8.89" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="28" x="6.35" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="29" x="3.81" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="30" x="1.27" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="31" x="-1.27" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="32" x="-3.81" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="33" x="-6.35" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="34" x="-8.89" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="35" x="-11.43" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="36" x="-13.97" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="37" x="-16.51" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="38" x="-19.05" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="39" x="-21.59" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<pad name="40" x="-24.13" y="7.62" drill="0.8128" shape="long" rot="R90"/>
+<text x="-25.908" y="-6.604" size="1.778" layer="25" rot="R90">&gt;NAME</text>
+<text x="-17.145" y="-1.016" size="1.778" layer="27">&gt;VALUE</text>
+</package>
+</packages>
+<symbols>
+<symbol name="DIL40">
+<wire x1="-5.08" y1="24.13" x2="-5.08" y2="-26.67" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="-26.67" x2="5.08" y2="-26.67" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-26.67" x2="5.08" y2="24.13" width="0.254" layer="94"/>
+<wire x1="5.08" y1="24.13" x2="2.54" y2="24.13" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="24.13" x2="-2.54" y2="24.13" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="24.13" x2="2.54" y2="24.13" width="0.254" layer="94" curve="180"/>
+<text x="-4.445" y="24.765" size="1.778" layer="95">&gt;NAME</text>
+<text x="-4.445" y="-29.21" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="1" x="-7.62" y="22.86" visible="pad" length="short" direction="pas"/>
+<pin name="2" x="-7.62" y="20.32" visible="pad" length="short" direction="pas"/>
+<pin name="3" x="-7.62" y="17.78" visible="pad" length="short" direction="pas"/>
+<pin name="4" x="-7.62" y="15.24" visible="pad" length="short" direction="pas"/>
+<pin name="5" x="-7.62" y="12.7" visible="pad" length="short" direction="pas"/>
+<pin name="6" x="-7.62" y="10.16" visible="pad" length="short" direction="pas"/>
+<pin name="7" x="-7.62" y="7.62" visible="pad" length="short" direction="pas"/>
+<pin name="8" x="-7.62" y="5.08" visible="pad" length="short" direction="pas"/>
+<pin name="9" x="-7.62" y="2.54" visible="pad" length="short" direction="pas"/>
+<pin name="10" x="-7.62" y="0" visible="pad" length="short" direction="pas"/>
+<pin name="11" x="-7.62" y="-2.54" visible="pad" length="short" direction="pas"/>
+<pin name="12" x="-7.62" y="-5.08" visible="pad" length="short" direction="pas"/>
+<pin name="13" x="-7.62" y="-7.62" visible="pad" length="short" direction="pas"/>
+<pin name="14" x="-7.62" y="-10.16" visible="pad" length="short" direction="pas"/>
+<pin name="15" x="-7.62" y="-12.7" visible="pad" length="short" direction="pas"/>
+<pin name="16" x="-7.62" y="-15.24" visible="pad" length="short" direction="pas"/>
+<pin name="17" x="-7.62" y="-17.78" visible="pad" length="short" direction="pas"/>
+<pin name="18" x="-7.62" y="-20.32" visible="pad" length="short" direction="pas"/>
+<pin name="19" x="-7.62" y="-22.86" visible="pad" length="short" direction="pas"/>
+<pin name="20" x="-7.62" y="-25.4" visible="pad" length="short" direction="pas"/>
+<pin name="21" x="7.62" y="-25.4" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="22" x="7.62" y="-22.86" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="23" x="7.62" y="-20.32" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="24" x="7.62" y="-17.78" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="25" x="7.62" y="-15.24" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="26" x="7.62" y="-12.7" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="27" x="7.62" y="-10.16" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="28" x="7.62" y="-7.62" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="29" x="7.62" y="-5.08" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="30" x="7.62" y="-2.54" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="31" x="7.62" y="0" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="32" x="7.62" y="2.54" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="33" x="7.62" y="5.08" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="34" x="7.62" y="7.62" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="35" x="7.62" y="10.16" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="36" x="7.62" y="12.7" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="37" x="7.62" y="15.24" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="38" x="7.62" y="17.78" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="39" x="7.62" y="20.32" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="40" x="7.62" y="22.86" visible="pad" length="short" direction="pas" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="DIL40" prefix="IC" uservalue="yes">
+<description>&lt;b&gt;Dual In Line&lt;/b&gt;</description>
+<gates>
+<gate name="G$1" symbol="DIL40" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="DIL40">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="10" pad="10"/>
+<connect gate="G$1" pin="11" pad="11"/>
+<connect gate="G$1" pin="12" pad="12"/>
+<connect gate="G$1" pin="13" pad="13"/>
+<connect gate="G$1" pin="14" pad="14"/>
+<connect gate="G$1" pin="15" pad="15"/>
+<connect gate="G$1" pin="16" pad="16"/>
+<connect gate="G$1" pin="17" pad="17"/>
+<connect gate="G$1" pin="18" pad="18"/>
+<connect gate="G$1" pin="19" pad="19"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="20" pad="20"/>
+<connect gate="G$1" pin="21" pad="21"/>
+<connect gate="G$1" pin="22" pad="22"/>
+<connect gate="G$1" pin="23" pad="23"/>
+<connect gate="G$1" pin="24" pad="24"/>
+<connect gate="G$1" pin="25" pad="25"/>
+<connect gate="G$1" pin="26" pad="26"/>
+<connect gate="G$1" pin="27" pad="27"/>
+<connect gate="G$1" pin="28" pad="28"/>
+<connect gate="G$1" pin="29" pad="29"/>
+<connect gate="G$1" pin="3" pad="3"/>
+<connect gate="G$1" pin="30" pad="30"/>
+<connect gate="G$1" pin="31" pad="31"/>
+<connect gate="G$1" pin="32" pad="32"/>
+<connect gate="G$1" pin="33" pad="33"/>
+<connect gate="G$1" pin="34" pad="34"/>
+<connect gate="G$1" pin="35" pad="35"/>
+<connect gate="G$1" pin="36" pad="36"/>
+<connect gate="G$1" pin="37" pad="37"/>
+<connect gate="G$1" pin="38" pad="38"/>
+<connect gate="G$1" pin="39" pad="39"/>
+<connect gate="G$1" pin="4" pad="4"/>
+<connect gate="G$1" pin="40" pad="40"/>
+<connect gate="G$1" pin="5" pad="5"/>
+<connect gate="G$1" pin="6" pad="6"/>
+<connect gate="G$1" pin="7" pad="7"/>
+<connect gate="G$1" pin="8" pad="8"/>
+<connect gate="G$1" pin="9" pad="9"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -6821,8 +6987,8 @@
 <part name="R9" library="r" deviceset="R-H" device="0204/10" value="2.2kΩ"/>
 <part name="R8" library="r" deviceset="R-H" device="0204/10" value="2.2kΩ"/>
 <part name="S9" library="pad" deviceset="GND" device=""/>
-<part name="R7" library="r" deviceset="R-H" device="0204/10" value="1MΩ"/>
-<part name="S1" library="sw" deviceset="PUSHBUTTON" device="-P1T" value=""/>
+<part name="R7" library="r" deviceset="R-H" device="0204/10-V" value="1MΩ"/>
+<part name="S1" library="sw" deviceset="PUSHBUTTON" device="PB-2P1T" value="PUSHBUTTONPB-2P1T"/>
 <part name="D1" library="d" deviceset="LED" device="-3MM" value="YELLOW"/>
 <part name="D2" library="d" deviceset="LED" device="-3MM" value="GREEN"/>
 <part name="S10" library="pad" deviceset="GND" device=""/>
@@ -6841,6 +7007,7 @@
 <part name="GND6" library="pad" deviceset="GND" device=""/>
 <part name="DI" library="pad" deviceset="HPORT" device=""/>
 <part name="CKI" library="pad" deviceset="HPORT" device=""/>
+<part name="IC1" library="ic-package" deviceset="DIL40" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -6924,6 +7091,7 @@
 <instance part="GND6" gate="1" x="121.92" y="38.1" rot="R270"/>
 <instance part="DI" gate="1" x="132.08" y="35.56"/>
 <instance part="CKI" gate="1" x="132.08" y="33.02"/>
+<instance part="IC1" gate="G$1" x="257.81" y="35.56"/>
 </instances>
 <busses>
 </busses>
