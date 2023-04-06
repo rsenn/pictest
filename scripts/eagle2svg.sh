@@ -298,12 +298,12 @@ N=$#
 
    (set -x;
    : rm -f "${BASE}-boards.svg"
-   python2 "$MYDIR"/svg_stack.py  --direction=h --margin=18pt \
+   ${PYTHON:-python} "$MYDIR"/svg_stack.py  --direction=h --margin=18pt \
      "${BRD%.*}"-{board,board-mirrored}.svg \
       >"$(outfile "${BASE}-boards.svg")"
 
    : rm -f "${BASE}.svg"
-   python2 "$MYDIR"/svg_stack.py  --direction=v --margin=9pt \
+   ${PYTHON:-python} "$MYDIR"/svg_stack.py  --direction=v --margin=9pt \
      $(test -e "${BASE}-title.svg" && outfile "${BASE}-title.svg") \
       "${SCH%.*}-schematic.svg" \
       "$(outfile "${BASE}-boards.svg")" \
