@@ -7,12 +7,12 @@ Desktop="Desktop"
 
 [Globals]
 AutoSaveProject=1
+UsedLibrary="/home/roman/Projects/an-tronics/eagle/lbr/d.lbr"
 UsedLibrary="/home/roman/Projects/an-tronics/eagle/lbr/ECM.lbr"
 UsedLibrary="/home/roman/Projects/an-tronics/eagle/lbr/battery.lbr"
 UsedLibrary="/home/roman/Projects/an-tronics/eagle/lbr/c.lbr"
 UsedLibrary="/home/roman/Projects/an-tronics/eagle/lbr/cap-trim.lbr"
 UsedLibrary="/home/roman/Projects/an-tronics/eagle/lbr/coil.lbr"
-UsedLibrary="/home/roman/Projects/an-tronics/eagle/lbr/d.lbr"
 UsedLibrary="/home/roman/Projects/an-tronics/eagle/lbr/ic.lbr"
 UsedLibrary="/home/roman/Projects/an-tronics/eagle/lbr/l.lbr"
 UsedLibrary="/home/roman/Projects/an-tronics/eagle/lbr/mc1496.lbr"
@@ -26,8 +26,8 @@ UsedLibrary="/home/roman/Projects/an-tronics/eagle/lbr/t.lbr"
 
 [Win_1]
 Type="Schematic Editor"
-Loc="1237 -374 3156 614"
-State=2
+Loc="0 0 1919 988"
+State=1
 Number=1
 File="/home/roman/Projects/an-tronics/eagle/555-PWM-Motor-Speed-Controller-alt.sch"
 View="-106.911 16.1985 54.6521 110.802"
@@ -74,8 +74,8 @@ Sheet="1"
 
 [Win_2]
 Type="Library Editor"
-Loc="-52 -259 1867 729"
-State=2
+Loc="0 0 1919 988"
+State=3
 Number=3
 File="/home/roman/eagle/an-tronics/lbr/d.lbr"
 View="-1.18957 -2.41461 2.5527 3.61264"
@@ -121,11 +121,11 @@ Package="DO34-2,5/V"
 
 [Win_3]
 Type="Board Editor"
-Loc="64 150 1983 1138"
-State=2
+Loc="0 24 1919 1012"
+State=1
 Number=2
 File="/home/roman/Projects/an-tronics/eagle/555-PWM-Motor-Speed-Controller-alt.brd"
-View="26.6152 8.30304 49.5458 26.7749"
+View="23.8243 -6.912 80.883 39.0519"
 WireWidths=" 0 0.254 0.3048 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064"
 PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
 PadDrills=" 0.5 0.6 0.7 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.8"
@@ -167,7 +167,7 @@ Layer=16
 
 [Win_4]
 Type="Control Panel"
-Loc="164 147 1743 915"
+Loc="316 70 1911 984"
 State=2
 Number=0
 
