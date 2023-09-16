@@ -10,7 +10,17 @@
 #include "../lib/timer.h"
 #include "../lib/interrupt.h"
 #include "../lib/random.h"
-#define SOFTPWM_PIN_COUNT 6
+
+#define SOFTPWM_PIN_COUNT 24
+
+#define SOFTPWM_PORT PORTB
+#define SOFTPWM_TRIS TRISB
+
+#define SOFTPWM_PORT2 PORTC
+#define SOFTPWM_TRIS2 TRISC
+
+#define SOFTPWM_PORT3 PORTA
+#define SOFTPWM_TRIS3 TRISA
 
 #include "../lib/softpwm.h"
 #include "../lib/delay.h"
@@ -21,18 +31,23 @@
 #ifdef USE_UART
 #include "../lib/uart.h"
 #endif
+
 #ifdef USE_SER
 #include "../lib/ser.h"
 #endif
+
 #ifdef USE_SOFTSER
 #include "../lib/softser.h"
 #endif
+
 #ifdef USE_NOKIA5110_LCD
 #include "../lib/lcd5110.h"
 #endif
+
 #ifdef USE_PCD8544
 #include "../lib/pcd8544.h"
 #endif
+
 #ifdef USE_MCP3001
 #include "../lib/mcp3001.h"
 #endif
@@ -127,14 +142,13 @@ volatile unsigned int adc_result = 0;
 
 INTERRUPT_FN() {
   NOP();
-  /*
-    if(TMR1IF) {
-      // Clear timer interrupt bit
-      TMR1IF = 0;
-    }*/
+
 #ifdef USE_SOFTPWM
+
   if(SOFTPWM_INTERRUPT_FLAG) {
     SOFTPWM_PORT = SOFTPWM_REG8(softpwm_values);
+    SOFTPWM_PORT2 = SOFTPWM_REG8(softpwm_values + 8);
+    SOFTPWM_PORT3 = SOFTPWM_REG8(softpwm_values + 16);
 
     // SOFTPWM_PIN(3, LATA4);
     SOFTPWM_TIMER_VALUE = -128;
@@ -145,12 +159,15 @@ INTERRUPT_FN() {
       softpwm_counter = 0;
   }
 #endif
+
 #ifdef USE_UART
   uart_isr();
 #endif
+
 #ifdef USE_SER
   ser_int();
 #endif
+
 #ifdef USE_TIMER0
   if(TIMER0_INTERRUPT_FLAG) {
     bres += 256 * 4;
@@ -160,6 +177,7 @@ INTERRUPT_FN() {
       msecs++;
       msec_count++;
     }
+
     if(msec_count >= 10) { // if reached 1 decisecond!
       hsecs++;             // update clock, etc
 
@@ -167,10 +185,12 @@ INTERRUPT_FN() {
 
       msec_count -= 10;
     }
+
     // Clear timer interrupt bit
     TIMER0_INTERRUPT_CLEAR();
   }
 #endif
+
 #ifdef USE_ADCONVERTER
   if(ADIF) {
     adc_result = (ADRESH << 8) | ADRESL;
@@ -180,6 +200,7 @@ INTERRUPT_FN() {
   }
 #endif
 }
+
 #endif
 
 volatile int chan = 0;
@@ -204,10 +225,6 @@ read_analog(void) {
 //-----------------------------------------------------------------------------
 int
 main() {
-
-  // uint8_t seconds;
-  // static uint8_t prev_index = 0, prev_seconds = 0;
-
   msec_count = msecs = 0;
   hsecs = 0;
   bres = 0;
@@ -217,6 +234,7 @@ main() {
 #if XTAL_USED == NO_XTAL
   OSCCONbits.IRCF = 7; // 16 MHz
 #endif
+
 #if(XTAL_USED != MHz_12)
   OSCTUNEbits.SPLLMULT = 1; // PLL 3x
 #endif
@@ -233,9 +251,11 @@ main() {
 #ifdef USE_UART
   uart_init();
 #endif
+
 #ifdef USE_SER
   ser_init();
 #endif
+
 #ifdef USE_SOFTSER
   softser_init();
 #endif
@@ -247,35 +267,34 @@ main() {
 #endif
 #endif
 
-#ifndef __18f25k50
-#if !NO_PORTB
-#ifndef __18f14k50
-#ifndef __18f16q41
-  nRBPU = 0;
-#endif
-#endif
-  //  nRBPU = 0; // enable portb pull-ups
-  TRISB |= 0b11110000;
-  TRISB &= 0b11110011;
-  // RB2 = RB3 = LOW;
-#endif
-#endif
+  /*#ifndef __18f25k50
+  #if !NO_PORTB
+  #ifndef __18f14k50
+  #ifndef __18f16q41
+    nRBPU = 0;
+  #endif
+  #endif
+    TRISB |= 0b11110000;
+    TRISB &= 0b11110011;
+  #endif
+  #endif*/
 
-#if defined(__18f25k50)
-  LATB &= ~SOFTPWM_MASK;
-  TRISB &= SOFTPWM_MASK;
-#else
-  PORTC &= ~SOFTPWM_MASK;
-  TRISC &= SOFTPWM_MASK;
-#endif
+  SOFTPWM_TRIS = ~SOFTPWM_MASK;
+  SOFTPWM_PORT = ~SOFTPWM_MASK;
+
+  SOFTPWM_TRIS2 = ~(SOFTPWM_MASK >> 8);
+  SOFTPWM_PORT2 = ~(SOFTPWM_MASK >> 8);
+
+  SOFTPWM_TRIS3 = ~(SOFTPWM_MASK >> 8);
+  SOFTPWM_PORT3 = ~(SOFTPWM_MASK >> 8);
 
 #if defined(__16f876a) || defined(__18f252)
   TRISC4 = TRISC5 = INPUT;
 #endif
 
-#ifdef LED2_CATHODE
-  SET_LED2(0);
-#endif
+  /*#ifdef LED2_CATHODE
+    SET_LED2(0);
+  #endif*/
 
 #ifdef HAVE_COMPARATOR
   comparator_disable();
@@ -309,6 +328,7 @@ main() {
   LED2_CATHODE_TRIS = 0;
   LED2_CATHODE = 0;
 #endif
+
 #ifdef LED2_ANODE
   LED2_ANODE_TRIS = 0;
   LED2_ANODE = 0;
@@ -457,6 +477,7 @@ loop(void) {
     put_number(put_char, interval, 10, 0);
     put_str(put_char, ")\r\n");
 #endif
+
 #ifdef USE_SOFTSER
     put_number(softser_putch, tmp_msecs, 10, 0);
     put_str(softser_putch, ")\r\n");
