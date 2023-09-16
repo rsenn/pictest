@@ -8,7 +8,7 @@
 #include "../lib/const.h"
 #include "../lib/device.h"
 #include "../lib/timer.h"
-	#include "../lib/interrupt.h"
+#include "../lib/interrupt.h"
 #include "../lib/random.h"
 #define SOFTPWM_PIN_COUNT 4
 #include "../lib/softpwm.h"
@@ -87,7 +87,7 @@ static BOOL update_colors = TRUE;
 static BOOL led_state = 0;
 static uint32_t tmp_msecs;
 static uint32_t prev_hsecs = 0, last_button = 0;
-  static uint8_t index = 0;
+static uint8_t index = 0;
 
 static void
 dummy_putch(char c) {}
@@ -103,7 +103,7 @@ putch_fn* put_char =
     dummy_putch
 #endif
     ;
-    
+
 void put_number(putch_fn* putc, uint16_t n, uint8_t base, int8_t pad /*, int8_t pointpos*/);
 
 void
@@ -133,16 +133,22 @@ INTERRUPT_FN() {
     }*/
 #ifdef USE_SOFTPWM
   if(SOFTPWM_INTERRUPT_FLAG) {
+#ifndef __18f25k50
     SOFTPWM_PIN(0, RC0);
     SOFTPWM_PIN(1, RC1);
     SOFTPWM_PIN(2, RC2);
+#else
+    SOFTPWM_PIN(0, LATB0);
+    SOFTPWM_PIN(1, LATB1);
+    SOFTPWM_PIN(2, LATB2);
+#endif
     // SOFTPWM_PIN(3, LATA4);
     SOFTPWM_TIMER_VALUE = -128;
     SOFTPWM_INTERRUPT_FLAG = 0;
     softpwm_counter++;
 
     if(softpwm_counter > 100)
-      softpwm_counter=0;
+      softpwm_counter = 0;
   }
 #endif
 #ifdef USE_UART
@@ -247,6 +253,28 @@ main() {
 #endif
 #endif
 
+#ifndef __18f25k50
+#if !NO_PORTB
+#ifndef __18f14k50
+#ifndef __18f16q41
+  nRBPU = 0;
+#endif
+#endif
+  //  nRBPU = 0; // enable portb pull-ups
+  TRISB |= 0b11110000;
+  TRISB &= 0b11110011;
+  // RB2 = RB3 = LOW;
+#endif
+#endif
+
+
+#if defined(__18f25k50)
+  LATB &= ~0b111;
+  TRISB &= ~0b111;
+#else
+  TRISC &= ~0b111;
+#endif
+
 #if defined(__16f876a) || defined(__18f252)
   TRISC4 = TRISC5 = INPUT;
 #endif
@@ -261,23 +289,6 @@ main() {
 //  CMCON = 0b111;          //Disable LATA Comparators
 #endif
 
-#if !NO_PORTB
-#ifndef __18f14k50
-#ifndef __18f16q41
-  nRBPU = 0;
-#endif
-#endif
-  //  nRBPU = 0; // enable portb pull-ups
-  TRISB |= 0b11110000;
-  TRISB &= 0b11110011;
-  // RB2 = RB3 = LOW;
-
-#endif
-
-#ifdef __18f25k50
-  // TRISE3 = 1;
-  // WPUE3 = 1;
-#endif
 
 #ifdef USE_TIMER0
   timer0_init(PRESCALE_1_256 | TIMER0_FLAGS_8BIT);
