@@ -10,7 +10,8 @@
 #include "../lib/timer.h"
 #include "../lib/interrupt.h"
 #include "../lib/random.h"
-#define SOFTPWM_PIN_COUNT 4
+#define SOFTPWM_PIN_COUNT 6
+
 #include "../lib/softpwm.h"
 #include "../lib/delay.h"
 #include "../lib/format.h"
@@ -133,15 +134,8 @@ INTERRUPT_FN() {
     }*/
 #ifdef USE_SOFTPWM
   if(SOFTPWM_INTERRUPT_FLAG) {
-#ifndef __18f25k50
-    SOFTPWM_PIN(0, RC0);
-    SOFTPWM_PIN(1, RC1);
-    SOFTPWM_PIN(2, RC2);
-#else
-    SOFTPWM_PIN(0, LATB0);
-    SOFTPWM_PIN(1, LATB1);
-    SOFTPWM_PIN(2, LATB2);
-#endif
+    SOFTPWM_PORT = SOFTPWM_REG8(softpwm_values);
+
     // SOFTPWM_PIN(3, LATA4);
     SOFTPWM_TIMER_VALUE = -128;
     SOFTPWM_INTERRUPT_FLAG = 0;
@@ -267,12 +261,12 @@ main() {
 #endif
 #endif
 
-
 #if defined(__18f25k50)
-  LATB &= ~0b111;
-  TRISB &= ~0b111;
+  LATB &= ~SOFTPWM_MASK;
+  TRISB &= SOFTPWM_MASK;
 #else
-  TRISC &= ~0b111;
+  PORTC &= ~SOFTPWM_MASK;
+  TRISC &= SOFTPWM_MASK;
 #endif
 
 #if defined(__16f876a) || defined(__18f252)
@@ -288,7 +282,6 @@ main() {
 // CMCONbits.CON = 0;
 //  CMCON = 0b111;          //Disable LATA Comparators
 #endif
-
 
 #ifdef USE_TIMER0
   timer0_init(PRESCALE_1_256 | TIMER0_FLAGS_8BIT);
