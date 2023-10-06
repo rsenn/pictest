@@ -7,7 +7,7 @@
 #include "config-10f206.h"
 #endif // defined __10f206
 
-#if defined( __12f1840) || defined(PIC12F1840) || defined(PIC12)
+#if defined(__12f1840) || defined(PIC12F1840) || defined(PIC12)
 #include "config-12f1840.h"
 #endif // defined __12f1840
 
