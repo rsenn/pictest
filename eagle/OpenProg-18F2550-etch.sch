@@ -6766,7 +6766,7 @@
 <variantdefs>
 </variantdefs>
 <classes>
-<class number="0" name="default" width="0" drill="0">
+<class number="0" name="default" width="0.4064" drill="0">
 </class>
 </classes>
 <parts>
@@ -6837,10 +6837,6 @@
 <part name="S12" library="pad" deviceset="GND" device=""/>
 <part name="RCTO" library="pad" deviceset="HPORT" device=""/>
 <part name="RCTO2" library="pad" deviceset="HPORT" device=""/>
-<part name="J4" library="pinconn" deviceset="PICKIT3-ICSP" device="-PK3" value="ICSP-OUT"/>
-<part name="GND6" library="pad" deviceset="GND" device=""/>
-<part name="DI" library="pad" deviceset="HPORT" device=""/>
-<part name="CKI" library="pad" deviceset="HPORT" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -6920,10 +6916,6 @@
 <instance part="S12" gate="1" x="81.28" y="93.98" rot="R270"/>
 <instance part="RCTO" gate="1" x="83.82" y="55.88" rot="R90"/>
 <instance part="RCTO2" gate="1" x="78.74" y="25.4" rot="R180"/>
-<instance part="J4" gate="G$1" x="142.24" y="38.1"/>
-<instance part="GND6" gate="1" x="121.92" y="38.1" rot="R270"/>
-<instance part="DI" gate="1" x="132.08" y="35.56"/>
-<instance part="CKI" gate="1" x="132.08" y="33.02"/>
 </instances>
 <busses>
 </busses>
@@ -7095,11 +7087,6 @@
 <pinref part="S12" gate="1" pin="GND"/>
 <wire x1="83.82" y1="93.98" x2="86.36" y2="93.98" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="J4" gate="G$1" pin="VSS"/>
-<pinref part="GND6" gate="1" pin="GND"/>
-<wire x1="124.46" y1="38.1" x2="134.62" y2="38.1" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="RC0" class="0">
 <segment>
@@ -7181,11 +7168,6 @@
 <wire x1="111.76" y1="20.32" x2="101.6" y2="20.32" width="0.1524" layer="91"/>
 <label x="101.6" y="20.32" size="1.778" layer="95"/>
 </segment>
-<segment>
-<pinref part="J4" gate="G$1" pin="VDD"/>
-<wire x1="134.62" y1="40.64" x2="127" y2="40.64" width="0.1524" layer="91"/>
-<label x="127" y="40.64" size="1.27" layer="95"/>
-</segment>
 </net>
 <net name="N$11" class="0">
 <segment>
@@ -7212,11 +7194,6 @@
 <pinref part="ICSPMCLR" gate="1" pin="P$1"/>
 <wire x1="111.76" y1="25.4" x2="101.6" y2="25.4" width="0.1524" layer="91"/>
 <label x="101.6" y="25.4" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="J4" gate="G$1" pin="VPP"/>
-<wire x1="134.62" y1="43.18" x2="127" y2="43.18" width="0.1524" layer="91"/>
-<label x="127" y="43.18" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="VPP" class="0">
@@ -7530,20 +7507,6 @@
 <pinref part="T2" gate="1" pin="B"/>
 <pinref part="R5" gate="1" pin="1"/>
 <wire x1="33.02" y1="66.04" x2="81.28" y2="66.04" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$2" class="0">
-<segment>
-<pinref part="J4" gate="G$1" pin="PGC"/>
-<pinref part="CKI" gate="1" pin="P$1"/>
-<wire x1="132.08" y1="33.02" x2="134.62" y2="33.02" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$7" class="0">
-<segment>
-<pinref part="J4" gate="G$1" pin="PGD"/>
-<pinref part="DI" gate="1" pin="P$1"/>
-<wire x1="132.08" y1="35.56" x2="134.62" y2="35.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
