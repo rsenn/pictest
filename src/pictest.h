@@ -128,4 +128,34 @@
 
 #endif
 
+
+#define SOFTPWM_CHANNELS 24
+
+#if defined(__12f1840)
+#define SOFTPWM_PORT LATA
+#define SOFTPWM_TRIS TRISA
+#define SOFTPWM_MASK 0b11111111
+
+#else 
+
+#if defined(PIC18)
+#define SOFTPWM_PORT LATB
+#define SOFTPWM_PORT2 LATC
+#define SOFTPWM_PORT3 LATA
+#else
+#define SOFTPWM_PORT PORTB
+#define SOFTPWM_PORT2 PORTC
+#define SOFTPWM_PORT3 PORTA
+#endif
+
+#define SOFTPWM_TRIS TRISB
+#define SOFTPWM_MASK 0b11111111
+
+#define SOFTPWM_TRIS2 TRISC
+#define SOFTPWM_MASK2 0b11000111
+
+#define SOFTPWM_TRIS3 TRISA
+#define SOFTPWM_MASK3 0b11111111
+#endif
+  
 void loop(void);

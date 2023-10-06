@@ -10,23 +10,17 @@
 #include "../lib/timer.h"
 #include "../lib/interrupt.h"
 #include "../lib/random.h"
-
-#define SOFTPWM_PIN_COUNT 24
-
-#define SOFTPWM_PORT PORTB
-#define SOFTPWM_TRIS TRISB
-
-#define SOFTPWM_PORT2 PORTC
-#define SOFTPWM_TRIS2 TRISC
-
-#define SOFTPWM_PORT3 PORTA
-#define SOFTPWM_TRIS3 TRISA
-
 #include "../lib/softpwm.h"
 #include "../lib/delay.h"
 #include "../lib/format.h"
 #include "pictest.h"
 #include "config-bits.h"
+
+#if defined(__12f1840)
+#ifndef NO_PORTB
+#define NO_PORTB 1
+#endif
+#endif
 
 #ifdef USE_UART
 #include "../lib/uart.h"
@@ -61,7 +55,10 @@
 #include "../usb/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_app.c"
 #include "../usb/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_descriptors.c" */
 
-#if defined(__18f16q41) || !defined(__18f4550)
+#if defined(__12f1840)
+#define BUTTON_PORT PORTA
+#define BUTTON_SHIFT 0
+#elif defined(__18f16q41) || !defined(__18f4550)
 #define BUTTON_PORT PORTC
 #define BUTTON_SHIFT 1
 #else
@@ -86,26 +83,55 @@
 #define B_MINUS 0b0100
 #define B_RIGHT 0b1000
 
-static const int8 sine_table[] = {
-    0x90, 0x06, 0x0d, 0x13, 0x19, 0x1f, 0x26, 0x2c, 0x32, 0x38, 0x3e, 0x44, 0x4a, 0x50, 0x56, 0x5c, 0x62, 0x68, 0x6d,
-    0x73, 0x79, 0x7e, 0x84, 0x89, 0x8e, 0x93, 0x98, 0x9d, 0xa2, 0xa7, 0xac, 0xb0, 0xb5, 0xb9, 0xbe, 0xc2, 0xc6, 0xca,
-    0xcd, 0xd1, 0xd5, 0xd8, 0xdb, 0xde, 0xe1, 0xe4, 0xe7, 0xea, 0xec, 0xee, 0xf1, 0xf3, 0xf4, 0xf6, 0xf8, 0xf9, 0xfa,
-    0xfb, 0xfc, 0xfd, 0xfe, 0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfe, 0xfe, 0xfd, 0xfc, 0xfb, 0xfa, 0xf8, 0xf7, 0xf5,
-    0xf3, 0xf2, 0xef, 0xed, 0xeb, 0xe8, 0xe6, 0xe3, 0xe0, 0xdd, 0xda, 0xd6, 0xd3, 0xcf, 0xcb, 0xc8, 0xc4, 0xc0, 0xbb,
-    0xb7, 0xb3, 0xae, 0xa9, 0xa5, 0xa0, 0x9b, 0x96, 0x91, 0x8c, 0x86, 0x81, 0x7b, 0x76, 0x70, 0x6b, 0x65, 0x5f, 0x59,
-    0x53, 0x4d, 0x47, 0x41, 0x3b, 0x35, 0x2f, 0x29, 0x22, 0x1c, 0x16, 0x10, 0x09, 0x03,
-};
+static const uint8_t sine_table[] = {0x00, 0x06, 0x0d, 0x13, 0x19, 0x1f, 0x26, 0x2c, 0x32, 0x38, 0x3e, 0x44, 0x4a,
+                                     0x50, 0x56, 0x5c, 0x62, 0x68, 0x6d, 0x73, 0x79, 0x7e, 0x84, 0x89, 0x8e, 0x93,
+                                     0x98, 0x9d, 0xa2, 0xa7, 0xac, 0xb0, 0xb5, 0xb9, 0xbe, 0xc2, 0xc6, 0xca, 0xcd,
+                                     0xd1, 0xd5, 0xd8, 0xdb, 0xde, 0xe1, 0xe4, 0xe7, 0xea, 0xec, 0xee, 0xf1, 0xf3,
+                                     0xf4, 0xf6, 0xf8, 0xf9, 0xfa, 0xfb, 0xfc, 0xfd, 0xfe, 0xfe, 0xff, 0xff, 0xff,
+                                     0xff, 0xff, 0xfe, 0xfe, 0xfd, 0xfc, 0xfb, 0xfa, 0xf8, 0xf7, 0xf5, 0xf3, 0xf2,
+                                     0xef, 0xed, 0xeb, 0xe8, 0xe6, 0xe3, 0xe0, 0xdd, 0xda, 0xd6, 0xd3, 0xcf, 0xcb,
+                                     0xc8, 0xc4, 0xc0, 0xbb, 0xb7, 0xb3, 0xae, 0xa9, 0xa5, 0xa0, 0x9b, 0x96, 0x91,
+                                     0x8c, 0x86, 0x81, 0x7b, 0x76, 0x70, 0x6b, 0x65, 0x5f, 0x59, 0x53, 0x4d, 0x47,
+                                     0x41, 0x3b, 0x35, 0x2f, 0x29, 0x22, 0x1c, 0x16, 0x10, 0x09, 0x03};
 
-static int16
-sine(uint16 index) {
-  uint8 alpha, v1, v2, i8 = index >> 8;
+#define sign(n) ((n) < 0 ? -1 : 1)
+
+static int16_t
+sine(uint16_t index) {
+  uint8_t alpha, v1, v2, i8 = index >> 8;
 
   alpha = index & 0xff;
-  v1 = sine_table[i8 & 0x7f] * (i8 & 0x80 ? -1 : 1);
+  v1 = (sine_table[i8 & 0x7f] >> 1) * sign((int8_t)i8);
   i8++;
-  v2 = sine_table[i8 & 0x7f] * (i8 & 0x80 ? -1 : 1);
+  v2 = (sine_table[i8 & 0x7f] >> 1) * sign((int8_t)i8);
 
   return v1 * (255 - alpha) + v2 * alpha;
+}
+
+uint8_t
+triangle(uint8_t in) {
+  if(in & 0x80) {
+    in = 255 - in;
+  }
+  uint8_t out = in << 1;
+  return out;
+}
+// Integrate (1-pole Lowpass Filter) a 16-Bit Value
+//----------------------------------------------------------------------------
+uint16_t
+filter(uint16_t value, uint8_t coeff) {
+  static uint16_t temperature_filter;
+  
+  if(temperature_filter == 0)
+    temperature_filter = value;
+
+  if(value == 0)
+    return value;
+
+  temperature_filter =
+      (uint16_t)((((int32_t)value * ((int16_t)256 - (int16_t)coeff)) + ((int32_t)temperature_filter * (int16_t)coeff)) / 256);
+
+  return temperature_filter;
 }
 
 //#define b & v, b) (BUTTON_GET()&(b))
@@ -169,12 +195,18 @@ INTERRUPT_FN() {
 
   if(SOFTPWM_INTERRUPT_FLAG) {
     SOFTPWM_PORT = SOFTPWM_REG8(softpwm_values);
+
+#if defined(SOFTPWM_PORT2)  
     SOFTPWM_PORT2 = SOFTPWM_REG8(softpwm_values + 8);
+  #endif
+#ifdef SOFTPWM_PORT3
     SOFTPWM_PORT3 = SOFTPWM_REG8(softpwm_values + 16);
+#endif
 
     // SOFTPWM_PIN(3, LATA4);
-    SOFTPWM_TIMER_VALUE = -128;
+    SOFTPWM_TIMER_VALUE = (uint8_t)(int8_t)-128;
     SOFTPWM_INTERRUPT_FLAG = 0;
+
     softpwm_counter++;
 
     if(softpwm_counter > 100)
@@ -301,18 +333,9 @@ main() {
   #endif
   #endif*/
 
-  SOFTPWM_TRIS = ~SOFTPWM_MASK;
-  SOFTPWM_PORT = ~SOFTPWM_MASK;
-
-  SOFTPWM_TRIS2 = ~(SOFTPWM_MASK >> 8);
-  SOFTPWM_PORT2 = ~(SOFTPWM_MASK >> 8);
-
-  SOFTPWM_TRIS3 = ~(SOFTPWM_MASK >> 8);
-  SOFTPWM_PORT3 = ~(SOFTPWM_MASK >> 8);
-
-#if defined(__16f876a) || defined(__18f252)
-  TRISC4 = TRISC5 = INPUT;
-#endif
+  /*#if defined(__16f876a) || defined(__18f252)
+    TRISC4 = TRISC5 = INPUT;
+  #endif*/
 
   /*#ifdef LED2_CATHODE
     SET_LED2(0);
@@ -335,6 +358,8 @@ main() {
   mcp3001_init();
 #endif
 
+#ifdef USE_LED
+
   // timer1_init(2);
   LED_TRIS();
   RA3 = RA5 = HIGH;
@@ -355,9 +380,12 @@ main() {
   LED2_ANODE_TRIS = 0;
   LED2_ANODE = 0;
 #endif
+#endif
 
 #ifdef USE_SOFTPWM
   softpwm_init();
+
+  for(int i = 0; i < SOFTPWM_CHANNELS; i++) softpwm_values[i] = (i % 5) * 255 / 4;
 #endif
 
 #ifndef __18f16q41

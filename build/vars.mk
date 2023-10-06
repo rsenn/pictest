@@ -3,7 +3,7 @@ CHIPS += 18f25k22 18f25k50
 #CHIPS += 16f628a 18f252 18f252  18f25k50
 #CHIPS += 10f206
 #CHIPS += 12f1840
-COMPILERS = htc xc8
+COMPILERS = xc8 sdcc
 #CHIP = 16F876A
 
 ifeq ($(_XTAL_FREQ),)
@@ -162,7 +162,7 @@ blinktest_SOURCES = blinktest.c lib/comparator.c lib/format.c lib/buffer.c lib/r
 #blinktest_DEFS += -DUSE_SER=1
 #blinktest_DEFS += -DUSE_UART=1
 ifeq ($(CHIP),$(subst q,,$(CHIP)))
-blinktest_DEFS += 	-DUSE_TIMER1=1 -DUSE_SOFTPWM=1
+blinktest_DEFS +=	-DUSE_TIMER1=1 -DUSE_SOFTPWM=1
 #blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1
 endif
 
