@@ -128,7 +128,6 @@
 
 #endif
 
-
 #define SOFTPWM_CHANNELS 24
 
 #if defined(__12f1840)
@@ -136,7 +135,7 @@
 #define SOFTPWM_TRIS TRISA
 #define SOFTPWM_MASK 0b11111111
 
-#else 
+#else
 
 #if defined(PIC18)
 #define SOFTPWM_PORT LATB
@@ -157,5 +156,5 @@
 #define SOFTPWM_TRIS3 TRISA
 #define SOFTPWM_MASK3 0b11111111
 #endif
-  
+
 void loop(void);
