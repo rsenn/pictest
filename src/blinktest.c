@@ -1,12 +1,7 @@
 
 #define USE_MCLRE 1
-#ifdef USE_ADCONVERTER
-#define VREF_PLUS 3.3
-#define VREF_MINUS 0.0
-#include "../lib/adc.h"
-#endif
-#include "pictest.h"
 #include "config-bits.h"
+#include "pictest.h"
 
 #if defined(__12f1840)
 #ifndef NO_PORTB
@@ -23,6 +18,12 @@
 #include "../lib/softpwm.h"
 #include "../lib/delay.h"
 #include "../lib/format.h"
+
+#ifdef USE_ADCONVERTER
+#define VREF_PLUS 3.3
+#define VREF_MINUS 0.0
+#include "../lib/adc.h"
+#endif
 
 #ifdef USE_UART
 #include "../lib/uart.h"

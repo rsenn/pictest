@@ -56,8 +56,12 @@
 #define _IESO_ON 0x3FFF      // Internal/External Switchover mode is enabled.
 #define _FCMEN_OFF 0x1FFF    // Fail-Safe Clock Monitor is disabled.
 #define _FCMEN_ON 0x3FFF     // Fail-Safe Clock Monitor is enabled.
-static __code char __at(_CONFIG1) configword1 = _FOSC_INTOSC & _WDTE_OFF & _PWRTE_ON & _MCLRE_OFF & _CP_OFF & _CPD_OFF
-                                                & _BOREN_ON & _CLKOUTEN_OFF & _IESO_OFF & _FCMEN_OFF;
+
+static __code char __at(_CONFIG1) configword1 = 0x3fff; //_FOSC_INTOSC & _WDTE_OFF & _PWRTE_ON & _MCLRE_OFF & _CP_OFF & _CPD_OFF                                                & _BOREN_ON & _CLKOUTEN_OFF & _IESO_OFF & _FCMEN_OFF;
+static __code char __at(_CONFIG2) configword2 = 0x3fff; //_FOSC_INTOSC & _WDTE_OFF & _PWRTE_ON & _MCLRE_OFF & _CP_OFF & _CPD_OFF                                                & _BOREN_ON & _CLKOUTEN_OFF & _IESO_OFF & _FCMEN_OFF;
+
+#pragma config FOSC = INTOSC, WDTE = OFF, PWRTE = ON, MCLRE = OFF, CP = OFF, CPD = OFF, BOREN = ON, CLKOUTEN = OFF,    \
+               IESO = OFF, FCMEN = OFF, WRT = OFF, PLLEN = OFF, STVREN = ON, BORV = LO, LVP = OFF
 
 #elif defined(HI_TECH_C)
 
