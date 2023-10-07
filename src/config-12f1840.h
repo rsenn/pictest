@@ -1,7 +1,7 @@
 #ifndef CONFIG_12F1840_H
 #define CONFIG_12F1840_H 1
 
-#if defined(__XC) || defined(MCHP_XC8)  || defined(XC8) || defined(SDCC)
+#if defined(__XC) || defined(MCHP_XC8) || defined(XC8) || defined(SDCC)
 
 // Word CONFIG1 @ 0x8007
 

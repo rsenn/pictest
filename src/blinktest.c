@@ -121,7 +121,7 @@ triangle(uint8_t in) {
 uint16_t
 filter(uint16_t value, uint8_t coeff) {
   static uint16_t temperature_filter;
-  
+
   if(temperature_filter == 0)
     temperature_filter = value;
 
@@ -129,7 +129,8 @@ filter(uint16_t value, uint8_t coeff) {
     return value;
 
   temperature_filter =
-      (uint16_t)((((int32_t)value * ((int16_t)256 - (int16_t)coeff)) + ((int32_t)temperature_filter * (int16_t)coeff)) / 256);
+      (uint16_t)((((int32_t)value * ((int16_t)256 - (int16_t)coeff)) + ((int32_t)temperature_filter * (int16_t)coeff)) /
+                 256);
 
   return temperature_filter;
 }
@@ -196,9 +197,9 @@ INTERRUPT_FN() {
   if(SOFTPWM_INTERRUPT_FLAG) {
     SOFTPWM_PORT = SOFTPWM_REG8(softpwm_values);
 
-#if defined(SOFTPWM_PORT2)  
+#if defined(SOFTPWM_PORT2)
     SOFTPWM_PORT2 = SOFTPWM_REG8(softpwm_values + 8);
-  #endif
+#endif
 #ifdef SOFTPWM_PORT3
     SOFTPWM_PORT3 = SOFTPWM_REG8(softpwm_values + 16);
 #endif

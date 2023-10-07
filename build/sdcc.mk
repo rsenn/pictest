@@ -114,6 +114,10 @@ _CPPFLAGS += \
 	-DVERSION_PATCH=$(VERSION_PATCH)
 
 CFLAGS = --use-non-free
+ifeq ($(chipl),12f1840)
+CFLAGS += -mpic14
+endif
+
 CFLAGS += $(EXTRA_CFLAGS)
 
 

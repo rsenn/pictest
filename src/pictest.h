@@ -21,13 +21,9 @@
 #elif defined(__12f1840)
 
 #define LED_PIN LATA4
-#define LED_ON() PORTA |= 0b0001000;
-#define LED_OFF() PORTA &= 0b11110111;
-#define LED_TRIS() TRISA &= 0b11110111;
-#define LED2_CATHODE LATA2
-#define LED2_CATHODE_TRIS ANSA2 = TRISA2
-#define LED2_ANODE RA3
-#define LED2_ANODE_TRIS TRISA3
+#define LED_ON() LATA |= 0b00010000;
+#define LED_OFF() LATA &= 0b11101111;
+#define LED_TRIS() TRISA &= 0b11101111;
 
 #elif defined(__16f628a)
 
@@ -128,7 +124,6 @@
 
 #endif
 
-
 #define SOFTPWM_CHANNELS 24
 
 #if defined(__12f1840)
@@ -136,7 +131,7 @@
 #define SOFTPWM_TRIS TRISA
 #define SOFTPWM_MASK 0b11111111
 
-#else 
+#else
 
 #if defined(PIC18)
 #define SOFTPWM_PORT LATB
@@ -157,5 +152,5 @@
 #define SOFTPWM_TRIS3 TRISA
 #define SOFTPWM_MASK3 0b11111111
 #endif
-  
+
 void loop(void);
