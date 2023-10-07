@@ -25,7 +25,7 @@ VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 ifeq ($(CHIP),18f16q41)
 CCVER := v2.36
 else
-CCVER ?= v1.43
+CCVER ?= v1.45
 endif
 #$(info CCVER: $(CCVER))
 #$(info OS: $(OS))

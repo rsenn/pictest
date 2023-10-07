@@ -164,6 +164,10 @@ blinktest_SOURCES = blinktest.c lib/comparator.c lib/format.c lib/buffer.c lib/r
 #blinktest_DEFS += -DUSE_NOKIA5110_LCD=1
 #blinktest_DEFS += -DUSE_SER=1
 #blinktest_DEFS += -DUSE_UART=1
+ifeq ($(CHIP),12f1840)
+blinktest_DEFS +=	-DUSE_LED=1
+#blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1
+endif
 ifeq ($(CHIP),18f25k50)
 blinktest_DEFS +=	-DUSE_LED=1
 #blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1

@@ -28,6 +28,7 @@
 #define LED2_CATHODE_TRIS ANSA2 = TRISA2
 #define LED2_ANODE RA3
 #define LED2_ANODE_TRIS TRISA3
+
 #elif defined(__16f628a)
 
 #define LED_PIN RA4
