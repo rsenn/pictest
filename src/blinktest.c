@@ -1,9 +1,14 @@
+
 #define USE_MCLRE 1
-#ifdef USE_ADCONVERTER
-#define VREF_PLUS 3.3
-#define VREF_MINUS 0.0
-#include "../lib/adc.h"
+#include "config-bits.h"
+#include "pictest.h"
+
+#if defined(__12f1840)
+#ifndef NO_PORTB
+#define NO_PORTB 1
 #endif
+#endif
+
 #include "../lib/comparator.h"
 #include "../lib/const.h"
 #include "../lib/device.h"
@@ -13,13 +18,11 @@
 #include "../lib/softpwm.h"
 #include "../lib/delay.h"
 #include "../lib/format.h"
-#include "pictest.h"
-#include "config-bits.h"
 
-#if defined(__12f1840)
-#ifndef NO_PORTB
-#define NO_PORTB 1
-#endif
+#ifdef USE_ADCONVERTER
+#define VREF_PLUS 3.3
+#define VREF_MINUS 0.0
+#include "../lib/adc.h"
 #endif
 
 #ifdef USE_UART
@@ -137,7 +140,7 @@ filter(uint16_t value, uint8_t coeff) {
 
 //#define b & v, b) (BUTTON_GET()&(b))
 
-#if defined(SDCC) && !(__SDCC_VERSION_MAJOR == 3 && __SDCC_VERSION_MINOR >= 9)
+#if defined(SDCC) && !(__SDCC_VERSION_MAJOR == 3 && __SDCC_VERSION_MINOR >= 9) && !defined(PIC12)
 __code unsigned int __at(_CONFIG) __configword = CONFIG_WORD;
 #endif
 
@@ -493,10 +496,14 @@ loop(void) {
   }
 
   if(run) {
+
     if(tmp_msecs >= prev_hsecs + interval) {
+
       index++;
+#ifdef USE_LED
       led_state = !led_state;
       SET_LED(led_state);
+#endif
       update_colors = 1;
       prev_hsecs = tmp_msecs;
 
