@@ -151,14 +151,14 @@ ifeq ($(chipl),12f1840)
 pictest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
 endif
 
-pictest2_SOURCES = pictest2.c lib/adc.c lib/delay.c lib/lcd44780.c lib/ser.c lib/pwm.c lib/onewire.c lib/ds18b20.c  lib/timer.c
+pictest2_SOURCES = pictest2.c lib/adc.c lib/delppic lib/lcd44780.c lib/ser.c lib/pwm.c lib/onewire.c lib/ds18b20.c  lib/timer.c
 pictest2_DEFS += -DUSE_TIMER0=1
 
 ps2test_SOURCES = ps2test.c lib/uart.c lib/timer.c
 ps2test_DEFS += -DUSE_TIMER0=1
 
-blinktest_SOURCES = blinktest.c lib/comparator.c lib/format.c lib/buffer.c lib/random.c lib/ser.c lib/softpwm.c lib/softser.c lib/timer.c lib/uart.c lib/delay.c lib/lcd5110.c lib/adc.c lib/pcd8544.c lib/mcp3001.c
-#blinktest_DEFS += -DUSE_TIMER0=1
+blinktest_SOURCES = blinktest.c  lib/buffer.c lib/random.c lib/ser.c lib/softpwm.c lib/softser.c lib/timer.c lib/uart.c lib/delay.c lib/adc.c
+blinktest_DEFS += -DUSE_TIMER0=1
 #blinktest_DEFS += -DUSE_ADCONVERTER=1
 #blinktest_DEFS += -DUSE_MCP3001=1
 #blinktest_DEFS += -DUSE_NOKIA5110_LCD=1
@@ -173,7 +173,8 @@ blinktest_DEFS +=	-DUSE_LED=1
 #blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1
 endif
 ifeq ($(CHIP),$(subst q,,$(CHIP)))
-blinktest_DEFS +=	-DUSE_TIMER1=1 -DUSE_SOFTPWM=1
+blinktest_DEFS +=	-DUSE_TIMER1=1
+blinktest_DEFS += -DUSE_SOFTPWM=1
 #blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1
 endif
 

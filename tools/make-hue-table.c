@@ -235,7 +235,7 @@ usage(char* argv0) {
 
 int
 main(int argc, char* argv[]) {
-  int steps = 255, sat = 255, intensity = 255, range = 255, convert_fn_index = 0;
+  int steps = 64, sat = 255, intensity = 255, range = 255, convert_fn_index = 0;
   bool use16bit = false;
 
   if(argc > 1) {

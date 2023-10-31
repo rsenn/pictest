@@ -34,4 +34,4 @@ MP_AS_DIR="/opt/microchip/xc8/v1.43/bin"
 MP_LD_DIR="/opt/microchip/xc8/v1.43/bin"
 MP_AR_DIR="/opt/microchip/xc8/v1.43/bin"
 # MP_BC_DIR is not defined
-DFP_DIR="/home/roman/.mchp_packs/Microchip/PIC18F-K_DFP/1.2.72"
+DFP_DIR="/opt/microchip/mplabx/v5.35/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63"

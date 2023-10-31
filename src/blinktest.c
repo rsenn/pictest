@@ -9,6 +9,9 @@
 #endif
 #endif
 
+#define SOFTPWM_RANGE 255
+
+
 #include "../lib/comparator.h"
 #include "../lib/const.h"
 #include "../lib/device.h"
@@ -95,7 +98,7 @@ static const uint8_t sine_table[] = {0x00, 0x06, 0x0d, 0x13, 0x19, 0x1f, 0x26, 0
                                      0xef, 0xed, 0xeb, 0xe8, 0xe6, 0xe3, 0xe0, 0xdd, 0xda, 0xd6, 0xd3, 0xcf, 0xcb,
                                      0xc8, 0xc4, 0xc0, 0xbb, 0xb7, 0xb3, 0xae, 0xa9, 0xa5, 0xa0, 0x9b, 0x96, 0x91,
                                      0x8c, 0x86, 0x81, 0x7b, 0x76, 0x70, 0x6b, 0x65, 0x5f, 0x59, 0x53, 0x4d, 0x47,
-                                     0x41, 0x3b, 0x35, 0x2f, 0x29, 0x22, 0x1c, 0x16, 0x10, 0x09, 0x03};
+                                     0x41, 0x3b, 0x35, 0x2f, 0x29, 0x22, 0x1c, 0x16, 0x10, 0x09, 0x03,};
 
 #define sign(n) ((n) < 0 ? -1 : 1)
 
@@ -123,19 +126,19 @@ triangle(uint8_t in) {
 //----------------------------------------------------------------------------
 uint16_t
 filter(uint16_t value, uint8_t coeff) {
-  static uint16_t temperature_filter;
+  static uint16_t z1;
 
-  if(temperature_filter == 0)
-    temperature_filter = value;
+  if(z1 == 0)
+    z1 = value;
 
   if(value == 0)
     return value;
 
-  temperature_filter =
-      (uint16_t)((((int32_t)value * ((int16_t)256 - (int16_t)coeff)) + ((int32_t)temperature_filter * (int16_t)coeff)) /
+  z1 =
+      (uint16_t)((((int32_t)value * ((int16_t)256 - (int16_t)coeff)) + ((int32_t)z1 * (int16_t)coeff)) /
                  256);
 
-  return temperature_filter;
+  return z1;
 }
 
 //#define b & v, b) (BUTTON_GET()&(b))
@@ -148,8 +151,12 @@ __code unsigned int __at(_CONFIG) __configword = CONFIG_WORD;
 
 #define SIZE_OF(arr) (sizeof(arr) / sizeof(arr[0]))
 
-extern const uint16_t rainbow[64];
-extern const uint8_t rainbow8[64][3];
+
+#define RAINBOW_STEPS 128
+#define RAINBOW_MASK ((RAINBOW_STEPS)-1)
+
+extern const uint16_t rainbow[RAINBOW_STEPS];
+extern const uint8_t rainbow8[RAINBOW_STEPS][3];
 
 static BOOL update_colors = TRUE;
 static BOOL led_state = 0;
@@ -182,7 +189,7 @@ put_str(putch_fn* putc, const char* s) {
 volatile BOOL run = 0;
 volatile uint8_t msec_count = 0;
 volatile uint16_t bres;
-volatile uint32_t msecs, hsecs;
+volatile uint32_t msecs, hsecs, secs;
 #ifdef USE_ADCONVERTER
 volatile unsigned int adc_result = 0;
 #endif
@@ -191,7 +198,7 @@ volatile unsigned int adc_result = 0;
 // Interrupt handling routine
 //-----------------------------------------------------------------------------
 #if defined(USE_SOFTPWM) || defined(USE_UART) || defined(USE_SER) || defined(USE_TIMER0) || defined(USE_ADCONVERTER)
-
+volatile uint16_t softpwm_counter2 = 0;
 INTERRUPT_FN() {
   NOP();
 
@@ -199,6 +206,8 @@ INTERRUPT_FN() {
 
   if(SOFTPWM_INTERRUPT_FLAG) {
     SOFTPWM_PORT = SOFTPWM_REG8(softpwm_values);
+
+    //SET_LED(secs & 1);
 
 #if defined(SOFTPWM_PORT2)
     SOFTPWM_PORT2 = SOFTPWM_REG8(softpwm_values + 8);
@@ -208,13 +217,15 @@ INTERRUPT_FN() {
 #endif
 
     // SOFTPWM_PIN(3, LATA4);
-    SOFTPWM_TIMER_VALUE = (uint8_t)(int8_t)-128;
+    SOFTPWM_TIMER_VALUE = (int16_t)(int8_t)-128;
     SOFTPWM_INTERRUPT_FLAG = 0;
 
+    if(softpwm_counter >= SOFTPWM_RANGE) {
+      softpwm_counter = 0;
+      softpwm_counter2++;
+    } else 
     softpwm_counter++;
 
-    if(softpwm_counter > 100)
-      softpwm_counter = 0;
   }
 #endif
 
@@ -236,13 +247,19 @@ INTERRUPT_FN() {
       msec_count++;
     }
 
-    if(msec_count >= 10) { // if reached 1 decisecond!
+    if(msec_count >= 10) { // if reached 1 centisecond!
       hsecs++;             // update clock, etc
 
       // LED_PIN = hsecs & 1;
 
       msec_count -= 10;
+
+      if(hsecs >= 100) {
+        secs++;
+        hsecs=0;
+      }
     }
+
 
     // Clear timer interrupt bit
     TIMER0_INTERRUPT_CLEAR();
@@ -345,7 +362,7 @@ main() {
     SET_LED2(0);
   #endif*/
 
-#ifdef HAVE_COMPARATOR
+#ifdef USE_COMPARATOR
   comparator_disable();
 // CMCONbits.CON = 0;
 //  CMCON = 0b111;          //Disable LATA Comparators
@@ -370,11 +387,12 @@ main() {
 
   INIT_LED();
   // INIT_LED2();
-  SET_LED(1);
+  
+  //SET_LED(1);
   //  SET_LED2(1);
 
   LED_TRIS();
-  LED_OFF();
+  //LED_OFF();
 #ifdef LED2_CATHODE
   LED2_CATHODE_TRIS = 0;
   LED2_CATHODE = 0;
@@ -389,7 +407,15 @@ main() {
 #ifdef USE_SOFTPWM
   softpwm_init();
 
-  for(int i = 0; i < SOFTPWM_CHANNELS; i++) softpwm_values[i] = (i % 5) * 255 / 4;
+  for(int i = 0; i < SOFTPWM_CHANNELS; i++) {
+  
+  int j=i;
+
+  while(j >= 5) j-=5;
+
+    softpwm_values[i] = j * 255 / 4;
+
+  }
 #endif
 
 #ifndef __18f16q41
@@ -502,7 +528,7 @@ loop(void) {
       index++;
 #ifdef USE_LED
       led_state = !led_state;
-      SET_LED(led_state);
+      // SET_LED(led_state);
 #endif
       update_colors = 1;
       prev_hsecs = tmp_msecs;
@@ -516,7 +542,7 @@ loop(void) {
   if(update_colors) {
     const uint8_t* rgb;
 
-    rgb = rainbow8[index % 64];
+    rgb = rainbow8[index& RAINBOW_MASK];
 
 #ifdef USE_UART
     uart_enable();
@@ -544,13 +570,23 @@ loop(void) {
 #ifdef USE_SOFTPWM
     softpwm_disable();
     {
-      softpwm_set(0, rgb[0]);
-      softpwm_set(1, rgb[1]);
-      softpwm_set(2, rgb[2]);
-    }
+
+#ifdef USE_SOFTPWM
+      softpwm_init();
+
+      for(int i = 0; i < 7; i++) {
+
+        rgb = rainbow8[((i * RAINBOW_STEPS/7) + index) & RAINBOW_MASK];
+
+        for(int j = 0; j < 3; j++) softpwm_set(i*3+j, rgb[j]);
+      }
+#endif
+   }
+
     softpwm_enable();
 #endif
-    update_colors = 0;
+
+    update_colors = 1;
     //      prev_index = index;
   }
 #ifdef USE_UART
@@ -577,21 +613,141 @@ loop(void) {
 //-----------------------------------------------------------------------------
 // Rainbow HSV table (Generated by 'tools/make-hue-table.c')
 //-----------------------------------------------------------------------------
-const uint8_t rainbow8[64][3] = {
-    {100, 0, 0},   {100, 8, 0},  {100, 17, 0}, {100, 25, 0}, {100, 33, 0}, {100, 42, 0}, {100, 50, 0}, {100, 58, 0},
-    {100, 67, 0},  {100, 71, 0}, {100, 75, 0}, {100, 79, 0}, {100, 83, 0}, {100, 88, 0}, {100, 92, 0}, {100, 96, 0},
-    {100, 100, 0}, {88, 100, 0}, {75, 100, 0}, {63, 100, 0}, {50, 100, 0}, {38, 100, 0}, {25, 100, 0}, {13, 100, 0},
-    {0, 100, 0},   {0, 96, 4},   {0, 92, 8},   {0, 88, 13},  {0, 83, 17},  {0, 79, 21},  {0, 75, 25},  {0, 71, 29},
-    {0, 67, 33},   {0, 58, 42},  {0, 50, 50},  {0, 42, 58},  {0, 33, 67},  {0, 25, 75},  {0, 17, 83},  {0, 8, 92},
-    {0, 0, 100},   {4, 0, 96},   {8, 0, 92},   {13, 0, 88},  {17, 0, 83},  {21, 0, 79},  {25, 0, 75},  {29, 0, 71},
-    {33, 0, 67},   {38, 0, 63},  {42, 0, 58},  {46, 0, 54},  {50, 0, 50},  {54, 0, 46},  {58, 0, 42},  {63, 0, 38},
-    {67, 0, 33},   {71, 0, 29},  {75, 0, 25},  {79, 0, 21},  {83, 0, 17},  {88, 0, 13},  {92, 0, 8},   {96, 0, 4},
+const uint8_t rainbow8[RAINBOW_STEPS][3] = {
+   { 0xff, 0x00, 0x00 },
+  { 0xff, 0x0b, 0x00 },
+  { 0xff, 0x15, 0x00 },
+  { 0xff, 0x20, 0x00 },
+  { 0xff, 0x2b, 0x00 },
+  { 0xff, 0x35, 0x00 },
+  { 0xff, 0x40, 0x00 },
+  { 0xff, 0x4a, 0x00 },
+  { 0xff, 0x55, 0x00 },
+  { 0xff, 0x60, 0x00 },
+  { 0xff, 0x6a, 0x00 },
+  { 0xff, 0x75, 0x00 },
+  { 0xff, 0x80, 0x00 },
+  { 0xff, 0x8a, 0x00 },
+  { 0xff, 0x95, 0x00 },
+  { 0xff, 0x9f, 0x00 },
+  { 0xff, 0xaa, 0x00 },
+  { 0xff, 0xaf, 0x00 },
+  { 0xff, 0xb5, 0x00 },
+  { 0xff, 0xba, 0x00 },
+  { 0xff, 0xbf, 0x00 },
+  { 0xff, 0xc5, 0x00 },
+  { 0xff, 0xca, 0x00 },
+  { 0xff, 0xcf, 0x00 },
+  { 0xff, 0xd5, 0x00 },
+  { 0xff, 0xda, 0x00 },
+  { 0xff, 0xdf, 0x00 },
+  { 0xff, 0xe4, 0x00 },
+  { 0xff, 0xea, 0x00 },
+  { 0xff, 0xef, 0x00 },
+  { 0xff, 0xf4, 0x00 },
+  { 0xff, 0xfa, 0x00 },
+  { 0xff, 0xff, 0x00 },
+  { 0xef, 0xff, 0x00 },
+  { 0xdf, 0xff, 0x00 },
+  { 0xcf, 0xff, 0x00 },
+  { 0xbf, 0xff, 0x00 },
+  { 0xaf, 0xff, 0x00 },
+  { 0x9f, 0xff, 0x00 },
+  { 0x8f, 0xff, 0x00 },
+  { 0x80, 0xff, 0x00 },
+  { 0x70, 0xff, 0x00 },
+  { 0x60, 0xff, 0x00 },
+  { 0x50, 0xff, 0x00 },
+  { 0x40, 0xff, 0x00 },
+  { 0x30, 0xff, 0x00 },
+  { 0x20, 0xff, 0x00 },
+  { 0x10, 0xff, 0x00 },
+  { 0x00, 0xff, 0x00 },
+  { 0x00, 0xfa, 0x05 },
+  { 0x00, 0xf4, 0x0b },
+  { 0x00, 0xef, 0x10 },
+  { 0x00, 0xea, 0x15 },
+  { 0x00, 0xe4, 0x1b },
+  { 0x00, 0xdf, 0x20 },
+  { 0x00, 0xda, 0x25 },
+  { 0x00, 0xd5, 0x2b },
+  { 0x00, 0xcf, 0x30 },
+  { 0x00, 0xca, 0x35 },
+  { 0x00, 0xc5, 0x3a },
+  { 0x00, 0xbf, 0x40 },
+  { 0x00, 0xba, 0x45 },
+  { 0x00, 0xb5, 0x4a },
+  { 0x00, 0xaf, 0x50 },
+  { 0x00, 0xaa, 0x55 },
+  { 0x00, 0x9f, 0x60 },
+  { 0x00, 0x95, 0x6a },
+  { 0x00, 0x8a, 0x75 },
+  { 0x00, 0x80, 0x80 },
+  { 0x00, 0x75, 0x8a },
+  { 0x00, 0x6a, 0x95 },
+  { 0x00, 0x60, 0x9f },
+  { 0x00, 0x55, 0xaa },
+  { 0x00, 0x4a, 0xb5 },
+  { 0x00, 0x40, 0xbf },
+  { 0x00, 0x35, 0xca },
+  { 0x00, 0x2b, 0xd5 },
+  { 0x00, 0x20, 0xdf },
+  { 0x00, 0x15, 0xea },
+  { 0x00, 0x0b, 0xf4 },
+  { 0x00, 0x00, 0xff },
+  { 0x05, 0x00, 0xfa },
+  { 0x0b, 0x00, 0xf4 },
+  { 0x10, 0x00, 0xef },
+  { 0x15, 0x00, 0xea },
+  { 0x1b, 0x00, 0xe4 },
+  { 0x20, 0x00, 0xdf },
+  { 0x25, 0x00, 0xda },
+  { 0x2b, 0x00, 0xd5 },
+  { 0x30, 0x00, 0xcf },
+  { 0x35, 0x00, 0xca },
+  { 0x3a, 0x00, 0xc5 },
+  { 0x40, 0x00, 0xbf },
+  { 0x45, 0x00, 0xba },
+  { 0x4a, 0x00, 0xb5 },
+  { 0x50, 0x00, 0xaf },
+  { 0x55, 0x00, 0xaa },
+  { 0x5a, 0x00, 0xa5 },
+  { 0x60, 0x00, 0x9f },
+  { 0x65, 0x00, 0x9a },
+  { 0x6a, 0x00, 0x95 },
+  { 0x70, 0x00, 0x8f },
+  { 0x75, 0x00, 0x8a },
+  { 0x7a, 0x00, 0x85 },
+  { 0x80, 0x00, 0x80 },
+  { 0x85, 0x00, 0x7a },
+  { 0x8a, 0x00, 0x75 },
+  { 0x8f, 0x00, 0x70 },
+  { 0x95, 0x00, 0x6a },
+  { 0x9a, 0x00, 0x65 },
+  { 0x9f, 0x00, 0x60 },
+  { 0xa5, 0x00, 0x5a },
+  { 0xaa, 0x00, 0x55 },
+  { 0xaf, 0x00, 0x50 },
+  { 0xb5, 0x00, 0x4a },
+  { 0xba, 0x00, 0x45 },
+  { 0xbf, 0x00, 0x40 },
+  { 0xc5, 0x00, 0x3a },
+  { 0xca, 0x00, 0x35 },
+  { 0xcf, 0x00, 0x30 },
+  { 0xd5, 0x00, 0x2b },
+  { 0xda, 0x00, 0x25 },
+  { 0xdf, 0x00, 0x20 },
+  { 0xe4, 0x00, 0x1b },
+  { 0xea, 0x00, 0x15 },
+  { 0xef, 0x00, 0x10 },
+  { 0xf4, 0x00, 0x0b },
+  { 0xfa, 0x00, 0x05 },
 };
 
 //-----------------------------------------------------------------------------
 // Format number as a string and output it using the given 'putc' function
 //-----------------------------------------------------------------------------
-void
+/*void
 put_number(putch_fn* putc, uint16_t n, uint8_t base, int8_t pad) {
   uint8_t buf[8 * sizeof(long)]; // Assumes 8-bit chars.
   uint8_t di;
@@ -614,3 +770,4 @@ put_number(putch_fn* putc, uint16_t n, uint8_t base, int8_t pad) {
 
   for(; i > 0; i--) putc((char)buf[(int16_t)i - 1]);
 }
+*/
