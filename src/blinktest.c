@@ -747,7 +747,8 @@ const uint8_t rainbow8[RAINBOW_STEPS][3] = {
 //-----------------------------------------------------------------------------
 // Format number as a string and output it using the given 'putc' function
 //-----------------------------------------------------------------------------
-/*void
+#if defined(USE_SER) || defined(USE_UART) || defined(USE_SOFTSER)
+void
 put_number(putch_fn* putc, uint16_t n, uint8_t base, int8_t pad) {
   uint8_t buf[8 * sizeof(long)]; // Assumes 8-bit chars.
   uint8_t di;
@@ -770,4 +771,4 @@ put_number(putch_fn* putc, uint16_t n, uint8_t base, int8_t pad) {
 
   for(; i > 0; i--) putc((char)buf[(int16_t)i - 1]);
 }
-*/
+#endif
