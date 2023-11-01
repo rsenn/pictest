@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=/home/roman/Projects/pictest/src/blinktest.c /home/roman/Projects/pictest/lib/softser.c /home/roman/Projects/pictest/lib/uart.c /home/roman/Projects/pictest/lib/softpwm.c /home/roman/Projects/pictest/lib/timer.c /home/roman/Projects/pictest/lib/ser.c /home/roman/Projects/pictest/lib/format.c /home/roman/Projects/pictest/lib/random.c /home/roman/Projects/pictest/lib/delay.c
+SOURCEFILES_QUOTED_IF_SPACED=/home/roman/Projects/pictest/lib/softser.c /home/roman/Projects/pictest/lib/uart.c /home/roman/Projects/pictest/lib/softpwm.c /home/roman/Projects/pictest/lib/timer.c /home/roman/Projects/pictest/lib/ser.c /home/roman/Projects/pictest/lib/format.c /home/roman/Projects/pictest/lib/random.c /home/roman/Projects/pictest/lib/delay.c /home/roman/Projects/pictest/src/blinktest.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1006921327/blinktest.p1 ${OBJECTDIR}/_ext/1006914320/softser.p1 ${OBJECTDIR}/_ext/1006914320/uart.p1 ${OBJECTDIR}/_ext/1006914320/softpwm.p1 ${OBJECTDIR}/_ext/1006914320/timer.p1 ${OBJECTDIR}/_ext/1006914320/ser.p1 ${OBJECTDIR}/_ext/1006914320/format.p1 ${OBJECTDIR}/_ext/1006914320/random.p1 ${OBJECTDIR}/_ext/1006914320/delay.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1006921327/blinktest.p1.d ${OBJECTDIR}/_ext/1006914320/softser.p1.d ${OBJECTDIR}/_ext/1006914320/uart.p1.d ${OBJECTDIR}/_ext/1006914320/softpwm.p1.d ${OBJECTDIR}/_ext/1006914320/timer.p1.d ${OBJECTDIR}/_ext/1006914320/ser.p1.d ${OBJECTDIR}/_ext/1006914320/format.p1.d ${OBJECTDIR}/_ext/1006914320/random.p1.d ${OBJECTDIR}/_ext/1006914320/delay.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1006914320/softser.p1 ${OBJECTDIR}/_ext/1006914320/uart.p1 ${OBJECTDIR}/_ext/1006914320/softpwm.p1 ${OBJECTDIR}/_ext/1006914320/timer.p1 ${OBJECTDIR}/_ext/1006914320/ser.p1 ${OBJECTDIR}/_ext/1006914320/format.p1 ${OBJECTDIR}/_ext/1006914320/random.p1 ${OBJECTDIR}/_ext/1006914320/delay.p1 ${OBJECTDIR}/_ext/1006921327/blinktest.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1006914320/softser.p1.d ${OBJECTDIR}/_ext/1006914320/uart.p1.d ${OBJECTDIR}/_ext/1006914320/softpwm.p1.d ${OBJECTDIR}/_ext/1006914320/timer.p1.d ${OBJECTDIR}/_ext/1006914320/ser.p1.d ${OBJECTDIR}/_ext/1006914320/format.p1.d ${OBJECTDIR}/_ext/1006914320/random.p1.d ${OBJECTDIR}/_ext/1006914320/delay.p1.d ${OBJECTDIR}/_ext/1006921327/blinktest.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1006921327/blinktest.p1 ${OBJECTDIR}/_ext/1006914320/softser.p1 ${OBJECTDIR}/_ext/1006914320/uart.p1 ${OBJECTDIR}/_ext/1006914320/softpwm.p1 ${OBJECTDIR}/_ext/1006914320/timer.p1 ${OBJECTDIR}/_ext/1006914320/ser.p1 ${OBJECTDIR}/_ext/1006914320/format.p1 ${OBJECTDIR}/_ext/1006914320/random.p1 ${OBJECTDIR}/_ext/1006914320/delay.p1
+OBJECTFILES=${OBJECTDIR}/_ext/1006914320/softser.p1 ${OBJECTDIR}/_ext/1006914320/uart.p1 ${OBJECTDIR}/_ext/1006914320/softpwm.p1 ${OBJECTDIR}/_ext/1006914320/timer.p1 ${OBJECTDIR}/_ext/1006914320/ser.p1 ${OBJECTDIR}/_ext/1006914320/format.p1 ${OBJECTDIR}/_ext/1006914320/random.p1 ${OBJECTDIR}/_ext/1006914320/delay.p1 ${OBJECTDIR}/_ext/1006921327/blinktest.p1
 
 # Source Files
-SOURCEFILES=/home/roman/Projects/pictest/src/blinktest.c /home/roman/Projects/pictest/lib/softser.c /home/roman/Projects/pictest/lib/uart.c /home/roman/Projects/pictest/lib/softpwm.c /home/roman/Projects/pictest/lib/timer.c /home/roman/Projects/pictest/lib/ser.c /home/roman/Projects/pictest/lib/format.c /home/roman/Projects/pictest/lib/random.c /home/roman/Projects/pictest/lib/delay.c
+SOURCEFILES=/home/roman/Projects/pictest/lib/softser.c /home/roman/Projects/pictest/lib/uart.c /home/roman/Projects/pictest/lib/softpwm.c /home/roman/Projects/pictest/lib/timer.c /home/roman/Projects/pictest/lib/ser.c /home/roman/Projects/pictest/lib/format.c /home/roman/Projects/pictest/lib/random.c /home/roman/Projects/pictest/lib/delay.c /home/roman/Projects/pictest/src/blinktest.c
 
 
 
@@ -94,14 +94,6 @@ MP_PROCESSOR_OPTION=12F1840
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/1006921327/blinktest.p1: /home/roman/Projects/pictest/src/blinktest.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1006921327" 
-	@${RM} ${OBJECTDIR}/_ext/1006921327/blinktest.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1006921327/blinktest.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=24 --opt=+asm,+asmfile,-speed,+space,+debug,+local --addrqual=ignore --mode=pro -DUSE_TIMER0=1 -DUSE_LED=1 -DUSE_TIMER1=1 -DUSE_SOFTPWM=1 -DNDEBUG=1 -DPIC12F1840=1 -D__12f1840=1 -DXTAL_USED=NO_XTAL -P -N255 -I"../../../../lib" -I"../../../../src" -v --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,+psect,-class,+mem,+hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+osccal,+oscval:0x3400,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1006921327/blinktest.p1 /home/roman/Projects/pictest/src/blinktest.c 
-	@-${MV} ${OBJECTDIR}/_ext/1006921327/blinktest.d ${OBJECTDIR}/_ext/1006921327/blinktest.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1006921327/blinktest.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/_ext/1006914320/softser.p1: /home/roman/Projects/pictest/lib/softser.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1006914320" 
 	@${RM} ${OBJECTDIR}/_ext/1006914320/softser.p1.d 
@@ -166,15 +158,15 @@ ${OBJECTDIR}/_ext/1006914320/delay.p1: /home/roman/Projects/pictest/lib/delay.c 
 	@-${MV} ${OBJECTDIR}/_ext/1006914320/delay.d ${OBJECTDIR}/_ext/1006914320/delay.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1006914320/delay.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-else
 ${OBJECTDIR}/_ext/1006921327/blinktest.p1: /home/roman/Projects/pictest/src/blinktest.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1006921327" 
 	@${RM} ${OBJECTDIR}/_ext/1006921327/blinktest.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1006921327/blinktest.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=24 --opt=+asm,+asmfile,-speed,+space,+debug,+local --addrqual=ignore --mode=pro -DUSE_TIMER0=1 -DUSE_LED=1 -DUSE_TIMER1=1 -DUSE_SOFTPWM=1 -DNDEBUG=1 -DPIC12F1840=1 -D__12f1840=1 -DXTAL_USED=NO_XTAL -P -N255 -I"../../../../lib" -I"../../../../src" -v --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,+psect,-class,+mem,+hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+osccal,+oscval:0x3400,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1006921327/blinktest.p1 /home/roman/Projects/pictest/src/blinktest.c 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=24 --opt=+asm,+asmfile,-speed,+space,+debug,+local --addrqual=ignore --mode=pro -DUSE_TIMER0=1 -DUSE_LED=1 -DUSE_TIMER1=1 -DUSE_SOFTPWM=1 -DNDEBUG=1 -DPIC12F1840=1 -D__12f1840=1 -DXTAL_USED=NO_XTAL -P -N255 -I"../../../../lib" -I"../../../../src" -v --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,+psect,-class,+mem,+hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+osccal,+oscval:0x3400,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1006921327/blinktest.p1 /home/roman/Projects/pictest/src/blinktest.c 
 	@-${MV} ${OBJECTDIR}/_ext/1006921327/blinktest.d ${OBJECTDIR}/_ext/1006921327/blinktest.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1006921327/blinktest.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+else
 ${OBJECTDIR}/_ext/1006914320/softser.p1: /home/roman/Projects/pictest/lib/softser.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1006914320" 
 	@${RM} ${OBJECTDIR}/_ext/1006914320/softser.p1.d 
@@ -238,6 +230,14 @@ ${OBJECTDIR}/_ext/1006914320/delay.p1: /home/roman/Projects/pictest/lib/delay.c 
 	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=24 --opt=+asm,+asmfile,-speed,+space,+debug,+local --addrqual=ignore --mode=pro -DUSE_TIMER0=1 -DUSE_LED=1 -DUSE_TIMER1=1 -DUSE_SOFTPWM=1 -DNDEBUG=1 -DPIC12F1840=1 -D__12f1840=1 -DXTAL_USED=NO_XTAL -P -N255 -I"../../../../lib" -I"../../../../src" -v --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,+psect,-class,+mem,+hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+osccal,+oscval:0x3400,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1006914320/delay.p1 /home/roman/Projects/pictest/lib/delay.c 
 	@-${MV} ${OBJECTDIR}/_ext/1006914320/delay.d ${OBJECTDIR}/_ext/1006914320/delay.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1006914320/delay.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/_ext/1006921327/blinktest.p1: /home/roman/Projects/pictest/src/blinktest.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1006921327" 
+	@${RM} ${OBJECTDIR}/_ext/1006921327/blinktest.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1006921327/blinktest.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=24 --opt=+asm,+asmfile,-speed,+space,+debug,+local --addrqual=ignore --mode=pro -DUSE_TIMER0=1 -DUSE_LED=1 -DUSE_TIMER1=1 -DUSE_SOFTPWM=1 -DNDEBUG=1 -DPIC12F1840=1 -D__12f1840=1 -DXTAL_USED=NO_XTAL -P -N255 -I"../../../../lib" -I"../../../../src" -v --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,+psect,-class,+mem,+hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,+keep,-no_startup,+osccal,+oscval:0x3400,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1006921327/blinktest.p1 /home/roman/Projects/pictest/src/blinktest.c 
+	@-${MV} ${OBJECTDIR}/_ext/1006921327/blinktest.d ${OBJECTDIR}/_ext/1006921327/blinktest.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1006921327/blinktest.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

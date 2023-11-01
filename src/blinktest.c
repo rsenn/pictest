@@ -1,4 +1,11 @@
 
+#define SOFTPWM_RANGE 255
+
+#define SOFTPWM_MASK 0b11111100
+#define SOFTPWM_MASK2 0b00111111
+#define SOFTPWM_MASK3 0b00111111
+
+
 #define USE_MCLRE 1
 #include "config-bits.h"
 #include "pictest.h"
@@ -12,12 +19,6 @@
 #if defined(USE_SER) || defined(USE_UART) || defined(USE_SOFTSER)
 #define HAVE_SERIAL 1
 #endif
-
-#define SOFTPWM_RANGE 255
-
-#define SOFTPWM_MASK 0b11111100
-#define SOFTPWM_MASK2 0b00111111
-#define SOFTPWM_MASK3 0b00111111
 
 #include "../lib/comparator.h"
 #include "../lib/const.h"
