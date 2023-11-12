@@ -120,7 +120,7 @@ INTERRUPT_FN() {
   NOP();
 
 #ifdef USE_SOFTPWM
-  SOFTPWM_ISR3();
+  SOFTPWM_ISR1();
 #endif
 
 #ifdef USE_UART
