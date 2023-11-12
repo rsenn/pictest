@@ -1,6 +1,6 @@
 
 #define SOFTPWM_RANGE 255
-
+#define SOFTPWM_CHANNELS 3
 #define SOFTPWM_MASK 0b11111100
 #define SOFTPWM_MASK2 0b00111011
 #define SOFTPWM_MASK3 0b00000111
@@ -93,6 +93,24 @@ volatile uint8_t msec_count = 0;
 
 BRESENHAM_DECL(bres);
 volatile uint32_t msecs, hsecs;
+
+static BOOL led_state = 0;
+static uint32_t tmp_msecs;
+static uint32_t prev_hsecs = 0 /*, last_button = 0*/;
+static uint8_t index = 0;
+static int16_t history[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+static char histindex = 0;
+static char bbit = 0;
+static uint32_t btime = 0;
+
+#define encode_time(ms) (ms)
+
+void
+clear_history() {
+
+  for(char i = 0; i < 8; i++) history[i] = 0;
+  histindex = 0;
+}
 
 //-----------------------------------------------------------------------------
 // Interrupt handling routine
@@ -248,20 +266,8 @@ main() {
 #endif
 
 #ifdef USE_LED
-
   LED_TRIS();
-
   INIT_LED();
-
-#ifdef LED2_CATHODE
-  LED2_CATHODE_TRIS = 0;
-  LED2_CATHODE = 0;
-#endif
-
-#ifdef LED2_ANODE
-  LED2_ANODE_TRIS = 0;
-  LED2_ANODE = 0;
-#endif
 #endif
 
 #ifdef USE_SOFTPWM
@@ -305,8 +311,49 @@ main() {
    CCP1IE = 0;
    CCP1IF = 0;*/
 
-  //  BUTTON_TRIS();
+  BUTTON_TRIS();
 
   for(;;) {
+    char b;
+
+    b = BUTTON_BIT;
+
+    if(b != bbit) {
+
+      if(!b) {
+        // button pressed (input pulled down)
+        //
+      } else {
+      }
+
+#ifdef USE_LED
+      led_state = !b;
+      SET_LED(led_state);
+#endif
+
+      uint32_t d = msecs - btime;
+
+      uint16_t t = encode_time(d);
+
+      if(t > 0) {
+        history[histindex++] = t;
+
+        if(histindex > 7)
+          histindex = 0;
+      }
+
+      if(!b && d > 3000)
+        clear_history();
+
+      if(histindex) {
+        // morse_process();
+      }
+
+      btime = msecs;
+      bbit = b;
+    }
+
+    if(b && msecs - btime > 3000) {
+    }
   }
 }
