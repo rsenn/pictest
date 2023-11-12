@@ -1,6 +1,6 @@
 CHIPS = 16f876a 18f2550 
 CHIPS += 18f25k22 18f25k50
-#CHIPS += 16f628a 18f252 18f252  18f25k50
+#CHIPS += 16f628a 18f252 18f252 18f25k50
 #CHIPS += 10f206
 #CHIPS += 12f1840
 COMPILERS = xc8 sdcc
@@ -65,7 +65,7 @@ endif
 KBPS := $(shell echo $$(($(BAUD) / 1000)))
 
 ifeq ($(PROGRAM)$(PROGRAMS),)
-PROGRAMS := pictest blinktest serialtest  seg7test #ringtone
+PROGRAMS := pictest blinktest serialtest seg7test #ringtone
 endif
 
 ifneq ($(CODE_OFFSET),)
@@ -100,14 +100,14 @@ vpath lib lib/extra src $(OBJDIR) $(BUILDDIR)
 VPATH = lib lib/extra src $(OBJDIR) $(BUILDDIR)
 
 DEFINES += PIC$(chipu)=1 __$(chipl)=1
-##DEFINES +=  USE_ADC=1
-#DEFINES +=  USE_HD44780_LCD=1
-##DEFINES +=  USE_7SEGMENT=1
-#DEFINES +=  USE_UART=1
+##DEFINES += USE_ADC=1
+#DEFINES += USE_HD44780_LCD=1
+##DEFINES += USE_7SEGMENT=1
+#DEFINES += USE_UART=1
 #DEFINES += USE_SOFTSER=1
-##DEFINES +=  USE_SER=1
+##DEFINES += USE_SER=1
 #
-##DEFINES +=  USE_PWM=1
+##DEFINES += USE_PWM=1
 ifeq ($(BUILD_TYPE),debug)
 DEFINES += __DEBUG=1 _DEBUG=1
 else
@@ -142,8 +142,8 @@ CFGFILE = $(BUILDDIR)$(PROGRAM)_$(BUILD_ID).cfg
 COMMON_SOURCES = #lib/queue.c
 
 
-pictest_SOURCES = pictest.c lib/delay.c lib/lcd44780.c lib/ser.c lib/softser.c  lib/uart.c lib/adc.c lib/timer.c lib/7segment.c #lib/onewire.c lib/ds18b20.c midi.c lib/softser.c #shell.c
-pictest_DEFS +=  -DUSE_TIMER0=1
+pictest_SOURCES = pictest.c lib/delay.c lib/lcd44780.c lib/ser.c lib/softser.c lib/uart.c lib/adc.c lib/timer.c lib/7segment.c #lib/onewire.c lib/ds18b20.c midi.c lib/softser.c #shell.c
+pictest_DEFS += -DUSE_TIMER0=1
 
 ifneq ($(chipl),12f1840)
 pictest_DEFS += -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
@@ -152,13 +152,13 @@ ifeq ($(chipl),12f1840)
 pictest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
 endif
 
-pictest2_SOURCES = pictest2.c lib/adc.c lib/delppic lib/lcd44780.c lib/ser.c lib/pwm.c lib/onewire.c lib/ds18b20.c  lib/timer.c
+pictest2_SOURCES = pictest2.c lib/adc.c lib/delppic lib/lcd44780.c lib/ser.c lib/pwm.c lib/onewire.c lib/ds18b20.c lib/timer.c
 pictest2_DEFS += -DUSE_TIMER0=1
 
 ps2test_SOURCES = ps2test.c lib/uart.c lib/timer.c
 ps2test_DEFS += -DUSE_TIMER0=1
 
-blinktest_SOURCES = blinktest.c  lib/buffer.c lib/random.c lib/ser.c lib/softpwm.c lib/softser.c lib/timer.c lib/uart.c lib/delay.c lib/adc.c
+blinktest_SOURCES = blinktest.c lib/buffer.c lib/random.c lib/ser.c lib/softpwm.c lib/softser.c lib/timer.c lib/uart.c lib/delay.c lib/adc.c
 blinktest_DEFS += -DUSE_TIMER0=1
 blinktest_DEFS += -DUSE_TIMER1=1
 blinktest_DEFS += -DUSE_TIMER2=1
@@ -183,10 +183,10 @@ blinktest_DEFS += -DUSE_SOFTPWM=1
 #blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1
 endif
 
-rgbtest_SOURCES = rgbtest.c   lib/softpwm.c   lib/timer.c  lib/delay.c  
+rgbtest_SOURCES = rgbtest.c lib/softpwm.c lib/timer.c lib/delay.c lib/random.c
 
 
-seg7test_SOURCES = 7segtest.c  lib/7segment.c lib/timer.c lib/buffer.c lib/format.c lib/random.c lib/softser.c lib/ser.c lib/uart.c
+seg7test_SOURCES = 7segtest.c lib/7segment.c lib/timer.c lib/buffer.c lib/format.c lib/random.c lib/softser.c lib/ser.c lib/uart.c
 seg7test_DEFS = -DUSE_7SEGMENT=1 -DUSE_SER=1 -DUSE_UART=1
 seg7test_DEFS += -DUSE_TIMER0=1
 #seg7test_DEFS += -DUSE_TIMER1=1
@@ -206,7 +206,7 @@ ifeq ($(filter 10f%,$(chipl)),)
 serialtest_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_SER=1
 endif
 ifeq ($(filter 10f% 12f%,$(chipl)),)
-serialtest_DEFS +=  -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
+serialtest_DEFS += -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
 endif
 
 pwmtest_SOURCES = pwmtest.c lib/timer.c lib/adc.c lib/pwm.c
@@ -219,5 +219,5 @@ ctmutest2_SOURCES = ctmutest2.c lib/timer.c
 ctmutest2_DEFS += -DUSE_TIMER0=1
 
 ringtone_SOURCES = ringtone.c lib/timer.c lib/random.c lib/eeprom.c
-ringtone_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1  -DAxelF=1
+ringtone_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DAxelF=1
 
