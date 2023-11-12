@@ -183,6 +183,8 @@ blinktest_DEFS += -DUSE_SOFTPWM=1
 #blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1
 endif
 
+rgbtest_SOURCES = rgbtest.c   lib/softpwm.c   lib/timer.c  lib/delay.c  
+
 
 seg7test_SOURCES = 7segtest.c  lib/7segment.c lib/timer.c lib/buffer.c lib/format.c lib/random.c lib/softser.c lib/ser.c lib/uart.c
 seg7test_DEFS = -DUSE_7SEGMENT=1 -DUSE_SER=1 -DUSE_UART=1
