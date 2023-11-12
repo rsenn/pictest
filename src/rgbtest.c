@@ -94,10 +94,6 @@ volatile uint8_t msec_count = 0;
 BRESENHAM_DECL(bres);
 volatile uint32_t msecs, hsecs;
 
-static BOOL led_state = 0;
-static uint32_t tmp_msecs;
-static uint32_t prev_hsecs = 0 /*, last_button = 0*/;
-static uint8_t index = 0;
 static int16_t history[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 static char histindex = 0;
 static char bbit = 0;
