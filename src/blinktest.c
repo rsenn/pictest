@@ -2,19 +2,19 @@
 #define SOFTPWM_RANGE 255
 
 #define SOFTPWM_MASK 0b11111100
-#define SOFTPWM_MASK2 0b00111111
-#define SOFTPWM_MASK3 0b00111111
+#define SOFTPWM_MASK2 0b00111011
+#define SOFTPWM_MASK3 0b00000111
 
+//#define USE_MCLRE 1
 
-#define USE_MCLRE 1
 #include "config-bits.h"
 #include "pictest.h"
 
-#if defined(__12f1840)
+//#if defined(__12f1840)
 #ifndef NO_PORTB
 #define NO_PORTB 1
 #endif
-#endif
+//#endif
 
 #if defined(USE_SER) || defined(USE_UART) || defined(USE_SOFTSER)
 #define HAVE_SERIAL 1
@@ -62,6 +62,10 @@
 #include "bresenham.h"
 #include <math.h>
 
+#if defined(__SDCC__) && defined(PIC16)
+__code unsigned int __at(_CONFIG) __config_word = CONFIG_WORD;
+#endif
+
 /* #include "../usb/USB_Stack/USB/usb_config.h"
 #include "../usb/USB_Stack/USB/usb.h"
 #include "../usb/USB_Stack/USB/usb_cdc.h"
@@ -70,15 +74,25 @@
 #include "../usb/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_app.c"
 #include "../usb/USB_Stack/Examples/CDC_Examples/Shared_Files/usb_descriptors.c" */
 
+#
+
 #if defined(__12f1840)
 #define BUTTON_PORT PORTA
 #define BUTTON_SHIFT 0
+#define BUTTON_BIT RA0
+#define BUTTON_TRIS TRISA0
+#define BUTTON_TRIS() TRISA0 = 1
+#elif defined(__18f25k50)
+#define BUTTON_PORT PORTE
+#define BUTTON_SHIFT 3
+#define BUTTON_BIT PORTEbits.RE3
+#define BUTTON_TRIS() /*TRISE |= 0b1000*/
+
 #elif defined(__18f16q41) || !defined(__18f4550)
 #define BUTTON_PORT PORTC
 #define BUTTON_SHIFT 1
-#else
-#define BUTTON_PORT PORTE
-#define BUTTON_SHIFT 3
+#define BUTTON_BIT RB0
+#define BUTTON_TRIS() TRISB |= 0b1
 #endif
 
 #ifndef BUTTON_PORT
@@ -171,8 +185,12 @@ volatile unsigned int adc_result = 0;
 static BOOL update_colors = TRUE;
 static BOOL led_state = 0;
 static uint32_t tmp_msecs;
-static uint32_t prev_hsecs = 0, last_button = 0;
+static uint32_t prev_hsecs = 0 /*, last_button = 0*/;
 static uint8_t index = 0;
+static int16_t history[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+static char histindex = 0;
+static char bbit = 0;
+static uint32_t btime = 0;
 
 static void
 dummy_putch(char c) {}
@@ -202,7 +220,7 @@ volatile BOOL run = 0;
 volatile uint8_t msec_count = 0;
 
 BRESENHAM_DECL(bres);
-volatile uint32_t msecs, hsecs, secs;
+volatile uint32_t msecs, hsecs;
 
 //-----------------------------------------------------------------------------
 // Interrupt handling routine
@@ -244,16 +262,21 @@ INTERRUPT_FN() {
 
       msec_count -= 10;
 
-      if(hsecs >= 100) {
+      /*if(hsecs >= 100) {
         secs++;
         hsecs = 0;
-      }
+      }*/
     }
 
     // Clear timer interrupt bit
     TIMER0_INTERRUPT_CLEAR();
   }
 #endif
+
+  /*  if(CCP1IF) {
+
+      CCP1IF = 0;
+    }*/
 
 #ifdef USE_TIMER2
   if(TIMER2_INTERRUPT_FLAG) {
@@ -292,6 +315,83 @@ read_analog(void) {
 }
 #endif
 
+void
+clear_history() {
+
+  for(char i = 0; i < 8; i++) history[i] = 0;
+  histindex = 0;
+}
+
+char
+leading_zeroes(uint32_t u) {
+  if(u == 0)
+    return 32;
+  char i = 0;
+  while(u) {
+    u >>= 1;
+    i++;
+  }
+  return i;
+}
+
+uint16_t
+encode_time(uint32_t timestamp) {
+  unsigned char shift = 0;
+
+  while(timestamp > 0x0fff) {
+
+    timestamp >>= 1;
+    shift++;
+  }
+
+  if(shift > 15)
+    return 0xffff;
+
+  return ((uint16_t)shift << 12) | timestamp;
+}
+
+static uint8_t morse_len = 0;
+static int8_t morse_state = 0;
+
+int8_t
+morse_decode( int8_t state, char c) {
+  static const unsigned char t[] = {
+      0x03, 0x3f, 0x7b, 0x4f, 0x2f, 0x63, 0x5f, 0x77, 0x7f, 0x72, 0x87, 0x3b, 0x57, 0x47, 0x67, 0x4b, 0x81,
+      0x40, 0x01, 0x58, 0x00, 0x68, 0x51, 0x32, 0x88, 0x34, 0x8c, 0x92, 0x6c, 0x02, 0x03, 0x18, 0x14, 0x00,
+      0x10, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x1c, 0x00, 0x00, 0x00,
+      0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x24, 0x00, 0x28, 0x04, 0x00, 0x30, 0x31, 0x32, 0x33,
+      0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b,
+      0x4c, 0x4d, 0x4e, 0x4f, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a,
+  };
+  int v = t[-state];
+  switch(c) {
+    case 0x00: return v >> 2 ? t[(v >> 2) + 63] : 0;
+    case 0x2e: return v & 2 ? state * 2 - 1 : 0;
+    case 0x2d: return v & 1 ? state * 2 - 2 : 0;
+    default: return 0;
+  }
+}
+
+void
+morse_process() {
+  uint16_t lowest = 0xffff;
+
+  for(char i = 0; i < histindex; i++) {
+    if(lowest > history[i])
+      lowest = history[i];
+  }
+
+  char j;
+
+  for(j = 0; j < histindex; j++) {
+    if(j & 1)
+      if(history[j] > lowest * 3)
+        break;
+  }
+
+  morse_len = j >> 1;
+}
+
 //-----------------------------------------------------------------------------
 int
 main() {
@@ -309,7 +409,9 @@ main() {
   OSCTUNEbits.SPLLMULT = 1; // PLL 3x
 #endif
   OSCCON2bits.PLLEN = 1;
+
   PLL_STARTUP_DELAY();
+
 #if XTAL_USED == NO_XTAL
   ACTCONbits.ACTSRC = 1;
   ACTCONbits.ACTEN = 1;
@@ -421,8 +523,15 @@ main() {
   put_str(put_char, "blinktest\r\n");
 #endif
 
-  for(;;) {
+  /* TRISC2 = 1;
 
+   CCP1IE = 0;
+   CCP1IF = 0;*/
+
+  BUTTON_TRIS();
+
+  for(;;) {
+    char b;
     static uint32_t interval = 10;
     char input = 0;
     /*static float hue = 0;
@@ -451,23 +560,62 @@ main() {
 
     } else
 #endif
-        if(tmp_msecs > last_button + 200) {
+      b = BUTTON_BIT;
 
-      uint8_t b = BUTTON_GET();
+    if(b != bbit) {
 
-      if(b & B_PLUS)
-        input = '+';
-      else if(b & B_MINUS)
-        input = '-';
-      else if(b & B_LEFT)
-        input = ' ';
-      else if(b & B_RIGHT)
-        input = '\n';
-
-      if(b & 0b1111) {
-        last_button = tmp_msecs;
+      if(!b) {
+        // button pressed (input pulled down)
+        //
+      } else {
       }
+
+#ifdef USE_LED
+      led_state = !b;
+      SET_LED(led_state);
+#endif
+
+      uint32_t d = msecs - btime;
+
+      uint16_t t = encode_time(d);
+
+      if(t > 0) {
+        history[histindex++] = t;
+
+        if(histindex > 7)
+          histindex = 0;
+      }
+
+      if(!b && d > 3000)
+        clear_history();
+
+      if(histindex)
+        morse_process();
+
+      btime = msecs;
+      bbit = b;
     }
+
+    if(b && msecs - btime > 3000) {
+    }
+
+    /*    if(tmp_msecs > last_button + 200) {
+
+          uint8_t b = BUTTON_GET();
+
+          if(b & B_PLUS)
+            input = '+';
+          else if(b & B_MINUS)
+            input = '-';
+          else if(b & B_LEFT)
+            input = ' ';
+          else if(b & B_RIGHT)
+            input = '\n';
+
+          if(b & 0b1111) {
+            last_button = tmp_msecs;
+          }
+        }*/
 
     if(input != 0) {
 
@@ -497,10 +645,7 @@ main() {
       if(tmp_msecs >= prev_hsecs + interval) {
 
         index++;
-#ifdef USE_LED
-        led_state = !led_state;
-        // SET_LED(led_state);
-#endif
+
         update_colors = 1;
         prev_hsecs = tmp_msecs;
 
@@ -541,8 +686,6 @@ main() {
 #ifdef USE_SOFTPWM
       softpwm_disable();
       {
-
-        softpwm_init();
 
         for(int i = 0; i < 7; i++) {
 
@@ -640,3 +783,4 @@ put_number(putch_fn* putc, uint16_t n, uint8_t base, int8_t pad) {
   for(; i > 0; i--) putc((char)buf[(int16_t)i - 1]);
 }
 #endif
+  

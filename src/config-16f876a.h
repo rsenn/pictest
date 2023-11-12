@@ -1,5 +1,6 @@
 #ifndef CONFIG_16F876A_H
 #define CONFIG_16F876A_H 1
+#warning CONFIG_16F876A_H 1
 
 #if defined(__XC) || defined(MCHP_XC8) || defined(SDCC)
 

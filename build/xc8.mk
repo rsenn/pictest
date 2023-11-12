@@ -192,9 +192,9 @@ $(CPP_CONFIG): build/xc8.mk
 	 *\ *[\\/]*) LINE="\"$$LINE\"" ;; esac; echo "$$LINE"; done >"$@"
 endif
 
-output: $(HEXFILE) $(BINFILE)
+output: $(HEXFILE) $(CFGFILE) $(BINFILE)
 	@-mkdir -p $(BUILDDIR)
-	@for F in $(HEXFILE) $(COFFILE) $(BINFILE); do \
+	@for F in $(HEXFILE) $(CFGFILE) $(COFFILE) $(BINFILE); do \
 	  echo "Output file '$(C_RED)$$F$(C_OFF)' built..." 1>&2; \
 	 done
 

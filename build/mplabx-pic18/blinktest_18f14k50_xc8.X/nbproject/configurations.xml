@@ -4,6 +4,12 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="f1" displayName="lib" projectFiles="true">
+        <itemPath>/home/roman/Projects/pictest/lib/softpwm.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="src" projectFiles="true">
+        <itemPath>/home/roman/Projects/pictest/src/pictest.h</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

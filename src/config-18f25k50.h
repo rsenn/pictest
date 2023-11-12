@@ -1,7 +1,7 @@
 #ifndef CONFIG_18F25K50_H
 #define CONFIG_18F25K50_H 1
 
-#if defined(__XC) || defined(MCHP_XC8) || defined(SDCC)
+#if defined(__XC) || defined(MCHP_XC8) || defined(__SDCC__)
 
 // CONFIG1L
 #pragma config PLLSEL = PLL4X    // PLL Selection (4x clock multiplier)
@@ -23,10 +23,10 @@
 #pragma config IESO = OFF   // Internal/External Oscillator Switchover (Oscillator Switchover mode disabled)
 
 // CONFIG2L
-#pragma config nPWRTEN = ON // Power-up Timer Enable (Power up timer enabled)
-#pragma config BOREN = ON   // Brown-out Reset Enable (BOR controlled by firmware (SBOREN is enabled))
-#pragma config BORV = 285   // Brown-out Reset Voltage (BOR set to 2.85V nominal)
-#pragma config nLPBOR = ON  // Low-Power Brown-out Reset (Low-Power Brown-out Reset enabled)
+//#pragma config nPWRTEN = ON // Power-up Timer Enable (Power up timer enabled)
+#pragma config BOREN = ON // Brown-out Reset Enable (BOR controlled by firmware (SBOREN is enabled))
+#pragma config BORV = 285 // Brown-out Reset Voltage (BOR set to 2.85V nominal)
+//#pragma config nLPBOR = ON  // Low-Power Brown-out Reset (Low-Power Brown-out Reset enabled)
 
 // CONFIG2H
 #pragma config WDTEN = SWON // Watchdog Timer Enable bits (WDT controlled by firmware (SWDTEN enabled))
@@ -101,8 +101,12 @@
 #pragma config EBTRB =                                                                                                 \
     OFF // Boot Block Table Read Protect (Boot block is not protected from table reads executed in other blocks)
 
-#ifndef SDCC
+#ifndef __SDCC__
+#pragma config nLPBOR = ON
 #pragma config nPWRTEN = ON
+#else
+#pragma config LPBOR = ON
+#pragma config PWRTEN = ON
 #endif
 
 /*#pragma config BOREN = ON, BORV = 285

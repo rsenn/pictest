@@ -175,8 +175,8 @@ endif
 
 compile: $(BUILDDIR) $(OBJDIR) $(CPP_CONFIG) output
 
-output: $(HEXFILE) #$(COFFILE)
-	@for F in $(HEXFILE) $(COFFILE); do \
+output: $(HEXFILE) $(CFGFILE) #$(COFFILE)
+	@for F in $^; do \
 	  echo "Output file '$(C_RED)$$F$(C_OFF)' built..." 1>&2; \
 	 done
 
