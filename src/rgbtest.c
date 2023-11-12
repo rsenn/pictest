@@ -55,9 +55,9 @@ __code unsigned int __at(_CONFIG) __config_word = CONFIG_WORD;
 
 #if defined(__12f1840)
 #define BUTTON_PORT PORTA
-#define BUTTON_SHIFT 0
-#define BUTTON_BIT RA0
-#define BUTTON_TRIS() TRISA0 = 1
+#define BUTTON_SHIFT 5
+#define BUTTON_BIT RA5
+#define BUTTON_TRIS() TRISA5 = 1
 #elif defined(__18f25k50)
 #define BUTTON_PORT PORTE
 #define BUTTON_SHIFT 3
@@ -115,21 +115,6 @@ clear_history() {
 INTERRUPT_FN() {
   NOP();
 
-#ifdef USE_SOFTPWM
-  SOFTPWM_ISR1();
-#endif
-
-#ifdef USE_UART
-  if(RCIF) {
-    uart_isr();
-    RCIF = 0;
-  }
-#endif
-
-#ifdef USE_SER
-  ser_int();
-#endif
-
 #ifdef USE_TIMER0
   if(TIMER0_INTERRUPT_FLAG) {
     BRESENHAM_INC8(bres) * 4;
@@ -169,6 +154,21 @@ INTERRUPT_FN() {
     // Clear timer interrupt bit
     TIMER2_INTERRUPT_CLEAR();
   }
+#endif
+
+#ifdef USE_SOFTPWM
+  SOFTPWM_ISR1();
+#endif
+
+#ifdef USE_UART
+  if(RCIF) {
+    uart_isr();
+    RCIF = 0;
+  }
+#endif
+
+#ifdef USE_SER
+  ser_int();
 #endif
 
 #ifdef USE_ADCONVERTER
