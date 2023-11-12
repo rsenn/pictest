@@ -20,14 +20,10 @@
 
 #elif defined(__12f1840)
 
-#define LED_PIN LATA5
-#define LED_ON() LATA5 = 1
-#define LED_OFF() LATA5 = 0
-#define LED_TRIS() TRISA5 = 0
-#define LED2_CATHODE LATA4
-#define LED2_CATHODE_TRIS ANSA4 = TRISA4
-#define LED2_ANODE RA5
-#define LED2_ANODE_TRIS TRISA5
+#define LED_PIN LATA4
+#define LED_ON() LATA4 = 1
+#define LED_OFF() LATA4 = 0
+#define LED_TRIS() TRISA4 = 0
 
 #elif defined(__16f628a)
 

@@ -186,9 +186,8 @@ endif
 rgbtest_SOURCES = rgbtest.c lib/softpwm.c lib/timer.c lib/delay.c lib/random.c
 rgbtest_DEFS += -DUSE_TIMER0=1
 rgbtest_DEFS += -DUSE_TIMER1=1
-rgbtest_DEFS += -DUSE_SOFTPWM=1
-rgbtest_DEFS += -DSOFTPWM_CHANNELS=3
-
+rgbtest_DEFS += -DUSE_SOFTPWM=1 -DSOFTPWM_TIMER=1 -DSOFTPWM_CHANNELS=3
+rgbtest_DEFS += -DUSE_LED=1
 
 seg7test_SOURCES = 7segtest.c lib/7segment.c lib/timer.c lib/buffer.c lib/format.c lib/random.c lib/softser.c lib/ser.c lib/uart.c
 seg7test_DEFS = -DUSE_7SEGMENT=1 -DUSE_SER=1 -DUSE_UART=1

@@ -95,6 +95,7 @@ volatile uint8_t msec_count = 0;
 
 BRESENHAM_DECL(bres);
 volatile uint32_t msecs, hsecs;
+volatile char led_state = 0;
 
 static int16_t history[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 static char histindex = 0;
@@ -270,15 +271,10 @@ main() {
 
 #ifdef USE_SOFTPWM
   softpwm_init();
-/*
-  for(int i = 0; i < SOFTPWM_CHANNELS; i++) {
 
-    int j = i;
-
-    while(j >= 5) j -= 5;
-
-    softpwm_values[i] = j * 255 / 4;
-  }*/
+  softpwm_values[0] = 0xaa;
+  softpwm_values[1] = 0x55;
+  softpwm_values[2] = 0x7f;
 #endif
 
 #ifndef __18f16q41
