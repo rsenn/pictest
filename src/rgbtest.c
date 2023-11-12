@@ -309,7 +309,7 @@ main() {
    CCP1IE = 0;
    CCP1IF = 0;*/
 
-  BUTTON_TRIS();
+//  BUTTON_TRIS();
 
   for(;;) {
     char b;
