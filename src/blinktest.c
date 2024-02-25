@@ -234,12 +234,9 @@ INTERRUPT_FN() {
   SOFTPWM_ISR3();
 #endif
 
-#ifdef USE_UART
-  if(RCIF) {
-    uart_isr();
-    RCIF = 0;
-  }
-#endif
+/*#ifdef USE_UART
+  uart_isr();
+#endif*/
 
 #ifdef USE_SER
   ser_int();

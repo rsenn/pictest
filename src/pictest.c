@@ -230,9 +230,9 @@ TMR2ON = 1;       // Enable timer 2.
 #endif
 
   INIT_LED();
-  INIT_LED2();
+  //INIT_LED2();
   SET_LED(1);
-  SET_LED2(1);
+  //SET_LED2(1);
 
   delay_v = 250;
   phase_v = 127;
@@ -567,8 +567,7 @@ INTERRUPT_FN() {
     if(blinktime >= 100) {
       blinktime -= 100;
       led_state = !led_state;
-      if(led_enabled)
-        SET_LED2(led_state);
+      //if(led_enabled) SET_LED2(led_state);
     }
 
     if(led_enabled)

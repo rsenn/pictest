@@ -46,7 +46,7 @@ INTERRUPT_FN() {
       seconds++;        // update clock, etc
       msecs -= 1000;
 
-      SET_LED2(seconds & 1);
+     // SET_LED2(seconds & 1);
     }
 
     // TMR1H = 0xff;
@@ -151,12 +151,12 @@ main() {
 #endif
 
   INIT_LED();
-  INIT_LED2();
+  //INIT_LED2();
 #if !NO_PORTC
   TRISC &= ~0b1100;
 #endif
   SET_LED(1);
-  SET_LED2(1);
+  //SET_LED2(1);
 
   PEIE = 1;
   INTERRUPT_ENABLE();

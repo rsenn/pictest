@@ -4,8 +4,11 @@
 #if defined(__XC) || defined(MCHP_XC8) || defined(XC8) || defined(SDCC)
 
 // Word CONFIG1 @ 0x8007
-
-#pragma config FOSC = INTOSC  // Oscillator Selection [ ECH | ECL | ECM | EXTRC | HS | INTOSC | LP | OF | ON | XT ]
+#if(XTAL_USED == NO_XTAL)
+#pragma config FOSC = INTOSC 
+#else
+#pragma config FOSC = HS
+#endif
 #pragma config WDTE = OFF     // Watchdog Timer Enable [ NSLEEP | OFF | ON | SWDTEN ]
 #pragma config PWRTE = ON     // Power-up Timer Enable [ OFF | ON   ]
 #pragma config MCLRE = OFF    // MCLR Pin Function Select [ OFF | ON   ]

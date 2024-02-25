@@ -155,7 +155,8 @@ endif
 ifeq ($(chipl),12f1840)
 pictest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
 else
-pictest_DEFS += -DUSE_UART=1
+pictest_DEFS += -DUSE_SER=1
+#pictest_DEFS += -DUSE_UART=1
 endif
 
 pictest2_SOURCES = pictest2.c lib/adc.c lib/delppic lib/lcd44780.c lib/ser.c lib/pwm.c lib/onewire.c lib/ds18b20.c lib/timer.c
@@ -172,8 +173,8 @@ blinktest_DEFS += -DUSE_TIMER2=1
 #blinktest_DEFS += -DUSE_ADCONVERTER=1
 #blinktest_DEFS += -DUSE_MCP3001=1
 #blinktest_DEFS += -DUSE_NOKIA5110_LCD=1
-#blinktest_DEFS += -DUSE_SER=1
-blinktest_DEFS += -DUSE_UART=1
+blinktest_DEFS += -DUSE_SER=1
+#blinktest_DEFS += -DUSE_UART=1
 
 ifeq ($(CHIP),12f1840)
 blinktest_DEFS +=	-DUSE_LED=1
@@ -197,7 +198,8 @@ rgbtest_DEFS += -DUSE_SOFTPWM=1 -DSOFTPWM_TIMER=1 -DSOFTPWM_CHANNELS=3
 rgbtest_DEFS += -DUSE_LED=1
 
 seg7test_SOURCES = 7segtest.c lib/7segment.c lib/timer.c lib/buffer.c lib/format.c lib/random.c lib/softser.c lib/ser.c lib/uart.c
-seg7test_DEFS = -DUSE_7SEGMENT=1 -DUSE_SER=1 -DUSE_UART=1
+seg7test_DEFS = -DUSE_7SEGMENT=1 -DUSE_SER=1 
+#seg7test_DEFS = -DUSE_UART=1
 seg7test_DEFS += -DUSE_TIMER0=1
 #seg7test_DEFS += -DUSE_TIMER1=1
 #seg7test_DEFS += -DUSE_TIMER2=1
