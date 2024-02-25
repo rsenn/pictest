@@ -176,6 +176,9 @@ blinktest_DEFS += -DUSE_TIMER2=1
 blinktest_DEFS += -DUSE_SER=1
 #blinktest_DEFS += -DUSE_UART=1
 
+ifeq ($(CHIP),16f876a)
+blinktest_DEFS +=	-DUSE_LED=1
+endif
 ifeq ($(CHIP),12f1840)
 blinktest_DEFS +=	-DUSE_LED=1
 #blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1

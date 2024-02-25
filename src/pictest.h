@@ -40,12 +40,12 @@
 
 #elif defined(__16f876a)
 
-#define LED_PIN RA4
-#define LED_ON() PORTA |= 0b0010000;
-#define LED_OFF() PORTA &= 0b11101111;
-#define LED_TRIS() TRISA &= 0b11101111;
-#define LED2_CATHODE RA5
-#define LED2_CATHODE_TRIS TRISA5
+#define LED_PIN RA5
+#define LED_ON() RA5 = 1
+#define LED_OFF() RA5 = 0
+#define LED_TRIS() TRISA5 = 0
+/*#define LED2_CATHODE RA5
+#define LED2_CATHODE_TRIS TRISA5*/
 
 #if 0
 #define LED2_ANODE RA5

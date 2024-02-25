@@ -1,9 +1,9 @@
 
 #define SOFTPWM_RANGE 255
 
-#define SOFTPWM_MASK 0b11111100  /* B */
+#define SOFTPWM_MASK 0b11111111  /* B */
 #define SOFTPWM_MASK2 0b00111111 /* C */
-#define SOFTPWM_MASK3 0b00011111 /* A */
+#define SOFTPWM_MASK3 0b00001111 /* A */
 
 //#define USE_MCLRE 1
 
@@ -185,7 +185,7 @@ volatile unsigned int adc_result = 0;
 static BOOL update_colors = TRUE;
 static BOOL led_state = 0;
 static uint32_t tmp_msecs;
-static uint32_t prev_hsecs = 0 /*, last_button = 0*/;
+static uint32_t prev_msecs = 0 /*, last_button = 0*/;
 static uint8_t index = 0;
 static int16_t history[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 static char histindex = 0;
@@ -204,6 +204,7 @@ putch_fn* put_char =
 #elif USE_SER
     ser_putch
 #else
+
     dummy_putch
 #endif
     ;
@@ -217,34 +218,23 @@ put_str(putch_fn* putc, const char* s) {
 #endif
 
 volatile BOOL run = 0;
-volatile uint8_t msec_count = 0;
 
 BRESENHAM_DECL(bres);
-volatile uint32_t msecs, hsecs;
+volatile uint32_t msecs = 0, secs = 0;
+volatile uint8_t hsecs = 0, msec_count = 0;
 
 //-----------------------------------------------------------------------------
 // Interrupt handling routine
 //-----------------------------------------------------------------------------
-#if defined(USE_SOFTPWM) || defined(USE_UART) || defined(USE_SER) || defined(USE_TIMER0) || defined(USE_ADCONVERTER)
+#if defined(USE_SOFTPWM) || defined(USE_UART) || defined(USE_SER) || defined(USE_TIMER0) ||                            \
+    defined(USE_ADCONVERTER) || defined(USE_TIMER1)
 volatile uint16_t softpwm_counter2 = 0;
 INTERRUPT_FN() {
   NOP();
 
-#ifdef USE_SER
-  ser_int();
-#endif
-
-#ifdef USE_SOFTPWM
-  SOFTPWM_ISR3();
-#endif
-
-  /*#ifdef USE_UART
-    uart_isr();
-  #endif*/
-
-#ifdef USE_TIMER0
-  if(TIMER0_INTERRUPT_FLAG) {
-    BRESENHAM_INC8(bres) * 4;
+#ifdef USE_TIMER1
+  if(TMR1IF) {
+    BRESENHAM_INC8(bres) * 2;
 
     if(BRESENHAM_COND(bres, (_XTAL_FREQ / 4000))) {
       BRESENHAM_SUB(bres, (_XTAL_FREQ / 4000));
@@ -255,25 +245,35 @@ INTERRUPT_FN() {
     if(msec_count >= 10) { // if reached 1 centisecond!
       hsecs++;             // update clock, etc
 
-      // LED_PIN = hsecs & 1;
-
       msec_count -= 10;
 
-      /*if(hsecs >= 100) {
+      if(hsecs >= 100) {
         secs++;
         hsecs = 0;
-      }*/
+      }
     }
 
+    TMR1 = 0xfe00;
+
     // Clear timer interrupt bit
-    TIMER0_INTERRUPT_CLEAR();
+    TMR1IF = 0;
   }
 #endif
 
-  /*  if(CCP1IF) {
+#ifdef USE_SER
+  ser_int();
+#endif
 
-      CCP1IF = 0;
-    }*/
+#ifdef USE_SOFTPWM
+  SOFTPWM_ISR3();
+#endif
+
+#ifdef USE_LED
+  SET_LED(secs & 1);
+#endif
+  /*#ifdef USE_UART
+    uart_isr();
+  #endif*/
 
 #ifdef USE_TIMER2
   if(TIMER2_INTERRUPT_FLAG) {
@@ -491,9 +491,9 @@ main() {
 
     int j = i;
 
-    while(j >= 5) j -= 5;
+    while(j >= 8) j -= 8;
 
-    softpwm_values[i] = (j+1) * 255 / 7;
+    softpwm_values[i] = (j + 1) * 255 / 8;
   }
 #endif
 
@@ -571,10 +571,10 @@ main() {
       } else {
       }
 
-#ifdef USE_LED
-      led_state = !b;
-      SET_LED(led_state);
-#endif
+      /*#ifdef USE_LED
+            led_state = !b;
+            SET_LED(led_state);
+      #endif*/
 
       uint32_t d = msecs - btime;
 
@@ -631,7 +631,7 @@ main() {
         run = !run;
       } else if(input == '\n') {
         index += 8;
-        prev_hsecs = 0;
+        prev_msecs = 0;
         update_colors = 1;
       }
       /*
@@ -644,17 +644,26 @@ main() {
 
     if(run) {
 
-      if(tmp_msecs >= prev_hsecs + interval) {
+      if(tmp_msecs >= prev_msecs + 250) {
 
         index++;
 
+        if(!ser_txsize()) {
+          put_number(ser_putch, tmp_msecs, 10, 0);
+          ser_puts("X\r\n");
+        }
         update_colors = 1;
-        prev_hsecs = tmp_msecs;
+        prev_msecs = tmp_msecs;
 
 #ifdef USE_ADCONVERTER
         read_analog();
 #endif
       }
+    }
+
+    while(ser_rxsize()) {
+      uint8_t ch = ser_getch();
+      ser_putch(ch);
     }
 
     if(update_colors) {
@@ -696,7 +705,7 @@ main() {
       softpwm_enable();
 #endif
 
-      update_colors = 1;
+      update_colors = 0;
       //      prev_index = index;
     }
     /*#ifdef USE_UART
@@ -704,7 +713,7 @@ main() {
     #endif*/
 
     INTERRUPT_DISABLE();
-    tmp_msecs = msecs + 1000;
+    tmp_msecs = msecs;
     INTERRUPT_ENABLE();
 
 #if 0
