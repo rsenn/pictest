@@ -230,24 +230,24 @@ volatile uint16_t softpwm_counter2 = 0;
 INTERRUPT_FN() {
   NOP();
 
+#ifdef USE_SER
+  ser_int();
+#endif
+
 #ifdef USE_SOFTPWM
   SOFTPWM_ISR3();
 #endif
 
-/*#ifdef USE_UART
-  uart_isr();
-#endif*/
-
-#ifdef USE_SER
-  ser_int();
-#endif
+  /*#ifdef USE_UART
+    uart_isr();
+  #endif*/
 
 #ifdef USE_TIMER0
   if(TIMER0_INTERRUPT_FLAG) {
     BRESENHAM_INC8(bres) * 4;
 
-    if(BRESENHAM_COND(bres, 5000)) {
-      BRESENHAM_SUB(bres, 5000);
+    if(BRESENHAM_COND(bres, (_XTAL_FREQ / 4000))) {
+      BRESENHAM_SUB(bres, (_XTAL_FREQ / 4000));
       msecs++;
       msec_count++;
     }
@@ -486,14 +486,14 @@ main() {
 
 #ifdef USE_SOFTPWM
   softpwm_init();
- 
+
   for(int i = 0; i < SOFTPWM_CHANNELS; i++) {
 
     int j = i;
 
     while(j >= 5) j -= 5;
 
-    softpwm_values[i] = j * 255 / 4;
+    softpwm_values[i] = (j+1) * 255 / 7;
   }
 #endif
 
@@ -517,7 +517,7 @@ main() {
 #endif
 
 #ifdef USE_UART
-      uart_enable();
+  uart_enable();
 #endif
 #if HAVE_SERIAL
   put_str(put_char, "blinktest\r\n");
@@ -662,20 +662,19 @@ main() {
 
       rgb = rainbow8[index & RAINBOW_MASK];
 
-
-/*#if HAVE_SERIAL
-      put_char('#');
-      put_number(put_char, index, 10, 0);
-      put_str(put_char, ": R=");
-      put_number(put_char, rgb[0], 10, 0);
-      put_str(put_char, "%, G=");
-      put_number(put_char, rgb[1], 10, 0);
-      put_str(put_char, "%, B=");
-      put_number(put_char, rgb[2], 10, 0);
-      put_str(put_char, "% (T=");
-      put_number(put_char, interval, 10, 0);
-      put_str(put_char, ")\r\n");
-#endif*/
+      /*#if HAVE_SERIAL
+            put_char('#');
+            put_number(put_char, index, 10, 0);
+            put_str(put_char, ": R=");
+            put_number(put_char, rgb[0], 10, 0);
+            put_str(put_char, "%, G=");
+            put_number(put_char, rgb[1], 10, 0);
+            put_str(put_char, "%, B=");
+            put_number(put_char, rgb[2], 10, 0);
+            put_str(put_char, "% (T=");
+            put_number(put_char, interval, 10, 0);
+            put_str(put_char, ")\r\n");
+      #endif*/
 
 #ifdef USE_SOFTSER
       put_number(softser_putch, tmp_msecs, 10, 0);
@@ -686,12 +685,12 @@ main() {
       softpwm_disable();
       {
 
-        for(int i = 0; i < 7; i++) {
+        /*for(int i = 0; i < 7; i++) {
 
           rgb = rainbow8[((i * RAINBOW_STEPS / 7) + index) & RAINBOW_MASK];
 
           for(int j = 0; j < 3; j++) softpwm_set(i * 3 + j, rgb[j]);
-        }
+        }*/
       }
 
       softpwm_enable();
@@ -700,9 +699,9 @@ main() {
       update_colors = 1;
       //      prev_index = index;
     }
-/*#ifdef USE_UART
-    uart_disable();
-#endif*/
+    /*#ifdef USE_UART
+        uart_disable();
+    #endif*/
 
     INTERRUPT_DISABLE();
     tmp_msecs = msecs + 1000;

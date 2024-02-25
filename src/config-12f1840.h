@@ -5,7 +5,7 @@
 
 // Word CONFIG1 @ 0x8007
 #if(XTAL_USED == NO_XTAL)
-#pragma config FOSC = INTOSC 
+#pragma config FOSC = INTOSC
 #else
 #pragma config FOSC = HS
 #endif
