@@ -44,13 +44,13 @@
 #define LED_ON() PORTA |= 0b0010000;
 #define LED_OFF() PORTA &= 0b11101111;
 #define LED_TRIS() TRISA &= 0b11101111;
-#define LED2_CATHODE RC2
-#define LED2_CATHODE_TRIS TRISC2
+#define LED2_CATHODE RA5
+#define LED2_CATHODE_TRIS TRISA5
 
-//# ifdef TRISC3
-#define LED2_ANODE RC3
-#define LED2_ANODE_TRIS TRISC3
-//# endif
+#if 0
+#define LED2_ANODE RA5
+#define LED2_ANODE_TRIS TRISA5
+#endif
 
 #define BSTRB_TRIS TRISB0
 #define BSTRB_PIN RB0

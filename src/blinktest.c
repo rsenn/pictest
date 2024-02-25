@@ -1,9 +1,9 @@
 
 #define SOFTPWM_RANGE 255
 
-#define SOFTPWM_MASK 0b11111100
-#define SOFTPWM_MASK2 0b00111011
-#define SOFTPWM_MASK3 0b00000111
+#define SOFTPWM_MASK 0b11111100  /* B */
+#define SOFTPWM_MASK2 0b00111111 /* C */
+#define SOFTPWM_MASK3 0b00011111 /* A */
 
 //#define USE_MCLRE 1
 
@@ -489,7 +489,7 @@ main() {
 
 #ifdef USE_SOFTPWM
   softpwm_init();
-/*
+ 
   for(int i = 0; i < SOFTPWM_CHANNELS; i++) {
 
     int j = i;
@@ -497,7 +497,7 @@ main() {
     while(j >= 5) j -= 5;
 
     softpwm_values[i] = j * 255 / 4;
-  }*/
+  }
 #endif
 
 #ifndef __18f16q41
@@ -519,6 +519,9 @@ main() {
   adc_read(0);
 #endif
 
+#ifdef USE_UART
+      uart_enable();
+#endif
 #if HAVE_SERIAL
   put_str(put_char, "blinktest\r\n");
 #endif
@@ -527,9 +530,9 @@ main() {
 
    CCP1IE = 0;
    CCP1IF = 0;*/
-
+#ifdef USE_BUTTON
   BUTTON_TRIS();
-
+#endif
   for(;;) {
     char b;
     static uint32_t interval = 10;
@@ -560,6 +563,7 @@ main() {
 
     } else
 #endif
+#ifdef USE_BUTTON
       b = BUTTON_BIT;
 
     if(b != bbit) {
@@ -598,6 +602,7 @@ main() {
 
     if(b && msecs - btime > 3000) {
     }
+#endif
 
     /*    if(tmp_msecs > last_button + 200) {
 
@@ -660,11 +665,8 @@ main() {
 
       rgb = rainbow8[index & RAINBOW_MASK];
 
-#ifdef USE_UART
-      uart_enable();
-#endif
 
-#if HAVE_SERIAL
+/*#if HAVE_SERIAL
       put_char('#');
       put_number(put_char, index, 10, 0);
       put_str(put_char, ": R=");
@@ -676,7 +678,7 @@ main() {
       put_str(put_char, "% (T=");
       put_number(put_char, interval, 10, 0);
       put_str(put_char, ")\r\n");
-#endif
+#endif*/
 
 #ifdef USE_SOFTSER
       put_number(softser_putch, tmp_msecs, 10, 0);
@@ -701,9 +703,9 @@ main() {
       update_colors = 1;
       //      prev_index = index;
     }
-#ifdef USE_UART
+/*#ifdef USE_UART
     uart_disable();
-#endif
+#endif*/
 
     INTERRUPT_DISABLE();
     tmp_msecs = msecs + 1000;

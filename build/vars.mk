@@ -5,9 +5,16 @@ CHIPS += 18f25k22 18f25k50
 #CHIPS += 12f1840
 COMPILERS = xc8 sdcc
 #CHIP = 16F876A
+ifeq ($(CHIP),)
+CHIP := 16F876A
+endif
 
 ifeq ($(_XTAL_FREQ),)
+	ifeq ($(CHIP), 16F876A)
 _XTAL_FREQ := 48000000
+	else
+_XTAL_FREQ := 20000000
+	endif
 endif
 
 ifeq ($(BAUD),)
@@ -24,9 +31,6 @@ ifeq ($(XTAL_USED), NO_XTAL)
 _XTAL_FREQ := INTOSC
 endif
 
-ifeq ($(CHIP),)
-CHIP := 16F876A
-endif
 
 #ifeq ($(CODE_OFFSET),)
 #CODE_OFFSET := 0x0
@@ -150,6 +154,8 @@ pictest_DEFS += -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
 endif
 ifeq ($(chipl),12f1840)
 pictest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
+else
+pictest_DEFS += -DUSE_UART=1
 endif
 
 pictest2_SOURCES = pictest2.c lib/adc.c lib/delppic lib/lcd44780.c lib/ser.c lib/pwm.c lib/onewire.c lib/ds18b20.c lib/timer.c
@@ -167,7 +173,8 @@ blinktest_DEFS += -DUSE_TIMER2=1
 #blinktest_DEFS += -DUSE_MCP3001=1
 #blinktest_DEFS += -DUSE_NOKIA5110_LCD=1
 #blinktest_DEFS += -DUSE_SER=1
-#blinktest_DEFS += -DUSE_UART=1
+blinktest_DEFS += -DUSE_UART=1
+
 ifeq ($(CHIP),12f1840)
 blinktest_DEFS +=	-DUSE_LED=1
 #blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1
