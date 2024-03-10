@@ -168,7 +168,7 @@ ps2test_DEFS += -DUSE_TIMER0=1
 blinktest_SOURCES = blinktest.c lib/buffer.c lib/random.c lib/ser.c lib/softpwm.c lib/softser.c lib/timer.c lib/uart.c lib/delay.c lib/adc.c
 blinktest_DEFS += -DUSE_TIMER0=1
 blinktest_DEFS += -DUSE_TIMER1=1
-blinktest_DEFS += -DUSE_TIMER2=1
+#blinktest_DEFS += -DUSE_TIMER2=1
 #
 #blinktest_DEFS += -DUSE_ADCONVERTER=1
 #blinktest_DEFS += -DUSE_MCP3001=1
