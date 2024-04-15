@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.005" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
@@ -656,9 +656,9 @@
 <wire x1="-1.397" y1="-1.905" x2="-1.27" y2="-1.778" width="0.1524" layer="21"/>
 <wire x1="-1.27" y1="-1.016" x2="-1.397" y2="-0.889" width="0.1524" layer="21"/>
 <wire x1="-1.397" y1="-0.889" x2="-1.397" y2="-1.905" width="0.1524" layer="21"/>
-<pad name="A" x="2.54" y="0" drill="0.7" shape="long" rot="R90"/>
-<pad name="E" x="-2.54" y="0" drill="0.7" shape="long" rot="R90"/>
-<pad name="S" x="0" y="0" drill="0.7" shape="long" rot="R90"/>
+<pad name="A" x="2.54" y="0" drill="0.7" rot="R90"/>
+<pad name="E" x="-2.54" y="0" drill="0.7" rot="R90"/>
+<pad name="S" x="0" y="0" drill="0.7" rot="R90"/>
 <text x="-3.175" y="2.54" size="0.6096" layer="25">&gt;NAME</text>
 <text x="1.905" y="-2.54" size="0.6096" layer="27" align="top-left">&gt;VALUE</text>
 <text x="2.54" y="1.27" size="0.6096" layer="51" align="bottom-center">1</text>
