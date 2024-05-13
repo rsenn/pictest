@@ -89,7 +89,7 @@
         <targetDevice>PIC12F1840</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool></platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>1.45</languageToolchainVersion>
         <platform>2</platform>
@@ -128,7 +128,7 @@
         <property key="default-bitfield-type" value="true"/>
         <property key="default-char-type" value="true"/>
         <property key="define-macros"
-                  value="USE_TIMER0=1;USE_LED=1;USE_TIMER1=1;USE_SOFTPWM=1;NDEBUG=1;PIC12F1840=1;__12f1840=1;XTAL_USED=NO_XTAL"/>
+                  value="USE_TIMER0=1;USE_LED=1;USE_TIMER1=1;DONT_USE_SOFTPWM=1;NDEBUG=1;PIC12F1840=1;__12f1840=1;XTAL_USED=NO_XTAL;_XTAL_FREQ=48000000"/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
                   value="../../../../lib;../../../../src"/>

@@ -650,11 +650,12 @@ main() {
       if(tmp_msecs >= prev_msecs + 250) {
 
         index++;
-
+#ifdef USE_SER
         if(!ser_txsize()) {
           put_number(ser_putch, tmp_msecs, 10, 0);
           ser_puts("X\r\n");
         }
+#endif
         update_colors = 1;
         prev_msecs = tmp_msecs;
 
@@ -664,11 +665,13 @@ main() {
       }
     }
 
+#ifdef USE_SER
     while(ser_rxsize()) {
       uint8_t ch = ser_getch();
       ser_putch(ch);
     }
-
+#endif
+    
     if(update_colors) {
       const uint8_t* rgb;
 
