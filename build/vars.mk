@@ -19,13 +19,7 @@ endif
 # _XTAL_FREQ := 20000000
 # 	endif
 # endif
-ifeq ($(_XTAL_FREQ),)
- ifeq ($(CHIP), 18F25K50)
-_XTAL_FREQ := INTOSC
-else
-_XTAL_FREQ := 20000000
-endif
-endif
+ 
 
 ifeq ($(BAUD),)
 #BAUD = 19200
@@ -39,8 +33,13 @@ endif
 
 ifeq ($(_XTAL_FREQ),)
 ifeq ($(XTAL_USED), NO_XTAL)
-_XTAL_FREQ := INTOSC
+_XTAL_FREQ := 48000000
 endif
+endif
+
+ifeq ($(_XTAL_FREQ),INTOSC)
+XTAL_USED :=  NO_XTAL
+_XTAL_FREQ := 48000000
 endif
 
 
@@ -132,9 +131,14 @@ else
 DEFINES += NDEBUG=1 __NDEBUG=1
 endif
 
+ifeq ($(_XTAL_FREQ),INTOSC)
+DEFINES += _XTAL_FREQ=48000000
+else
 ifneq ($(_XTAL_FREQ),)
 DEFINES += _XTAL_FREQ=$(_XTAL_FREQ) 
 endif
+endif
+
 ifneq ($(XTAL_USED),)
 DEFINES += XTAL_USED=$(XTAL_USED)
 endif
