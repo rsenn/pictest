@@ -254,11 +254,10 @@ INTERRUPT_FN() {
     }
 
 #ifdef USE_LED
-  //if(hsecs == 0)
+    // if(hsecs == 0)
     SET_LED(secs & 1);
 #endif
 
-    
     TMR1 = 0xfe00;
 
     // Clear timer interrupt bit
@@ -274,9 +273,9 @@ INTERRUPT_FN() {
   SOFTPWM_ISR3();
 #endif
 
-    /*#ifdef USE_UART
-      uart_isr();
-    #endif*/
+  /*#ifdef USE_UART
+    uart_isr();
+  #endif*/
 
 #ifdef USE_TIMER2
   if(TIMER2_INTERRUPT_FLAG) {
@@ -671,7 +670,7 @@ main() {
       ser_putch(ch);
     }
 #endif
-    
+
     if(update_colors) {
       const uint8_t* rgb;
 

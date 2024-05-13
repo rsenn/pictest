@@ -185,7 +185,7 @@
         <property key="default-bitfield-type" value="true"/>
         <property key="default-char-type" value="true"/>
         <property key="define-macros"
-                  value="__18f25k50=1;_XTAL_FREQ=48000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=0;USE_SOFTPWM=1;HAVE_COMPARATOR=1;DEBUG=1;__XC8=1;USE_UART=1;SOFTSER_TIMER=2;_USE_NOKIA5110_LCD=1;_USE_ADCONVERTER=1;XTAL_USED=NO_XTAL;_USE_MCP3001=1"/>
+                  value="__18f25k50=1;_XTAL_FREQ=48000000;UART_BAUD=38400;USE_TIMER0=1;USE_TIMER1=1;USE_TIMER2=0;DONT_USE_SOFTPWM=1;HAVE_COMPARATOR=1;DEBUG=1;__XC8=1;USE_UART=1;_SOFTSER_TIMER=2;_USE_NOKIA5110_LCD=1;_USE_ADCONVERTER=1;XTAL_USED=NO_XTAL;_USE_MCP3001=1"/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
                   value="../../..;../../../lib;../../../src;../../../"/>
@@ -918,7 +918,7 @@
         <targetDevice>PIC18F25K50</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>PICkit3PlatformTool</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>1.43</languageToolchainVersion>
         <platform>2</platform>
@@ -957,7 +957,7 @@
         <property key="default-bitfield-type" value="true"/>
         <property key="default-char-type" value="true"/>
         <property key="define-macros"
-                  value="__18f25k50=1;_XTAL_FREQ=48000000;UART_BAUD=38400;USE_UART=1;USE_TIMER0=1;USE_TIMER1=1;_USE_TIMER2=1;USE_SOFTPWM=1;HAVE_COMPARATOR=1;NDEBUG=1;__XC8=1;_USE_SOFTSER=1;SOFTSER_TIMER=2;_USE_NOKIA5110_LCD=1;_USE_ADCONVERTER=1;XTAL_USED=NO_XTAL;_USE_MCP3001=1"/>
+                  value="__18f25k50=1;_XTAL_FREQ=48000000;UART_BAUD=38400;USE_UART=1;USE_TIMER0=1;USE_TIMER1=1;_USE_TIMER2=1;DONT_USE_SOFTPWM=1;HAVE_COMPARATOR=1;NDEBUG=1;__XC8=1;_USE_SOFTSER=1;SOFTSER_TIMER=2;_USE_NOKIA5110_LCD=1;_USE_ADCONVERTER=1;XTAL_USED=NO_XTAL;_USE_MCP3001=1"/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
                   value="../../..;../../../lib;../../../src;../../../"/>
