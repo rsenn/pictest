@@ -1,14 +1,10 @@
 #ifndef CONFIG_12F1840_H
 #define CONFIG_12F1840_H 1
 
-#if defined(__XC) || defined(MCHP_XC8) || defined(XC8) || defined(SDCC)
+#if defined(__XC) || defined(MCHP_XC8)|| defined(__XC__) || defined(XC8) || defined(SDCC)
 
 // Word CONFIG1 @ 0x8007
-#if(XTAL_USED == NO_XTAL)
 #pragma config FOSC = INTOSC
-#else
-#pragma config FOSC = HS
-#endif
 #pragma config WDTE = OFF     // Watchdog Timer Enable [ NSLEEP | OFF | ON | SWDTEN ]
 #pragma config PWRTE = ON     // Power-up Timer Enable [ OFF | ON   ]
 #pragma config MCLRE = OFF    // MCLR Pin Function Select [ OFF | ON   ]

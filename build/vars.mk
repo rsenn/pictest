@@ -189,7 +189,9 @@ blinktest_DEFS +=	-DUSE_LED=1
 endif
 ifeq ($(CHIP),$(subst q,,$(CHIP)))
 
+ifneq ($(chipl),12f1840)
 blinktest_DEFS += -DUSE_SOFTPWM=1
+endif
 
 #blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1
 endif
