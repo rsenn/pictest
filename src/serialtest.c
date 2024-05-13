@@ -144,7 +144,7 @@ main() {
   lcd_clear();
 
   lcd_gotoxy(0, 0);
-  lcd_print_number(SOFTSER_BRG, 16, -1);
+  lcd_print_number(ser_brg, 16, -1);
 #endif
 
 #if !NO_SSP
