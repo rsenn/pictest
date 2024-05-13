@@ -65,6 +65,7 @@ chipl = $(subst A,a,$(subst B,b,$(subst C,c,$(subst D,d,$(subst E,e,$(subst F,f,
 
 
 #MHZ := $(shell echo "$(XTAL) / 1000000" | bc -l | sed "s|0*$$|| ;; s|\.$$|| ;; s|\.|,|g")
+
 ifeq ($(_XTAL_FREQ),INTOSC)
 _XTAL_FREQ := 48000000
 MHZ := intosc48

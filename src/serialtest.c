@@ -143,7 +143,6 @@ main() {
   lcd_clear();
 
   lcd_gotoxy(0, 0);
-
   lcd_print_number(SOFTSER_BRG, 16, -1);
 #endif
 
@@ -231,11 +230,13 @@ loop() {
 
   if(update_com) {
 #ifdef USE_HD44780_LCD
-    lcd_gotoxy(12, 0);
-    lcd_print("COM:");
-    put_number(lcd_putch, c, 10, 3);
+    lcd_gotoxy(3, 0);
+    lcd_print("chr='");
+    lcd_putch(c);
+    lcd_print("' asc=");
+    put_number(lcd_putch, c, 10, 0);
+    lcd_putch(' ');
 
-    // lcd_putch(c);
 #endif
     update_com = 0;
   }
