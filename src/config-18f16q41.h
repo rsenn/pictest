@@ -1,7 +1,7 @@
 #ifndef CONFIG_18F16Q41_H
 #define CONFIG_18F16Q41_H 1
 
-#if defined(__XC) || defined(MCHP_XC8) || defined(SDCC)
+#if defined(__XC) || defined(MCHP_XC8) || defined(SDCC) || defined(__XC__)
 
 // CONFIG1L
 //#pragma config PLLSEL = PLL4X    // PLL Selection (4x clock multiplier)

@@ -1,6 +1,9 @@
 CHIPS = 16f876a 18f2550 
-CHIPS += 18f25k22 18f25k50
+CHIPS += 18f252 18f2520 
+CHIPS += 18f14k50 18f25k22 18f25k50
+
 #CHIPS += 16f628a 18f252 18f252 18f25k50
+#CHIPS += 18f14k50 18f252 18f252 18f25k50
 #CHIPS += 10f206
 #CHIPS += 12f1840
 COMPILERS = xc8 sdcc
@@ -150,9 +153,12 @@ pictest_SOURCES = pictest.c lib/delay.c lib/lcd44780.c lib/ser.c lib/softser.c l
 pictest_DEFS += -DUSE_TIMER0=1
 
 ifneq ($(chipl),12f1840)
-#pictest_DEFS += -DUSE_HD44780_LCD=1
+ifneq ($(chipl),16f628a)
+pictest_DEFS += -DUSE_HD44780_LCD=1
 pictest_DEFS +=   -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
-else
+endif
+endif
+ifeq ($(chipl),12f1840)
 pictest_DEFS += -DUSE_SER=1
 #pictest_DEFS += -DUSE_UART=1
 endif
@@ -188,9 +194,11 @@ endif
 ifeq ($(CHIP),$(subst q,,$(CHIP)))
 
 ifneq ($(chipl),12f1840)
+ifneq ($(chipl),18f14k50)
 ifneq ($(chipl),18f2550)
 ifneq ($(chipl),18f25k50)
 blinktest_DEFS += -DUSE_SOFTPWM=1
+endif
 endif
 endif
 endif

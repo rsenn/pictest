@@ -52,8 +52,6 @@
         <itemPath>/home/roman/Projects/pictest/lib/const.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="src" projectFiles="true">
-        <logicalFolder name="f1" displayName="New Folder 1" projectFiles="true">
-        </logicalFolder>
         <itemPath>/home/roman/Projects/pictest/src/config-12f1840.h</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -94,7 +92,7 @@
         <targetDevice>PIC12F1840</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool></platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>1.45</languageToolchainVersion>
         <platform>2</platform>
@@ -274,7 +272,7 @@
         <targetDevice>PIC12F1840</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool></platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>1.45</languageToolchainVersion>
         <platform>2</platform>

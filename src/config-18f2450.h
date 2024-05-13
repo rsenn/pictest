@@ -1,7 +1,7 @@
 #ifndef CONFIG_18F2450_H
 #define CONFIG_18F2450_H 1
 
-#if defined(__XC) || defined(MCHP_XC8) || defined(SDCC)
+#if defined(__XC) || defined(MCHP_XC8) || defined(SDCC) || defined(__XC__)
 
 #pragma config FOSC = HS
 #pragma config PWRT = ON, BOR = ON, BORV = 3

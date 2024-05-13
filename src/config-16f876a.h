@@ -2,7 +2,7 @@
 #define CONFIG_16F876A_H 1
 #warning CONFIG_16F876A_H 1
 
-#if defined(__XC) || defined(MCHP_XC8) || defined(SDCC)
+#if defined(__XC) || defined(MCHP_XC8) || defined(SDCC) || defined(__XC__)
 
 #ifdef _DEBUG
 #pragma config FOSC = HS, LVP = OFF, CPD = OFF, BOREN = OFF, WDTE = OFF, WRT = OFF, DEBUG = ON

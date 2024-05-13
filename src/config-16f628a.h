@@ -1,7 +1,7 @@
 #ifndef CONFIG_16F628A_H
 #define CONFIG_16F628A_H 1
 
-#if defined(__XC) || defined(MCHP_XC8) || defined(SDCC)
+#if defined(__XC) || defined(MCHP_XC8) || defined(SDCC) || defined(__XC__)
 
 #pragma config WDTE = OFF, PWRTE = ON, BOREN = ON, F, LVP = OFF, CPD = OFF, FOSC = HS
 

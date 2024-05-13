@@ -1,7 +1,7 @@
 #ifndef CONFIG_18F252_H
 #define CONFIG_18F252_H 1
 
-#if defined(__XC) || defined(SDCC)
+#if defined(__XC) || defined(SDCC) || defined(__XC__)
 
 #pragma config OSC = HSPLL, OSCS = OFF
 #pragma config PWRT = ON, BOR = ON, BORV = 27
