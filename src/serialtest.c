@@ -9,6 +9,7 @@
 #include "../lib/softser.h"
 #include "../lib/timer.h"
 #include "../lib/uart.h"
+#include "../lib/format.h"
 #include <ctype.h>
 
 void loop();
@@ -232,7 +233,8 @@ loop() {
 #ifdef USE_HD44780_LCD
     lcd_gotoxy(12, 0);
     lcd_print("COM:");
-    lcd_putch(c);
+    format_number(lcd_putch, c, 10, 3);
+    //lcd_putch(c);
 #endif
     update_com = 0;
   }

@@ -229,7 +229,7 @@ endif
 #seg7test_DEFS += -DUSE_TIMER2=1 #-DUSE_TIMER1=1
 #seg7test_DEFS += -DUSE_UART=1
 
-serialtest_SOURCES = serialtest.c lib/ser.c lib/uart.c lib/softser.c lib/lcd44780.c lib/timer.c
+serialtest_SOURCES = serialtest.c lib/ser.c lib/uart.c lib/softser.c lib/lcd44780.c lib/timer.c lib/format.c lib/buffer.c
 ifeq ($(filter 10f%,$(chipl)),)
 serialtest_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_SER=1
 endif
