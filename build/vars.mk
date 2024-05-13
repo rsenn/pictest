@@ -150,7 +150,8 @@ pictest_SOURCES = pictest.c lib/delay.c lib/lcd44780.c lib/ser.c lib/softser.c l
 pictest_DEFS += -DUSE_TIMER0=1
 
 ifneq ($(chipl),12f1840)
-pictest_DEFS += -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
+#pictest_DEFS += -DUSE_HD44780_LCD=1
+pictest_DEFS +=   -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
 else
 pictest_DEFS += -DUSE_SER=1
 #pictest_DEFS += -DUSE_UART=1
