@@ -15,7 +15,6 @@
 #include "config-16f628a.h"
 #endif // defined __16f628a
 
-
 #ifdef __16f876a
 #include "config-16f876a.h"
 #endif // defined __16f876a
@@ -38,10 +37,10 @@
 #include "config-18f252.h"
 #endif // defined __18f252
 
-#ifdef __18f2520 
+#ifdef __18f2520
 #include "config-18f2520.h"
 #endif // defined __18f2520
- 
+
 #ifdef __18f2550
 #include "config-18f2550.h"
 #endif // defined __18f2550

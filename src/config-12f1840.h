@@ -18,7 +18,7 @@
 
 #pragma config FCMEN = OFF // Fail-Safe Clock Monitor Enable [ OFF | ON   ]
 #pragma config WRT = OFF   // Flash Memory Self-Write Protection [ ALL | BOOT | HALF | OFF ]
-#pragma config PLLEN = ON // PLL Enable [ OFF | ON   ]
+#pragma config PLLEN = ON  // PLL Enable [ OFF | ON   ]
 #pragma config STVREN = ON // Stack Overflow/Underflow Reset Enable [ OFF | ON   ]
 #pragma config BORV = LO   // Brown-out Reset Voltage Selection [ HI | LO    ]
 

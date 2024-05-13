@@ -4,8 +4,8 @@
 #if defined(__XC) || defined(MCHP_XC8) || defined(SDCC) || defined(__XC__)
 
 #pragma config FOSC = HS
-#pragma config FCMEN = OFF   // Fail-Safe Clock Monitor disabled
-#pragma config IESO = OFF    // Oscillator Switchover mode disabled
+#pragma config FCMEN = OFF // Fail-Safe Clock Monitor disabled
+#pragma config IESO = OFF  // Oscillator Switchover mode disabled
 
 #pragma config PWRTEN = OFF, BOREN = ON, BORV = 285
 #pragma config WDTEN = OFF
