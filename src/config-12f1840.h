@@ -1,7 +1,7 @@
 #ifndef CONFIG_12F1840_H
 #define CONFIG_12F1840_H 1
 
-#if defined(__XC) || defined(MCHP_XC8) || defined(__XC__) || defined(XC8) || defined(SDCC)
+#if defined(__XC) || defined(MCHP_XC8) || defined(__XC__) || defined(XC8)
 
 // Word CONFIG1 @ 0x8007
 #pragma config FOSC = INTOSC
@@ -18,7 +18,7 @@
 
 #pragma config FCMEN = OFF // Fail-Safe Clock Monitor Enable [ OFF | ON   ]
 #pragma config WRT = OFF   // Flash Memory Self-Write Protection [ ALL | BOOT | HALF | OFF ]
-#pragma config PLLEN = OFF // PLL Enable [ OFF | ON   ]
+#pragma config PLLEN = ON // PLL Enable [ OFF | ON   ]
 #pragma config STVREN = ON // Stack Overflow/Underflow Reset Enable [ OFF | ON   ]
 #pragma config BORV = LO   // Brown-out Reset Voltage Selection [ HI | LO    ]
 
@@ -62,7 +62,7 @@ static __code char __at(_CONFIG2) configword2 = 0x3fff; //_FOSC_INTOSC & _WDTE_O
                                                         //_CPD_OFF & _BOREN_ON & _CLKOUTEN_OFF & _IESO_OFF & _FCMEN_OFF;
 
 #pragma config FOSC = INTOSC, WDTE = OFF, PWRTE = ON, MCLRE = OFF, CP = OFF, CPD = OFF, BOREN = ON, CLKOUTEN = OFF,    \
-               IESO = OFF, FCMEN = OFF, WRT = OFF, PLLEN = OFF, STVREN = ON, BORV = LO, LVP = OFF
+               IESO = OFF, FCMEN = OFF, WRT = OFF, PLLEN = ON, STVREN = ON, BORV = LO, LVP = OFF
 
 #elif defined(HI_TECH_C)
 
