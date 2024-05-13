@@ -13,11 +13,16 @@ CHIP := 16F876A
 endif
 
  ifeq ($(_XTAL_FREQ),)
- 	ifeq ($(CHIP), 18f25k50)
+ ifeq ($(CHIP), 18f25k50)
  _XTAL_FREQ := 48000000
- 	else
+ endif
+ ifeq ($(CHIP), 18f2550)
+ _XTAL_FREQ := 48000000
+ endif
+endif
+
+ ifeq ($(_XTAL_FREQ),)
  _XTAL_FREQ := 20000000
- 	endif
  endif
  
 
