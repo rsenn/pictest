@@ -12,12 +12,15 @@ ifeq ($(CHIP),)
 CHIP := 16F876A
 endif
 
+# ifeq ($(_XTAL_FREQ),)
+# 	ifneq ($(CHIP), 16F876A)
+# _XTAL_FREQ := 48000000
+# 	else
+# _XTAL_FREQ := 20000000
+# 	endif
+# endif
 ifeq ($(_XTAL_FREQ),)
-	ifeq ($(CHIP), 16F876A)
-_XTAL_FREQ := 48000000
-	else
-_XTAL_FREQ := 20000000
-	endif
+ _XTAL_FREQ := 20000000
 endif
 
 ifeq ($(BAUD),)
@@ -26,9 +29,9 @@ ifeq ($(BAUD),)
 BAUD = 38400
 endif
 
-ifeq ($(XTAL_USED),)
-XTAL_USED := NO_XTAL
-endif
+# ifeq ($(XTAL_USED),)
+# XTAL_USED := NO_XTAL
+# endif
 
 ifeq ($(XTAL_USED), NO_XTAL)
 _XTAL_FREQ := INTOSC

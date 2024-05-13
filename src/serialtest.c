@@ -233,8 +233,9 @@ loop() {
 #ifdef USE_HD44780_LCD
     lcd_gotoxy(12, 0);
     lcd_print("COM:");
-    format_number(lcd_putch, c, 10, 3);
-    //lcd_putch(c);
+    put_number(lcd_putch, c, 10, 3);
+
+    // lcd_putch(c);
 #endif
     update_com = 0;
   }
