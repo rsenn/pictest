@@ -151,9 +151,6 @@ pictest_DEFS += -DUSE_TIMER0=1
 
 ifneq ($(chipl),12f1840)
 pictest_DEFS += -DUSE_HD44780_LCD=1 -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
-endif
-ifeq ($(chipl),12f1840)
-pictest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_BAUD=38400
 else
 pictest_DEFS += -DUSE_SER=1
 #pictest_DEFS += -DUSE_UART=1
@@ -190,7 +187,11 @@ endif
 ifeq ($(CHIP),$(subst q,,$(CHIP)))
 
 ifneq ($(chipl),12f1840)
+ifneq ($(chipl),18f2550)
+ifneq ($(chipl),18f25k50)
 blinktest_DEFS += -DUSE_SOFTPWM=1
+endif
+endif
 endif
 
 #blinktest_DEFS += -DUSE_SOFTSER=1 -DSOFTSER_TIMER=2 -DUSE_TIMER2=1
