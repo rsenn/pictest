@@ -13,7 +13,6 @@
 // CONFIG1H
 #if(XTAL_USED == NO_XTAL)
 #warning NO_XTAL
-
 #pragma config FOSC = INTOSCIO
 #else
 #pragma config FOSC = HSH

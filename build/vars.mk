@@ -12,13 +12,13 @@ ifeq ($(CHIP),)
 CHIP := 16F876A
 endif
 
-# ifeq ($(_XTAL_FREQ),)
-# 	ifneq ($(CHIP), 16F876A)
-# _XTAL_FREQ := 48000000
-# 	else
-# _XTAL_FREQ := 20000000
-# 	endif
-# endif
+ ifeq ($(_XTAL_FREQ),)
+ 	ifeq ($(CHIP), 18f25k50)
+ _XTAL_FREQ := 48000000
+ 	else
+ _XTAL_FREQ := 20000000
+ 	endif
+ endif
  
 
 ifeq ($(BAUD),)
@@ -71,8 +71,7 @@ chipl = $(subst A,a,$(subst B,b,$(subst C,c,$(subst D,d,$(subst E,e,$(subst F,f,
 
 #MHZ := $(shell echo "$(XTAL) / 1000000" | bc -l | sed "s|0*$$|| ;; s|\.$$|| ;; s|\.|,|g")
 
-ifeq ($(_XTAL_FREQ),INTOSC)
-_XTAL_FREQ := 48000000
+ifeq ($(_XTAL_FREQ),48000000)
 MHZ := intosc48
 XTAL_USED := NO_XTAL
 else
