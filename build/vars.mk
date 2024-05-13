@@ -74,6 +74,7 @@ KBPS := $(shell echo $$(($(BAUD) / 1000)))
 ifeq ($(PROGRAM)$(PROGRAMS),)
 PROGRAMS := pictest blinktest serialtest seg7test #ringtone
 endif
+PROGRAMS += rgbtest ctmutest ps2test pwmtest 
 
 ifneq ($(CODE_OFFSET),)
 BUILD_ID := $(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_at$(CODE_OFFSET)

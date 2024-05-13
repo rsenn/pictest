@@ -108,7 +108,6 @@
 #endif
 
 #if NO_PORTB && NO_PORTC
-#define USE_LCD 0
 #else
 #define USE_LCD 1
 #endif
