@@ -11,12 +11,13 @@
 #include "../lib/uart.h"
 #include "../lib/format.h"
 #include <ctype.h>
+#include "bresenham.h"
 
 void loop();
 void put_number(void (*putchar)(char), uint16_t n, uint8_t base, int8_t pad);
 
 volatile BOOL run = 1, got_byte = 0;
-volatile uint16_t bres;
+BRESENHAM_DECL(bres);
 
 volatile uint16_t msecs;
 volatile uint32_t seconds;

@@ -20,7 +20,11 @@ endif
 # 	endif
 # endif
 ifeq ($(_XTAL_FREQ),)
- _XTAL_FREQ := 20000000
+ ifeq ($(CHIP), 18F25K50)
+_XTAL_FREQ := INTOSC
+else
+_XTAL_FREQ := 20000000
+endif
 endif
 
 ifeq ($(BAUD),)
@@ -33,8 +37,10 @@ endif
 # XTAL_USED := NO_XTAL
 # endif
 
+ifeq ($(_XTAL_FREQ),)
 ifeq ($(XTAL_USED), NO_XTAL)
 _XTAL_FREQ := INTOSC
+endif
 endif
 
 
