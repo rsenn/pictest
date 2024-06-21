@@ -25,12 +25,18 @@ VERSION = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_PATCH)
 ifeq ($(CHIP),18f16q41)
 CCVER := v2.36
 else
-CCVER ?= v1.45
+CCVER ?= v1.43
 endif
 #$(info CCVER: $(CCVER))
 #$(info OS: $(OS))
 
-PROGRAMFILES ?= "C:/Program Files (x86)"
+CPU_ARCH := $(shell uname -m)
+
+ifneq ($(CPU_ARCH),x86_64)
+PROGRAMFILES := C:/Program Files
+else
+PROGRAMFILES := C:/Program Files (x86)
+endif
 
 OS = $(shell uname -o)
 

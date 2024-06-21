@@ -1,72 +1,3 @@
-CHIPS = 16f876a 18f2550 
-CHIPS += 18f252 18f2520 
-CHIPS += 18f14k50 18f25k22 18f25k50
-
-#CHIPS += 16f628a 18f252 18f252 18f25k50
-#CHIPS += 18f14k50 18f252 18f252 18f25k50
-#CHIPS += 10f206
-#CHIPS += 12f1840
-COMPILERS = xc8 sdcc
-#CHIP = 16F876A
-ifeq ($(CHIP),)
-CHIP := 16F876A
-endif
-
- ifeq ($(_XTAL_FREQ),)
- ifeq ($(CHIP), 18f25k50)
- _XTAL_FREQ := 48000000
- endif
- ifeq ($(CHIP), 18f2550)
- _XTAL_FREQ := 48000000
- endif
-endif
-
- ifeq ($(_XTAL_FREQ),)
- _XTAL_FREQ := 20000000
- endif
- 
-
-ifeq ($(BAUD),)
-#BAUD = 19200
-#BAUD = 31250
-BAUD = 38400
-endif
-
-# ifeq ($(XTAL_USED),)
-# XTAL_USED := NO_XTAL
-# endif
-
-ifeq ($(_XTAL_FREQ),)
-ifeq ($(XTAL_USED), NO_XTAL)
-_XTAL_FREQ := 48000000
-endif
-endif
-
-ifeq ($(_XTAL_FREQ),INTOSC)
-XTAL_USED :=  NO_XTAL
-_XTAL_FREQ := 48000000
-endif
-
-
-#ifeq ($(CODE_OFFSET),)
-#CODE_OFFSET := 0x0
-#endif
-
-#CODE_OFFSET := $(CODE_OFFSET:0x%=%)
-#CODE_OFFSET = 0x2000
-
-ifeq ($(CODE_OFFSET),0x0)
-	CODE_OFFSET := 
-endif
-ifeq ($(CODE_OFFSET),0x0000)
-	CODE_OFFSET := 
-endif
-ifeq ($(CODE_OFFSET),0)
-	CODE_OFFSET := 
-endif
-
-
-
 #CODE_OFFSET := $(CODE_OFFSET:0x%=%)
 #CODE_OFFSET = 0x200
 
@@ -83,11 +14,6 @@ else
 MHZ := $(shell echo $$(($(_XTAL_FREQ) / 1000000)))
 endif
 KBPS := $(shell echo $$(($(BAUD) / 1000)))
-
-ifeq ($(PROGRAM)$(PROGRAMS),)
-PROGRAMS := pictest blinktest serialtest seg7test #ringtone
-endif
-PROGRAMS += rgbtest ctmutest ps2test pwmtest 
 
 ifneq ($(CODE_OFFSET),)
 BUILD_ID := $(BUILD_TYPE)_$(MHZ)mhz_$(KBPS)kbps_at$(CODE_OFFSET)

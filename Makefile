@@ -5,6 +5,7 @@ LAYOUTS := $(patsubst eagle/%,%,$(shell grep -L -E '(layer="19"|<polygon.*layer=
 COMPILER ?= htc
 DEBUG ?= 0
 
+-include build/defaults.mk
 -include build/vars.mk
 
 ifeq ($(COMPILERS),)
