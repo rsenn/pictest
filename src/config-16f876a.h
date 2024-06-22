@@ -4,6 +4,8 @@
 
 #if defined(__XC) || defined(MCHP_XC8) || defined(SDCC) || defined(__XC__)
 
+#undef DEBUG
+
 #ifdef _DEBUG
 #pragma config FOSC = HS, LVP = OFF, CPD = OFF, BOREN = OFF, WDTE = OFF, WRT = OFF, DEBUG = ON
 #else

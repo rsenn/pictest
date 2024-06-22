@@ -6,12 +6,6 @@
         <group name="18f25k50">
             <file>file:/home/roman/Projects/pictest/src/blinktest.c</file>
         </group>
-        <group>
-            <file>file:/home/roman/Projects/pictest/lib/device.h</file>
-            <file>file:/home/roman/Projects/pictest/lib/timer.c</file>
-            <file>file:/home/roman/Projects/pictest/src/blinktest.c</file>
-            <file>file:/home/roman/Projects/pictest/src/config-18f25k50.h</file>
-            <file>file:/home/roman/Projects/pictest/lib/uart.h</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

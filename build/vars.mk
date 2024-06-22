@@ -1,3 +1,20 @@
+
+#CHIP = 16F876A
+ifeq ($(CHIP),)
+CHIP := 16F876A
+endif
+
+
+ifeq ($(BAUD),)
+BAUD = 38400
+#BAUD = 31250
+endif
+
+ifeq ($(_XTAL_FREQ),)
+_XTAL_FREQ := 20000000
+endif
+
+
 #CODE_OFFSET := $(CODE_OFFSET:0x%=%)
 #CODE_OFFSET = 0x200
 

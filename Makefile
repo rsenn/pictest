@@ -8,9 +8,6 @@ DEBUG ?= 0
 -include build/defaults.mk
 -include build/vars.mk
 
-ifeq ($(COMPILERS),)
-COMPILERS = htc xc8 sdcc
-endif
 
 ifeq ($(BUILD_TYPES),)
 #BUILD_TYPES := debug release
