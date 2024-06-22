@@ -72,3 +72,7 @@ bin*
 /build/mplabx-pic12/blinktest_12f1840_xc8/blinktest_12f1840_xc8.X/dist/
 /build/mplabx-pic16/blinktest_16f876a_xc8/blinktest_16f876a_xc8.X/build/
 /build/mplabx-pic16/blinktest_16f876a_xc8/blinktest_16f876a_xc8.X/dist/
+/build/mplabx-pic18/seg7test_18f252_xc8.X/build/
+/build/mplabx-pic18/seg7test_18f252_xc8.X/dist/
+/build/mplabx-pic18/seg7test_18f2550_xc8.X/build/
+/build/mplabx-pic18/seg7test_18f2550_xc8.X/dist/
