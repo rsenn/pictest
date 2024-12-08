@@ -682,6 +682,7 @@ get_button() {
   } else if(a >= 22 && a < 36) {
     return 5;
   }
+
   return 0;
 }
 #endif // defined USE_ADCONVERTER
@@ -701,11 +702,10 @@ static int
 softserial_getch(uint16_t timeout) {
   uint16_t t = seconds + timeout;
 
-  while(seconds <= timeout) {
-    if(softser_poll(SOFTSER_BRG)) {
+  while(seconds <= timeout) 
+    if(softser_poll(SOFTSER_BRG)) 
       return (int)(uint8_t)softser_getch();
-    }
-  }
+      
   return -1;
 }
 #endif

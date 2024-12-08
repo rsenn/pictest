@@ -21,6 +21,7 @@ void Capture_init(void);
 void Serial_init(void);
 uint8_t Scan_Data(void);
 void DelayMs(unsigned int);
+
 void
 putch(uint8_t ch) {
   uart_putch(ch);
@@ -35,8 +36,10 @@ main() {
   DelayMs(250);
   printf("\033[2J"); // Clear the Hypherterminal;
   printf("PS2 Keyboard Demo:\n\r");
+
   while(1) {
     KeyVal = Scan_Data(); // Scan for a incoming data
+
     if(KeyVal > 85 || KeyVal < 20 || KeyVal == 0x0e)
     // If any special character received
 
