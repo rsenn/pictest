@@ -312,13 +312,8 @@ main() {
 
     b = BUTTON_BIT;
 
+    // Input state change
     if(b != bbit) {
-
-      if(!b) {
-        // button pressed (input pulled down)
-        //
-      } else {
-      }
 
 #ifdef USE_LED
       led_state = !b;
@@ -336,12 +331,13 @@ main() {
           histindex = 0;
       }
 
+      // If pressed for 3 seconds, clear previous input
       if(!b && d > 3000)
         clear_history();
 
-      if(histindex) {
-        // morse_process();
-      }
+      // Process on/off times as morse code
+      if(histindex) 
+        morse_process();
 
       btime = msecs;
       bbit = b;
