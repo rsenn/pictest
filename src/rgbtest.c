@@ -1,11 +1,11 @@
 
-#define SOFTPWM_RANGE 255
+/*#define SOFTPWM_RANGE 255
 #ifndef SOFTPWM_CHANNELS
-#define SOFTPWM_CHANNELS 3
+#define SOFTPWM_CHANNELS 24
 #endif
 #define SOFTPWM_MASK 0b11111100
 #define SOFTPWM_MASK2 0b00111011
-#define SOFTPWM_MASK3 0b00000111
+#define SOFTPWM_MASK3 0b00000111*/
 
 //#define USE_MCLRE 1
 
@@ -68,9 +68,9 @@ __code unsigned int __at(_CONFIG) __config_word = CONFIG_WORD;
 
 #elif defined(__18f16q41) || !defined(__18f4550)
 #define BUTTON_PORT PORTC
-#define BUTTON_SHIFT 1
-#define BUTTON_BIT RB0
-#define BUTTON_TRIS() TRISB |= 0b1
+#define BUTTON_SHIFT 4
+#define BUTTON_BIT RA4
+#define BUTTON_TRIS() TRISA |= 0b10000
 #endif
 
 #ifndef BUTTON_PORT
@@ -120,7 +120,7 @@ INTERRUPT_FN() {
 
 #ifdef USE_TIMER0
   if(TIMER0_INTERRUPT_FLAG) {
-    BRESENHAM_INC8(bres) * 4;
+    BRESENHAM_INC(bres, (256 - SOFTPWM_TIMER_INITIAL));
 
     if(BRESENHAM_COND(bres, 5000)) {
       BRESENHAM_SUB(bres, 5000);
@@ -141,6 +141,16 @@ INTERRUPT_FN() {
       }*/
     }
 
+#ifdef USE_SOFTPWM
+#if SOFTPWM_CHANNELS > 9999
+  SOFTPWM_ISR3();
+#elif SOFTPWM_CHANNELS > 8
+  SOFTPWM_ISR2();
+#else
+  SOFTPWM_ISR1();
+#endif
+#endif
+
     // Clear timer interrupt bit
     TIMER0_INTERRUPT_CLEAR();
   }
@@ -157,10 +167,6 @@ INTERRUPT_FN() {
     // Clear timer interrupt bit
     TIMER2_INTERRUPT_CLEAR();
   }
-#endif
-
-#ifdef USE_SOFTPWM
-  SOFTPWM_ISR1();
 #endif
 
 #ifdef USE_UART
@@ -185,6 +191,55 @@ INTERRUPT_FN() {
 }
 
 #endif
+
+static uint8_t morse_len = 0;
+static int8_t morse_state = 0;
+
+int8_t
+morse_decode(int8_t state, char c) {
+  static const unsigned char t[] = {
+      0x03, 0x3f, 0x7b, 0x4f, 0x2f, 0x63, 0x5f, 0x77, 0x7f, 0x72, 0x87, 0x3b, 0x57, 0x47, 0x67, 0x4b, 0x81,
+      0x40, 0x01, 0x58, 0x00, 0x68, 0x51, 0x32, 0x88, 0x34, 0x8c, 0x92, 0x6c, 0x02, 0x03, 0x18, 0x14, 0x00,
+      0x10, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x1c, 0x00, 0x00, 0x00,
+      0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x24, 0x00, 0x28, 0x04, 0x00, 0x30, 0x31, 0x32, 0x33,
+      0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b,
+      0x4c, 0x4d, 0x4e, 0x4f, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a,
+  };
+  int v = t[-state];
+  switch(c) {
+    case 0x00: return v >> 2 ? t[(v >> 2) + 63] : 0;
+    case 0x2e: return v & 2 ? state * 2 - 1 : 0;
+    case 0x2d: return v & 1 ? state * 2 - 2 : 0;
+    default: return 0;
+  }
+}
+
+void
+morse_process() {
+  uint16_t lowest = 0xffff;
+
+  for(char i = 0; i < histindex; i++) {
+    if(lowest > history[i])
+      lowest = history[i];
+  }
+
+  char j;
+
+  for(j = 0; j < histindex; j++) {
+    if(j & 1)
+      if(history[j] > lowest * 3)
+        break;
+  }
+
+  morse_len = j >> 1;
+}
+
+typedef void(putch_fn)(char);
+
+void
+put_str(putch_fn* putc, const char* s) {
+  while(*s) putc(*s++);
+}
 
 //-----------------------------------------------------------------------------
 int
@@ -272,9 +327,29 @@ main() {
 #ifdef USE_SOFTPWM
   softpwm_init();
 
-  softpwm_values[0] = 0xaa;
-  softpwm_values[1] = 0x55;
-  softpwm_values[2] = 0x7f;
+  softpwm_values[0] = 0xff;
+  softpwm_values[1] = 0x00;
+  softpwm_values[2] = 0x00;
+
+  softpwm_values[3] = 0xff;
+  softpwm_values[4] = 0x80;
+  softpwm_values[5] = 0x00;
+
+  softpwm_values[6] = 0xff;
+  softpwm_values[7] = 0xff;
+  softpwm_values[8] = 0x00;
+
+  softpwm_values[9] = 0x00;
+  softpwm_values[10] = 0x00;
+  softpwm_values[11] = 0xff;
+
+  softpwm_values[12] = 0x00;
+  softpwm_values[13] = 0x00;
+  softpwm_values[16] = 0xff;
+
+  softpwm_values[17] = 0x80;
+  softpwm_values[18] = 0x00;
+  softpwm_values[19] = 0xff;
 #endif
 
 #ifndef __18f16q41
@@ -297,7 +372,7 @@ main() {
 #endif
 
 #if HAVE_SERIAL
-  put_str(put_char, "blinktest\r\n");
+  put_str(uart_putch, "blinktest\r\n");
 #endif
 
   /* TRISC2 = 1;
@@ -305,20 +380,33 @@ main() {
    CCP1IE = 0;
    CCP1IF = 0;*/
 
+
+  SOFTPWM_TRIS = ~SOFTPWM_MASK;
+
+#if SOFTPWM_CHANNELS > 8
+  SOFTPWM_TRIS2 = ~SOFTPWM_MASK2;
+#endif
+
+#if SOFTPWM_CHANNELS > 16
+  SOFTPWM_TRIS3 = ~SOFTPWM_MASK3;
+#endif
+
   BUTTON_TRIS();
 
   for(;;) {
     char b;
+
+#ifdef USE_LED
+      led_state = (hsecs/100) & 1;
+      SET_LED(led_state);
+#endif
+
 
     b = BUTTON_BIT;
 
     // Input state change
     if(b != bbit) {
 
-#ifdef USE_LED
-      led_state = !b;
-      SET_LED(led_state);
-#endif
 
       uint32_t d = msecs - btime;
 
