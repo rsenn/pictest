@@ -15,3 +15,6 @@
 	path = usb
 	url = git@github.com:rsenn/USB-Stack.git
 	branch = main
+[submodule "lib"]
+	path = lib
+	url = https://github.com/rsenn/libpicp
