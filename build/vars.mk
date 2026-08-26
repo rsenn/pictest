@@ -18,6 +18,18 @@ endif
 #CODE_OFFSET := $(CODE_OFFSET:0x%=%)
 #CODE_OFFSET = 0x200
 
+# accept CODE_OFFSET/CODE_OFFSETS given as bare hex ("2000") as well as
+# 0x-prefixed ("0x2000") -- downstream .lkr generation and --ivt-loc need
+# an unambiguous hex literal, "0" alone stays as-is (means "no offset",
+# checked verbatim against "0" further down in sdcc.mk/xc8.mk)
+ifneq ($(CODE_OFFSET),)
+ifneq ($(CODE_OFFSET),0)
+ifeq ($(filter 0x%,$(CODE_OFFSET)),)
+override CODE_OFFSET := 0x$(CODE_OFFSET)
+endif
+endif
+endif
+
 chipu = $(subst a,A,$(subst b,B,$(subst c,C,$(subst d,D,$(subst e,E,$(subst f,F,$(subst g,G,$(subst h,H,$(subst i,I,$(subst j,J,$(subst k,K,$(subst l,L,$(subst m,M,$(subst n,N,$(subst o,O,$(subst p,P,$(subst q,Q,$(subst r,R,$(subst s,S,$(subst t,T,$(subst u,U,$(subst v,V,$(subst w,W,$(subst x,X,$(subst y,Y,$(subst z,Z,$(CHIP)))))))))))))))))))))))))))
 chipl = $(subst A,a,$(subst B,b,$(subst C,c,$(subst D,d,$(subst E,e,$(subst F,f,$(subst G,g,$(subst H,h,$(subst I,i,$(subst J,j,$(subst K,k,$(subst L,l,$(subst M,m,$(subst N,n,$(subst O,o,$(subst P,p,$(subst Q,q,$(subst R,r,$(subst S,s,$(subst T,t,$(subst U,u,$(subst V,v,$(subst W,w,$(subst X,x,$(subst Y,y,$(subst Z,z,$(CHIP)))))))))))))))))))))))))))
 
@@ -210,7 +222,7 @@ ctmutest2_DEFS += -DUSE_TIMER0=1
 ringtone_SOURCES = ringtone.c lib/timer.c lib/random.c lib/eeprom.c
 ringtone_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DAxelF=1
 
-miditest_SOURCES = miditest.c lib/timer.c lib/uart.c lib/queue.c lib/extra/midi.c lib/lcd5110.c lib/delay.c
+miditest_SOURCES = miditest.c lib/timer.c lib/uart.c lib/queue.c lib/extra/midi.c lib/lcd5110.c lib/delay.c lib/spi.c
 miditest_DEFS += -DUSE_TIMER0=1 -DUSE_UART=1 -DUSE_NOKIA5110_LCD=1
 # build with BAUD=31250 (or BAUD_RATES=31250) -- MIDI_BAUD is fixed by spec,
 # see lib/extra/midi.h's UART_BAUD note; the global -DUART_BAUD=$(BAUD)

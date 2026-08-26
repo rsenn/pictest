@@ -114,11 +114,9 @@ driven or protocol/common-method shaped (not specific to this one
 application) becomes a new `lib/<name>.[ch]` pair, in the same style as
 existing modules (`PICLIB_<NAME>_H` include guards, chip-conditional pin/
 register macros, cross-compiler handling per `lib/typedef.h`) — not
-one-off glue code living only in `src/miditest.c`. Concretely, `lib/i2c.
-[ch]` and `lib/spi.[ch]` don't exist yet and will need to be written from
-scratch in this style if the multi-board MIDI topology (§2, §3a) needs an
-inter-board bus. `lib/extra/midi.[ch]` (transport-agnostic MIDI craft/
-parse) belongs under `lib/` for the same reason.
+one-off glue code living only in `src/miditest.c`. `lib/extra/midi.[ch]`
+(transport-agnostic MIDI craft/parse) belongs under `lib/` for the same
+reason.
 
 ## 0. Demo build (v0) — what gets built first
 
@@ -300,7 +298,7 @@ USB device stack.
 | Function | Peripheral | Notes |
 |---|---|---|
 | MIDI IN #1 | EUSART hardware (`lib/uart.h`) | 31250 baud, 8N1. The PIC18F25K50 has only **one** hardware EUSART, so this is the only IN that gets hardware-assisted, glitch-free reception |
-| MIDI IN #2 (+ #3?) | software UART (`lib/softser.h`, already in-tree), **or** a 2nd/3rd picstick board over an inter-board bus | Two options on the table, not yet chosen (see §5): (a) bit-banged software-UART RX on this same board, timer/interrupt-driven, costing a timer/ISR budget + GPIO per extra input; (b) **cascade multiple `picstick_25k50` boards**, each with its own DIN-5 opto-isolated UART input doing local parse, bridged to a "master" board over **SPI or I2C** — needs new `lib/spi.[ch]`/`lib/i2c.[ch]` (neither exists yet in the `libpicp` submodule). Both may end up coexisting rather than one replacing the other. |
+| MIDI IN #2 (+ #3?) | software UART (`lib/softser.h`, already in-tree) | bit-banged software-UART RX on this same board, timer/interrupt-driven, costing a timer/ISR budget + GPIO per extra input |
 | MIDI OUT (merged) | EUSART TX or bit-banged TX | Whichever port isn't consumed by IN #1 |
 | USB-CDC | PIC18F25K50 native USB, `USB-Stack/USB_Stack/USB/usb_cdc_acm.c` | Firm requirement — bridges UART MIDI to a computer for analysis/logging |
 | USB-MIDI | PIC18F25K50 native USB, `USB-Stack/USB_Stack` `MIDI_Controller` example | **Conditional/`#ifdef`-gated** — flash-budget concern, may be dropped entirely; composite with CDC if both are built in |
@@ -310,16 +308,13 @@ USB device stack.
 
 **Pin budget concern (OPEN):** LCD currently claims RB2‑RB6. Hardware UART
 uses its dedicated TX/RX pins. Each extra on-board MIDI IN needs its own
-GPIO for software-UART RX (avoided entirely if using the multi-board/SPI-
-I2C cascade option instead). USB uses its dedicated D+/D-. Addressable
+GPIO for software-UART RX. USB uses its dedicated D+/D-. Addressable
 LEDs need 1 free timing-critical output pin. 4 buttons need 4 input pins
 (or a matrix/ADC ladder to save pins). Need to check
 `eagle/PIC18F25k50-USB+ICSP-Board.sch`/`picstick_25k50_v1.sch` for what's
 already committed vs. free before locking the pinout — with 2+ MIDI INs +
 1 OUT + LCD (5 pins) + LED (1 pin) + 4 buttons this is a tight fit on a
-28-pin part and may push toward a button matrix or ADC-ladder input, or
-toward the multi-board cascade to avoid stacking software-UART inputs on
-one chip.
+28-pin part and may push toward a button matrix or ADC-ladder input.
 
 ## 3. Data flow
 
@@ -336,11 +331,6 @@ one chip.
                      |                     |<----> Nokia 5110 LCD + 4 buttons
                      +---------------------+
 ```
-
-If the multi-board cascade option (§2) is used, MIDI IN #2/#3 physically
-sit on separate picstick boards, each running their own local MIDI parser,
-feeding decoded messages to the "master" board above over SPI/I2C instead
-of a local GPIO.
 
 ### 3a. MIDI merge — the hard part
 
@@ -369,14 +359,9 @@ messages:
   Realtime bytes handled as an immediate-passthrough special case per
   input. This lines up with the transport-agnostic MIDI library planned
   for `lib/extra/midi.[ch]` (§4): the parser output is transport-agnostic
-  (`midi_msg_t`), the transport (UART pin, USB endpoint, or an inter-board
-  SPI/I2C link) is just the byte source/sink underneath it. Needs one
-  parser instance *per input*, each with its own running-status state.
-- **Cross-board merge (if the multi-board cascade option is used):** the
-  message-level merge logic is unchanged, but the transport carrying
-  decoded `midi_msg_t` values between boards over SPI/I2C is new surface
-  area — framing/serializing a `midi_msg_t` over that bus isn't designed
-  yet (needs the new `lib/spi.[ch]`/`lib/i2c.[ch]` from §2 first).
+  (`midi_msg_t`), the transport (UART pin or USB endpoint) is just the
+  byte source/sink underneath it. Needs one parser instance *per input*,
+  each with its own running-status state.
 - **Output-side contention:** if two inputs produce messages back-to-back,
   the merged OUT needs a small queue (ring buffer) per output so a message
   from input B isn't dropped or torn while input A's message is still
@@ -424,9 +409,6 @@ Core loop responsibilities:
   IN ports on a single board (§2).
 - `lib/extra/ledsense.[ch]` — LED-as-sensor driver, now dual-backend
   (direct-I/O / CTMU), see §0a. Resolved and implemented.
-- `lib/i2c.[ch]`, `lib/spi.[ch]` — **do not exist yet**, needed if the
-  multi-board MIDI cascade topology (§2) is pursued. To be written from
-  scratch in libpicp style (not vendored) when that topology is chosen.
 - `/mnt/data/Projects/USB-Stack/USB_Stack/Examples/MIDI_Examples/MIDI_Controller.c` —
   reference for the optional USB-MIDI streaming class descriptor +
   endpoint handling on this exact chip.
@@ -455,14 +437,12 @@ Not guessing at these; flagging what's needed before design can be finalized:
 4. **MIDI trigger scope**: which channel(s)/message types matter for the
    light show — a single dedicated "lighting channel" vs. reacting to
    everything?
-5. **MIDI merge topology — how many IN ports, exactly, and single-board
-   vs. multi-board?** Confirmed: at least a sequencer→synth pair to
-   merge, plus possibly a groovebox (combined seq+synth) that also
-   outputs MIDI, and a merge facility is required. Still open: exact port
-   count; whether it's done via on-board software-UART inputs (§2 option
-   a) or cascaded picstick boards over SPI/I2C (§2 option b) or a mix;
-   and whether the groovebox's own synth needs to *receive* the merged
-   stream too (bidirectional, not just an IN).
+5. **MIDI merge topology — how many IN ports, exactly?** Confirmed: at
+   least a sequencer→synth pair to merge, plus possibly a groovebox
+   (combined seq+synth) that also outputs MIDI, and a merge facility is
+   required. Still open: exact port count, all via on-board
+   software-UART inputs (§2); and whether the groovebox's own synth needs
+   to *receive* the merged stream too (bidirectional, not just an IN).
 6. **USB role**: USB-CDC bridging is now confirmed firm (for logging/
    analysis on a computer); USB-MIDI is now optional/flash-budget-gated.
    Still open: if USB-MIDI is built in, does the laptop drive the light
@@ -477,8 +457,7 @@ Not guessing at these; flagging what's needed before design can be finalized:
 9. **Board**: full vision — is this on the existing
    `PIC18F25k50-USB+ICSP-Board` Eagle board, the `picstick_25k50_v1`
    board the demo uses, or a new board? Determines what's actually free
-   pin-wise for LED data line + 4 buttons alongside the LCD, and whether
-   the multi-board cascade option is physically convenient.
+   pin-wise for LED data line + 4 buttons alongside the LCD.
 10. **Demo LCD power/level-shifting**: does the specific SparkFun 5110
     module in hand have its own 3.3V regulation/level-shifting, given the
     picstick runs at 5V (§0)? Needs checking before wiring step 1 (§0b).
@@ -495,8 +474,7 @@ Not guessing at these; flagging what's needed before design can be finalized:
 
 ## 7. Next steps
 
-Once §5 is answered: lock the pinout (including whether single-board or
-multi-board), pick the LED driver approach (bit-bang timer vs.
+Once §5 is answered: lock the pinout, pick the LED driver approach (bit-bang timer vs.
 SPI-clocked) for the addressable strip, define `midi_msg_t` and the
 parser state machine in `lib/extra/midi.[ch]`, define the scene/
 choreography mapping data structure once that design develops further,
@@ -523,10 +501,6 @@ pins, decided over the course of this design. Header/DIP pin numbers per
 |---|---|---|
 | JP1-10 / RC7 (DIP 18) | UART MIDI RX | hardware EUSART, fixed pin, no alternative on this chip |
 | JP1-11 / RC6 (DIP 17) | UART MIDI TX | hardware EUSART, fixed pin |
-| JP2-9 / RB0 (DIP 21) | SPI SDI / **MISO** (master) | hw MSSP, shared bus to PIC16 MIDI-satellite cascade — fixed pin, no PPS on this chip |
-| JP2-8 / RB1 (DIP 22) | SPI SCK | hw MSSP, shared cascade bus — fixed pin |
-| JP2-6 / RB3 (DIP 24) | SPI SDO / **MOSI** (master) | hw MSSP (`SDOMX=RB3` per `src/config-18f25k50.h`), shared cascade bus — the only SPI pin with an alternate (RC7), which is unusable here (claimed by MIDI RX) |
-| — | SPI CS, one per PIC16 satellite | **OPEN**: pin(s) TBD — depends on satellite count (§5 item 5); candidates from remaining free pins below (RA2, RA6/RA7 if X1 unpopulated, RB7 if no ICSP programmer attached during operation) |
 | JP1-12 / RC2 (DIP 13) | RGB LED — Red | = CCP1 pin (hardware PWM available later if wanted; digital on/off only for the demo) |
 | JP1-13 / RC1 (DIP 12) | RGB LED — Green | = CCP2 pin (`CCP2MX=RC1`) — same PWM note as Red |
 | JP1-14 / RC0 (DIP 11) | RGB LED — Blue | no hardware PWM available on this pin if ever upgraded |
@@ -535,22 +509,21 @@ pins, decided over the course of this design. Header/DIP pin numbers per
 | JP1-3 / RA1 (DIP 3) | `ledsense` drive/anode (`LS_A_PIN`) | through 330R, per §0a/§8.3 |
 | JP1-7 / RA5 (DIP 7) | Transport-clock LED | fully free pin — no longer reserved for SPI `SS` since the picstick is SPI **master**, which doesn't need its own hardware slave-select pin |
 | JP2-7 / RB2 (DIP 23) | LCD `LCD_CE` | bit-banged, `lib/lcd5110.h` default |
-| JP1-4 / RA3 (DIP 5) | LCD `LCD_RESET` | **moved off RB3** (was the library default) because RB3 is now the SPI SDO/MOSI pin — see `lib/lcd5110.h` |
+| JP1-4 / RA3 (DIP 5) | LCD `LCD_RESET` | **moved off RB3** (was the library default), keeping RB3 free for a possible future hardware-SPI use — see `lib/lcd5110.h` |
 | JP2-5 / RB4 (DIP 25) | LCD `LCD_DC` | bit-banged, `lib/lcd5110.h` default |
 | JP2-4 / RB5 (DIP 26) | LCD `LCD_DATA`/DIN | bit-banged, `lib/lcd5110.h` default |
 | JP2-3 / RB6 (DIP 27) | LCD `LCD_CLK`/SCLK | bit-banged, `lib/lcd5110.h` default. Shares the net with ICSP PGC (JP2-14) — fine unless a programmer is attached while running |
 
 **Still free** after all the above: RA2, RA6/RA7 (conditionally, if the
-optional X1 crystal stays unpopulated), RB7 (conditionally, shares ICSP
-PGD). These are the candidates for per-satellite SPI chip-select pins
-(§5 item 5, §8.4) once the satellite count is known.
+optional X1 crystal stays unpopulated), RB0, RB1, RB3, RB7 (conditionally,
+shares ICSP PGD).
 
 Source changes made to match this table:
 - `lib/lcd5110.h`: `LCD_RESET` moved from `OUTB3` to `OUTA3`; `LCD_TRIS()`
   changed from a blanket `TRISB &= 0x00` to setting only the 4 TRISB bits
   the LCD actually owns (RB2/RB4/RB5/RB6) plus `TRISA3` — the old blanket
-  clear would otherwise have forced RB0 (SPI SDI) to output every time
-  `lcd_init()` ran, breaking the cascade bus.
+  clear would otherwise have forced every other RB pin to output every
+  time `lcd_init()` ran, clobbering whatever else was wired to PORTB.
 - `lib/extra/ledsense.c`: `LS_A_PIN`/`LS_K_PIN` moved from `RA4`/`RA5` to
   `RA1`/`RA0` (and `LEDSENSE_ADC_CHANNEL` from 1 to 0) — the library's
   original default (`RA4`) collided with the picstick's onboard User LED.
@@ -722,11 +695,8 @@ swings cleanly between logic levels without needing an extra buffer):
 | `GND` (opto output side) | opto ch.A output/emitter | JP1-1 |
 
 - The HCPL-2730 is dual-channel — one channel (A) used for this MIDI IN,
-  **channel B is spare**, available for a second MIDI IN on the same
-  package if a second on-board (non-satellite) input is ever wanted —
-  though the decided scaling path for extra inputs is now the SPI-cascaded
-  PIC16 satellites (§8.4), each with its own opto/DIN-5 built the same way
-  as this section, not a second channel on this board.
+  **channel B is spare**, available for a second on-board MIDI IN using
+  the same package if a second input is ever wanted.
 - **MIDI OUT is not opto-isolated** in the standard spec (only INs are) —
   needs its own small circuit (typically a logic buffer/inverter or a
   transistor driving the 220R current-limited DIN-5 output pins directly
@@ -793,53 +763,6 @@ the ADC/CTMU charge-time reading taken on the sense/"cathode" side:
 - This harness is wire-wrap + heat-shrink directly off the picstick's
   header (§0b step 3), no separate perfboard needed given the low part
   count.
-
-### 8.4 SPI MIDI-satellite cascade harness
-
-For scaling beyond one MIDI input: cascade PIC16-based satellite boards,
-each with its own opto-isolated DIN-5 MIDI IN (built the same way as
-§8.2), reporting decoded MIDI bytes/messages to the picstick (acting as
-SPI **master**) over the shared hardware SPI bus. Pin assignments and the
-"no PPS on this chip" constraint are covered in §8.0.
-
-```
-                              picstick_25k50 (SPI master)
-                             +---------------------------+
-   satellite 1  <--SCK------|  JP2-8 / RB1               |
-   (PIC16, own  <--MOSI-----|  JP2-6 / RB3 (SDO)         |
-   DIN-5 opto   --MISO----->|  JP2-9 / RB0 (SDI)         |
-   MIDI IN)     <--CS1------|  (TBD free pin, §8.0)      |
-                             |                            |
-   satellite 2  <--SCK------|  (same SCK net, shared)    |
-   ...          <--MOSI-----|  (same MOSI net, shared)   |
-                --MISO----->|  (same MISO net, shared)   |
-                <--CS2------|  (TBD free pin, §8.0)      |
-                             +---------------------------+
-```
-
-**Net list** (shared bus + per-satellite chip-select):
-
-| Net | picstick pin | Shared/per-satellite |
-|---|---|---|
-| `SPI_SCK` | JP2-8 / RB1 | shared by all satellites |
-| `SPI_MOSI` | JP2-6 / RB3 (SDO) | shared — picstick's output, each satellite's SDI/MOSI input |
-| `SPI_MISO` | JP2-9 / RB0 (SDI) | shared — picstick's input, each satellite's SDO/MISO output (only needed if satellites talk back rather than just being polled) |
-| `SPI_CS<n>` | one dedicated free GPIO per satellite | **OPEN** — exact pin(s) depend on satellite count (§5 item 5); candidates: RA2, RA6/RA7 (if X1 stays unpopulated), RB7 (if no ICSP programmer attached during operation) |
-
-- As SPI **master**, the picstick does not need its own hardware `SS`
-  pin (that's only required in slave mode) — chip-select for each
-  satellite is just a plain GPIO the master drives low to address that
-  satellite, which is why RA5 was free to use for the transport-clock LED
-  instead (§8.0, §8.3).
-- Each satellite PIC16 board is its own small subproject: local MIDI
-  DIN-5 opto-in (§8.2 circuit, repeated) + local UART parse + an SPI
-  slave interface reporting decoded messages up to the master — **not
-  yet designed** (needs its own harness doc once the PIC16 part and
-  satellite count are chosen).
-- **OPEN**: satellite count (drives CS pin count and whether RA6/RA7/RB7
-  need to be sacrificed), and the wire protocol for what a satellite
-  sends the master over SPI (raw MIDI bytes vs. pre-parsed `midi_msg_t`
-  — see §3a's note on framing this over an inter-board bus).
 
 ## 9. Reactive demo behavior (v1 — after the bare hardware demo, before the full menu/programming UX)
 
