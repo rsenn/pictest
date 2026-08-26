@@ -210,3 +210,10 @@ ctmutest2_DEFS += -DUSE_TIMER0=1
 ringtone_SOURCES = ringtone.c lib/timer.c lib/random.c lib/eeprom.c
 ringtone_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DAxelF=1
 
+miditest_SOURCES = miditest.c lib/timer.c lib/uart.c lib/queue.c lib/extra/midi.c lib/lcd5110.c lib/delay.c
+miditest_DEFS += -DUSE_TIMER0=1 -DUSE_UART=1 -DUSE_NOKIA5110_LCD=1
+# build with BAUD=31250 (or BAUD_RATES=31250) -- MIDI_BAUD is fixed by spec,
+# see lib/extra/midi.h's UART_BAUD note; the global -DUART_BAUD=$(BAUD)
+# from build/vars.mk already covers it, adding a 2nd -DUART_BAUD here
+# collides with that and XC8's preprocessor treats redefinition as fatal
+

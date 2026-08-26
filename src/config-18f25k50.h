@@ -32,10 +32,19 @@
 #pragma config WDTPS = 256  // Watchdog Timer Postscaler (1:256)
 
 // CONFIG3H
+// RC1/RC0/RB3 collide with device.h's port-bit macros (RC1 ->
+// PORTCbits.RC1 etc) -- undef them just for these config values, then
+// restore so the rest of this translation unit still gets the port bits.
+#undef RC1
+#undef RC0
+#undef RB3
 #pragma config CCP2MX = RC1 // CCP2 MUX bit (CCP2 input/output is multiplexed with RC1)
 #pragma config PBADEN = OFF // PORTB A/D Enable bit (PORTB<5:0> pins are configured as digital I/O on Reset)
 #pragma config T3CMX = RC0  // Timer3 Clock Input MUX bit (T3CKI function is on RC0)
 #pragma config SDOMX = RB3  // SDO Output MUX bit (SDO function is on RB3)
+#define RC1 PORTCbits.RC1
+#define RC0 PORTCbits.RC0
+#define RB3 PORTBbits.RB3
 #ifdef USE_MCLRE
 #pragma config MCLRE = ON
 #else

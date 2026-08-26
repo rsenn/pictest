@@ -53,11 +53,11 @@ else
 COMPILER_NAME = picc
 endif
 
-#ifneq ($(CCDIR),)
-#SDCC = "$(CCDIR)/bin/$(COMPILER_NAME)"
-#else
+ifneq ($(CCDIR),/usr)
+SDCC = $(CCDIR)/bin/$(COMPILER_NAME)
+else
 SDCC = $(COMPILER_NAME)
-#endif
+endif
 
 ifeq ($(strip $(SDCC)),)
 SDCC = picc
@@ -81,10 +81,21 @@ OBJECTS = $(patsubst %,$(OBJDIR)%,$(notdir $(patsubst %.c,%.o,$(SOURCES))))
 ASSRCS = $(SOURCES:%.c=$(OBJDIR)%.s)
 PREPROCESSED = $(SOURCES:%.c=$(OBJDIR)%.e)
 
+# sdcc's generic --code-loc is a no-op for the pic16 port (gplink does its
+# own placement from a .lkr script) -- relocating actually needs a custom
+# linker script with CODEPAGE 'page' shifted, plus --ivt-loc so the
+# __interrupt() vector trampoline lands at OFFSET+8 to match where a
+# bootloader (../USB-uC/USB_uC.X) GOTOs into the app. gplink's default
+# script is found next to the gplink binary sdcc is actually using.
+GPUTILS_PREFIX := $(patsubst %/bin/gplink,%,$(shell which gplink))
+GPUTILS_LKR := $(GPUTILS_PREFIX)/share/gputils/lkr/$(chipl)_g.lkr
+
 ifneq ($(CODE_OFFSET),0x0000)
 ifneq ($(CODE_OFFSET),0)
 ifneq ($(CODE_OFFSET),)
-#LDFLAGS += --code-loc=$$(($(CODE_OFFSET)))
+GENERATED_LKR := $(OBJDIR)$(chipl)_at$(CODE_OFFSET).lkr
+LDFLAGS += -Wl-s -Wl$(GENERATED_LKR)
+LDFLAGS += --ivt-loc=$$(($(CODE_OFFSET) + 8))
 endif
 endif
 endif
@@ -187,9 +198,21 @@ dist:
 
 $(HEXFILE): $(OBJECTS)
 	@-$(RM) $(HEXFILE) $(COFFILE)
+ifneq ($(GENERATED_LKR),)
+	@sed 's/CODEPAGE   NAME=page       START=0x0 /CODEPAGE   NAME=page       START=$(CODE_OFFSET) /' $(GPUTILS_LKR) >$(GENERATED_LKR)
+endif
 	$(NO_QUIET)@echo Link $< 1>&2
 	$(QUIET)$(SDCC) $(LDFLAGS) $(CFLAGS) -o $@ $^ $(LIBS) $(QUIET_STDERR) $(QUIET_STDOUT)
 	#sed -i 's/^:02400E00\(....\)\(..\)/:02400E0072FF32/' $(HEXFILE)
+ifneq ($(GENERATED_LKR),)
+	@# a bootloaded app must not carry anything below CODE_OFFSET -- sdcc's
+	@# crt0 always drops a reset-vector GOTO stub at true 0x0000 regardless
+	@# of the shifted CODEPAGE, which would clobber the bootloader's own
+	@# vector table if this hex were ever flashed whole via ICSP. XC8's
+	@# --codeoffset avoids emitting that stub in the first place; sdcc
+	@# doesn't, so strip it here instead.
+	@awk -v off=$$(($(CODE_OFFSET))) 'BEGIN{u=0} {t=substr($$0,8,2)} t=="04"{u=strtonum("0x" substr($$0,10,4)); print; next} t=="00"{if(u*65536+strtonum("0x" substr($$0,4,4))<off) next; print; next} {print}' $(HEXFILE) >$(HEXFILE).tmp && mv $(HEXFILE).tmp $(HEXFILE)
+endif
 	@-(type cygpath 2>/dev/null >/dev/null && PATHTOOL="cygpath -w"; \
 	 test -f "$$PWD/$(HEXFILE)" && { echo; echo "Got HEX file: `$${PATHTOOL:-echo} $$PWD/$(HEXFILE)`"; })
 
