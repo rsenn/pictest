@@ -34,7 +34,9 @@ make COMPILERS="sdcc xc8" CCDIR=/opt/sdcc-4.3.0rc1 CHIPS=18f25k50 BAUD_RATES=312
 
 `build/vars.mk` gained a `miditest_SOURCES`/`miditest_DEFS` entry
 (`lib/timer.c lib/uart.c lib/queue.c lib/extra/midi.c lib/lcd5110.c
-lib/delay.c`, `-DUSE_TIMER0=1 -DUSE_UART=1 -DUSE_NOKIA5110_LCD=1`). MIDI
+lib/delay.c lib/spi.c lib/pcd8544.c`, `-DUSE_TIMER0=1 -DUSE_UART=1
+-DUSE_NOKIA5110_LCD=1`) — `lib/spi.c`/`lib/pcd8544.c` were added once the
+LCD stack got layered (see §4). MIDI
 baud comes from the existing `BAUD_RATES=31250` mechanism (per
 `lib/extra/midi.h`'s own note), not a hardcoded `-DUART_BAUD=` in
 `miditest_DEFS` — a second `-DUART_BAUD=` collides with the one
@@ -104,6 +106,46 @@ make COMPILERS="sdcc xc8" CCDIR=/opt/sdcc-4.3.0rc1 CHIPS=18f25k50 BAUD_RATES=312
 Verified both toolchains produce a clean `0x2000`-based hex with the ISR
 vector correctly at `0x2008` and nothing below `0x2000` in the final
 `.hex`.
+
+### Build matrix — SDCC pic14 (`16f876a`) multi-file link, fixed
+
+`16f876a`+`sdcc` used to be excluded from the build matrix entirely: any
+multi-file link (i.e. any real program, `miditest` included) failed with
+gputils' `error: More absolute sections use same address: 0x2007`.
+Initially suspected to be an SDCC pic14-port bug (auto-emitting a default
+`__config` fuse word into every object) and reproduced identically across
+three installed SDCC versions (4.0.0, 4.1.0, 4.3.0rc1) — ruling that out
+as version-specific, but also ruling it out as SDCC's fault at all: root
+cause traced (via `strings` on the actual `.o` files, not just compiler
+output) to **this codebase's own** `lib/device.h`, which unconditionally
+placed an absolute `__code unsigned int __at(0x2007) __config_word = ...`
+in *every* translation unit that included `device.h` under
+`__SDCC && PIC16` — i.e. every `lib/*.c` file too, not just the program's
+main file. Every object in a multi-file link therefore claimed the same
+absolute address, and gputils rejects that regardless of value.
+
+Fixed by gating the emission behind a new `DEVICE_EMIT_CONFIG_WORD`
+macro, defined only by `src/config-bits.h` (included solely by top-level
+program `.c` files — `miditest.c`, `pictest.c`, etc. — never by
+`lib/*.c`), so exactly one object per link now owns the config word.
+Confirmed clean: `16f876a`+`sdcc`, both `debug`/`release`, links and
+produces a `.hex`; full matrix re-run (`18f252 18f2550 18f25k50` ×
+`xc8 sdcc` × `debug release` × `CODE_OFFSETS="0 2000"`) shows zero
+regressions.
+
+```
+BUILD_TYPES="debug release" CHIPS="16f876a 18f252 18f2550 18f25k50" \
+  COMPILERS="xc8 sdcc" CODE_OFFSETS="0 2000" \
+  make PROGRAM=miditest CCDIR=/opt/sdcc-4.3.0rc1 compile
+```
+
+Note: `CCDIR` must be passed as a `make` variable assignment on the
+command line (as above), not exported as a shell env var — the top-level
+`Makefile` drops env-only `CCDIR` when it re-invokes `build/sdcc.mk`,
+falling back to the system's non-pic-capable `sdcc` (pre-existing,
+unrelated issue, not fixed here). Also expect `16f876a`+`CODE_OFFSET=2000`
+to fail on both toolchains — that chip's flash is only 8K words (ends
+exactly at `0x2000`), a genuine hardware constraint, not a bug.
 
 ## `lib/` is the `libpicp` submodule — reuse-first rule
 
@@ -298,12 +340,12 @@ USB device stack.
 | Function | Peripheral | Notes |
 |---|---|---|
 | MIDI IN #1 | EUSART hardware (`lib/uart.h`) | 31250 baud, 8N1. The PIC18F25K50 has only **one** hardware EUSART, so this is the only IN that gets hardware-assisted, glitch-free reception |
-| MIDI IN #2 (+ #3?) | software UART (`lib/softser.h`, already in-tree) | bit-banged software-UART RX on this same board, timer/interrupt-driven, costing a timer/ISR budget + GPIO per extra input |
+| MIDI IN #2 (+ #3, #4) | `lib/ser_ioc.[ch]` (new, interrupt-on-change based) | up to 3 extra half-soft-serial RX channels sharing **one** IOC interrupt group on RB4-RB7 (`SER_IOC_MASK` selects which pins are active) — one shared ISR/timer-tick budget for all of them, not one timer per extra input like a naive bit-banged UART would need |
 | MIDI OUT (merged) | EUSART TX or bit-banged TX | Whichever port isn't consumed by IN #1 |
 | USB-CDC | PIC18F25K50 native USB, `USB-Stack/USB_Stack/USB/usb_cdc_acm.c` | Firm requirement — bridges UART MIDI to a computer for analysis/logging |
 | USB-MIDI | PIC18F25K50 native USB, `USB-Stack/USB_Stack` `MIDI_Controller` example | **Conditional/`#ifdef`-gated** — flash-budget concern, may be dropped entirely; composite with CDC if both are built in |
 | Addressable LEDs | bit-banged 1-wire (WS2812-style) — **OPEN: confirm LED chipset** | Needs a precise ~800kHz bit-bang or SPI/CCP-assisted output; existing `lib/softpwm.h` (PWM-per-pin, Timer1-driven) is for analog RGB LEDs, not per-pixel addressable ones — different driver needed |
-| LCD | Nokia 5110 (PCD8544), `lib/lcd5110.c/.h` already exists | SPI-like bit-bang, pins `LCD_CE/RESET/DC/DATA/CLK` on PORTB |
+| LCD | Nokia 5110 (PCD8544) | Layered driver now: `lib/spi.[ch]` (bus, Soft-SPI or HW-MSSP) → `lib/pcd8544.[ch]` (chip protocol/addressing, owns `PCD8544_CE/DC/RESET`) → `lib/lcd5110.[ch]` (font/text, unchanged public API) |
 | Menu input | 4 buttons — **or a rotary encoder + 1 push button, per §9.5** | OPEN: which input scheme, and pin assignment; likely PORTA or remaining PORTB/PORTC pins after LCD + LED + UART are allocated |
 
 **Pin budget concern (OPEN):** LCD currently claims RB2‑RB6. Hardware UART
@@ -401,12 +443,35 @@ Core loop responsibilities:
   replacing today's single `putch`-based send. This generalizes the
   per-input-parser idea from §3a: the parser/craft API itself doesn't
   know or care which transport it's riding on.
-- `lib/lcd5110.c/.h` — full PCD8544 driver (init, puts, gotoxy, symbols).
-  Text/symbol primitives only, no widget framework — sufficient for the
-  fast/fixed-layout UI this project needs (§0), not a graphics engine.
-- `lib/uart.h` — UART driver.
-- `lib/softser.h` — bit-banged software UART, candidate for extra MIDI
-  IN ports on a single board (§2).
+- `lib/lcd5110.c/.h` — text/symbol layer (init, puts, gotoxy, symbols) on
+  top of the PCD8544 chip driver below. Text/symbol primitives only, no
+  widget framework — sufficient for the fast/fixed-layout UI this
+  project needs (§0), not a graphics engine.
+- `lib/pcd8544.c/.h` (new) — low-level PCD8544 command-set driver,
+  covering every instruction in the datasheet (function set, display
+  mode, X/Y addressing, temperature coefficient, bias, Vop) — built
+  directly against `/home/roman/Downloads/PCD8544.PDF` Table 1/§8. Owns
+  the chip's CE/DC/RESET pins and calls down into `lib/spi.c`.
+  `lcd5110.c` now sits on top of this instead of hand-rolling command
+  bytes.
+- `lib/spi.c/.h` (new) — generic SPI bus transport, dual-backend
+  (bit-banged Soft-SPI, or hardware MSSP via `SPI_USE_HW`), Mode 0
+  (CPOL=0/CPHA=0), pin/peripheral choice all at compile time. Whichever
+  module needs SPI (currently only `pcd8544.c`) owns and calls it
+  directly — no function-pointer/callback transport abstraction.
+  Hardware-backend chip whitelist currently limited to
+  `18f25k50`/`18f252`/`16f876a` (excluded on `18f2550`/`12f1840`: their
+  SDCC headers don't expose the needed MSSP register bits/names at all —
+  see the comment in `lib/spi.h`); Soft-SPI works on every chip.
+- `lib/uart.h` — UART driver (MIDI IN #1, §2).
+- `lib/ser_ioc.c/.h` (new) — interrupt-on-change-based half-soft-serial
+  RX, up to 4 channels sharing one shared IOC interrupt group on
+  RB4-RB7 (`SER_IOC_MASK`/`SER_IOC_BAUD`, defaults to 31250 for MIDI).
+  Doesn't own a timer itself — reads whichever wide monotonic tick
+  source the caller already runs (`SER_IOC_TICKS()`, default
+  `TIMER0_TICKS32()`). Candidate mechanism for MIDI IN #2+ (§2) — replaces
+  the earlier vague "one bit-banged software-UART + one timer per extra
+  input" idea with one shared ISR/timer budget for up to 3 extra inputs.
 - `lib/extra/ledsense.[ch]` — LED-as-sensor driver, now dual-backend
   (direct-I/O / CTMU), see §0a. Resolved and implemented.
 - `/mnt/data/Projects/USB-Stack/USB_Stack/Examples/MIDI_Examples/MIDI_Controller.c` —
@@ -508,22 +573,25 @@ pins, decided over the course of this design. Header/DIP pin numbers per
 | JP1-2 / RA0 (DIP 2) | `ledsense` sense/cathode (`LS_K_PIN`) | AN0/ADC channel 0; also the CTMU sense channel if `LEDSENSE_USE_CTMU` |
 | JP1-3 / RA1 (DIP 3) | `ledsense` drive/anode (`LS_A_PIN`) | through 330R, per §0a/§8.3 |
 | JP1-7 / RA5 (DIP 7) | Transport-clock LED | fully free pin — no longer reserved for SPI `SS` since the picstick is SPI **master**, which doesn't need its own hardware slave-select pin |
-| JP2-7 / RB2 (DIP 23) | LCD `LCD_CE` | bit-banged, `lib/lcd5110.h` default |
-| JP1-4 / RA3 (DIP 5) | LCD `LCD_RESET` | **moved off RB3** (was the library default), keeping RB3 free for a possible future hardware-SPI use — see `lib/lcd5110.h` |
-| JP2-5 / RB4 (DIP 25) | LCD `LCD_DC` | bit-banged, `lib/lcd5110.h` default |
-| JP2-4 / RB5 (DIP 26) | LCD `LCD_DATA`/DIN | bit-banged, `lib/lcd5110.h` default |
-| JP2-3 / RB6 (DIP 27) | LCD `LCD_CLK`/SCLK | bit-banged, `lib/lcd5110.h` default. Shares the net with ICSP PGC (JP2-14) — fine unless a programmer is attached while running |
+| JP2-7 / RB2 (DIP 23) | LCD `PCD8544_CE` | `lib/pcd8544.h` default (chip's own CE pin, not an SPI bus pin) |
+| JP1-4 / RA3 (DIP 5) | LCD `PCD8544_RESET` | **moved off RB3** (was the old library default), keeping RB3 free for hardware-SPI use — see `lib/pcd8544.h` |
+| JP2-5 / RB4 (DIP 25) | LCD `PCD8544_DC` | `lib/pcd8544.h` default |
+| JP2-4 / RB5 (DIP 26) | LCD `SPI_MOSI`/DIN | `lib/spi.h` default — Soft-SPI (bit-banged) unless `SPI_USE_HW` is defined, in which case this chip's hardware-SPI mode instead uses RB3 (`SDOMX=RB3`, see `src/config-18f25k50.h`) |
+| JP2-3 / RB6 (DIP 27) | LCD `SPI_CLK`/SCLK | `lib/spi.h` default (Soft-SPI). Shares the net with ICSP PGC (JP2-14) — fine unless a programmer is attached while running. Unused if `SPI_USE_HW` selects hardware MSSP (uses RB1 instead on this chip) |
 
 **Still free** after all the above: RA2, RA6/RA7 (conditionally, if the
 optional X1 crystal stays unpopulated), RB0, RB1, RB3, RB7 (conditionally,
 shares ICSP PGD).
 
 Source changes made to match this table:
-- `lib/lcd5110.h`: `LCD_RESET` moved from `OUTB3` to `OUTA3`; `LCD_TRIS()`
-  changed from a blanket `TRISB &= 0x00` to setting only the 4 TRISB bits
-  the LCD actually owns (RB2/RB4/RB5/RB6) plus `TRISA3` — the old blanket
-  clear would otherwise have forced every other RB pin to output every
-  time `lcd_init()` ran, clobbering whatever else was wired to PORTB.
+- `lib/lcd5110.h` (at the time, since superseded by the `spi.[ch]`/
+  `pcd8544.[ch]` layering below): `LCD_RESET` moved from `OUTB3` to
+  `OUTA3`; the old blanket `TRISB &= 0x00` changed to setting only the
+  TRISB bits the LCD actually owned — the blanket clear would otherwise
+  have forced every other RB pin to output every time `lcd_init()` ran,
+  clobbering whatever else was wired to PORTB. Pin ownership (and this
+  same "only touch your own TRIS bits" discipline) now lives in
+  `lib/pcd8544.h`/`lib/spi.h` instead — see §4.
 - `lib/extra/ledsense.c`: `LS_A_PIN`/`LS_K_PIN` moved from `RA4`/`RA5` to
   `RA1`/`RA0` (and `LEDSENSE_ADC_CHANNEL` from 1 to 0) — the library's
   original default (`RA4`) collided with the picstick's onboard User LED.
