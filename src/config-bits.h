@@ -1,6 +1,11 @@
 #ifndef CONFIG_BITS_H
 #define CONFIG_BITS_H 1
 
+// only the top-level program's config-bits.h include (never lib/*.c,
+// which don't include this file) should provide the SDCC pic14
+// __config_word -- see lib/device.h's DEVICE_EMIT_CONFIG_WORD-guarded
+// block for why an unguarded per-TU emission breaks multi-file links
+#define DEVICE_EMIT_CONFIG_WORD 1
 #include "../lib/device.h"
 
 #ifdef __10f206
