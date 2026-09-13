@@ -5,8 +5,8 @@
 #include "../lib/oscillator.h"
 #include "../lib/typedef.h"
 
-//#define CCPR1 (((uint16_t)CCPR1H << 8)|(CCPR1L))
-//#define TMR1 (((uint16_t)TMR1H << 8)|(TMR1L))
+// #define CCPR1 (((uint16_t)CCPR1H << 8)|(CCPR1L))
+// #define TMR1 (((uint16_t)TMR1H << 8)|(TMR1L))
 
 #ifdef __10f206
 #define LED_PIN GP2

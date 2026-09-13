@@ -348,15 +348,15 @@ USB device stack.
 | LCD | Nokia 5110 (PCD8544) | Layered driver now: `lib/spi.[ch]` (bus, Soft-SPI or HW-MSSP) → `lib/pcd8544.[ch]` (chip protocol/addressing, owns `PCD8544_CE/DC/RESET`) → `lib/lcd5110.[ch]` (font/text, unchanged public API) |
 | Menu input | 4 buttons — **or a rotary encoder + 1 push button, per §9.5** | OPEN: which input scheme, and pin assignment; likely PORTA or remaining PORTB/PORTC pins after LCD + LED + UART are allocated |
 
-**Pin budget concern (OPEN):** LCD currently claims RB2‑RB6. Hardware UART
-uses its dedicated TX/RX pins. Each extra on-board MIDI IN needs its own
-GPIO for software-UART RX. USB uses its dedicated D+/D-. Addressable
-LEDs need 1 free timing-critical output pin. 4 buttons need 4 input pins
-(or a matrix/ADC ladder to save pins). Need to check
-`eagle/PIC18F25k50-USB+ICSP-Board.sch`/`picstick_25k50_v1.sch` for what's
-already committed vs. free before locking the pinout — with 2+ MIDI INs +
-1 OUT + LCD (5 pins) + LED (1 pin) + 4 buttons this is a tight fit on a
-28-pin part and may push toward a button matrix or ADC-ladder input.
+**Pin budget — mostly resolved, see §8.0/§8.2:** LCD now claims only
+RB0/RB1/RB3/RB4 (hardware SPI + 2 plain GPIO; `SCE` is tied straight to
+GND rather than costing a pin — see §8.1). Hardware UART uses its
+dedicated TX/RX pins. The planned 2nd MIDI IN (§2 row above, §8.2) wants
+RB4-RB7 for `lib/ser_ioc.[ch]`'s IOC group, which **collides with RB4/LCD
+`RESET`** — open conflict, not yet resolved (§8.2). USB uses its
+dedicated D+/D-. Addressable LEDs still need 1 free timing-critical
+output pin. 4 buttons (or a rotary encoder + button, §9.5) still need
+pin(s) — still OPEN, see §5 item 7/9.5.
 
 ## 3. Data flow
 
@@ -549,13 +549,29 @@ then sketch the menu tree before writing `src/miditest.c`.
 
 The demo's physical build (§0b) is really 4 separate small subprojects,
 each its own perfboard/wire-wrap harness plugging into the picstick's
-male header. ASCII schematics below, first pass — to be converted to
-real EAGLE `.sch` sheets once designs are confirmed and the relevant
-library part names are known (see the EAGLE-tooling discussion — this
-project will get its own `.scr`/ULP-driven schematic generation rather
-than hand-drawing in EAGLE).
+male header.
 
-### 8.0 Finalized pin table (this doc is the single source of truth for it)
+**This section now defers to a real, machine-verified EAGLE design**
+rather than the hand-drawn ASCII-only version it started as: the
+`eagle-circuit` Claude skill (see `/mnt/data/Projects/plot-cv/doc/
+eagle-agent.md` and the skill itself) generated and live-verified an
+actual schematic from a JSON netlist, currently at
+`/mnt/data/Projects/plot-cv/.tmp/picstick-combined.circuit.json` (+
+`.scr`) — 0 dialogs against a real EAGLE 7.2.0 install, grid-clean, no
+wire/body crossings except a known, documented one (§8.0 below). That
+JSON is the authoritative machine netlist (parts/nets, plus a `"buses"`
+section formalizing each harness as an ordered, contiguous pin-run on
+the picstick's own header — see the skill's "Harnesses and pin-runs"
+section); this Markdown section is the human-readable summary of it, and
+is expected to drift if the JSON changes without this doc being
+refreshed to match — when in doubt, the JSON (or `qjsm eagle-tool.js
+buses .tmp/picstick-combined.circuit.json --validate`) wins over prose
+here. (This netlist currently lives in the `plot-cv` project rather than
+alongside this file — relocating it to a self-contained
+`miditest.circuit.{json,yaml,md}` bundle here in `pictest/src/` is
+planned but not yet done.)
+
+### 8.0 Finalized pin table
 
 Board facts (pin numbering, on-board LEDs, ICSP sharing, etc.) live in
 `picstick.md` — this table is the project-specific *allocation* of those
@@ -565,7 +581,7 @@ pins, decided over the course of this design. Header/DIP pin numbers per
 | Pin (header / DIP) | Function | Notes |
 |---|---|---|
 | JP1-10 / RC7 (DIP 18) | UART MIDI RX | hardware EUSART, fixed pin, no alternative on this chip |
-| JP1-11 / RC6 (DIP 17) | UART MIDI TX | hardware EUSART, fixed pin |
+| JP1-11 / RC6 (DIP 17) | UART MIDI TX | hardware EUSART, fixed pin — **reserved**, not yet driven (MIDI OUT unimplemented, §8.2) |
 | JP1-12 / RC2 (DIP 13) | RGB LED — Red | = CCP1 pin (hardware PWM available later if wanted; digital on/off only for the demo) |
 | JP1-13 / RC1 (DIP 12) | RGB LED — Green | = CCP2 pin (`CCP2MX=RC1`) — same PWM note as Red |
 | JP1-14 / RC0 (DIP 11) | RGB LED — Blue | no hardware PWM available on this pin if ever upgraded |
@@ -573,17 +589,19 @@ pins, decided over the course of this design. Header/DIP pin numbers per
 | JP1-2 / RA0 (DIP 2) | `ledsense` sense/cathode (`LS_K_PIN`) | AN0/ADC channel 0; also the CTMU sense channel if `LEDSENSE_USE_CTMU` |
 | JP1-3 / RA1 (DIP 3) | `ledsense` drive/anode (`LS_A_PIN`) | through 330R, per §0a/§8.3 |
 | JP1-7 / RA5 (DIP 7) | Transport-clock LED | fully free pin — no longer reserved for SPI `SS` since the picstick is SPI **master**, which doesn't need its own hardware slave-select pin |
-| JP2-7 / RB2 (DIP 23) | LCD `PCD8544_CE` | `lib/pcd8544.h` default (chip's own CE pin, not an SPI bus pin) |
-| JP1-4 / RA3 (DIP 5) | LCD `PCD8544_RESET` | **moved off RB3** (was the old library default), keeping RB3 free for hardware-SPI use — see `lib/pcd8544.h` |
-| JP2-5 / RB4 (DIP 25) | LCD `PCD8544_DC` | `lib/pcd8544.h` default |
-| JP2-4 / RB5 (DIP 26) | LCD `SPI_MOSI`/DIN | `lib/spi.h` default — Soft-SPI (bit-banged) unless `SPI_USE_HW` is defined, in which case this chip's hardware-SPI mode instead uses RB3 (`SDOMX=RB3`, see `src/config-18f25k50.h`) |
-| JP2-3 / RB6 (DIP 27) | LCD `SPI_CLK`/SCLK | `lib/spi.h` default (Soft-SPI). Shares the net with ICSP PGC (JP2-14) — fine unless a programmer is attached while running. Unused if `SPI_USE_HW` selects hardware MSSP (uses RB1 instead on this chip) |
+| JP2-9 / RB0 (DIP 21) | LCD `PCD8544_DC` (net `LCD_D_C`) | `lib/pcd8544.h`, plain GPIO |
+| JP2-8 / RB1 (DIP 22) | LCD `SPI_CLK`/SCLK (net `LCD_SCLK`) | **hardware MSSP SPI clock** (`SPI_USE_HW`) — no longer Soft-SPI, see §8.1 |
+| JP2-6 / RB3 (DIP 24) | LCD `SPI_MOSI`/DIN (net `LCD_SDIN`) | **hardware MSSP SPI data out** (`SDOMX=RB3`) — no longer Soft-SPI, see §8.1 |
+| JP2-5 / RB4 (DIP 25) | LCD `PCD8544_RESET` (net `LCD_RES`) | moved here from RA3. **CONFLICT**: this is also the first pin the planned 2nd-MIDI-input harness (§8.2, §2's `lib/ser_ioc.[ch]` row) wants — not yet resolved |
+| — (tied to GND, no PIC pin) | LCD `PCD8544_CE` | **changed from a bit-banged GPIO to a fixed level**: the PCD8544 is the only device on this SPI bus, so per its datasheet (§6.1.10) `SCE` can be tied permanently LOW rather than costing a GPIO — frees JP2-7/RB2 entirely. `RESET` still needs a real GPIO pulse per the datasheet (§6.1.12/§12.2), so it stays on RB4 above |
 
-**Still free** after all the above: RA2, RA6/RA7 (conditionally, if the
-optional X1 crystal stays unpopulated), RB0, RB1, RB3, RB7 (conditionally,
-shares ICSP PGD).
+**Still free** after all the above: RA2, RA3 (freed — `RESET` moved off
+it), RA6/RA7 (conditionally, if the optional X1 crystal stays
+unpopulated), RB2 (freed — `SCE` no longer a GPIO), RB5, RB6, RB7
+(conditionally, shares ICSP PGD). RB4-RB7 (RB5/RB6/RB7 free, RB4
+conflicted) are earmarked for the planned 2nd MIDI input — see §8.2.
 
-Source changes made to match this table:
+Source changes made to match the harness now in `picstick-combined.circuit.json`:
 - `lib/lcd5110.h` (at the time, since superseded by the `spi.[ch]`/
   `pcd8544.[ch]` layering below): `LCD_RESET` moved from `OUTB3` to
   `OUTA3`; the old blanket `TRISB &= 0x00` changed to setting only the
@@ -597,6 +615,14 @@ Source changes made to match this table:
   original default (`RA4`) collided with the picstick's onboard User LED.
   Both changes verified compiling clean under SDCC 4.3.0rc1 and XC8 v2.46,
   all `LEDSENSE_USE_CTMU` on/off combinations.
+- LCD moved from the original 5-line, all-Soft-SPI, bit-banged-`CE`
+  design (RA3/RB2/RB4/RB5/RB6) to the current 4-line hardware-SPI design
+  above (RB0/RB1/RB3/RB4, `SCE` tied to GND) — `src/config-18f25k50.h`
+  needs `SDOMX=RB3` set to match (matches this doc's earlier note in §2
+  that this chip's hardware-SPI mode uses RB3/RB1, not the Soft-SPI
+  defaults) — **not yet applied to `lib/spi.h`'s config or verified
+  compiling; the netlist/schematic side is verified, the firmware side
+  is not yet updated to match.**
 
 ### 8.1 5110 LCD harness
 
@@ -667,25 +693,33 @@ so the PIC's GPIO can pull each line LOW but can never drive it above
   up alone holds `LCD_PIN` at +3.3V — a valid HIGH, and the LCD input is
   never exposed to more than its own 3.3V rail.
 - This is a slow/unidirectional-only trick (PIC→LCD, no line driven back
-  toward the PIC), which matches every 5110 control/data line in
-  `lib/lcd5110.c` (all PIC-driven outputs) — fine at this bit-banged
-  interface's speed.
+  toward the PIC), which matches every 5110 control/data line this
+  interface drives (all PIC-driven outputs) — fine at hardware-SPI speed
+  for this display (well under the PCD8544's 4.0Mbit/s max).
 - Parts: any small-signal switching diode (1N4148 or similar) and 10k
   resistors are typical choices; exact values not critical at this
   interface speed/current.
 
-**Full net list** (5 identical R+D networks, one per signal — pin
-assignments per §8.0):
+**`SCE` is the one exception — no level-shifter, no PIC pin at all**: per
+the PCD8544 datasheet (§6.1.10), `SCE` only matters when more than one
+SPI device shares the bus (it's the per-device chip-select); with the
+LCD as the bus's only device, `SCE` is simply tied straight to GND
+(always enabled) on the LCD's own 3.3V-side ground — a fixed 0V level
+needs no diode/pull-up trick, since 0V is 0V on both rails. This is what
+frees JP2-7/RB2 in §8.0.
+
+**Full net list** (4 identical R+D networks, one per real signal line —
+pin assignments per §8.0; net names match `picstick-combined.circuit.json`):
 
 | Net | PIC side | R (10k) → +3V3_LCD | D (1N4148) anode/cathode | LCD side |
 |---|---|---|---|---|
-| `LCD_CE_NET` | JP2-7 / RB2 | yes | anode@net, cathode@PIC | 5110 `SCE` |
-| `LCD_RESET_NET` | JP1-4 / RA3 | yes | anode@net, cathode@PIC | 5110 `RST` |
-| `LCD_DC_NET` | JP2-5 / RB4 | yes | anode@net, cathode@PIC | 5110 `D/C` |
-| `LCD_DATA_NET` | JP2-4 / RB5 | yes | anode@net, cathode@PIC | 5110 `DN`/`DIN` |
-| `LCD_CLK_NET` | JP2-3 / RB6 | yes | anode@net, cathode@PIC | 5110 `CLK` |
-| `+3V3_LCD` | — | supply rail (§8.1 5V→3.3V circuit) | — | 5110 `VCC` |
-| `GND` | JP1-1 | — | — | 5110 `GND` |
+| `LCD_RES` | JP2-5 / RB4 | yes | anode@net, cathode@PIC | 5110 `RES` |
+| `LCD_SDIN` | JP2-6 / RB3 (hw SPI MOSI) | yes | anode@net, cathode@PIC | 5110 `SDIN` |
+| `LCD_SCLK` | JP2-8 / RB1 (hw SPI clock) | yes | anode@net, cathode@PIC | 5110 `SCLK` |
+| `LCD_D_C` | JP2-9 / RB0 | yes | anode@net, cathode@PIC | 5110 `D/C` |
+| — (fixed level, no net crossing rails) | — | — | — | 5110 `SCE` → tied to GND |
+| `3V3_LCD` | — | supply rail (§8.1 5V→3.3V circuit) | — | 5110 `VCC` |
+| `GND` | JP1-1 | — | — | 5110 `GND`, and `SCE` above |
 
 **Full ASCII schematic** (LDO-supply variant shown; substitute the zener
 network from above for the 5V→3.3V block if no LDO is on hand):
@@ -697,20 +731,26 @@ network from above for the 5V→3.3V block if no LDO is on hand):
                        |                                               |
                       GND                                              |
                                                                         |
-  JP2-7 / RB2  ---------->|------+-----[10k]-----------------------> 5110 SCE
+  JP2-5 / RB4  ---------->|------+-----[10k]-----------------------> 5110 RES
                         1N4148   |
                                  (repeat identical R+D network per
                                   line below, all pulling to the
                                   same +3V3_LCD rail)
 
-  JP1-4 / RA3  ---------->|------+-----[10k]-----------------------> 5110 RST
-  JP2-5 / RB4  ---------->|------+-----[10k]-----------------------> 5110 D/C
-  JP2-4 / RB5  ---------->|------+-----[10k]-----------------------> 5110 DN
-  JP2-3 / RB6  ---------->|------+-----[10k]-----------------------> 5110 CLK
+  JP2-6 / RB3  ---------->|------+-----[10k]-----------------------> 5110 SDIN
+  JP2-8 / RB1  ---------->|------+-----[10k]-----------------------> 5110 SCLK
+  JP2-9 / RB0  ---------->|------+-----[10k]-----------------------> 5110 D/C
 
   JP1-1 / GND  -------------------------------------------------------> 5110 GND
+                                                                        5110 SCE  <- GND (fixed, no PIC pin)
                                                                         5110 VCC <- +3V3_LCD
 ```
+
+For the exact, machine-verified geometry (part positions, junction
+stubs, grid alignment) rather than this ASCII sketch, see
+`picstick-combined.scr`/`.sch` (§8 intro) or run `qjsm eagle-tool.js
+buses .tmp/picstick-combined.circuit.json LCD` for the harness's
+pin/net table straight from the source netlist.
 
 ### 8.2 MIDI I/O harness
 
@@ -772,6 +812,23 @@ swings cleanly between logic levels without needing an extra buffer):
   once the MIDI OUT / merge topology (§5 item 5) is locked down.
 - This whole harness sits on the perfboard between the picstick's male
   header and the DIN-5 jack (§0b step 2).
+
+**Planned 2nd MIDI input (channel B) — not yet wired, pin conflict open**:
+§2's "MIDI IN #2 (+#3, #4)" row already names `lib/ser_ioc.[ch]`'s
+interrupt-on-change group on RB4-RB7 as the mechanism; the intent is to
+use the HCPL-2730's spare channel B for a second opto-isolated MIDI IN,
+landing on one of those RB4-RB7 pins as a soft-serial RX. Declared as a
+harness (`qjsm eagle-tool.js buses .tmp/picstick-combined.circuit.json
+MIDI --validate`) tying together JP1-10/11 (RC7/RC6, the hardware
+EUSART pair) with JP2-2..5 (RB7/RB6/RB5/RB4) as one physical
+interconnect, even though only RC7 (`MIDI_RX`) is wired today — RC6
+(TX) and RB7/RB6/RB5 are reserved slots for this plan. **`RB4`
+(JP2-5) is the problem**: §8.0's LCD `RESET` already sits there. Needs
+one of: (a) move LCD `RESET` to a still-free pin (RA2, RA3, or RB2, all
+free per §8.0) and free RB4 for the 2nd MIDI input, or (b) use only
+RB5-RB7 for the 2nd input (3 IOC pins instead of the 4 the harness
+currently reserves) and leave RB4/LCD `RESET` as-is, or (c) some other
+resolution — **OPEN**, not yet decided.
 
 ### 8.3 LED harness
 

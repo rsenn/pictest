@@ -86,8 +86,7 @@ main() {
 
   TRISB &= 0B11111101;
 
-  while(1)
-    ; // Sit Idle Timer will do every thing!
+  while(1); // Sit Idle Timer will do every thing!
 }
 
 // Main Interrupt Service Routine (ISR)

@@ -3239,40 +3239,40 @@ Breakout</text>
 </deviceset>
 <deviceset name="PICSTICK" prefix="J">
 <gates>
-<gate name="G$1" symbol="PICSTICK_JP2" x="-7.62" y="0"/>
-<gate name="G$2" symbol="PICSTICK_JP1" x="10.16" y="0"/>
+<gate name="G$1" symbol="PICSTICK_JP1" x="-7.62" y="0"/>
+<gate name="G$2" symbol="PICSTICK_JP2" x="10.16" y="0"/>
 </gates>
 <devices>
 <device name="" package="PICSTICK_ALT">
 <connects>
-<connect gate="G$1" pin="1" pad="/RST"/>
-<connect gate="G$1" pin="10" pad="/MCLR"/>
-<connect gate="G$1" pin="11" pad="VDD"/>
-<connect gate="G$1" pin="12" pad="VSS"/>
-<connect gate="G$1" pin="13" pad="PGD"/>
-<connect gate="G$1" pin="14" pad="PGC"/>
-<connect gate="G$1" pin="2" pad="RB7"/>
-<connect gate="G$1" pin="3" pad="RB6"/>
-<connect gate="G$1" pin="4" pad="RB5"/>
-<connect gate="G$1" pin="5" pad="RB4"/>
-<connect gate="G$1" pin="6" pad="RB3"/>
-<connect gate="G$1" pin="7" pad="RB2"/>
-<connect gate="G$1" pin="8" pad="RB1"/>
-<connect gate="G$1" pin="9" pad="RB0"/>
-<connect gate="G$2" pin="1" pad="GND"/>
-<connect gate="G$2" pin="10" pad="RC7"/>
-<connect gate="G$2" pin="11" pad="RC6"/>
-<connect gate="G$2" pin="12" pad="RC2"/>
-<connect gate="G$2" pin="13" pad="RC1"/>
-<connect gate="G$2" pin="14" pad="RC0"/>
-<connect gate="G$2" pin="2" pad="RA0"/>
-<connect gate="G$2" pin="3" pad="RA1"/>
-<connect gate="G$2" pin="4" pad="RA2"/>
-<connect gate="G$2" pin="5" pad="RA3"/>
-<connect gate="G$2" pin="6" pad="RA4"/>
-<connect gate="G$2" pin="7" pad="RA5"/>
-<connect gate="G$2" pin="8" pad="RA6"/>
-<connect gate="G$2" pin="9" pad="RA7"/>
+<connect gate="G$2" pin="1" pad="/RST"/>
+<connect gate="G$2" pin="10" pad="/MCLR"/>
+<connect gate="G$2" pin="11" pad="VDD"/>
+<connect gate="G$2" pin="12" pad="VSS"/>
+<connect gate="G$2" pin="13" pad="PGD"/>
+<connect gate="G$2" pin="14" pad="PGC"/>
+<connect gate="G$2" pin="2" pad="RB7"/>
+<connect gate="G$2" pin="3" pad="RB6"/>
+<connect gate="G$2" pin="4" pad="RB5"/>
+<connect gate="G$2" pin="5" pad="RB4"/>
+<connect gate="G$2" pin="6" pad="RB3"/>
+<connect gate="G$2" pin="7" pad="RB2"/>
+<connect gate="G$2" pin="8" pad="RB1"/>
+<connect gate="G$2" pin="9" pad="RB0"/>
+<connect gate="G$1" pin="1" pad="GND"/>
+<connect gate="G$1" pin="10" pad="RC7"/>
+<connect gate="G$1" pin="11" pad="RC6"/>
+<connect gate="G$1" pin="12" pad="RC2"/>
+<connect gate="G$1" pin="13" pad="RC1"/>
+<connect gate="G$1" pin="14" pad="RC0"/>
+<connect gate="G$1" pin="2" pad="RA0"/>
+<connect gate="G$1" pin="3" pad="RA1"/>
+<connect gate="G$1" pin="4" pad="RA2"/>
+<connect gate="G$1" pin="5" pad="RA3"/>
+<connect gate="G$1" pin="6" pad="RA4"/>
+<connect gate="G$1" pin="7" pad="RA5"/>
+<connect gate="G$1" pin="8" pad="RA6"/>
+<connect gate="G$1" pin="9" pad="RA7"/>
 </connects>
 <technologies>
 <technology name=""/>

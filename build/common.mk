@@ -87,7 +87,7 @@ chip-header:
 	@find $(CCDIR)/include -iname "p*$(chipl).h"
 
 clean:
-	$(RM) $(BUILDDIR)*.hex $(BUILDDIR)*.as $(BUILDDIR)*.cof $(BUILDDIR)*.hex $(BUILDDIR)*.hxl $(BUILDDIR)*.lst $(BUILDDIR)*.map $(BUILDDIR)*.obj $(BUILDDIR)*.rlf $(BUILDDIR)*.sdb $(BUILDDIR)*.sym \
+	$(RM) $(BUILDDIR)*.hex $(BUILDDIR)*.as $(BUILDDIR)*.cof $(BUILDDIR)*.cod $(BUILDDIR)*.hex $(BUILDDIR)*.hxl $(BUILDDIR)*.lst $(BUILDDIR)*.map $(BUILDDIR)*.obj $(BUILDDIR)*.rlf $(BUILDDIR)*.sdb $(BUILDDIR)*.sym \
 	$(OBJDIR)*.lst $(OBJDIR)*.p1 $(OBJDIR)*.pre
 
 $(CFGFILE): $(HEXFILE)

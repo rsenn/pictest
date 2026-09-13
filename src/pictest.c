@@ -7,9 +7,9 @@
 #ifdef USE_SER
 #include "../lib/ser.h"
 #endif
-//#ifdef USE_SOFTSER
+// #ifdef USE_SOFTSER
 #include "../lib/softser.h"
-//#endif
+// #endif
 #include "../lib/interrupt.h"
 #if defined(USE_LCD) && !NO_PORTB
 #include "../lib/lcd44780.h"
@@ -31,9 +31,9 @@
 static const char buttons[6] = { ' ', '-', 'D', '+', 'U', '!' };
 */
 
-//#ifdef __XC8__
+// #ifdef __XC8__
 //__PROG_CONFIG(1, 0x3f72);
-//#endif
+// #endif
 
 #if defined(HI_TECH_C) || defined(__XC__)
 #endif
@@ -702,10 +702,10 @@ static int
 softserial_getch(uint16_t timeout) {
   uint16_t t = seconds + timeout;
 
-  while(seconds <= timeout) 
-    if(softser_poll(SOFTSER_BRG)) 
+  while(seconds <= timeout)
+    if(softser_poll(SOFTSER_BRG))
       return (int)(uint8_t)softser_getch();
-      
+
   return -1;
 }
 #endif

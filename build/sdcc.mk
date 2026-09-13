@@ -109,6 +109,7 @@ endif
 
 ifeq ($(BUILD_TYPE),debug)
 COMMON_FLAGS += --debug
+LDFLAGS += --debug
 #COMMON_FLAGS += -D_DEBUG=1
 else
 COMMON_FLAGS += 
@@ -166,6 +167,11 @@ CFLAGS += -p$(chipl)
 PM3CMD = "$$PROGRAMFILES"/Microchip/MPLAB\ IDE/Programmer\ Utilities/PM3Cmd/PM3Cmd
 
 COFFILE = $(subst .hex,.cof,$(HEXFILE))
+# gplink (sdcc's pic14/pic16 linker) already writes a .cod symbol file as a
+# side effect of every link, named by swapping .hex's extension -- this just
+# gives that byproduct a Makefile identity so it's tracked as a real output
+# and cleaned up, rather than an untracked file nobody declared.
+CODFILE = $(subst .hex,.cod,$(HEXFILE))
 
 ifeq ($(VERBOSE),1)
 	QUIET_STDERR := 
@@ -186,10 +192,15 @@ endif
 
 compile: $(BUILDDIR) $(OBJDIR) $(CPP_CONFIG) output
 
-output: $(HEXFILE) $(CFGFILE) #$(COFFILE)
+output: $(HEXFILE) $(CFGFILE) $(CODFILE) #$(COFFILE)
 	@for F in $^; do \
 	  echo "Output file '$(C_RED)$$F$(C_OFF)' built..." 1>&2; \
 	 done
+
+# $(CODFILE) is produced by the same gplink invocation as $(HEXFILE) --
+# no separate recipe needed, just make its presence depend on the hex build.
+$(CODFILE): $(HEXFILE)
+	@:
 
 dist:
 	mkdir -p $(PROGRAM)-$(VERSION)

@@ -1,17 +1,28 @@
 #ifndef CONFIG_18F25K50_H
 #define CONFIG_18F25K50_H 1
 
+/* Config bit settings match ../USB-Stack/USB_Stack/Examples/CDC_Examples/
+   CDC_Serial_Example.X exactly -- confirmed byte-for-byte via piccfg
+   against that project's own built, hardware-tested
+   dist/PIC18F25K50/production/*.hex (2026-09-02). A single #pragma
+   config block covers every compiler this project builds with for this
+   chip: both XC8 flavors (legacy v1.x and modern v2.x/v4.x -- both
+   define __XC) and SDCC (__SDCC__) all accept this same pragma syntax.
+   (An earlier version of this file also carried a second, __CONFIG()-
+   based branch guarded by `#elif defined(__XC)` -- always unreachable,
+   since `defined(__XC)` was already true in the first branch's own
+   condition -- and a third HI_TECH_C branch never exercised by this
+   project's actual toolchains. Both removed as dead code.) */
 #if defined(__XC) || defined(MCHP_XC8) || defined(__SDCC__) || defined(__XC__)
 
 // CONFIG1L
 #pragma config PLLSEL = PLL4X    // PLL Selection (4x clock multiplier)
 #pragma config CFGPLLEN = OFF    // PLL Enable Configuration bit (PLL Disabled (firmware controlled))
 #pragma config CPUDIV = NOCLKDIV // CPU System Clock Postscaler (CPU uses system clock (no divide))
-#pragma config LS48MHZ =                                                                                               \
-    SYS48X8 // Low Speed USB mode with 48 MHz system clock (System clock at 48 MHz, USB clock divider is set to 8)
+#pragma config LS48MHZ = SYS48X8 // Low Speed USB mode with 48 MHz system clock (System clock at 48 MHz, USB clock divider is set to 8)
 
 // CONFIG1H
-#if(XTAL_USED == NO_XTAL)
+#if (XTAL_USED == NO_XTAL)
 #warning NO_XTAL
 #pragma config FOSC = INTOSCIO
 #else
@@ -22,10 +33,8 @@
 #pragma config IESO = OFF   // Internal/External Oscillator Switchover (Oscillator Switchover mode disabled)
 
 // CONFIG2L
-//#pragma config nPWRTEN = ON // Power-up Timer Enable (Power up timer enabled)
 #pragma config BOREN = ON // Brown-out Reset Enable (BOR controlled by firmware (SBOREN is enabled))
 #pragma config BORV = 285 // Brown-out Reset Voltage (BOR set to 2.85V nominal)
-//#pragma config nLPBOR = ON  // Low-Power Brown-out Reset (Low-Power Brown-out Reset enabled)
 
 // CONFIG2H
 #pragma config WDTEN = SWON // Watchdog Timer Enable bits (WDT controlled by firmware (SWDTEN enabled))
@@ -59,8 +68,7 @@
 #pragma config LVP = OFF
 #endif
 #pragma config ICPRT = OFF // Dedicated In-Circuit Debug/Programming Port Enable (ICPORT disabled)
-#pragma config XINST =                                                                                                 \
-    OFF // Extended Instruction Set Enable bit (Instruction set extension and Indexed Addressing mode disabled)
+#pragma config XINST = OFF // Extended Instruction Set Enable bit (Instruction set extension and Indexed Addressing mode disabled)
 
 // CONFIG5L
 #pragma config CP0 = OFF // Block 0 Code Protect (Block 0 is not code-protected)
@@ -75,7 +83,6 @@
 #pragma config CPD = OFF // Data EEPROM Code Protect (Data EEPROM is not code-protected)
 
 // CONFIG6L
-
 #ifndef DEBUG
 #pragma config WRT0 = ON // Block 0 Write Protect (Block 0 (0800-1FFFh) is write-protected)
 #endif
@@ -87,27 +94,21 @@
 
 // CONFIG6H
 #ifndef DEBUG
-#pragma config WRTC =                                                                                                  \
-    ON // Configuration Registers Write Protect (Configuration registers (300000-3000FFh) are write-protected)
+#pragma config WRTC = ON // Configuration Registers Write Protect (Configuration registers (300000-3000FFh) are write-protected)
 #pragma config WRTB = ON // Boot Block Write Protect (Boot block (0000-7FFh) is write-protected)
 #endif
 #pragma config WRTD = OFF // Data EEPROM Write Protect (Data EEPROM is not write-protected)
 
 // CONFIG7L
-#pragma config EBTR0 =                                                                                                 \
-    OFF // Block 0 Table Read Protect (Block 0 is not protected from table reads executed in other blocks)
-#pragma config EBTR1 =                                                                                                 \
-    OFF // Block 1 Table Read Protect (Block 1 is not protected from table reads executed in other blocks)
+#pragma config EBTR0 = OFF // Block 0 Table Read Protect (Block 0 is not protected from table reads executed in other blocks)
+#pragma config EBTR1 = OFF // Block 1 Table Read Protect (Block 1 is not protected from table reads executed in other blocks)
 #if !defined(_18F24K50)
-#pragma config EBTR2 =                                                                                                 \
-    OFF // Block 2 Table Read Protect (Block 2 is not protected from table reads executed in other blocks)
-#pragma config EBTR3 =                                                                                                 \
-    OFF // Block 3 Table Read Protect (Block 3 is not protected from table reads executed in other blocks)
+#pragma config EBTR2 = OFF // Block 2 Table Read Protect (Block 2 is not protected from table reads executed in other blocks)
+#pragma config EBTR3 = OFF // Block 3 Table Read Protect (Block 3 is not protected from table reads executed in other blocks)
 #endif
 
 // CONFIG7H
-#pragma config EBTRB =                                                                                                 \
-    OFF // Boot Block Table Read Protect (Boot block is not protected from table reads executed in other blocks)
+#pragma config EBTRB = OFF // Boot Block Table Read Protect (Boot block is not protected from table reads executed in other blocks)
 
 #ifndef __SDCC__
 #pragma config nLPBOR = ON
@@ -117,38 +118,6 @@
 #pragma config PWRTEN = ON
 #endif
 
-/*#pragma config BOREN = ON, BORV = 285
-#pragma config WDTEN = OFF
-#pragma config STVREN = OFF, LVP = OFF
-#pragma config CP0 = OFF, CP1 = OFF, CP2 = OFF, CP3 = OFF
-#pragma config CPB = OFF, CPD = OFF
-#pragma config WRT0 = OFF, WRT1 = OFF, WRT2 = OFF, WRT3 = OFF
-#pragma config WRTB = OFF, WRTC = OFF, WRTD = OFF
-#pragma config EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF
-#pragma config EBTRB = OFF
-
-#pragma config XINST = OFF
-#ifdef _DEBUG
-#pragma config DEBUG = ON
-#endif
-*/
-#elif defined(__XC)
-
-__CONFIG(1, FOSC_XT& FCMEN_ON);
-__CONFIG(2, nPWRTEN_ON& WDTEN_OFF);
-__CONFIG(3, PBADEN_OFF& MCLRE_ON);
-__CONFIG(4, STVREN_ON);
-//__CONFIG(5, CPB_ON & CPD_OFF);
-__CONFIG(6, WRTC_ON& WRTB_ON& WRTD_OFF);
-__CONFIG(7, EBTR0_OFF& EBTR1_OFF& EBTR2_OFF& EBTR3_OFF);
-
-#elif defined(HI_TECH_C)
-#include <pic18fregs.h>
-
-__CONFIG(__CONFIG1L, 0xFFFF);
-__CONFIG(__CONFIG1H, _FOSC_HS_1H& _FCMEN_ON_1H& _IESO_OFF_1H);
-__CONFIG(__CONFIG4L, _XINST_ON_4L& _STVREN_ON_4L& _DEBUG_ON_4L& _LVP_OFF_4L);
-
-#endif
+#endif // defined(__XC) || defined(MCHP_XC8) || defined(__SDCC__) || defined(__XC__)
 
 #endif // defined CONFIG_18F25K50_H

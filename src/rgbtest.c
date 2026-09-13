@@ -1,437 +1,269 @@
-
-/*#define SOFTPWM_RANGE 255
-#ifndef SOFTPWM_CHANNELS
-#define SOFTPWM_CHANNELS 24
-#endif
-#define SOFTPWM_MASK 0b11111100
-#define SOFTPWM_MASK2 0b00111011
-#define SOFTPWM_MASK3 0b00000111*/
-
-//#define USE_MCLRE 1
-
 #include "config-bits.h"
 #include "pictest.h"
 
-//#if defined(__12f1840)
-#ifndef NO_PORTB
-#define NO_PORTB 1
-#endif
-//#endif
-
-#if defined(USE_SER) || defined(USE_UART) || defined(USE_SOFTSER)
-#define HAVE_SERIAL 1
-#endif
-
-#include "../lib/comparator.h"
 #include "../lib/const.h"
 #include "../lib/device.h"
-#include "../lib/timer.h"
 #include "../lib/interrupt.h"
-#include "../lib/random.h"
 #include "../lib/softpwm.h"
-#include "../lib/delay.h"
-#include "../lib/format.h"
+#include "../lib/timer.h"
 #include "bresenham.h"
 
-#ifdef USE_ADCONVERTER
-#define VREF_PLUS 3.3
-#define VREF_MINUS 0.0
-#include "../lib/adc.h"
+#ifdef USE_USB
+// Included up here, not down by the rest of the USE_USB section below --
+// INTERRUPT_FN() (right below) already calls usb_tasks() and references
+// USB_INTERRUPT_ENABLE/FLAG, both declared in these headers. The literal
+// EP0_*/CDC_*_BUFFER_BASE_ADDR overrides usb.h/usb_cdc.h's #ifndef guards
+// pick up are passed as -D flags from build/vars.mk (USE_USB block), not
+// included here, since usb.c/usb_cdc_acm.c need them too and don't include
+// any rgbtest-specific header.
+#include "usb.h"
+#include "usb_cdc.h"
 #endif
 
-#ifdef USE_UART
-#include "../lib/uart.h"
-#endif
-
-#ifdef USE_SER
-#include "../lib/ser.h"
-#endif
-
-#ifdef USE_SOFTSER
-#include "../lib/softser.h"
-#endif
+// SOFTPWM_RANGE (lib/softpwm.h) is the actual duty-cycle ceiling the ISR
+// compares against -- softpwm_set() values above it just stay full-on,
+// so every color value here is expressed directly in 0..SOFTPWM_RANGE.
+//
+// Default softpwm pin assignment (lib/softpwm.h: PORTC, pins 0-2) puts
+// R/G/B on RC0/RC1/RC2 -- picstick_25k50 JP1-14/13/12 (DIP 11/12/13, see
+// picstick.md SS1) -- all confirmed free/plain GPIO, clear of the
+// on-board User LED (RA4/JP1-6), the reset chain (JP2-1/10), the
+// ICSP-shared PORTB pins (JP2-2/3/13/14) and the optional-crystal pins
+// (RA6/RA7). Wire each of R/G/B through its own current-limiting
+// resistor (a common LED needs ~150-330R at 5V depending on color/LED;
+// size it per the LED's actual datasheet) to the RGB LED's cathode(s)
+// for a common-anode LED, or invert every softpwm_set() value below
+// (SOFTPWM_RANGE - x) for a common-cathode one.
 
 #if defined(__SDCC__) && defined(PIC16)
 __code unsigned int __at(_CONFIG) __config_word = CONFIG_WORD;
 #endif
 
-#if defined(__12f1840)
-#define BUTTON_PORT PORTA
-#define BUTTON_SHIFT 5
-#define BUTTON_BIT RA5
-#define BUTTON_TRIS() TRISA5 = 1
-#elif defined(__18f25k50)
-#define BUTTON_PORT PORTE
-#define BUTTON_SHIFT 3
-#define BUTTON_BIT PORTEbits.RE3
-#define BUTTON_TRIS() /*TRISE |= 0b1000*/
-
-#elif defined(__18f16q41) || !defined(__18f4550)
-#define BUTTON_PORT PORTC
-#define BUTTON_SHIFT 4
-#define BUTTON_BIT RA4
-#define BUTTON_TRIS() TRISA |= 0b10000
-#endif
-
-#ifndef BUTTON_PORT
-#if NO_PORTB
-#define BUTTON_PORT PORTA
-#define BUTTON_SHIFT 0
-#else
-#define BUTTON_PORT PORTB
-#define BUTTON_SHIFT 0
-#endif
-#endif
-
-#define BUTTON_GET() ((~(BUTTON_PORT)) >> BUTTON_SHIFT)
-
-#define B_LEFT 0b0001
-#define B_PLUS 0b0010
-#define B_MINUS 0b0100
-#define B_RIGHT 0b1000
-
-volatile BOOL run = 0;
-volatile uint8_t msec_count = 0;
-
+volatile uint32_t msecs;
 BRESENHAM_DECL(bres);
-volatile uint32_t msecs, hsecs;
-volatile char led_state = 0;
 
-static int16_t history[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-static char histindex = 0;
-static char bbit = 0;
-static uint32_t btime = 0;
+// Heartbeat PWM for the picstick's onboard User LED (RA4/JP1-6, D2 via
+// R4 -- see picstick.md SS3) -- a plain free-running 8-bit soft-PWM
+// counter driven straight off every Timer0 overflow, independent of
+// lib/softpwm.h (which only owns PORTC/RC0-2 for the RGB LED). At
+// Timer0's raw overflow rate this wraps well above the flicker-fusion
+// threshold even though it shares the tick with the 1ms msecs count.
+volatile uint8_t heartbeat_duty;
+static uint8_t heartbeat_pwm_counter;
 
-#define encode_time(ms) (ms)
-
-void
-clear_history() {
-
-  for(char i = 0; i < 8; i++) history[i] = 0;
-  histindex = 0;
-}
-
-//-----------------------------------------------------------------------------
-// Interrupt handling routine
-//-----------------------------------------------------------------------------
-#if defined(USE_SOFTPWM) || defined(USE_UART) || defined(USE_SER) || defined(USE_TIMER0) || defined(USE_ADCONVERTER)
 INTERRUPT_FN() {
-  NOP();
-
-#ifdef USE_TIMER0
   if(TIMER0_INTERRUPT_FLAG) {
-    BRESENHAM_INC(bres, (256 - SOFTPWM_TIMER_INITIAL));
+    BRESENHAM_INC8(bres);
 
-    if(BRESENHAM_COND(bres, 5000)) {
-      BRESENHAM_SUB(bres, 5000);
+    if(BRESENHAM_COND(bres, OSC_4 / 1000)) {
+      BRESENHAM_SUB(bres, OSC_4 / 1000);
       msecs++;
-      msec_count++;
     }
 
-    if(msec_count >= 10) { // if reached 1 centisecond!
-      hsecs++;             // update clock, etc
+    OUTA4 = (heartbeat_pwm_counter++ < heartbeat_duty) ? 1 : 0;
 
-      // LED_PIN = hsecs & 1;
-
-      msec_count -= 10;
-
-      /*if(hsecs >= 100) {
-        secs++;
-        hsecs = 0;
-      }*/
-    }
-
-#ifdef USE_SOFTPWM
-#if SOFTPWM_CHANNELS > 9999
-  SOFTPWM_ISR3();
-#elif SOFTPWM_CHANNELS > 8
-  SOFTPWM_ISR2();
-#else
-  SOFTPWM_ISR1();
-#endif
-#endif
-
-    // Clear timer interrupt bit
     TIMER0_INTERRUPT_CLEAR();
   }
-#endif
 
-  /*  if(CCP1IF) {
+  SOFTPWM_ISR();
 
-      CCP1IF = 0;
-    }*/
-
-#ifdef USE_TIMER2
-  if(TIMER2_INTERRUPT_FLAG) {
-
-    // Clear timer interrupt bit
-    TIMER2_INTERRUPT_CLEAR();
-  }
-#endif
-
-#ifdef USE_UART
-  if(RCIF) {
-    uart_isr();
-    RCIF = 0;
-  }
-#endif
-
-#ifdef USE_SER
-  ser_int();
-#endif
-
-#ifdef USE_ADCONVERTER
-  if(ADIF) {
-    adc_result = (ADRESH << 8) | ADRESL;
-    ADIF = 0;
-
-    GO_DONE = 1;
+#ifdef USE_USB
+  // Matches CDC_Serial_Example.X/main.c: the stack's own state machine
+  // runs from the interrupt, not polled from the main loop.
+  if(USB_INTERRUPT_ENABLE && USB_INTERRUPT_FLAG) {
+    usb_tasks();
   }
 #endif
 }
 
-#endif
+// Rainbow table generated by tools/make-hue-table.c's hsv2rgb_rainbow(),
+// which uses non-uniform hue-segment widths (narrower in the red/green
+// straddle around orange->yellow) specifically so yellow stays visibly
+// distinct while fading through the rainbow -- plain-uniform HSV->RGB
+// left yellow essentially invisible on a ping-pong-ball-diffused LED.
+// This is the exact algorithm/tuning from src/blinktest.c's embedded
+// rainbow8[] (steps=128, sat=255, intensity=255, gamma=1.0), regenerated
+// at `range=SOFTPWM_RANGE` (100) instead of blinktest.c's raw 0-255,
+// since lib/softpwm.h's real duty-cycle domain is 0..100, not 0..255 --
+// reproduce with:
+//   tools/make-hue-table 128 false 255 255 100 2 1.0
+#define RAINBOW_STEPS 128
+#define RAINBOW_MASK ((RAINBOW_STEPS) - 1)
 
-static uint8_t morse_len = 0;
-static int8_t morse_state = 0;
+static const uint8_t rainbow8[RAINBOW_STEPS][3] = {
+    {100, 0, 0},   {100, 4, 0},  {100, 8, 0},  {100, 13, 0}, {100, 17, 0}, {100, 21, 0}, {100, 25, 0}, {100, 29, 0},
+    {100, 33, 0},  {100, 38, 0}, {100, 42, 0}, {100, 46, 0}, {100, 50, 0}, {100, 54, 0}, {100, 58, 0}, {100, 63, 0},
+    {100, 67, 0},  {100, 69, 0}, {100, 71, 0}, {100, 73, 0}, {100, 75, 0}, {100, 77, 0}, {100, 79, 0}, {100, 81, 0},
+    {100, 83, 0},  {100, 85, 0}, {100, 88, 0}, {100, 90, 0}, {100, 92, 0}, {100, 94, 0}, {100, 96, 0}, {100, 98, 0},
+    {100, 100, 0}, {94, 100, 0}, {88, 100, 0}, {81, 100, 0}, {75, 100, 0}, {69, 100, 0}, {63, 100, 0}, {56, 100, 0},
+    {50, 100, 0},  {44, 100, 0}, {38, 100, 0}, {31, 100, 0}, {25, 100, 0}, {19, 100, 0}, {13, 100, 0}, {6, 100, 0},
+    {0, 100, 0},   {0, 98, 2},   {0, 96, 4},   {0, 94, 6},   {0, 92, 8},   {0, 90, 10},  {0, 88, 13},  {0, 85, 15},
+    {0, 83, 17},   {0, 81, 19},  {0, 79, 21},  {0, 77, 23},  {0, 75, 25},  {0, 73, 27},  {0, 71, 29},  {0, 69, 31},
+    {0, 67, 33},   {0, 63, 38},  {0, 58, 42},  {0, 54, 46},  {0, 50, 50},  {0, 46, 54},  {0, 42, 58},  {0, 38, 63},
+    {0, 33, 67},   {0, 29, 71},  {0, 25, 75},  {0, 21, 79},  {0, 17, 83},  {0, 13, 88},  {0, 8, 92},   {0, 4, 96},
+    {0, 0, 100},   {2, 0, 98},   {4, 0, 96},   {6, 0, 94},   {8, 0, 92},   {10, 0, 90},  {13, 0, 88},  {15, 0, 85},
+    {17, 0, 83},   {19, 0, 81},  {21, 0, 79},  {23, 0, 77},  {25, 0, 75},  {27, 0, 73},  {29, 0, 71},  {31, 0, 69},
+    {33, 0, 67},   {35, 0, 65},  {38, 0, 63},  {40, 0, 60},  {42, 0, 58},  {44, 0, 56},  {46, 0, 54},  {48, 0, 52},
+    {50, 0, 50},   {52, 0, 48},  {54, 0, 46},  {56, 0, 44},  {58, 0, 42},  {60, 0, 40},  {63, 0, 38},  {65, 0, 35},
+    {67, 0, 33},   {69, 0, 31},  {71, 0, 29},  {73, 0, 27},  {75, 0, 25},  {77, 0, 23},  {79, 0, 21},  {81, 0, 19},
+    {83, 0, 17},   {85, 0, 15},  {88, 0, 13},  {90, 0, 10},  {92, 0, 8},   {94, 0, 6},   {96, 0, 4},   {98, 0, 2},
+};
 
-int8_t
-morse_decode(int8_t state, char c) {
-  static const unsigned char t[] = {
-      0x03, 0x3f, 0x7b, 0x4f, 0x2f, 0x63, 0x5f, 0x77, 0x7f, 0x72, 0x87, 0x3b, 0x57, 0x47, 0x67, 0x4b, 0x81,
-      0x40, 0x01, 0x58, 0x00, 0x68, 0x51, 0x32, 0x88, 0x34, 0x8c, 0x92, 0x6c, 0x02, 0x03, 0x18, 0x14, 0x00,
-      0x10, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x1c, 0x00, 0x00, 0x00,
-      0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x24, 0x00, 0x28, 0x04, 0x00, 0x30, 0x31, 0x32, 0x33,
-      0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b,
-      0x4c, 0x4d, 0x4e, 0x4f, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a,
-  };
-  int v = t[-state];
-  switch(c) {
-    case 0x00: return v >> 2 ? t[(v >> 2) + 63] : 0;
-    case 0x2e: return v & 2 ? state * 2 - 1 : 0;
-    case 0x2d: return v & 1 ? state * 2 - 2 : 0;
-    default: return 0;
+// 250ms/step (~32s per full 128-step rainbow cycle) is blinktest.c's own
+// tuned rate, not a placeholder -- kept as-is rather than re-timed.
+#define CYCLE_MSECS_PER_STEP 250
+
+// Heartbeat: swell up over most of the period, then cut sharply to off
+// for the remainder -- not a symmetric fade in both directions. Period
+// 700ms is ~1.43Hz, inside the requested 1-2Hz range.
+#define HEARTBEAT_PERIOD_MS 700
+#define HEARTBEAT_RISE_MS 550
+
+static void
+heartbeat_tasks(void) {
+  uint16_t phase = (uint16_t)(msecs % HEARTBEAT_PERIOD_MS);
+
+  if(phase < HEARTBEAT_RISE_MS) {
+    // Quadratic ease-in so the rise itself feels like a swell rather
+    // than a linear ramp.
+    uint16_t t = (uint16_t)((uint32_t)phase * 255 / HEARTBEAT_RISE_MS);
+
+    heartbeat_duty = (uint8_t)((uint32_t)t * t / 255);
+  } else {
+    heartbeat_duty = 0; // abrupt stop
   }
 }
 
-void
-morse_process() {
-  uint16_t lowest = 0xffff;
+#ifdef USE_USB
+// ---------------------------------------------------------------------
+// USB CDC command interface (optional) -- see rgbtest.md for the
+// integration method/rationale. Kept as its own section so the base
+// lamp builds and runs identically with USE_USB left undefined.
+// ---------------------------------------------------------------------
+static uint8_t usb_line[32];
+static uint8_t usb_line_len;
 
-  for(char i = 0; i < histindex; i++) {
-    if(lowest > history[i])
-      lowest = history[i];
-  }
+// lamp state the CDC command handler and the main loop share
+static volatile uint8_t usb_override_active;
+static volatile uint8_t usb_override_rgb[3];
 
-  char j;
+static void
+usb_cmd_handle(uint8_t* line, uint8_t len) {
+  // "C r g b\r\n" (each 0..SOFTPWM_RANGE) -- freeze the lamp to one color
+  // "R\r\n"       -- resume the rainbow cycle
+  if(len >= 1 && (line[0] == 'R' || line[0] == 'r')) {
+    usb_override_active = 0;
+  } else if(len >= 1 && (line[0] == 'C' || line[0] == 'c')) {
+    uint8_t vals[3] = {0, 0, 0};
+    uint8_t vi = 0, i = 1;
 
-  for(j = 0; j < histindex; j++) {
-    if(j & 1)
-      if(history[j] > lowest * 3)
-        break;
-  }
+    while(i < len && vi < 3) {
+      while(i < len && line[i] == ' ') i++;
 
-  morse_len = j >> 1;
-}
-
-typedef void(putch_fn)(char);
-
-void
-put_str(putch_fn* putc, const char* s) {
-  while(*s) putc(*s++);
-}
-
-//-----------------------------------------------------------------------------
-int
-main() {
-  msec_count = msecs = 0;
-  hsecs = 0;
-  bres = 0;
-  run = 1;
-
-#ifdef __18f25k50
-#if XTAL_USED == NO_XTAL
-  OSCCONbits.IRCF = 7; // 16 MHz
-#endif
-
-#if(XTAL_USED != MHz_12)
-  OSCTUNEbits.SPLLMULT = 1; // PLL 3x
-#endif
-  OSCCON2bits.PLLEN = 1;
-
-  PLL_STARTUP_DELAY();
-
-#if XTAL_USED == NO_XTAL
-  ACTCONbits.ACTSRC = 1;
-  ACTCONbits.ACTEN = 1;
-#endif
-#endif
-
-  random_init(128, 79, 209);
-
-#ifdef USE_UART
-  uart_init();
-#endif
-
-#ifdef USE_SER
-  ser_init();
-#endif
-
-#ifdef USE_SOFTSER
-  softser_init();
-#endif
-
-#if USE_ADCONVERTER
-  ADON = 0;
-#if !defined(__18f14k50) && !defined(__18f16q41)
-  PCFG = 0b0110;
-#endif
-#endif
-
-#ifdef USE_COMPARATOR
-  comparator_disable();
-// CMCONbits.CON = 0;
-//  CMCON = 0b111;          //Disable LATA Comparators
-#endif
-
-#ifdef USE_TIMER0
-  timer0_init(PRESCALE_1_1 | TIMER0_FLAGS_8BIT);
-
-  TIMER0_INTERRUPT_CLEAR();
-  TMR0IE = 1;
-#endif
-
-#ifdef USE_TIMER1
-  timer1_init(PRESCALE_1_1);
-
-  TIMER1_INTERRUPT_CLEAR();
-  TMR1IE = 1;
-#endif
-
-#ifdef USE_TIMER2
-  timer2_init(PRESCALE_1_1);
-
-  TIMER2_INTERRUPT_CLEAR();
-  TMR2IE = 1;
-#endif
-
-#ifdef USE_MCP3001
-  mcp3001_init();
-#endif
-
-#ifdef USE_LED
-  LED_TRIS();
-  INIT_LED();
-#endif
-
-#ifdef USE_SOFTPWM
-  softpwm_init();
-
-  softpwm_values[0] = 0xff;
-  softpwm_values[1] = 0x00;
-  softpwm_values[2] = 0x00;
-
-  softpwm_values[3] = 0xff;
-  softpwm_values[4] = 0x80;
-  softpwm_values[5] = 0x00;
-
-  softpwm_values[6] = 0xff;
-  softpwm_values[7] = 0xff;
-  softpwm_values[8] = 0x00;
-
-  softpwm_values[9] = 0x00;
-  softpwm_values[10] = 0x00;
-  softpwm_values[11] = 0xff;
-
-  softpwm_values[12] = 0x00;
-  softpwm_values[13] = 0x00;
-  softpwm_values[16] = 0xff;
-
-  softpwm_values[17] = 0x80;
-  softpwm_values[18] = 0x00;
-  softpwm_values[19] = 0xff;
-#endif
-
-#ifndef __18f16q41
-  PEIE = 1;
-#endif
-  INTERRUPT_ENABLE();
-
-#ifdef USE_ADCONVERTER
-  adc_init(ADCS_FOSC_64, 0);
-
-#if defined(__18f2550) || defined(__18f252) || defined(__18f14k22) || defined(__18f14k50)
-#else
-  ANSELA &= ~0b00000111;
-#endif
-  TRISA |= 0b00000111;
-
-  // ADIE = 1;
-
-  adc_read(0);
-#endif
-
-#if HAVE_SERIAL
-  put_str(uart_putch, "blinktest\r\n");
-#endif
-
-  /* TRISC2 = 1;
-
-   CCP1IE = 0;
-   CCP1IF = 0;*/
-
-
-  SOFTPWM_TRIS = ~SOFTPWM_MASK;
-
-#if SOFTPWM_CHANNELS > 8
-  SOFTPWM_TRIS2 = ~SOFTPWM_MASK2;
-#endif
-
-#if SOFTPWM_CHANNELS > 16
-  SOFTPWM_TRIS3 = ~SOFTPWM_MASK3;
-#endif
-
-  BUTTON_TRIS();
-
-  for(;;) {
-    char b;
-
-#ifdef USE_LED
-      led_state = (hsecs/100) & 1;
-      SET_LED(led_state);
-#endif
-
-
-    b = BUTTON_BIT;
-
-    // Input state change
-    if(b != bbit) {
-
-
-      uint32_t d = msecs - btime;
-
-      uint16_t t = encode_time(d);
-
-      if(t > 0) {
-        history[histindex++] = t;
-
-        if(histindex > 7)
-          histindex = 0;
+      uint16_t n = 0;
+      while(i < len && line[i] >= '0' && line[i] <= '9') {
+        n = n * 10 + (line[i] - '0');
+        i++;
       }
 
-      // If pressed for 3 seconds, clear previous input
-      if(!b && d > 3000)
-        clear_history();
-
-      // Process on/off times as morse code
-      if(histindex) 
-        morse_process();
-
-      btime = msecs;
-      bbit = b;
+      vals[vi++] = (uint8_t)(n > SOFTPWM_RANGE ? SOFTPWM_RANGE : n);
     }
 
-    if(b && msecs - btime > 3000) {
+    usb_override_rgb[0] = vals[0];
+    usb_override_rgb[1] = vals[1];
+    usb_override_rgb[2] = vals[2];
+    usb_override_active = 1;
+  }
+}
+
+// cdc_data_out()/cdc_data_in() are called from cdc_tasks(), which itself
+// runs from the USB ISR (see the USB_INTERRUPT_ENABLE/FLAG check in
+// INTERRUPT_FN() above) -- so, matching CDC_Serial_Example.X/main.c's own
+// cdc_data_out()/serial_echo() split, these just set a flag and leave the
+// actual g_cdc_dat_ep_out copy/re-arm to the main loop.
+static volatile uint8_t usb_rx_pending;
+
+void
+cdc_data_out(void) {
+  usb_rx_pending = 1;
+}
+
+void
+cdc_data_in(void) {}
+
+void
+cdc_notification(void) {}
+
+void
+cdc_set_control_line_state(void) {}
+
+void
+cdc_set_line_coding(void) {}
+
+static void
+usb_rx_tasks(void) {
+  if(!usb_rx_pending)
+    return;
+
+  usb_rx_pending = 0;
+
+  for(uint8_t i = 0; i < g_cdc_num_data_out; i++) {
+    uint8_t ch = g_cdc_dat_ep_out[i];
+
+    if(ch == '\r' || ch == '\n') {
+      if(usb_line_len) {
+        usb_cmd_handle(usb_line, usb_line_len);
+        usb_line_len = 0;
+      }
+    } else if(usb_line_len < sizeof(usb_line)) {
+      usb_line[usb_line_len++] = ch;
+    }
+  }
+
+  cdc_arm_data_ep_out();
+}
+#endif
+
+int
+main(void) {
+  uint32_t next_step = 0;
+  uint16_t index = 0;
+
+  timer0_init(PRESCALE_1_1 | TIMER0_FLAGS_8BIT);
+  TIMER0_INTERRUPT_CLEAR();
+  TMR0IE = 1;
+
+  TRISA4 = 0;
+
+  softpwm_init();
+
+#ifdef USE_USB
+  usb_init();
+#endif
+
+  PEIE = 1;
+  INTERRUPT_ENABLE();
+
+  for(;;) {
+    heartbeat_tasks();
+
+#ifdef USE_USB
+    usb_rx_tasks();
+
+    if(usb_override_active) {
+      softpwm_set(0, usb_override_rgb[0]);
+      softpwm_set(1, usb_override_rgb[1]);
+      softpwm_set(2, usb_override_rgb[2]);
+    } else
+#endif
+        if(msecs >= next_step) {
+      const uint8_t* rgb = rainbow8[index++ & RAINBOW_MASK];
+
+      next_step = msecs + CYCLE_MSECS_PER_STEP;
+
+      softpwm_set(0, rgb[0]);
+      softpwm_set(1, rgb[1]);
+      softpwm_set(2, rgb[2]);
     }
   }
 }

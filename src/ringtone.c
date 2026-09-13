@@ -33,7 +33,7 @@ volatile unsigned char preloadTMR1L;
 volatile unsigned char preloadTMR1H;
 volatile unsigned short TMR0Count;
 
-//#define MissionImpossible
+// #define MissionImpossible
 
 typedef struct ringtone {
   unsigned int defaultoctave;

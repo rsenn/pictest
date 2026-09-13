@@ -86,13 +86,11 @@ void uart_putch(char Data) {    //trasnmit data
 uint8_t
 Scan_Data() {
   uint8_t Data = 0, temp;
-  while(CCP2IF == 0)
-    ;         // Wait for First Falling Edge
-  CCP2IF = 0; // Clear the Flag--Bcoz this is Start Pulse
+  while(CCP2IF == 0); // Wait for First Falling Edge
+  CCP2IF = 0;         // Clear the Flag--Bcoz this is Start Pulse
   for(i = 0; i < 7; i++) {
 
-    while(CCP2IF == 0)
-      ; // Capture the next 7 bits of data
+    while(CCP2IF == 0); // Capture the next 7 bits of data
     CCP2IF = 0;
     temp = RC0;
     temp <<= i;
@@ -112,7 +110,6 @@ DelayMs(unsigned int Ms) // Delay Routine
   while(Ms > 0) {
     Ms--;
 
-    for(delay_cnst = 0; delay_cnst < 220; delay_cnst++)
-      ;
+    for(delay_cnst = 0; delay_cnst < 220; delay_cnst++);
   }
 }

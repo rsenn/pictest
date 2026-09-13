@@ -39,28 +39,21 @@ static uint8_t data_count = 0;
 static uint8_t
 midi_data_len(uint8_t status) {
   switch(status) {
-  case 0xf1: /* MTC Quarter Frame */
-  case 0xf3: /* Song Select */
-    return 1;
-  case 0xf2: /* Song Position Pointer */
-    return 2;
-  case 0xf6: /* Tune Request */
-    return 0;
-  default:
-    break;
+    case 0xf1: /* MTC Quarter Frame */
+    case 0xf3: /* Song Select */ return 1;
+    case 0xf2: /* Song Position Pointer */ return 2;
+    case 0xf6: /* Tune Request */ return 0;
+    default: break;
   }
   switch(status & 0xf0) {
-  case 0xc0: /* Program Change */
-  case 0xd0: /* Channel Aftertouch */
-    return 1;
-  case 0x80: /* Note Off */
-  case 0x90: /* Note On */
-  case 0xa0: /* Polyphonic Aftertouch */
-  case 0xb0: /* Control Change */
-  case 0xe0: /* Pitch Bend */
-    return 2;
-  default: /* SysEx (0xf0/0xf7) -- not parsed, see §6 non-goals */
-    return 0xff;
+    case 0xc0: /* Program Change */
+    case 0xd0: /* Channel Aftertouch */ return 1;
+    case 0x80: /* Note Off */
+    case 0x90: /* Note On */
+    case 0xa0: /* Polyphonic Aftertouch */
+    case 0xb0: /* Control Change */
+    case 0xe0: /* Pitch Bend */ return 2;
+    default: /* SysEx (0xf0/0xf7) -- not parsed, see §6 non-goals */ return 0xff;
   }
 }
 
@@ -206,15 +199,15 @@ lcd_show_other(const midi_msg_t* msg) {
   lcd_gotoxy(0, LCD_ROW_OTHER);
 
   switch(msg->status) {
-  case 0xc0: tag = "PC "; break;
-  case 0xd0: tag = "AT "; break;
-  case 0xa0: tag = "PA "; break;
-  case 0xe0: tag = "PB "; break;
-  case 0xf1: tag = "MTC "; break;
-  case 0xf2: tag = "SPP "; break;
-  case 0xf3: tag = "SSEL "; break;
-  case 0xf6: tag = "TUNE"; break;
-  default: tag = "? "; break;
+    case 0xc0: tag = "PC "; break;
+    case 0xd0: tag = "AT "; break;
+    case 0xa0: tag = "PA "; break;
+    case 0xe0: tag = "PB "; break;
+    case 0xf1: tag = "MTC "; break;
+    case 0xf2: tag = "SPP "; break;
+    case 0xf3: tag = "SSEL "; break;
+    case 0xf6: tag = "TUNE"; break;
+    default: tag = "? "; break;
   }
   lcd_puts(tag);
   if(msg->status != 0xf6) { /* Tune Request has no data bytes to show */
@@ -237,10 +230,9 @@ static uint16_t bpm_x10 = 0; /* fixed point, tenths of a BPM, e.g. 1204 = 120.4 
    (an elapsed time of 0 deciseconds can't happen between two distinct
    quarter notes; treated as "not enough data yet"). */
 static const uint16_t bpm_table[31] = {
-    0,    /* 0: invalid */
-    6000, 3000, 2000, 1500, 1200, 1000, 857, 750, 667, 600,
-    545,  500,  462,  429,  400,  375,  353, 333, 316, 300,
-    286,  273,  261,  250,  240,  231,  222, 214, 207, 200,
+    0, /* 0: invalid */
+    6000, 3000, 2000, 1500, 1200, 1000, 857, 750, 667, 600, 545, 500, 462, 429, 400,
+    375,  353,  333,  316,  300,  286,  273, 261, 250, 240, 231, 222, 214, 207, 200,
 };
 
 static uint16_t
@@ -274,8 +266,7 @@ lcd_put_dec(uint16_t v) {
     buf[i++] = '0' + (v % 10);
     v /= 10;
   }
-  while(i)
-    lcd_putch(buf[--i]);
+  while(i) lcd_putch(buf[--i]);
 }
 
 static void
@@ -325,16 +316,12 @@ main() {
       midi_msg_ready = 0;
 
       switch(midi_last_msg.status) {
-      case 0x80: /* Note Off */
-      case 0x90: /* Note On */
-        lcd_show_note((const midi_msg_t*)&midi_last_msg);
-        break;
-      case 0xb0: /* Control Change */
-        lcd_show_cc((const midi_msg_t*)&midi_last_msg);
-        break;
-      default: /* Program Change, Aftertouch, Pitch Bend, System Common */
-        lcd_show_other((const midi_msg_t*)&midi_last_msg);
-        break;
+        case 0x80: /* Note Off */
+        case 0x90: /* Note On */ lcd_show_note((const midi_msg_t*)&midi_last_msg); break;
+        case 0xb0: /* Control Change */ lcd_show_cc((const midi_msg_t*)&midi_last_msg); break;
+        default: /* Program Change, Aftertouch, Pitch Bend, System Common */
+          lcd_show_other((const midi_msg_t*)&midi_last_msg);
+          break;
       }
     }
 
