@@ -4,7 +4,7 @@
 /* Config bit settings match ../USB-Stack/USB_Stack/Examples/CDC_Examples/
    CDC_Serial_Example.X exactly -- confirmed byte-for-byte via piccfg
    against that project's own built, hardware-tested
-   dist/PIC18F25K50/production/*.hex (2026-09-02). A single #pragma
+   dist/PIC18F25K50/production/?*.hex (2026-09-02). A single #pragma
    config block covers every compiler this project builds with for this
    chip: both XC8 flavors (legacy v1.x and modern v2.x/v4.x -- both
    define __XC) and SDCC (__SDCC__) all accept this same pragma syntax.
@@ -23,7 +23,9 @@
 
 // CONFIG1H
 #if (XTAL_USED == NO_XTAL)
+#ifdef WARN_NO_XTAL
 #warning NO_XTAL
+#endif
 #pragma config FOSC = INTOSCIO
 #else
 #pragma config FOSC = HSH

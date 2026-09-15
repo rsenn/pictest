@@ -301,3 +301,17 @@ miditest2_DEFS += -DUSE_TIMER0=1 -DUSE_TIMER1=1 -DUSE_UART=1 -DUSE_SOFTPWM=1
 #     BAUD_RATES=31250 _XTAL_FREQ=48000000 CODE_OFFSETS="0x0000 0x2000" \
 #     PROGRAMS=miditest2 compile
 
+glcdtest_SOURCES = glcdtest.c lib/delay.c lib/random.c lib/spi.c lib/st7735r.c
+# lib/st7735r.c/lib/spi.c need no USE_* opt-in defines the way
+# lib/lcd5110.c's SPI usage above does (no USE_NOKIA5110_LCD-style
+# gate). SPI_USE_HW=1 selects lib/spi.c's hardware MSSP backend
+# (SCK=RB1/MOSI=RB3/MISO=RB0 on 18f25k50) instead of the default
+# software bit-banged one (RB6/RB5/RB0) -- required to match
+# connection-map-18f25k50-st7735r.md's real wiring (D0/D1 on RB1/RB3).
+glcdtest_DEFS += -DSPI_USE_HW=1
+# Same board note as miditest2: on picstick_25k50 build with
+# _XTAL_FREQ=48000000 (no crystal populated, see picstick.md), e.g.:
+#   make COMPILERS="xc8 sdcc" CCDIR=/opt/sdcc-4.6.0 CHIPS=18f25k50 \
+#     _XTAL_FREQ=48000000 CODE_OFFSETS="0x0000 0x2000" \
+#     PROGRAMS=glcdtest compile
+

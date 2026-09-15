@@ -1,5 +1,10 @@
 # pictest
 
+## Comment style
+
+Use C-style `/* ... */` comments in all C sources (`.c`/`.h`), never `//`
+C++-style comments -- this applies project-wide, not just to new files.
+
 ## picstick_25k50 sub-projects
 
 Any sub-project that targets the **picstick_25k50** board (as opposed to
