@@ -309,6 +309,7 @@ glcdtest_SOURCES = glcdtest.c lib/delay.c lib/random.c lib/spi.c lib/st7735r.c
 # software bit-banged one (RB6/RB5/RB0) -- required to match
 # connection-map-18f25k50-st7735r.md's real wiring (D0/D1 on RB1/RB3).
 glcdtest_DEFS += -DSPI_USE_HW=1
+glcdtest_DEFS += -DNO_PLL
 # Same board note as miditest2: on picstick_25k50 build with
 # _XTAL_FREQ=48000000 (no crystal populated, see picstick.md), e.g.:
 #   make COMPILERS="xc8 sdcc" CCDIR=/opt/sdcc-4.6.0 CHIPS=18f25k50 \
