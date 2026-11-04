@@ -67,13 +67,22 @@ different depending which numbering you mean.
   R2 → real MCLR). Already on the board — no external reset circuit
   needed unless you want a *second* momentary switch fed into JP2-1 or
   a separate direct connection to DIP-1/MCLR.
-- **D2 ("User LED", red)**: anode → R4 (470R) → **RA4** (JP1-6, DIP 6).
+- **D2 ("User LED")**: anode → R4 (470R) → **RA4** (JP1-6, DIP 6).
   Cathode → GND. Software-controlled — this is the LED the Pinguino
   `blink.pde` example (`USERLED`) toggles.
-- **D1 (unlabeled red LED)**: anode → R1 (470R) → **VDD directly** (not
+- **D1 ("Power" LED)**: anode → R1 (470R) → **VDD directly** (not
   a GPIO). Cathode → GND. This is a fixed power-on indicator, always lit
   whenever the board has 5V — not software-controllable, doesn't consume
   a header pin.
+
+**LED colours: design vs. our boards.** The open-hardware design
+(`/mnt/data/Projects/rsenn/picstick_25k50`, BOM `construction/picstick_25k50_v1_bom.csv`
+row "Pwr, User LED", D1, D2) specifies **two identical red 3 mm LEDs**
+(635 nm); the schematic names D1 "Power" and D2 "User LED". **The
+picsticks built here are populated the other way round: D1 (Power, always
+on) is RED and D2 (User LED on RA4) is GREEN.** The pin function does not
+depend on the colour: "the green LED" on our boards = D2 = RA4 = JP1-6.
+
 - **X1 (16MHz crystal, optional)**: only populate if you need a crystal-
   clocked USB reference instead of the default INTOSC-based bootloader;
   ties up RA6/RA7 (JP1-8/9) if populated.
